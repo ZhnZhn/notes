@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/columnId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/columnId.js",
+ "names": [
+  "_isMax",
+  "state",
+  "boardId",
+  "sBoard",
+  "columnIds",
+  "length",
+  "CONF",
+  "MAX_COLUMNS",
+  "columnIdMiddleware",
+  "action",
+  "type",
+  "ACTION",
+  "ADD_COLUMN",
+  "store",
+  "getState",
+  "columnId",
+  "COLUMNS_PREFIX",
+  "next"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AACA;;AACA;;;;AACA;;;;;;AAEA,IAAMA,SAAS,SAATA,MAAS,CAACC,KAAD,EAAQC,OAAR;AAAA,SAAoBC,kBAChCC,SADgC,CACtBH,KADsB,EACfC,OADe,EACNG,MADM,IACIC,kBAAKC,WAD7B;AAAA,CAAf;;AAGA,IAAMC,qBAAqB,SAArBA,kBAAqB;AAAA,SAAS;AAAA,WAAQ,kBAAU;AACpD,UAAIC,OAAOC,IAAP,KAAgBC,gBAAOC,UAA3B,EAAuC;AACrC,YAAIZ,OAAOa,MAAMC,QAAN,EAAP,EAAyBL,OAAOP,OAAhC,CAAJ,EAA8C;AAC5C,iBAAO,KAAP;AACD;AACDO,4CACKA,MADL;AAEEM,oBAAU,oBAAKT,kBAAKU,cAAV;AAFZ;AAID;AACD,aAAOC,KAAKR,MAAL,CAAP;AACD,KAXmC;AAAA,GAAT;AAAA,CAA3B;;kBAaeD,kB"
+}

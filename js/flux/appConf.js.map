@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/appConf.js"
+ ],
+ "file": "../../src/flux/appConf.js",
+ "names": [
+  "CONF",
+  "STORAGE_KEY",
+  "MAX_BOARDS",
+  "BOARDS_PREFIX",
+  "MAX_COLUMNS",
+  "COLUMNS_PREFIX",
+  "MAX_NOTES",
+  "NOTES_PREFIX"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,OAAO;AACXC,eAAa,eADF;;AAGXC,cAAY,CAHD;AAIXC,iBAAe,GAJJ;;AAMXC,eAAa,CANF;AAOXC,kBAAgB,GAPL;;AASXC,aAAW,EATA;AAUXC,gBAAc;AAVH,CAAb;;kBAaeP,I"
+}

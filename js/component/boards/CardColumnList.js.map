@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/boards/CardColumnList.js"
+ ],
+ "file": "../../../src/component/boards/CardColumnList.js",
+ "names": [
+  "CL",
+  "CardColumList",
+  "columnIds",
+  "columns",
+  "length",
+  "map",
+  "id",
+  "title",
+  "noteIds"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK,mBAAX;;AAEA,IAAMC,gBAAgB,SAAhBA,aAAgB,OAA4B;AAAA,MAAzBC,SAAyB,QAAzBA,SAAyB;AAAA,MAAdC,OAAc,QAAdA,OAAc;;AAChD,MAAID,UAAUE,MAAV,KAAqB,CAAzB,EAA4B;AAC1B,WAAO,IAAP;AACD;AACD,SACE;AAAA;AAAA,MAAI,WAAWJ,EAAf;AACIE,cAAUG,GAAV,CAAc;AAAA,aACZ;AAAA;AAAA,UAAI,KAAKC,EAAT;AACE;AAAA;AAAA;AACGH,kBAAQG,EAAR,EAAYC;AADf,SADF;AAIE,sCAAC,cAAD,CAAM,OAAN;AACG,iBAAOJ,QAAQG,EAAR,EAAYE,OAAZ,CAAoBJ;AAD9B;AAJF,OADY;AAAA,KAAd;AADJ,GADF;AAcD,CAlBD;;kBAoBeH,a"
+}

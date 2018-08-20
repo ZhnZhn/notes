@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/boardId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/boardId.js",
+ "names": [
+  "_isMax",
+  "state",
+  "sApp",
+  "boardIds",
+  "length",
+  "CONF",
+  "MAX_BOARDS",
+  "boardIdMiddleware",
+  "action",
+  "type",
+  "ACTION",
+  "ADD_BOARD",
+  "store",
+  "getState",
+  "boardId",
+  "BOARDS_PREFIX",
+  "next"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AACA;;;;AACA;;AACA;;;;;;AAEA,IAAMA,SAAS,SAATA,MAAS,CAACC,KAAD;AAAA,SAAWC,gBACvBC,QADuB,CACdF,KADc,EACPG,MADO,IACGC,kBAAKC,UADnB;AAAA,CAAf;;AAGA,IAAMC,oBAAoB,SAApBA,iBAAoB;AAAA,SAAS;AAAA,WAAQ,kBAAU;AACnD,UAAIC,OAAOC,IAAP,KAAgBC,gBAAOC,SAA3B,EAAsC;AACpC,YAAKX,OAAOY,MAAMC,QAAN,EAAP,CAAL,EAAgC;AAC9B,iBAAO,KAAP;AACD;AACDL,4CACKA,MADL;AAEEM,mBAAS,oBAAKT,kBAAKU,aAAV;AAFX;AAID;AACD,aAAOC,KAAKR,MAAL,CAAP;AACD,KAXkC;AAAA,GAAT;AAAA,CAA1B;;kBAaeD,iB"
+}

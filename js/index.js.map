@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../src/index.js"
+ ],
+ "file": "../src/index.js",
+ "names": [
+  "basename",
+  "process",
+  "env",
+  "NODE_ENV",
+  "undefined",
+  "store",
+  "document",
+  "getElementById"
+ ],
+ "mappings": ";;AAAA;;;;AACA;;AACA;;AAEA;;;;AACA;;;;;;AAEA,IAAIA,WAAW,QAAf;AACA;AACA,IAAIC,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,aAA7B,EAA2C;AACzCH,aAAWI,SAAX;AACD;AACD;;AAEA,sBAEI;AAAC,sBAAD;AAAA,IAAU,OAAOC,eAAjB;AACE,gCAAC,aAAD,IAAK,UAAUL,QAAf;AADF,CAFJ,EAMEM,SAASC,cAAT,CAAwB,KAAxB,CANF"
+}

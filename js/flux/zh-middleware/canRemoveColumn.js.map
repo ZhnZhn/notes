@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/canRemoveColumn.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/canRemoveColumn.js",
+ "names": [
+  "canRemoveColumn",
+  "action",
+  "type",
+  "ACTION",
+  "REMOVE_COLUMN",
+  "_noteIds",
+  "sColumn",
+  "noteIds",
+  "store",
+  "getState",
+  "columnId",
+  "Array",
+  "isArray",
+  "length",
+  "next"
+ ],
+ "mappings": ";;;;;;AAAA;;AACA;;AAEA,IAAMA,kBAAkB,SAAlBA,eAAkB;AAAA,SAAS;AAAA,WAAQ,kBAAU;AACjD,UAAIC,OAAOC,IAAP,KAAgBC,gBAAOC,aAA3B,EAAyC;AACvC,YAAMC,WAAWC,mBAAQC,OAAR,CAAgBC,MAAMC,QAAN,EAAhB,EAAkCR,OAAOS,QAAzC,CAAjB;AACA,YAAI,CAACC,MAAMC,OAAN,CAAcP,QAAd,CAAD,IACAA,SAASQ,MAAT,KAAoB,CADxB,EAC2B;AACzB,iBAAO,KAAP;AACD;AACF;AACD,aAAOC,KAAKb,MAAL,CAAP;AACD,KATgC;AAAA,GAAT;AAAA,CAAxB;;kBAWeD,e"
+}

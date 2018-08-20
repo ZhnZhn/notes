@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/header/HeaderDrawer.js"
+ ],
+ "file": "../../../src/component/header/HeaderDrawer.js",
+ "names": [
+  "S",
+  "DRAWER_BT",
+  "color",
+  "HeaderDrawer",
+  "saveBoard",
+  "cleanStorage"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,aAAW;AACTC,WAAO;AADE;AADH,CAAV;;AAMA,IAAMC,eAAe,SAAfA,YAAe;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,YAAd,QAAcA,YAAd;AAAA,SACnB;AAAC,oBAAD;AAAA;AACE,eAASL,EAAEC;AADb;AAGE,kCAAC,oBAAD;AACE,iBAAWG,SADb;AAEE,oBAAcC;AAFhB;AAHF,GADmB;AAAA,CAArB;;kBAWeF,Y"
+}

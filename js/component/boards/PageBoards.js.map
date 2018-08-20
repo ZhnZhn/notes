@@ -1,0 +1,11 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/boards/PageBoards.js"
+ ],
+ "file": "../../../src/component/boards/PageBoards.js",
+ "names": [
+  "PageBoards"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,SAAM,CACvB,8BAAC,gBAAD,OADuB,EAEvB;AAAC,kBAAD;AAAA;AACE,kCAAC,mBAAD;AADF,GAFuB,CAAN;AAAA,CAAnB;;kBAOeA,U"
+}

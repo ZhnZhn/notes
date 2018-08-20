@@ -1,0 +1,30 @@
+
+.input-text {
+  display: inline-block;
+  border: none;
+  border-bottom-style: groove;
+  border-bottom-width: 2px;
+  border-bottom-color: darkcyan;
+  padding-left: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  max-width: 150px;
+  background-color: transparent;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.input-text:focus,
+.input-text:hover {
+  border: 1px solid darkcyan;
+}
+
+/*
+.title-editable {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+*/

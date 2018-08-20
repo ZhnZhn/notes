@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/component/App.js"
+ ],
+ "file": "../../src/component/App.js",
+ "names": [
+  "App",
+  "basename",
+  "props",
+  "PageBoard",
+  "PageBoards",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;AAKA;;;;AACA;;;;;;IAEMA,G;;;;;;;;;;6BAEI;AAAA,UACEC,QADF,GACe,KAAKC,KADpB,CACED,QADF;;AAEN,aACE;AAAC,qCAAD;AAAA,UAAe,UAAUA,QAAzB;AACE;AAAC,gCAAD;AAAA;AACE,wCAAC,qBAAD,IAAO,MAAK,aAAZ,EAA0B,WAAWE,mBAArC,GADF;AAEE,wCAAC,qBAAD,IAAO,MAAK,SAAZ,EAAsB,WAAWC,oBAAjC,GAFF;AAGE,wCAAC,wBAAD,IAAU,MAAK,GAAf,EAAmB,IAAG,SAAtB;AAHF;AADF,OADF;AASD;;;EAbeC,gB;;kBAgBHL,G"
+}

@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/noteId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/noteId.js",
+ "names": [
+  "_isMax",
+  "state",
+  "columnId",
+  "sColumn",
+  "noteIds",
+  "length",
+  "CONF",
+  "MAX_NOTES",
+  "taskIdMiddleware",
+  "action",
+  "type",
+  "ACTION",
+  "ADD_NOTE",
+  "store",
+  "getState",
+  "noteId",
+  "NOTES_PREFIX",
+  "next"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AACA;;;;AACA;;AACA;;;;;;AAEA,IAAMA,SAAS,SAATA,MAAS,CAACC,KAAD,EAAQC,QAAR;AAAA,SAAqBC,mBACjCC,OADiC,CACzBH,KADyB,EAClBC,QADkB,EACRG,MADQ,IACEC,kBAAKC,SAD5B;AAAA,CAAf;;AAGA,IAAMC,mBAAmB,SAAnBA,gBAAmB;AAAA,SAAS;AAAA,WAAQ,kBAAU;AAClD,UAAIC,OAAOC,IAAP,KAAgBC,gBAAOC,QAA3B,EAAqC;AACnC,YAAKZ,OAAOa,MAAMC,QAAN,EAAP,EAAyBL,OAAOP,QAAhC,CAAL,EAAiD;AAC/C,iBAAO,KAAP;AACD;AACDO,4CACKA,MADL;AAEEM,kBAAQ,oBAAKT,kBAAKU,YAAV;AAFV;AAID;AACD,aAAOC,KAAKR,MAAL,CAAP;AACD,KAXiC;AAAA,GAAT;AAAA,CAAzB;;kBAaeD,gB"
+}

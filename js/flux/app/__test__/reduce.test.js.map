@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/app/__test__/reduce.test.js"
+ ],
+ "file": "../../../../src/flux/app/__test__/reduce.test.js",
+ "names": [
+  "state",
+  "initialState",
+  "app",
+  "describe",
+  "test",
+  "expect",
+  "undefined",
+  "toEqual",
+  "bId",
+  "ba",
+  "setBoardCurrent",
+  "boardId",
+  "addBoard",
+  "boardIds",
+  "removeBoard"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAGA,IAAMA,QAAQC,uBAAaC,GAA3B;AACA;;;;;;;AAOAC,SAAS,aAAT,EAAwB,YAAI;AAC1BC,OAAK,6BAAL,EAAoC,YAAI;AACtCC,WAAO,uBAAQC,SAAR,EAAmB,EAAnB,CAAP,EAA+BC,OAA/B,CAAuCP,KAAvC;AACD,GAFD;;AAIAI,OAAK,0BAAL,EAAiC,YAAI;AACnC,QAAMI,MAAM,KAAZ;AACAH,WACE,uBAAQL,KAAR,EAAeS,kBAAGC,eAAH,CAAmBF,GAAnB,CAAf,CADF,EAEED,OAFF,4BAGKP,KAHL;AAIEW,eAASH;AAJX;AAMD,GARD;;AAUAJ,OAAK,kBAAL,EAAyB,YAAI;AAC3B,QAAMI,MAAM,KAAZ;AACAH,WACE,uBAAQL,KAAR,EAAeS,kBAAGG,QAAH,CAAYJ,GAAZ,CAAf,CADF,EAEED,OAFF,4BAGKP,KAHL;AAIEa,2DACKb,MAAMa,QADX,IAEEL,GAFF;AAJF;AASD,GAXD;;AAcAJ,OAAK,qBAAL,EAA4B,YAAI;AAC9B,QAAMI,MAAM,KAAZ;AACAH,WACE,uBAAQL,KAAR,EAAeS,kBAAGK,WAAH,CAAeN,GAAf,CAAf,CADF,EAEED,OAFF,CAEU;AACRI,eAAS,IADD;AAERE,gBAAU;AAFF,KAFV;AAMD,GARD;AAUD,CAvCD"
+}
