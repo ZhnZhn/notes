@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _actions = require('../app/actions');
 
 var _actions2 = require('../drawerMsg/actions');
@@ -25,9 +29,9 @@ var appStorage = function appStorage(_ref) {
         case _actions.ACTION.SAVE_BOARD:
           {
             try {
-              var state = getState();
-              state.drawerMsg = [];
-              window.localStorage.setItem(_appConf2.default.STORAGE_KEY, JSON.stringify(state));
+              window.localStorage.setItem(_appConf2.default.STORAGE_KEY, JSON.stringify((0, _extends3.default)({}, getState(), {
+                drawerMsg: []
+              })));
               dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_SAVED));
               return true;
             } catch (e) {

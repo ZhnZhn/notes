@@ -5,12 +5,13 @@ import CONF from '../appConf'
 const appStorage = ({ getState, dispatch }) => next => action => {
   switch(action.type){
     case ACTION.SAVE_BOARD: {
-      try {
-        const state = getState();
-        state.drawerMsg = []
+      try {                
         window.localStorage.setItem(
           CONF.STORAGE_KEY,
-          JSON.stringify(state)
+          JSON.stringify({
+            ...getState(),
+            drawerMsg: []
+          })
         )
         dispatch(
           dma.addDrawerMsg(CONF.MSG_SAVED)
