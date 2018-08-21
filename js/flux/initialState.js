@@ -9,6 +9,7 @@ var initState = {
     boardId: 'b-1',
     boardIds: ['b-1']
   },
+  drawerMsg: [],
   boards: {
     'b-1': {
       id: 'b-1',

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test:watch": "jest --watch",
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",

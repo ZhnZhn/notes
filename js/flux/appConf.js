@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var CONF = {
   STORAGE_KEY: 'notes-manager',
+  DMSG_PREFIX: 'm',
+  MSG_SAVED: 'Boards saved',
+  MSG_CLEANED: 'localStorage cleaned',
 
   MAX_BOARDS: 8,
   BOARDS_PREFIX: 'b',

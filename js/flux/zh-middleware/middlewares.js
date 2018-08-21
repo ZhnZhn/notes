@@ -20,6 +20,10 @@ var _appStorage = require('./appStorage');
 
 var _appStorage2 = _interopRequireDefault(_appStorage);
 
+var _drawerMsgId = require('./drawerMsgId');
+
+var _drawerMsgId2 = _interopRequireDefault(_drawerMsgId);
+
 var _canRemoveColumn = require('./canRemoveColumn');
 
 var _canRemoveColumn2 = _interopRequireDefault(_canRemoveColumn);
@@ -30,7 +34,7 @@ var _canRemoveBoard2 = _interopRequireDefault(_canRemoveBoard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _appStorage2.default, _canRemoveColumn2.default, _canRemoveBoard2.default];
+var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default];
 
 exports.default = middlewares;
 //# sourceMappingURL=middlewares.js.map

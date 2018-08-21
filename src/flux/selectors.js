@@ -9,6 +9,10 @@ export const sApp = {
     .app(state).boardIds || [],
 };
 
+export const sDrawer = {
+  msg: state => state.drawerMsg
+};
+
 export const sBoard = {
   boards: state => state.boards || {},
   //state.boards[state.app.boardId]

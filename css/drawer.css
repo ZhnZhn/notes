@@ -85,3 +85,32 @@
 
   will-change: opacity;
 }
+
+.drawer__list {
+  height: 100%;
+  background-color: #4d4d4d;
+  border-left: 1px solid darkcyan;
+}
+.drawer__list-bt {
+  width: 100%;
+  text-align: left;
+  padding-left: 16px;
+}
+
+.drawer__msg-ul {
+  list-style-type: none;
+  padding-top: 8px;
+}
+.drawer__msg-li {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-bottom: 4px;
+  background-color: #607d8b;
+  line-height: 2.2
+}
+.drawer__msg-bt {
+  width: 100%;
+  color: azure;
+  font-weight: 600;
+  text-align: left;
+}

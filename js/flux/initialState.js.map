@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../src/flux/initialState.js"],"names":["initState","app","boardId","boardIds","boards","id","title","columnIds","notes","columns","noteIds","withAdd"],"mappings":";;;;;;AACA,IAAMA,YAAY;AAChBC,OAAK;AACHC,aAAS,KADN;AAEHC,cAAU,CAAC,KAAD;AAFP,GADW;AAKhBC,UAAQ;AACN,WAAO;AACLC,UAAI,KADC;AAELC,aAAO,SAFF;AAGLC,iBAAW,CAAC,KAAD,EAAO,KAAP;AAHN;AADD,GALQ;AAYhBC,SAAO;AACL;AADK,GAZS;AAehBC,WAAS;AACP,WAAO;AACLJ,UAAI,KADC;AAELC,aAAO,UAFF;AAGLI,eAAS,EAHJ;AAILC,eAAS;AAJJ,KADA;AAOP,WAAO;AACLN,UAAI,KADC;AAELC,aAAO,UAFF;AAGLI,eAAS;AAHJ;AAMT;AAbS,GAfO,EAAlB;;kBA+BeV,S","file":"initialState.js","sourcesContent":["\r\nconst initState = {\r\n  app: {\r\n    boardId: 'b-1',\r\n    boardIds: ['b-1']\r\n  },\r\n  boards: {\r\n    'b-1': {\r\n      id: 'b-1',\r\n      title: 'Board 1',\r\n      columnIds: ['c-1','c-2']\r\n    }\r\n  },\r\n  notes: {\r\n    //'n-1': { id: 'n-1', title: 'Note 1' },\r\n  },\r\n  columns: {\r\n    'c-1': {\r\n      id: 'c-1',\r\n      title: 'Column 1',\r\n      noteIds: [],\r\n      withAdd: true\r\n    },\r\n    'c-2': {\r\n      id: 'c-2',\r\n      title: 'Column 2',\r\n      noteIds: []\r\n    }\r\n  }\r\n  //columnOrder: [ 'column-1', 'column-2', 'column-3' ]\r\n};\r\n\r\nexport default initState\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/initialState.js"
+ ],
+ "file": "../../src/flux/initialState.js",
+ "names": [
+  "initState",
+  "app",
+  "boardId",
+  "boardIds",
+  "drawerMsg",
+  "boards",
+  "id",
+  "title",
+  "columnIds",
+  "notes",
+  "columns",
+  "noteIds",
+  "withAdd"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,YAAY;AAChBC,OAAK;AACHC,aAAS,KADN;AAEHC,cAAU,CAAC,KAAD;AAFP,GADW;AAKhBC,aAAW,EALK;AAMhBC,UAAQ;AACN,WAAO;AACLC,UAAI,KADC;AAELC,aAAO,SAFF;AAGLC,iBAAW,CAAC,KAAD,EAAO,KAAP;AAHN;AADD,GANQ;AAahBC,SAAO;AACL;AADK,GAbS;AAgBhBC,WAAS;AACP,WAAO;AACLJ,UAAI,KADC;AAELC,aAAO,UAFF;AAGLI,eAAS,EAHJ;AAILC,eAAS;AAJJ,KADA;AAOP,WAAO;AACLN,UAAI,KADC;AAELC,aAAO,UAFF;AAGLI,eAAS;AAHJ;AAMT;AAbS,GAhBO,EAAlB;;kBAgCeX,S"
+}

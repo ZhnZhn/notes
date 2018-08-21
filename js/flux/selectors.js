@@ -17,6 +17,12 @@ var sApp = exports.sApp = {
   }
 };
 
+var sDrawer = exports.sDrawer = {
+  msg: function msg(state) {
+    return state.drawerMsg;
+  }
+};
+
 var sBoard = exports.sBoard = {
   boards: function boards(state) {
     return state.boards || {};

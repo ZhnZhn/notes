@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -7,6 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 var filterBy = function filterBy(arr, id) {
   return Array.isArray(arr) ? arr.filter(function (str) {
     return str !== id;
+  }) : arr;
+};
+
+var filterByProp = function filterByProp(arr, prValue) {
+  var prName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'id';
+  return Array.isArray(arr) ? arr.filter(function (obj) {
+    return obj[prName] !== prValue;
   }) : arr;
 };
 
@@ -22,6 +29,7 @@ var removeProp = function removeProp(obj, key) {
 
 exports.default = {
   filterBy: filterBy,
+  filterByProp: filterByProp,
   removeProp: removeProp
 };
 //# sourceMappingURL=reducerFns.js.map

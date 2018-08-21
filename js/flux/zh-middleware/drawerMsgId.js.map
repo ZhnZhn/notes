@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/drawerMsgId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/drawerMsgId.js",
+ "names": [
+  "drawerMsgMiddleware",
+  "action",
+  "type",
+  "ACTION",
+  "ADD_DRAWER_MSG",
+  "id",
+  "CONF",
+  "DMSG_PREFIX",
+  "next"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AACA;;;;AACA;;;;;;AAEA,IAAMA,sBAAsB,SAAtBA,mBAAsB;AAAA,SAAS;AAAA,WAAQ,kBAAU;AACrD,UAAIC,OAAOC,IAAP,KAAgBC,gBAAOC,cAA3B,EAA2C;AACzCH,4CACKA,MADL;AAEEI,cAAI,oBAAKC,kBAAKC,WAAV;AAFN;AAID;AACD,aAAOC,KAAKP,MAAL,CAAP;AACD,KARoC;AAAA,GAAT;AAAA,CAA5B;;kBAUeD,mB"
+}
