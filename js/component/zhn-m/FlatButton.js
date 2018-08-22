@@ -124,6 +124,11 @@ var FlatButton = (_temp2 = _class = function (_Component) {
         )
       );
     }
+  }, {
+    key: 'focus',
+    value: function focus() {
+      this.rootNode.focus();
+    }
   }]);
   return FlatButton;
 }(_react.Component), _class.defaultProps = {

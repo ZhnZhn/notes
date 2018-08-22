@@ -8,9 +8,10 @@
   "rootReducer",
   "app",
   "drawerMsg",
+  "modal",
   "boards",
   "notes",
   "columns"
  ],
- "mappings": ";;;;;;AAAA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,cAAc,4BAAgB;AAClCC,wBADkC;AAElCC,8BAFkC;AAGlCC,2BAHkC;AAIlCC,0BAJkC;AAKlCC;AALkC,CAAhB,CAApB;;kBAQeL,W"
+ "mappings": ";;;;;;AAAA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,cAAc,4BAAgB;AAClCC,wBADkC;AAElCC,8BAFkC;AAGlCC,0BAHkC;AAIlCC,2BAJkC;AAKlCC,2BALkC;AAMlCC;AANkC,CAAhB,CAApB;;kBASeN,W"
 }

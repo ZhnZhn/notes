@@ -1,0 +1,24 @@
+
+.modal-dialog {
+  background-color: #4d4d4d;
+  border: solid 2px #1b2836;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
+
+  width: 350px;
+  height: 150px;
+  margin: auto;
+  position: relative;
+  top: 10%;
+  display: block;
+  z-index: 10;
+}
+
+.md__actions {
+  position: absolute;
+  right: 16px;
+  bottom: 0;
+  cursor: default;
+  margin-top: 8px;
+  margin-bottom: 10px;  
+}

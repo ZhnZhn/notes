@@ -34,6 +34,10 @@ var _PageBoards = require('./boards/PageBoards');
 
 var _PageBoards2 = _interopRequireDefault(_PageBoards);
 
+var _WrapperContainer = require('./zhn-cont/WrapperContainer');
+
+var _WrapperContainer2 = _interopRequireDefault(_WrapperContainer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function (_Component) {
@@ -47,17 +51,24 @@ var App = function (_Component) {
   (0, _createClass3.default)(App, [{
     key: 'render',
     value: function render() {
-      var basename = this.props.basename;
+      var _props = this.props,
+          basename = _props.basename,
+          store = _props.store;
 
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
         { basename: basename },
         _react2.default.createElement(
-          _reactRouterDom.Switch,
+          _react.Fragment,
           null,
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/boards/:id', component: _PageBoard2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/boards', component: _PageBoards2.default }),
-          _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/boards' })
+          _react2.default.createElement(_WrapperContainer2.default, { store: store }),
+          _react2.default.createElement(
+            _reactRouterDom.Switch,
+            null,
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/boards/:id', component: _PageBoard2.default }),
+            _react2.default.createElement(_reactRouterDom.Route, { path: '/boards', component: _PageBoards2.default }),
+            _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/boards' })
+          )
         )
       );
     }

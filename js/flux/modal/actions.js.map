@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/modal/actions.js"
+ ],
+ "file": "../../../src/flux/modal/actions.js",
+ "names": [
+  "ACTION",
+  "SHOW_MODAL",
+  "showModal",
+  "id",
+  "data",
+  "type",
+  "actions"
+ ],
+ "mappings": ";;;;;AACO,IAAMA,0BAAS;AACpBC,cAAY;AADQ,CAAf;;AAIA,IAAMC,gCAAY,SAAZA,SAAY,CAACC,EAAD,EAAKC,IAAL;AAAA,SAAe;AACtCC,UAAML,OAAOC,UADyB;AAEtCE,UAFsC;AAGtCC;AAHsC,GAAf;AAAA,CAAlB;;AAMP,IAAME,UAAU;AACdJ;AADc,CAAhB;;kBAIeI,O"
+}

@@ -15,7 +15,10 @@ if (process.env.NODE_ENV === 'development'){
 render(
   (
     <Provider store={store}>
-      <App basename={basename} />
+      <App
+        basename={basename}
+        store={store}
+      />
     </Provider>
   ),
   document.getElementById('app')

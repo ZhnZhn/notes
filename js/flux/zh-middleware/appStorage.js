@@ -30,7 +30,8 @@ var appStorage = function appStorage(_ref) {
           {
             try {
               window.localStorage.setItem(_appConf2.default.STORAGE_KEY, JSON.stringify((0, _extends3.default)({}, getState(), {
-                drawerMsg: []
+                drawerMsg: [],
+                modal: { id: null, data: null }
               })));
               dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_SAVED));
               return true;

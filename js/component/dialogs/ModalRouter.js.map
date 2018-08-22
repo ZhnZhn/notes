@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/modalRouter.js"
+ ],
+ "file": "../../../src/component/dialogs/modalRouter.js",
+ "names": [
+  "MD",
+  "NOTIF",
+  "_r",
+  "DF",
+  "Notification",
+  "modalRouter",
+  "getDialog",
+  "type"
+ ],
+ "mappings": ";;;;;;;;;;;AACA;;;;;;AAEO,IAAMA,kBAAK;AAChBC,SAAO;AADS,CAAX;;AAIP,IAAMC;AACJC,MAAIC;AADA,GAEHJ,GAAGC,KAFA,EAEQG,4BAFR,CAAN;;AAKA,IAAMC,cAAc;AAClBC,WADkB,qBACRC,IADQ,EACF;AACd,WAAOL,GAAGK,IAAH,KAAYL,GAAGC,EAAtB;AACD;AAHiB,CAApB;;kBAMeE,W"
+}

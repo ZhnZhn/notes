@@ -5,6 +5,10 @@ const initState = {
     boardIds: ['b-1']
   },
   drawerMsg: [],
+  modal: {
+    id: null,
+    data: null
+  },
   boards: {
     'b-1': {
       id: 'b-1',

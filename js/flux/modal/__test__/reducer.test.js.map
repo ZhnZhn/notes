@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/modal/__test__/reducer.test.js"
+ ],
+ "file": "../../../../src/flux/modal/__test__/reducer.test.js",
+ "names": [
+  "state",
+  "initialState",
+  "modal",
+  "describe",
+  "test",
+  "expect",
+  "undefined",
+  "toEqual",
+  "mId",
+  "data",
+  "descr",
+  "ma",
+  "showModal",
+  "id"
+ ],
+ "mappings": ";;AAAA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,QAAQC,uBAAaC,KAA3B;AACA;;;;;;;AAOAC,SAAS,gBAAT,EAA2B,YAAI;AAC7BC,OAAK,6BAAL,EAAoC,YAAI;AACtCC,WAAO,uBAAQC,SAAR,EAAmB,EAAnB,CAAP,EAA+BC,OAA/B,CAAuCP,KAAvC;AACD,GAFD;AAGAI,OAAK,0BAAL,EAAiC,YAAI;AACnC,QAAMI,MAAM,OAAZ;AAAA,QAAqBC,OAAO,EAAEC,OAAO,aAAT,EAA5B;AACAL,WACE,uBAAQL,KAAR,EAAeW,kBAAGC,SAAH,CAAaJ,GAAb,EAAkBC,IAAlB,CAAf,CADF,EAEEF,OAFF,CAEU;AACRM,UAAIL,GADI;AAERC,YAAMA;AAFE,KAFV;AAMD,GARD;AASD,CAbD"
+}

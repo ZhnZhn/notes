@@ -5,12 +5,13 @@ import CONF from '../appConf'
 const appStorage = ({ getState, dispatch }) => next => action => {
   switch(action.type){
     case ACTION.SAVE_BOARD: {
-      try {                
+      try {
         window.localStorage.setItem(
           CONF.STORAGE_KEY,
           JSON.stringify({
             ...getState(),
-            drawerMsg: []
+            drawerMsg: [],
+            modal: { id: null, data: null }
           })
         )
         dispatch(

@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-ch/DialogCaption.js"
+ ],
+ "file": "../../../src/component/zhn-ch/DialogCaption.js",
+ "names": [
+  "CL",
+  "HEADER",
+  "CAPTION",
+  "CLOSE",
+  "DialogCaption",
+  "rootStyle",
+  "svgStyle",
+  "caption",
+  "children",
+  "onClose"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,UAAQ,gBADC;AAETC,WAAS,8BAFA;AAGTC,SAAO;AAHE,CAAX;;AAMA,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,QAAd,QAAcA,QAAd;AAAA,MAAwBC,OAAxB,QAAwBA,OAAxB;AAAA,MAAiCC,QAAjC,QAAiCA,QAAjC;AAAA,MAA2CC,OAA3C,QAA2CA,OAA3C;AAAA,SACpB;AAAA;AAAA;AACE,iBAAWT,GAAGC,MADhB;AAEE,aAAOI;AAFT;AAIE;AAAA;AAAA,QAAM,WAAWL,GAAGE,OAApB;AACIK;AADJ,KAJF;AAOGC,YAPH;AAQE,kCAAC,kBAAD;AACE,iBAAWR,GAAGG,KADhB;AAEE,eAASM;AAFX;AARF,GADoB;AAAA,CAAtB;;kBAgBeL,a"
+}

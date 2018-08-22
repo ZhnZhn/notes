@@ -58,7 +58,7 @@ class FlatButton extends Component {
              ? `${title} [${accessKey}]`
              : title;
   return (
-    <button      
+    <button
       ref = {this._refNode}
       className={_className}
       style={_style}
@@ -77,6 +77,10 @@ class FlatButton extends Component {
       </div>
     </button>
   );
+ }
+
+ focus(){
+   this.rootNode.focus()
  }
 
 }

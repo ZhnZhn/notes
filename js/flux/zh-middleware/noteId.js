@@ -10,6 +10,12 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 var _actions = require('../note/actions');
 
+var _actions2 = require('../modal/actions');
+
+var _actions3 = _interopRequireDefault(_actions2);
+
+var _modalRouter = require('../../component/dialogs/modalRouter');
+
 var _crId = require('./crId');
 
 var _crId2 = _interopRequireDefault(_crId);
@@ -26,11 +32,14 @@ var _isMax = function _isMax(state, columnId) {
   return _selectors.sColumn.noteIds(state, columnId).length >= _appConf2.default.MAX_NOTES;
 };
 
-var taskIdMiddleware = function taskIdMiddleware(store) {
+var taskIdMiddleware = function taskIdMiddleware(_ref) {
+  var getState = _ref.getState,
+      dispatch = _ref.dispatch;
   return function (next) {
     return function (action) {
       if (action.type === _actions.ACTION.ADD_NOTE) {
-        if (_isMax(store.getState(), action.columnId)) {
+        if (_isMax(getState(), action.columnId)) {
+          dispatch(_actions3.default.showModal(_modalRouter.MD.NOTIF, _appConf2.default.N_MAX_NOTES));
           return false;
         }
         action = (0, _extends3.default)({}, action, {

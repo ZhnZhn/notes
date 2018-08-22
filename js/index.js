@@ -28,6 +28,9 @@ if (process.env.NODE_ENV === 'development') {
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRedux.Provider,
   { store: _store2.default },
-  _react2.default.createElement(_App2.default, { basename: basename })
+  _react2.default.createElement(_App2.default, {
+    basename: basename,
+    store: _store2.default
+  })
 ), document.getElementById('app'));
 //# sourceMappingURL=index.js.map
