@@ -11,7 +11,6 @@ const CL = {
 class NotificationDialog extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
-    console.log(nextProps)
     if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
       return false;
     }

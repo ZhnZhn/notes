@@ -47,7 +47,6 @@ var NotificationDialog = function (_Component) {
   (0, _createClass3.default)(NotificationDialog, [{
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log(nextProps);
       if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
         return false;
       }
