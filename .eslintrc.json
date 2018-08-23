@@ -4,11 +4,7 @@
         "es6" : true,
         "browser": true,
         "jest": true
-    },
-    "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread" : true
-    },
+    },    
     "plugins" : [
           "react",
           "jsx-a11y" 

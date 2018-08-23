@@ -9,6 +9,7 @@
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
+    "lint": "eslint -c .eslintrc-build.json ./src > lint.txt",
     "css": "gulp",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js"
