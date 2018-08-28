@@ -19,6 +19,9 @@ const appStorage = ({ getState, dispatch }) => next => action => {
         )
         return true;
       } catch(e) {
+        dispatch(
+          dma.addDrawerMsg(CONF.MSG_SAVE_FAIL)
+        )
         console.log(e.msg)
         return false;
       }
@@ -31,6 +34,9 @@ const appStorage = ({ getState, dispatch }) => next => action => {
         )
         return true;
       } catch(e){
+        dispatch(
+          dma.addDrawerMsg(CONF.MSG_CLEAN_FAIL)
+        )
         console.log(e.msg)
         return false;
       }

@@ -8,6 +8,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
+var _actions = require('../../flux/app/actions');
+
+var _actions2 = require('../../flux/modal/actions');
+
+var _modalRouter = require('../dialogs/modalRouter');
+
 var _FlatButton = require('../zhn-m/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -38,7 +46,8 @@ var S = {
 };
 
 var DrawerMenu = function DrawerMenu(_ref) {
-  var saveBoard = _ref.saveBoard,
+  var onSettings = _ref.onSettings,
+      saveBoard = _ref.saveBoard,
       cleanStorage = _ref.cleanStorage;
   return _react2.default.createElement(
     'div',
@@ -54,6 +63,16 @@ var DrawerMenu = function DrawerMenu(_ref) {
     _react2.default.createElement(
       'ul',
       { style: S.UL },
+      _react2.default.createElement(
+        'li',
+        null,
+        _react2.default.createElement(_FlatButton2.default, {
+          className: CL.BT,
+          caption: 'User Settings',
+          title: 'Click to open user settings dialog',
+          onClick: onSettings
+        })
+      ),
       _react2.default.createElement(
         'li',
         null,
@@ -79,5 +98,12 @@ var DrawerMenu = function DrawerMenu(_ref) {
   );
 };
 
-exports.default = DrawerMenu;
+var onSettings = _actions2.showModal.bind(null, _modalRouter.MD.SETTINGS);
+var mapDispatchToProps = {
+  onSettings: onSettings,
+  saveBoard: _actions.saveBoard,
+  cleanStorage: _actions.cleanStorage
+};
+
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DrawerMenu);
 //# sourceMappingURL=DrawerMenu.js.map

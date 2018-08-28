@@ -2,7 +2,8 @@
 const initState = {
   app: {
     boardId: 'b-1',
-    boardIds: ['b-1']
+    boardIds: ['b-1'],
+    uiTheme: 'DARK'
   },
   drawerMsg: [],
   modal: {

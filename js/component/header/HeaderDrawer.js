@@ -18,24 +18,11 @@ var _DrawerMenu2 = _interopRequireDefault(_DrawerMenu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var S = {
-  DRAWER_BT: {
-    color: '#1b2836'
-  }
-};
-
-var HeaderDrawer = function HeaderDrawer(_ref) {
-  var saveBoard = _ref.saveBoard,
-      cleanStorage = _ref.cleanStorage;
+var HeaderDrawer = function HeaderDrawer() {
   return _react2.default.createElement(
     _Drawer2.default,
-    {
-      btStyle: S.DRAWER_BT
-    },
-    _react2.default.createElement(_DrawerMenu2.default, {
-      saveBoard: saveBoard,
-      cleanStorage: cleanStorage
-    })
+    null,
+    _react2.default.createElement(_DrawerMenu2.default, null)
   );
 };
 

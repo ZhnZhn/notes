@@ -5,7 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 var ACTION = exports.ACTION = {
   SAVE_BOARD: 'SAVE_BOARD',
-  CLEAN_STORAGE: 'CLEAN_STORAGE'
+  CLEAN_STORAGE: 'CLEAN_STORAGE',
+  SET_UI_THEME: 'SET_UI_THEME'
 };
 
 var saveBoard = exports.saveBoard = function saveBoard() {
@@ -20,9 +21,17 @@ var cleanStorage = exports.cleanStorage = function cleanStorage() {
   };
 };
 
+var setUiTheme = exports.setUiTheme = function setUiTheme(uiTheme) {
+  return {
+    type: ACTION.SET_UI_THEME,
+    uiTheme: uiTheme
+  };
+};
+
 var actions = {
   saveBoard: saveBoard,
-  cleanStorage: cleanStorage
+  cleanStorage: cleanStorage,
+  setUiTheme: setUiTheme
 };
 
 exports.default = actions;

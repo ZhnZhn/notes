@@ -1,9 +1,9 @@
 {
  "version": 3,
  "sources": [
-  "../../../src/component/style/cl.js"
+  "../../../src/component/style/CL.js"
  ],
- "file": "../../../src/component/style/cl.js",
+ "file": "../../../src/component/style/CL.js",
  "names": [
   "CL",
   "HEADER",

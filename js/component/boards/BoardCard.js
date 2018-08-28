@@ -32,9 +32,9 @@ var _actions = require('../../flux/board/actions');
 
 var _selectors = require('../../flux/selectors');
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 var _isArrEmpty = require('../../utils/isArrEmpty');
 
@@ -168,7 +168,7 @@ var BoardCard = function (_Component) {
           'div',
           null,
           (0, _isArrEmpty2.default)(columnIds) && _react2.default.createElement(_FlatButton2.default, {
-            clCaption: _cl2.default.CARD_BT,
+            clCaption: _CL2.default.CARD_BT,
             caption: 'Remove Board',
             onClick: this._hRemove
           })

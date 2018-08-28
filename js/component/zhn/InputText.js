@@ -26,9 +26,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -98,7 +98,7 @@ var InputText = (_temp2 = _class = function (_Component) {
           className = _props.className,
           style = _props.style,
           onBlur = _props.onBlur,
-          _className = className ? _cl2.default.INPUT + ' ' + className : _cl2.default.INPUT,
+          _className = className ? _CL2.default.INPUT + ' ' + className : _CL2.default.INPUT,
           value = this.state.value;
 
       return _react2.default.createElement('input', {

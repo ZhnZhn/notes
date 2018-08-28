@@ -28,6 +28,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Drawer = require('../style/Drawer.Style');
+
+var _Drawer2 = _interopRequireDefault(_Drawer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL = {
@@ -92,10 +100,13 @@ var Drawer = function (_Component) {
     value: function render() {
       var _props = this.props,
           btStyle = _props.btStyle,
+          theme = _props.theme,
           children = _props.children,
           isOpen = this.state.isOpen,
           _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
-          _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF;
+          _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
+          _onClickWrapper = isOpen ? this._hToggle : undefined,
+          TS = theme.createStyle(_Drawer2.default);
 
       return [_react2.default.createElement(
         'button',
@@ -124,12 +135,12 @@ var Drawer = function (_Component) {
         'aria-hidden': true,
         className: CL.DRAWER_MODAL,
         style: _drawerModalStyle,
-        onClick: isOpen ? this._hToggle : undefined
+        onClick: _onClickWrapper
       }), _react2.default.createElement(
         'aside',
         {
           className: CL.DRAWER,
-          style: _drawerStyle
+          style: (0, _extends3.default)({}, _drawerStyle, TS.ASIDE)
         },
         children
       )];
@@ -138,5 +149,5 @@ var Drawer = function (_Component) {
   return Drawer;
 }(_react.Component);
 
-exports.default = Drawer;
+exports.default = (0, _withTheme2.default)(Drawer);
 //# sourceMappingURL=Drawer.js.map

@@ -8,15 +8,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var IconLogoErc = function IconLogoErc(_ref) {
   var _ref$className = _ref.className,
-      className = _ref$className === undefined ? _cl2.default.LOGO : _ref$className,
+      className = _ref$className === undefined ? _CL2.default.LOGO : _ref$className,
       _ref$title = _ref.title,
       title = _ref$title === undefined ? "Logo of web app Notes" : _ref$title;
   return _react2.default.createElement(

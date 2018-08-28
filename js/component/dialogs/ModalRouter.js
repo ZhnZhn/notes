@@ -9,19 +9,26 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
+var _r2;
+
 var _NotificationDialog = require('./NotificationDialog');
 
 var _NotificationDialog2 = _interopRequireDefault(_NotificationDialog);
 
+var _SettingsDialog = require('./SettingsDialog');
+
+var _SettingsDialog2 = _interopRequireDefault(_SettingsDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MD = exports.MD = {
-  NOTIF: 'NOTIF'
+  NOTIF: 'NOTIF',
+  SETTINGS: 'SETTINGS'
 };
 
-var _r = (0, _defineProperty3.default)({
+var _r = (_r2 = {
   DF: _NotificationDialog2.default
-}, MD.NOTIF, _NotificationDialog2.default);
+}, (0, _defineProperty3.default)(_r2, MD.NOTIF, _NotificationDialog2.default), (0, _defineProperty3.default)(_r2, MD.SETTINGS, _SettingsDialog2.default), _r2);
 
 var modalRouter = {
   getDialog: function getDialog(type) {

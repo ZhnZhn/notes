@@ -11,7 +11,9 @@ const CONF = {
   STORAGE_KEY: 'notes-manager',
   DMSG_PREFIX: 'm',
   MSG_SAVED: 'Boards saved',
+  MSG_SAVE_FAIL: 'Boards not saved',
   MSG_CLEANED: 'localStorage cleaned',
+  MSG_CLEAN_FAIL: 'localStorage not cleaned',
 
   BOARDS_PREFIX: 'b',
   MAX_BOARDS: MAX.BOARDS,

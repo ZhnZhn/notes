@@ -7,10 +7,13 @@ export const sApp = {
   //state.app.boardIds
   boardIds: state => sApp
     .app(state).boardIds || [],
+  //state.app.uiTheme
+  uiTheme: state => sApp
+    .app(state).uiTheme
 };
 
 export const sDrawer = {
-  msg: state => state.drawerMsg
+  msg: state => state.drawerMsg || []
 };
 
 export const sBoard = {
@@ -41,3 +44,13 @@ export const sColumn = {
   noteIds: (state, columnId) => sColumn
     .column(state, columnId).noteIds || []
 };
+
+const selectors = {
+  app: sApp,
+  drawer: sDrawer,
+  board: sBoard,
+  note: sNote,
+  column: sColumn
+};
+
+export default selectors

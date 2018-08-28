@@ -2,24 +2,19 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 import { addBoard } from '../../flux/board/actions'
-import {
-  saveBoard,
-  cleanStorage
-} from '../../flux/app/actions'
 
+import ZhHeader from '../zhn-ch/Header'
 import Logo from '../zhn/Logo'
 import FlatButton from '../zhn-m/FlatButton'
 import HeaderDrawer from '../header/HeaderDrawer'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 const Header = ({
   style,
-  addBoard,
-  saveBoard,
-  cleanStorage
+  addBoard
 }) => (
-  <header className={CL.HEADER} style={style}>
+  <ZhHeader className={CL.HEADER} style={style}>
     <Logo />
     <span className={CL.TITLE_GAP} />
     <span className={CL.HEADER_TITLE}>
@@ -32,17 +27,12 @@ const Header = ({
       timeout={200}
       onClick={addBoard}
     />
-    <HeaderDrawer
-      saveBoard={saveBoard}
-      cleanStorage={cleanStorage}
-    />
-  </header>
+    <HeaderDrawer />
+  </ZhHeader>
 );
 
 const mapDispatchToProps = {
-  addBoard,
-  saveBoard,
-  cleanStorage
+  addBoard
 };
 
 export default connect(

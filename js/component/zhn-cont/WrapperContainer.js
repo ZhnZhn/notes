@@ -24,6 +24,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Dialog = require('../style/Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 var _modalRouter = require('../dialogs/modalRouter');
 
 var _modalRouter2 = _interopRequireDefault(_modalRouter);
@@ -108,6 +116,9 @@ var WrapperContainer = function (_Component) {
         };
       });
     }, _this._renderDialogs = function () {
+      var _this$props = _this.props,
+          store = _this$props.store,
+          theme = _this$props.theme;
       var _this$state = _this.state,
           shows = _this$state.shows,
           data = _this$state.data,
@@ -121,7 +132,11 @@ var WrapperContainer = function (_Component) {
           key: type,
           isShow: shows[type],
           data: data[type],
-          onClose: _this._hClose.bind(null, type) });
+          onClose: _this._hClose.bind(null, type),
+          store: store,
+          dispatch: store.dispatch,
+          TS: theme.createStyle(_Dialog2.default)
+        });
       });
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
@@ -171,5 +186,5 @@ var WrapperContainer = function (_Component) {
   return WrapperContainer;
 }(_react.Component);
 
-exports.default = WrapperContainer;
+exports.default = (0, _withTheme2.default)(WrapperContainer);
 //# sourceMappingURL=WrapperContainer.js.map

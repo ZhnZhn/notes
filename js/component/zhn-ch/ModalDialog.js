@@ -101,6 +101,8 @@ var ModalDialog = (_temp = _class = function (_Component) {
   }
   /*
    static propTypes = {
+     style: PropTypes.object,
+     caption: PropTypes.string,
      isShow: PropTypes.bool,
      isWithButton: PropTypes.bool,
      isNotUpdate: PropTypes.bool,
@@ -108,8 +110,6 @@ var ModalDialog = (_temp = _class = function (_Component) {
      isFocusClose: PropTypes.bool,
      commandButtons: PropTypes.arrayOf(PropTypes.element),
      timeout: PropTypes.number,
-     caption: PropTypes.string,
-     style: PropTypes.object,
      onClose: PropTypes.func
    }
    */
@@ -159,9 +159,10 @@ var ModalDialog = (_temp = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props2 = this.props,
+          className = _props2.className,
+          style = _props2.style,
           isShow = _props2.isShow,
           isWithButton = _props2.isWithButton,
-          style = _props2.style,
           caption = _props2.caption,
           captionStyle = _props2.captionStyle,
           children = _props2.children,
@@ -175,7 +176,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
         _style = S.HIDE;
         this.wasClosing = false;
       } else {
-        _className = isShow ? CL.DIALOG + ' ' + CL.SHOWING : CL.DIALOG + ' ' + CL.HIDING;
+        _className = isShow ? CL.DIALOG + ' ' + className + ' ' + CL.SHOWING : CL.DIALOG + ' ' + className + ' ' + CL.HIDING;
         _style = isShow ? S.SHOW : S.HIDE_POPUP;
         if (!isShow) {
           this.wasClosing = true;
@@ -206,11 +207,11 @@ var ModalDialog = (_temp = _class = function (_Component) {
   }]);
   return ModalDialog;
 }(_react.Component), _class.defaultProps = {
+  className: '',
   isWithButton: true,
   isNotUpdate: false,
   isFocusClose: true,
   timeout: 450
-  //STYLE: {}
 }, _temp);
 exports.default = ModalDialog;
 //# sourceMappingURL=ModalDialog.js.map

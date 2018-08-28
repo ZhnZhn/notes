@@ -9,7 +9,7 @@ import {
 } from '../../flux/board/actions'
 import { sBoard, sColumn } from '../../flux/selectors'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 import isArrEmpty from '../../utils/isArrEmpty'
 

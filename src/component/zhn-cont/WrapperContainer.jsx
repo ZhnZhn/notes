@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from '../style/Dialog.Style'
+
 import Router from '../dialogs/modalRouter'
 import WrapperModalDialog from '../zhn-ch/WrapperModalDialog'
 
@@ -83,6 +86,7 @@ class WrapperContainer extends Component {
   }
 
   _renderDialogs = () => {
+    const { store, theme } = this.props;
     const { shows, data, dialogs } = this.state;
     return dialogs.map(dialog => {
       const { type, comp } = dialog;
@@ -90,13 +94,19 @@ class WrapperContainer extends Component {
         key: type,
         isShow: shows[type],
         data: data[type],
-        onClose: this._hClose.bind(null, type)}
-      );
+        onClose: this._hClose.bind(null, type),
+        store: store,
+        dispatch: store.dispatch,
+        TS: theme.createStyle(styleConfig)
+      });
     });
   }
 
   render(){
-    const { isShow, currentDialog } = this.state;
+    const {
+      isShow,
+      currentDialog
+    } = this.state;
     return (
       <WrapperModalDialog
         isShow={isShow}
@@ -108,4 +118,4 @@ class WrapperContainer extends Component {
   }
 }
 
-export default WrapperContainer
+export default withTheme(WrapperContainer)

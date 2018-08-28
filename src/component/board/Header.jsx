@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import ZhHeader from '../zhn-ch/Header'
 import Logo from '../zhn/Logo'
 import FlatButton from '../zhn-m/FlatButton'
 import HeaderDrawer from '../header/HeaderDrawer'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 const S = {
   BT: {
@@ -24,11 +25,9 @@ const Header = ({
   style,
   titleStyle,
   board,
-  saveBoard,
-  cleanStorage,
   addColumn
 }) => (
-  <header
+  <ZhHeader
     className={CL.HEADER}
     style={style}
   >
@@ -55,11 +54,8 @@ const Header = ({
          ToBoards
       </NavLink>
     </nav>
-    <HeaderDrawer
-      saveBoard={saveBoard}
-      cleanStorage={cleanStorage}
-    />
-  </header>
+    <HeaderDrawer />
+  </ZhHeader>
 );
 
 export default Header

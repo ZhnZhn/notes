@@ -1,13 +1,16 @@
 
 import Notification from './NotificationDialog'
+import Settings from './SettingsDialog'
 
 export const MD = {
-  NOTIF: 'NOTIF'
+  NOTIF: 'NOTIF',
+  SETTINGS: 'SETTINGS'
 };
 
 const _r = {
   DF: Notification,
-  [MD.NOTIF]: Notification
+  [MD.NOTIF]: Notification,
+  [MD.SETTINGS]: Settings
 }
 
 const modalRouter = {

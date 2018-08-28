@@ -42,9 +42,9 @@ var _FlatButton = require('../zhn-m/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 var _crDnDNotes = require('./crDnDNotes');
 
@@ -110,7 +110,7 @@ var Column = function (_Component) {
         }),
         _react2.default.createElement(_Card2.default.Counter, { value: noteIds.length }),
         withAdd && _react2.default.createElement(_FlatButton2.default, {
-          clCaption: _cl2.default.CARD_BT,
+          clCaption: _CL2.default.CARD_BT,
           caption: 'AddNote',
           title: 'Click to add a new note',
           timeout: 1000,
@@ -127,7 +127,7 @@ var Column = function (_Component) {
           'div',
           null,
           (0, _isArrEmpty2.default)(noteIds) && _react2.default.createElement(_FlatButton2.default, {
-            clCaption: _cl2.default.CARD_BT,
+            clCaption: _CL2.default.CARD_BT,
             caption: 'Remove Column',
             onClick: this._hRemoveColumn
           })

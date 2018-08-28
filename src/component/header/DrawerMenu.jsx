@@ -1,4 +1,13 @@
 import React from 'react'
+
+import { connect } from 'react-redux'
+import {
+  saveBoard,
+  cleanStorage
+} from '../../flux/app/actions'
+import { showModal } from '../../flux/modal/actions'
+import { MD } from '../dialogs/modalRouter'
+
 import FlatButton  from '../zhn-m/FlatButton'
 import DrawerMsgList from './DrawerMsgList'
 
@@ -18,10 +27,11 @@ const S = {
   },
   UL: {
     listStyleType: 'none'
-  }  
+  }
 };
 
 const DrawerMenu = ({
+  onSettings,
   saveBoard,
   cleanStorage
 }) => (
@@ -33,6 +43,14 @@ const DrawerMenu = ({
       {TITLE}
     </div>
     <ul style={S.UL}>
+      <li>
+        <FlatButton
+          className={CL.BT}
+          caption="User Settings"
+          title="Click to open user settings dialog"
+          onClick={onSettings}
+        />
+      </li>
       <li>
         <FlatButton
           className={CL.BT}
@@ -54,4 +72,14 @@ const DrawerMenu = ({
   </div>
 );
 
-export default DrawerMenu
+const onSettings = showModal.bind(null, MD.SETTINGS);
+const mapDispatchToProps = {
+  onSettings,
+  saveBoard,
+  cleanStorage
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(DrawerMenu)

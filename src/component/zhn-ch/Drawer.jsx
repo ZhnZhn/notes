@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from '../style/Drawer.Style'
+
 const CL = {
   DRAWER_BT: 'drawer-bt',
   DRAWER_SPAN: 'drawer-span',
@@ -46,6 +49,7 @@ class Drawer extends Component {
   render(){
     const {
        btStyle,
+       theme,
        children
      } = this.props
     , { isOpen } = this.state
@@ -54,7 +58,11 @@ class Drawer extends Component {
          : S.DRAWER_OFF
     , _drawerModalStyle = isOpen
          ? S.MODAL_ON
-         : S.MODAL_OFF;
+         : S.MODAL_OFF
+    , _onClickWrapper = isOpen
+         ? this._hToggle
+         : undefined
+    , TS = theme.createStyle(styleConfig);
     return [
         <button
           className={CL.DRAWER_BT}
@@ -78,11 +86,11 @@ class Drawer extends Component {
           aria-hidden={true}
           className={CL.DRAWER_MODAL}
           style={_drawerModalStyle}
-          onClick={isOpen ? this._hToggle : undefined}
+          onClick={_onClickWrapper}
         />,
         <aside
           className={CL.DRAWER}
-          style={_drawerStyle}
+          style={{ ..._drawerStyle, ...TS.ASIDE }}
          >
           {children}
         </aside>
@@ -90,4 +98,4 @@ class Drawer extends Component {
   }
 }
 
-export default Drawer
+export default withTheme(Drawer)

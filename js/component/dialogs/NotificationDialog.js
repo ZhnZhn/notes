@@ -59,15 +59,18 @@ var NotificationDialog = function (_Component) {
           isShow = _props.isShow,
           _props$data = _props.data,
           data = _props$data === undefined ? {} : _props$data,
+          TS = _props.TS,
           onClose = _props.onClose,
           _data$caption = data.caption,
           caption = _data$caption === undefined ? '' : _data$caption,
           _data$descr = data.descr,
           descr = _data$descr === undefined ? '' : _data$descr;
 
+
       return _react2.default.createElement(
         _ModalDialog2.default,
         {
+          style: TS.DIALOG,
           caption: 'Notification',
           isShow: isShow,
           onClose: onClose

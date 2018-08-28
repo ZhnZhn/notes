@@ -12,7 +12,9 @@ var _reactRedux = require('react-redux');
 
 var _actions = require('../../flux/board/actions');
 
-var _actions2 = require('../../flux/app/actions');
+var _Header = require('../zhn-ch/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
 
 var _Logo = require('../zhn/Logo');
 
@@ -26,25 +28,23 @@ var _HeaderDrawer = require('../header/HeaderDrawer');
 
 var _HeaderDrawer2 = _interopRequireDefault(_HeaderDrawer);
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(_ref) {
   var style = _ref.style,
-      addBoard = _ref.addBoard,
-      saveBoard = _ref.saveBoard,
-      cleanStorage = _ref.cleanStorage;
+      addBoard = _ref.addBoard;
   return _react2.default.createElement(
-    'header',
-    { className: _cl2.default.HEADER, style: style },
+    _Header2.default,
+    { className: _CL2.default.HEADER, style: style },
     _react2.default.createElement(_Logo2.default, null),
-    _react2.default.createElement('span', { className: _cl2.default.TITLE_GAP }),
+    _react2.default.createElement('span', { className: _CL2.default.TITLE_GAP }),
     _react2.default.createElement(
       'span',
-      { className: _cl2.default.HEADER_TITLE },
+      { className: _CL2.default.HEADER_TITLE },
       'Notes: Boards'
     ),
     _react2.default.createElement(_FlatButton2.default, {
@@ -54,17 +54,12 @@ var Header = function Header(_ref) {
       timeout: 200,
       onClick: addBoard
     }),
-    _react2.default.createElement(_HeaderDrawer2.default, {
-      saveBoard: saveBoard,
-      cleanStorage: cleanStorage
-    })
+    _react2.default.createElement(_HeaderDrawer2.default, null)
   );
 };
 
 var mapDispatchToProps = {
-  addBoard: _actions.addBoard,
-  saveBoard: _actions2.saveBoard,
-  cleanStorage: _actions2.cleanStorage
+  addBoard: _actions.addBoard
 };
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Header);

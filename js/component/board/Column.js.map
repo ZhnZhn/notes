@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../../src/component/board/Column.jsx"],"names":["Column","props","_hAddNewTask","column","addNote","id","_hBlurTitle","evt","editColumnTitle","target","value","_hRemoveColumn","boardId","removeColumn","bind","notes","title","withAdd","noteIds","length","CL","CARD_BT","provided","snapshot","Component","mapDispatchToProps"],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;AAEA;;AACA;;AAKA;;;;AAEA;;;;AACA;;;;AAEA;;;;AAEA;;;;;;IAGMA,M;;;AACJ,kBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAKlBC,YALkB,GAKH,YAAM;AAAA,wBACS,MAAKD,KADd;AAAA,UACXE,MADW,eACXA,MADW;AAAA,UACHC,OADG,eACHA,OADG;;AAEnBA,cAAQD,OAAOE,EAAf;AACD,KARiB;;AAAA,UAUlBC,WAVkB,GAUJ,UAACC,GAAD,EAAS;AAAA,yBACgB,MAAKN,KADrB;AAAA,UACZE,MADY,gBACZA,MADY;AAAA,UACJK,eADI,gBACJA,eADI;;AAEpBA,sBAAgBL,OAAOE,EAAvB,EAA2BE,IAAIE,MAAJ,CAAWC,KAAtC;AACF,KAbiB;;AAAA,UAelBC,cAfkB,GAeD,YAAM;AAAA,yBACqB,MAAKV,KAD1B;AAAA,UACbW,OADa,gBACbA,OADa;AAAA,UACJT,MADI,gBACJA,MADI;AAAA,UACIU,YADJ,gBACIA,YADJ;;AAErBA,mBAAaD,OAAb,EAAsBT,OAAOE,EAA7B;AACD,KAlBiB;;AAEhB,UAAKC,WAAL,GAAmB,MAAKA,WAAL,CAAiBQ,IAAjB,OAAnB;AAFgB;AAGjB;;;;6BAiBO;AAAA,mBAGI,KAAKb,KAHT;AAAA,UAEEE,MAFF,UAEEA,MAFF;AAAA,UAEUY,KAFV,UAEUA,KAFV;AAAA,UAIEV,EAJF,GAIkCF,MAJlC,CAIEE,EAJF;AAAA,UAIMW,KAJN,GAIkCb,MAJlC,CAIMa,KAJN;AAAA,UAIaC,OAJb,GAIkCd,MAJlC,CAIac,OAJb;AAAA,UAIsBC,OAJtB,GAIkCf,MAJlC,CAIsBe,OAJtB;;;AAMN,aACE;AAAC,sBAAD,CAAM,IAAN;AAAA;AACE,sCAAC,cAAD,CAAM,KAAN;AACE,iBAAOF,KADT;AAEE,kBAAQ,KAAKV;AAFf,UADF;AAKE,sCAAC,cAAD,CAAM,OAAN,IAAc,OAAOY,QAAQC,MAA7B,GALF;AAOIF,mBACA,8BAAC,oBAAD;AACE,qBAAWG,aAAGC,OADhB;AAEE,mBAAQ,SAFV;AAGE,iBAAM,yBAHR;AAIE,mBAAS,IAJX;AAKE,mBAAS,KAAKnB;AALhB,UARJ;AAgBE;AAAC,sCAAD;AAAA,YAAW,aAAaG,EAAxB;AAEI,oBAACiB,QAAD,EAAWC,QAAX;AAAA,mBAAwB,0BAAWlB,EAAX,EAAeU,KAAf,EAAsBG,OAAtB,EAA+BI,QAA/B,EAAyCC,QAAzC,CAAxB;AAAA;AAFJ,SAhBF;AAqBE;AAAA;AAAA;AAEI,oCAAWL,OAAX,KACE,8BAAC,oBAAD;AACE,uBAAWE,aAAGC,OADhB;AAEE,qBAAQ,eAFV;AAGE,qBAAS,KAAKV;AAHhB;AAHN;AArBF,OADF;AAkCD;;;EA7DkBa,gB;;AAgErB,IAAMC,qBAAqB;AACzBjB,2CADyB;AAEzBK;AAFyB,CAA3B;;kBAKe,yBACb,IADa,EAEbY,kBAFa,EAGbzB,MAHa,C","file":"Column.js","sourcesContent":["import React, { Component } from 'react'\r\nimport { Droppable } from 'react-beautiful-dnd'\r\n\r\nimport { connect } from 'react-redux'\r\nimport {\r\n  editColumnTitle,\r\n  removeColumn\r\n } from '../../flux/column/actions'\r\n\r\nimport isArrEmpty from '../../utils/isArrEmpty'\r\n\r\nimport Card from '../zhn-card/Card'\r\nimport FlatButton from '../zhn-m/FlatButton'\r\n\r\nimport CL from '../style/cl'\r\n\r\nimport crDnDNotes from './crDnDNotes'\r\n\r\n\r\nclass Column extends Component {\r\n  constructor(props){\r\n    super()\r\n    this._hBlurTitle = this._hBlurTitle.bind(this)\r\n  }\r\n\r\n  _hAddNewTask = () => {\r\n    const { column, addNote } = this.props\r\n    addNote(column.id)\r\n  }\r\n\r\n  _hBlurTitle = (evt) => {\r\n     const { column, editColumnTitle } = this.props;\r\n     editColumnTitle(column.id, evt.target.value)\r\n  }\r\n\r\n  _hRemoveColumn = () => {\r\n    const { boardId, column, removeColumn } = this.props\r\n    removeColumn(boardId, column.id)\r\n  }\r\n\r\n  render(){\r\n    const {\r\n            column, notes,\r\n          } = this.props\r\n        , { id, title, withAdd, noteIds } = column;\r\n\r\n    return (\r\n      <Card.Item>\r\n        <Card.Title\r\n          value={title}\r\n          onBlur={this._hBlurTitle}\r\n        />\r\n        <Card.Counter value={noteIds.length} />\r\n        {\r\n          withAdd &&\r\n          <FlatButton\r\n            clCaption={CL.CARD_BT}\r\n            caption=\"AddNote\"\r\n            title=\"Click to add a new note\"\r\n            timeout={1000}\r\n            onClick={this._hAddNewTask}\r\n          />\r\n        }\r\n        <Droppable droppableId={id}>\r\n          {\r\n            (provided, snapshot) => crDnDNotes(id, notes, noteIds, provided, snapshot)\r\n          }\r\n        </Droppable>\r\n        <div>\r\n          {\r\n            isArrEmpty(noteIds) &&\r\n              <FlatButton\r\n                clCaption={CL.CARD_BT}\r\n                caption=\"Remove Column\"\r\n                onClick={this._hRemoveColumn}\r\n              />\r\n          }\r\n        </div>\r\n      </Card.Item>\r\n    );\r\n  }\r\n}\r\n\r\nconst mapDispatchToProps = {\r\n  editColumnTitle,\r\n  removeColumn\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(Column)\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board/Column.js"
+ ],
+ "file": "../../../src/component/board/Column.js",
+ "names": [
+  "Column",
+  "props",
+  "_hAddNewTask",
+  "column",
+  "addNote",
+  "id",
+  "_hBlurTitle",
+  "evt",
+  "editColumnTitle",
+  "target",
+  "value",
+  "_hRemoveColumn",
+  "boardId",
+  "removeColumn",
+  "bind",
+  "notes",
+  "title",
+  "withAdd",
+  "noteIds",
+  "length",
+  "CL",
+  "CARD_BT",
+  "provided",
+  "snapshot",
+  "Component",
+  "mapDispatchToProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;AAEA;;AACA;;AAKA;;;;AAEA;;;;AACA;;;;AAEA;;;;AAEA;;;;;;IAGMA,M;;;AACJ,kBAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAKlBC,YALkB,GAKH,YAAM;AAAA,wBACS,MAAKD,KADd;AAAA,UACXE,MADW,eACXA,MADW;AAAA,UACHC,OADG,eACHA,OADG;;AAEnBA,cAAQD,OAAOE,EAAf;AACD,KARiB;;AAAA,UAUlBC,WAVkB,GAUJ,UAACC,GAAD,EAAS;AAAA,yBACgB,MAAKN,KADrB;AAAA,UACZE,MADY,gBACZA,MADY;AAAA,UACJK,eADI,gBACJA,eADI;;AAEpBA,sBAAgBL,OAAOE,EAAvB,EAA2BE,IAAIE,MAAJ,CAAWC,KAAtC;AACF,KAbiB;;AAAA,UAelBC,cAfkB,GAeD,YAAM;AAAA,yBACqB,MAAKV,KAD1B;AAAA,UACbW,OADa,gBACbA,OADa;AAAA,UACJT,MADI,gBACJA,MADI;AAAA,UACIU,YADJ,gBACIA,YADJ;;AAErBA,mBAAaD,OAAb,EAAsBT,OAAOE,EAA7B;AACD,KAlBiB;;AAEhB,UAAKC,WAAL,GAAmB,MAAKA,WAAL,CAAiBQ,IAAjB,OAAnB;AAFgB;AAGjB;;;;6BAiBO;AAAA,mBAGI,KAAKb,KAHT;AAAA,UAEEE,MAFF,UAEEA,MAFF;AAAA,UAEUY,KAFV,UAEUA,KAFV;AAAA,UAIEV,EAJF,GAIkCF,MAJlC,CAIEE,EAJF;AAAA,UAIMW,KAJN,GAIkCb,MAJlC,CAIMa,KAJN;AAAA,UAIaC,OAJb,GAIkCd,MAJlC,CAIac,OAJb;AAAA,UAIsBC,OAJtB,GAIkCf,MAJlC,CAIsBe,OAJtB;;;AAMN,aACE;AAAC,sBAAD,CAAM,IAAN;AAAA;AACE,sCAAC,cAAD,CAAM,KAAN;AACE,iBAAOF,KADT;AAEE,kBAAQ,KAAKV;AAFf,UADF;AAKE,sCAAC,cAAD,CAAM,OAAN,IAAc,OAAOY,QAAQC,MAA7B,GALF;AAOIF,mBACA,8BAAC,oBAAD;AACE,qBAAWG,aAAGC,OADhB;AAEE,mBAAQ,SAFV;AAGE,iBAAM,yBAHR;AAIE,mBAAS,IAJX;AAKE,mBAAS,KAAKnB;AALhB,UARJ;AAgBE;AAAC,sCAAD;AAAA,YAAW,aAAaG,EAAxB;AAEI,oBAACiB,QAAD,EAAWC,QAAX;AAAA,mBAAwB,0BAAWlB,EAAX,EAAeU,KAAf,EAAsBG,OAAtB,EAA+BI,QAA/B,EAAyCC,QAAzC,CAAxB;AAAA;AAFJ,SAhBF;AAqBE;AAAA;AAAA;AAEI,oCAAWL,OAAX,KACE,8BAAC,oBAAD;AACE,uBAAWE,aAAGC,OADhB;AAEE,qBAAQ,eAFV;AAGE,qBAAS,KAAKV;AAHhB;AAHN;AArBF,OADF;AAkCD;;;EA7DkBa,gB;;AAgErB,IAAMC,qBAAqB;AACzBjB,2CADyB;AAEzBK;AAFyB,CAA3B;;kBAKe,yBACb,IADa,EAEbY,kBAFa,EAGbzB,MAHa,C"
+}

@@ -12,7 +12,8 @@
     "lint": "eslint -c .eslintrc-build.json ./src > lint.txt",
     "css": "gulp",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
-    "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js"
+    "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js",
+    "build:all": "npm run lint && npm run css && npm run build:dll-jsx" 
   },
   "author": "",
   "license": "BSD-3-Clause",

@@ -14,12 +14,16 @@ var sApp = exports.sApp = {
   //state.app.boardIds
   boardIds: function boardIds(state) {
     return sApp.app(state).boardIds || [];
+  },
+  //state.app.uiTheme
+  uiTheme: function uiTheme(state) {
+    return sApp.app(state).uiTheme;
   }
 };
 
 var sDrawer = exports.sDrawer = {
   msg: function msg(state) {
-    return state.drawerMsg;
+    return state.drawerMsg || [];
   }
 };
 
@@ -64,4 +68,14 @@ var sColumn = exports.sColumn = {
     return sColumn.column(state, columnId).noteIds || [];
   }
 };
+
+var selectors = {
+  app: sApp,
+  drawer: sDrawer,
+  board: sBoard,
+  note: sNote,
+  column: sColumn
+};
+
+exports.default = selectors;
 //# sourceMappingURL=selectors.js.map

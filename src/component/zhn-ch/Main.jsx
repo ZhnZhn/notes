@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 const Main = ({ children }) => (
   <main className={CL.CONT}>

@@ -7,8 +7,8 @@ import FlatButton from '../zhn-m/FlatButton'
 const CL = {
   DIALOG: 'modal-dialog',
   ACTIONS: 'md__actions',
-  SHOWING : 'show-popup',
-  HIDING : 'hide-popup'
+  SHOWING: 'show-popup',
+  HIDING: 'hide-popup'
 };
 
 const S = {
@@ -27,6 +27,8 @@ const S = {
 class ModalDialog extends Component {
   /*
    static propTypes = {
+     style: PropTypes.object,
+     caption: PropTypes.string,
      isShow: PropTypes.bool,
      isWithButton: PropTypes.bool,
      isNotUpdate: PropTypes.bool,
@@ -34,17 +36,15 @@ class ModalDialog extends Component {
      isFocusClose: PropTypes.bool,
      commandButtons: PropTypes.arrayOf(PropTypes.element),
      timeout: PropTypes.number,
-     caption: PropTypes.string,
-     style: PropTypes.object,
      onClose: PropTypes.func
    }
    */
    static defaultProps = {
+     className: '',
      isWithButton: true,
      isNotUpdate: false,
      isFocusClose: true,
      timeout: 450
-     //STYLE: {}
    }
 
    constructor(props){
@@ -114,10 +114,12 @@ class ModalDialog extends Component {
 
   render(){
     const {
-            isShow, isWithButton, style,
+            className,
+            style,
+            isShow, isWithButton,
             caption, captionStyle,
-            //styleCaption,
-            children, onClose
+            children,
+            onClose
           } = this.props;
 
     let _className, _style;
@@ -127,11 +129,11 @@ class ModalDialog extends Component {
       this.wasClosing = false
     } else {
       _className = isShow
-          ? `${CL.DIALOG} ${CL.SHOWING}`
-          : `${CL.DIALOG} ${CL.HIDING}`
+          ? `${CL.DIALOG} ${className} ${CL.SHOWING}`
+          : `${CL.DIALOG} ${className} ${CL.HIDING}`
       _style = isShow
-         ? S.SHOW
-         : S.HIDE_POPUP
+          ? S.SHOW
+          : S.HIDE_POPUP
       if (!isShow){
         this.wasClosing = true
       }
@@ -152,7 +154,7 @@ class ModalDialog extends Component {
             <div>
               {children}
             </div>
-            {isWithButton && this._renderCommandButton()}
+            { isWithButton && this._renderCommandButton() }
         </div>
     );
   }

@@ -12,7 +12,7 @@ import isArrEmpty from '../../utils/isArrEmpty'
 import Card from '../zhn-card/Card'
 import FlatButton from '../zhn-m/FlatButton'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 import crDnDNotes from './crDnDNotes'
 

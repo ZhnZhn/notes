@@ -38,32 +38,17 @@ var _Main2 = _interopRequireDefault(_Main);
 
 var _selectors = require('../../flux/selectors');
 
+var _selectors2 = _interopRequireDefault(_selectors);
+
 var _actions = require('../../flux/note/actions');
 
-var _actions2 = require('../../flux/app/actions');
-
-var _actions3 = require('../../flux/column/actions');
+var _actions2 = require('../../flux/column/actions');
 
 var _Column = require('./Column');
 
 var _Column2 = _interopRequireDefault(_Column);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
-const S = {
-  ROOT: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  }
-};
-
-const Container = ({ children }) => (
-  <main style={S.ROOT}>
-    {children}
-  </main>
-);
-*/
 
 var PageBoard = function (_Component) {
   (0, _inherits3.default)(PageBoard, _Component);
@@ -119,14 +104,10 @@ var PageBoard = function (_Component) {
           board = _props.board,
           notes = _props.notes,
           columns = _props.columns,
-          addNote = _props.addNote,
-          saveBoard = _props.saveBoard,
-          cleanStorage = _props.cleanStorage;
+          addNote = _props.addNote;
 
       return [_react2.default.createElement(_Header2.default, {
         board: board,
-        saveBoard: saveBoard,
-        cleanStorage: cleanStorage,
         addColumn: this._hAddColumn
       }), _react2.default.createElement(
         _reactBeautifulDnd.DragDropContext,
@@ -146,17 +127,15 @@ var PageBoard = function (_Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    board: _selectors.sBoard.currentBoard(state),
-    notes: _selectors.sNote.notes(state),
-    columns: _selectors.sColumn.columns(state)
+    board: _selectors2.default.board.currentBoard(state),
+    notes: _selectors2.default.note.notes(state),
+    columns: _selectors2.default.column.columns(state)
   };
 };
 var mapDispatchToProps = {
   moveNote: _actions.moveNote,
   addNote: _actions.addNote,
-  saveBoard: _actions2.saveBoard,
-  cleanStorage: _actions2.cleanStorage,
-  addColumn: _actions3.addColumn
+  addColumn: _actions2.addColumn
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PageBoard);

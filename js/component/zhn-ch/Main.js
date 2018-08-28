@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _cl = require('../style/cl');
+var _CL = require('../style/CL');
 
-var _cl2 = _interopRequireDefault(_cl);
+var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,7 +18,7 @@ var Main = function Main(_ref) {
   var children = _ref.children;
   return _react2.default.createElement(
     'main',
-    { className: _cl2.default.CONT },
+    { className: _CL2.default.CONT },
     children
   );
 };

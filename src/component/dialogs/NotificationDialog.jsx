@@ -18,10 +18,20 @@ class NotificationDialog extends Component {
   }
 
   render(){
-    const { isShow, data={}, onClose } = this.props
-        , { caption='', descr='' } = data;
+    const {
+      isShow,
+      data={},
+      TS,
+      onClose
+    } = this.props
+    , {
+      caption='',
+      descr=''
+    } = data;
+
     return (
       <ModalDialog
+        style={TS.DIALOG}
         caption="Notification"
         isShow={isShow}
         onClose={onClose}

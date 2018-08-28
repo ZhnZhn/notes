@@ -36,6 +36,7 @@ var appStorage = function appStorage(_ref) {
               dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_SAVED));
               return true;
             } catch (e) {
+              dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_SAVE_FAIL));
               console.log(e.msg);
               return false;
             }
@@ -47,6 +48,7 @@ var appStorage = function appStorage(_ref) {
               dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_CLEANED));
               return true;
             } catch (e) {
+              dispatch(_actions3.default.addDrawerMsg(_appConf2.default.MSG_CLEAN_FAIL));
               console.log(e.msg);
               return false;
             }

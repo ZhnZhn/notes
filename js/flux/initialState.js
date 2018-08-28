@@ -7,7 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 var initState = {
   app: {
     boardId: 'b-1',
-    boardIds: ['b-1']
+    boardIds: ['b-1'],
+    uiTheme: 'DARK'
   },
   drawerMsg: [],
   modal: {

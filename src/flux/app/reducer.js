@@ -1,3 +1,4 @@
+import { ACTION } from './actions'
 import { ACTION as BA } from '../board/actions'
 import initialState from '../initialState'
 
@@ -9,11 +10,19 @@ const { filterBy } = fns;
 const initState = {
   boardId: 'b-1',
   boardIds: ['b-1']
+  uiTheme: 'GREY'
 };
 */
 
 const reducer = function(state=initialState.app, action) {
   switch (action.type) {
+    case ACTION.SET_UI_THEME: {
+      const { uiTheme } = action;
+      return {
+        ...state,
+        uiTheme
+      };
+    }
     case BA.SET_BOARD_CURRENT: {
       const { boardId } = action;
       return {
@@ -39,7 +48,7 @@ const reducer = function(state=initialState.app, action) {
       }
       return {
         ...state,
-        boardIds: filterBy(state.boardIds, boardId)        
+        boardIds: filterBy(state.boardIds, boardId)
       };
     }
     default: return state;

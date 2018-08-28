@@ -12,7 +12,9 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _actions = require('../board/actions');
+var _actions = require('./actions');
+
+var _actions2 = require('../board/actions');
 
 var _initialState = require('../initialState');
 
@@ -30,6 +32,7 @@ var filterBy = _reducerFns2.default.filterBy;
 const initState = {
   boardId: 'b-1',
   boardIds: ['b-1']
+  uiTheme: 'GREY'
 };
 */
 
@@ -38,7 +41,15 @@ var reducer = function reducer() {
   var action = arguments[1];
 
   switch (action.type) {
-    case _actions.ACTION.SET_BOARD_CURRENT:
+    case _actions.ACTION.SET_UI_THEME:
+      {
+        var uiTheme = action.uiTheme;
+
+        return (0, _extends3.default)({}, state, {
+          uiTheme: uiTheme
+        });
+      }
+    case _actions2.ACTION.SET_BOARD_CURRENT:
       {
         var boardId = action.boardId;
 
@@ -46,7 +57,7 @@ var reducer = function reducer() {
           boardId: boardId
         });
       }
-    case _actions.ACTION.ADD_BOARD:
+    case _actions2.ACTION.ADD_BOARD:
       {
         var _boardId = action.boardId,
             newBoardIds = [].concat((0, _toConsumableArray3.default)(state.boardIds), [_boardId]);
@@ -55,7 +66,7 @@ var reducer = function reducer() {
           boardIds: newBoardIds
         });
       }
-    case _actions.ACTION.REMOVE_BOARD:
+    case _actions2.ACTION.REMOVE_BOARD:
       {
         var _boardId2 = action.boardId;
 

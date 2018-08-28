@@ -5,40 +5,16 @@ import { connect } from 'react-redux'
 import Header from './Header'
 import Main from '../zhn-ch/Main'
 
-import {
-  sBoard,
-  sNote,
-  sColumn
-} from '../../flux/selectors'
+import s from '../../flux/selectors'
 import {
   moveNote,
   addNote
 } from '../../flux/note/actions'
- import {
-   saveBoard,
-   cleanStorage
- } from '../../flux/app/actions'
- import {
+import {
    addColumn
  } from '../../flux/column/actions'
 
 import Column from './Column'
-
-
-/*
-const S = {
-  ROOT: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  }
-};
-
-const Container = ({ children }) => (
-  <main style={S.ROOT}>
-    {children}
-  </main>
-);
-*/
 
 class PageBoard extends Component {
   _hDragEnd = (result) => {
@@ -81,15 +57,11 @@ class PageBoard extends Component {
             board,
             notes,
             columns,
-            addNote,
-            saveBoard,
-            cleanStorage
+            addNote
           } = this.props;
     return [
       <Header
         board={board}
-        saveBoard={saveBoard}
-        cleanStorage={cleanStorage}
         addColumn={this._hAddColumn}
       />,
       <DragDropContext
@@ -105,15 +77,13 @@ class PageBoard extends Component {
 
 
 const mapStateToProps = (state) => ({
-  board: sBoard.currentBoard(state),
-  notes: sNote.notes(state),
-  columns: sColumn.columns(state)
-})
+  board: s.board.currentBoard(state),
+  notes: s.note.notes(state),
+  columns: s.column.columns(state)
+});
 const mapDispatchToProps = {
   moveNote,
   addNote,
-  saveBoard,
-  cleanStorage,
   addColumn
 };
 

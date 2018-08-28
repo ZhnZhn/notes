@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import CL from '../style/cl'
+import CL from '../style/CL'
 
 const K = {
   ENTER: 'Enter',
