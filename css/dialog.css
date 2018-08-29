@@ -1,15 +1,19 @@
-
+/* link */
+/* header */
+/* dialog, drawer */
+/*
+$bgNotification,
+$cNotification
+*/
 .dialog__header {
-  /*background-color: #3f5178;*/
   background-color: #607d8b;
-  color: #303030;
+  color: azure;
   line-height: 1.8;
   padding-top: 4px;
   padding-left: 10px;
   margin-bottom: 16px;
   border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
+  border-top-right-radius: 4px; }
 
 .dialog__caption {
   color: azure;
@@ -17,16 +21,14 @@
   width: 100%;
   text-align: center;
   font-size: 18px;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .dialog__svg-close {
   position: absolute;
   top: 10px;
   right: 0;
   width: 20px;
-  height: 20px;
-}
+  height: 20px; }
 
 .d-notif__row {
   display: flex;
@@ -34,21 +36,20 @@
   margin-right: 5px;
   margin-top: 5px;
   margin-left: 5px;
-  margin-bottom: 5px;
-}
+  margin-bottom: 5px; }
+
 .d-notif__caption {
   width: 400px;
   padding-left: 10px;
-  color: rgba(164, 135, 212,1);
+  color: #a487d4;
   font-size: 18px;
   font-weight: 600;
-  line-height: 2;
-}
+  line-height: 2; }
+
 .d-notif__descr {
   color: black;
   width: 400px;
   padding-left: 10px;
   font-weight: 600;
   line-height: 1.4;
-  white-space: pre;
-}
+  white-space: pre; }

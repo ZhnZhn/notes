@@ -1,0 +1,54 @@
+
+$bg-root: #4d4d4d;
+$bg-header: #232f3b;
+$c-caption: #80c040;
+
+$c-msg: black;
+$bg-msg: #ffc100;
+
+$c-link-border: #1b75bb;
+
+.noscript {
+  &__root {
+     background-color: $bg-root;
+     border: 2px solid $bg-header;
+     width: 570px;
+     height: 120px;
+     padding: 10px;
+     margin-top: 30px;
+     margin-left: auto;
+     margin-right: auto;
+     border-radius: 10px;
+  }
+  &__header {
+     background-color: $bg-header;
+     height: 28px;
+     padding-top: 4px;
+     padding-left: 10px;
+     padding-right: 10px;
+     margin-bottom: 10px;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+  }
+  &__caption {
+     color: $c-caption;
+     font-size: 16px;
+     font-weight: bold;
+  }
+  &__msg {
+     color: $c-msg;
+     background-color: $bg-msg;
+     padding-left: 10px;
+     padding-right: 10px;
+     padding-top: 5px;
+     padding-bottom: 10px;
+     border-top-left-radius: 10px;
+     border-top-right-radius: 10px;
+     font-weight: bold;
+  }
+  &__link {
+     color: $c-msg;
+     border-bottom: 1px solid $c-link-border;
+     text-decoration: none;
+  }
+}

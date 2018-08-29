@@ -8,10 +8,9 @@ var gulp = require('gulp')
   , inject = require('gulp-inject')
   , replace = require('gulp-replace')
   , rename = require('gulp-rename')
-//  , sass = require('gulp-sass');
+  , sass = require('gulp-sass');
 
 
-/*
 var inputSass = './scss/*.scss';
 var outputCss = './css';
 
@@ -20,7 +19,7 @@ gulp.task('sass', function(){
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(outputCss));  
 });
-*/
+
 
 
 

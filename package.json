@@ -10,10 +10,12 @@
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint": "eslint -c .eslintrc-build.json ./src > lint.txt",
-    "css": "gulp",
+    "css:min": "gulp",
+    "css:sass": "gulp sass",
+    "css:all": "npm run css:sass && npm run css:min", 
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js",
-    "build:all": "npm run lint && npm run css && npm run build:dll-jsx" 
+    "build:all": "npm run lint && npm run css:min && npm run build:dll-jsx"
   },
   "author": "",
   "license": "BSD-3-Clause",
@@ -46,6 +48,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-rev": "^8.1.1",
+    "gulp-sass": "^4.0.1",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-processing-plugin": "^0.1.2",
     "jest": "^23.5.0",

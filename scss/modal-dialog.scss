@@ -1,6 +1,11 @@
+
+$bg-md: #4d4d4d;
+$c-md-border: #607d8b;
+
 .modal-dialog {
-  background-color: #4d4d4d;
-  border: solid 2px #607d8b;
+  background-color: $bg-md;
+  border: solid 2px $c-md-border;
+
   position: relative;
   top: 10%;
   display: block;
@@ -9,7 +14,8 @@
   margin: auto;
   z-index: 10;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px; }
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
+}
 
 .md__actions {
   position: absolute;
@@ -17,8 +23,10 @@
   bottom: 0;
   margin-top: 8px;
   margin-bottom: 10px;
-  cursor: default; }
+  cursor: default;
+}
 
 .md-settings {
   width: 300px;
-  height: 200px; }
+  height: 200px;
+}

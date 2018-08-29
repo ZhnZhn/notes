@@ -1,0 +1,10 @@
+@import 'variables/colors';
+
+/*
+$cLink
+*/
+
+a, a:visited {
+  color: $cLink;
+  font-weight: 600;
+}
