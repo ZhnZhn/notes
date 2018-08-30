@@ -22,13 +22,13 @@ const S = {
 class WrapperModalDialog extends Component {
   /*
   static propTypes = {
-    isShow  : PropTypes.bool,
-    timeout : PropTypes.number,
-    onClose : PropTypes.func
+    isShow: PropTypes.bool,
+    timeout: PropTypes.number,
+    onClose: PropTypes.func
   }
   */
   static defaultProps = {
-    timeout : 450
+    timeout: 450
   }
 
   constructor(props){
@@ -37,33 +37,41 @@ class WrapperModalDialog extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (this.wasClosing){
+    if (prevProps.isShow && !this.props.isShow) {
       setTimeout(
-        () => { this.setState({}) },
+        this._hideModal,
         this.props.timeout
       )
     }
   }
 
+  _hideModal = () => {
+    this.wasClosing = true
+    this.setState({})
+  }
+
   render(){
     const { isShow, children, onClose } = this.props;
-    let _className, _style;
-    if (this.wasClosing){
+    let _className, _style, _isHidden;
+    if (!isShow && this.wasClosing){
        _className = CL.INIT;
        _style = S.HIDE;
+       _isHidden = true;
        this.wasClosing = false;
     } else {
-      _className = isShow ? CL.SHOWING : CL.HIDING;
-      _style = isShow ? S.SHOW : S.HIDE_BACKGROUND;
-      if (!isShow){
-        this.wasClosing = true;
-      }
+      _className = isShow
+          ? CL.SHOWING
+          : CL.HIDING;
+      _style = isShow
+          ? S.SHOW
+          : S.HIDE_BACKGROUND;
+      _isHidden = false
     }
-
     return (
       <div
         className={_className}
         style={_style}
+        aria-hidden={_isHidden}
         onClick={onClose}
       >
         {children}

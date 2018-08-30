@@ -56,14 +56,19 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (WrapperModalDialog.__proto__ || Object.getPrototypeOf(WrapperModalDialog)).call(this));
 
+    _this._hideModal = function () {
+      _this.wasClosing = true;
+      _this.setState({});
+    };
+
     _this.wasClosing = true;
     return _this;
   }
   /*
   static propTypes = {
-    isShow  : PropTypes.bool,
-    timeout : PropTypes.number,
-    onClose : PropTypes.func
+    isShow: PropTypes.bool,
+    timeout: PropTypes.number,
+    onClose: PropTypes.func
   }
   */
 
@@ -71,12 +76,8 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
   (0, _createClass3.default)(WrapperModalDialog, [{
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
-
-      if (this.wasClosing) {
-        setTimeout(function () {
-          _this2.setState({});
-        }, this.props.timeout);
+      if (prevProps.isShow && !this.props.isShow) {
+        setTimeout(this._hideModal, this.props.timeout);
       }
     }
   }, {
@@ -88,24 +89,24 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
           onClose = _props.onClose;
 
       var _className = void 0,
-          _style = void 0;
-      if (this.wasClosing) {
+          _style = void 0,
+          _isHidden = void 0;
+      if (!isShow && this.wasClosing) {
         _className = CL.INIT;
         _style = S.HIDE;
+        _isHidden = true;
         this.wasClosing = false;
       } else {
         _className = isShow ? CL.SHOWING : CL.HIDING;
         _style = isShow ? S.SHOW : S.HIDE_BACKGROUND;
-        if (!isShow) {
-          this.wasClosing = true;
-        }
+        _isHidden = false;
       }
-
       return _react2.default.createElement(
         'div',
         {
           className: _className,
           style: _style,
+          'aria-hidden': _isHidden,
           onClick: onClose
         },
         children
