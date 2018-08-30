@@ -74,6 +74,14 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
 
 
   (0, _createClass3.default)(WrapperModalDialog, [{
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (!this.wasClosing && !nextProps.isShow && !this.props.isShow) {
+        return false;
+      }
+      return true;
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevProps.isShow && !this.props.isShow) {

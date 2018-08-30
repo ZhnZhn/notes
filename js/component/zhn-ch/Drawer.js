@@ -132,7 +132,7 @@ var Drawer = function (_Component) {
           )
         )
       ), _react2.default.createElement('div', {
-        'aria-hidden': true,
+        'aria-hidden': !isOpen,
         className: CL.DRAWER_MODAL,
         style: _drawerModalStyle,
         onClick: _onClickWrapper

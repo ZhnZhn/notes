@@ -36,6 +36,15 @@ class WrapperModalDialog extends Component {
     this.wasClosing = true;
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    if (!this.wasClosing
+      && !nextProps.isShow
+      && !this.props.isShow) {
+      return false;
+    }
+    return true;
+  }
+
   componentDidUpdate(prevProps, prevState){
     if (prevProps.isShow && !this.props.isShow) {
       setTimeout(
