@@ -16,10 +16,10 @@ var styleConfig = {
 
   createStyle: function createStyle(CSS_RULE) {
     return {
-      HEADER: (0, _extends3.default)({}, CSS_RULE.BG)
+      COMP: (0, _extends3.default)({}, CSS_RULE.BG)
     };
   }
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=Header.Style.js.map
+//# sourceMappingURL=Comp.Style.js.map

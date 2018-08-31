@@ -16,9 +16,9 @@ var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
 
-var _Header = require('../style/Header.Style');
+var _Comp = require('../style/Comp.Style');
 
-var _Header2 = _interopRequireDefault(_Header);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27,13 +27,13 @@ var Header = function Header(props) {
       style = props.style,
       theme = props.theme,
       children = props.children,
-      TS = theme.createStyle(_Header2.default);
+      TS = theme.createStyle(_Comp2.default);
 
   return _react2.default.createElement(
     'header',
     {
       className: className,
-      style: (0, _extends3.default)({}, style, TS.HEADER)
+      style: (0, _extends3.default)({}, style, TS.COMP)
     },
     children
   );

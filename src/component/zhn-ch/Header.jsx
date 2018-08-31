@@ -1,7 +1,7 @@
 import React from 'react'
 
 import withTheme from '../hoc/withTheme'
-import styleConfig from '../style/Header.Style'
+import styleConfig from '../style/Comp.Style'
 
 const Header = (props) => {
   const {
@@ -14,7 +14,7 @@ const Header = (props) => {
   return (
     <header
        className={className}
-       style={{...style, ...TS.HEADER}}       
+       style={{...style, ...TS.COMP}}       
     >
        {children}
     </header>

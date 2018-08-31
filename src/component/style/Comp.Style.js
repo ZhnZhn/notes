@@ -1,11 +1,10 @@
-
 const styleConfig = {
   themeName: undefined,
   style: undefined,
 
   createStyle: (CSS_RULE) => {
     return {
-      HEADER: {
+      COMP: {
         ...CSS_RULE.BG
       }
     }

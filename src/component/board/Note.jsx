@@ -2,15 +2,25 @@ import React, { Component } from 'react'
 //import PropsType from 'prop-types'
 
 import { connect } from 'react-redux'
-
 import {
   deleteNote,
   editNoteTitle
 } from '../../flux/note/actions'
 
+//import withTheme from '../hoc/withTheme'
+//import styleConfig from '../style/Modal.Style'
 
 import InputText from '../zhn/InputText'
-import BtCircle from '../zhn-card/BtCircle'
+import SvgMore from '../zhn/SvgMore'
+import MenuMore from './MenuMore'
+//import ModalPane from '../zhn-ch/ModalPane'
+//import FlatButton from '../zhn-m/FlatButton'
+
+/*
+const CL = {
+  MODAL_PANE: 'modal-pane'
+};
+*/
 
 const C = {
   DRAGGING: '#1e90ff', //dodgerblue
@@ -41,8 +51,14 @@ const S = {
   },
   BT_DELETE: {
     position: 'absolute',
-    top: 4,
-    right: 4
+    top: 8,
+    right: 8
+  },
+  MENU_MORE: {
+    position: 'absolute',
+    //bottom: -8,
+    right: 4,
+    width: 150
   }
 };
 
@@ -55,7 +71,8 @@ const Handle = (props) => (
 
 
 const _getState = (props) => ({
-  noteTitle: props.note.title
+  noteTitle: props.note.title,
+  isMenuMore: false
 });
 
 const _crRootStyle = (isDragging) => {
@@ -78,7 +95,22 @@ class Note extends Component {
   constructor(props){
     super(props)
     this._hBlurTitle = this._hBlurTitle.bind(this)
+    this._closeMenuMore = this._closeMenuMore.bind(this)
     this.state = _getState(props)
+  }
+
+  _openMenuMore = () => {
+    if (!this.state.isMenuMore) {
+      this.setState({
+        isMenuMore: true
+      })
+    }
+  }
+
+  _closeMenuMore = () => {
+    this.setState({
+      isMenuMore: false
+    })
   }
 
   _hDelete = () => {
@@ -96,15 +128,20 @@ class Note extends Component {
 
   render(){
     const {
-            draggableProps,
-            isDragging,
-            innerRef,
-            dragHandleProps,
-            note,
-          } = this.props
-        , { style, ...draggablePropsRest } = draggableProps
-        , _style = _crRootStyle(isDragging)
-        , { noteTitle } = this.state;
+      draggableProps,
+      isDragging,
+      innerRef,
+      dragHandleProps,
+      note,
+    } = this.props
+    , { style, ...draggablePropsRest } = draggableProps
+    , _style = _crRootStyle(isDragging)
+    , {
+      noteTitle,
+      isMenuMore
+    } = this.state;
+
+
 
     return (
       <div
@@ -121,12 +158,19 @@ class Note extends Component {
           value={noteTitle}
           onBlur={this._hBlurTitle}
         />
-        <BtCircle
+        <SvgMore
           style={S.BT_DELETE}
-          caption="D"
           title="Click to delete note"
-          onClick={this._hDelete}
+          onClick={this._openMenuMore}
         />
+        {
+          isMenuMore && <MenuMore
+            isShow={isMenuMore}
+            style={S.MENU_MORE}
+            onClose={this._closeMenuMore}
+            onRemove={this._hDelete}
+          />
+        }
       </div>
     );
   }

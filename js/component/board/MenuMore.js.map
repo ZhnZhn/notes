@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board/MenuMore.js"
+ ],
+ "file": "../../../src/component/board/MenuMore.js",
+ "names": [
+  "CL",
+  "MODAL_PANE",
+  "MenuMore",
+  "theme",
+  "style",
+  "isShow",
+  "onClose",
+  "onRemove",
+  "TS",
+  "createStyle",
+  "styleConfig",
+  "COMP"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,KAAK;AACTC,cAAY;AADH,CAAX;;AAIA,IAAMC,WAAW,SAAXA,QAAW,OAMX;AAAA,MALJC,KAKI,QALJA,KAKI;AAAA,MAJJC,KAII,QAJJA,KAII;AAAA,MAHJC,MAGI,QAHJA,MAGI;AAAA,MAFJC,OAEI,QAFJA,OAEI;AAAA,MADJC,QACI,QADJA,QACI;;AACJ,MAAMC,KAAKL,MAAMM,WAAN,CAAkBC,cAAlB,CAAX;AACA,SACE;AAAC,uBAAD;AAAA;AACE,iBAAWV,GAAGC,UADhB;AAEE,wCAAWG,KAAX,EAAqBI,GAAGG,IAAxB,CAFF;AAGE,cAAQN,MAHV;AAIE,eAASC;AAJX;AAME;AAAA;AAAA;AACE,oCAAC,oBAAD;AACE,iBAAQ,QADV;AAEE,iBAASC;AAFX;AADF;AANF,GADF;AAeD,CAvBD;;kBAyBe,yBAAUL,QAAV,C"
+}

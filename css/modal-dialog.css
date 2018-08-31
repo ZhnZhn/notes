@@ -1,4 +1,9 @@
+/* modal-pane */
+/*
+$shDialog
+*/
 .modal-dialog {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
   background-color: #4d4d4d;
   border: solid 2px #607d8b;
   position: relative;
@@ -8,8 +13,7 @@
   height: 150px;
   margin: auto;
   z-index: 10;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px; }
+  border-radius: 5px; }
 
 .md__actions {
   position: absolute;

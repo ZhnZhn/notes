@@ -45,22 +45,46 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ModalPane.__proto__ || Object.getPrototypeOf(ModalPane)).call.apply(_ref, [this].concat(args))), _this), _this._hClickOutside = function (event) {
       var onClose = _this.props.onClose;
 
-      if (_this.rootNode && !_this.rootNode.contains(event.target)) {
+      if (_this.rootNode && _this.rootNode.contains && !_this.rootNode.contains(event.target)) {
         onClose(event);
       }
+    }, _this._addOutsideListener = function () {
+      document.addEventListener('click', _this._hClickOutside, true);
+    }, _this._removeOutsideListener = function () {
+      document.removeEventListener('click', _this._hClickOutside, true);
     }, _this._refRootNode = function (n) {
       return _this.rootNode = n;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+    isShow: PropTypes.bool,
+    onClose: PropTypes.func
+  }
+  */
 
   (0, _createClass3.default)(ModalPane, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      if (this.props !== nextProps) {
-        if (nextProps.isShow) {
-          document.addEventListener('click', this._hClickOutside, true);
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      if (this.props.isShow) {
+        this._addOutsideListener();
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this._removeOutsideListener();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps) {
+      if (this.props !== prevProps) {
+        if (this.props.isShow) {
+          this._addOutsideListener();
         } else {
-          document.removeEventListener('click', this._hClickOutside, true);
+          this._removeOutsideListener();
         }
       }
     }
@@ -68,14 +92,16 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          className = _props.className,
           style = _props.style,
           children = _props.children;
 
       return _react2.default.createElement(
         'div',
         {
-          style: style,
-          ref: this._refRootNode
+          ref: this._refRootNode,
+          className: className,
+          style: style
         },
         children
       );

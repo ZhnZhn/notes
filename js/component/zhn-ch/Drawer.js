@@ -32,9 +32,9 @@ var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
 
-var _Drawer = require('../style/Drawer.Style');
+var _Comp = require('../style/Comp.Style');
 
-var _Drawer2 = _interopRequireDefault(_Drawer);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -106,7 +106,7 @@ var Drawer = function (_Component) {
           _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
           _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
           _onClickWrapper = isOpen ? this._hToggle : undefined,
-          TS = theme.createStyle(_Drawer2.default);
+          TS = theme.createStyle(_Comp2.default);
 
       return [_react2.default.createElement(
         'button',
@@ -140,7 +140,7 @@ var Drawer = function (_Component) {
         'aside',
         {
           className: CL.DRAWER,
-          style: (0, _extends3.default)({}, _drawerStyle, TS.ASIDE)
+          style: (0, _extends3.default)({}, _drawerStyle, TS.COMP)
         },
         children
       )];

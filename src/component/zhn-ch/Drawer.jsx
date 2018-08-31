@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
-import styleConfig from '../style/Drawer.Style'
+import styleConfig from '../style/Comp.Style'
 
 const CL = {
   DRAWER_BT: 'drawer-bt',
@@ -90,7 +90,7 @@ class Drawer extends Component {
         />,
         <aside
           className={CL.DRAWER}
-          style={{ ..._drawerStyle, ...TS.ASIDE }}
+          style={{ ..._drawerStyle, ...TS.COMP }}
          >
           {children}
         </aside>

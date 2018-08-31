@@ -1,11 +1,16 @@
+@import 'variables/shadows';
+
+/*
+$shDialog
+*/
 
 $bg-md: #4d4d4d;
 $c-md-border: #607d8b;
 
 .modal-dialog {
+  box-shadow: $shDialog;
   background-color: $bg-md;
   border: solid 2px $c-md-border;
-
   position: relative;
   top: 10%;
   display: block;
@@ -13,8 +18,7 @@ $c-md-border: #607d8b;
   height: 150px;
   margin: auto;
   z-index: 10;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
+  border-radius: 5px;  
 }
 
 .md__actions {

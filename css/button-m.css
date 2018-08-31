@@ -1,6 +1,6 @@
 /* link */
 /* header */
-/* dialog, drawer */
+/* dialog, drawer, modal-pan */
 /*
 $cFlatBt, $cCompBorder,
 $cCircleBt, $cCloseBt
@@ -42,6 +42,13 @@ $cCircleBt, $cCloseBt
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg) scale(1.3, 1.3) translateY(-3px); }
+
+.bt-svg-more {
+  fill: #1b2836;
+  stroke: #1b2836;
+  vertical-align: middle;
+  padding-left: 6px;
+  padding-right: 6px; }
 
 .not-selected {
   -webkit-touch-callout: none;

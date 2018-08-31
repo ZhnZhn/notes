@@ -51,6 +51,14 @@ $cCircleBt, $cCloseBt
   }
 }
 
+.bt-svg-more {
+  fill: $cFlatBt;
+  stroke: $cFlatBt;
+  vertical-align: middle;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
 .not-selected {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome all / Safari all / Opera */

@@ -40,18 +40,34 @@ var _InputText = require('../zhn/InputText');
 
 var _InputText2 = _interopRequireDefault(_InputText);
 
-var _BtCircle = require('../zhn-card/BtCircle');
+var _SvgMore = require('../zhn/SvgMore');
 
-var _BtCircle2 = _interopRequireDefault(_BtCircle);
+var _SvgMore2 = _interopRequireDefault(_SvgMore);
+
+var _MenuMore = require('./MenuMore');
+
+var _MenuMore2 = _interopRequireDefault(_MenuMore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import PropsType from 'prop-types'
+//import ModalPane from '../zhn-ch/ModalPane'
+//import FlatButton from '../zhn-m/FlatButton'
+
+/*
+const CL = {
+  MODAL_PANE: 'modal-pane'
+};
+*/
 
 var C = {
   DRAGGING: '#1e90ff', //dodgerblue
   NOT_DRAGGING: '#9e9e9e'
 };
+
+//import withTheme from '../hoc/withTheme'
+//import styleConfig from '../style/Modal.Style'
+
+//import PropsType from 'prop-types'
 
 var S = {
   ROOT: {
@@ -77,8 +93,14 @@ var S = {
   },
   BT_DELETE: {
     position: 'absolute',
-    top: 4,
-    right: 4
+    top: 8,
+    right: 8
+  },
+  MENU_MORE: {
+    position: 'absolute',
+    //bottom: -8,
+    right: 4,
+    width: 150
   }
 };
 
@@ -90,7 +112,8 @@ var Handle = function Handle(props) {
 
 var _getState = function _getState(props) {
   return {
-    noteTitle: props.note.title
+    noteTitle: props.note.title,
+    isMenuMore: false
   };
 };
 
@@ -116,6 +139,20 @@ var Note = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (Note.__proto__ || Object.getPrototypeOf(Note)).call(this, props));
 
+    _this._openMenuMore = function () {
+      if (!_this.state.isMenuMore) {
+        _this.setState({
+          isMenuMore: true
+        });
+      }
+    };
+
+    _this._closeMenuMore = function () {
+      _this.setState({
+        isMenuMore: false
+      });
+    };
+
     _this._hDelete = function () {
       var _this$props = _this.props,
           deleteNote = _this$props.deleteNote,
@@ -137,6 +174,7 @@ var Note = function (_Component) {
     };
 
     _this._hBlurTitle = _this._hBlurTitle.bind(_this);
+    _this._closeMenuMore = _this._closeMenuMore.bind(_this);
     _this.state = _getState(props);
     return _this;
   }
@@ -153,7 +191,9 @@ var Note = function (_Component) {
           style = draggableProps.style,
           draggablePropsRest = (0, _objectWithoutProperties3.default)(draggableProps, ['style']),
           _style = _crRootStyle(isDragging),
-          noteTitle = this.state.noteTitle;
+          _state = this.state,
+          noteTitle = _state.noteTitle,
+          isMenuMore = _state.isMenuMore;
 
       return _react2.default.createElement(
         'div',
@@ -169,11 +209,16 @@ var Note = function (_Component) {
           value: noteTitle,
           onBlur: this._hBlurTitle
         }),
-        _react2.default.createElement(_BtCircle2.default, {
+        _react2.default.createElement(_SvgMore2.default, {
           style: S.BT_DELETE,
-          caption: 'D',
           title: 'Click to delete note',
-          onClick: this._hDelete
+          onClick: this._openMenuMore
+        }),
+        isMenuMore && _react2.default.createElement(_MenuMore2.default, {
+          isShow: isMenuMore,
+          style: S.MENU_MORE,
+          onClose: this._closeMenuMore,
+          onRemove: this._hDelete
         })
       );
     }
