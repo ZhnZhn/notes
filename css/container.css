@@ -1,15 +1,19 @@
+/*
+container, drawer
+modal-dialog, modal-pane
+*/
 .container-list {
   display: flex;
   flex-wrap: wrap; }
 
 .modal-root {
   z-index: 1250;
-  display: block;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: block;
   overflow-x: hidden;
   overflow-y: hidden;
   opacity: 1;

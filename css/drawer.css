@@ -2,6 +2,10 @@
 /* header */
 /* dialog, drawer, modal-pan */
 /*
+container, drawer
+modal-dialog, modal-pane
+*/
+/*
 $cFlatBt, $cCompBorder,
 $bgNotification, $cNotification
 */
@@ -49,6 +53,7 @@ $bgNotification, $cNotification
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; }
 
 .drawer {
+  z-index: 1200;
   position: fixed;
   left: auto;
   right: 0;
@@ -61,11 +66,11 @@ $bgNotification, $cNotification
   height: 100vh;
   outline: none;
   overflow-y: auto;
-  z-index: 1200;
   transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   -webkit-overflow-scrolling: touch; }
 
 .drawer-modal {
+  z-index: -1;
   position: fixed;
   top: 0;
   left: 0;
@@ -74,7 +79,6 @@ $bgNotification, $cNotification
   background-color: rgba(0, 0, 0, 0.3);
   touch-action: none;
   will-change: opacity;
-  z-index: -1;
   -webkit-tap-highlight-color: transparent; }
 
 .drawer__list {

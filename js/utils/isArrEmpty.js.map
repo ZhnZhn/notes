@@ -1,1 +1,15 @@
-{"version":3,"sources":["../../src/utils/isArrEmpty.js"],"names":["isArrEmpty","arr","Array","isArray","length"],"mappings":";;;;;;AACA,IAAMA,aAAa,SAAbA,UAAa,CAACC,GAAD,EAAS;AAC1B,SAAO,CAACC,MAAMC,OAAN,CAAcF,GAAd,CAAD,IAAuBA,IAAIG,MAAJ,KAAe,CAAtC,GACH,IADG,GAEH,KAFJ;AAGD,CAJD;;kBAMeJ,U","file":"isArrEmpty.js","sourcesContent":["\r\nconst isArrEmpty = (arr) => {\r\n  return !Array.isArray(arr) || arr.length === 0\r\n    ? true\r\n    : false;\r\n};\r\n\r\nexport default isArrEmpty\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/isArrEmpty.js"
+ ],
+ "file": "../../src/utils/isArrEmpty.js",
+ "names": [
+  "isArrEmpty",
+  "arr",
+  "Array",
+  "isArray",
+  "length"
+ ],
+ "mappings": ";;;;;AACA,IAAMA,aAAa,SAAbA,UAAa,CAACC,GAAD,CAAK,WAAL,EAAkB,aAAiB;AACpD,SAAO,CAACC,MAAMC,OAAN,CAAcF,GAAd,CAAD,IAAuBA,IAAIG,MAAJ,KAAe,CAAtC,GACH,IADG,GAEH,KAFJ;AAGD,CAJD;;kBAMeJ,U"
+}

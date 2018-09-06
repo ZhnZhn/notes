@@ -19,7 +19,9 @@ var CL = {
   CARD_BT: 'bt__card',
 
   INPUT: 'input-text',
-  BT_CIRCLE: 'bt-circle'
+  BT_CIRCLE: 'bt-circle',
+
+  NAV_LINK: 'nav-link'
 };
 
 exports.default = CL;

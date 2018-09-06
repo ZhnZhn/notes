@@ -1,0 +1,17 @@
+
+$zIndex : (
+  'modal-root': 1250,
+  'drawer': 1200,
+  'modal-pane': 20,
+  'modal-dialog': 10,
+  'drawer-modal': -1
+);
+
+/*
+container, drawer
+modal-dialog, modal-pane
+*/
+
+@function z($layer) {
+  @return map-get($zIndex, $layer);
+}

@@ -56,10 +56,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var S = {
   LINK: {
-    display: 'block',
-    paddingLeft: 8,
-    paddingTop: 8,
-    paddingBottom: 8
+    marginTop: 8,
+    marginLeft: 8,
+    marginBottom: 4
   }
 };
 
@@ -125,12 +124,6 @@ var BoardCard = function (_Component) {
       );
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
-  /*
-  constructor(){
-    super()
-    this._hBlurTitle = this._hBlurTitle.bind(this)
-  }
-  */
 
   (0, _createClass3.default)(BoardCard, [{
     key: 'render',
@@ -159,6 +152,7 @@ var BoardCard = function (_Component) {
           _reactRouterDom.NavLink,
           {
             to: '/boards/' + board.id,
+            className: _CL2.default.NAV_LINK,
             style: S.LINK,
             onClick: this._hToNotes
           },

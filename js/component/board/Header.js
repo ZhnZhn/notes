@@ -41,7 +41,7 @@ var S = {
     display: 'inline-block'
   },
   NAV_LINK: {
-    paddingLeft: 8
+    marginLeft: 8
   }
 };
 
@@ -80,6 +80,7 @@ var Header = function Header(_ref) {
         _reactRouterDom.NavLink,
         {
           to: '/boards',
+          className: _CL2.default.NAV_LINK,
           style: S.NAV_LINK
         },
         'ToBoards'

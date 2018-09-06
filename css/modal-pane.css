@@ -3,11 +3,16 @@
 /* dialog, drawer, modal-pan */
 /* modal-pane */
 /*
+container, drawer
+modal-dialog, modal-pane
+*/
+/*
 $bgNotification
 
 $shDialog
 */
 .modal-pane {
+  z-index: 20;
   border: solid 2px #607d8b;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
   display: block;
@@ -15,5 +20,4 @@ $shDialog
   padding-top: 4px;
   padding-bottom: 2px;
   border-radius: 5px;
-  z-index: 20;
   overflow: hidden; }

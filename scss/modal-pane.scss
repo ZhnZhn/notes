@@ -1,5 +1,6 @@
 @import 'variables/colors';
 @import 'variables/shadows';
+@import 'variables/zindex';
 
 /*
 $bgNotification
@@ -8,13 +9,13 @@ $shDialog
 */
 
 .modal-pane {
+  z-index: z('modal-pane');
   border: solid 2px $bgNotification;
   box-shadow: $shDialog;
   display: block;
   padding-left: 16px;
   padding-top: 4px;
   padding-bottom: 2px;
-  border-radius: 5px;
-  z-index: 20;
-  overflow: hidden;  
+  border-radius: 5px;  
+  overflow: hidden;
 }

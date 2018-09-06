@@ -1,3 +1,5 @@
+@import 'variables/zindex';
+
 
 .container-list {
   display: flex;
@@ -5,13 +7,13 @@
 }
 
 .modal-root {
-  z-index: 1250;
-  display: block;
+  z-index: z('modal-root');  
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  display: block;
   overflow-x: hidden;
   overflow-y: hidden;
   opacity: 1;

@@ -17,7 +17,7 @@ const S = {
     display: 'inline-block'
   },
   NAV_LINK: {
-    paddingLeft: 8
+    marginLeft: 8
   }
 };
 
@@ -49,6 +49,7 @@ const Header = ({
     <nav style={S.NAV}>
       <NavLink
         to="/boards"
+        className={CL.NAV_LINK}
         style={S.NAV_LINK}
       >
          ToBoards

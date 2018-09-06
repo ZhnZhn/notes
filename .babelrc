@@ -18,6 +18,7 @@
       }],      
     ],
     "presets" : [
+                   "flow",
                    "es2015",
                    "react",
                    "stage-2" 

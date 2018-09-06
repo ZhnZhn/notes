@@ -1,8 +1,13 @@
 /* modal-pane */
 /*
+container, drawer
+modal-dialog, modal-pane
+*/
+/*
 $shDialog
 */
 .modal-dialog {
+  z-index: 10;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
   background-color: #4d4d4d;
   border: solid 2px #607d8b;
@@ -12,7 +17,6 @@ $shDialog
   width: 350px;
   height: 150px;
   margin: auto;
-  z-index: 10;
   border-radius: 5px; }
 
 .md__actions {

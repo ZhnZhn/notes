@@ -6,4 +6,13 @@ $cLink
 */
 a, a:visited {
   color: #2196f3;
-  font-weight: 600; }
+  font-weight: 600;
+  border-bottom: thin solid;
+  text-decoration: none; }
+
+a:hover {
+  border-bottom-width: medium; }
+
+.nav-link {
+  display: inline-block;
+  height: 20px; }

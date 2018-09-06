@@ -19,21 +19,14 @@ import FlatButton from '../zhn-m/FlatButton'
 
 const S  = {
   LINK: {
-    display: 'block',
-    paddingLeft: 8,
-    paddingTop: 8,
-    paddingBottom: 8
+    marginTop: 8,
+    marginLeft: 8,
+    marginBottom: 4
   }
 }
 
 class BoardCard extends Component {
-  /*
-  constructor(){
-    super()
-    this._hBlurTitle = this._hBlurTitle.bind(this)
-  }
-  */
-
+  
   _hBlurTitle = (evt) => {
     const { board, editBoardTitle } = this.props;
     editBoardTitle(board.id, evt.target.value)
@@ -93,6 +86,7 @@ class BoardCard extends Component {
         />
         <NavLink
           to={`/boards/${board.id}`}
+          className={CL.NAV_LINK}
           style={S.LINK}
           onClick={this._hToNotes}
         >
