@@ -10,7 +10,9 @@ var ACTION = exports.ACTION = {
   REMOVE_BOARD: 'REMOVE_BOARD'
 };
 
-var editBoardTitle = exports.editBoardTitle = function editBoardTitle(boardId, title) {
+var editBoardTitle = exports.editBoardTitle = function editBoardTitle(boardId /*: string */
+, title /*: string */
+) {
   return {
     type: ACTION.EDIT_BOARD_TITLE,
     boardId: boardId,
@@ -18,26 +20,37 @@ var editBoardTitle = exports.editBoardTitle = function editBoardTitle(boardId, t
   };
 };
 
-var setBoardCurrent = exports.setBoardCurrent = function setBoardCurrent(boardId) {
+var setBoardCurrent = exports.setBoardCurrent = function setBoardCurrent(boardId /*: string */
+) {
   return {
     type: ACTION.SET_BOARD_CURRENT,
     boardId: boardId
   };
 };
 
-var addBoard = exports.addBoard = function addBoard(boardId) {
+var addBoard = exports.addBoard = function addBoard(boardId /*: string */
+) {
   return {
     type: ACTION.ADD_BOARD,
     boardId: boardId
   };
 };
 
-var removeBoard = exports.removeBoard = function removeBoard(boardId) {
+var removeBoard = exports.removeBoard = function removeBoard(boardId /*: string */
+) {
   return {
     type: ACTION.REMOVE_BOARD,
     boardId: boardId
   };
 };
+
+/*::
+export type BoardAction =
+ | $Call<typeof editBoardTitle, string, string>
+ | $Call<typeof setBoardCurrent, string>
+ | $Call<typeof addBoard, string>
+ | $Call<typeof removeBoard, string>
+*/
 
 var actions = {
   editBoardTitle: editBoardTitle,

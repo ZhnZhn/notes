@@ -6,10 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 var ACTION = exports.ACTION = {
   EDIT_COLUMN_TITLE: 'EDIT_COLUMN_TITLE',
   ADD_COLUMN: 'ADD_COLUMN',
-  REMOVE_COLUMN: 'REMOVE_COLUMN'
+  REMOVE_COLUMN: 'REMOVE_COLUMN',
+  TOGGLE_COLUMN: 'TOGGLE_COLUMN'
 };
 
-var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnId, title) {
+var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnId /*: string */
+, title /*: string */
+) {
   return {
     type: ACTION.EDIT_COLUMN_TITLE,
     columnId: columnId,
@@ -17,7 +20,9 @@ var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnI
   };
 };
 
-var addColumn = exports.addColumn = function addColumn(boardId, columnId) {
+var addColumn = exports.addColumn = function addColumn(boardId /*: string */
+, columnId /*: string */
+) {
   return {
     type: ACTION.ADD_COLUMN,
     boardId: boardId,
@@ -25,7 +30,9 @@ var addColumn = exports.addColumn = function addColumn(boardId, columnId) {
   };
 };
 
-var removeColumn = exports.removeColumn = function removeColumn(boardId, columnId) {
+var removeColumn = exports.removeColumn = function removeColumn(boardId /*: string */
+, columnId /*: string */
+) {
   return {
     type: ACTION.REMOVE_COLUMN,
     boardId: boardId,
@@ -33,10 +40,28 @@ var removeColumn = exports.removeColumn = function removeColumn(boardId, columnI
   };
 };
 
+var toggleColumn = exports.toggleColumn = function toggleColumn(columnId /*: string */
+) {
+  return {
+    type: ACTION.TOGGLE_COLUMN,
+    columnId: columnId
+  };
+};
+
+/*::
+export type TopicAction =
+  | $Call<typeof editColumnTitle, string, string>
+  | $Call<typeof addColumn, string, string>
+  | $Call<typeof removeColumn, string, string>
+  | $Call<typeof toggleColumn, string>
+  //| ExtractReturn<typeof toggleColumn>
+*/
+
 var actions = {
   editColumnTitle: editColumnTitle,
   addColumn: addColumn,
-  removeColumn: removeColumn
+  removeColumn: removeColumn,
+  toggleColumn: toggleColumn
 };
 
 exports.default = actions;

@@ -1,1 +1,29 @@
-{"version":3,"sources":["../../../src/component/board/NoteList.jsx"],"names":["C","DRAGGING_OVER","NOT_DRAGGING_OVER","S","ROOT","padding","transition","minHeight","_crRootStyle","is","_color","backgroundColor","NoteList","props","innerRef","children","rest","_style","isDraggingOver"],"mappings":";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,iBAAe,YADP;AAERC,qBAAmB;AAFX,CAAV;;AAKA,IAAMC,IAAI;AACRC,QAAM;AACJC,aAAS,CADL;AAEJC,gBAAY,4BAFR;AAGJC,eAAW;AAHP;AADE,CAAV;;AAQA,IAAMC,eAAe,SAAfA,YAAe,CAACC,EAAD,EAAQ;AAC3B,MAAMC,SAASD,KACXT,EAAEC,aADS,GAEXD,EAAEE,iBAFN;AAGA,SAAO;AACLS,qBAAiBD;AADZ,GAAP;AAGD,CAPD;;AASA,IAAME,WAAW,SAAXA,QAAW,CAACC,KAAD,EAAW;AAAA,MAEnBC,QAFmB,GAKjBD,KALiB,CAEnBC,QAFmB;AAAA,MAGnBC,QAHmB,GAKjBF,KALiB,CAGnBE,QAHmB;AAAA,MAIhBC,IAJgB,0CAKjBH,KALiB;;AAM1B,MAAMI,SAAST,aAAaQ,KAAKE,cAAlB,CAAf;AACA,SACE;AAAA;AAAA,+BACMF,IADN;AAEE,WAAKF,QAFP;AAGE,wCAAYX,EAAEC,IAAd,EAAuBa,MAAvB;AAHF;AAKGF;AALH,GADF;AASD,CAhBD;;kBAkBeH,Q","file":"NoteList.js","sourcesContent":["import React from 'react'\r\n\r\nconst C = {\r\n  DRAGGING_OVER: 'lightgreen',\r\n  NOT_DRAGGING_OVER: 'transparent'\r\n};\r\n\r\nconst S = {\r\n  ROOT: {\r\n    padding: 8,\r\n    transition: 'background-color 0.2s easy',\r\n    minHeight: 100\r\n  }\r\n}\r\n\r\nconst _crRootStyle = (is) => {\r\n  const _color = is\r\n    ? C.DRAGGING_OVER\r\n    : C.NOT_DRAGGING_OVER\r\n  return {\r\n    backgroundColor: _color\r\n  };\r\n};\r\n\r\nconst NoteList = (props) => {\r\n  const {\r\n         innerRef,\r\n         children,\r\n         ...rest\r\n       } = props\r\n  const _style = _crRootStyle(rest.isDraggingOver)\r\n  return (\r\n    <div\r\n      {...rest}\r\n      ref={innerRef}\r\n      style={{ ...S.ROOT, ..._style }}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default NoteList\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board/NoteList.js"
+ ],
+ "file": "../../../src/component/board/NoteList.js",
+ "names": [
+  "C",
+  "DRAGGING_OVER",
+  "NOT_DRAGGING_OVER",
+  "S",
+  "ROOT",
+  "padding",
+  "transition",
+  "minHeight",
+  "_crRootStyle",
+  "is",
+  "_color",
+  "backgroundColor",
+  "NoteList",
+  "props",
+  "innerRef",
+  "children",
+  "rest",
+  "_style",
+  "isDraggingOver"
+ ],
+ "mappings": ";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,iBAAe,YADP;AAERC,qBAAmB;AAFX,CAAV;;AAKA,IAAMC,IAAI;AACRC,QAAM;AACJC,aAAS,CADL;AAEJC,gBAAY,4BAFR;AAGJC,eAAW;AAHP;AADE,CAAV;;AAQA,IAAMC,eAAe,SAAfA,YAAe,CAACC,EAAD,EAAQ;AAC3B,MAAMC,SAASD,KACXT,EAAEC,aADS,GAEXD,EAAEE,iBAFN;AAGA,SAAO;AACLS,qBAAiBD;AADZ,GAAP;AAGD,CAPD;;AASA,IAAME,WAAW,SAAXA,QAAW,CAACC,KAAD,EAAW;AAAA,MAExBC,QAFwB,GAKtBD,KALsB,CAExBC,QAFwB;AAAA,MAGxBC,QAHwB,GAKtBF,KALsB,CAGxBE,QAHwB;AAAA,MAIrBC,IAJqB,0CAKtBH,KALsB;AAAA,MAMxBI,MANwB,GAMfT,aAAaQ,KAAKE,cAAlB,CANe;;AAO1B,SACE;AAAA;AAAA,+BACMF,IADN;AAEE,WAAKF,QAFP;AAGE,wCAAYX,EAAEC,IAAd,EAAuBa,MAAvB;AAHF;AAKGF;AALH,GADF;AASD,CAhBD;;kBAkBeH,Q"
+}

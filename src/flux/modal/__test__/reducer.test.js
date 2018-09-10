@@ -5,8 +5,8 @@ import initialState from '../../initialState'
 const state = initialState.modal
 /*
 const initState = {
-  id: null,
-  data: null
+  id: undefined,
+  data: undefined
 }
 */
 

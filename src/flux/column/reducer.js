@@ -10,7 +10,10 @@ const {
   moveExternal, moveInternal
 } = fns;
 
-const reducer = function(state=initState.columns, action) {
+const reducer = function(
+  state /*: TopicState */=initState.columns,
+  action /*: TopicAction */
+) /*: TopicState */ {
   switch(action.type){
     case ACTION.EDIT_COLUMN_TITLE: {
       const { columnId, title } = action;
@@ -32,6 +35,17 @@ const reducer = function(state=initState.columns, action) {
     case ACTION.REMOVE_COLUMN: {
       const { columnId } = action;
       return removeProp(state, columnId);
+    }
+    case ACTION.TOGGLE_COLUMN: {
+      const { columnId } = action
+      , column = state[columnId];
+      return {
+        ...state,
+        [columnId]: {
+          ...column,
+          isHide: !column.isHide
+        }
+      }
     }
 
     case TA.MOVE_NOTE: {

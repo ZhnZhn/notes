@@ -12,9 +12,9 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _extends6 = require('babel-runtime/helpers/extends');
+var _extends7 = require('babel-runtime/helpers/extends');
 
-var _extends7 = _interopRequireDefault(_extends6);
+var _extends8 = _interopRequireDefault(_extends7);
 
 var _actions = require('./actions');
 
@@ -38,8 +38,9 @@ var crColumn = _fns2.default.crColumn,
     moveInternal = _fns2.default.moveInternal;
 
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.columns;
+var reducer = function reducer() /*: TopicAction */
+/*: TopicState */{
+  var state /*: TopicState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.columns;
   var action = arguments[1];
 
   switch (action.type) {
@@ -48,7 +49,7 @@ var reducer = function reducer() {
         var columnId = action.columnId,
             title = action.title;
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, columnId, (0, _extends7.default)({}, state[columnId], {
+        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, columnId, (0, _extends8.default)({}, state[columnId], {
           title: title
         })));
       }
@@ -56,13 +57,22 @@ var reducer = function reducer() {
       {
         var _columnId = action.columnId;
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _columnId, crColumn(_columnId)));
+        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId, crColumn(_columnId)));
       }
     case _actions.ACTION.REMOVE_COLUMN:
       {
         var _columnId2 = action.columnId;
 
         return removeProp(state, _columnId2);
+      }
+    case _actions.ACTION.TOGGLE_COLUMN:
+      {
+        var _columnId3 = action.columnId,
+            column = state[_columnId3];
+
+        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId3, (0, _extends8.default)({}, column, {
+          isHide: !column.isHide
+        })));
       }
 
     case _actions2.ACTION.MOVE_NOTE:
@@ -77,21 +87,21 @@ var reducer = function reducer() {
       }
     case _actions2.ACTION.DELETE_NOTE:
       {
-        var _columnId3 = action.columnId,
+        var _columnId4 = action.columnId,
             _noteId = action.noteId,
-            column = state[_columnId3],
-            newNodeIds = filterNoteIds(column, _noteId);
+            _column = state[_columnId4],
+            newNodeIds = filterNoteIds(_column, _noteId);
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _columnId3, noteIdsTo(column, newNodeIds)));
+        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId4, noteIdsTo(_column, newNodeIds)));
       }
     case _actions2.ACTION.ADD_NOTE:
       {
-        var _columnId4 = action.columnId,
+        var _columnId5 = action.columnId,
             _noteId2 = action.noteId,
-            _column = state[_columnId4],
-            newNoteIds = [_noteId2].concat((0, _toConsumableArray3.default)(_column.noteIds));
+            _column2 = state[_columnId5],
+            newNoteIds = [_noteId2].concat((0, _toConsumableArray3.default)(_column2.noteIds));
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _columnId4, noteIdsTo(_column, newNoteIds)));
+        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId5, noteIdsTo(_column2, newNoteIds)));
       }
 
     default:

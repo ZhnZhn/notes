@@ -14,9 +14,9 @@ var _Header = require('../zhn-ch/Header');
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Logo = require('../zhn/Logo');
+var _TopicDrawer = require('./TopicDrawer');
 
-var _Logo2 = _interopRequireDefault(_Logo);
+var _TopicDrawer2 = _interopRequireDefault(_TopicDrawer);
 
 var _FlatButton = require('../zhn-m/FlatButton');
 
@@ -32,56 +32,29 @@ var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var S = {
-  BT: {
-    position: 'relative',
-    marginLeft: 16
-  },
-  NAV: {
-    display: 'inline-block'
-  },
-  NAV_LINK: {
-    marginLeft: 8
-  }
-};
-
 var Header = function Header(_ref) {
-  var style = _ref.style,
-      titleStyle = _ref.titleStyle,
-      board = _ref.board,
-      addColumn = _ref.addColumn;
+  var addColumn = _ref.addColumn;
   return _react2.default.createElement(
     _Header2.default,
     {
-      className: _CL2.default.HEADER,
-      style: style
+      className: _CL2.default.HEADER
     },
-    _react2.default.createElement(_Logo2.default, null),
-    _react2.default.createElement('span', { className: _CL2.default.TITLE_GAP }),
-    _react2.default.createElement(
-      'span',
-      {
-        className: _CL2.default.HEADER_TITLE + ' ' + _CL2.default.TITLE_BOARD,
-        style: titleStyle },
-      'Notes: ' + board.title
-    ),
+    _react2.default.createElement(_TopicDrawer2.default, null),
     _react2.default.createElement(_FlatButton2.default, {
-      style: S.BT,
-      caption: 'Add Column',
-      title: 'Click to add column to board',
+      caption: 'Add Topic',
+      title: 'Click to add topic to board',
       accessKey: 'a',
       timeout: 500,
       onClick: addColumn
     }),
     _react2.default.createElement(
       'nav',
-      { style: S.NAV },
+      null,
       _react2.default.createElement(
         _reactRouterDom.NavLink,
         {
           to: '/boards',
-          className: _CL2.default.NAV_LINK,
-          style: S.NAV_LINK
+          className: _CL2.default.NAV_LINK + ' ' + _CL2.default.ML_8
         },
         'ToBoards'
       )

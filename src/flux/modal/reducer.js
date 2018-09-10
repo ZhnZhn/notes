@@ -8,7 +8,10 @@ const initState = {
 }
 */
 
-const reducer = function(state=initialState.modal, action) {
+const reducer = function(
+  state /*: ModalState */=initialState.modal,
+  action /*: ModalAction */
+) /*: ModalState */ {
   switch(action.type){
     case ACTION.SHOW_MODAL: {
       const { id, data } = action;

@@ -4,10 +4,12 @@ import CL from '../style/CL'
 
 const IconLogoErc = ({
   className=CL.LOGO,
+  style,
   title="Logo of web app Notes"
 }) => (
   <span
      className={className}
+     style={style}
      title={title}
   >
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"

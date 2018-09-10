@@ -8,9 +8,9 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _extends7 = require('babel-runtime/helpers/extends');
+var _extends9 = require('babel-runtime/helpers/extends');
 
-var _extends8 = _interopRequireDefault(_extends7);
+var _extends10 = _interopRequireDefault(_extends9);
 
 var _reducer = require('../reducer');
 
@@ -66,14 +66,24 @@ describe('reducer column', function () {
   test('should edit columm title', function () {
     var cId = 'c-1',
         newTitle = 'Column';
-    expect((0, _reducer2.default)(state, _actions2.default.editColumnTitle(cId, newTitle))).toEqual((0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, cId, (0, _extends8.default)({}, state[cId], {
+    expect((0, _reducer2.default)(state, _actions2.default.editColumnTitle(cId, newTitle))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, (0, _extends10.default)({}, state[cId], {
       title: newTitle
+    }))));
+  });
+  test('should toggle columm, property isHide', function () {
+    var cId = 'c-1',
+        stateHide = (0, _reducer2.default)(state, _actions2.default.toggleColumn(cId));
+    expect(stateHide).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, (0, _extends10.default)({}, state[cId], {
+      isHide: true
+    }))));
+    expect((0, _reducer2.default)(stateHide, _actions2.default.toggleColumn(cId))).toEqual((0, _extends10.default)({}, stateHide, (0, _defineProperty3.default)({}, cId, (0, _extends10.default)({}, state[cId], {
+      isHide: false
     }))));
   });
   test('should add column', function () {
     var bId = 'b-1',
         cId = 'c-3';
-    expect((0, _reducer2.default)(state, _actions2.default.addColumn(bId, cId))).toEqual((0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, cId, crColumn(cId))));
+    expect((0, _reducer2.default)(state, _actions2.default.addColumn(bId, cId))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, crColumn(cId))));
   });
   test('should remove column', function () {
     var bId = 'b-1',
@@ -89,7 +99,7 @@ describe('reducer column', function () {
   test('should add note', function () {
     var cId = 'c-1',
         nId = 'n-1';
-    expect((0, _reducer2.default)(state, _actions4.default.addNote(cId, nId))).toEqual((0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, cId, (0, _extends8.default)({}, state[cId], {
+    expect((0, _reducer2.default)(state, _actions4.default.addNote(cId, nId))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, (0, _extends10.default)({}, state[cId], {
       noteIds: [nId].concat((0, _toConsumableArray3.default)(state[cId].noteIds))
     }))));
   });
@@ -97,7 +107,7 @@ describe('reducer column', function () {
     var cId = 'c-1',
         nId = 'n-1',
         stateWithTask = (0, _reducer2.default)(state, _actions4.default.addNote(cId, nId));
-    expect((0, _reducer2.default)(stateWithTask, _actions4.default.deleteNote(cId, nId))).toEqual((0, _extends8.default)({}, state));
+    expect((0, _reducer2.default)(stateWithTask, _actions4.default.deleteNote(cId, nId))).toEqual((0, _extends10.default)({}, state));
   });
   test('should move note between column', function () {
     var cFromId = 'c-1',
@@ -106,7 +116,7 @@ describe('reducer column', function () {
         source = _crDnD(cFromId, 0),
         destination = _crDnD(cToId, 0),
         stateWithTask = (0, _reducer2.default)(state, _actions4.default.addNote(cFromId, nId));
-    expect((0, _reducer2.default)(stateWithTask, _actions4.default.moveNote(nId, source, destination))).toEqual((0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, cToId, (0, _extends8.default)({}, state[cToId], {
+    expect((0, _reducer2.default)(stateWithTask, _actions4.default.moveNote(nId, source, destination))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cToId, (0, _extends10.default)({}, state[cToId], {
       noteIds: [nId]
     }))));
   });
@@ -118,7 +128,7 @@ describe('reducer column', function () {
         state2 = (0, _reducer2.default)(state1, _actions4.default.addNote(cId, n2Id)),
         source = _crDnD(cId, 1),
         destination = _crDnD(cId, 0);
-    expect((0, _reducer2.default)(state2, _actions4.default.moveNote(n1Id, source, destination))).toEqual((0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, cId, {
+    expect((0, _reducer2.default)(state2, _actions4.default.moveNote(n1Id, source, destination))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, {
       id: cId,
       title: 'Column 1',
       noteIds: [n1Id, n2Id],

@@ -22,36 +22,57 @@ var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var removeProp = _reducerFns2.default.removeProp;
+var filterBy = _reducerFns2.default.filterBy,
+    removeProp = _reducerFns2.default.removeProp;
 
-var filterNoteIds = function filterNoteIds(column, id) {
-  return _reducerFns2.default.filterBy(column.noteIds, id);
+
+var filterNoteIds = function filterNoteIds(column /*: Topic */
+, id /*: string */
+) {
+  return (/*: Array<string> */filterBy(column.noteIds, id)
+  );
 };
 
-var crColumn = function crColumn(columnId) {
-  var withAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  return {
-    id: columnId,
-    title: 'New Column',
-    noteIds: [],
-    withAdd: withAdd
-  };
+var crColumn = function crColumn(columnId /*: string */
+) {
+  var withAdd /*: boolean */ = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  return (/*: Topic */{
+      id: columnId,
+      title: 'New Column',
+      noteIds: [],
+      withAdd: withAdd
+    }
+  );
 };
 
-var noteIdsTo = function noteIdsTo(column, noteIds) {
-  return (0, _extends5.default)({}, column, {
-    noteIds: noteIds
-  });
+var noteIdsTo = function noteIdsTo(column /*: Topic */
+, noteIds /*: Array<string> */
+) {
+  return (/*: Topic */(0, _extends5.default)({}, column, {
+      noteIds: noteIds
+    })
+  );
 };
 
-var moveInternal = function moveInternal(state, taskId, source, destination, from) {
+var moveInternal = function moveInternal(state /*: TopicState */
+, taskId /*: string */
+, source /*: { index: number } */
+, destination /*: { index: number } */
+, from /*: Topic */
+) /*: TopicState */{
   var newNoteIds = [].concat((0, _toConsumableArray3.default)(from.noteIds));
   newNoteIds.splice(source.index, 1);
   newNoteIds.splice(destination.index, 0, taskId);
   return (0, _extends5.default)({}, state, (0, _defineProperty3.default)({}, from.id, noteIdsTo(from, newNoteIds)));
 };
 
-var moveExternal = function moveExternal(state, taskId, source, destination, from, to) {
+var moveExternal = function moveExternal(state /*: TopicState */
+, taskId /*: string */
+, source /*: { index: number } */
+, destination /*: { index: number } */
+, from /*: Topic */
+, to /*: Topic */
+) /*: TopicState */{
   var _extends3;
 
   var newFromNoteIds = [].concat((0, _toConsumableArray3.default)(from.noteIds));

@@ -24,8 +24,9 @@ var crMsg = _fns2.default.crMsg,
     filterByProp = _fns2.default.filterByProp;
 
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.drawerMsg;
+var reducer = function reducer() /*: DrawerAction */
+/*: DrawerMsgState */{
+  var state /*: DrawerMsgState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.drawerMsg;
   var action = arguments[1];
 
   switch (action.type) {

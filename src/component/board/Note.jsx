@@ -7,20 +7,9 @@ import {
   editNoteTitle
 } from '../../flux/note/actions'
 
-//import withTheme from '../hoc/withTheme'
-//import styleConfig from '../style/Modal.Style'
-
 import InputText from '../zhn/InputText'
 import SvgMore from '../zhn/SvgMore'
 import MenuMore from './MenuMore'
-//import ModalPane from '../zhn-ch/ModalPane'
-//import FlatButton from '../zhn-m/FlatButton'
-
-/*
-const CL = {
-  MODAL_PANE: 'modal-pane'
-};
-*/
 
 const C = {
   DRAGGING: '#1e90ff', //dodgerblue
@@ -160,7 +149,7 @@ class Note extends Component {
         />
         <SvgMore
           style={S.BT_DELETE}
-          title="Click to delete note"
+          title="Click to open note menu"
           onClick={this._openMenuMore}
         />
         {

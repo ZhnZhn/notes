@@ -7,7 +7,10 @@ const {
   filterByProp
 } = fns;
 
-const reducer = function(state=initState.drawerMsg, action){
+const reducer = function(
+  state /*: DrawerMsgState */=initState.drawerMsg,
+  action /*: DrawerAction */
+) /*: DrawerMsgState */ {
   switch(action.type){
     case ACTION.ADD_DRAWER_MSG: {
       const { id, msg } = action;

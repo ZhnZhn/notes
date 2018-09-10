@@ -42,10 +42,10 @@ class Column extends Component {
     const {
             column, notes,
           } = this.props
-        , { id, title, withAdd, noteIds } = column;
+        , { id, isHide, title, withAdd, noteIds } = column;
 
     return (
-      <Card.Item>
+      <Card.Item isHide={isHide}>
         <Card.Title
           value={title}
           onBlur={this._hBlurTitle}

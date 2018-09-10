@@ -1,3 +1,4 @@
+// @flow
 
 export const ACTION = {
   MOVE_NOTE: 'MOVE_NOTE',
@@ -6,30 +7,51 @@ export const ACTION = {
   EDIT_NOTE_TITLE: 'EDIT_NOTE_TITLE'
 };
 
-export const moveNote = (noteId, source, destination) => ({
+export const moveNote = (
+  noteId /*: string */,
+  source /*: {} */,
+  destination /*: {} */
+) => ({
   type: ACTION.MOVE_NOTE,
   noteId,
   source,
   destination
 })
 
-export const deleteNote = (columnId, noteId) => ({
+export const deleteNote = (
+  columnId /*: string */,
+  noteId /*: string */
+) => ({
   type: ACTION.DELETE_NOTE,
   columnId,
   noteId
 })
 
-export const editNoteTitle = (noteId, title) => ({
+export const editNoteTitle = (
+  noteId /*: string */,
+  title /*: string */
+) => ({
   type: ACTION.EDIT_NOTE_TITLE,
   noteId,
   title
 })
 
-export const addNote = (columnId, noteId) => ({
+export const addNote = (
+  columnId /*: string */,
+  noteId /*: string */
+) => ({
   type: ACTION.ADD_NOTE,
   columnId,
   noteId
 })
+
+/*::
+export type NoteAction =
+  | $Call<typeof moveNote, string, {}, {}>
+  | $Call<typeof deleteNote, string, string>
+  | $Call<typeof editNoteTitle, string, string>
+  | $Call<typeof addNote, string, string>
+*/
 
 const actions = {
   moveNote,

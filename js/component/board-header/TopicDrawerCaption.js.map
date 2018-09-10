@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/TopicDrawerCaption.js"
+ ],
+ "file": "../../../src/component/board-header/TopicDrawerCaption.js",
+ "names": [
+  "TOPICS",
+  "TopicDrawerCaption",
+  "board",
+  "CL",
+  "DRAWER_TITLE"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,SAAS,QAAf;;AAEA,IAAMC,qBAAqB,SAArBA,kBAAqB;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,SACzB;AAAA;AAAA,MAAK,WAAWC,aAAGC,YAAnB;AACG,2BAAQF,KAAR,EAAeF,MAAf;AADH,GADyB;AAAA,CAA3B;;kBAMeC,kB"
+}

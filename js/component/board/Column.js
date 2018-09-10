@@ -96,6 +96,7 @@ var Column = function (_Component) {
           column = _props.column,
           notes = _props.notes,
           id = column.id,
+          isHide = column.isHide,
           title = column.title,
           withAdd = column.withAdd,
           noteIds = column.noteIds;
@@ -103,7 +104,7 @@ var Column = function (_Component) {
 
       return _react2.default.createElement(
         _Card2.default.Item,
-        null,
+        { isHide: isHide },
         _react2.default.createElement(_Card2.default.Title, {
           value: title,
           onBlur: this._hBlurTitle

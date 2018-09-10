@@ -21,12 +21,20 @@ var cleanStorage = exports.cleanStorage = function cleanStorage() {
   };
 };
 
-var setUiTheme = exports.setUiTheme = function setUiTheme(uiTheme) {
+var setUiTheme = exports.setUiTheme = function setUiTheme(uiTheme /*: UiTheme */
+) {
   return {
     type: ACTION.SET_UI_THEME,
     uiTheme: uiTheme
   };
 };
+
+/*::
+export type TopicAction =
+  | $Call<typeof saveBoard>
+  | $Call<typeof cleanStorage>
+  | $Call<typeof setUiTheme, UiTheme>
+*/
 
 var actions = {
   saveBoard: saveBoard,

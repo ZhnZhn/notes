@@ -1,8 +1,13 @@
 import fns from '../reducerFns'
 
+// @flow
+
 const { filterByProp } = fns;
 
-const crMsg = (id, msg) => ({
+const crMsg = (
+  id /*: string */,
+  msg /*: string */
+) /*: DrawerMsg */ => ({
   id,
   msg
 });

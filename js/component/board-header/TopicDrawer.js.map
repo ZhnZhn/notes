@@ -1,0 +1,11 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/TopicDrawer.js"
+ ],
+ "file": "../../../src/component/board-header/TopicDrawer.js",
+ "names": [
+  "TopicDrawer"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,cAAc,SAAdA,WAAc;AAAA,SAClB;AAAC,wBAAD;AAAA;AACE,mBAAa,8BAAC,uBAAD;AADf;AAGE,kCAAC,yBAAD;AAHF,GADkB;AAAA,CAApB;;kBAQeA,W"
+}

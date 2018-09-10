@@ -1,3 +1,4 @@
+// @flow
 
 export const ACTION = {
   SAVE_BOARD: 'SAVE_BOARD',
@@ -13,10 +14,19 @@ export const cleanStorage = () => ({
   type: ACTION.CLEAN_STORAGE
 });
 
-export const setUiTheme = (uiTheme) => ({
+export const setUiTheme = (
+  uiTheme /*: UiTheme */
+) => ({
   type: ACTION.SET_UI_THEME,
   uiTheme
 });
+
+/*::
+export type TopicAction =
+  | $Call<typeof saveBoard>
+  | $Call<typeof cleanStorage>
+  | $Call<typeof setUiTheme, UiTheme>
+*/
 
 const actions = {
   saveBoard,

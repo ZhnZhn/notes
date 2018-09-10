@@ -1,23 +1,44 @@
-import fn from '../reducerFns'
+// @flow
+import fns from '../reducerFns'
 
-const removeProp = fn.removeProp;
+const {
+  filterBy,
+  removeProp
+} = fns;
 
-const filterNoteIds = (column, id) => fn
-  .filterBy(column.noteIds, id);
+const filterNoteIds = (
+  column /*: Topic */,
+  id /*: string */
+) /*: Array<string> */ => filterBy(
+  column.noteIds,
+  id
+);
 
-const crColumn = (columnId, withAdd=true) => ({
+const crColumn = (
+  columnId /*: string */,
+  withAdd /*: boolean */ = true
+) /*: Topic */ => ({
   id: columnId,
   title: 'New Column',
   noteIds: [],
   withAdd: withAdd
 });
 
-const noteIdsTo = (column, noteIds) => ({
+const noteIdsTo = (
+  column /*: Topic */,
+  noteIds /*: Array<string> */
+) /*: Topic */ => ({
   ...column,
   noteIds
 });
 
-const moveInternal = (state, taskId, source, destination, from) => {
+const moveInternal = (
+  state /*: TopicState */,
+  taskId /*: string */,
+  source /*: { index: number } */,
+  destination /*: { index: number } */,
+  from /*: Topic */
+) /*: TopicState */ => {
   const newNoteIds = [...from.noteIds]
   newNoteIds.splice(source.index, 1)
   newNoteIds.splice(destination.index, 0, taskId)
@@ -27,7 +48,14 @@ const moveInternal = (state, taskId, source, destination, from) => {
   }
 };
 
-const moveExternal = (state, taskId, source, destination, from, to) => {
+const moveExternal = (
+  state /*: TopicState */,
+  taskId /*: string */,
+  source /*: { index: number } */,
+  destination /*: { index: number } */,
+  from /*: Topic */,
+  to /*: Topic */
+) /*: TopicState */ => {
   const newFromNoteIds = [...from.noteIds]
   newFromNoteIds.splice(source.index, 1)
   const newToNoteIds = [...to.noteIds]

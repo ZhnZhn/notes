@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -22,16 +26,24 @@ var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var S = {
+  HIDE: {
+    display: 'none'
+  }
+};
+
 var Item = function Item(props) {
-  var theme = props.theme,
+  var isHide = props.isHide,
+      theme = props.theme,
       children = props.children,
-      TS = theme.createStyle(_Item2.default);
+      TS = theme.createStyle(_Item2.default),
+      _style = isHide ? (0, _extends3.default)({}, TS.ITEM, S.HIDE) : TS.ITEM;
 
   return _react2.default.createElement(
     'section',
     {
       className: _CL2.default.ITEM_CARD,
-      style: TS.ITEM
+      style: _style
     },
     children
   );

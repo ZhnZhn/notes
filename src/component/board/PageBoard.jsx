@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'
 
-import Header from './Header'
+import Header from '../board-header/Header'
 import Main from '../zhn-ch/Main'
 
 import s from '../../flux/selectors'
@@ -48,20 +48,22 @@ class PageBoard extends Component {
   }
 
   _hAddColumn = () => {
-    const {addColumn, board} = this.props;
+    const {
+      addColumn,
+      board
+    } = this.props;
     addColumn(board.id)
   }
 
   render(){
     const {
-            board,
-            notes,
-            columns,
-            addNote
-          } = this.props;
+      board,
+      notes,
+      columns,
+      addNote
+    } = this.props;
     return [
-      <Header
-        board={board}
+      <Header        
         addColumn={this._hAddColumn}
       />,
       <DragDropContext

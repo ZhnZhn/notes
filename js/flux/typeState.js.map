@@ -1,0 +1,9 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/typeState.js"
+ ],
+ "file": "../../src/flux/typeState.js",
+ "names": [],
+ "mappings": ";;AAGA"
+}

@@ -17,12 +17,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var IconLogoErc = function IconLogoErc(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === undefined ? _CL2.default.LOGO : _ref$className,
+      style = _ref.style,
       _ref$title = _ref.title,
       title = _ref$title === undefined ? "Logo of web app Notes" : _ref$title;
   return _react2.default.createElement(
     'span',
     {
       className: className,
+      style: style,
       title: title
     },
     _react2.default.createElement(

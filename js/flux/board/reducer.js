@@ -43,8 +43,9 @@ boards: {
 }
 */
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.boards;
+var reducer = function reducer() /*: BoardAction */
+/*: BoardState */{
+  var state /*: BoardState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.boards;
   var action = arguments[1];
 
   switch (action.type) {

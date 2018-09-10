@@ -17,8 +17,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var state = _initialState2.default.modal;
 /*
 const initState = {
-  id: null,
-  data: null
+  id: undefined,
+  data: undefined
 }
 */
 

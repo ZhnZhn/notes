@@ -23,8 +23,9 @@ const initState = {
 }
 */
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.modal;
+var reducer = function reducer() /*: ModalAction */
+/*: ModalState */{
+  var state /*: ModalState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.modal;
   var action = arguments[1];
 
   switch (action.type) {

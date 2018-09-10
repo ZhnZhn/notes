@@ -10,7 +10,10 @@ const _crNewNote = (noteId) => ({
   title: 'New Note'
 });
 
-const reducer = function(state=initialState.notes, action){
+const reducer = function(
+  state /*: NoteState */=initialState.notes,
+  action /*: NoteAction */
+) /*: NoteState */ {
   switch(action.type){
     case ACTION.EDIT_NOTE_TITLE: {
       const { noteId, title } = action

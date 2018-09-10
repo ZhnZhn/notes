@@ -3,9 +3,10 @@ const CL = {
   HEADER: 'header',
   LOGO: 'header__logo-notes',
   TITLE_GAP: 'header__title-gap',
+  LOGO_BOARD: 'header-board__logo_notes',
 
   HEADER_TITLE: 'header__title',
-  TITLE_BOARD: 'header__board-title',
+  TITLE_BOARD: 'header-board__title',
 
   CONT: 'container-list',
 
@@ -16,7 +17,9 @@ const CL = {
   INPUT: 'input-text',
   BT_CIRCLE: 'bt-circle',
 
-  NAV_LINK: 'nav-link'
+  NAV_LINK: 'nav-link',
+
+  ML_8: 'ml-8'
 };
 
 export default CL

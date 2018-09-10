@@ -10,7 +10,10 @@ var ACTION = exports.ACTION = {
   EDIT_NOTE_TITLE: 'EDIT_NOTE_TITLE'
 };
 
-var moveNote = exports.moveNote = function moveNote(noteId, source, destination) {
+var moveNote = exports.moveNote = function moveNote(noteId /*: string */
+, source /*: {} */
+, destination /*: {} */
+) {
   return {
     type: ACTION.MOVE_NOTE,
     noteId: noteId,
@@ -19,7 +22,9 @@ var moveNote = exports.moveNote = function moveNote(noteId, source, destination)
   };
 };
 
-var deleteNote = exports.deleteNote = function deleteNote(columnId, noteId) {
+var deleteNote = exports.deleteNote = function deleteNote(columnId /*: string */
+, noteId /*: string */
+) {
   return {
     type: ACTION.DELETE_NOTE,
     columnId: columnId,
@@ -27,7 +32,9 @@ var deleteNote = exports.deleteNote = function deleteNote(columnId, noteId) {
   };
 };
 
-var editNoteTitle = exports.editNoteTitle = function editNoteTitle(noteId, title) {
+var editNoteTitle = exports.editNoteTitle = function editNoteTitle(noteId /*: string */
+, title /*: string */
+) {
   return {
     type: ACTION.EDIT_NOTE_TITLE,
     noteId: noteId,
@@ -35,13 +42,23 @@ var editNoteTitle = exports.editNoteTitle = function editNoteTitle(noteId, title
   };
 };
 
-var addNote = exports.addNote = function addNote(columnId, noteId) {
+var addNote = exports.addNote = function addNote(columnId /*: string */
+, noteId /*: string */
+) {
   return {
     type: ACTION.ADD_NOTE,
     columnId: columnId,
     noteId: noteId
   };
 };
+
+/*::
+export type NoteAction =
+  | $Call<typeof moveNote, string, {}, {}>
+  | $Call<typeof deleteNote, string, string>
+  | $Call<typeof editNoteTitle, string, string>
+  | $Call<typeof addNote, string, string>
+*/
 
 var actions = {
   moveNote: moveNote,

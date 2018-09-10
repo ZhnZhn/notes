@@ -6,6 +6,17 @@ $cTitle
 
 $bg-header: #4d4d4d;
 
+nav {
+  display: inline-block;
+}
+
+@mixin logo(){
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  cursor: default;
+}
+
 .header {
   background-color: $bg-header;
   width: 100%;
@@ -15,14 +26,11 @@ $bg-header: #4d4d4d;
   padding-left: 12px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.6);
 
-  &__logo-notes {    
+  &__logo-notes {
+    @include logo();
     position: absolute;
     top: 7px;
     left: 12px;
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    cursor: default;
   }
   &__title-gap {
     display: inline-block;
@@ -35,10 +43,18 @@ $bg-header: #4d4d4d;
     font-size: 16px;
     font-weight: bold;
   }
+
+  &-board__logo_notes {
+    @include logo();
+    position: relative;
+    top: -4px;
+    left: -2px;
+    margin-right: 4px;
+  }
 }
 
-@media screen and (max-width: 480px) {
- .header__board-title {
+@media screen and (max-width: 500px) {
+ .header-board__title {
    display: none;
  }
 }

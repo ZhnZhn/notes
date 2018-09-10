@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/crTitle.js"
+ ],
+ "file": "../../../src/component/board-header/crTitle.js",
+ "names": [
+  "crTitle",
+  "board",
+  "prefix",
+  "title",
+  "count",
+  "Array",
+  "isArray",
+  "columnIds",
+  "length"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,UAAU,SAAVA,OAAU,CAACC,KAAD,EAA2B;AAAA,MAAnBC,MAAmB,uEAAZ,OAAY;;AACzC,MAAI,QAAOD,KAAP,uDAAOA,KAAP,OAAiB,QAArB,EAA+B;AAC7B,WAAUC,MAAV;AACD;AACD,MAAMC,QAAQF,MAAME,KAAN,IAAe,EAA7B;AAAA,MACEC,QAAQC,MAAMC,OAAN,CAAcL,MAAMM,SAApB,IACLN,MAAMM,SAAN,CAAgBC,MADX,GAEL,CAHL;AAIA,SAAUN,MAAV,UAAqBC,KAArB,UAA+BC,KAA/B;AACD,CATD;;kBAWeJ,O"
+}

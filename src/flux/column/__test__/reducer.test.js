@@ -44,6 +44,26 @@ describe('reducer column', ()=>{
       }
     })
   })
+  test('should toggle columm, property isHide', ()=>{
+    const cId = 'c-1'
+    , stateHide = reducer(state, ca.toggleColumn(cId));
+    expect(stateHide).toEqual({
+      ...state,
+      [cId]: {
+        ...state[cId],
+        isHide: true
+      }
+    })
+    expect(
+      reducer(stateHide, ca.toggleColumn(cId))
+    ).toEqual({
+      ...stateHide,
+      [cId]: {
+        ...state[cId],
+        isHide: false
+      }
+    })
+  })
   test('should add column', ()=>{
     const bId = 'b-1', cId = 'c-3';
     expect(

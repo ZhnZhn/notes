@@ -2,9 +2,38 @@
 @import 'variables/zindex';
 
 /*
+$cTitle,
 $cFlatBt, $cCompBorder,
 $bgNotification, $cNotification
 */
+
+@mixin drawer() {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  background-color: #fff;
+  width: 240px;
+  height: 100vh;
+
+  outline: none;
+  overflow-y: auto;
+
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.drawer__title {
+  color: $cTitle;
+  display: inline-block;
+  padding-left: 16px;
+  padding-right: 4px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  //margin-left: 16px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
 .drawer-bt {
   color: $cFlatBt;
@@ -53,11 +82,15 @@ $bgNotification, $cNotification
 
 .drawer {
   z-index: z('drawer');
+  border-left: 1px solid $cCompBorder;
+
   position: fixed;
   left: auto;
   right: 0;
   top: 0;
 
+  @include drawer();
+  /*
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
@@ -71,6 +104,33 @@ $bgNotification, $cNotification
   transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 
   -webkit-overflow-scrolling: touch;
+  */
+}
+
+.drawer-left {
+  z-index: z('drawer');
+  border-right: 1px solid $cCompBorder;
+
+  position: fixed;
+  left: 0;
+  right: auto;
+  top: 0;
+
+  @include drawer();
+  /*
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  background-color: #fff;
+  width: 240px;
+  height: 100vh;
+  outline: none;
+  overflow-y: auto;
+
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+  -webkit-overflow-scrolling: touch;
+  */
 }
 
 .drawer-modal {
@@ -90,13 +150,26 @@ $bgNotification, $cNotification
 }
 
 .drawer__list {
-  border-left: 1px solid $cCompBorder;
   height: 100%;
 
   &-bt {
     width: 100%;
     padding-left: 16px;
     text-align: left;
+  }
+  &-bt__badge {
+    color: $cFlatBt;
+    border: 2px solid $cFlatBt;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    padding-top: 4px;
+    text-align: center;
+    font-weight: 600;
   }
 }
 

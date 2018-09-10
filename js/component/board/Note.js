@@ -50,23 +50,10 @@ var _MenuMore2 = _interopRequireDefault(_MenuMore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import ModalPane from '../zhn-ch/ModalPane'
-//import FlatButton from '../zhn-m/FlatButton'
-
-/*
-const CL = {
-  MODAL_PANE: 'modal-pane'
-};
-*/
-
 var C = {
   DRAGGING: '#1e90ff', //dodgerblue
   NOT_DRAGGING: '#9e9e9e'
 };
-
-//import withTheme from '../hoc/withTheme'
-//import styleConfig from '../style/Modal.Style'
-
 //import PropsType from 'prop-types'
 
 var S = {
@@ -211,7 +198,7 @@ var Note = function (_Component) {
         }),
         _react2.default.createElement(_SvgMore2.default, {
           style: S.BT_DELETE,
-          title: 'Click to delete note',
+          title: 'Click to open note menu',
           onClick: this._openMenuMore
         }),
         isMenuMore && _react2.default.createElement(_MenuMore2.default, {

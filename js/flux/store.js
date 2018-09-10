@@ -31,7 +31,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _middlewares = [].concat((0, _toConsumableArray3.default)(_middlewares3.default));
 
 var _composeEnhancer = _redux.compose;
-/*eslint-disable no-undef*/
+/*eslint-disable no-undef, no-console*/
 if (process.env.NODE_ENV === 'development') {
   _composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'development') {
   };
   _middlewares.push(logger);
 }
-/*eslint-enable no-undef*/
+/*eslint-enable no-undef, no-console*/
 
 var _getInitialState = function _getInitialState() {
   var _initialState = void 0;

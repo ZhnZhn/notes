@@ -41,9 +41,9 @@ var _crRootStyle = function _crRootStyle(is) {
 var NoteList = function NoteList(props) {
   var innerRef = props.innerRef,
       children = props.children,
-      rest = (0, _objectWithoutProperties3.default)(props, ['innerRef', 'children']);
+      rest = (0, _objectWithoutProperties3.default)(props, ['innerRef', 'children']),
+      _style = _crRootStyle(rest.isDraggingOver);
 
-  var _style = _crRootStyle(rest.isDraggingOver);
   return _react2.default.createElement(
     'div',
     (0, _extends3.default)({}, rest, {

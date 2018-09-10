@@ -10,7 +10,7 @@ const _middlewares = [
 ];
 
 let _composeEnhancer = compose;
-/*eslint-disable no-undef*/
+/*eslint-disable no-undef, no-console*/
 if (process.env.NODE_ENV === 'development'){
     _composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
        || compose
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development'){
     }
     _middlewares.push(logger)
  }
- /*eslint-enable no-undef*/
+ /*eslint-enable no-undef, no-console*/
 
 
 const _getInitialState = () => {
@@ -40,7 +40,7 @@ const _getInitialState = () => {
     const _str = window.localStorage
       .getItem(CONF.STORAGE_KEY);
     if (_str) {
-      _initialState = JSON.parse(_str)      
+      _initialState = JSON.parse(_str)
     }
   } catch(e) {
      console.log(e.msg)

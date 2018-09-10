@@ -1,5 +1,6 @@
+// @flow
 
-const initState = {
+const initState /*: StoreState */ = {
   app: {
     boardId: 'b-1',
     boardIds: ['b-1'],
@@ -7,8 +8,8 @@ const initState = {
   },
   drawerMsg: [],
   modal: {
-    id: null,
-    data: null
+    id: undefined,
+    data: undefined
   },
   boards: {
     'b-1': {
@@ -30,7 +31,7 @@ const initState = {
     'c-2': {
       id: 'c-2',
       title: 'Column 2',
-      noteIds: []
+      noteIds: []      
     }
   }
   //columnOrder: [ 'column-1', 'column-2', 'column-3' ]

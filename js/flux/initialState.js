@@ -3,8 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var initState = {
+var initState /*: StoreState */ = {
   app: {
     boardId: 'b-1',
     boardIds: ['b-1'],
@@ -12,8 +11,8 @@ var initState = {
   },
   drawerMsg: [],
   modal: {
-    id: null,
-    data: null
+    id: undefined,
+    data: undefined
   },
   boards: {
     'b-1': {

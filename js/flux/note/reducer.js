@@ -34,8 +34,9 @@ var _crNewNote = function _crNewNote(noteId) {
   };
 };
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.notes;
+var reducer = function reducer() /*: NoteAction */
+/*: NoteState */{
+  var state /*: NoteState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.notes;
   var action = arguments[1];
 
   switch (action.type) {

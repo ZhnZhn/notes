@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/CL.js"
+ ],
+ "file": "../../../src/component/board-header/CL.js",
+ "names": [
+  "HEADER",
+  "DRAWER_TITLE",
+  "ROOT",
+  "BT",
+  "BADGE"
+ ],
+ "mappings": ";;;;;kBACe;AACbA,UAAQ,eADK;AAEbC,gBAAc,eAFD;AAGbC,QAAM,cAHO;AAIbC,MAAI,iBAJS;AAKbC,SAAO;AALM,C"
+}

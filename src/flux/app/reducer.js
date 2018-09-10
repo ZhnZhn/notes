@@ -4,6 +4,7 @@ import initialState from '../initialState'
 
 import fns from '../reducerFns'
 
+
 const { filterBy } = fns;
 
 /*
@@ -14,7 +15,10 @@ const initState = {
 };
 */
 
-const reducer = function(state=initialState.app, action) {
+const reducer = function(
+  state /*: AppState */=initialState.app,
+  action /*: AppAction */
+) /*: AppState */ {
   switch (action.type) {
     case ACTION.SET_UI_THEME: {
       const { uiTheme } = action;

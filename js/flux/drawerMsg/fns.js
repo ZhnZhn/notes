@@ -13,11 +13,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var filterByProp = _reducerFns2.default.filterByProp;
 
 
-var crMsg = function crMsg(id, msg) {
-  return {
-    id: id,
-    msg: msg
-  };
+var crMsg = function crMsg(id /*: string */
+, msg /*: string */
+) {
+  return (/*: DrawerMsg */{
+      id: id,
+      msg: msg
+    }
+  );
 };
 
 exports.default = {

@@ -16,7 +16,10 @@ boards: {
 }
 */
 
-const reducer = function (state=initState.boards, action) {
+const reducer = function (
+  state /*: BoardState */=initState.boards,
+  action /*: BoardAction */
+) /*: BoardState */ {
   switch(action.type){
     case ACTION.EDIT_BOARD_TITLE: {
       const { boardId, title } = action
@@ -63,7 +66,7 @@ const reducer = function (state=initState.boards, action) {
         ...state,
         [boardId] : {
           ...oldBoard,
-          columnIds: filterBy(oldBoard.columnIds, columnId)          
+          columnIds: filterBy(oldBoard.columnIds, columnId)
          }
        };
       }

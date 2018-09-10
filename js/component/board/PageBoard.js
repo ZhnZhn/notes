@@ -28,7 +28,7 @@ var _reactBeautifulDnd = require('react-beautiful-dnd');
 
 var _reactRedux = require('react-redux');
 
-var _Header = require('./Header');
+var _Header = require('../board-header/Header');
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -107,7 +107,6 @@ var PageBoard = function (_Component) {
           addNote = _props.addNote;
 
       return [_react2.default.createElement(_Header2.default, {
-        board: board,
         addColumn: this._hAddColumn
       }), _react2.default.createElement(
         _reactBeautifulDnd.DragDropContext,

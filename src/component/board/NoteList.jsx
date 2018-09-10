@@ -24,11 +24,11 @@ const _crRootStyle = (is) => {
 
 const NoteList = (props) => {
   const {
-         innerRef,
-         children,
-         ...rest
-       } = props
-  const _style = _crRootStyle(rest.isDraggingOver)
+    innerRef,
+    children,
+    ...rest
+  } = props
+  , _style = _crRootStyle(rest.isDraggingOver);
   return (
     <div
       {...rest}

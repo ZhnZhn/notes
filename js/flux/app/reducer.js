@@ -36,8 +36,9 @@ const initState = {
 };
 */
 
-var reducer = function reducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.app;
+var reducer = function reducer() /*: AppAction */
+/*: AppState */{
+  var state /*: AppState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.app;
   var action = arguments[1];
 
   switch (action.type) {
