@@ -1,6 +1,10 @@
+// @flow
 
-const crTitle = (board, prefix='Notes') => {
-  if (typeof board !== 'object') {
+const crTitle = (
+  board /*: ?Board */,
+  prefix /*: string */='Notes'
+) /*: string */ => {
+  if (board == null) {
     return `${prefix}: Not Exist`;
   }
   const title = board.title || ''

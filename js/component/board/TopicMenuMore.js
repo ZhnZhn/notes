@@ -34,12 +34,13 @@ var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MenuMore = function MenuMore(_ref) {
-  var theme = _ref.theme,
-      style = _ref.style,
+var TopicMenuMore = function TopicMenuMore(_ref) {
+  var style = _ref.style,
+      theme = _ref.theme,
       isShow = _ref.isShow,
-      onClose = _ref.onClose,
-      onRemove = _ref.onRemove;
+      onHideTopic = _ref.onHideTopic,
+      onAddNote = _ref.onAddNote,
+      onClose = _ref.onClose;
 
   var TS = theme.createStyle(_Comp2.default);
   return _react2.default.createElement(
@@ -54,12 +55,23 @@ var MenuMore = function MenuMore(_ref) {
       'div',
       null,
       _react2.default.createElement(_FlatButton2.default, {
-        caption: 'Remove',
-        onClick: onRemove
+        caption: 'Hide Topic',
+        title: 'Click to hide Topic',
+        onClick: onHideTopic
+      })
+    ),
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(_FlatButton2.default, {
+        caption: 'Add Note',
+        title: 'Click to add new Note',
+        timeout: 100,
+        onClick: onAddNote
       })
     )
   );
 };
 
-exports.default = (0, _withTheme2.default)(MenuMore);
-//# sourceMappingURL=MenuMore.js.map
+exports.default = (0, _withTheme2.default)(TopicMenuMore);
+//# sourceMappingURL=TopicMenuMore.js.map

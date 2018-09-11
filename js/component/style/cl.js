@@ -15,6 +15,8 @@ var CL = {
 
   CONT: 'container-list',
 
+  MODAL_PANE: 'modal-pane',
+
   ITEM_CARD: 'card',
   CARD_TITLE: 'card__title',
   CARD_BT: 'bt__card',

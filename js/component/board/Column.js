@@ -34,6 +34,14 @@ var _isArrEmpty = require('../../utils/isArrEmpty');
 
 var _isArrEmpty2 = _interopRequireDefault(_isArrEmpty);
 
+var _SvgMore = require('../zhn/SvgMore');
+
+var _SvgMore2 = _interopRequireDefault(_SvgMore);
+
+var _TopicMenuMore = require('./TopicMenuMore');
+
+var _TopicMenuMore2 = _interopRequireDefault(_TopicMenuMore);
+
 var _Card = require('../zhn-card/Card');
 
 var _Card2 = _interopRequireDefault(_Card);
@@ -52,47 +60,75 @@ var _crDnDNotes2 = _interopRequireDefault(_crDnDNotes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var S = {
+  SVG_MORE: {
+    marginRight: 8
+  },
+  MENU_MORE: {
+    position: 'absolute',
+    width: 150
+  }
+};
+
 var Column = function (_Component) {
   (0, _inherits3.default)(Column, _Component);
 
-  function Column(props) {
+  function Column() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, Column);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (Column.__proto__ || Object.getPrototypeOf(Column)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._hAddNewTask = function () {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Column.__proto__ || Object.getPrototypeOf(Column)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isMenuMore: false
+    }, _this._openMenuMore = function () {
+      if (!_this.state.isMenuMore) {
+        _this.setState({
+          isMenuMore: true
+        });
+      }
+    }, _this._closeMenuMore = function () {
+      _this.setState({
+        isMenuMore: false
+      });
+    }, _this._hHideTopic = function () {
       var _this$props = _this.props,
-          column = _this$props.column,
-          addNote = _this$props.addNote;
+          toggleColumn = _this$props.toggleColumn,
+          column = _this$props.column;
 
-      addNote(column.id);
-    };
-
-    _this._hBlurTitle = function (evt) {
+      toggleColumn(column.id);
+    }, _this._hAddNewTask = function () {
       var _this$props2 = _this.props,
           column = _this$props2.column,
-          editColumnTitle = _this$props2.editColumnTitle;
+          addNote = _this$props2.addNote;
+
+      addNote(column.id);
+    }, _this._hBlurTitle = function (evt) {
+      var _this$props3 = _this.props,
+          column = _this$props3.column,
+          editColumnTitle = _this$props3.editColumnTitle;
 
       editColumnTitle(column.id, evt.target.value);
-    };
-
-    _this._hRemoveColumn = function () {
-      var _this$props3 = _this.props,
-          boardId = _this$props3.boardId,
-          column = _this$props3.column,
-          removeColumn = _this$props3.removeColumn;
+    }, _this._hRemoveColumn = function () {
+      var _this$props4 = _this.props,
+          boardId = _this$props4.boardId,
+          column = _this$props4.column,
+          removeColumn = _this$props4.removeColumn;
 
       removeColumn(boardId, column.id);
-    };
-
-    _this._hBlurTitle = _this._hBlurTitle.bind(_this);
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(Column, [{
     key: 'render',
     value: function render() {
-      var _props = this.props,
+      var isMenuMore = this.state.isMenuMore,
+          _props = this.props,
           column = _props.column,
           notes = _props.notes,
           id = column.id,
@@ -105,6 +141,18 @@ var Column = function (_Component) {
       return _react2.default.createElement(
         _Card2.default.Item,
         { isHide: isHide },
+        _react2.default.createElement(_SvgMore2.default, {
+          style: S.SVG_MORE,
+          title: 'Click to open topic menu',
+          onClick: this._openMenuMore
+        }),
+        isMenuMore && _react2.default.createElement(_TopicMenuMore2.default, {
+          style: S.MENU_MORE,
+          isShow: isMenuMore,
+          onAddNote: this._hAddNewTask,
+          onHideTopic: this._hHideTopic,
+          onClose: this._closeMenuMore
+        }),
         _react2.default.createElement(_Card2.default.Title, {
           value: title,
           onBlur: this._hBlurTitle
@@ -141,7 +189,8 @@ var Column = function (_Component) {
 
 var mapDispatchToProps = {
   editColumnTitle: _actions.editColumnTitle,
-  removeColumn: _actions.removeColumn
+  removeColumn: _actions.removeColumn,
+  toggleColumn: _actions.toggleColumn
 };
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Column);

@@ -39,7 +39,7 @@ var HeaderCaption = function HeaderCaption(_ref) {
   )];
 };
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state /*: StoreState */) {
   return {
     board: _selectors2.default.board.currentBoard(state)
   };

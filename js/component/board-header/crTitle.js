@@ -3,17 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var crTitle = function crTitle(board /*: ?Board */
+) /*: string */{
+  var prefix /*: string */ = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Notes';
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var crTitle = function crTitle(board) {
-  var prefix = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Notes';
-
-  if ((typeof board === 'undefined' ? 'undefined' : (0, _typeof3.default)(board)) !== 'object') {
+  if (board == null) {
     return prefix + ': Not Exist';
   }
   var title = board.title || '',

@@ -8,8 +8,10 @@ import HeaderDrawer from '../header/HeaderDrawer'
 
 import CL from '../style/CL'
 
+// @flow
+
 const Header = ({
-  addColumn
+  addColumn /*: TopicAction.addColumn */
 }) => (
   <AppHeader
     className={CL.HEADER}

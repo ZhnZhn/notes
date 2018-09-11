@@ -8,7 +8,9 @@ import CL from '../style/CL'
 
 import crTitle from './crTitle'
 
-const HeaderCaption = ({ board }) => ([
+// @flow
+
+const HeaderCaption = ({ board /*: ?Board */ }) => ([
   <Logo className={CL.LOGO_BOARD} />,
   <span
     className={`${CL.HEADER_TITLE} ${CL.TITLE_BOARD}`}
@@ -17,7 +19,7 @@ const HeaderCaption = ({ board }) => ([
   </span>
 ]);
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state /*: StoreState */) => ({
   board: s.board.currentBoard(state)
 });
 

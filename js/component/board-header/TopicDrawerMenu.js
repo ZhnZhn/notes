@@ -36,27 +36,6 @@ var _DrawerMsgList2 = _interopRequireDefault(_DrawerMsgList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-const S = {
-  HEADER: {
-    marginLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 8
-  }
-};
-*/
-
-/*
-const MenuHeader = ({ board }) => (
-  <div
-    className={CL.HEADER}
-    style={S.HEADER}
-  >
-    {`Topics: ${board.title}`}
-  </div>
-);
-*/
-
 var TopicDrawerMenu = function TopicDrawerMenu(_ref) {
   var board = _ref.board,
       columns = _ref.columns,

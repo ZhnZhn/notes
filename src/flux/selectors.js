@@ -1,47 +1,66 @@
+// @flow
 
 export const sApp = {
-  app: state => state.app || {},
+  app: (state /*: StoreState */) => state.app || {},
   //state.app.boardId
-  currentBoard: state => sApp
+  currentBoard: (state /*: StoreState */) => sApp
     .app(state).boardId,
   //state.app.boardIds
-  boardIds: state => sApp
+  boardIds: (state /*: StoreState */) => sApp
     .app(state).boardIds || [],
   //state.app.uiTheme
-  uiTheme: state => sApp
+  uiTheme: (state /*: StoreState */) => sApp
     .app(state).uiTheme
 };
 
 export const sDrawer = {
-  msg: state => state.drawerMsg || []
+  msg: (state /*: StoreState */) => state.drawerMsg || []
 };
 
 export const sBoard = {
-  boards: state => state.boards || {},
+  boards: (state /*: StoreState */) => state.boards || {},
+
   //state.boards[state.app.boardId]
-  currentBoard: state => sBoard
+  currentBoard: (state /*: StoreState */) => sBoard
     .boards(state)[sApp.currentBoard(state)] || {},
+
   //state.boards[id]
-  board: (state, boardId) => sBoard
+  board: (
+    state /*: StoreState */,
+    boardId /*: string */
+  ) => sBoard
     .boards(state)[boardId] || {},
+
   //state.boards[boardId].columnIds
-  columnIds: (state, boardId) => sBoard
+  columnIds: (
+    state /*: StoreState */,
+    boardId /*: string */
+  ) => sBoard
     .board(state, boardId).columnIds || [],
+
   //state.app.boardIds
-  boardIds: state => sApp.boardIds(state)
+  boardIds: (state /*: StoreState */) => sApp.boardIds(state)
 };
 
 export const sNote = {
-  notes: state => state.notes || {}
+  notes: (state /*: StoreState */) => state.notes || {}
 };
 
 export const sColumn = {
-  columns: state => state.columns || {},
+  columns: (state /*: StoreState */) => state.columns || {},
+
   //state.columns[columnId]
-  column: (state, columnId) => sColumn
+  column: (
+    state /*: StoreState */,
+    columnId /*: string */
+  ) => sColumn
     .columns(state)[columnId] || {},
+
   //state.columns[columnId].noteIds
-  noteIds: (state, columnId) => sColumn
+  noteIds: (
+    state /*: StoreState */,
+    columnId /*: string */
+  ) => sColumn
     .column(state, columnId).noteIds || []
 };
 

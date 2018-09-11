@@ -9,27 +9,6 @@ import TopicDrawerCaption from './TopicDrawerCaption'
 import TopicList from './TopicList'
 import DrawerMsgList from '../header/DrawerMsgList'
 
-/*
-const S = {
-  HEADER: {
-    marginLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 8
-  }
-};
-*/
-
-/*
-const MenuHeader = ({ board }) => (
-  <div
-    className={CL.HEADER}
-    style={S.HEADER}
-  >
-    {`Topics: ${board.title}`}
-  </div>
-);
-*/
-
 const TopicDrawerMenu = ({
   board,
   columns,

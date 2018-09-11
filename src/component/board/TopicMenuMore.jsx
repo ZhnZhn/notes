@@ -7,12 +7,13 @@ import ModalPane from '../zhn-ch/ModalPane'
 import FlatButton from '../zhn-m/FlatButton'
 import CL from '../style/CL'
 
-const MenuMore = ({
-  theme,
+const TopicMenuMore = ({
   style,
+  theme,
   isShow,
-  onClose,
-  onRemove
+  onHideTopic,
+  onAddNote,
+  onClose
 }) => {
   const TS = theme.createStyle(styleConfig);
   return (
@@ -24,12 +25,21 @@ const MenuMore = ({
     >
       <div>
         <FlatButton
-          caption="Remove"
-          onClick={onRemove}
+          caption="Hide Topic"
+          title="Click to hide Topic"
+          onClick={onHideTopic}
+        />
+      </div>
+      <div>
+        <FlatButton
+          caption="Add Note"
+          title="Click to add new Note"
+          timeout={100}
+          onClick={onAddNote}
         />
       </div>
     </ModalPane>
   );
 };
 
-export default withTheme(MenuMore)
+export default withTheme(TopicMenuMore)
