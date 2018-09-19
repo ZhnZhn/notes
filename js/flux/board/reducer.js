@@ -8,13 +8,9 @@ var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _extends2 = require('babel-runtime/helpers/extends');
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _extends6 = require('babel-runtime/helpers/extends');
-
-var _extends7 = _interopRequireDefault(_extends6);
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _actions = require('./actions');
 
@@ -30,7 +26,8 @@ var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var removeProp = _reducerFns2.default.removeProp,
+var setInObj = _reducerFns2.default.setInObj,
+    removeProp = _reducerFns2.default.removeProp,
     filterBy = _reducerFns2.default.filterBy;
 
 /*
@@ -53,19 +50,19 @@ var reducer = function reducer() /*: BoardAction */
       {
         var boardId = action.boardId,
             title = action.title,
-            newBoard = (0, _extends7.default)({}, state[boardId], { title: title });
+            newBoard = (0, _extends3.default)({}, state[boardId], { title: title });
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, boardId, newBoard));
+        return setInObj(state, boardId, newBoard);
       }
     case _actions.ACTION.ADD_BOARD:
       {
         var _boardId = action.boardId;
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _boardId, {
+        return setInObj(state, _boardId, {
           id: _boardId,
           title: 'New Board',
           columnIds: []
-        }));
+        });
       }
     case _actions.ACTION.REMOVE_BOARD:
       {
@@ -78,11 +75,11 @@ var reducer = function reducer() /*: BoardAction */
         var _boardId3 = action.boardId,
             columnId = action.columnId,
             oldBoard = state[_boardId3],
-            _newBoard = (0, _extends7.default)({}, oldBoard, {
+            _newBoard = (0, _extends3.default)({}, oldBoard, {
           columnIds: [].concat((0, _toConsumableArray3.default)(oldBoard.columnIds), [columnId])
         });
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _boardId3, _newBoard));
+        return setInObj(state, _boardId3, _newBoard);
       }
     case _actions2.ACTION.REMOVE_COLUMN:
       {
@@ -90,9 +87,9 @@ var reducer = function reducer() /*: BoardAction */
             _columnId = action.columnId,
             _oldBoard = state[_boardId4];
 
-        return (0, _extends7.default)({}, state, (0, _defineProperty3.default)({}, _boardId4, (0, _extends7.default)({}, _oldBoard, {
+        return setInObj(state, _boardId4, (0, _extends3.default)({}, _oldBoard, {
           columnIds: filterBy(_oldBoard.columnIds, _columnId)
-        })));
+        }));
       }
     default:
       return state;

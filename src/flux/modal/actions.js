@@ -13,13 +13,17 @@ export const showModal = (
   data
 });
 
+const showDetails = showModal.bind(null, 'DETAILS')
+
 /*::
 export type ModalAction =
   | $Call<typeof showModal, string, {}>
+  | $Call<typeof showDetails, {}>
 */
 
 const actions = {
-  showModal
+  showModal,
+  showDetails
 };
 
 export default actions

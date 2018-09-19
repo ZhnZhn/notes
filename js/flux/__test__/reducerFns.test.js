@@ -8,7 +8,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var removeProp = _reducerFns2.default.removeProp,
     filterBy = _reducerFns2.default.filterBy,
-    filterByProp = _reducerFns2.default.filterByProp;
+    filterByProp = _reducerFns2.default.filterByProp,
+    setInObj = _reducerFns2.default.setInObj;
 
 
 var returnSame = function returnSame() {
@@ -21,31 +22,49 @@ var returnSame = function returnSame() {
 
 describe('reducerFn removeProp', function () {
   test('should remove prop from obj by prop name', function () {
-    expect(removeProp({
-      a: 'a',
-      b: 'b'
-    }, 'a')).toEqual({
-      b: 'b'
-    });
+    var state = { a: 'a', b: 'b' },
+        newState = removeProp(state, 'a');
+    expect(newState).toEqual({ b: 'b' });
+    expect(state === newState).toBe(false);
   });
 });
 
 describe('reducerFn filterBy', function () {
   test('should filter array of string by str', function () {
-    expect(filterBy(['a', 'b'], 'a')).toEqual(['b']);
+    var state = ['a', 'b'],
+        newState = filterBy(state, 'a');
+    expect(newState).toEqual(['b']);
+    expect(state === newState).toBe(false);
   });
   test('should return same in edge case', returnSame);
 });
 
 describe('reducerFn filterByProp', function () {
   test('should filter arr with obj by propValue with default propName id', function () {
-    expect(filterByProp([{ id: '1', m: 'm1' }, { id: '2', m: 'm2' }], '1')).toEqual([{ id: '2', m: 'm2' }]);
+    var state = [{ id: '1', m: 'm1' }, { id: '2', m: 'm2' }],
+        newState = filterByProp(state, '1');
+    expect(newState).toEqual([{ id: '2', m: 'm2' }]);
+    expect(state === newState).toBe(false);
   });
 
   test('should filter arr with obj by propValue and propName', function () {
-    expect(filterByProp([{ id: '1', m: 'm1' }, { id: '2', m: 'm2' }], 'm1', 'm')).toEqual([{ id: '2', m: 'm2' }]);
+    var state = [{ id: '1', m: 'm1' }, { id: '2', m: 'm2' }],
+        newState = filterByProp(state, 'm1', 'm');
+    expect(newState).toEqual([{ id: '2', m: 'm2' }]);
+    expect(state === newState).toBe(false);
   });
 
   test('should return same in edge case', returnSame);
+});
+
+describe('setInObj', function () {
+  test('should set in state by key object', function () {
+    var state = {},
+        newState = setInObj(state, 'a', { title: 'a' });
+    expect(newState).toEqual({
+      a: { title: 'a' }
+    });
+    expect(state === newState).toBe(false);
+  });
 });
 //# sourceMappingURL=reducerFns.test.js.map

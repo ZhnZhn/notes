@@ -4,6 +4,15 @@
 $cCompBorder
 */
 
+textarea {
+  background-color: #9e9e9e;
+  border: 1px solid #9e9e9e;
+  border-radius: 2px;
+  padding: 8px;
+  font-size: 18px;
+  resize: none;
+}
+
 .input-text {
   border: none;
   border-bottom-color: $cCompBorder;

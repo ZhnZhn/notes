@@ -29,6 +29,7 @@ class InputText extends Component {
   */
 
   static defaultProps = {
+    className: '',
     maxLength: 40
   }
 

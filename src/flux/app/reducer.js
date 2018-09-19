@@ -4,8 +4,10 @@ import initialState from '../initialState'
 
 import fns from '../reducerFns'
 
-
-const { filterBy } = fns;
+const {
+  setInObj,
+  filterBy
+} = fns;
 
 /*
 const initState = {
@@ -40,20 +42,20 @@ const reducer = function(
          ...state.boardIds,
          boardId
        ];
-      return {
-        ...state,
-        boardIds: newBoardIds
-      };
+      return setInObj(state,
+        'boardIds',
+        newBoardIds
+      );
     }
     case BA.REMOVE_BOARD: {
       const { boardId } = action;
       if (state.boardId === boardId) {
         state.boardId = null
       }
-      return {
-        ...state,
-        boardIds: filterBy(state.boardIds, boardId)
-      };
+      return setInObj(state,
+        'boardIds',
+        filterBy(state.boardIds, boardId)
+      );
     }
     default: return state;
   }

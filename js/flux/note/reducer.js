@@ -8,9 +8,9 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _extends4 = require('babel-runtime/helpers/extends');
+var _extends3 = require('babel-runtime/helpers/extends');
 
-var _extends5 = _interopRequireDefault(_extends4);
+var _extends4 = _interopRequireDefault(_extends3);
 
 var _actions = require('./actions');
 
@@ -24,7 +24,8 @@ var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var removeProp = _reducerFns2.default.removeProp;
+var setInObj = _reducerFns2.default.setInObj,
+    removeProp = _reducerFns2.default.removeProp;
 
 
 var _crNewNote = function _crNewNote(noteId) {
@@ -45,21 +46,30 @@ var reducer = function reducer() /*: NoteAction */
         var noteId = action.noteId,
             title = action.title,
             note = state[noteId],
-            newNote = (0, _extends5.default)({}, note, { title: title });
+            newNote = (0, _extends4.default)({}, note, { title: title });
 
-        return (0, _extends5.default)({}, state, (0, _defineProperty3.default)({}, noteId, newNote));
+        return setInObj(state, noteId, newNote);
+      }
+    case _actions.ACTION.EDIT_NOTE_DESCR:
+      {
+        var _noteId = action.noteId,
+            descr = action.descr,
+            _note = state[_noteId],
+            _newNote = (0, _extends4.default)({}, _note, { descr: descr });
+
+        return setInObj(state, _noteId, _newNote);
       }
     case _actions.ACTION.ADD_NOTE:
       {
-        var _noteId = action.noteId;
+        var _noteId2 = action.noteId;
 
-        return (0, _extends5.default)({}, state, (0, _defineProperty3.default)({}, _noteId, _crNewNote(_noteId)));
+        return (0, _extends4.default)({}, state, (0, _defineProperty3.default)({}, _noteId2, _crNewNote(_noteId2)));
       }
     case _actions.ACTION.DELETE_NOTE:
       {
-        var _noteId2 = action.noteId;
+        var _noteId3 = action.noteId;
 
-        return removeProp(state, _noteId2);
+        return removeProp(state, _noteId3);
       }
     default:
       return state;

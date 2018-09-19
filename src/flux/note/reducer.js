@@ -3,7 +3,10 @@ import initialState from '../initialState'
 
 import fns from '../reducerFns'
 
-const { removeProp } = fns;
+const {
+  setInObj,
+  removeProp
+} = fns;
 
 const _crNewNote = (noteId) => ({
   id: noteId,
@@ -19,10 +22,13 @@ const reducer = function(
       const { noteId, title } = action
       , note = state[noteId]
       , newNote = { ...note, title };
-      return {
-        ...state,
-        [noteId]: newNote
-      };
+      return setInObj(state, noteId, newNote);
+    }
+    case ACTION.EDIT_NOTE_DESCR: {
+      const { noteId, descr } = action
+      , note = state[noteId]
+      , newNote = { ...note, descr };
+      return setInObj(state, noteId, newNote);      
     }
     case ACTION.ADD_NOTE: {
       const { noteId } = action;

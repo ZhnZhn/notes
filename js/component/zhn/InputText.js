@@ -114,6 +114,7 @@ var InputText = (_temp2 = _class = function (_Component) {
   }]);
   return InputText;
 }(_react.Component), _class.defaultProps = {
+  className: '',
   maxLength: 40
 }, _temp2);
 exports.default = InputText;

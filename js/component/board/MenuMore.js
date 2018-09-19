@@ -36,6 +36,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var MenuMore = function MenuMore(_ref) {
   var theme = _ref.theme,
+      className = _ref.className,
       style = _ref.style,
       isShow = _ref.isShow,
       onClose = _ref.onClose,
@@ -45,7 +46,7 @@ var MenuMore = function MenuMore(_ref) {
   return _react2.default.createElement(
     _ModalPane2.default,
     {
-      className: _CL2.default.MODAL_PANE,
+      className: _CL2.default.MODAL_PANE + ' ' + (className || ''),
       style: (0, _extends3.default)({}, style, TS.COMP),
       isShow: isShow,
       onClose: onClose

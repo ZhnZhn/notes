@@ -9,6 +9,7 @@ import CL from '../style/CL'
 
 const MenuMore = ({
   theme,
+  className,
   style,
   isShow,
   onClose,
@@ -17,7 +18,7 @@ const MenuMore = ({
   const TS = theme.createStyle(styleConfig);
   return (
     <ModalPane
-      className={CL.MODAL_PANE}
+      className={`${CL.MODAL_PANE} ${className || ''}`}
       style={{...style, ...TS.COMP}}
       isShow={isShow}
       onClose={onClose}

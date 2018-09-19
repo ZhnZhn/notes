@@ -26,7 +26,8 @@ var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var filterBy = _reducerFns2.default.filterBy;
+var setInObj = _reducerFns2.default.setInObj,
+    filterBy = _reducerFns2.default.filterBy;
 
 /*
 const initState = {
@@ -63,9 +64,7 @@ var reducer = function reducer() /*: AppAction */
         var _boardId = action.boardId,
             newBoardIds = [].concat((0, _toConsumableArray3.default)(state.boardIds), [_boardId]);
 
-        return (0, _extends3.default)({}, state, {
-          boardIds: newBoardIds
-        });
+        return setInObj(state, 'boardIds', newBoardIds);
       }
     case _actions2.ACTION.REMOVE_BOARD:
       {
@@ -74,9 +73,7 @@ var reducer = function reducer() /*: AppAction */
         if (state.boardId === _boardId2) {
           state.boardId = null;
         }
-        return (0, _extends3.default)({}, state, {
-          boardIds: filterBy(state.boardIds, _boardId2)
-        });
+        return setInObj(state, 'boardIds', filterBy(state.boardIds, _boardId2));
       }
     default:
       return state;

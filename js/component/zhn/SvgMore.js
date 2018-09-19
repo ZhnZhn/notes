@@ -13,7 +13,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CL = "bt-svg-more";
 
 var SvgMore = function SvgMore(_ref) {
-  var style = _ref.style,
+  var className = _ref.className,
+      style = _ref.style,
       svgStyle = _ref.svgStyle,
       title = _ref.title,
       onClick = _ref.onClick;
@@ -21,7 +22,7 @@ var SvgMore = function SvgMore(_ref) {
   return _react2.default.createElement(
     "button",
     {
-      className: CL,
+      className: CL + " " + className,
       style: style,
       title: title,
       onClick: onClick
@@ -39,6 +40,9 @@ var SvgMore = function SvgMore(_ref) {
       _react2.default.createElement("circle", { cx: "3", cy: "18", r: "2" })
     )
   );
+};
+SvgMore.defaultProps = {
+  className: ''
 };
 
 exports.default = SvgMore;

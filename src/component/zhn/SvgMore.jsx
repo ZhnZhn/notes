@@ -3,6 +3,7 @@ import React from 'react'
 const CL = "bt-svg-more";
 
 const SvgMore = ({
+  className,
   style,
   svgStyle,
   title,
@@ -10,7 +11,7 @@ const SvgMore = ({
 }) => {
   return (
     <button
-      className={CL}
+      className={`${CL} ${className}`}
       style={style}
       title={title}
       onClick={onClick}
@@ -28,5 +29,9 @@ const SvgMore = ({
     </button>
   );
 };
+SvgMore.defaultProps = {
+  className: ''
+}
+
 
 export default SvgMore

@@ -19,16 +19,21 @@ var _SettingsDialog = require('./SettingsDialog');
 
 var _SettingsDialog2 = _interopRequireDefault(_SettingsDialog);
 
+var _DetailsDialog = require('./DetailsDialog');
+
+var _DetailsDialog2 = _interopRequireDefault(_DetailsDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MD = exports.MD = {
   NOTIF: 'NOTIF',
-  SETTINGS: 'SETTINGS'
+  SETTINGS: 'SETTINGS',
+  DETAILS: 'DETAILS'
 };
 
 var _r = (_r2 = {
   DF: _NotificationDialog2.default
-}, (0, _defineProperty3.default)(_r2, MD.NOTIF, _NotificationDialog2.default), (0, _defineProperty3.default)(_r2, MD.SETTINGS, _SettingsDialog2.default), _r2);
+}, (0, _defineProperty3.default)(_r2, MD.NOTIF, _NotificationDialog2.default), (0, _defineProperty3.default)(_r2, MD.SETTINGS, _SettingsDialog2.default), (0, _defineProperty3.default)(_r2, MD.DETAILS, _DetailsDialog2.default), _r2);
 
 var modalRouter = {
   getDialog: function getDialog(type) {

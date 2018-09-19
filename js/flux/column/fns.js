@@ -22,7 +22,8 @@ var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var filterBy = _reducerFns2.default.filterBy,
+var setInObj = _reducerFns2.default.setInObj,
+    filterBy = _reducerFns2.default.filterBy,
     removeProp = _reducerFns2.default.removeProp;
 
 
@@ -83,6 +84,7 @@ var moveExternal = function moveExternal(state /*: TopicState */
 };
 
 exports.default = {
+  setInObj: setInObj,
   crColumn: crColumn,
   removeProp: removeProp,
   filterNoteIds: filterNoteIds,

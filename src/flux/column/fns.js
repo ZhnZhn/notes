@@ -2,6 +2,7 @@
 import fns from '../reducerFns'
 
 const {
+  setInObj,
   filterBy,
   removeProp
 } = fns;
@@ -68,6 +69,7 @@ const moveExternal = (
 };
 
 export default {
+  setInObj,
   crColumn,
   removeProp,
   filterNoteIds,

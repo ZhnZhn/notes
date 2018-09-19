@@ -4,9 +4,9 @@ var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _extends4 = require('babel-runtime/helpers/extends');
+var _extends5 = require('babel-runtime/helpers/extends');
 
-var _extends5 = _interopRequireDefault(_extends4);
+var _extends6 = _interopRequireDefault(_extends5);
 
 var _reducer = require('../reducer');
 
@@ -40,14 +40,23 @@ describe('reducer note', function () {
   test('should edit note title', function () {
     var nId = 'n-1',
         newTitle = 'Note';
-    expect((0, _reducer2.default)(state, _actions2.default.editNoteTitle(nId, newTitle))).toEqual((0, _extends5.default)({}, state, (0, _defineProperty3.default)({}, nId, (0, _extends5.default)({}, state[nId], {
+    expect((0, _reducer2.default)(state, _actions2.default.editNoteTitle(nId, newTitle))).toEqual((0, _extends6.default)({}, state, (0, _defineProperty3.default)({}, nId, (0, _extends6.default)({}, state[nId], {
       title: newTitle
     }))));
   });
+
+  test('should edit note descr', function () {
+    var nId = 'n-1',
+        newDescr = 'Note';
+    expect((0, _reducer2.default)(state, _actions2.default.editNoteDescr(nId, newDescr))).toEqual((0, _extends6.default)({}, state, (0, _defineProperty3.default)({}, nId, (0, _extends6.default)({}, state[nId], {
+      descr: newDescr
+    }))));
+  });
+
   test('should add note', function () {
     var cId = 'c-1',
         nId = 'n-3';
-    expect((0, _reducer2.default)(state, _actions2.default.addNote(cId, nId))).toEqual((0, _extends5.default)({}, state, (0, _defineProperty3.default)({}, nId, {
+    expect((0, _reducer2.default)(state, _actions2.default.addNote(cId, nId))).toEqual((0, _extends6.default)({}, state, (0, _defineProperty3.default)({}, nId, {
       id: nId,
       title: 'New Note'
     })));

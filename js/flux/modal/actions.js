@@ -17,13 +17,17 @@ var showModal = exports.showModal = function showModal(id /*: string */
   };
 };
 
+var showDetails = showModal.bind(null, 'DETAILS');
+
 /*::
 export type ModalAction =
   | $Call<typeof showModal, string, {}>
+  | $Call<typeof showDetails, {}>
 */
 
 var actions = {
-  showModal: showModal
+  showModal: showModal,
+  showDetails: showDetails
 };
 
 exports.default = actions;

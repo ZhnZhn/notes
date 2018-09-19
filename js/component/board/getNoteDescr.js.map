@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board/getNoteDescr.js"
+ ],
+ "file": "../../../src/component/board/getNoteDescr.js",
+ "names": [
+  "getNodeDescr",
+  "note",
+  "descr",
+  "title"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,eAAe,SAAfA,YAAe,CAACC,IAAD,EAAU;AAC7B,MAAK,QAAOA,IAAP,uDAAOA,IAAP,OAAgB,QAAhB,IAA4BA,QAAQ,IAAzC,EAAgD;AAC9C,WAAO,EAAP;AACD;AACD,SAAOA,KAAKC,KAAL,IAAcD,KAAKE,KAAnB,IAA4B,EAAnC;AACD,CALD;;kBAOeH,Y"
+}

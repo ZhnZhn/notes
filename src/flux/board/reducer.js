@@ -4,7 +4,11 @@ import initState from '../initialState'
 
 import fns from '../reducerFns'
 
-const { removeProp, filterBy } = fns;
+const {
+  setInObj,
+  removeProp,
+  filterBy
+} = fns;
 
 /*
 boards: {
@@ -24,21 +28,15 @@ const reducer = function (
     case ACTION.EDIT_BOARD_TITLE: {
       const { boardId, title } = action
          , newBoard = {...state[boardId], title };
-      return {
-        ...state,
-        [boardId]: newBoard
-      };
+      return setInObj(state, boardId, newBoard)
     }
     case ACTION.ADD_BOARD: {
       const { boardId } = action;
-      return {
-        ...state,
-        [boardId]: {
-          id: boardId,
-          title: 'New Board',
-          columnIds: []
-        }
-      };
+      return setInObj(state, boardId, {
+        id: boardId,
+        title: 'New Board',
+        columnIds: []
+      });
     }
     case ACTION.REMOVE_BOARD: {
       const { boardId } = action;
@@ -54,22 +52,16 @@ const reducer = function (
           , columnId
         ]
       }
-      return {
-        ...state,
-        [boardId]: newBoard
-      };
+      return setInObj(state, boardId, newBoard);
     }
     case CA.REMOVE_COLUMN:{
       const { boardId, columnId } = action
-      , oldBoard = state[boardId]
-      return {
-        ...state,
-        [boardId] : {
-          ...oldBoard,
-          columnIds: filterBy(oldBoard.columnIds, columnId)
-         }
-       };
-      }
+      , oldBoard = state[boardId];
+      return setInObj(state, boardId, {
+        ...oldBoard,
+        columnIds: filterBy(oldBoard.columnIds, columnId)
+      });
+    }
     default: return state;
   }
 };

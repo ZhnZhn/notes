@@ -18,7 +18,7 @@ $c-md-border: #607d8b;
   display: block;
   width: 350px;
   height: 150px;
-  margin: auto;  
+  margin: auto;
   border-radius: 5px;
 }
 
@@ -34,4 +34,14 @@ $c-md-border: #607d8b;
 .md-settings {
   width: 300px;
   height: 200px;
+}
+.md-details {
+  width: 300px;
+  height: 250px;
+
+  &__descr {
+    margin-left: 14px;
+    width: 90%;
+    height: 135px;
+  }
 }

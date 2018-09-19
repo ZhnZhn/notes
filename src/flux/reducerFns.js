@@ -30,8 +30,18 @@ const removeProp = (
   return _r;
 };
 
+const setInObj = (
+  state /*: {} */,
+  key /*: string */,
+  obj /*: {} */,
+) /*: {} */ => ({
+  ...state,
+  [key]: obj
+});
+
 export default {
   filterBy,
   filterByProp,
-  removeProp
+  removeProp,
+  setInObj
 }

@@ -6,62 +6,22 @@ import {
   deleteNote,
   editNoteTitle
 } from '../../flux/note/actions'
+import ma from '../../flux/modal/actions'
 
-import InputText from '../zhn/InputText'
-import SvgMore from '../zhn/SvgMore'
-import MenuMore from './MenuMore'
+import NoteCaption from './NoteCaption'
+import NoteDetails from './NoteDetails'
+
+const CL = 'note';
 
 const C = {
   DRAGGING: '#1e90ff', //dodgerblue
   NOT_DRAGGING: '#9e9e9e'
 };
 
-const S = {
-  ROOT: {
-    //display: 'flex',
-    position: 'relative',
-    border: '1px solid #009688',
-    boderRadius: 2,
-    padding: 8,
-    marginBottom: 8,
-    transition: 'background-color 0.2s easy'
-  },
-  HANDLE: {
-    display: 'inline-block',
-    width: 24,
-    height: 24,
-    marginRight: 8,
-    backgroundColor: 'darkcyan',
-    borderRadius: '50%'
-  },
-  CONTENT: {
-    display: 'inline-block',
-    verticalAlign: 'super'
-  },
-  BT_DELETE: {
-    position: 'absolute',
-    top: 8,
-    right: 8
-  },
-  MENU_MORE: {
-    position: 'absolute',
-    //bottom: -8,
-    right: 4,
-    width: 150
-  }
-};
-
-const Handle = (props) => (
-  <span
-    style={S.HANDLE}
-    {...props}
-  />
-);
-
-
 const _getState = (props) => ({
   noteTitle: props.note.title,
-  isMenuMore: false
+  isMenuMore: false,
+  isDetails: false
 });
 
 const _crRootStyle = (isDragging) => {
@@ -75,16 +35,14 @@ const _crRootStyle = (isDragging) => {
 class Note extends Component {
   /*
   static propTypes = {
-    provided: PropsType.obj,
-    snap: PropsType.obj,
-    task: PropsType.obj
+    provided: PropsType.object,
+    snap: PropsType.object,
+    note: PropsType.object
   }
   */
 
   constructor(props){
     super(props)
-    this._hBlurTitle = this._hBlurTitle.bind(this)
-    this._closeMenuMore = this._closeMenuMore.bind(this)
     this.state = _getState(props)
   }
 
@@ -102,17 +60,28 @@ class Note extends Component {
     })
   }
 
-  _hDelete = () => {
+  _deleteNote = () => {
     const { deleteNote, columnId, note } = this.props
     deleteNote(columnId, note.id)
   }
 
-  _hBlurTitle = (evt) => {
+  _blurTitle = (evt) => {
     const newTitle = evt.target.value
     , { note, editNoteTitle } = this.props;
     if (newTitle !== note.title) {
       editNoteTitle(note.id, newTitle)
     }
+  }
+
+  _toggleDetails = () => {
+    this.setState(prevState => ({
+      isDetails: !prevState.isDetails
+    }))
+  }
+
+  _editDetails = () => {
+    const { note, editDetails } = this.props
+    editDetails(note)
   }
 
   render(){
@@ -127,39 +96,36 @@ class Note extends Component {
     , _style = _crRootStyle(isDragging)
     , {
       noteTitle,
-      isMenuMore
+      isMenuMore,
+      isDetails
     } = this.state;
-
-
 
     return (
       <div
-        style={{ ...S.ROOT, ..._style, ...style} }
+        className={CL}
+        style={{..._style, ...style}}
         {...draggablePropsRest}
         ref={innerRef}
         id={note.id}
       >
-        <Handle
-          {...dragHandleProps}
+        <NoteCaption
+          dragHandleProps={dragHandleProps}
+          isDetails={isDetails}
+          onClickHandle={this._toggleDetails}
+
+          noteTitle={noteTitle}
+          onBlurTitle={this._blurTitle}
+
+          isMenuMore={isMenuMore}
+          onClickMenuMore={this._openMenuMore}
+          onCloseMenuMore={this._closeMenuMore}
+          onRemoveNote={this._deleteNote}
         />
-        <InputText
-          style={S.CONTENT}
-          value={noteTitle}
-          onBlur={this._hBlurTitle}
+        <NoteDetails
+          isShow={isDetails}
+          note={note}
+          editDetails={this._editDetails}
         />
-        <SvgMore
-          style={S.BT_DELETE}
-          title="Click to open note menu"
-          onClick={this._openMenuMore}
-        />
-        {
-          isMenuMore && <MenuMore
-            isShow={isMenuMore}
-            style={S.MENU_MORE}
-            onClose={this._closeMenuMore}
-            onRemove={this._hDelete}
-          />
-        }
       </div>
     );
   }
@@ -167,7 +133,8 @@ class Note extends Component {
 
 const mapDispatchToProps = {
   deleteNote,
-  editNoteTitle
+  editNoteTitle,
+  editDetails: ma.showDetails
 };
 
 export default connect(

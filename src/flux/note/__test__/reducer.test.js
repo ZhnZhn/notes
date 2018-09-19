@@ -29,6 +29,20 @@ describe('reducer note', () => {
       }
     })
   })
+
+  test('should edit note descr', ()=>{
+    const nId ='n-1', newDescr = 'Note'
+    expect(
+      reducer(state, ta.editNoteDescr(nId, newDescr))
+    ).toEqual({
+      ...state,
+      [nId]: {
+        ...state[nId],
+        descr: newDescr
+      }
+    })
+  })
+
   test('should add note', ()=>{
     const cId = 'c-1', nId = 'n-3'
     expect(

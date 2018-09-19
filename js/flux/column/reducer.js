@@ -8,13 +8,9 @@ var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _extends2 = require('babel-runtime/helpers/extends');
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _extends7 = require('babel-runtime/helpers/extends');
-
-var _extends8 = _interopRequireDefault(_extends7);
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _actions = require('./actions');
 
@@ -30,7 +26,8 @@ var _fns2 = _interopRequireDefault(_fns);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var crColumn = _fns2.default.crColumn,
+var setInObj = _fns2.default.setInObj,
+    crColumn = _fns2.default.crColumn,
     noteIdsTo = _fns2.default.noteIdsTo,
     filterNoteIds = _fns2.default.filterNoteIds,
     removeProp = _fns2.default.removeProp,
@@ -49,15 +46,15 @@ var reducer = function reducer() /*: TopicAction */
         var columnId = action.columnId,
             title = action.title;
 
-        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, columnId, (0, _extends8.default)({}, state[columnId], {
+        return setInObj(state, columnId, (0, _extends3.default)({}, state[columnId], {
           title: title
-        })));
+        }));
       }
     case _actions.ACTION.ADD_COLUMN:
       {
         var _columnId = action.columnId;
 
-        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId, crColumn(_columnId)));
+        return setInObj(state, _columnId, crColumn(_columnId));
       }
     case _actions.ACTION.REMOVE_COLUMN:
       {
@@ -70,9 +67,9 @@ var reducer = function reducer() /*: TopicAction */
         var _columnId3 = action.columnId,
             column = state[_columnId3];
 
-        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId3, (0, _extends8.default)({}, column, {
+        return setInObj(state, _columnId3, (0, _extends3.default)({}, column, {
           isHide: !column.isHide
-        })));
+        }));
       }
 
     case _actions2.ACTION.MOVE_NOTE:
@@ -92,7 +89,7 @@ var reducer = function reducer() /*: TopicAction */
             _column = state[_columnId4],
             newNodeIds = filterNoteIds(_column, _noteId);
 
-        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId4, noteIdsTo(_column, newNodeIds)));
+        return setInObj(state, _columnId4, noteIdsTo(_column, newNodeIds));
       }
     case _actions2.ACTION.ADD_NOTE:
       {
@@ -101,7 +98,7 @@ var reducer = function reducer() /*: TopicAction */
             _column2 = state[_columnId5],
             newNoteIds = [_noteId2].concat((0, _toConsumableArray3.default)(_column2.noteIds));
 
-        return (0, _extends8.default)({}, state, (0, _defineProperty3.default)({}, _columnId5, noteIdsTo(_column2, newNoteIds)));
+        return setInObj(state, _columnId5, noteIdsTo(_column2, newNoteIds));
       }
 
     default:
