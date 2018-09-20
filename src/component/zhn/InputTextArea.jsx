@@ -22,7 +22,7 @@ class InputTextArea extends Component {
   }
 
   constructor(props){
-    super(props)
+    super(props)    
     this.state = {
       value: props.initValue
     }
@@ -39,6 +39,8 @@ class InputTextArea extends Component {
     }
   }
 
+  _refInputNode = (node) => this._inputNode = node
+
   render(){
     const {
       className,
@@ -48,6 +50,7 @@ class InputTextArea extends Component {
     const { value } = this.state;
     return (
       <textarea
+        ref={this._refInputNode}
         className={className}
         style={style}
         value={value}
@@ -60,6 +63,12 @@ class InputTextArea extends Component {
 
   getValue() {
     return this.state.value;
+  }
+  focus(){
+    if (this._inputNode
+      && this._inputNode.focus) {
+     this._inputNode.focus()
+    }
   }
 
 }

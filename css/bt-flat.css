@@ -4,7 +4,10 @@
 /*
 $cFlatBt
 */
-/*rgba(220,220,220, 0.2);*/
+/*
+$bgBt: rgba(0, 0, 0, 0);
+$bgBtFocus: rgba(120, 120, 120, 0.2);
+*/
 .bt-flat {
   color: #1b2836;
   background-color: rgba(0, 0, 0, 0);

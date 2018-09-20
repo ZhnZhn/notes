@@ -80,7 +80,7 @@ class Note extends Component {
   }
 
   _editDetails = () => {
-    const { note, editDetails } = this.props
+    const { note, editDetails } = this.props;    
     editDetails(note)
   }
 

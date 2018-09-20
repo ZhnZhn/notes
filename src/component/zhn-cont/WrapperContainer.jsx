@@ -89,7 +89,7 @@ class WrapperContainer extends Component {
     const { store, theme } = this.props;
     const { shows, data, dialogs } = this.state;
     return dialogs.map(dialog => {
-      const { type, comp } = dialog;
+      const { type, comp } = dialog;      
       return React.createElement(comp, {
         key: type,
         isShow: shows[type],

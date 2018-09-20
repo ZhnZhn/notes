@@ -1,38 +1,35 @@
 import React, { Component } from 'react'
 
-import na from '../../flux/note/actions'
-
 import withTheme from '../hoc/withTheme'
 import styleConfig from '../style/Dialog.Style'
 
 import ModalDialog from '../zhn-ch/ModalDialog'
-import FlatButton from '../zhn-m/FlatButton'
-import InputTextArea from '../zhn/InputTextArea'
+import TabPane from '../zhn-tab/TabPane'
+import Tab from '../zhn-tab/Tab'
 
-import getNoteDescr from '../board/getNoteDescr'
+import DetailsTabDescr from './DetailsTabDescr'
+import DetailsTabLabels from './DetailsTabLabels'
 
 const CL = {
-  DIALOG: 'md-details',
-  DESCR: 'md-details__descr'
+  DIALOG: 'md-details'
+};
+
+const S = {
+  CAPTION: {
+    marginBottom: 0
+  }
+};
+
+const _crCaption = (note) => {
+  const { title='' } = note
+  , _title = title.substring(0, 12)
+  , _sufix = title.length > _title.length
+     ? '...'
+     : '';
+  return `Details: ${_title}${_sufix}`;
 };
 
 class DetailsDialog extends Component {
-
-  constructor(props){
-    super(props)
-    this._commandButtons = [
-      <FlatButton
-         caption="Save"
-         onClick={this._editDescr}
-      />
-    ]
-  }
-
-  _editDescr = () => {
-    const { data, dispatch } = this.props
-    , _descr = this._inputDescr.getValue();
-    dispatch(na.editNoteDescr(data.id, _descr))
-  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props
@@ -42,34 +39,43 @@ class DetailsDialog extends Component {
     return true;
   }
 
-  _refInputDescr = (node) => this._inputDescr = node
 
   render(){
     const {
       isShow,
       theme,
       data,
+      dispatch,
       onClose
     } = this.props
-    , _initDescr = getNoteDescr(data)
+    , _caption = _crCaption(data)
     , TS = theme.createStyle(styleConfig);
 
     return (
       <ModalDialog
         className={CL.DIALOG}
         style={TS.DIALOG}
-        caption="Note Details"
+        captionStyle={S.CAPTION}
+        caption={_caption}
         isShow={isShow}
-        commandButtons={this._commandButtons}
+        withoutClose={true}
         onClose={onClose}
       >
-        <InputTextArea
-          ref={this._refInputDescr}
-          key={_initDescr}
-          className={CL.DESCR}
-          maxLength={250}
-          initValue={_initDescr}
-        />
+        <TabPane width="100%" key={data.id}>
+          <Tab title="Descr">
+            <DetailsTabDescr
+              note={data}
+              dispatch={dispatch}
+              onClose={onClose}
+            />
+          </Tab>
+          <Tab title="Labels">
+            <DetailsTabLabels
+              note={data}
+              onClose={onClose}
+            />
+          </Tab>
+       </TabPane>
       </ModalDialog>
     );
   }

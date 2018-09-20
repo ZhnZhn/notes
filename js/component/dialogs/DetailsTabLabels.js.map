@@ -1,0 +1,29 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/DetailsTabLabels.js"
+ ],
+ "file": "../../../src/component/dialogs/DetailsTabLabels.js",
+ "names": [
+  "CL",
+  "ACTIONS",
+  "S",
+  "LABELS",
+  "paddingTop",
+  "paddingLeft",
+  "DetailsTabLabels",
+  "_focusBtClose",
+  "props",
+  "isSelected",
+  "_btClose",
+  "focus",
+  "_refBtClose",
+  "node",
+  "note",
+  "onClose",
+  "title",
+  "prevProps",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,WAAS;AADA,CAAX;;AAIA,IAAMC,IAAI;AACRC,UAAQ;AACNC,gBAAY,CADN;AAENC,iBAAa;AAFP;AADA,CAAV;;IAOMC,gB;;;;;;;;;;;;;;wNAEJC,a,GAAgB,YAAM;AACpB,UAAI,MAAKC,KAAL,CAAWC,UAAX,IACC,MAAKC,QADN,IAEC,MAAKA,QAAL,CAAcC,KAFnB,EAE2B;AACxB,cAAKD,QAAL,CAAcC,KAAd;AACF;AACF,K,QAMDC,W,GAAc,UAACC,IAAD;AAAA,aAAU,MAAKH,QAAL,GAAgBG,IAA1B;AAAA,K;;;;;wCAJK;AACjB,WAAKN,aAAL;AACD;;;6BAIO;AAAA,mBAIF,KAAKC,KAJH;AAAA,UAEJM,IAFI,UAEJA,IAFI;AAAA,UAGJC,OAHI,UAGJA,OAHI;;;AAMN,aACE;AAAC,uBAAD;AAAA;AACE;AAAA;AAAA,YAAK,OAAOb,EAAEC,MAAd;AACGW,eAAKE;AADR,SADF;AAIE;AAAA;AAAA,YAAK,WAAWhB,GAAGC,OAAnB;AACE,wCAAC,oBAAD;AACE,iBAAK,KAAKW,WADZ;AAEE,qBAAQ,OAFV;AAGE,qBAAS,CAHX;AAIE,qBAASG;AAJX;AADF;AAJF,OADF;AAeD;;;uCAEkBE,S,EAAW;AAC5B,UAAI,KAAKT,KAAL,KAAeS,SAAf,IACD,KAAKT,KAAL,CAAWC,UADd,EAC0B;AACxB,aAAKF,aAAL;AACD;AACF;;;EA5C4BW,gB;;kBA+ChBZ,gB"
+}

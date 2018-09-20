@@ -24,10 +24,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _actions = require('../../flux/note/actions');
-
-var _actions2 = _interopRequireDefault(_actions);
-
 var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
@@ -40,51 +36,49 @@ var _ModalDialog = require('../zhn-ch/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _FlatButton = require('../zhn-m/FlatButton');
+var _TabPane = require('../zhn-tab/TabPane');
 
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
+var _TabPane2 = _interopRequireDefault(_TabPane);
 
-var _InputTextArea = require('../zhn/InputTextArea');
+var _Tab = require('../zhn-tab/Tab');
 
-var _InputTextArea2 = _interopRequireDefault(_InputTextArea);
+var _Tab2 = _interopRequireDefault(_Tab);
 
-var _getNoteDescr = require('../board/getNoteDescr');
+var _DetailsTabDescr = require('./DetailsTabDescr');
 
-var _getNoteDescr2 = _interopRequireDefault(_getNoteDescr);
+var _DetailsTabDescr2 = _interopRequireDefault(_DetailsTabDescr);
+
+var _DetailsTabLabels = require('./DetailsTabLabels');
+
+var _DetailsTabLabels2 = _interopRequireDefault(_DetailsTabLabels);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL = {
-  DIALOG: 'md-details',
-  DESCR: 'md-details__descr'
+  DIALOG: 'md-details'
+};
+
+var S = {
+  CAPTION: {
+    marginBottom: 0
+  }
+};
+
+var _crCaption = function _crCaption(note) {
+  var _note$title = note.title,
+      title = _note$title === undefined ? '' : _note$title,
+      _title = title.substring(0, 12),
+      _sufix = title.length > _title.length ? '...' : '';
+
+  return 'Details: ' + _title + _sufix;
 };
 
 var DetailsDialog = function (_Component) {
   (0, _inherits3.default)(DetailsDialog, _Component);
 
-  function DetailsDialog(props) {
+  function DetailsDialog() {
     (0, _classCallCheck3.default)(this, DetailsDialog);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DetailsDialog.__proto__ || Object.getPrototypeOf(DetailsDialog)).call(this, props));
-
-    _this._editDescr = function () {
-      var _this$props = _this.props,
-          data = _this$props.data,
-          dispatch = _this$props.dispatch,
-          _descr = _this._inputDescr.getValue();
-
-      dispatch(_actions2.default.editNoteDescr(data.id, _descr));
-    };
-
-    _this._refInputDescr = function (node) {
-      return _this._inputDescr = node;
-    };
-
-    _this._commandButtons = [_react2.default.createElement(_FlatButton2.default, {
-      caption: 'Save',
-      onClick: _this._editDescr
-    })];
-    return _this;
+    return (0, _possibleConstructorReturn3.default)(this, (DetailsDialog.__proto__ || Object.getPrototypeOf(DetailsDialog)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(DetailsDialog, [{
@@ -102,8 +96,9 @@ var DetailsDialog = function (_Component) {
           isShow = _props.isShow,
           theme = _props.theme,
           data = _props.data,
+          dispatch = _props.dispatch,
           onClose = _props.onClose,
-          _initDescr = (0, _getNoteDescr2.default)(data),
+          _caption = _crCaption(data),
           TS = theme.createStyle(_Dialog2.default);
 
       return _react2.default.createElement(
@@ -111,18 +106,33 @@ var DetailsDialog = function (_Component) {
         {
           className: CL.DIALOG,
           style: TS.DIALOG,
-          caption: 'Note Details',
+          captionStyle: S.CAPTION,
+          caption: _caption,
           isShow: isShow,
-          commandButtons: this._commandButtons,
+          withoutClose: true,
           onClose: onClose
         },
-        _react2.default.createElement(_InputTextArea2.default, {
-          ref: this._refInputDescr,
-          key: _initDescr,
-          className: CL.DESCR,
-          maxLength: 250,
-          initValue: _initDescr
-        })
+        _react2.default.createElement(
+          _TabPane2.default,
+          { width: '100%', key: data.id },
+          _react2.default.createElement(
+            _Tab2.default,
+            { title: 'Descr' },
+            _react2.default.createElement(_DetailsTabDescr2.default, {
+              note: data,
+              dispatch: dispatch,
+              onClose: onClose
+            })
+          ),
+          _react2.default.createElement(
+            _Tab2.default,
+            { title: 'Labels' },
+            _react2.default.createElement(_DetailsTabLabels2.default, {
+              note: data,
+              onClose: onClose
+            })
+          )
+        )
       );
     }
   }]);

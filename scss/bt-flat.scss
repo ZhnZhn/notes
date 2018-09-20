@@ -1,22 +1,24 @@
 @import 'variables/colors';
+@import 'variables/backgrounds';
 
 /*
 $cFlatBt
 */
 
-$bg-bt: rgba(0, 0, 0, 0);
-/*rgba(220,220,220, 0.2);*/
-$bg-bt-focus: rgba(120, 120, 120, 0.2);
+/*
+$bgBt: rgba(0, 0, 0, 0);
+$bgBtFocus: rgba(120, 120, 120, 0.2);
+*/
 
 .bt-flat {
   color: $cFlatBt;
-  background-color: $bg-bt;
+  background-color: $bgBt;
   border: 10px;
   position: relative;
   box-sizing: border-box;
   display: inline-block;
   margin: 0;
-  padding: 0;  
+  padding: 0;
   outline: none;
   z-index: 1;
   height: 36px;
@@ -34,17 +36,17 @@ $bg-bt-focus: rgba(120, 120, 120, 0.2);
     outline: 0;
   }
   &:focus {
-    background-color: $bg-bt-focus;
+    background-color: $bgBtFocus;
   }
 
   &__div {
-    background-color: $bg-bt;
+    background-color: $bgBt;
     top: 0;
     height: 36px;
     border-radius: 2px;
     transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
     &:hover {
-      background-color: $bg-bt-focus;
+      background-color: $bgBtFocus;
     }
   }
 

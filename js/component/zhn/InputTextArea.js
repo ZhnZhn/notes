@@ -57,6 +57,10 @@ var InputTextArea = (_temp = _class = function (_Component) {
       }
     };
 
+    _this._refInputNode = function (node) {
+      return _this._inputNode = node;
+    };
+
     _this.state = {
       value: props.initValue
     };
@@ -80,6 +84,7 @@ var InputTextArea = (_temp = _class = function (_Component) {
       var value = this.state.value;
 
       return _react2.default.createElement('textarea', {
+        ref: this._refInputNode,
         className: className,
         style: style,
         value: value,
@@ -92,6 +97,13 @@ var InputTextArea = (_temp = _class = function (_Component) {
     key: 'getValue',
     value: function getValue() {
       return this.state.value;
+    }
+  }, {
+    key: 'focus',
+    value: function focus() {
+      if (this._inputNode && this._inputNode.focus) {
+        this._inputNode.focus();
+      }
     }
   }]);
   return InputTextArea;

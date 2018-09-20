@@ -12,9 +12,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var getNodeDescr = function getNodeDescr(note) {
   if ((typeof note === 'undefined' ? 'undefined' : (0, _typeof3.default)(note)) !== 'object' || note == null) {
-    return '';
+    return 'This note is not exist.';
   }
-  return note.descr || note.title || '';
+  return note.descr || 'Edit description...';
 };
 
 exports.default = getNodeDescr;
