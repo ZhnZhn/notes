@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+
+var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -24,20 +28,36 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _DetailsLabelList = require('./DetailsLabelList');
+
+var _DetailsLabelList2 = _interopRequireDefault(_DetailsLabelList);
+
+var _InputText = require('../zhn/InputText');
+
+var _InputText2 = _interopRequireDefault(_InputText);
+
+var _PaneColors = require('../zhn-m/PaneColors');
+
+var _PaneColors2 = _interopRequireDefault(_PaneColors);
+
 var _FlatButton = require('../zhn-m/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = require('../style/CL');
 
-var CL = {
-  ACTIONS: 'md__actions'
-};
+var _CL2 = _interopRequireDefault(_CL);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
   LABELS: {
     paddingTop: 4,
-    paddingLeft: 12
+    paddingLeft: 12,
+    paddingBottom: 8
+  },
+  BT_ADD: {
+    marginLeft: 16
   }
 };
 
@@ -55,10 +75,37 @@ var DetailsTabLabels = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DetailsTabLabels.__proto__ || Object.getPrototypeOf(DetailsTabLabels)).call.apply(_ref, [this].concat(args))), _this), _this._focusBtClose = function () {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DetailsTabLabels.__proto__ || Object.getPrototypeOf(DetailsTabLabels)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      labels: []
+    }, _this._focusBtClose = function () {
       if (_this.props.isSelected && _this._btClose && _this._btClose.focus) {
         _this._btClose.focus();
       }
+    }, _this._onBlurLabel = function (evt) {
+      _this._label = evt.target.value;
+    }, _this._onAddLabel = function () {
+      var _c = _this._inputColor.getColor();
+      _this._inputLabel.setValue('');
+      _this.setState(function (prevState) {
+        return {
+          labels: [].concat((0, _toConsumableArray3.default)(prevState.labels), [{
+            title: _this._label,
+            color: _c
+          }])
+        };
+      });
+    }, _this._onRemoveLabel = function (label) {
+      _this.setState(function (prevState) {
+        return {
+          labels: prevState.labels.filter(function (item) {
+            return item.title !== label.title;
+          })
+        };
+      });
+    }, _this._refInputLabel = function (node) {
+      return _this._inputLabel = node;
+    }, _this._refInputColor = function (node) {
+      return _this._inputColor = node;
     }, _this._refBtClose = function (node) {
       return _this._btClose = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
@@ -72,9 +119,8 @@ var DetailsTabLabels = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          note = _props.note,
-          onClose = _props.onClose;
+      var onClose = this.props.onClose,
+          labels = this.state.labels;
 
 
       return _react2.default.createElement(
@@ -83,11 +129,29 @@ var DetailsTabLabels = function (_Component) {
         _react2.default.createElement(
           'div',
           { style: S.LABELS },
-          note.title
+          _react2.default.createElement(_DetailsLabelList2.default, {
+            labels: labels,
+            onRemove: this._onRemoveLabel
+          }),
+          _react2.default.createElement(_InputText2.default, {
+            ref: this._refInputLabel,
+            onBlur: this._onBlurLabel
+          }),
+          _react2.default.createElement(_FlatButton2.default, {
+            clCaption: _CL2.default.CARD_BT,
+            rootStyle: S.BT_ADD,
+            caption: 'AddLabel',
+            title: 'Click to add a new label',
+            timeout: 400,
+            onClick: this._onAddLabel
+          })
         ),
+        _react2.default.createElement(_PaneColors2.default, {
+          ref: this._refInputColor
+        }),
         _react2.default.createElement(
           'div',
-          { className: CL.ACTIONS },
+          { className: _CL2.default.MD_ACTIONS },
           _react2.default.createElement(_FlatButton2.default, {
             ref: this._refBtClose,
             caption: 'Close',

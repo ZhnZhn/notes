@@ -111,6 +111,11 @@ var InputText = (_temp2 = _class = function (_Component) {
         onKeyDown: this._hKeyDown
       });
     }
+  }, {
+    key: 'setValue',
+    value: function setValue(value) {
+      this.setState({ value: value });
+    }
   }]);
   return InputText;
 }(_react.Component), _class.defaultProps = {

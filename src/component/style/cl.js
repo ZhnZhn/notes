@@ -12,6 +12,8 @@ const CL = {
 
   MODAL_PANE: 'modal-pane',
 
+  MD_ACTIONS: 'md__actions',
+
   ITEM_CARD: 'card',
   CARD_TITLE: 'card__title',
   CARD_BT: 'bt__card',

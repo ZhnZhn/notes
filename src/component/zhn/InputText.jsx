@@ -75,6 +75,10 @@ class InputText extends Component {
       />
     );
   }
+
+  setValue(value) {
+    this.setState({ value })
+  }
 }
 
 export default InputText
