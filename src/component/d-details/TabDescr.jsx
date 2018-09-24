@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import na from '../../flux/note/actions'
 
 import InputTextArea from '../zhn/InputTextArea'
-import FlatButton from '../zhn-m/FlatButton'
+import DialogButtons from './DialogButtons'
 
 import getNoteDescr from '../board/getNoteDescr'
 
@@ -12,13 +12,12 @@ const CL = {
   ACTIONS: 'md__actions'
 };
 
-class DetailsTabDescr extends Component {
+class TabDescr extends Component {
 
   _focusBtClose = () => {
     if (this.props.isSelected
-      && this._btClose
-      && this._btClose.focus) {
-      this._btClose.focus()
+      && this._buttons) {
+      this._buttons.focusBtClose()
     }
   }
 
@@ -33,7 +32,7 @@ class DetailsTabDescr extends Component {
   }
 
   _refInputDescr = (node) => this._inputDescr = node
-  _refBtClose = (node) => this._btClose = node
+  _refButtons = (node) => this._buttons = node
 
   render(){
     const {
@@ -51,19 +50,12 @@ class DetailsTabDescr extends Component {
           maxLength={250}
           initValue={_initDescr}
         />
-        <div className={CL.ACTIONS}>
-          <FlatButton
-            caption="Save"
-            timeout={100}
-            onClick={this._editDescr}
-          />
-          <FlatButton
-            ref={this._refBtClose}
-            caption="Close"
-            timeout={0}
-            onClick={onClose}
-          />
-        </div>
+        <DialogButtons
+          ref={this._refButtons}
+          className={CL.ACTIONS}
+          onSave={this._editDescr}
+          onClose={onClose}
+        />        
       </Fragment>
     );
   }
@@ -76,4 +68,4 @@ class DetailsTabDescr extends Component {
   }
 }
 
-export default DetailsTabDescr
+export default TabDescr

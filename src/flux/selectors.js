@@ -46,6 +46,10 @@ export const sNote = {
   notes: (state /*: StoreState */) => state.notes || {}
 };
 
+export const sNoteLabel = {
+  labels: (state /*: StoreState */ ) => state.noteLabels || {}
+}
+
 export const sColumn = {
   columns: (state /*: StoreState */) => state.columns || {},
 

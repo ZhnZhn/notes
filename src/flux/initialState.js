@@ -21,6 +21,9 @@ const initState /*: StoreState */ = {
   notes: {
     //'n-1': { id: 'n-1', title: 'Note 1' },
   },
+  noteLabel: {
+   //'nl-1': { id: 'nl-1', title: 'Label', color: 'green' },
+  },
   columns: {
     'c-1': {
       id: 'c-1',
@@ -31,7 +34,7 @@ const initState /*: StoreState */ = {
     'c-2': {
       id: 'c-2',
       title: 'Column 2',
-      noteIds: []      
+      noteIds: []
     }
   }
   //columnOrder: [ 'column-1', 'column-2', 'column-3' ]

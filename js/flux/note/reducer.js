@@ -59,17 +59,26 @@ var reducer = function reducer() /*: NoteAction */
 
         return setInObj(state, _noteId, _newNote);
       }
-    case _actions.ACTION.ADD_NOTE:
+    case _actions.ACTION.EDIT_NOTE_LABELS:
       {
-        var _noteId2 = action.noteId;
+        var _noteId2 = action.noteId,
+            labelsTo = action.labelsTo,
+            _note2 = state[_noteId2],
+            _newNote2 = (0, _extends4.default)({}, _note2, { labels: labelsTo });
 
-        return (0, _extends4.default)({}, state, (0, _defineProperty3.default)({}, _noteId2, _crNewNote(_noteId2)));
+        return setInObj(state, _noteId2, _newNote2);
       }
-    case _actions.ACTION.DELETE_NOTE:
+    case _actions.ACTION.ADD_NOTE:
       {
         var _noteId3 = action.noteId;
 
-        return removeProp(state, _noteId3);
+        return (0, _extends4.default)({}, state, (0, _defineProperty3.default)({}, _noteId3, _crNewNote(_noteId3)));
+      }
+    case _actions.ACTION.DELETE_NOTE:
+      {
+        var _noteId4 = action.noteId;
+
+        return removeProp(state, _noteId4);
       }
     default:
       return state;

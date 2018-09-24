@@ -4,10 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -28,9 +24,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _DetailsLabelList = require('./DetailsLabelList');
+var _actions = require('../../flux/note/actions');
 
-var _DetailsLabelList2 = _interopRequireDefault(_DetailsLabelList);
+var _actions2 = _interopRequireDefault(_actions);
+
+var _LabelList = require('./LabelList');
+
+var _LabelList2 = _interopRequireDefault(_LabelList);
 
 var _InputText = require('../zhn/InputText');
 
@@ -44,11 +44,24 @@ var _FlatButton = require('../zhn-m/FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
+var _DialogButtons = require('./DialogButtons');
+
+var _DialogButtons2 = _interopRequireDefault(_DialogButtons);
+
+var _fnTabLabels = require('./fnTabLabels');
+
+var _fnTabLabels2 = _interopRequireDefault(_fnTabLabels);
+
 var _CL = require('../style/CL');
 
 var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var toTitle = _fnTabLabels2.default.toTitle,
+    addLabel = _fnTabLabels2.default.addLabel,
+    removeLabel = _fnTabLabels2.default.removeLabel;
+
 
 var S = {
   LABELS: {
@@ -61,57 +74,65 @@ var S = {
   }
 };
 
-var DetailsTabLabels = function (_Component) {
-  (0, _inherits3.default)(DetailsTabLabels, _Component);
+var TabLabels = function (_Component) {
+  (0, _inherits3.default)(TabLabels, _Component);
 
-  function DetailsTabLabels() {
-    var _ref;
+  function TabLabels(props) {
+    (0, _classCallCheck3.default)(this, TabLabels);
 
-    var _temp, _this, _ret;
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TabLabels.__proto__ || Object.getPrototypeOf(TabLabels)).call(this, props));
 
-    (0, _classCallCheck3.default)(this, DetailsTabLabels);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DetailsTabLabels.__proto__ || Object.getPrototypeOf(DetailsTabLabels)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      labels: []
-    }, _this._focusBtClose = function () {
-      if (_this.props.isSelected && _this._btClose && _this._btClose.focus) {
-        _this._btClose.focus();
+    _this._focusBtClose = function () {
+      if (_this.props.isSelected && _this._buttons) {
+        _this._buttons.focusBtClose();
       }
-    }, _this._onBlurLabel = function (evt) {
+    };
+
+    _this._onBlurLabel = function (evt) {
       _this._label = evt.target.value;
-    }, _this._onAddLabel = function () {
-      var _c = _this._inputColor.getColor();
-      _this._inputLabel.setValue('');
+    };
+
+    _this._onAddLabel = function () {
       _this.setState(function (prevState) {
-        return {
-          labels: [].concat((0, _toConsumableArray3.default)(prevState.labels), [{
-            title: _this._label,
-            color: _c
-          }])
-        };
+        return addLabel(prevState, toTitle(_this._label), _this._inputColor.getColor());
+      }, function () {
+        return _this._inputLabel.setValue('');
       });
-    }, _this._onRemoveLabel = function (label) {
+    };
+
+    _this._onRemoveLabel = function (label) {
       _this.setState(function (prevState) {
-        return {
-          labels: prevState.labels.filter(function (item) {
-            return item.title !== label.title;
-          })
-        };
+        return removeLabel(prevState, label);
       });
-    }, _this._refInputLabel = function (node) {
+    };
+
+    _this._saveLabels = function () {
+      var _this$props = _this.props,
+          note = _this$props.note,
+          dispatch = _this$props.dispatch;
+
+      dispatch(_actions2.default.editNoteLabels(note.id, _this.state.labels));
+    };
+
+    _this._refInputLabel = function (node) {
       return _this._inputLabel = node;
-    }, _this._refInputColor = function (node) {
+    };
+
+    _this._refInputColor = function (node) {
       return _this._inputColor = node;
-    }, _this._refBtClose = function (node) {
-      return _this._btClose = node;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    _this._refButtons = function (node) {
+      return _this._buttons = node;
+    };
+
+    _this.state = {
+      labels: props.note.labels || []
+    };
+    return _this;
   }
 
-  (0, _createClass3.default)(DetailsTabLabels, [{
+  (0, _createClass3.default)(TabLabels, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this._focusBtClose();
@@ -129,7 +150,7 @@ var DetailsTabLabels = function (_Component) {
         _react2.default.createElement(
           'div',
           { style: S.LABELS },
-          _react2.default.createElement(_DetailsLabelList2.default, {
+          _react2.default.createElement(_LabelList2.default, {
             labels: labels,
             onRemove: this._onRemoveLabel
           }),
@@ -149,16 +170,12 @@ var DetailsTabLabels = function (_Component) {
         _react2.default.createElement(_PaneColors2.default, {
           ref: this._refInputColor
         }),
-        _react2.default.createElement(
-          'div',
-          { className: _CL2.default.MD_ACTIONS },
-          _react2.default.createElement(_FlatButton2.default, {
-            ref: this._refBtClose,
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
+        _react2.default.createElement(_DialogButtons2.default, {
+          ref: this._refButtons,
+          className: _CL2.default.MD_ACTIONS,
+          onSave: this._saveLabels,
+          onClose: onClose
+        })
       );
     }
   }, {
@@ -169,8 +186,8 @@ var DetailsTabLabels = function (_Component) {
       }
     }
   }]);
-  return DetailsTabLabels;
+  return TabLabels;
 }(_react.Component);
 
-exports.default = DetailsTabLabels;
-//# sourceMappingURL=DetailsTabLabels.js.map
+exports.default = TabLabels;
+//# sourceMappingURL=TabLabels.js.map

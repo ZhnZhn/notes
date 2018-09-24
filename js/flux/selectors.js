@@ -63,6 +63,12 @@ var sNote = exports.sNote = {
   }
 };
 
+var sNoteLabel = exports.sNoteLabel = {
+  labels: function labels(state /*: StoreState */) {
+    return state.noteLabels || {};
+  }
+};
+
 var sColumn = exports.sColumn = {
   columns: function columns(state /*: StoreState */) {
     return state.columns || {};

@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/noteLabel/__test__/reducer.test.js"
+ ],
+ "file": "../../../../src/flux/noteLabel/__test__/reducer.test.js",
+ "names": [
+  "describe",
+  "test",
+  "expect",
+  "undefined",
+  "toEqual",
+  "initialState",
+  "noteLabel",
+  "id",
+  "newLabels",
+  "title",
+  "color",
+  "na",
+  "editNoteLabels"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAEAA,SAAS,oBAAT,EAA+B,YAAI;AACjCC,OAAK,8BAAL,EAAqC,YAAI;AACvCC,WAAO,uBAAQC,SAAR,EAAmB,EAAnB,CAAP,EACGC,OADH,CACWC,uBAAaC,SADxB;AAED,GAHD;AAIAL,OAAK,iCAAL,EAAwC,YAAI;AAC1C,QAAMM,KAAK,MAAX;AAAA,QACEC,YAAY,CAAC;AACbD,UAAIA,EADS,EACLE,OAAO,OADF,EACWC,OAAO;AADlB,KAAD,CADd;AAIAR,WAAO,uBAAQ,EAAR,EAAYS,kBAAGC,cAAH,CACjB,KADiB,EACV,EADU,EACN,EADM,EACFJ,SADE,CAAZ,CAAP,EAEIJ,OAFJ,mCAGGG,EAHH,EAGQ;AACJA,UAAIA,EADA;AAEJE,aAAO,OAFH;AAGJC,aAAO;AAHH,KAHR;AASD,GAdD;AAeD,CApBD"
+}

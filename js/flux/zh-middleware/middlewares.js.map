@@ -9,10 +9,11 @@
   "boardId",
   "columnId",
   "noteId",
+  "noteLabelId",
   "appStorage",
   "drawerMsg",
   "canRemoveColumn",
   "canRemoveBoard"
  ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAGA,IAAMA,cAAc,CAClBC,iBADkB,EAElBC,kBAFkB,EAGlBC,gBAHkB,EAIlBC,oBAJkB,EAKlBC,qBALkB,EAMlBC,yBANkB,EAOlBC,wBAPkB,CAApB;;kBAUeP,W"
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAGA,IAAMA,cAAc,CAClBC,iBADkB,EAElBC,kBAFkB,EAGlBC,gBAHkB,EAIlBC,qBAJkB,EAKlBC,oBALkB,EAMlBC,qBANkB,EAOlBC,yBAPkB,EAQlBC,wBARkB,CAApB;;kBAWeR,W"
 }

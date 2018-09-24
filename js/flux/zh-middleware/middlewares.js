@@ -16,6 +16,10 @@ var _noteId = require('./noteId');
 
 var _noteId2 = _interopRequireDefault(_noteId);
 
+var _noteLabelId = require('./noteLabelId');
+
+var _noteLabelId2 = _interopRequireDefault(_noteLabelId);
+
 var _appStorage = require('./appStorage');
 
 var _appStorage2 = _interopRequireDefault(_appStorage);
@@ -34,7 +38,7 @@ var _canRemoveBoard2 = _interopRequireDefault(_canRemoveBoard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default];
+var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _noteLabelId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default];
 
 exports.default = middlewares;
 //# sourceMappingURL=middlewares.js.map

@@ -1,7 +1,7 @@
 
 import Notification from './NotificationDialog'
 import Settings from './SettingsDialog'
-import Details from './DetailsDialog'
+import Details from '../d-details/DetailsDialog'
 
 export const MD = {
   NOTIF: 'NOTIF',

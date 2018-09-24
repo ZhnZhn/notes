@@ -26,9 +26,13 @@ var _reducer9 = require('./note/reducer');
 
 var _reducer10 = _interopRequireDefault(_reducer9);
 
-var _reducer11 = require('./column/reducer');
+var _reducer11 = require('./noteLabel/reducer');
 
 var _reducer12 = _interopRequireDefault(_reducer11);
+
+var _reducer13 = require('./column/reducer');
+
+var _reducer14 = _interopRequireDefault(_reducer13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,7 +42,8 @@ var rootReducer = (0, _redux.combineReducers)({
   modal: _reducer6.default,
   boards: _reducer8.default,
   notes: _reducer10.default,
-  columns: _reducer12.default
+  noteLabels: _reducer12.default,
+  columns: _reducer14.default
 });
 
 exports.default = rootReducer;

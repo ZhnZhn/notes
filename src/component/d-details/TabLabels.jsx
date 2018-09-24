@@ -1,9 +1,20 @@
 import React, { Component, Fragment } from 'react'
 
-import LabelList from './DetailsLabelList'
+import na from '../../flux/note/actions'
+
+import LabelList from './LabelList'
 import InputText from '../zhn/InputText'
 import PaneColors from '../zhn-m/PaneColors'
 import FlatButton from '../zhn-m/FlatButton'
+import DialogButtons from './DialogButtons'
+
+import fn from './fnTabLabels'
+
+const {
+  toTitle,
+  addLabel,
+  removeLabel
+ } = fn;
 
 import CL from '../style/CL'
 
@@ -18,17 +29,20 @@ const S = {
   }
 };
 
-class DetailsTabLabels extends Component {
 
-  state = {
-    labels: []
+class TabLabels extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      labels: props.note.labels || []
+    }
   }
 
   _focusBtClose = () => {
     if (this.props.isSelected
-      && this._btClose
-      && this._btClose.focus ) {
-       this._btClose.focus()
+      && this._buttons) {
+       this._buttons.focusBtClose()
     }
   }
 
@@ -40,25 +54,28 @@ class DetailsTabLabels extends Component {
     this._label = evt.target.value
   }
   _onAddLabel = () => {
-    const _c = this._inputColor.getColor()
-    this._inputLabel.setValue('')
-    this.setState(prevState => ({
-      labels: [ ...prevState.labels, {
-        title: this._label,
-        color: _c
-      }]
-    }))
+    this.setState(prevState => addLabel(
+      prevState,
+      toTitle(this._label),
+      this._inputColor.getColor()
+    ), () => this._inputLabel.setValue(''))
   }
   _onRemoveLabel = (label) => {
-    this.setState(prevState => ({
-      labels: prevState.labels
-        .filter(item => item.title !== label.title)
-    }))
+    this.setState(prevState => removeLabel(
+      prevState,
+      label
+    ))
+  }
+  _saveLabels = () => {
+    const { note, dispatch } = this.props;
+    dispatch(na.editNoteLabels(
+      note.id, this.state.labels
+    ))
   }
 
   _refInputLabel = (node) => this._inputLabel = node
   _refInputColor = (node) => this._inputColor = node
-  _refBtClose = (node) => this._btClose = node
+  _refButtons = (node) => this._buttons = node
 
   render(){
     const {
@@ -90,14 +107,12 @@ class DetailsTabLabels extends Component {
         <PaneColors
           ref={this._refInputColor}
         />
-        <div className={CL.MD_ACTIONS}>
-          <FlatButton
-            ref={this._refBtClose}
-            caption="Close"
-            timeout={0}
-            onClick={onClose}
-          />
-        </div>
+        <DialogButtons
+          ref={this._refButtons}
+          className={CL.MD_ACTIONS}
+          onSave={this._saveLabels}
+          onClose={onClose}
+        />
       </Fragment>
     );
   }
@@ -110,4 +125,4 @@ class DetailsTabLabels extends Component {
   }
 }
 
-export default DetailsTabLabels
+export default TabLabels

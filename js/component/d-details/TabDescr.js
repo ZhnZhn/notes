@@ -32,9 +32,9 @@ var _InputTextArea = require('../zhn/InputTextArea');
 
 var _InputTextArea2 = _interopRequireDefault(_InputTextArea);
 
-var _FlatButton = require('../zhn-m/FlatButton');
+var _DialogButtons = require('./DialogButtons');
 
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
+var _DialogButtons2 = _interopRequireDefault(_DialogButtons);
 
 var _getNoteDescr = require('../board/getNoteDescr');
 
@@ -47,23 +47,23 @@ var CL = {
   ACTIONS: 'md__actions'
 };
 
-var DetailsTabDescr = function (_Component) {
-  (0, _inherits3.default)(DetailsTabDescr, _Component);
+var TabDescr = function (_Component) {
+  (0, _inherits3.default)(TabDescr, _Component);
 
-  function DetailsTabDescr() {
+  function TabDescr() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    (0, _classCallCheck3.default)(this, DetailsTabDescr);
+    (0, _classCallCheck3.default)(this, TabDescr);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DetailsTabDescr.__proto__ || Object.getPrototypeOf(DetailsTabDescr)).call.apply(_ref, [this].concat(args))), _this), _this._focusBtClose = function () {
-      if (_this.props.isSelected && _this._btClose && _this._btClose.focus) {
-        _this._btClose.focus();
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = TabDescr.__proto__ || Object.getPrototypeOf(TabDescr)).call.apply(_ref, [this].concat(args))), _this), _this._focusBtClose = function () {
+      if (_this.props.isSelected && _this._buttons) {
+        _this._buttons.focusBtClose();
       }
     }, _this._editDescr = function () {
       var _this$props = _this.props,
@@ -74,12 +74,12 @@ var DetailsTabDescr = function (_Component) {
       dispatch(_actions2.default.editNoteDescr(note.id, _descr));
     }, _this._refInputDescr = function (node) {
       return _this._inputDescr = node;
-    }, _this._refBtClose = function (node) {
-      return _this._btClose = node;
+    }, _this._refButtons = function (node) {
+      return _this._buttons = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
-  (0, _createClass3.default)(DetailsTabDescr, [{
+  (0, _createClass3.default)(TabDescr, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
       this._focusBtClose();
@@ -102,21 +102,12 @@ var DetailsTabDescr = function (_Component) {
           maxLength: 250,
           initValue: _initDescr
         }),
-        _react2.default.createElement(
-          'div',
-          { className: CL.ACTIONS },
-          _react2.default.createElement(_FlatButton2.default, {
-            caption: 'Save',
-            timeout: 100,
-            onClick: this._editDescr
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            ref: this._refBtClose,
-            caption: 'Close',
-            timeout: 0,
-            onClick: onClose
-          })
-        )
+        _react2.default.createElement(_DialogButtons2.default, {
+          ref: this._refButtons,
+          className: CL.ACTIONS,
+          onSave: this._editDescr,
+          onClose: onClose
+        })
       );
     }
   }, {
@@ -127,8 +118,8 @@ var DetailsTabDescr = function (_Component) {
       }
     }
   }]);
-  return DetailsTabDescr;
+  return TabDescr;
 }(_react.Component);
 
-exports.default = DetailsTabDescr;
-//# sourceMappingURL=DetailsTabDescr.js.map
+exports.default = TabDescr;
+//# sourceMappingURL=TabDescr.js.map

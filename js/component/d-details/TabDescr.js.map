@@ -1,0 +1,35 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/TabDescr.js"
+ ],
+ "file": "../../../src/component/d-details/TabDescr.js",
+ "names": [
+  "CL",
+  "DESCR",
+  "ACTIONS",
+  "TabDescr",
+  "_focusBtClose",
+  "props",
+  "isSelected",
+  "_buttons",
+  "focusBtClose",
+  "_editDescr",
+  "note",
+  "dispatch",
+  "_descr",
+  "_inputDescr",
+  "getValue",
+  "na",
+  "editNoteDescr",
+  "id",
+  "_refInputDescr",
+  "node",
+  "_refButtons",
+  "onClose",
+  "_initDescr",
+  "prevProps",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AAEA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,KAAK;AACTC,SAAO,mBADE;AAETC,WAAS;AAFA,CAAX;;IAKMC,Q;;;;;;;;;;;;;;wMAEJC,a,GAAgB,YAAM;AACpB,UAAI,MAAKC,KAAL,CAAWC,UAAX,IACC,MAAKC,QADV,EACoB;AAClB,cAAKA,QAAL,CAAcC,YAAd;AACD;AACF,K,QAMDC,U,GAAa,YAAM;AAAA,wBACU,MAAKJ,KADf;AAAA,UACTK,IADS,eACTA,IADS;AAAA,UACHC,QADG,eACHA,QADG;AAAA,UAEfC,MAFe,GAEN,MAAKC,WAAL,CAAiBC,QAAjB,EAFM;;AAGjBH,eAASI,kBAAGC,aAAH,CAAiBN,KAAKO,EAAtB,EAA0BL,MAA1B,CAAT;AACD,K,QAEDM,c,GAAiB,UAACC,IAAD;AAAA,aAAU,MAAKN,WAAL,GAAmBM,IAA7B;AAAA,K,QACjBC,W,GAAc,UAACD,IAAD;AAAA,aAAU,MAAKZ,QAAL,GAAgBY,IAA1B;AAAA,K;;;;;wCAXK;AACjB,WAAKf,aAAL;AACD;;;6BAWO;AAAA,mBAIF,KAAKC,KAJH;AAAA,UAEJK,IAFI,UAEJA,IAFI;AAAA,UAGJW,OAHI,UAGJA,OAHI;AAAA,UAKJC,UALI,GAKS,4BAAaZ,IAAb,CALT;;AAON,aACE;AAAC,uBAAD;AAAA;AACE,sCAAC,uBAAD;AACE,eAAK,KAAKQ,cADZ;AAEE,eAAKR,KAAKO,EAFZ;AAGE,qBAAWjB,GAAGC,KAHhB;AAIE,qBAAW,GAJb;AAKE,qBAAWqB;AALb,UADF;AAQE,sCAAC,uBAAD;AACE,eAAK,KAAKF,WADZ;AAEE,qBAAWpB,GAAGE,OAFhB;AAGE,kBAAQ,KAAKO,UAHf;AAIE,mBAASY;AAJX;AARF,OADF;AAiBD;;;uCAEkBE,S,EAAW;AAC5B,UAAI,KAAKlB,KAAL,KAAekB,SAAf,IACD,KAAKlB,KAAL,CAAWC,UADd,EAC0B;AACxB,aAAKF,aAAL;AACD;AACF;;;EArDoBoB,gB;;kBAwDRrB,Q"
+}

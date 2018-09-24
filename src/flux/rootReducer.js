@@ -5,6 +5,7 @@ import drawerMsg from './drawerMsg/reducer'
 import modal from './modal/reducer'
 import boards from './board/reducer'
 import notes from './note/reducer'
+import noteLabels from './noteLabel/reducer'
 import columns from './column/reducer'
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   modal,
   boards,
   notes,
+  noteLabels,
   columns
 });
 

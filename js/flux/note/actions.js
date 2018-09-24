@@ -8,7 +8,8 @@ var ACTION = exports.ACTION = {
   DELETE_NOTE: 'DELETE_NOTE',
   ADD_NOTE: 'ADD_NOTE',
   EDIT_NOTE_TITLE: 'EDIT_NOTE_TITLE',
-  EDIT_NOTE_DESCR: 'EDIT_NOTE_DESCR'
+  EDIT_NOTE_DESCR: 'EDIT_NOTE_DESCR',
+  EDIT_NOTE_LABELS: 'EDIT_NOTE_LABELS'
 };
 
 var moveNote = exports.moveNote = function moveNote(noteId /*: string */
@@ -53,6 +54,20 @@ var editNoteDescr = function editNoteDescr(noteId /*: string */
   };
 };
 
+var editNoteLabels = function editNoteLabels(noteId /*: string */
+, labels /*: [] */
+, labelsTo /*?: [] */
+, newLabels /*?: [] */
+) {
+  return {
+    type: ACTION.EDIT_NOTE_LABELS,
+    noteId: noteId,
+    labels: labels,
+    labelsTo: labelsTo,
+    newLabels: newLabels
+  };
+};
+
 var addNote = exports.addNote = function addNote(columnId /*: string */
 , noteId /*: string */
 ) {
@@ -69,6 +84,7 @@ export type NoteAction =
   | $Call<typeof deleteNote, string, string>
   | $Call<typeof editNoteTitle, string, string>
   | $Call<typeof editNoteDescr, string, string>
+  | $Call<typeof editNoteLabels, string, []>
   | $Call<typeof addNote, string, string>
 */
 
@@ -77,6 +93,7 @@ var actions = {
   deleteNote: deleteNote,
   editNoteTitle: editNoteTitle,
   editNoteDescr: editNoteDescr,
+  editNoteLabels: editNoteLabels,
   addNote: addNote
 };
 

@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp2;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -32,7 +34,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //import PropTypes from 'prop-types'
 
-var CellColor = function (_Component) {
+var CellColor = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(CellColor, _Component);
 
   function CellColor() {
@@ -50,19 +52,19 @@ var CellColor = function (_Component) {
       return _this.cellNode = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    tabIndex: PropTypes.string,
+    style: PropTypes.object,
+    color: PropTypes.string,
+    onClick: PropTypes.func,
+    onReg: PropTypes.func
+  }
+  */
+
 
   (0, _createClass3.default)(CellColor, [{
     key: 'componentDidMount',
-
-    /*
-    static propTypes = {
-      style: PropTypes.object,
-      color: PropTypes.string,
-      onClick: PropTypes.func,
-      onReg: PropTypes.func
-    }
-    */
-
     value: function componentDidMount() {
       var onReg = this.props.onReg;
 
@@ -74,6 +76,7 @@ var CellColor = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          tabIndex = _props.tabIndex,
           style = _props.style,
           color = _props.color,
           onClick = _props.onClick,
@@ -85,6 +88,7 @@ var CellColor = function (_Component) {
         'button',
         {
           ref: this._refCellNode,
+          tabIndex: tabIndex,
           style: (0, _extends3.default)({}, style, _styleColor),
           onClick: _onClick
         },
@@ -93,7 +97,8 @@ var CellColor = function (_Component) {
     }
   }]);
   return CellColor;
-}(_react.Component);
-
+}(_react.Component), _class.defaultProps = {
+  tabIndex: '-1'
+}, _temp2);
 exports.default = CellColor;
 //# sourceMappingURL=CellColor.js.map

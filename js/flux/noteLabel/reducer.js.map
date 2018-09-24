@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/noteLabel/reducer.js"
+ ],
+ "file": "../../../src/flux/noteLabel/reducer.js",
+ "names": [
+  "reducer",
+  "state",
+  "initialState",
+  "noteLabel",
+  "action",
+  "type",
+  "NA",
+  "EDIT_NOTE_LABELS",
+  "newLabels",
+  "forEach",
+  "item",
+  "id"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AACA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU,GAGd;AAAA,MAFAC,KAEA,uEAFQC,uBAAaC,SAErB;AAAA,MADAC,MACA;;AACA,UAAOA,OAAOC,IAAd;AACE,SAAKC,gBAAGC,gBAAR;AAA0B;AAAA,YAChBC,SADgB,GACFJ,MADE,CAChBI,SADgB;;AAExBA,kBAAUC,OAAV,CAAkB,gBAAQ;AACxBR,gBAAMS,KAAKC,EAAX,IAAiBD,IAAjB;AACD,SAFD;AAGA,0CAAYT,KAAZ;AACD;AACD;AAAS,aAAOA,KAAP;AARX;AAUD,CAdD;;kBAgBeD,O"
+}

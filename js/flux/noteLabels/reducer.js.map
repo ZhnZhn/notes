@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/noteLabels/reducer.js"
+ ],
+ "file": "../../../src/flux/noteLabels/reducer.js",
+ "names": [
+  "reducer",
+  "state",
+  "initialState",
+  "noteLabels",
+  "action",
+  "type"
+ ],
+ "mappings": ";;;;;;AAAA;;AACA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU,GAGd;AAAA,MAFAC,KAEA,uEAFQC,uBAAaC,UAErB;AAAA,MADAC,MACA;;AACA,UAAOA,OAAOC,IAAd;AACE;AAAS,aAAOJ,KAAP;AADX;AAGD,CAPD;;kBASeD,O"
+}

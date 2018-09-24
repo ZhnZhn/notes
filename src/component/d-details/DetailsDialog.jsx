@@ -7,8 +7,8 @@ import ModalDialog from '../zhn-ch/ModalDialog'
 import TabPane from '../zhn-tab/TabPane'
 import Tab from '../zhn-tab/Tab'
 
-import DetailsTabDescr from './DetailsTabDescr'
-import DetailsTabLabels from './DetailsTabLabels'
+import TabDescr from './TabDescr'
+import TabLabels from './TabLabels'
 
 const CL = {
   DIALOG: 'md-details'
@@ -63,15 +63,16 @@ class DetailsDialog extends Component {
       >
         <TabPane width="100%" key={data.id}>
           <Tab title="Descr">
-            <DetailsTabDescr
+            <TabDescr
               note={data}
               dispatch={dispatch}
               onClose={onClose}
             />
           </Tab>
           <Tab title="Labels">
-            <DetailsTabLabels
+            <TabLabels
               note={data}
+              dispatch={dispatch}
               onClose={onClose}
             />
           </Tab>

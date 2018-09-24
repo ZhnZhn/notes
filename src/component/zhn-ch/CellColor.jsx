@@ -4,12 +4,16 @@ import React, { Component } from 'react'
 class CellColor extends Component {
   /*
   static propTypes = {
+    tabIndex: PropTypes.string,
     style: PropTypes.object,
     color: PropTypes.string,
     onClick: PropTypes.func,
     onReg: PropTypes.func
   }
   */
+  static defaultProps = {
+    tabIndex: '-1'
+  }
 
   componentDidMount(){
      const { onReg } = this.props;
@@ -22,7 +26,9 @@ class CellColor extends Component {
 
   render(){
     const {
-            style, color,
+            tabIndex,
+            style,
+            color,
             onClick,
             children
           } = this.props
@@ -35,6 +41,7 @@ class CellColor extends Component {
     return (
       <button
          ref={this._refCellNode}
+         tabIndex={tabIndex}
          style={{ ...style, ..._styleColor}}
          onClick={_onClick}
       >
@@ -43,5 +50,6 @@ class CellColor extends Component {
     );
   }
 }
+
 
 export default CellColor

@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/LabelNote.js"
+ ],
+ "file": "../../../src/component/d-details/LabelNote.js",
+ "names": [
+  "LabelNote",
+  "className",
+  "clClose",
+  "item",
+  "onRemove",
+  "backgroundColor",
+  "color",
+  "title"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY;AAAA,MAChBC,SADgB,QAChBA,SADgB;AAAA,MAEhBC,OAFgB,QAEhBA,OAFgB;AAAA,MAGhBC,IAHgB,QAGhBA,IAHgB;AAAA,MAIhBC,QAJgB,QAIhBA,QAJgB;AAAA,SAMhB;AAAA;AAAA;AACE,iBAAWH,SADb;AAEE,aAAO,EAAEI,iBAAiBF,KAAKG,KAAxB,EAFT;AAGE,eAASF;AAHX;AAKGD,SAAKI,KALR;AAMGH,gBAAY;AAAA;AAAA,QAAM,WAAWF,OAAjB;AAAA;AAAA;AANf,GANgB;AAAA,CAAlB;;kBAgBeF,S"
+}

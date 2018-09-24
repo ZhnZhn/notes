@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/fnTabLabels.js"
+ ],
+ "file": "../../../src/component/d-details/fnTabLabels.js",
+ "names": [
+  "fnTabLabels",
+  "toTitle",
+  "str",
+  "_str",
+  "trim",
+  "length",
+  "toUpperCase",
+  "substring",
+  "addLabel",
+  "prevState",
+  "title",
+  "color",
+  "labels",
+  "find",
+  "item",
+  "removeLabel",
+  "label",
+  "filter"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,cAAc;AAClBC,WAAS,iBAACC,GAAD,EAAS;AAChB,QAAMC,OAAOD,IAAIE,IAAJ,EAAb;AACA,QAAID,QAAQA,KAAKE,MAAL,GAAY,CAAxB,EAA2B;AACzB,aAAOF,KAAK,CAAL,EAAQG,WAAR,KAAsBH,KAAKI,SAAL,CAAe,CAAf,EAAkBH,IAAlB,EAA7B;AACD;AACD,WAAOD,IAAP;AACD,GAPiB;;AASlBK,YAAU,kBAACC,SAAD,EAAYC,KAAZ,EAAmBC,KAAnB,EAA6B;AAAA,QAC7BC,MAD6B,GAClBH,SADkB,CAC7BG,MAD6B;;AAErC,QAAI,CAACF,KAAD,IACAE,OAAOC,IAAP,CAAY;AAAA,aAAQC,KAAKJ,KAAL,KAAeA,KAAvB;AAAA,KAAZ,CADJ,EAC+C;AAC7C,aAAO,IAAP;AACD;AACD,WAAO;AACLE,yDAAaA,MAAb,IAAqB;AACnBF,oBADmB;AAEnBC;AAFmB,OAArB;AADK,KAAP;AAMD,GArBiB;;AAuBlBI,eAAa,qBAACN,SAAD,EAAYO,KAAZ;AAAA,WAAuB;AAClCJ,cAAQH,UAAUG,MAAV,CACLK,MADK,CACE;AAAA,eAAQH,KAAKJ,KAAL,KAAeM,MAAMN,KAA7B;AAAA,OADF;AAD0B,KAAvB;AAAA;AAvBK,CAApB;;kBA6BeV,W"
+}

@@ -28,7 +28,13 @@ const reducer = function(
       const { noteId, descr } = action
       , note = state[noteId]
       , newNote = { ...note, descr };
-      return setInObj(state, noteId, newNote);      
+      return setInObj(state, noteId, newNote);
+    }
+    case ACTION.EDIT_NOTE_LABELS: {
+      const { noteId, labelsTo } = action
+      , note = state[noteId]
+      , newNote = { ...note, labels: labelsTo };
+      return setInObj(state, noteId, newNote);
     }
     case ACTION.ADD_NOTE: {
       const { noteId } = action;

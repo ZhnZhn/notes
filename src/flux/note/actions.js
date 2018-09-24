@@ -5,7 +5,8 @@ export const ACTION = {
   DELETE_NOTE: 'DELETE_NOTE',
   ADD_NOTE: 'ADD_NOTE',
   EDIT_NOTE_TITLE: 'EDIT_NOTE_TITLE',
-  EDIT_NOTE_DESCR: 'EDIT_NOTE_DESCR'
+  EDIT_NOTE_DESCR: 'EDIT_NOTE_DESCR',
+  EDIT_NOTE_LABELS: 'EDIT_NOTE_LABELS'
 };
 
 export const moveNote = (
@@ -35,7 +36,7 @@ export const editNoteTitle = (
   type: ACTION.EDIT_NOTE_TITLE,
   noteId,
   title
-})
+});
 
 const editNoteDescr = (
   noteId /*: string */,
@@ -46,6 +47,19 @@ const editNoteDescr = (
   descr
 });
 
+const editNoteLabels = (
+  noteId /*: string */,
+  labels /*: [] */,
+  labelsTo /*?: [] */,
+  newLabels /*?: [] */,
+) => ({
+  type: ACTION.EDIT_NOTE_LABELS,
+  noteId,
+  labels,
+  labelsTo,
+  newLabels
+});
+
 export const addNote = (
   columnId /*: string */,
   noteId /*: string */
@@ -53,7 +67,7 @@ export const addNote = (
   type: ACTION.ADD_NOTE,
   columnId,
   noteId
-})
+});
 
 /*::
 export type NoteAction =
@@ -61,6 +75,7 @@ export type NoteAction =
   | $Call<typeof deleteNote, string, string>
   | $Call<typeof editNoteTitle, string, string>
   | $Call<typeof editNoteDescr, string, string>
+  | $Call<typeof editNoteLabels, string, []>
   | $Call<typeof addNote, string, string>
 */
 
@@ -69,6 +84,7 @@ const actions = {
   deleteNote,
   editNoteTitle,
   editNoteDescr,
+  editNoteLabels,
   addNote
 };
 

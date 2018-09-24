@@ -1,0 +1,26 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/LabelList.js"
+ ],
+ "file": "../../../src/component/d-details/LabelList.js",
+ "names": [
+  "S",
+  "ROOT",
+  "paddingBottom",
+  "LabelList",
+  "labels",
+  "onRemove",
+  "map",
+  "item",
+  "id",
+  "title",
+  "CL",
+  "NOTE_LABEL",
+  "NOTE_LABEL_CLOSE",
+  "bind",
+  "undefined",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,mBAAe;AADX;AADE,CAAV;;AAMA,IAAMC,YAAY,SAAZA,SAAY;AAAA,MAChBC,MADgB,QAChBA,MADgB;AAAA,MAEhBC,QAFgB,QAEhBA,QAFgB;AAAA,SAIhB;AAAA;AAAA,MAAK,OAAOL,EAAEC,IAAd;AAEIG,WAAOE,GAAP,CAAW;AAAA,aACT,8BAAC,mBAAD;AACE,aAAKC,KAAKC,EAAL,IAAWD,KAAKE,KADvB;AAEE,mBAAWC,aAAGC,UAFhB;AAGE,iBAASD,aAAGE,gBAHd;AAIE,cAAML,IAJR;AAKE,kBAAUF,WACNA,SAASQ,IAAT,CAAc,IAAd,EAAoBN,IAApB,CADM,GAENO;AAPN,QADS;AAAA,KAAX;AAFJ,GAJgB;AAAA,CAAlB;AAqBAX,UAAUY,YAAV,GAAyB;AACvBX,UAAQ;AADe,CAAzB;;kBAIeD,S"
+}

@@ -12,6 +12,10 @@ var _ShowHide = require('../zhn-ch/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
+var _LabelList = require('../d-details/LabelList');
+
+var _LabelList2 = _interopRequireDefault(_LabelList);
+
 var _getNoteDescr = require('./getNoteDescr');
 
 var _getNoteDescr2 = _interopRequireDefault(_getNoteDescr);
@@ -35,7 +39,14 @@ var NoteDetails = function NoteDetails(_ref) {
     _react2.default.createElement(
       'div',
       { onClick: editDetails },
-      _descr
+      _react2.default.createElement(_LabelList2.default, {
+        labels: note.labels
+      }),
+      _react2.default.createElement(
+        'div',
+        null,
+        _descr
+      )
     )
   );
 };

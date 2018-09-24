@@ -38,7 +38,9 @@ var CONF = {
   NOTES_PREFIX: 'n',
   N_MAX_NOTES: {
     descr: _crMaxDescr('notes', MAX.NOTES)
-  }
+  },
+
+  NLABELS_PREFIX: 'nl'
 };
 
 exports.default = CONF;

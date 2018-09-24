@@ -1,6 +1,7 @@
 import React from 'react'
 
 import ShowHide from '../zhn-ch/ShowHide'
+import LabelList from '../d-details/LabelList'
 
 import getNoteDescr from './getNoteDescr'
 
@@ -19,7 +20,12 @@ const NoteDetails = ({
       isShow={isShow}
     >
        <div onClick={editDetails}>
-         {_descr}
+         <LabelList
+           labels={note.labels}
+         />
+         <div>
+           {_descr}
+         </div>
        </div>
     </ShowHide>
   );

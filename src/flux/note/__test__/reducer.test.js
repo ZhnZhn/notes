@@ -18,13 +18,14 @@ describe('reducer note', () => {
     expect(reducer(undefined, {})).toEqual(initialState.notes)
   })
   test('should edit note title', ()=>{
-    const nId ='n-1', newTitle = 'Note'
+    const nId ='n-1'
+    , newTitle = 'Note'
+    , state = { [nId]: { id: nId, title: 'Title' }};
     expect(
       reducer(state, ta.editNoteTitle(nId, newTitle))
     ).toEqual({
-      ...state,
       [nId]: {
-        ...state[nId],
+        id: nId,
         title: newTitle
       }
     })
@@ -32,13 +33,29 @@ describe('reducer note', () => {
 
   test('should edit note descr', ()=>{
     const nId ='n-1', newDescr = 'Note'
+    , state = { [nId]: { id: nId, title: 'Title' }}
     expect(
       reducer(state, ta.editNoteDescr(nId, newDescr))
     ).toEqual({
-      ...state,
       [nId]: {
-        ...state[nId],
+        id: nId,
+        title: 'Title',
         descr: newDescr
+      }
+    })
+  })
+
+  test('should set new labels', ()=>{
+    const nId ='n-1'
+    , labelsTo = [{ id: 'nl-1', title: 'Story', color: 'green'}]
+    , state = { [nId]: { id: nId, title: 'Title'}};
+    expect(reducer(state, ta.editNoteLabels(
+      nId, [], labelsTo, []
+    ))).toEqual({
+      [nId]: {
+        id: nId,
+        title: 'Title',
+        labels: labelsTo
       }
     })
   })

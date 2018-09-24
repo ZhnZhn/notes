@@ -44,13 +44,13 @@ var _Tab = require('../zhn-tab/Tab');
 
 var _Tab2 = _interopRequireDefault(_Tab);
 
-var _DetailsTabDescr = require('./DetailsTabDescr');
+var _TabDescr = require('./TabDescr');
 
-var _DetailsTabDescr2 = _interopRequireDefault(_DetailsTabDescr);
+var _TabDescr2 = _interopRequireDefault(_TabDescr);
 
-var _DetailsTabLabels = require('./DetailsTabLabels');
+var _TabLabels = require('./TabLabels');
 
-var _DetailsTabLabels2 = _interopRequireDefault(_DetailsTabLabels);
+var _TabLabels2 = _interopRequireDefault(_TabLabels);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -118,7 +118,7 @@ var DetailsDialog = function (_Component) {
           _react2.default.createElement(
             _Tab2.default,
             { title: 'Descr' },
-            _react2.default.createElement(_DetailsTabDescr2.default, {
+            _react2.default.createElement(_TabDescr2.default, {
               note: data,
               dispatch: dispatch,
               onClose: onClose
@@ -127,8 +127,9 @@ var DetailsDialog = function (_Component) {
           _react2.default.createElement(
             _Tab2.default,
             { title: 'Labels' },
-            _react2.default.createElement(_DetailsTabLabels2.default, {
+            _react2.default.createElement(_TabLabels2.default, {
               note: data,
+              dispatch: dispatch,
               onClose: onClose
             })
           )

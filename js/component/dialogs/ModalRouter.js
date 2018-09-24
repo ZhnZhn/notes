@@ -19,7 +19,7 @@ var _SettingsDialog = require('./SettingsDialog');
 
 var _SettingsDialog2 = _interopRequireDefault(_SettingsDialog);
 
-var _DetailsDialog = require('./DetailsDialog');
+var _DetailsDialog = require('../d-details/DetailsDialog');
 
 var _DetailsDialog2 = _interopRequireDefault(_DetailsDialog);
 

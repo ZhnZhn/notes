@@ -23,6 +23,9 @@ var CL = {
   CARD_TITLE: 'card__title',
   CARD_BT: 'bt__card',
 
+  NOTE_LABEL: 'note__label',
+  NOTE_LABEL_CLOSE: 'note__label__close',
+
   INPUT: 'input-text',
   BT_CIRCLE: 'bt-circle',
 
