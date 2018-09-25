@@ -2,10 +2,12 @@ import React from 'react';
 
 import CL from '../style/CL'
 
+const TITLE = "Logo of web app Notes v0.2.0"
+
 const IconLogoErc = ({
   className=CL.LOGO,
   style,
-  title="Logo of web app Notes"
+  title=TITLE
 }) => (
   <span
      className={className}

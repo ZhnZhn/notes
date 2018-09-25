@@ -177,7 +177,7 @@ var Column = function (_Component) {
           null,
           (0, _isArrEmpty2.default)(noteIds) && _react2.default.createElement(_FlatButton2.default, {
             clCaption: _CL2.default.CARD_BT,
-            caption: 'Remove Column',
+            caption: 'Remove Topic',
             onClick: this._hRemoveColumn
           })
         )

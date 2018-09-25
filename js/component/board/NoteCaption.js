@@ -45,6 +45,7 @@ var NoteCaption = function NoteCaption(_ref) {
       isMenuMore = _ref.isMenuMore,
       onClickMenuMore = _ref.onClickMenuMore,
       onCloseMenuMore = _ref.onCloseMenuMore,
+      onEditDetails = _ref.onEditDetails,
       onRemoveNote = _ref.onRemoveNote;
   return _react2.default.createElement(
     'div',
@@ -67,6 +68,7 @@ var NoteCaption = function NoteCaption(_ref) {
       isShow: isMenuMore,
       className: CL.MENU_MORE,
       onClose: onCloseMenuMore,
+      onEdit: onEditDetails,
       onRemove: onRemoveNote
     })
   );

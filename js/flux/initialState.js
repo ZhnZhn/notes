@@ -30,13 +30,13 @@ var initState /*: StoreState */ = {
   columns: {
     'c-1': {
       id: 'c-1',
-      title: 'Column 1',
+      title: 'Topic 1',
       noteIds: [],
       withAdd: true
     },
     'c-2': {
       id: 'c-2',
-      title: 'Column 2',
+      title: 'Topic 2',
       noteIds: []
     }
     //columnOrder: [ 'column-1', 'column-2', 'column-3' ]

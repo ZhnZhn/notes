@@ -80,7 +80,7 @@ class Note extends Component {
   }
 
   _editDetails = () => {
-    const { note, editDetails } = this.props;    
+    const { note, editDetails } = this.props;
     editDetails(note)
   }
 
@@ -119,6 +119,7 @@ class Note extends Component {
           isMenuMore={isMenuMore}
           onClickMenuMore={this._openMenuMore}
           onCloseMenuMore={this._closeMenuMore}
+          onEditDetails={this._editDetails}
           onRemoveNote={this._deleteNote}
         />
         <NoteDetails

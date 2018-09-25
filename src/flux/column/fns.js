@@ -20,7 +20,7 @@ const crColumn = (
   withAdd /*: boolean */ = true
 ) /*: Topic */ => ({
   id: columnId,
-  title: 'New Column',
+  title: 'New Topic',
   noteIds: [],
   withAdd: withAdd
 });

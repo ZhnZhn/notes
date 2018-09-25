@@ -40,6 +40,7 @@ var MenuMore = function MenuMore(_ref) {
       style = _ref.style,
       isShow = _ref.isShow,
       onClose = _ref.onClose,
+      onEdit = _ref.onEdit,
       onRemove = _ref.onRemove;
 
   var TS = theme.createStyle(_Comp2.default);
@@ -55,7 +56,15 @@ var MenuMore = function MenuMore(_ref) {
       'div',
       null,
       _react2.default.createElement(_FlatButton2.default, {
-        caption: 'Remove',
+        caption: 'Edit Details',
+        onClick: onEdit
+      })
+    ),
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(_FlatButton2.default, {
+        caption: 'Remove Note',
         onClick: onRemove
       })
     )

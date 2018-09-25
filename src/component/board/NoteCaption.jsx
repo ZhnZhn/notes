@@ -22,6 +22,7 @@ const NoteCaption = ({
   isMenuMore,
   onClickMenuMore,
   onCloseMenuMore,
+  onEditDetails,
   onRemoveNote
 }) => (
   <div>
@@ -45,6 +46,7 @@ const NoteCaption = ({
         isShow={isMenuMore}
         className={CL.MENU_MORE}
         onClose={onCloseMenuMore}
+        onEdit={onEditDetails}
         onRemove={onRemoveNote}
       />
     }

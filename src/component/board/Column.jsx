@@ -124,7 +124,7 @@ class Column extends Component {
             isArrEmpty(noteIds) &&
               <FlatButton
                 clCaption={CL.CARD_BT}
-                caption="Remove Column"
+                caption="Remove Topic"
                 onClick={this._hRemoveColumn}
               />
           }

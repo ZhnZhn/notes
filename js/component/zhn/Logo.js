@@ -14,12 +14,14 @@ var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var TITLE = "Logo of web app Notes v0.2.0";
+
 var IconLogoErc = function IconLogoErc(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === undefined ? _CL2.default.LOGO : _ref$className,
       style = _ref.style,
       _ref$title = _ref.title,
-      title = _ref$title === undefined ? "Logo of web app Notes" : _ref$title;
+      title = _ref$title === undefined ? TITLE : _ref$title;
   return _react2.default.createElement(
     'span',
     {

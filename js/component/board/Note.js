@@ -179,6 +179,7 @@ var Note = function (_Component) {
           isMenuMore: isMenuMore,
           onClickMenuMore: this._openMenuMore,
           onCloseMenuMore: this._closeMenuMore,
+          onEditDetails: this._editDetails,
           onRemoveNote: this._deleteNote
         }),
         _react2.default.createElement(_NoteDetails2.default, {

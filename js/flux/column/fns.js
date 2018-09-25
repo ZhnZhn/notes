@@ -39,7 +39,7 @@ var crColumn = function crColumn(columnId /*: string */
   var withAdd /*: boolean */ = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
   return (/*: Topic */{
       id: columnId,
-      title: 'New Column',
+      title: 'New Topic',
       noteIds: [],
       withAdd: withAdd
     }

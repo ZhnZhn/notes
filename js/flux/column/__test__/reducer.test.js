@@ -40,13 +40,13 @@ var state = _initialState2.default.columns;
 const initState = {
   'c-1': {
     id: 'c-1',
-    title: 'Column 1',
+    title: 'Topic 1',
     noteIds: [],
     withAdd: true
   },
   'c-2': {
     id: 'c-2',
-    title: 'Column 2',
+    title: 'Topic 2',
     noteIds: []
   }
 };
@@ -91,7 +91,7 @@ describe('reducer column', function () {
     expect((0, _reducer2.default)(state, _actions2.default.removeColumn(bId, cId))).toEqual({
       'c-2': {
         id: 'c-2',
-        title: 'Column 2',
+        title: 'Topic 2',
         noteIds: []
       }
     });
@@ -130,7 +130,7 @@ describe('reducer column', function () {
         destination = _crDnD(cId, 0);
     expect((0, _reducer2.default)(state2, _actions4.default.moveNote(n1Id, source, destination))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, {
       id: cId,
-      title: 'Column 1',
+      title: 'Topic 1',
       noteIds: [n1Id, n2Id],
       withAdd: true
     })));

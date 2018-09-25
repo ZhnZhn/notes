@@ -13,6 +13,7 @@ const MenuMore = ({
   style,
   isShow,
   onClose,
+  onEdit,
   onRemove
 }) => {
   const TS = theme.createStyle(styleConfig);
@@ -25,7 +26,13 @@ const MenuMore = ({
     >
       <div>
         <FlatButton
-          caption="Remove"
+          caption="Edit Details"
+          onClick={onEdit}
+        />
+      </div>
+      <div>
+        <FlatButton
+          caption="Remove Note"
           onClick={onRemove}
         />
       </div>
