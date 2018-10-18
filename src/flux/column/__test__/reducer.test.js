@@ -112,7 +112,9 @@ describe('reducer column', ()=>{
     , destination = _crDnD(cToId, 0)
     , stateWithTask = reducer(state, na.addNote(cFromId, nId));
     expect(
-      reducer(stateWithTask, na.moveNote(nId, source, destination))
+      reducer(stateWithTask, na.moveNote({
+        draggableId: nId, source, destination
+      }))
     ).toEqual({
         ...state,
         [cToId]: {
@@ -128,7 +130,9 @@ describe('reducer column', ()=>{
     , source = _crDnD(cId, 1)
     , destination = _crDnD(cId, 0);
     expect(
-      reducer(state2, na.moveNote(n1Id, source, destination))
+      reducer(state2, na.moveNote({
+        draggableId: n1Id, source, destination
+      }))
     ).toEqual({
       ...state,
       [cId]: {

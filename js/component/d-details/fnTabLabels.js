@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _toConsumableArray2 = require("babel-runtime/helpers/toConsumableArray");
+var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
@@ -12,6 +12,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var fnTabLabels = {
   toTitle: function toTitle(str) {
+    if (typeof str !== 'string') {
+      return '';
+    }
     var _str = str.trim();
     if (_str && _str.length > 1) {
       return _str[0].toUpperCase() + _str.substring(1).trim();

@@ -36,7 +36,7 @@ var _DialogButtons = require('./DialogButtons');
 
 var _DialogButtons2 = _interopRequireDefault(_DialogButtons);
 
-var _getNoteDescr = require('../board/getNoteDescr');
+var _getNoteDescr = require('../page-board/getNoteDescr');
 
 var _getNoteDescr2 = _interopRequireDefault(_getNoteDescr);
 

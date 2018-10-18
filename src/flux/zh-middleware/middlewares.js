@@ -8,6 +8,8 @@ import drawerMsg from './drawerMsgId'
 import canRemoveColumn from './canRemoveColumn'
 import canRemoveBoard from './canRemoveBoard'
 
+import noteTitleValidation from './noteTitleValidation'
+
 
 const middlewares = [
   boardId,
@@ -17,7 +19,8 @@ const middlewares = [
   appStorage,
   drawerMsg,
   canRemoveColumn,
-  canRemoveBoard
+  canRemoveBoard,
+  noteTitleValidation
 ];
 
 export default middlewares

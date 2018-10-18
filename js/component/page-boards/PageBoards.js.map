@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/PageBoards.js"
+ ],
+ "file": "../../../src/component/page-boards/PageBoards.js",
+ "names": [
+  "PageBoards",
+  "_hDragEnd",
+  "result",
+  "props",
+  "moveColumn",
+  "Component",
+  "mapDispatchToProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;AACA;;AAEA;;AAEA;;;;AAEA;;;;AACA;;;;AACA;;;;;;IAEMA,U;;;;;;;;;;;;;;4MACJC,S,GAAY,UAACC,MAAD,EAAY;AACtB,UAAI,wBAASA,MAAT,CAAJ,EAAqB;AACnB;AACD;AACD,YAAKC,KAAL,CAAWC,UAAX,CAAsBF,MAAtB;AACD,K;;;;;6BAEQ;AACP,aAAO,CACL,8BAAC,gBAAD,OADK,EAEL;AAAC,0CAAD;AAAA;AACG,qBAAW,KAAKD;AADnB;AAGE;AAAC,wBAAD;AAAA;AACE,wCAAC,mBAAD;AADF;AAHF,OAFK,CAAP;AAUD;;;EAnBsBI,gB;;AAsBzB,IAAMC,qBAAqB;AACzBF;AADyB,CAA3B;;kBAIe,yBACb,IADa,EAEbE,kBAFa,EAGbN,UAHa,C"
+}

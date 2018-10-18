@@ -5,7 +5,7 @@ import na from '../../flux/note/actions'
 import InputTextArea from '../zhn/InputTextArea'
 import DialogButtons from './DialogButtons'
 
-import getNoteDescr from '../board/getNoteDescr'
+import getNoteDescr from '../page-board/getNoteDescr'
 
 const CL = {
   DESCR: 'md-details__descr',
@@ -55,7 +55,7 @@ class TabDescr extends Component {
           className={CL.ACTIONS}
           onSave={this._editDescr}
           onClose={onClose}
-        />        
+        />
       </Fragment>
     );
   }

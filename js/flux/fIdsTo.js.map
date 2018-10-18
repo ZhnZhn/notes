@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/fIdsTo.js"
+ ],
+ "file": "../../src/flux/fIdsTo.js",
+ "names": [
+  "fIdsTo",
+  "propName",
+  "state",
+  "ids"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;AACA,IAAMA,SAAS,SAATA,MAAS,CAACC,QAAD,CAAU,aAAV;AAAA,SAA4B,UACzCC,KADyC,CACnC;AADmC,IAEzCC,GAFyC,CAErC,oBAFqC;AAAA,sCAGtCD,KAHsC,oCAIxCD,QAJwC,EAI7BE,GAJ6B;AAAA,GAA5B;AAAA,CAAf;;kBAOeH,M"
+}

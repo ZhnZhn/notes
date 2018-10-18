@@ -15,8 +15,9 @@ textarea {
 
 .input-text {
   border: none;
-  border-bottom-color: $cCompBorder;
-  border-bottom-style: groove;
+  //border-bottom-color: $cCompBorder;
+  border-bottom-color: black;
+  border-bottom-style: solid;
   border-bottom-width: 2px;
 
   display: inline-block;

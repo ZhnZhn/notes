@@ -26,7 +26,7 @@ var _DrawerMsgList2 = _interopRequireDefault(_DrawerMsgList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TITLE = "Web App Notes v0.1.0";
+var TITLE = "Web App Notes v0.2.0";
 
 var CL = {
   HEADER: 'header__title',

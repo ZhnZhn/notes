@@ -4,7 +4,8 @@ export const ACTION = {
   EDIT_COLUMN_TITLE: 'EDIT_COLUMN_TITLE',
   ADD_COLUMN: 'ADD_COLUMN',
   REMOVE_COLUMN: 'REMOVE_COLUMN',
-  TOGGLE_COLUMN: 'TOGGLE_COLUMN'
+  TOGGLE_COLUMN: 'TOGGLE_COLUMN',
+  MOVE_COLUMN: 'MOVE_COLUMN'
 };
 
 export const editColumnTitle = (
@@ -41,12 +42,24 @@ export const toggleColumn = (
   columnId
 })
 
+export const moveColumn = ({
+  draggableId /*: string */,
+  source /*: {} */,
+  destination /*: {} */
+}) => ({
+  type: ACTION.MOVE_COLUMN,
+  columnId: draggableId,
+  source,
+  destination
+})
+
 /*::
 export type TopicAction =
   | $Call<typeof editColumnTitle, string, string>
   | $Call<typeof addColumn, string, string>
   | $Call<typeof removeColumn, string, string>
   | $Call<typeof toggleColumn, string>
+  | $Call<typeof moveColumn, string, {}, {}>
   //| ExtractReturn<typeof toggleColumn>
 */
 
@@ -55,7 +68,8 @@ const actions = {
   editColumnTitle,
   addColumn,
   removeColumn,
-  toggleColumn
+  toggleColumn,
+  moveColumn
 };
 
 export default actions

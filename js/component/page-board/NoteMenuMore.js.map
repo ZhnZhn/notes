@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/NoteMenuMore.js"
+ ],
+ "file": "../../../src/component/page-board/NoteMenuMore.js",
+ "names": [
+  "NoteMenuMore",
+  "theme",
+  "className",
+  "style",
+  "isShow",
+  "onClose",
+  "onEdit",
+  "onRemove",
+  "TS",
+  "createStyle",
+  "styleConfig",
+  "CL",
+  "MODAL_PANE",
+  "COMP"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,eAAe,SAAfA,YAAe,OAQf;AAAA,MAPJC,KAOI,QAPJA,KAOI;AAAA,MANJC,SAMI,QANJA,SAMI;AAAA,MALJC,KAKI,QALJA,KAKI;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,OAGI,QAHJA,OAGI;AAAA,MAFJC,MAEI,QAFJA,MAEI;AAAA,MADJC,QACI,QADJA,QACI;;AACJ,MAAMC,KAAKP,MAAMQ,WAAN,CAAkBC,cAAlB,CAAX;AACA,SACE;AAAC,uBAAD;AAAA;AACE,iBAAcC,aAAGC,UAAjB,UAA+BV,aAAa,EAA5C,CADF;AAEE,wCAAWC,KAAX,EAAqBK,GAAGK,IAAxB,CAFF;AAGE,cAAQT,MAHV;AAIE,eAASC;AAJX;AAME;AAAA;AAAA;AACE,oCAAC,oBAAD;AACE,iBAAQ,cADV;AAEE,iBAASC;AAFX;AADF,KANF;AAYE;AAAA;AAAA;AACE,oCAAC,oBAAD;AACE,iBAAQ,aADV;AAEE,iBAASC;AAFX;AADF;AAZF,GADF;AAqBD,CA/BD;;kBAiCe,yBAAUP,YAAV,C"
+}

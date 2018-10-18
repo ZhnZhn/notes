@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-dnd/isNotDnD.js"
+ ],
+ "file": "../../../src/component/zhn-dnd/isNotDnD.js",
+ "names": [
+  "isNotDnD",
+  "result",
+  "destination",
+  "source",
+  "droppableId",
+  "index"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,WAAW,SAAXA,QAAW,CAACC,MAAD,EAAY;AAC3B,MAAI,CAACA,MAAD,IAAW,QAAOA,MAAP,uDAAOA,MAAP,OAAkB,QAAjC,EAA2C;AACzC,WAAO,KAAP;AACD;AAH0B,MAInBC,WAJmB,GAIKD,MAJL,CAInBC,WAJmB;AAAA,MAINC,MAJM,GAIKF,MAJL,CAINE,MAJM;;AAK3B,SAAO,CAACD,WAAD,IAAgB,CAACC,MAAjB,IACLD,YAAYE,WAAZ,KAA4BD,OAAOC,WAAnC,IACGF,YAAYG,KAAZ,KAAsBF,OAAOE,KAFlC;AAID,CATD;;kBAWeL,Q"
+}

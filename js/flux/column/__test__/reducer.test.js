@@ -116,7 +116,9 @@ describe('reducer column', function () {
         source = _crDnD(cFromId, 0),
         destination = _crDnD(cToId, 0),
         stateWithTask = (0, _reducer2.default)(state, _actions4.default.addNote(cFromId, nId));
-    expect((0, _reducer2.default)(stateWithTask, _actions4.default.moveNote(nId, source, destination))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cToId, (0, _extends10.default)({}, state[cToId], {
+    expect((0, _reducer2.default)(stateWithTask, _actions4.default.moveNote({
+      draggableId: nId, source: source, destination: destination
+    }))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cToId, (0, _extends10.default)({}, state[cToId], {
       noteIds: [nId]
     }))));
   });
@@ -128,7 +130,9 @@ describe('reducer column', function () {
         state2 = (0, _reducer2.default)(state1, _actions4.default.addNote(cId, n2Id)),
         source = _crDnD(cId, 1),
         destination = _crDnD(cId, 0);
-    expect((0, _reducer2.default)(state2, _actions4.default.moveNote(n1Id, source, destination))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, {
+    expect((0, _reducer2.default)(state2, _actions4.default.moveNote({
+      draggableId: n1Id, source: source, destination: destination
+    }))).toEqual((0, _extends10.default)({}, state, (0, _defineProperty3.default)({}, cId, {
       id: cId,
       title: 'Topic 1',
       noteIds: [n1Id, n2Id],

@@ -9,12 +9,12 @@ import initialTheme from './style/theme'
 
 import { sApp } from '../flux/selectors'
 
-import PageBoard from './board/PageBoard'
-import PageBoards from './boards/PageBoards'
+import PageBoard from './page-board/PageBoard'
+import PageBoards from './page-boards/PageBoards'
 import WrapperContainer from './zhn-cont/WrapperContainer'
 
 class App extends Component {
-  
+
   constructor(props){
     super()
     const { store } = props

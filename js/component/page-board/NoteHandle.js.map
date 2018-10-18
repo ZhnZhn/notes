@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/NoteHandle.js"
+ ],
+ "file": "../../../src/component/page-board/NoteHandle.js",
+ "names": [
+  "CL",
+  "HANDLE",
+  "OPEN",
+  "NoteHandle",
+  "isDetails",
+  "rest",
+  "_cl"
+ ],
+ "mappings": ";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,KAAK;AACTC,UAAQ,cADC;AAETC,QAAM;AAFG,CAAX;;AAKA,IAAMC,aAAa,SAAbA,UAAa,OAA4B;AAAA,MAAzBC,SAAyB,QAAzBA,SAAyB;AAAA,MAAXC,IAAW;;AAC7C,MAAMC,MAAMF,YACLJ,GAAGC,MADE,SACQD,GAAGE,IADX,GAERF,GAAGC,MAFP;AAGA,SACC;AACG,eAAWK;AADd,KAEOD,IAFP,EADD;AAMD,CAVD;;kBAYeF,U"
+}

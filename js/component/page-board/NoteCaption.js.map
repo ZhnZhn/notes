@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/NoteCaption.js"
+ ],
+ "file": "../../../src/component/page-board/NoteCaption.js",
+ "names": [
+  "CL",
+  "CAPTION",
+  "BT_MORE",
+  "MENU_MORE",
+  "NoteCaption",
+  "dragHandleProps",
+  "isDetails",
+  "onClickHandle",
+  "noteTitle",
+  "onBlurTitle",
+  "isMenuMore",
+  "onClickMenuMore",
+  "onCloseMenuMore",
+  "onEditDetails",
+  "onRemoveNote"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,KAAK;AACTC,WAAS,eADA;AAETC,WAAS,eAFA;AAGTC,aAAW;AAHF,CAAX;;AAMA,IAAMC,cAAc,SAAdA,WAAc;AAAA,MAClBC,eADkB,QAClBA,eADkB;AAAA,MAElBC,SAFkB,QAElBA,SAFkB;AAAA,MAGlBC,aAHkB,QAGlBA,aAHkB;AAAA,MAKlBC,SALkB,QAKlBA,SALkB;AAAA,MAMlBC,WANkB,QAMlBA,WANkB;AAAA,MAQlBC,UARkB,QAQlBA,UARkB;AAAA,MASlBC,eATkB,QASlBA,eATkB;AAAA,MAUlBC,eAVkB,QAUlBA,eAVkB;AAAA,MAWlBC,aAXkB,QAWlBA,aAXkB;AAAA,MAYlBC,YAZkB,QAYlBA,YAZkB;AAAA,SAclB;AAAA;AAAA;AACE,kCAAC,oBAAD,6BACMT,eADN;AAEE,iBAAWC,SAFb;AAGE,eAASC;AAHX,OADF;AAME,kCAAC,mBAAD;AACE,iBAAWP,GAAGC,OADhB;AAEE,aAAOO,SAFT;AAGE,cAAQC;AAHV,MANF;AAWE,kCAAC,iBAAD;AACE,iBAAWT,GAAGE,OADhB;AAEE,aAAM,yBAFR;AAGE,eAASS;AAHX,MAXF;AAiBID,kBAAc,8BAAC,sBAAD;AACZ,cAAQA,UADI;AAEZ,iBAAWV,GAAGG,SAFF;AAGZ,eAASS,eAHG;AAIZ,cAAQC,aAJI;AAKZ,gBAAUC;AALE;AAjBlB,GAdkB;AAAA,CAApB;;kBA0CeV,W"
+}

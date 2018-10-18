@@ -9,13 +9,13 @@ export const ACTION = {
   EDIT_NOTE_LABELS: 'EDIT_NOTE_LABELS'
 };
 
-export const moveNote = (
-  noteId /*: string */,
+export const moveNote = ({
+  draggableId /*: string */,
   source /*: {} */,
   destination /*: {} */
-) => ({
+}) => ({
   type: ACTION.MOVE_NOTE,
-  noteId,
+  noteId: draggableId,
   source,
   destination
 })

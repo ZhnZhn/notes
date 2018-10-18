@@ -36,9 +36,13 @@ var _canRemoveBoard = require('./canRemoveBoard');
 
 var _canRemoveBoard2 = _interopRequireDefault(_canRemoveBoard);
 
+var _noteTitleValidation = require('./noteTitleValidation');
+
+var _noteTitleValidation2 = _interopRequireDefault(_noteTitleValidation);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _noteLabelId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default];
+var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _noteLabelId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default, _noteTitleValidation2.default];
 
 exports.default = middlewares;
 //# sourceMappingURL=middlewares.js.map

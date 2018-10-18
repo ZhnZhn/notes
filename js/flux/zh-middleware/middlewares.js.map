@@ -13,7 +13,8 @@
   "appStorage",
   "drawerMsg",
   "canRemoveColumn",
-  "canRemoveBoard"
+  "canRemoveBoard",
+  "noteTitleValidation"
  ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAGA,IAAMA,cAAc,CAClBC,iBADkB,EAElBC,kBAFkB,EAGlBC,gBAHkB,EAIlBC,qBAJkB,EAKlBC,oBALkB,EAMlBC,qBANkB,EAOlBC,yBAPkB,EAQlBC,wBARkB,CAApB;;kBAWeR,W"
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;;;AAGA,IAAMA,cAAc,CAClBC,iBADkB,EAElBC,kBAFkB,EAGlBC,gBAHkB,EAIlBC,qBAJkB,EAKlBC,oBALkB,EAMlBC,qBANkB,EAOlBC,yBAPkB,EAQlBC,wBARkB,EASlBC,6BATkB,CAApB;;kBAYeT,W"
 }

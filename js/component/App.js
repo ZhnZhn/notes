@@ -42,11 +42,11 @@ var _theme2 = _interopRequireDefault(_theme);
 
 var _selectors = require('../flux/selectors');
 
-var _PageBoard = require('./board/PageBoard');
+var _PageBoard = require('./page-board/PageBoard');
 
 var _PageBoard2 = _interopRequireDefault(_PageBoard);
 
-var _PageBoards = require('./boards/PageBoards');
+var _PageBoards = require('./page-boards/PageBoards');
 
 var _PageBoards2 = _interopRequireDefault(_PageBoards);
 

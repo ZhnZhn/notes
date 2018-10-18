@@ -7,7 +7,8 @@ var ACTION = exports.ACTION = {
   EDIT_COLUMN_TITLE: 'EDIT_COLUMN_TITLE',
   ADD_COLUMN: 'ADD_COLUMN',
   REMOVE_COLUMN: 'REMOVE_COLUMN',
-  TOGGLE_COLUMN: 'TOGGLE_COLUMN'
+  TOGGLE_COLUMN: 'TOGGLE_COLUMN',
+  MOVE_COLUMN: 'MOVE_COLUMN'
 };
 
 var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnId /*: string */
@@ -48,12 +49,25 @@ var toggleColumn = exports.toggleColumn = function toggleColumn(columnId /*: str
   };
 };
 
+var moveColumn = exports.moveColumn = function moveColumn(_ref) {
+  var draggableId = _ref.draggableId,
+      source = _ref.source,
+      destination = _ref.destination;
+  return {
+    type: ACTION.MOVE_COLUMN,
+    columnId: draggableId,
+    source: source,
+    destination: destination
+  };
+};
+
 /*::
 export type TopicAction =
   | $Call<typeof editColumnTitle, string, string>
   | $Call<typeof addColumn, string, string>
   | $Call<typeof removeColumn, string, string>
   | $Call<typeof toggleColumn, string>
+  | $Call<typeof moveColumn, string, {}, {}>
   //| ExtractReturn<typeof toggleColumn>
 */
 
@@ -61,7 +75,8 @@ var actions = {
   editColumnTitle: editColumnTitle,
   addColumn: addColumn,
   removeColumn: removeColumn,
-  toggleColumn: toggleColumn
+  toggleColumn: toggleColumn,
+  moveColumn: moveColumn
 };
 
 exports.default = actions;

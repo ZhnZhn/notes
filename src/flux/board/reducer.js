@@ -3,12 +3,18 @@ import { ACTION as CA } from '../column/actions'
 import initState from '../initialState'
 
 import fns from '../reducerFns'
+import fDnDMoveFns from '../fDnDMoveFns'
 
 const {
   setInObj,
   removeProp,
   filterBy
 } = fns;
+const {
+  moveInternal,
+  moveExternal
+} = fDnDMoveFns('columnIds');
+
 
 /*
 boards: {
@@ -61,6 +67,14 @@ const reducer = function (
         ...oldBoard,
         columnIds: filterBy(oldBoard.columnIds, columnId)
       });
+    }
+    case CA.MOVE_COLUMN: {
+      const { columnId, source, destination } = action
+      , from = state[source.droppableId]
+      , to = state[destination.droppableId];
+      return from === to
+        ? moveInternal(state, columnId, source, destination, from)
+        : moveExternal(state, columnId, source, destination, from, to);
     }
     default: return state;
   }

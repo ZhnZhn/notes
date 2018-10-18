@@ -12,13 +12,13 @@ var ACTION = exports.ACTION = {
   EDIT_NOTE_LABELS: 'EDIT_NOTE_LABELS'
 };
 
-var moveNote = exports.moveNote = function moveNote(noteId /*: string */
-, source /*: {} */
-, destination /*: {} */
-) {
+var moveNote = exports.moveNote = function moveNote(_ref) {
+  var draggableId = _ref.draggableId,
+      source = _ref.source,
+      destination = _ref.destination;
   return {
     type: ACTION.MOVE_NOTE,
-    noteId: noteId,
+    noteId: draggableId,
     source: source,
     destination: destination
   };

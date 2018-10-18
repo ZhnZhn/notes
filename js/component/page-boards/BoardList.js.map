@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/BoardList.js"
+ ],
+ "file": "../../../src/component/page-boards/BoardList.js",
+ "names": [
+  "BoardList",
+  "boardIds",
+  "boards",
+  "map",
+  "id",
+  "mapStateToProps",
+  "sBoard",
+  "state"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;AACA;;AAEA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,OAA0B;AAAA,MAAvBC,QAAuB,QAAvBA,QAAuB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAC1C,SAAOD,SAASE,GAAT,CAAa;AAAA,WAClB,8BAAC,mBAAD;AACE,WAAKC,EADP;AAEE,UAAIA;AAFN,MADkB;AAAA,GAAb,CAAP;AAMD,CAPD;;AASA,IAAMC,kBAAkB,SAAlBA,eAAkB;AAAA,SAAU;AAChCJ,cAAUK,kBAAOL,QAAP,CAAgBM,KAAhB,CADsB;AAEhCL,YAAQI,kBAAOJ,MAAP,CAAcK,KAAd;AAFwB,GAAV;AAAA,CAAxB;;kBAKe,yBACbF,eADa,EAEbL,SAFa,C"
+}

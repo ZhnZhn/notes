@@ -24,11 +24,19 @@ var _reducerFns = require('../reducerFns');
 
 var _reducerFns2 = _interopRequireDefault(_reducerFns);
 
+var _fDnDMoveFns2 = require('../fDnDMoveFns');
+
+var _fDnDMoveFns3 = _interopRequireDefault(_fDnDMoveFns2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var setInObj = _reducerFns2.default.setInObj,
     removeProp = _reducerFns2.default.removeProp,
     filterBy = _reducerFns2.default.filterBy;
+
+var _fDnDMoveFns = (0, _fDnDMoveFns3.default)('columnIds'),
+    moveInternal = _fDnDMoveFns.moveInternal,
+    moveExternal = _fDnDMoveFns.moveExternal;
 
 /*
 boards: {
@@ -90,6 +98,16 @@ var reducer = function reducer() /*: BoardAction */
         return setInObj(state, _boardId4, (0, _extends3.default)({}, _oldBoard, {
           columnIds: filterBy(_oldBoard.columnIds, _columnId)
         }));
+      }
+    case _actions2.ACTION.MOVE_COLUMN:
+      {
+        var _columnId2 = action.columnId,
+            source = action.source,
+            destination = action.destination,
+            from = state[source.droppableId],
+            to = state[destination.droppableId];
+
+        return from === to ? moveInternal(state, _columnId2, source, destination, from) : moveExternal(state, _columnId2, source, destination, from, to);
       }
     default:
       return state;
