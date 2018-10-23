@@ -30,9 +30,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var HeaderCaption = function HeaderCaption(_ref) {
   var board = _ref.board;
-  return [_react2.default.createElement(_Logo2.default, { className: _CL2.default.LOGO_BOARD }), _react2.default.createElement(
+  return [_react2.default.createElement(_Logo2.default, { key: 'logo', className: _CL2.default.LOGO_BOARD }), _react2.default.createElement(
     'span',
     {
+      key: 'title',
       className: _CL2.default.HEADER_TITLE + ' ' + _CL2.default.TITLE_BOARD
     },
     (0, _crTitle2.default)(board)

@@ -11,8 +11,9 @@ import crTitle from './crTitle'
 // @flow
 
 const HeaderCaption = ({ board /*: ?Board */ }) => ([
-  <Logo className={CL.LOGO_BOARD} />,
+  <Logo key="logo" className={CL.LOGO_BOARD} />,
   <span
+    key="title"
     className={`${CL.HEADER_TITLE} ${CL.TITLE_BOARD}`}
   >
     {crTitle(board)}

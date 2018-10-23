@@ -58,9 +58,11 @@ class PageBoard extends Component {
     } = this.props;
     return [
       <Header
+        key="header"
         addColumn={this._hAddColumn}
       />,
       <DragDropContext
+        key="ddc"
         onDragEnd={this._hDragEnd}
       >
         <Main>

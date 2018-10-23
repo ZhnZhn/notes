@@ -5,27 +5,9 @@
  ],
  "file": "../../../src/component/page-boards/DnDTopic.js",
  "names": [
-  "S",
-  "TOPIC",
-  "paddingLeft",
-  "lineHeight",
-  "COUNTER",
-  "float",
-  "paddingRight",
-  "_crTopicStyle",
-  "backgroundColor",
-  "is",
   "DnDTopic",
-  "props",
-  "draggableProps",
-  "innerRef",
-  "isDragging",
-  "dragHandleProps",
-  "title",
-  "count",
-  "style",
-  "draggablePropsRest",
-  "_style"
+  "Topic",
+  "displayName"
  ],
- "mappings": ";;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,SAAO;AACLC,iBAAa,EADR;AAELC,gBAAY;AAFP,GADC;AAKRC,WAAS;AACPC,WAAO,OADA;AAEPC,kBAAc;AAFP;AALD,CAAV;;AAWA,IAAMC,gBAAgB,SAAhBA,aAAgB;AAAA,SAAO;AAC3BC,qBAAiBC,KACZ,SADY,GAEZ;AAHsB,GAAP;AAAA,CAAtB;;AAMA,IAAMC,WAAW,SAAXA,QAAW,CAACC,KAAD,EAAW;AAAA,MAExBC,cAFwB,GAQtBD,KARsB,CAExBC,cAFwB;AAAA,MAGxBC,QAHwB,GAQtBF,KARsB,CAGxBE,QAHwB;AAAA,MAIxBC,UAJwB,GAQtBH,KARsB,CAIxBG,UAJwB;AAAA,MAKxBC,eALwB,GAQtBJ,KARsB,CAKxBI,eALwB;AAAA,MAMxBC,KANwB,GAQtBL,KARsB,CAMxBK,KANwB;AAAA,MAOxBC,KAPwB,GAQtBN,KARsB,CAOxBM,KAPwB;AAAA,MAStBC,KATsB,GASWN,cATX,CAStBM,KATsB;AAAA,MASZC,kBATY,0CASWP,cATX;AAAA,MAUxBQ,MAVwB,GAUfb,cAAcO,UAAd,CAVe;;AAW1B,SACE;AAAA;AAAA;AACE,WAAKD,QADP;AAEE,wCAAYb,EAAEC,KAAd,EAAwBiB,KAAxB,EAAkCE,MAAlC;AAFF,OAGMD,kBAHN,EAIMJ,eAJN;AAME;AAAA;AAAA;AACGC;AADH,KANF;AASE,kCAAC,cAAD,CAAM,OAAN;AACG,aAAOhB,EAAEI,OADZ;AAEG,aAAOa;AAFV;AATF,GADF;AAgBD,CA3BD;;kBA6BeP,Q"
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,WAAW,sBAAOC,eAAP,CAAjB;AACAD,SAASE,WAAT,GAAuB,UAAvB;;kBAEeF,Q"
 }

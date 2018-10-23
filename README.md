@@ -1,5 +1,5 @@
 # [Web app Notes](https://zhnzhn.github.io/notes)
-**Web app Notes:** the web app that helps to manage draggable notes on boards.  
+**Web app Notes:** the web app that helps to manage draggable notes to topics on boards.  
 
 ![alt text](screencast/web-app-notes.png?raw=true "Web app Notes")
 

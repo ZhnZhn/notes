@@ -73,9 +73,10 @@ var PageBoards = function (_Component) {
   (0, _createClass3.default)(PageBoards, [{
     key: 'render',
     value: function render() {
-      return [_react2.default.createElement(_Header2.default, null), _react2.default.createElement(
+      return [_react2.default.createElement(_Header2.default, { key: 'header' }), _react2.default.createElement(
         _reactBeautifulDnd.DragDropContext,
         {
+          key: 'ddc',
           onDragEnd: this._hDragEnd
         },
         _react2.default.createElement(

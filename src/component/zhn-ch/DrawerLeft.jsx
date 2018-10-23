@@ -65,6 +65,7 @@ class DrawerLeft extends Component {
     , TS = theme.createStyle(styleConfig);
     return [
         <button
+          key="bt-drawer"
           className={CL.DRAWER_BT}
           style={{ ...S.BT_DRAWER, ...btStyle }}
           aria-label="Open Drawer"
@@ -73,12 +74,14 @@ class DrawerLeft extends Component {
           {captionComp}
         </button>,
         <div
+          key="wrapper"
           aria-hidden={!isOpen}
           className={CL.DRAWER_MODAL}
           style={_drawerModalStyle}
           onClick={_onClickWrapper}
         />,
         <aside
+          key="aside"
           className={CL.DRAWER}
           style={{ ..._drawerStyle, ...TS.COMP }}
          >

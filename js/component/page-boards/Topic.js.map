@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/Topic.js"
+ ],
+ "file": "../../../src/component/page-boards/Topic.js",
+ "names": [
+  "S",
+  "TOPIC",
+  "paddingLeft",
+  "lineHeight",
+  "COUNTER",
+  "float",
+  "paddingRight",
+  "Topic",
+  "title",
+  "count"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,IAAI;AACRC,SAAO;AACLC,iBAAa,EADR;AAELC,gBAAY;AAFP,GADC;AAKRC,WAAS;AACPC,WAAO,OADA;AAEPC,kBAAc;AAFP;AALD,CAAV;;AAWA,IAAMC,QAAQ,SAARA,KAAQ;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAUC,KAAV,QAAUA,KAAV;AAAA,SACZ;AAAA;AAAA,MAAK,OAAOT,EAAEC,KAAd;AACE;AAAA;AAAA;AACGO;AADH,KADF;AAIE,kCAAC,cAAD,CAAM,OAAN;AACG,aAAOR,EAAEI,OADZ;AAEG,aAAOK;AAFV;AAJF,GADY;AAAA,CAAd;;kBAYeF,K"
+}

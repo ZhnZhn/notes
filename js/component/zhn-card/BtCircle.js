@@ -14,23 +14,6 @@ var _CL2 = _interopRequireDefault(_CL);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-const S = {
-  BT: {
-    display: 'inline-block',
-    padding: 8,
-    width: 36,
-    height: 36,
-    color: '#9e9e9e',
-    backgroundColor: '#1b2836',
-    borderRadius: '50%',
-    textAlign: 'center',
-    fontWeight: 600,
-    cursor: 'pointer'
-  }
-};
-*/
-
 var BtCircle = function BtCircle(_ref) {
   var style = _ref.style,
       caption = _ref.caption,

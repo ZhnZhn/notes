@@ -103,10 +103,12 @@ var PageBoard = function (_Component) {
           addNote = _props.addNote;
 
       return [_react2.default.createElement(_Header2.default, {
+        key: 'header',
         addColumn: this._hAddColumn
       }), _react2.default.createElement(
         _reactBeautifulDnd.DragDropContext,
         {
+          key: 'ddc',
           onDragEnd: this._hDragEnd
         },
         _react2.default.createElement(

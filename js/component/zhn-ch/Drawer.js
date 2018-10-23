@@ -111,6 +111,7 @@ var Drawer = function (_Component) {
       return [_react2.default.createElement(
         'button',
         {
+          key: 'bt-drawer',
           className: CL.DRAWER_BT,
           style: (0, _extends3.default)({}, S.BT_DRAWER, btStyle),
           'aria-label': 'Open Drawer',
@@ -132,6 +133,7 @@ var Drawer = function (_Component) {
           )
         )
       ), _react2.default.createElement('div', {
+        key: 'wrapper',
         'aria-hidden': !isOpen,
         className: CL.DRAWER_MODAL,
         style: _drawerModalStyle,
@@ -139,6 +141,7 @@ var Drawer = function (_Component) {
       }), _react2.default.createElement(
         'aside',
         {
+          key: 'aside',
           className: CL.DRAWER,
           style: (0, _extends3.default)({}, _drawerStyle, TS.COMP)
         },

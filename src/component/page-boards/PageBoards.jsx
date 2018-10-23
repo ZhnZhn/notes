@@ -21,8 +21,9 @@ class PageBoards extends Component {
 
   render() {
     return [
-      <Header />,
+      <Header key="header" />,
       <DragDropContext
+         key="ddc"
          onDragEnd={this._hDragEnd}
       >
         <Main>

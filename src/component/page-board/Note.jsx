@@ -13,30 +13,16 @@ import NoteDetails from './NoteDetails'
 
 const CL = 'note';
 
-const C = {
-  DRAGGING: '#1e90ff', //dodgerblue
-  NOT_DRAGGING: '#9e9e9e'
-};
-
 const _getState = (props) => ({
   noteTitle: props.note.title,
   isMenuMore: false,
   isDetails: false
 });
 
-const _crRootStyle = (isDragging) => {
-  return {
-    backgroundColor: isDragging
-      ? C.DRAGGING
-      : C.NOT_DRAGGING
-  };
-};
-
 class DnDNote extends Component {
   /*
   static propTypes = {
-    provided: PropsType.object,
-    snap: PropsType.object,
+    dragHandleProps: PropsType.object,
     note: PropsType.object
     columnId: PropsType.string
   }
@@ -87,14 +73,9 @@ class DnDNote extends Component {
 
   render(){
     const {
-      draggableProps,
-      isDragging,
-      innerRef,
       dragHandleProps,
-      note,
+      note
     } = this.props
-    , { style, ...draggablePropsRest } = draggableProps
-    , _style = _crRootStyle(isDragging)
     , {
       noteTitle,
       isMenuMore,
@@ -104,9 +85,6 @@ class DnDNote extends Component {
     return (
       <div
         className={CL}
-        style={{..._style, ...style}}
-        {...draggablePropsRest}
-        ref={innerRef}
         id={note.id}
       >
         <NoteCaption
