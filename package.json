@@ -15,15 +15,15 @@
     "css:sass": "gulp sass",
     "css:all": "npm run css:sass && npm run css:min",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
-    "build:dll-jsx": "webpack --colors --progress --config webpack.config-dll-jsx.js",
+    "build:dll-jsx": "webpack --colors --progress --config webpack.dll-jsx.js",
     "build:all": "npm run lint && npm run css:min && npm run build:dll-jsx"
   },
   "author": "",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "react": "^16.5.2",
+    "react": "^16.6.3",
     "react-beautiful-dnd": "^9.0.2",
-    "react-dom": "^16.5.2",
+    "react-dom": "^16.6.3",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1"
@@ -60,9 +60,9 @@
   },
   "jspm": {
     "dependencies": {
-      "react": "npm:react@^16.5.2",
+      "react": "npm:react@^16.6.3",
       "react-beautiful-dnd": "npm:react-beautiful-dnd@^9.0.2",
-      "react-dom": "npm:react-dom@^16.5.2",
+      "react-dom": "npm:react-dom@^16.6.3",
       "react-redux": "npm:react-redux@^5.0.7",
       "react-router-dom": "npm:react-router-dom@^4.3.1",
       "redux": "npm:redux@^4.0.1"

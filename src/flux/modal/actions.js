@@ -1,4 +1,5 @@
 // @flow
+import { MD } from '../../component/dialogs/modalRouter'
 
 export const ACTION = {
   SHOW_MODAL: 'SHOW_MODAL'
@@ -13,7 +14,12 @@ export const showModal = (
   data
 });
 
-const showDetails = showModal.bind(null, 'DETAILS')
+export const showDetails = showModal
+ .bind(null, MD.DETAILS);
+export const showSettings = showModal
+ .bind(null, MD.SETTINGS);
+ export const showNotif = showModal
+  .bind(null, MD.NOTIF); 
 
 /*::
 export type ModalAction =

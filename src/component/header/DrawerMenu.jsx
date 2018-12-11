@@ -5,8 +5,7 @@ import {
   saveBoard,
   cleanStorage
 } from '../../flux/app/actions'
-import { showModal } from '../../flux/modal/actions'
-import { MD } from '../dialogs/modalRouter'
+import { showSettings } from '../../flux/modal/actions'
 
 import FlatButton  from '../zhn-m/FlatButton'
 import DrawerMsgList from './DrawerMsgList'
@@ -31,7 +30,7 @@ const S = {
 };
 
 const DrawerMenu = ({
-  onSettings,
+  showSettings,
   saveBoard,
   cleanStorage
 }) => (
@@ -48,7 +47,7 @@ const DrawerMenu = ({
           className={CL.BT}
           caption="User Settings"
           title="Click to open user settings dialog"
-          onClick={onSettings}
+          onClick={showSettings}
         />
       </li>
       <li>
@@ -72,9 +71,8 @@ const DrawerMenu = ({
   </div>
 );
 
-const onSettings = showModal.bind(null, MD.SETTINGS);
 const mapDispatchToProps = {
-  onSettings,
+  showSettings,
   saveBoard,
   cleanStorage
 };

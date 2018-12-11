@@ -1,6 +1,5 @@
 import { ACTION } from '../board/actions'
-import ma from '../modal/actions'
-import { MD } from '../../component/dialogs/modalRouter'
+import { showNotif } from '../modal/actions'
 import crId from './crId'
 import { sApp } from '../selectors'
 import CONF from '../appConf'
@@ -11,9 +10,7 @@ const _isMax = (state) => sApp
 const boardIdMiddleware = ({ getState, dispatch }) => next => action => {
   if (action.type === ACTION.ADD_BOARD) {
     if ( _isMax(getState()) ) {
-      dispatch(
-        ma.showModal(MD.NOTIF, CONF.N_MAX_BOARDS)
-      )
+      dispatch(showNotif(CONF.N_MAX_BOARDS))
       return false;
     }
     action  = {

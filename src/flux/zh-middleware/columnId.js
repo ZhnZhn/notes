@@ -1,6 +1,5 @@
 import { ACTION } from '../column/actions'
-import ma from '../modal/actions'
-import { MD } from '../../component/dialogs/modalRouter'
+import { showNotif } from '../modal/actions'
 import { sBoard } from '../selectors'
 import crId from './crId'
 import CONF from '../appConf'
@@ -11,9 +10,7 @@ const _isMax = (state, boardId) => sBoard
 const columnIdMiddleware = ({ getState, dispatch }) => next => action => {
   if (action.type === ACTION.ADD_COLUMN) {
     if (_isMax(getState(), action.boardId)) {
-      dispatch(
-        ma.showModal(MD.NOTIF, CONF.N_MAX_COLUMNS)
-      )
+      dispatch(showNotif(CONF.N_MAX_COLUMNS))
       return false;
     }
     action = {
