@@ -14,6 +14,8 @@
     "css:min": "gulp",
     "css:sass": "gulp sass",
     "css:all": "npm run css:sass && npm run css:min",
+    "build:dev:dll": "webpack --colors --progress --config webpack.dev.dll.js",
+    "build:dev:dll-jsx": "webpack --colors --progress --config webpack.dev.dll-jsx.js",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --colors --progress --config webpack.dll-jsx.js",
     "build:all": "npm run lint && npm run css:min && npm run build:dll-jsx"
@@ -40,21 +42,22 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "del": "^4.0.0",
     "eslint": "^5.2.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
     "flow-bin": "^0.80.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.10.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-inject": "^4.3.2",
+    "gulp-inject": "^5.0.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
-    "gulp-rev": "^8.1.1",
-    "gulp-sass": "^4.0.1",
+    "gulp-rev": "^9.0.0",
+    "gulp-sass": "^4.0.2",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-processing-plugin": "^0.1.2",
-    "jest": "^23.5.0",
+    "jest": "^24.5.0",
     "jspm": "^0.16.53",
     "webpack": "^3.12.0"
   },
@@ -77,6 +80,11 @@
     "roots": [
       "<rootDir>/js/utils/",
       "<rootDir>/js/flux/"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/js/utils/",
+      "<rootDir>/js/flux/",
+      "<rootDir>/js/component/"
     ]
   }
 }
