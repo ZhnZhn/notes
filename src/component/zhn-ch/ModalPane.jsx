@@ -14,12 +14,15 @@ class ModalPane extends Component {
     onClose: () => {}
   }
 
+  _isEventTargetOutside = (event) => this.rootNode
+     && this.rootNode.contains
+     && !this.rootNode.contains(event.target)
+
   _hClickOutside = (event) => {
     const { onClose } = this.props;
-    if (this.rootNode
-      && this.rootNode.contains
-      && !this.rootNode.contains(event.target)) {
-       onClose(event)
+    if (this._isEventTargetOutside(event)) {
+      event.stopPropagation()
+      onClose(event)
     }
   }
 
@@ -30,9 +33,16 @@ class ModalPane extends Component {
     document.removeEventListener('click', this._hClickOutside, true)
   }
 
+  _initShowMode = () => {
+    this._addOutsideListener()
+    if (this.rootNode) {
+      this.rootNode.focus()
+    }
+  }
+
   componentDidMount() {
     if (this.props.isShow) {
-      this._addOutsideListener()
+      this._initShowMode()
     }
   }
   componentWillUnmount() {
@@ -43,13 +53,20 @@ class ModalPane extends Component {
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps ){
       if (this.props.isShow){
-        this._addOutsideListener()
+        this._initShowMode()
       } else {
         this._removeOutsideListener()
       }
     }
   }
-  
+
+  _hKeyDown = (evt) => {
+    if (evt.key === 'Escape') {
+      evt.preventDefault()
+      this.props.onClose(evt)
+    }
+  }
+
   _refRootNode = n => this.rootNode = n
 
   render(){
@@ -63,6 +80,10 @@ class ModalPane extends Component {
         ref={this._refRootNode}
         className={className}
         style={style}
+        tabIndex="0"
+        //role="dialog"
+        //aria-modal={true}
+        onKeyDown={this._hKeyDown}
       >
         {children}
       </div>

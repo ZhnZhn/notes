@@ -41,15 +41,30 @@ var S = {
   }
 };
 
+var _fOnKeyPress = function _fOnKeyPress(onKeyPress) {
+  return function (evt) {
+    if (evt.which === 13) {
+      onKeyPress(evt);
+    }
+  };
+};
+
 var _renderOptions = function _renderOptions(options, currentItem, clItem, onSelect, isShow) {
   return options.map(function (item) {
-    var _style = item.value === currentItem.value ? S.ITEM : undefined;
+    var _style = item.value === currentItem.value ? S.ITEM : undefined,
+        _onSelect = onSelect.bind(null, item),
+        _onKeyPress = _fOnKeyPress(_onSelect);
+
     return _react2.default.createElement(
       'div',
       {
+        role: 'button',
+        tabIndex: '0',
+        key: item.value,
         style: _style,
         className: clItem,
-        onClick: onSelect.bind(null, item)
+        onClick: _onSelect,
+        onKeyPress: _onKeyPress
       },
       item.caption
     );

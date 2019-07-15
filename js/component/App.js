@@ -104,13 +104,17 @@ var App = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           _ThemeContext2.default.Provider,
           { value: theme },
-          _react2.default.createElement(_WrapperContainer2.default, { store: store }),
           _react2.default.createElement(
-            _reactRouterDom.Switch,
+            _react2.default.StrictMode,
             null,
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/boards/:id', component: _PageBoard2.default }),
-            _react2.default.createElement(_reactRouterDom.Route, { path: '/boards', component: _PageBoards2.default }),
-            _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/boards' })
+            _react2.default.createElement(_WrapperContainer2.default, { store: store }),
+            _react2.default.createElement(
+              _reactRouterDom.Switch,
+              null,
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/boards/:id', component: _PageBoard2.default }),
+              _react2.default.createElement(_reactRouterDom.Route, { path: '/boards', component: _PageBoards2.default }),
+              _react2.default.createElement(_reactRouterDom.Redirect, { from: '/', to: '/boards' })
+            )
           )
         )
       );

@@ -46,12 +46,23 @@ var ModalPane = (_temp2 = _class = function (_Component) {
       var onClose = _this.props.onClose;
 
       if (_this.rootNode && _this.rootNode.contains && !_this.rootNode.contains(event.target)) {
+        event.stopPropagation();
         onClose(event);
       }
     }, _this._addOutsideListener = function () {
       document.addEventListener('click', _this._hClickOutside, true);
     }, _this._removeOutsideListener = function () {
       document.removeEventListener('click', _this._hClickOutside, true);
+    }, _this._initShowMode = function () {
+      _this._addOutsideListener();
+      if (_this.rootNode) {
+        _this.rootNode.focus();
+      }
+    }, _this._hKeyDown = function (evt) {
+      if (evt.key === 'Escape') {
+        evt.preventDefault();
+        _this.props.onClose(evt);
+      }
     }, _this._refRootNode = function (n) {
       return _this.rootNode = n;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
@@ -69,7 +80,7 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       if (this.props.isShow) {
-        this._addOutsideListener();
+        this._initShowMode();
       }
     }
   }, {
@@ -82,7 +93,7 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     value: function componentDidUpdate(prevProps) {
       if (this.props !== prevProps) {
         if (this.props.isShow) {
-          this._addOutsideListener();
+          this._initShowMode();
         } else {
           this._removeOutsideListener();
         }
@@ -101,7 +112,11 @@ var ModalPane = (_temp2 = _class = function (_Component) {
         {
           ref: this._refRootNode,
           className: className,
-          style: style
+          style: style,
+          tabIndex: '0'
+          //role="dialog"
+          //aria-modal={true}
+          , onKeyDown: this._hKeyDown
         },
         children
       );

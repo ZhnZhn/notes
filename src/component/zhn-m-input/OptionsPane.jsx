@@ -20,18 +20,35 @@ const S = {
   ITEM: {
     color: 'greenyellow'
   }
-}
+};
 
-const _renderOptions = (options, currentItem, clItem, onSelect, isShow) => {
+const _fOnKeyPress = onKeyPress => evt => {
+  if (evt.which === 13) {
+    onKeyPress(evt)
+  }
+};
+
+const _renderOptions = (
+  options, currentItem,
+  clItem, onSelect,
+  isShow
+) => {
   return options.map(item => {
     const _style = (item.value === currentItem.value)
              ? S.ITEM
-             : undefined;
+             : undefined
+        , _onSelect = onSelect.bind(null, item)
+        , _onKeyPress = _fOnKeyPress(_onSelect);
+
     return (
       <div
+        role="button"
+        tabIndex="0"
+        key={item.value}
         style={_style}
         className={clItem}
-        onClick={onSelect.bind(null, item)}
+        onClick={_onSelect}
+        onKeyPress={_onKeyPress}
       >
         {item.caption}
       </div>
@@ -39,7 +56,11 @@ const _renderOptions = (options, currentItem, clItem, onSelect, isShow) => {
   })
 }
 
-const OptionsPane = ({ isShow, options, item, rootStyle, clItem, onSelect, onClose }) => (
+const OptionsPane = ({
+  isShow, options, item,
+  rootStyle, clItem,
+  onSelect, onClose
+}) => (
   <ModalPane
      style={rootStyle}
      isShow={isShow}
