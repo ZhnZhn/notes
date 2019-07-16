@@ -46,14 +46,16 @@ const _hocDnDImpl = (ItemComp, options) => (props) => {
   );
 }
 
-const _isComp = (Comp) => typeof Comp === 'function';
+const _isFn = fn => typeof fn === 'function';
 
-const hocDnD = (optionsOrComp, options) => _isComp(optionsOrComp)
+const hocDnD = (optionsOrComp, options) => _isFn(optionsOrComp)
   ? _hocDnDImpl(optionsOrComp, options)
   : (ItemComp) => {
+     /*
      if (!_isComp(ItemComp)) {
-       throw new Error('HocDnd expected argument to be react component');
+       throw new Error('HocDnd expected argument to be react element');
      }
+     */
      return _hocDnDImpl(ItemComp, optionsOrComp);
   };
 

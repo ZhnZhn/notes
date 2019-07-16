@@ -21,7 +21,7 @@ const initState /*: StoreState */ = {
   notes: {
     //'n-1': { id: 'n-1', title: 'Note 1' },
   },
-  noteLabel: {
+  noteLabels: {
    //'nl-1': { id: 'nl-1', title: 'Label', color: 'green' },
   },
   columns: {

@@ -2,7 +2,7 @@ import { ACTION as NA } from '../note/actions'
 import initialState from '../initialState'
 
 const reducer = function(
-  state = initialState.noteLabel,
+  state = initialState.noteLabels,
   action
 ) {
   switch(action.type){

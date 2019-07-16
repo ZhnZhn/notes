@@ -55,18 +55,18 @@ class App extends Component {
     } = this.props
     , { theme } = this.state;
     return (
-      <BrowserRouter basename={basename}>
-        <ThemeContext.Provider value={theme}>
-          <React.StrictMode>
+      <React.StrictMode>
+        <BrowserRouter basename={basename}>
+          <ThemeContext.Provider value={theme}>
             <WrapperContainer store={store} />
             <Switch>
               <Route path="/boards/:id" component={PageBoard} />
               <Route path="/boards" component={PageBoards} />
               <Redirect from="/" to="/boards" />
             </Switch>
-          </React.StrictMode>
-        </ThemeContext.Provider>
-      </BrowserRouter>
+          </ThemeContext.Provider>
+        </BrowserRouter>
+      </React.StrictMode>
     );
   }
 }
