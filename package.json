@@ -23,11 +23,11 @@
   "author": "",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "react": "^16.8.6",
-    "react-beautiful-dnd": "^11.0.4",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-beautiful-dnd": "file:node_modules_b7/node_modules/react-beautiful-dnd",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "file:node_modules_b7/node_modules/react-router-dom",
     "redux": "^4.0.4"
   },
   "devDependencies": {
@@ -57,15 +57,15 @@
     "gulp-sass": "^4.0.2",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-processing-plugin": "^0.1.2",
-    "jest": "^24.5.0",
+    "jest": "file:node_modules_b7/node_modules/jest",
     "jspm": "^0.16.54",
     "webpack": "^3.12.0"
   },
   "jspm": {
     "dependencies": {
-      "react": "npm:react@^16.8.6",
-      "react-beautiful-dnd": "npm:react-beautiful-dnd@^11.0.4",
-      "react-dom": "npm:react-dom@^16.8.6",
+      "react": "npm:react@^16.9.0",
+      "react-beautiful-dnd": "npm:react-beautiful-dnd@^11.0.5",
+      "react-dom": "npm:react-dom@^16.9.0",
       "react-redux": "npm:react-redux@^7.1.0",
       "react-router-dom": "npm:react-router-dom@^5.0.1",
       "redux": "npm:redux@^4.0.4"
