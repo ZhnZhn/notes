@@ -1,15 +1,19 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var hmToArr = function hmToArr(hm /*: {}*/
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var hmToArr = function hmToArr(hm
+/*: {}*/
 ) {
-  return (/*: []*/Object.keys(hm).map(function (key) {
+  return (
+    /*: []*/
+    Object.keys(hm).map(function (key) {
       return hm[key];
     })
   );
 };
 
-exports.default = hmToArr;
+var _default = hmToArr;
+exports["default"] = _default;
 //# sourceMappingURL=hmToArr.js.map

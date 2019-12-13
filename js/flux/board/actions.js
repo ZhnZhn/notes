@@ -1,17 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ACTION = exports.ACTION = {
+exports.__esModule = true;
+exports["default"] = exports.removeBoard = exports.addBoard = exports.setBoardCurrent = exports.editBoardTitle = exports.ACTION = void 0;
+var ACTION = {
   EDIT_BOARD_TITLE: 'EDIT_BOARD_TITLE',
   SET_BOARD_CURRENT: 'SET_BOARD_CURRENT',
   ADD_BOARD: 'ADD_BOARD',
   REMOVE_BOARD: 'REMOVE_BOARD'
 };
+exports.ACTION = ACTION;
 
-var editBoardTitle = exports.editBoardTitle = function editBoardTitle(boardId /*: string */
-, title /*: string */
+var editBoardTitle = function editBoardTitle(boardId
+/*: string */
+, title
+/*: string */
 ) {
   return {
     type: ACTION.EDIT_BOARD_TITLE,
@@ -20,7 +22,10 @@ var editBoardTitle = exports.editBoardTitle = function editBoardTitle(boardId /*
   };
 };
 
-var setBoardCurrent = exports.setBoardCurrent = function setBoardCurrent(boardId /*: string */
+exports.editBoardTitle = editBoardTitle;
+
+var setBoardCurrent = function setBoardCurrent(boardId
+/*: string */
 ) {
   return {
     type: ACTION.SET_BOARD_CURRENT,
@@ -28,7 +33,10 @@ var setBoardCurrent = exports.setBoardCurrent = function setBoardCurrent(boardId
   };
 };
 
-var addBoard = exports.addBoard = function addBoard(boardId /*: string */
+exports.setBoardCurrent = setBoardCurrent;
+
+var addBoard = function addBoard(boardId
+/*: string */
 ) {
   return {
     type: ACTION.ADD_BOARD,
@@ -36,14 +44,16 @@ var addBoard = exports.addBoard = function addBoard(boardId /*: string */
   };
 };
 
-var removeBoard = exports.removeBoard = function removeBoard(boardId /*: string */
+exports.addBoard = addBoard;
+
+var removeBoard = function removeBoard(boardId
+/*: string */
 ) {
   return {
     type: ACTION.REMOVE_BOARD,
     boardId: boardId
   };
 };
-
 /*::
 export type BoardAction =
  | $Call<typeof editBoardTitle, string, string>
@@ -52,12 +62,14 @@ export type BoardAction =
  | $Call<typeof removeBoard, string>
 */
 
+
+exports.removeBoard = removeBoard;
 var actions = {
   editBoardTitle: editBoardTitle,
   setBoardCurrent: setBoardCurrent,
   addBoard: addBoard,
   removeBoard: removeBoard
 };
-
-exports.default = actions;
+var _default = actions;
+exports["default"] = _default;
 //# sourceMappingURL=actions.js.map

@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/board-header/TopicDrawer.js"
- ],
- "file": "../../../src/component/board-header/TopicDrawer.js",
- "names": [
-  "TopicDrawer"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,cAAc,SAAdA,WAAc;AAAA,SAClB;AAAC,wBAAD;AAAA;AACE,mBAAa,8BAAC,uBAAD;AADf;AAGE,kCAAC,yBAAD;AAHF,GADkB;AAAA,CAApB;;kBAQeA,W"
-}
+{"version":3,"sources":["../../../src/component/board-header/TopicDrawer.jsx"],"names":["TopicDrawer"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,WAAW,GAAG,SAAdA,WAAc;AAAA,SAClB,gCAAC,sBAAD;AACE,IAAA,WAAW,EAAE,gCAAC,yBAAD;AADf,KAGE,gCAAC,2BAAD,OAHF,CADkB;AAAA,CAApB;;eAQeA,W","sourcesContent":["import React from 'react'\r\n\r\nimport DrawerLeft from '../zhn-ch/DrawerLeft'\r\nimport Caption from './HeaderCaption'\r\nimport DrawerMenu from './TopicDrawerMenu'\r\n\r\nconst TopicDrawer = () => (\r\n  <DrawerLeft\r\n    captionComp={<Caption />}\r\n  >\r\n    <DrawerMenu />\r\n  </DrawerLeft>\r\n);\r\n\r\nexport default TopicDrawer\r\n"],"file":"TopicDrawer.js"}

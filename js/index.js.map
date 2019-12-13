@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../src/index.js"
- ],
- "file": "../src/index.js",
- "names": [
-  "basename",
-  "process",
-  "env",
-  "NODE_ENV",
-  "undefined",
-  "store",
-  "document",
-  "getElementById"
- ],
- "mappings": ";;AAAA;;;;AACA;;AACA;;AAEA;;;;AACA;;;;;;AAEA,IAAIA,WAAW,QAAf;AACA;AACA,IAAIC,QAAQC,GAAR,CAAYC,QAAZ,KAAyB,aAA7B,EAA2C;AACzCH,aAAWI,SAAX;AACD;AACD;;AAEA,sBAEI;AAAC,sBAAD;AAAA,IAAU,OAAOC,eAAjB;AACE,gCAAC,aAAD;AACE,cAAUL,QADZ;AAEE,WAAOK;AAFT;AADF,CAFJ,EASEC,SAASC,cAAT,CAAwB,KAAxB,CATF"
-}
+{"version":3,"sources":["../src/index.jsx"],"names":["basename","process","env","NODE_ENV","undefined","store","document","getElementById"],"mappings":";;;;AAAA;;AACA;;AACA;;AAEA;;AACA;;AAEA,IAAIA,QAAQ,GAAG,QAAf;AACA;;AACA,IAAIC,OAAO,CAACC,GAAR,CAAYC,QAAZ,KAAyB,aAA7B,EAA2C;AACzCH,EAAAA,QAAQ,GAAGI,SAAX;AACD;AACD;;;AAEA,sBAEI,gCAAC,oBAAD;AAAU,EAAA,KAAK,EAAEC;AAAjB,GACE,gCAAC,eAAD;AACE,EAAA,QAAQ,EAAEL,QADZ;AAEE,EAAA,KAAK,EAAEK;AAFT,EADF,CAFJ,EASEC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CATF","sourcesContent":["import React from 'react'\r\nimport { render } from 'react-dom'\r\nimport { Provider } from 'react-redux'\r\n\r\nimport store from './flux/store'\r\nimport App from './component/App'\r\n\r\nlet basename = \"/notes\";\r\n/*eslint-disable no-undef*/\r\nif (process.env.NODE_ENV === 'development'){\r\n  basename = undefined\r\n}\r\n/*eslint-enable no-undef*/\r\n\r\nrender(\r\n  (\r\n    <Provider store={store}>\r\n      <App\r\n        basename={basename}\r\n        store={store}\r\n      />\r\n    </Provider>\r\n  ),\r\n  document.getElementById('app')\r\n)\r\n"],"file":"index.js"}

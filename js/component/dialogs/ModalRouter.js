@@ -1,45 +1,34 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MD = undefined;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+exports.__esModule = true;
+exports["default"] = exports.MD = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _NotificationDialog = _interopRequireDefault(require("./NotificationDialog"));
+
+var _SettingsDialog = _interopRequireDefault(require("./SettingsDialog"));
+
+var _DetailsDialog = _interopRequireDefault(require("../d-details/DetailsDialog"));
 
 var _r2;
 
-var _NotificationDialog = require('./NotificationDialog');
-
-var _NotificationDialog2 = _interopRequireDefault(_NotificationDialog);
-
-var _SettingsDialog = require('./SettingsDialog');
-
-var _SettingsDialog2 = _interopRequireDefault(_SettingsDialog);
-
-var _DetailsDialog = require('../d-details/DetailsDialog');
-
-var _DetailsDialog2 = _interopRequireDefault(_DetailsDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var MD = exports.MD = {
+var MD = {
   NOTIF: 'NOTIF',
   SETTINGS: 'SETTINGS',
   DETAILS: 'DETAILS'
 };
+exports.MD = MD;
 
 var _r = (_r2 = {
-  DF: _NotificationDialog2.default
-}, (0, _defineProperty3.default)(_r2, MD.NOTIF, _NotificationDialog2.default), (0, _defineProperty3.default)(_r2, MD.SETTINGS, _SettingsDialog2.default), (0, _defineProperty3.default)(_r2, MD.DETAILS, _DetailsDialog2.default), _r2);
+  DF: _NotificationDialog["default"]
+}, _r2[MD.NOTIF] = _NotificationDialog["default"], _r2[MD.SETTINGS] = _SettingsDialog["default"], _r2[MD.DETAILS] = _DetailsDialog["default"], _r2);
 
 var modalRouter = {
   getDialog: function getDialog(type) {
     return _r[type] || _r.DF;
   }
 };
-
-exports.default = modalRouter;
+var _default = modalRouter;
+exports["default"] = _default;
 //# sourceMappingURL=modalRouter.js.map

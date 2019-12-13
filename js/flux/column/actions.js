@@ -1,18 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ACTION = exports.ACTION = {
+exports.__esModule = true;
+exports["default"] = exports.moveColumn = exports.toggleColumn = exports.removeColumn = exports.addColumn = exports.editColumnTitle = exports.ACTION = void 0;
+var ACTION = {
   EDIT_COLUMN_TITLE: 'EDIT_COLUMN_TITLE',
   ADD_COLUMN: 'ADD_COLUMN',
   REMOVE_COLUMN: 'REMOVE_COLUMN',
   TOGGLE_COLUMN: 'TOGGLE_COLUMN',
   MOVE_COLUMN: 'MOVE_COLUMN'
 };
+exports.ACTION = ACTION;
 
-var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnId /*: string */
-, title /*: string */
+var editColumnTitle = function editColumnTitle(columnId
+/*: string */
+, title
+/*: string */
 ) {
   return {
     type: ACTION.EDIT_COLUMN_TITLE,
@@ -21,8 +23,12 @@ var editColumnTitle = exports.editColumnTitle = function editColumnTitle(columnI
   };
 };
 
-var addColumn = exports.addColumn = function addColumn(boardId /*: string */
-, columnId /*: string */
+exports.editColumnTitle = editColumnTitle;
+
+var addColumn = function addColumn(boardId
+/*: string */
+, columnId
+/*: string */
 ) {
   return {
     type: ACTION.ADD_COLUMN,
@@ -31,8 +37,12 @@ var addColumn = exports.addColumn = function addColumn(boardId /*: string */
   };
 };
 
-var removeColumn = exports.removeColumn = function removeColumn(boardId /*: string */
-, columnId /*: string */
+exports.addColumn = addColumn;
+
+var removeColumn = function removeColumn(boardId
+/*: string */
+, columnId
+/*: string */
 ) {
   return {
     type: ACTION.REMOVE_COLUMN,
@@ -41,7 +51,10 @@ var removeColumn = exports.removeColumn = function removeColumn(boardId /*: stri
   };
 };
 
-var toggleColumn = exports.toggleColumn = function toggleColumn(columnId /*: string */
+exports.removeColumn = removeColumn;
+
+var toggleColumn = function toggleColumn(columnId
+/*: string */
 ) {
   return {
     type: ACTION.TOGGLE_COLUMN,
@@ -49,7 +62,9 @@ var toggleColumn = exports.toggleColumn = function toggleColumn(columnId /*: str
   };
 };
 
-var moveColumn = exports.moveColumn = function moveColumn(_ref) {
+exports.toggleColumn = toggleColumn;
+
+var moveColumn = function moveColumn(_ref) {
   var draggableId = _ref.draggableId,
       source = _ref.source,
       destination = _ref.destination;
@@ -60,7 +75,6 @@ var moveColumn = exports.moveColumn = function moveColumn(_ref) {
     destination: destination
   };
 };
-
 /*::
 export type TopicAction =
   | $Call<typeof editColumnTitle, string, string>
@@ -71,6 +85,8 @@ export type TopicAction =
   //| ExtractReturn<typeof toggleColumn>
 */
 
+
+exports.moveColumn = moveColumn;
 var actions = {
   editColumnTitle: editColumnTitle,
   addColumn: addColumn,
@@ -78,6 +94,6 @@ var actions = {
   toggleColumn: toggleColumn,
   moveColumn: moveColumn
 };
-
-exports.default = actions;
+var _default = actions;
+exports["default"] = _default;
 //# sourceMappingURL=actions.js.map

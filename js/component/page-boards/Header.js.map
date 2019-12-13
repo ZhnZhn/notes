@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-boards/Header.js"
- ],
- "file": "../../../src/component/page-boards/Header.js",
- "names": [
-  "Header",
-  "style",
-  "addBoard",
-  "CL",
-  "HEADER",
-  "TITLE_GAP",
-  "HEADER_TITLE",
-  "mapDispatchToProps"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;AACA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,SAAS,SAATA,MAAS;AAAA,MACbC,KADa,QACbA,KADa;AAAA,MAEbC,QAFa,QAEbA,QAFa;AAAA,SAIb;AAAC,oBAAD;AAAA,MAAU,WAAWC,aAAGC,MAAxB,EAAgC,OAAOH,KAAvC;AACE,kCAAC,cAAD,OADF;AAEE,4CAAM,WAAWE,aAAGE,SAApB,GAFF;AAGE;AAAA;AAAA,QAAM,WAAWF,aAAGG,YAApB;AAAA;AAAA,KAHF;AAME,kCAAC,oBAAD;AACE,eAAQ,WADV;AAEE,aAAM,wBAFR;AAGE,iBAAU,GAHZ;AAIE,eAAS,GAJX;AAKE,eAASJ;AALX,MANF;AAaE,kCAAC,sBAAD;AAbF,GAJa;AAAA,CAAf;;AAqBA,IAAMK,qBAAqB;AACzBL;AADyB,CAA3B;;kBAIe,yBACb,IADa,EAEbK,kBAFa,EAGbP,MAHa,C"
-}
+{"version":3,"sources":["../../../src/component/page-boards/Header.jsx"],"names":["Header","style","addBoard","CL","HEADER","TITLE_GAP","HEADER_TITLE","mapDispatchToProps"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS;AAAA,MACbC,KADa,QACbA,KADa;AAAA,MAEbC,QAFa,QAEbA,QAFa;AAAA,SAIb,gCAAC,kBAAD;AAAU,IAAA,SAAS,EAAEC,eAAGC,MAAxB;AAAgC,IAAA,KAAK,EAAEH;AAAvC,KACE,gCAAC,gBAAD,OADF,EAEE;AAAM,IAAA,SAAS,EAAEE,eAAGE;AAApB,IAFF,EAGE;AAAM,IAAA,SAAS,EAAEF,eAAGG;AAApB,qBAHF,EAME,gCAAC,sBAAD;AACE,IAAA,OAAO,EAAC,WADV;AAEE,IAAA,KAAK,EAAC,wBAFR;AAGE,IAAA,SAAS,EAAC,GAHZ;AAIE,IAAA,OAAO,EAAE,GAJX;AAKE,IAAA,OAAO,EAAEJ;AALX,IANF,EAaE,gCAAC,wBAAD,OAbF,CAJa;AAAA,CAAf;;AAqBA,IAAMK,kBAAkB,GAAG;AACzBL,EAAAA,QAAQ,EAARA;AADyB,CAA3B;;eAIe,yBACb,IADa,EAEbK,kBAFa,EAGbP,MAHa,C","sourcesContent":["import React from 'react'\r\n\r\nimport { connect } from 'react-redux'\r\nimport { addBoard } from '../../flux/board/actions'\r\n\r\nimport ZhHeader from '../zhn-ch/Header'\r\nimport Logo from '../zhn/Logo'\r\nimport FlatButton from '../zhn-m/FlatButton'\r\nimport HeaderDrawer from '../header/HeaderDrawer'\r\n\r\nimport CL from '../style/CL'\r\n\r\nconst Header = ({\r\n  style,\r\n  addBoard\r\n}) => (\r\n  <ZhHeader className={CL.HEADER} style={style}>\r\n    <Logo />\r\n    <span className={CL.TITLE_GAP} />\r\n    <span className={CL.HEADER_TITLE}>\r\n      Notes: Boards\r\n    </span>\r\n    <FlatButton\r\n      caption=\"Add Board\"\r\n      title=\"Click to add new board\"\r\n      accessKey=\"a\"\r\n      timeout={200}\r\n      onClick={addBoard}\r\n    />\r\n    <HeaderDrawer />\r\n  </ZhHeader>\r\n);\r\n\r\nconst mapDispatchToProps = {\r\n  addBoard\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(Header)\r\n"],"file":"Header.js"}

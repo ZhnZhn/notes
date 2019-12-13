@@ -1,45 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-//import { PropTypes } from 'react'
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _DialogCaption = require('./DialogCaption');
-
-var _DialogCaption2 = _interopRequireDefault(_DialogCaption);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var CL = {
   DIALOG: 'modal-dialog',
@@ -47,7 +23,6 @@ var CL = {
   SHOWING: 'show-popup',
   HIDING: 'hide-popup'
 };
-
 var S = {
   SHOW: {
     display: 'block'
@@ -61,44 +36,11 @@ var S = {
   }
 };
 
-var ModalDialog = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ModalDialog, _Component);
+var ModalDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ModalDialog, _Component);
 
-  function ModalDialog(props) {
-    (0, _classCallCheck3.default)(this, ModalDialog);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call(this));
-
-    _this._hClickDialog = function (event) {
-      event.stopPropagation();
-    };
-
-    _this._refBtClose = function (n) {
-      return _this._btClose = n;
-    };
-
-    _this._renderCommandButton = function () {
-      var _this$props = _this.props,
-          commandButtons = _this$props.commandButtons,
-          withoutClose = _this$props.withoutClose,
-          onClose = _this$props.onClose;
-
-      return _react2.default.createElement(
-        'div',
-        { className: CL.ACTIONS },
-        commandButtons,
-        !withoutClose && _react2.default.createElement(_FlatButton2.default, {
-          ref: _this._refBtClose,
-          caption: 'Close',
-          timeout: 0,
-          onClick: onClose
-        })
-      );
-    };
-
-    _this.wasClosing = false;
-    return _this;
-  }
   /*
    static propTypes = {
      style: PropTypes.object,
@@ -113,105 +55,125 @@ var ModalDialog = (_temp = _class = function (_Component) {
      onClose: PropTypes.func
    }
    */
+  function ModalDialog(props) {
+    var _this;
 
+    _this = _Component.call(this) || this;
 
-  (0, _createClass3.default)(ModalDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props) {
-        if (nextProps.isNotUpdate) {
-          return false;
-        }
+    _this._hClickDialog = function (event) {
+      event.stopPropagation();
+    };
+
+    _this._refBtClose = function (n) {
+      return _this._btClose = n;
+    };
+
+    _this._renderCommandButton = function () {
+      var _this$props = _this.props,
+          commandButtons = _this$props.commandButtons,
+          withoutClose = _this$props.withoutClose,
+          onClose = _this$props.onClose;
+      return _react["default"].createElement("div", {
+        className: CL.ACTIONS
+      }, commandButtons, !withoutClose && _react["default"].createElement(_FlatButton["default"], {
+        ref: _this._refBtClose,
+        caption: "Close",
+        timeout: 0,
+        onClick: onClose
+      }));
+    };
+
+    _this.wasClosing = false;
+    return _this;
+  }
+
+  var _proto = ModalDialog.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props) {
+      if (nextProps.isNotUpdate) {
+        return false;
       }
-      return true;
     }
-  }, {
-    key: 'focusBtClose',
-    value: function focusBtClose() {
-      if (this.props.isFocusClose && this._btClose) {
-        this._btClose.focus();
-      }
+
+    return true;
+  };
+
+  _proto.focusBtClose = function focusBtClose() {
+    if (this.props.isFocusClose && this._btClose) {
+      this._btClose.focus();
     }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+  };
+
+  _proto.componentDidMount = function componentDidMount() {
+    this.focusBtClose();
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    var _this2 = this;
+
+    var _this$props2 = this.props,
+        timeout = _this$props2.timeout,
+        isShow = _this$props2.isShow;
+
+    if (this.wasClosing) {
+      setTimeout(function () {
+        _this2.setState({});
+      }, timeout);
+    }
+
+    if (prevProps.isShow === false && isShow) {
       this.focusBtClose();
     }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
+  };
 
-      var _props = this.props,
-          timeout = _props.timeout,
-          isShow = _props.isShow;
+  _proto.render = function render() {
+    var _this$props3 = this.props,
+        className = _this$props3.className,
+        style = _this$props3.style,
+        isShow = _this$props3.isShow,
+        isWithButton = _this$props3.isWithButton,
+        caption = _this$props3.caption,
+        captionStyle = _this$props3.captionStyle,
+        children = _this$props3.children,
+        onClose = _this$props3.onClose;
 
-      if (this.wasClosing) {
-        setTimeout(function () {
-          _this2.setState({});
-        }, timeout);
-      }
-      if (prevProps.isShow === false && isShow) {
-        this.focusBtClose();
+    var _className, _style;
+
+    if (this.wasClosing) {
+      _style = S.HIDE;
+      this.wasClosing = false;
+    } else {
+      _className = isShow ? CL.DIALOG + " " + className + " " + CL.SHOWING : CL.DIALOG + " " + className + " " + CL.HIDING;
+      _style = isShow ? S.SHOW : S.HIDE_POPUP;
+
+      if (!isShow) {
+        this.wasClosing = true;
       }
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props2 = this.props,
-          className = _props2.className,
-          style = _props2.style,
-          isShow = _props2.isShow,
-          isWithButton = _props2.isWithButton,
-          caption = _props2.caption,
-          captionStyle = _props2.captionStyle,
-          children = _props2.children,
-          onClose = _props2.onClose;
 
+    return _react["default"].createElement("div", {
+      role: "dialog",
+      className: _className,
+      style: (0, _extends2["default"])({}, style, {}, _style),
+      onClick: this._hClickDialog
+    }, _react["default"].createElement(_DialogCaption["default"], {
+      rootStyle: captionStyle,
+      caption: caption,
+      onClose: onClose
+    }), _react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton());
+  };
 
-      var _className = void 0,
-          _style = void 0;
-
-      if (this.wasClosing) {
-        _style = S.HIDE;
-        this.wasClosing = false;
-      } else {
-        _className = isShow ? CL.DIALOG + ' ' + className + ' ' + CL.SHOWING : CL.DIALOG + ' ' + className + ' ' + CL.HIDING;
-        _style = isShow ? S.SHOW : S.HIDE_POPUP;
-        if (!isShow) {
-          this.wasClosing = true;
-        }
-      }
-
-      return _react2.default.createElement(
-        'div',
-        {
-          role: 'dialog',
-          className: _className,
-          style: (0, _extends3.default)({}, style, _style),
-          onClick: this._hClickDialog
-        },
-        _react2.default.createElement(_DialogCaption2.default, {
-          rootStyle: captionStyle,
-          caption: caption,
-          onClose: onClose
-        }),
-        _react2.default.createElement(
-          'div',
-          null,
-          children
-        ),
-        isWithButton && this._renderCommandButton()
-      );
-    }
-  }]);
   return ModalDialog;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+ModalDialog.defaultProps = {
   className: '',
   isWithButton: true,
   isNotUpdate: false,
   isFocusClose: true,
   timeout: 450
-}, _temp);
-exports.default = ModalDialog;
+};
+var _default = ModalDialog;
+exports["default"] = _default;
 //# sourceMappingURL=ModalDialog.js.map

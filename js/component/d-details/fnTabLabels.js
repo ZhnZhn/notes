@@ -1,27 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
-
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var fnTabLabels = {
   toTitle: function toTitle(str) {
     if (typeof str !== 'string') {
       return '';
     }
+
     var _str = str.trim();
+
     if (_str && _str.length > 1) {
       return _str[0].toUpperCase() + _str.substring(1).trim();
     }
+
     return _str;
   },
-
   addLabel: function addLabel(prevState, title, color) {
     var labels = prevState.labels;
 
@@ -30,14 +24,14 @@ var fnTabLabels = {
     })) {
       return null;
     }
+
     return {
-      labels: [].concat((0, _toConsumableArray3.default)(labels), [{
+      labels: [].concat(labels, [{
         title: title,
         color: color
       }])
     };
   },
-
   removeLabel: function removeLabel(prevState, label) {
     return {
       labels: prevState.labels.filter(function (item) {
@@ -46,6 +40,6 @@ var fnTabLabels = {
     };
   }
 };
-
-exports.default = fnTabLabels;
+var _default = fnTabLabels;
+exports["default"] = _default;
 //# sourceMappingURL=fnTabLabels.js.map

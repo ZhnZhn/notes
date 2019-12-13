@@ -1,36 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../style/CL"));
 
 var K = {
   ENTER: 'Enter',
@@ -42,6 +23,7 @@ var K = {
 var _isKeyEnter = function _isKeyEnter(evt) {
   return evt.key === K.ENTER || evt.keyCode === K.ENTER_CODE;
 };
+
 var _isKeyDelete = function _isKeyDelete(evt) {
   return evt.key === K.DELETE || evt.keyCode === K.DELETE_CODE;
 };
@@ -52,75 +34,82 @@ var _getState = function _getState(props) {
   };
 };
 
-var InputText = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(InputText, _Component);
+var InputText =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(InputText, _Component);
 
   function InputText() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, InputText);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InputText.__proto__ || Object.getPrototypeOf(InputText)).call.apply(_ref, [this].concat(args))), _this), _this.state = _getState(_this.props), _this._hChange = function (evt) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = _getState(_this.props);
+
+    _this._hChange = function (evt) {
       var value = evt.target.value;
+
       if (value.length <= _this.props.maxLength) {
-        _this.setState({ value: value });
+        _this.setState({
+          value: value
+        });
       }
-    }, _this._hKeyDown = function (evt) {
+    };
+
+    _this._hKeyDown = function (evt) {
       if (_isKeyEnter(evt)) {
         var el = document.activeElement;
+
         if (el && typeof el.blur === 'function') {
           el.blur();
         }
       } else if (_isKeyDelete(evt)) {
-        _this.setState({ value: '' });
+        _this.setState({
+          value: ''
+        });
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-  /*
-  static propTypes = {
-    className: React.PropsType.string,
-    style: React.PropsType.obj,
-    value: React.PropsType.string,
-    onBlur: React.PropsType.func
-  }
-  */
+    };
 
-  (0, _createClass3.default)(InputText, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          style = _props.style,
-          onBlur = _props.onBlur,
-          _className = className ? _CL2.default.INPUT + ' ' + className : _CL2.default.INPUT,
-          value = this.state.value;
+    return _this;
+  }
 
-      return _react2.default.createElement('input', {
-        type: 'text',
-        className: _className,
-        style: style,
-        value: value,
-        onChange: this._hChange,
-        onBlur: onBlur,
-        onKeyDown: this._hKeyDown
-      });
-    }
-  }, {
-    key: 'setValue',
-    value: function setValue(value) {
-      this.setState({ value: value });
-    }
-  }]);
+  var _proto = InputText.prototype;
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        style = _this$props.style,
+        onBlur = _this$props.onBlur,
+        _className = className ? _CL["default"].INPUT + " " + className : _CL["default"].INPUT,
+        value = this.state.value;
+
+    return _react["default"].createElement("input", {
+      type: "text",
+      className: _className,
+      style: style,
+      value: value,
+      onChange: this._hChange,
+      onBlur: onBlur,
+      onKeyDown: this._hKeyDown
+    });
+  };
+
+  _proto.setValue = function setValue(value) {
+    this.setState({
+      value: value
+    });
+  };
+
   return InputText;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+InputText.defaultProps = {
   className: '',
   maxLength: 40
-}, _temp2);
-exports.default = InputText;
+};
+var _default = InputText;
+exports["default"] = _default;
 //# sourceMappingURL=InputText.js.map

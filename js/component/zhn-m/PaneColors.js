@@ -1,43 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _CellColor = require('../zhn-ch/CellColor');
-
-var _CellColor2 = _interopRequireDefault(_CellColor);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CellColor = _interopRequireDefault(require("../zhn-ch/CellColor"));
 
 var C_DF = '#2f7ed8';
 var COLORS1 = ['#8abb5d', '#f7a35c', '#795548', '#f45b5b', '#d2b772', '#dda0dd'];
 var COLORS2 = ['#f1d600', '#008b8b', '#2f7ed8', '#000000', '#607d8b', '#7092be'];
-
 var S = {
   ROOT: {
     paddingBottom: 4
@@ -66,13 +46,15 @@ var _initColor = function _initColor(props) {
   return props.initColor || C_DF;
 };
 
-var PaneColors = function (_Component) {
-  (0, _inherits3.default)(PaneColors, _Component);
+var PaneColors =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(PaneColors, _Component);
 
   function PaneColors(props) {
-    (0, _classCallCheck3.default)(this, PaneColors);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (PaneColors.__proto__ || Object.getPrototypeOf(PaneColors)).call(this));
+    _this = _Component.call(this) || this;
 
     _this._hInit = function () {
       _this.setState({
@@ -82,13 +64,15 @@ var PaneColors = function (_Component) {
 
     _this._hClick = function (color) {
       if (color) {
-        _this.setState({ color: color });
+        _this.setState({
+          color: color
+        });
       }
     };
 
     _this._renderColors = function (colors, isLong) {
       return colors.map(function (c) {
-        return _react2.default.createElement(_CellColor2.default, {
+        return _react["default"].createElement(_CellColor["default"], {
           key: c,
           color: c,
           style: S.CELL,
@@ -103,48 +87,36 @@ var PaneColors = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(PaneColors, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var onReg = this.props.onReg;
+  var _proto = PaneColors.prototype;
 
-      if (typeof onReg === 'function') {
-        onReg(this);
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var color = this.state.color;
+  _proto.componentDidMount = function componentDidMount() {
+    var onReg = this.props.onReg;
 
-      return _react2.default.createElement(
-        'div',
-        { style: S.ROOT },
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_CellColor2.default, {
-            color: color,
-            style: (0, _extends3.default)({}, S.CELL, S.TO_CELL),
-            onClick: this._hInit
-          }),
-          this._renderColors(COLORS1)
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: S.ROW2 },
-          this._renderColors(COLORS2)
-        )
-      );
+    if (typeof onReg === 'function') {
+      onReg(this);
     }
-  }, {
-    key: 'getColor',
-    value: function getColor() {
-      return this.state.color;
-    }
-  }]);
+  };
+
+  _proto.render = function render() {
+    var color = this.state.color;
+    return _react["default"].createElement("div", {
+      style: S.ROOT
+    }, _react["default"].createElement("div", null, _react["default"].createElement(_CellColor["default"], {
+      color: color,
+      style: (0, _extends2["default"])({}, S.CELL, {}, S.TO_CELL),
+      onClick: this._hInit
+    }), this._renderColors(COLORS1)), _react["default"].createElement("div", {
+      style: S.ROW2
+    }, this._renderColors(COLORS2)));
+  };
+
+  _proto.getColor = function getColor() {
+    return this.state.color;
+  };
+
   return PaneColors;
 }(_react.Component);
 
-exports.default = PaneColors;
+var _default = PaneColors;
+exports["default"] = _default;
 //# sourceMappingURL=PaneColors.js.map

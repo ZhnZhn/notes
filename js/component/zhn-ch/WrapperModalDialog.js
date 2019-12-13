@@ -1,41 +1,22 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 //import PropTypes from 'prop-types'
-
 var CL = {
   INIT: 'modal-root',
   SHOWING: 'modal-root show-modal',
   HIDING: 'modal-root hide-modal'
 };
-
 var S = {
   SHOW: {
     display: 'block'
@@ -48,22 +29,11 @@ var S = {
   }
 };
 
-var WrapperModalDialog = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(WrapperModalDialog, _Component);
+var WrapperModalDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(WrapperModalDialog, _Component);
 
-  function WrapperModalDialog(props) {
-    (0, _classCallCheck3.default)(this, WrapperModalDialog);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (WrapperModalDialog.__proto__ || Object.getPrototypeOf(WrapperModalDialog)).call(this));
-
-    _this._hideModal = function () {
-      _this.wasClosing = true;
-      _this.setState({});
-    };
-
-    _this.wasClosing = true;
-    return _this;
-  }
   /*
   static propTypes = {
     isShow: PropTypes.bool,
@@ -71,59 +41,70 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
     onClose: PropTypes.func
   }
   */
+  function WrapperModalDialog(props) {
+    var _this;
 
+    _this = _Component.call(this) || this;
 
-  (0, _createClass3.default)(WrapperModalDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (!this.wasClosing && !nextProps.isShow && !this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps, prevState) {
-      if (prevProps.isShow && !this.props.isShow) {
-        setTimeout(this._hideModal, this.props.timeout);
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          children = _props.children,
-          onClose = _props.onClose;
+    _this._hideModal = function () {
+      _this.wasClosing = true;
 
-      var _className = void 0,
-          _style = void 0,
-          _isHidden = void 0;
-      if (!isShow && this.wasClosing) {
-        _className = CL.INIT;
-        _style = S.HIDE;
-        _isHidden = true;
-        this.wasClosing = false;
-      } else {
-        _className = isShow ? CL.SHOWING : CL.HIDING;
-        _style = isShow ? S.SHOW : S.HIDE_BACKGROUND;
-        _isHidden = false;
-      }
-      return _react2.default.createElement(
-        'div',
-        {
-          className: _className,
-          style: _style,
-          'aria-hidden': _isHidden,
-          onClick: onClose
-        },
-        children
-      );
+      _this.setState({});
+    };
+
+    _this.wasClosing = true;
+    return _this;
+  }
+
+  var _proto = WrapperModalDialog.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (!this.wasClosing && !nextProps.isShow && !this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isShow && !this.props.isShow) {
+      setTimeout(this._hideModal, this.props.timeout);
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        children = _this$props.children,
+        onClose = _this$props.onClose;
+
+    var _className, _style, _isHidden;
+
+    if (!isShow && this.wasClosing) {
+      _className = CL.INIT;
+      _style = S.HIDE;
+      _isHidden = true;
+      this.wasClosing = false;
+    } else {
+      _className = isShow ? CL.SHOWING : CL.HIDING;
+      _style = isShow ? S.SHOW : S.HIDE_BACKGROUND;
+      _isHidden = false;
+    }
+
+    return _react["default"].createElement("div", {
+      className: _className,
+      style: _style,
+      "aria-hidden": _isHidden,
+      onClick: onClose
+    }, children);
+  };
+
   return WrapperModalDialog;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+WrapperModalDialog.defaultProps = {
   timeout: 450
-}, _temp);
-exports.default = WrapperModalDialog;
+};
+var _default = WrapperModalDialog;
+exports["default"] = _default;
 //# sourceMappingURL=WrapperModalDialog.js.map

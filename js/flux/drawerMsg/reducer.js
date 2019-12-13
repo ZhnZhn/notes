@@ -1,52 +1,49 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+var _actions = require("./actions");
 
-var _actions = require('./actions');
+var _initialState = _interopRequireDefault(require("../initialState"));
 
-var _initialState = require('../initialState');
+var _fns = _interopRequireDefault(require("./fns"));
 
-var _initialState2 = _interopRequireDefault(_initialState);
+var crMsg = _fns["default"].crMsg,
+    filterByProp = _fns["default"].filterByProp;
 
-var _fns = require('./fns');
-
-var _fns2 = _interopRequireDefault(_fns);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var crMsg = _fns2.default.crMsg,
-    filterByProp = _fns2.default.filterByProp;
-
-
-var reducer = function reducer() /*: DrawerAction */
-/*: DrawerMsgState */{
-  var state /*: DrawerMsgState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.drawerMsg;
-  var action = arguments[1];
+var reducer = function reducer(state
+/*: DrawerMsgState */
+, action
+/*: DrawerAction */
+)
+/*: DrawerMsgState */
+{
+  if (state === void 0) {
+    state = _initialState["default"].drawerMsg;
+  }
 
   switch (action.type) {
     case _actions.ACTION.ADD_DRAWER_MSG:
       {
         var id = action.id,
             msg = action.msg;
-
-        return [crMsg(id, msg)].concat((0, _toConsumableArray3.default)(state));
+        return [crMsg(id, msg)].concat(state);
       }
+
     case _actions.ACTION.REMOVE_DRAWER_MSG:
       {
         var _id = action.id;
-
         return filterByProp(state, _id);
       }
+
     default:
       return state;
   }
 };
 
-exports.default = reducer;
+var _default = reducer;
+exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

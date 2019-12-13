@@ -1,48 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _boardId = require('./boardId');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _boardId2 = _interopRequireDefault(_boardId);
+var _boardId = _interopRequireDefault(require("./boardId"));
 
-var _columnId = require('./columnId');
+var _columnId = _interopRequireDefault(require("./columnId"));
 
-var _columnId2 = _interopRequireDefault(_columnId);
+var _noteId = _interopRequireDefault(require("./noteId"));
 
-var _noteId = require('./noteId');
+var _noteLabelId = _interopRequireDefault(require("./noteLabelId"));
 
-var _noteId2 = _interopRequireDefault(_noteId);
+var _appStorage = _interopRequireDefault(require("./appStorage"));
 
-var _noteLabelId = require('./noteLabelId');
+var _drawerMsgId = _interopRequireDefault(require("./drawerMsgId"));
 
-var _noteLabelId2 = _interopRequireDefault(_noteLabelId);
+var _canRemoveColumn = _interopRequireDefault(require("./canRemoveColumn"));
 
-var _appStorage = require('./appStorage');
+var _canRemoveBoard = _interopRequireDefault(require("./canRemoveBoard"));
 
-var _appStorage2 = _interopRequireDefault(_appStorage);
+var _noteTitleValidation = _interopRequireDefault(require("./noteTitleValidation"));
 
-var _drawerMsgId = require('./drawerMsgId');
-
-var _drawerMsgId2 = _interopRequireDefault(_drawerMsgId);
-
-var _canRemoveColumn = require('./canRemoveColumn');
-
-var _canRemoveColumn2 = _interopRequireDefault(_canRemoveColumn);
-
-var _canRemoveBoard = require('./canRemoveBoard');
-
-var _canRemoveBoard2 = _interopRequireDefault(_canRemoveBoard);
-
-var _noteTitleValidation = require('./noteTitleValidation');
-
-var _noteTitleValidation2 = _interopRequireDefault(_noteTitleValidation);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var middlewares = [_boardId2.default, _columnId2.default, _noteId2.default, _noteLabelId2.default, _appStorage2.default, _drawerMsgId2.default, _canRemoveColumn2.default, _canRemoveBoard2.default, _noteTitleValidation2.default];
-
-exports.default = middlewares;
+var middlewares = [_boardId["default"], _columnId["default"], _noteId["default"], _noteLabelId["default"], _appStorage["default"], _drawerMsgId["default"], _canRemoveColumn["default"], _canRemoveBoard["default"], _noteTitleValidation["default"]];
+var _default = middlewares;
+exports["default"] = _default;
 //# sourceMappingURL=middlewares.js.map

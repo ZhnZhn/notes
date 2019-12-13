@@ -1,35 +1,41 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _reducerFns = require('../reducerFns');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _reducerFns2 = _interopRequireDefault(_reducerFns);
+var _reducerFns = _interopRequireDefault(require("../reducerFns"));
 
-var _fDnDMoveFns2 = require('../fDnDMoveFns');
+var _fDnDMoveFns2 = _interopRequireDefault(require("../fDnDMoveFns"));
 
-var _fDnDMoveFns3 = _interopRequireDefault(_fDnDMoveFns2);
+var setInObj = _reducerFns["default"].setInObj,
+    filterBy = _reducerFns["default"].filterBy,
+    removeProp = _reducerFns["default"].removeProp;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var setInObj = _reducerFns2.default.setInObj,
-    filterBy = _reducerFns2.default.filterBy,
-    removeProp = _reducerFns2.default.removeProp;
-
-
-var filterNoteIds = function filterNoteIds(column /*: Topic */
-, id /*: string */
+var filterNoteIds = function filterNoteIds(column
+/*: Topic */
+, id
+/*: string */
 ) {
-  return (/*: Array<string> */filterBy(column.noteIds, id)
+  return (
+    /*: Array<string> */
+    filterBy(column.noteIds, id)
   );
 };
 
-var crColumn = function crColumn(columnId /*: string */
+var crColumn = function crColumn(columnId
+/*: string */
+, withAdd
+/*: boolean */
 ) {
-  var withAdd /*: boolean */ = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  return (/*: Topic */{
+  if (withAdd === void 0) {
+    withAdd = true;
+  }
+
+  return (
+    /*: Topic */
+    {
       id: columnId,
       title: 'New Topic',
       noteIds: [],
@@ -38,12 +44,12 @@ var crColumn = function crColumn(columnId /*: string */
   );
 };
 
-var _fDnDMoveFns = (0, _fDnDMoveFns3.default)('noteIds'),
+var _fDnDMoveFns = (0, _fDnDMoveFns2["default"])('noteIds'),
     idsTo = _fDnDMoveFns.idsTo,
     moveInternal = _fDnDMoveFns.moveInternal,
     moveExternal = _fDnDMoveFns.moveExternal;
 
-exports.default = {
+var _default = {
   setInObj: setInObj,
   crColumn: crColumn,
   removeProp: removeProp,
@@ -52,4 +58,5 @@ exports.default = {
   moveExternal: moveExternal,
   moveInternal: moveInternal
 };
+exports["default"] = _default;
 //# sourceMappingURL=fns.js.map

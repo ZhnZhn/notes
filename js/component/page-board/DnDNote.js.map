@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-board/DnDNote.js"
- ],
- "file": "../../../src/component/page-board/DnDNote.js",
- "names": [
-  "DnDNote",
-  "notDragBg",
-  "isDragHanlerProps",
-  "Note",
-  "displayName"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,UAAU,sBAAO;AACrBC,aAAW,SADU;AAErBC,qBAAmB;AAFE,CAAP,EAGbC,cAHa,CAAhB;;AAKAH,QAAQI,WAAR,GAAsB,SAAtB;;kBAEeJ,O"
-}
+{"version":3,"sources":["../../../src/component/page-board/DnDNote.js"],"names":["DnDNote","notDragBg","isDragHanlerProps","Note","displayName"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,OAAO,GAAG,wBAAO;AACrBC,EAAAA,SAAS,EAAE,SADU;AAErBC,EAAAA,iBAAiB,EAAE;AAFE,CAAP,EAGbC,gBAHa,CAAhB;AAKAH,OAAO,CAACI,WAAR,GAAsB,SAAtB;eAEeJ,O","sourcesContent":["import hocDnD from '../zhn-dnd/hocDnD'\r\nimport Note from './Note'\r\n\r\nconst DnDNote = hocDnD({\r\n  notDragBg: '#9e9e9e',\r\n  isDragHanlerProps: true\r\n})(Note);\r\n\r\nDnDNote.displayName = 'DnDNote'\r\n\r\nexport default DnDNote\r\n"],"file":"DnDNote.js"}

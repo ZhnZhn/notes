@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/isArrEmpty.js"
- ],
- "file": "../../src/utils/isArrEmpty.js",
- "names": [
-  "isArrEmpty",
-  "arr",
-  "Array",
-  "isArray",
-  "length"
- ],
- "mappings": ";;;;;AACA,IAAMA,aAAa,SAAbA,UAAa,CAACC,GAAD,CAAK,WAAL,EAAkB,aAAiB;AACpD,SAAO,CAACC,MAAMC,OAAN,CAAcF,GAAd,CAAD,IAAuBA,IAAIG,MAAJ,KAAe,CAAtC,GACH,IADG,GAEH,KAFJ;AAGD,CAJD;;kBAMeJ,U"
-}
+{"version":3,"sources":["../../src/utils/isArrEmpty.js"],"names":["isArrEmpty","arr","Array","isArray","length"],"mappings":";;;;;AACA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAACC;AAAI;AAAL;AAAkB;AAAiB;AACpD,SAAO,CAACC,KAAK,CAACC,OAAN,CAAcF,GAAd,CAAD,IAAuBA,GAAG,CAACG,MAAJ,KAAe,CAAtC,GACH,IADG,GAEH,KAFJ;AAGD,CAJD;;eAMeJ,U","sourcesContent":["// @flow\r\nconst isArrEmpty = (arr /*: mixed*/) /*: boolean*/ => {\r\n  return !Array.isArray(arr) || arr.length === 0\r\n    ? true\r\n    : false;\r\n};\r\n\r\nexport default isArrEmpty\r\n"],"file":"isArrEmpty.js"}

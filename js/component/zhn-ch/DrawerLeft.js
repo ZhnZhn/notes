@@ -1,42 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Comp = require('../style/Comp.Style');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
 
 var CL = {
   DRAWER_BT: 'drawer-bt',
@@ -45,7 +24,6 @@ var CL = {
   DRAWER: 'drawer-left',
   DRAWER_MODAL: 'drawer-modal'
 };
-
 var S = {
   BT_DRAWER: {
     width: 'auto',
@@ -71,72 +49,71 @@ var S = {
   }
 };
 
-var DrawerLeft = function (_Component) {
-  (0, _inherits3.default)(DrawerLeft, _Component);
+var DrawerLeft =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DrawerLeft, _Component);
 
   function DrawerLeft() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, DrawerLeft);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DrawerLeft.__proto__ || Object.getPrototypeOf(DrawerLeft)).call.apply(_ref, [this].concat(args))), _this), _this.state = { isOpen: false }, _this._hToggle = function () {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      isOpen: false
+    };
+
+    _this._hToggle = function () {
       _this.setState(function (prevState) {
         return {
           isOpen: !prevState.isOpen
         };
       });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(DrawerLeft, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          btStyle = _props.btStyle,
-          theme = _props.theme,
-          captionComp = _props.captionComp,
-          children = _props.children,
-          isOpen = this.state.isOpen,
-          _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
-          _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
-          _onClickWrapper = isOpen ? this._hToggle : undefined,
-          TS = theme.createStyle(_Comp2.default);
+  var _proto = DrawerLeft.prototype;
 
-      return [_react2.default.createElement(
-        'button',
-        {
-          key: 'bt-drawer',
-          className: CL.DRAWER_BT,
-          style: (0, _extends3.default)({}, S.BT_DRAWER, btStyle),
-          'aria-label': 'Open Drawer',
-          onClick: this._hToggle
-        },
-        captionComp
-      ), _react2.default.createElement('div', {
-        key: 'wrapper',
-        'aria-hidden': !isOpen,
-        className: CL.DRAWER_MODAL,
-        style: _drawerModalStyle,
-        onClick: _onClickWrapper
-      }), _react2.default.createElement(
-        'aside',
-        {
-          key: 'aside',
-          className: CL.DRAWER,
-          style: (0, _extends3.default)({}, _drawerStyle, TS.COMP)
-        },
-        children
-      )];
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        btStyle = _this$props.btStyle,
+        theme = _this$props.theme,
+        captionComp = _this$props.captionComp,
+        children = _this$props.children,
+        isOpen = this.state.isOpen,
+        _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
+        _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
+        _onClickWrapper = isOpen ? this._hToggle : undefined,
+        TS = theme.createStyle(_Comp["default"]);
+
+    return [_react["default"].createElement("button", {
+      key: "bt-drawer",
+      className: CL.DRAWER_BT,
+      style: (0, _extends2["default"])({}, S.BT_DRAWER, {}, btStyle),
+      "aria-label": "Open Drawer",
+      onClick: this._hToggle
+    }, captionComp), _react["default"].createElement("div", {
+      key: "wrapper",
+      "aria-hidden": !isOpen,
+      className: CL.DRAWER_MODAL,
+      style: _drawerModalStyle,
+      onClick: _onClickWrapper
+    }), _react["default"].createElement("aside", {
+      key: "aside",
+      className: CL.DRAWER,
+      style: (0, _extends2["default"])({}, _drawerStyle, {}, TS.COMP)
+    }, children)];
+  };
+
   return DrawerLeft;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(DrawerLeft);
+var _default = (0, _withTheme["default"])(DrawerLeft);
+
+exports["default"] = _default;
 //# sourceMappingURL=DrawerLeft.js.map

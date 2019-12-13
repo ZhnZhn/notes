@@ -1,67 +1,40 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require('react-router-dom');
+var _reactRouterDom = require("react-router-dom");
 
-var _Header = require('../zhn-ch/Header');
+var _Header = _interopRequireDefault(require("../zhn-ch/Header"));
 
-var _Header2 = _interopRequireDefault(_Header);
+var _TopicDrawer = _interopRequireDefault(require("./TopicDrawer"));
 
-var _TopicDrawer = require('./TopicDrawer');
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _TopicDrawer2 = _interopRequireDefault(_TopicDrawer);
+var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
 
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _HeaderDrawer = require('../header/HeaderDrawer');
-
-var _HeaderDrawer2 = _interopRequireDefault(_HeaderDrawer);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Header = function Header(_ref) {
   var addColumn = _ref.addColumn;
-  return _react2.default.createElement(
-    _Header2.default,
-    {
-      className: _CL2.default.HEADER
-    },
-    _react2.default.createElement(_TopicDrawer2.default, null),
-    _react2.default.createElement(_FlatButton2.default, {
-      caption: 'Add Topic',
-      title: 'Click to add topic to board',
-      accessKey: 'a',
-      timeout: 500,
-      onClick: addColumn
-    }),
-    _react2.default.createElement(
-      'nav',
-      null,
-      _react2.default.createElement(
-        _reactRouterDom.NavLink,
-        {
-          to: '/boards',
-          className: _CL2.default.NAV_LINK + ' ' + _CL2.default.ML_8
-        },
-        'ToBoards'
-      )
-    ),
-    _react2.default.createElement(_HeaderDrawer2.default, null)
-  );
+  return _react["default"].createElement(_Header["default"], {
+    className: _CL["default"].HEADER
+  }, _react["default"].createElement(_TopicDrawer["default"], null), _react["default"].createElement(_FlatButton["default"], {
+    caption: "Add Topic",
+    title: "Click to add topic to board",
+    accessKey: "a",
+    timeout: 500,
+    onClick: addColumn
+  }), _react["default"].createElement("nav", null, _react["default"].createElement(_reactRouterDom.NavLink, {
+    to: "/boards",
+    className: _CL["default"].NAV_LINK + " " + _CL["default"].ML_8
+  }, "ToBoards")), _react["default"].createElement(_HeaderDrawer["default"], null));
 };
 
-exports.default = Header;
+var _default = Header;
+exports["default"] = _default;
 //# sourceMappingURL=Header.js.map

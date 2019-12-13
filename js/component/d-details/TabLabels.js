@@ -1,68 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _actions = _interopRequireDefault(require("../../flux/note/actions"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _LabelList = _interopRequireDefault(require("./LabelList"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _PaneColors = _interopRequireDefault(require("../zhn-m/PaneColors"));
 
-var _react = require('react');
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _react2 = _interopRequireDefault(_react);
+var _DialogButtons = _interopRequireDefault(require("./DialogButtons"));
 
-var _actions = require('../../flux/note/actions');
+var _fnTabLabels = _interopRequireDefault(require("./fnTabLabels"));
 
-var _actions2 = _interopRequireDefault(_actions);
+var _CL = _interopRequireDefault(require("../style/CL"));
 
-var _LabelList = require('./LabelList');
-
-var _LabelList2 = _interopRequireDefault(_LabelList);
-
-var _InputText = require('../zhn/InputText');
-
-var _InputText2 = _interopRequireDefault(_InputText);
-
-var _PaneColors = require('../zhn-m/PaneColors');
-
-var _PaneColors2 = _interopRequireDefault(_PaneColors);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _DialogButtons = require('./DialogButtons');
-
-var _DialogButtons2 = _interopRequireDefault(_DialogButtons);
-
-var _fnTabLabels = require('./fnTabLabels');
-
-var _fnTabLabels2 = _interopRequireDefault(_fnTabLabels);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var toTitle = _fnTabLabels2.default.toTitle,
-    addLabel = _fnTabLabels2.default.addLabel,
-    removeLabel = _fnTabLabels2.default.removeLabel;
-
-
+var toTitle = _fnTabLabels["default"].toTitle,
+    addLabel = _fnTabLabels["default"].addLabel,
+    removeLabel = _fnTabLabels["default"].removeLabel;
 var S = {
   LABELS: {
     paddingTop: 4,
@@ -74,13 +41,15 @@ var S = {
   }
 };
 
-var TabLabels = function (_Component) {
-  (0, _inherits3.default)(TabLabels, _Component);
+var TabLabels =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(TabLabels, _Component);
 
   function TabLabels(props) {
-    (0, _classCallCheck3.default)(this, TabLabels);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TabLabels.__proto__ || Object.getPrototypeOf(TabLabels)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._focusBtClose = function () {
       if (_this.props.isSelected && _this._buttons) {
@@ -110,8 +79,7 @@ var TabLabels = function (_Component) {
       var _this$props = _this.props,
           note = _this$props.note,
           dispatch = _this$props.dispatch;
-
-      dispatch(_actions2.default.editNoteLabels(note.id, _this.state.labels));
+      dispatch(_actions["default"].editNoteLabels(note.id, _this.state.labels));
     };
 
     _this._refInputLabel = function (node) {
@@ -132,62 +100,49 @@ var TabLabels = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(TabLabels, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+  var _proto = TabLabels.prototype;
+
+  _proto.componentDidMount = function componentDidMount() {
+    this._focusBtClose();
+  };
+
+  _proto.render = function render() {
+    var onClose = this.props.onClose,
+        labels = this.state.labels;
+    return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement("div", {
+      style: S.LABELS
+    }, _react["default"].createElement(_LabelList["default"], {
+      labels: labels,
+      onRemove: this._onRemoveLabel
+    }), _react["default"].createElement(_InputText["default"], {
+      ref: this._refInputLabel,
+      onBlur: this._onBlurLabel
+    }), _react["default"].createElement(_FlatButton["default"], {
+      clCaption: _CL["default"].CARD_BT,
+      rootStyle: S.BT_ADD,
+      caption: "AddLabel",
+      title: "Click to add a new label",
+      timeout: 400,
+      onClick: this._onAddLabel
+    })), _react["default"].createElement(_PaneColors["default"], {
+      ref: this._refInputColor
+    }), _react["default"].createElement(_DialogButtons["default"], {
+      ref: this._refButtons,
+      className: _CL["default"].MD_ACTIONS,
+      onSave: this._saveLabels,
+      onClose: onClose
+    }));
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    if (this.props !== prevProps && this.props.isSelected) {
       this._focusBtClose();
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var onClose = this.props.onClose,
-          labels = this.state.labels;
+  };
 
-
-      return _react2.default.createElement(
-        _react.Fragment,
-        null,
-        _react2.default.createElement(
-          'div',
-          { style: S.LABELS },
-          _react2.default.createElement(_LabelList2.default, {
-            labels: labels,
-            onRemove: this._onRemoveLabel
-          }),
-          _react2.default.createElement(_InputText2.default, {
-            ref: this._refInputLabel,
-            onBlur: this._onBlurLabel
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            clCaption: _CL2.default.CARD_BT,
-            rootStyle: S.BT_ADD,
-            caption: 'AddLabel',
-            title: 'Click to add a new label',
-            timeout: 400,
-            onClick: this._onAddLabel
-          })
-        ),
-        _react2.default.createElement(_PaneColors2.default, {
-          ref: this._refInputColor
-        }),
-        _react2.default.createElement(_DialogButtons2.default, {
-          ref: this._refButtons,
-          className: _CL2.default.MD_ACTIONS,
-          onSave: this._saveLabels,
-          onClose: onClose
-        })
-      );
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps) {
-      if (this.props !== prevProps && this.props.isSelected) {
-        this._focusBtClose();
-      }
-    }
-  }]);
   return TabLabels;
 }(_react.Component);
 
-exports.default = TabLabels;
+var _default = TabLabels;
+exports["default"] = _default;
 //# sourceMappingURL=TabLabels.js.map

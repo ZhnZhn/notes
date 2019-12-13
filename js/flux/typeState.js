@@ -1,5 +1,3 @@
-
-
 /*::
 //type _ExtractReturn<B, F: (...args: any[]) => B> = B;
 //type ExtractReturn<F> = _ExtractReturn<*, F>;

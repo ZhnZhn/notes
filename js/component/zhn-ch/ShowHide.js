@@ -1,21 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from 'prop-types'
-
 var CL = 'show-popup';
 var S = {
   SHOW: {
@@ -33,18 +27,13 @@ var ShowHide = function ShowHide(props) {
       children = props.children,
       _styleShow = isShow ? S.SHOW : S.HIDE,
       _classShow = isShow ? CL : '',
-      _className = className ? className + ' ' + _classShow : _classShow || undefined;
+      _className = className ? className + " " + _classShow : _classShow || undefined;
 
-  return _react2.default.createElement(
-    'div',
-    {
-      className: _className,
-      style: (0, _extends3.default)({}, style, _styleShow)
-    },
-    children
-  );
+  return _react["default"].createElement("div", {
+    className: _className,
+    style: (0, _extends2["default"])({}, style, {}, _styleShow)
+  }, children);
 };
-
 /*
 ShowHide.propTypes = {
   isShow: PropTypes.bool,
@@ -57,5 +46,7 @@ ShowHide.propTypes = {
 }
 */
 
-exports.default = ShowHide;
+
+var _default = ShowHide;
+exports["default"] = _default;
 //# sourceMappingURL=ShowHide.js.map

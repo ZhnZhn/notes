@@ -1,92 +1,66 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _reactBeautifulDnd = require("react-beautiful-dnd");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _actions = require("../../flux/column/actions");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _isNotDnD = _interopRequireDefault(require("../zhn-dnd/isNotDnD"));
 
-var _react = require('react');
+var _Header = _interopRequireDefault(require("./Header"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
-var _reactRedux = require('react-redux');
+var _BoardList = _interopRequireDefault(require("./BoardList"));
 
-var _reactBeautifulDnd = require('react-beautiful-dnd');
-
-var _actions = require('../../flux/column/actions');
-
-var _isNotDnD = require('../zhn-dnd/isNotDnD');
-
-var _isNotDnD2 = _interopRequireDefault(_isNotDnD);
-
-var _Header = require('./Header');
-
-var _Header2 = _interopRequireDefault(_Header);
-
-var _Main = require('../zhn-ch/Main');
-
-var _Main2 = _interopRequireDefault(_Main);
-
-var _BoardList = require('./BoardList');
-
-var _BoardList2 = _interopRequireDefault(_BoardList);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PageBoards = function (_Component) {
-  (0, _inherits3.default)(PageBoards, _Component);
+var PageBoards =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(PageBoards, _Component);
 
   function PageBoards() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, PageBoards);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = PageBoards.__proto__ || Object.getPrototypeOf(PageBoards)).call.apply(_ref, [this].concat(args))), _this), _this._hDragEnd = function (result) {
-      if ((0, _isNotDnD2.default)(result)) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._hDragEnd = function (result) {
+      if ((0, _isNotDnD["default"])(result)) {
         return;
       }
+
       _this.props.moveColumn(result);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(PageBoards, [{
-    key: 'render',
-    value: function render() {
-      return [_react2.default.createElement(_Header2.default, { key: 'header' }), _react2.default.createElement(
-        _reactBeautifulDnd.DragDropContext,
-        {
-          key: 'ddc',
-          onDragEnd: this._hDragEnd
-        },
-        _react2.default.createElement(
-          _Main2.default,
-          null,
-          _react2.default.createElement(_BoardList2.default, null)
-        )
-      )];
-    }
-  }]);
+  var _proto = PageBoards.prototype;
+
+  _proto.render = function render() {
+    return [_react["default"].createElement(_Header["default"], {
+      key: "header"
+    }), _react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
+      key: "ddc",
+      onDragEnd: this._hDragEnd
+    }, _react["default"].createElement(_Main["default"], null, _react["default"].createElement(_BoardList["default"], null)))];
+  };
+
   return PageBoards;
 }(_react.Component);
 
@@ -94,5 +68,7 @@ var mapDispatchToProps = {
   moveColumn: _actions.moveColumn
 };
 
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(PageBoards);
+var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(PageBoards);
+
+exports["default"] = _default;
 //# sourceMappingURL=PageBoards.js.map

@@ -6,7 +6,7 @@ const _crMoveInternal = (propName, idsTo) => (
   id /*: string */,
   source /*: { index: number } */,
   destination /*: { index: number } */,
-  from /*: {} */
+  from /*: { id: string } */
 ) => {
   const newIds = [...from[propName]];
   newIds.splice(source.index, 1)
@@ -22,8 +22,8 @@ const _crMoveExternal = (propName, idsTo) => (
   id /*: string */,
   source /*: { index: number } */,
   destination /*: { index: number } */,
-  from /*: {} */,
-  to /*: {} */
+  from /*: { id: string } */,
+  to /*: { id: string } */
 ) /*: {} */ => {
   const newFromIds = [...from[propName]];
   newFromIds.splice(source.index, 1)

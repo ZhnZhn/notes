@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/flux/rootReducer.js"
- ],
- "file": "../../src/flux/rootReducer.js",
- "names": [
-  "rootReducer",
-  "app",
-  "drawerMsg",
-  "modal",
-  "boards",
-  "notes",
-  "noteLabels",
-  "columns"
- ],
- "mappings": ";;;;;;AAAA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,cAAc,4BAAgB;AAClCC,wBADkC;AAElCC,8BAFkC;AAGlCC,0BAHkC;AAIlCC,2BAJkC;AAKlCC,2BALkC;AAMlCC,gCANkC;AAOlCC;AAPkC,CAAhB,CAApB;;kBAUeP,W"
-}
+{"version":3,"sources":["../../src/flux/rootReducer.js"],"names":["rootReducer","app","drawerMsg","modal","boards","notes","noteLabels","columns"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,WAAW,GAAG,4BAAgB;AAClCC,EAAAA,GAAG,EAAHA,mBADkC;AAElCC,EAAAA,SAAS,EAATA,oBAFkC;AAGlCC,EAAAA,KAAK,EAALA,oBAHkC;AAIlCC,EAAAA,MAAM,EAANA,oBAJkC;AAKlCC,EAAAA,KAAK,EAALA,oBALkC;AAMlCC,EAAAA,UAAU,EAAVA,oBANkC;AAOlCC,EAAAA,OAAO,EAAPA;AAPkC,CAAhB,CAApB;eAUeP,W","sourcesContent":["import { combineReducers } from 'redux'\r\n\r\nimport app from './app/reducer'\r\nimport drawerMsg from './drawerMsg/reducer'\r\nimport modal from './modal/reducer'\r\nimport boards from './board/reducer'\r\nimport notes from './note/reducer'\r\nimport noteLabels from './noteLabel/reducer'\r\nimport columns from './column/reducer'\r\n\r\nconst rootReducer = combineReducers({\r\n  app,\r\n  drawerMsg,\r\n  modal,\r\n  boards,\r\n  notes,\r\n  noteLabels,\r\n  columns\r\n});\r\n\r\nexport default rootReducer\r\n"],"file":"rootReducer.js"}

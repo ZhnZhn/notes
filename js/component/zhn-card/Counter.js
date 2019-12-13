@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var S = {
   COUNTER: {
@@ -25,12 +20,11 @@ var S = {
 var Counter = function Counter(_ref) {
   var style = _ref.style,
       value = _ref.value;
-  return _react2.default.createElement(
-    'span',
-    { style: (0, _extends3.default)({}, S.COUNTER, style) },
-    value
-  );
+  return _react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, S.COUNTER, {}, style)
+  }, value);
 };
 
-exports.default = Counter;
+var _default = Counter;
+exports["default"] = _default;
 //# sourceMappingURL=Counter.js.map

@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/utils/__test__/hmToArr.test.js"
- ],
- "file": "../../../src/utils/__test__/hmToArr.test.js",
- "names": [
-  "describe",
-  "test",
-  "expect",
-  "id",
-  "toEqual"
- ],
- "mappings": ";;AAAA;;;;;;AAEAA,SAAS,SAAT,EAAoB,YAAI;AACtBC,OAAK,iDAAL,EAAwD,YAAI;AAC1DC,WAAO,uBAAG,EAAE,MAAM,EAAEC,IAAI,IAAN,EAAR,EAAH,CAAP,EACGC,OADH,CACW,CAAC,EAAED,IAAI,IAAN,EAAD,CADX;AAED,GAHD;AAID,CALD"
-}
+{"version":3,"sources":["../../../src/utils/__test__/hmToArr.test.js"],"names":["describe","test","expect","id","toEqual"],"mappings":";;;;AAAA;;AAEAA,QAAQ,CAAC,SAAD,EAAY,YAAI;AACtBC,EAAAA,IAAI,CAAC,iDAAD,EAAoD,YAAI;AAC1DC,IAAAA,MAAM,CAAC,yBAAG;AAAE,YAAM;AAAEC,QAAAA,EAAE,EAAE;AAAN;AAAR,KAAH,CAAD,CAAN,CACGC,OADH,CACW,CAAC;AAAED,MAAAA,EAAE,EAAE;AAAN,KAAD,CADX;AAED,GAHG,CAAJ;AAID,CALO,CAAR","sourcesContent":["import fn from '../hmToArr'\r\n\r\ndescribe('hmToArr', ()=>{\r\n  test('should return arr with property values from obj', ()=>{\r\n    expect(fn({ 'a1': { id: 'a1' }}))\r\n      .toEqual([{ id: 'a1' }])\r\n  })\r\n})\r\n"],"file":"hmToArr.test.js"}

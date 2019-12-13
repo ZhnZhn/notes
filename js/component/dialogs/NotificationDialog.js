@@ -1,34 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ModalDialog = require('../zhn-ch/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
 
 var CL = {
   ROW: 'd-notif__row',
@@ -36,68 +19,55 @@ var CL = {
   DESCR: 'd-notif__descr'
 };
 
-var NotificationDialog = function (_Component) {
-  (0, _inherits3.default)(NotificationDialog, _Component);
+var NotificationDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NotificationDialog, _Component);
 
   function NotificationDialog() {
-    (0, _classCallCheck3.default)(this, NotificationDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (NotificationDialog.__proto__ || Object.getPrototypeOf(NotificationDialog)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(NotificationDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          _props$data = _props.data,
-          data = _props$data === undefined ? {} : _props$data,
-          TS = _props.TS,
-          onClose = _props.onClose,
-          _data$caption = data.caption,
-          caption = _data$caption === undefined ? '' : _data$caption,
-          _data$descr = data.descr,
-          descr = _data$descr === undefined ? '' : _data$descr;
+  var _proto = NotificationDialog.prototype;
 
-
-      return _react2.default.createElement(
-        _ModalDialog2.default,
-        {
-          style: TS.DIALOG,
-          caption: 'Notification',
-          isShow: isShow,
-          onClose: onClose
-        },
-        caption && _react2.default.createElement(
-          'div',
-          { className: CL.ROW },
-          _react2.default.createElement(
-            'p',
-            { className: CL.CAPTION },
-            caption
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: CL.ROW },
-          _react2.default.createElement(
-            'p',
-            { className: CL.DESCR },
-            descr
-          )
-        )
-      );
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        _this$props$data = _this$props.data,
+        data = _this$props$data === void 0 ? {} : _this$props$data,
+        TS = _this$props.TS,
+        onClose = _this$props.onClose,
+        _data$caption = data.caption,
+        caption = _data$caption === void 0 ? '' : _data$caption,
+        _data$descr = data.descr,
+        descr = _data$descr === void 0 ? '' : _data$descr;
+    return _react["default"].createElement(_ModalDialog["default"], {
+      style: TS.DIALOG,
+      caption: "Notification",
+      isShow: isShow,
+      onClose: onClose
+    }, caption && _react["default"].createElement("div", {
+      className: CL.ROW
+    }, _react["default"].createElement("p", {
+      className: CL.CAPTION
+    }, caption)), _react["default"].createElement("div", {
+      className: CL.ROW
+    }, _react["default"].createElement("p", {
+      className: CL.DESCR
+    }, descr)));
+  };
+
   return NotificationDialog;
 }(_react.Component);
 
-exports.default = NotificationDialog;
+var _default = NotificationDialog;
+exports["default"] = _default;
 //# sourceMappingURL=NotificationDialog.js.map

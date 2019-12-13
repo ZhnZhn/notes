@@ -1,31 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _actions = require('../board/actions');
+var _actions = require("../board/actions");
 
-var _actions2 = require('../modal/actions');
+var _actions2 = require("../modal/actions");
 
-var _crId = require('./crId');
+var _crId = _interopRequireDefault(require("./crId"));
 
-var _crId2 = _interopRequireDefault(_crId);
+var _selectors = require("../selectors");
 
-var _selectors = require('../selectors');
-
-var _appConf = require('../appConf');
-
-var _appConf2 = _interopRequireDefault(_appConf);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _appConf = _interopRequireDefault(require("../appConf"));
 
 var _isMax = function _isMax(state) {
-  return _selectors.sApp.boardIds(state).length >= _appConf2.default.MAX_BOARDS;
+  return _selectors.sApp.boardIds(state).length >= _appConf["default"].MAX_BOARDS;
 };
 
 var boardIdMiddleware = function boardIdMiddleware(_ref) {
@@ -35,17 +28,20 @@ var boardIdMiddleware = function boardIdMiddleware(_ref) {
     return function (action) {
       if (action.type === _actions.ACTION.ADD_BOARD) {
         if (_isMax(getState())) {
-          dispatch((0, _actions2.showNotif)(_appConf2.default.N_MAX_BOARDS));
+          dispatch((0, _actions2.showNotif)(_appConf["default"].N_MAX_BOARDS));
           return false;
         }
-        action = (0, _extends3.default)({}, action, {
-          boardId: (0, _crId2.default)(_appConf2.default.BOARDS_PREFIX)
+
+        action = (0, _extends2["default"])({}, action, {
+          boardId: (0, _crId["default"])(_appConf["default"].BOARDS_PREFIX)
         });
       }
+
       return next(action);
     };
   };
 };
 
-exports.default = boardIdMiddleware;
+var _default = boardIdMiddleware;
+exports["default"] = _default;
 //# sourceMappingURL=boardId.js.map

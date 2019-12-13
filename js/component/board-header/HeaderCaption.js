@@ -1,50 +1,42 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _reactRedux = require('react-redux');
+var _reactRedux = require("react-redux");
 
-var _selectors = require('../../flux/selectors');
+var _selectors = _interopRequireDefault(require("../../flux/selectors"));
 
-var _selectors2 = _interopRequireDefault(_selectors);
+var _Logo = _interopRequireDefault(require("../zhn/Logo"));
 
-var _Logo = require('../zhn/Logo');
+var _CL = _interopRequireDefault(require("../style/CL"));
 
-var _Logo2 = _interopRequireDefault(_Logo);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-var _crTitle = require('./crTitle');
-
-var _crTitle2 = _interopRequireDefault(_crTitle);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _crTitle = _interopRequireDefault(require("./crTitle"));
 
 var HeaderCaption = function HeaderCaption(_ref) {
   var board = _ref.board;
-  return [_react2.default.createElement(_Logo2.default, { key: 'logo', className: _CL2.default.LOGO_BOARD }), _react2.default.createElement(
-    'span',
-    {
-      key: 'title',
-      className: _CL2.default.HEADER_TITLE + ' ' + _CL2.default.TITLE_BOARD
-    },
-    (0, _crTitle2.default)(board)
-  )];
+  return [_react["default"].createElement(_Logo["default"], {
+    key: "logo",
+    className: _CL["default"].LOGO_BOARD
+  }), _react["default"].createElement("span", {
+    key: "title",
+    className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD
+  }, (0, _crTitle["default"])(board))];
 };
 
-var mapStateToProps = function mapStateToProps(state /*: StoreState */) {
+var mapStateToProps = function mapStateToProps(state
+/*: StoreState */
+) {
   return {
-    board: _selectors2.default.board.currentBoard(state)
+    board: _selectors["default"].board.currentBoard(state)
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(HeaderCaption);
+var _default = (0, _reactRedux.connect)(mapStateToProps)(HeaderCaption);
+
+exports["default"] = _default;
 //# sourceMappingURL=HeaderCaption.js.map

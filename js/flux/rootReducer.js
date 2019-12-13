@@ -1,50 +1,35 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _redux = require('redux');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _reducer = require('./app/reducer');
+var _redux = require("redux");
 
-var _reducer2 = _interopRequireDefault(_reducer);
+var _reducer = _interopRequireDefault(require("./app/reducer"));
 
-var _reducer3 = require('./drawerMsg/reducer');
+var _reducer2 = _interopRequireDefault(require("./drawerMsg/reducer"));
 
-var _reducer4 = _interopRequireDefault(_reducer3);
+var _reducer3 = _interopRequireDefault(require("./modal/reducer"));
 
-var _reducer5 = require('./modal/reducer');
+var _reducer4 = _interopRequireDefault(require("./board/reducer"));
 
-var _reducer6 = _interopRequireDefault(_reducer5);
+var _reducer5 = _interopRequireDefault(require("./note/reducer"));
 
-var _reducer7 = require('./board/reducer');
+var _reducer6 = _interopRequireDefault(require("./noteLabel/reducer"));
 
-var _reducer8 = _interopRequireDefault(_reducer7);
-
-var _reducer9 = require('./note/reducer');
-
-var _reducer10 = _interopRequireDefault(_reducer9);
-
-var _reducer11 = require('./noteLabel/reducer');
-
-var _reducer12 = _interopRequireDefault(_reducer11);
-
-var _reducer13 = require('./column/reducer');
-
-var _reducer14 = _interopRequireDefault(_reducer13);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _reducer7 = _interopRequireDefault(require("./column/reducer"));
 
 var rootReducer = (0, _redux.combineReducers)({
-  app: _reducer2.default,
-  drawerMsg: _reducer4.default,
-  modal: _reducer6.default,
-  boards: _reducer8.default,
-  notes: _reducer10.default,
-  noteLabels: _reducer12.default,
-  columns: _reducer14.default
+  app: _reducer["default"],
+  drawerMsg: _reducer2["default"],
+  modal: _reducer3["default"],
+  boards: _reducer4["default"],
+  notes: _reducer5["default"],
+  noteLabels: _reducer6["default"],
+  columns: _reducer7["default"]
 });
-
-exports.default = rootReducer;
+var _default = rootReducer;
+exports["default"] = _default;
 //# sourceMappingURL=rootReducer.js.map

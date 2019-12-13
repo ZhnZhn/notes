@@ -1,22 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _LabelNote = require('./LabelNote');
+var _LabelNote = _interopRequireDefault(require("./LabelNote"));
 
-var _LabelNote2 = _interopRequireDefault(_LabelNote);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../style/CL"));
 
 var S = {
   ROOT: {
@@ -27,23 +20,22 @@ var S = {
 var LabelList = function LabelList(_ref) {
   var labels = _ref.labels,
       onRemove = _ref.onRemove;
-  return _react2.default.createElement(
-    'div',
-    { style: S.ROOT },
-    labels.map(function (item) {
-      return _react2.default.createElement(_LabelNote2.default, {
-        key: item.id || item.title,
-        className: _CL2.default.NOTE_LABEL,
-        clClose: _CL2.default.NOTE_LABEL_CLOSE,
-        item: item,
-        onRemove: onRemove ? onRemove.bind(null, item) : undefined
-      });
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: S.ROOT
+  }, labels.map(function (item) {
+    return _react["default"].createElement(_LabelNote["default"], {
+      key: item.id || item.title,
+      className: _CL["default"].NOTE_LABEL,
+      clClose: _CL["default"].NOTE_LABEL_CLOSE,
+      item: item,
+      onRemove: onRemove ? onRemove.bind(null, item) : undefined
+    });
+  }));
 };
+
 LabelList.defaultProps = {
   labels: []
 };
-
-exports.default = LabelList;
+var _default = LabelList;
+exports["default"] = _default;
 //# sourceMappingURL=LabelList.js.map

@@ -1,11 +1,16 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var isArrEmpty = function isArrEmpty(arr /*: mixed*/) /*: boolean*/{
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var isArrEmpty = function isArrEmpty(arr
+/*: mixed*/
+)
+/*: boolean*/
+{
   return !Array.isArray(arr) || arr.length === 0 ? true : false;
 };
 
-exports.default = isArrEmpty;
+var _default = isArrEmpty;
+exports["default"] = _default;
 //# sourceMappingURL=isArrEmpty.js.map

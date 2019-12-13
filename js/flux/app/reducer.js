@@ -1,34 +1,22 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _actions = require("./actions");
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _actions2 = require("../board/actions");
 
-var _actions = require('./actions');
+var _initialState = _interopRequireDefault(require("../initialState"));
 
-var _actions2 = require('../board/actions');
+var _reducerFns = _interopRequireDefault(require("../reducerFns"));
 
-var _initialState = require('../initialState');
-
-var _initialState2 = _interopRequireDefault(_initialState);
-
-var _reducerFns = require('../reducerFns');
-
-var _reducerFns2 = _interopRequireDefault(_reducerFns);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var setInObj = _reducerFns2.default.setInObj,
-    filterBy = _reducerFns2.default.filterBy;
-
+var setInObj = _reducerFns["default"].setInObj,
+    filterBy = _reducerFns["default"].filterBy;
 /*
 const initState = {
   boardId: 'b-1',
@@ -37,35 +25,41 @@ const initState = {
 };
 */
 
-var reducer = function reducer() /*: AppAction */
-/*: AppState */{
-  var state /*: AppState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.app;
-  var action = arguments[1];
+var reducer = function reducer(state
+/*: AppState */
+, action
+/*: AppAction */
+)
+/*: AppState */
+{
+  if (state === void 0) {
+    state = _initialState["default"].app;
+  }
 
   switch (action.type) {
     case _actions.ACTION.SET_UI_THEME:
       {
         var uiTheme = action.uiTheme;
-
-        return (0, _extends3.default)({}, state, {
+        return (0, _extends2["default"])({}, state, {
           uiTheme: uiTheme
         });
       }
+
     case _actions2.ACTION.SET_BOARD_CURRENT:
       {
         var boardId = action.boardId;
-
-        return (0, _extends3.default)({}, state, {
+        return (0, _extends2["default"])({}, state, {
           boardId: boardId
         });
       }
+
     case _actions2.ACTION.ADD_BOARD:
       {
         var _boardId = action.boardId,
-            newBoardIds = [].concat((0, _toConsumableArray3.default)(state.boardIds), [_boardId]);
-
+            newBoardIds = [].concat(state.boardIds, [_boardId]);
         return setInObj(state, 'boardIds', newBoardIds);
       }
+
     case _actions2.ACTION.REMOVE_BOARD:
       {
         var _boardId2 = action.boardId;
@@ -73,12 +67,15 @@ var reducer = function reducer() /*: AppAction */
         if (state.boardId === _boardId2) {
           state.boardId = null;
         }
+
         return setInObj(state, 'boardIds', filterBy(state.boardIds, _boardId2));
       }
+
     default:
       return state;
   }
 };
 
-exports.default = reducer;
+var _default = reducer;
+exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

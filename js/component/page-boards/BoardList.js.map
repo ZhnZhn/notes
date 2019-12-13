@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-boards/BoardList.js"
- ],
- "file": "../../../src/component/page-boards/BoardList.js",
- "names": [
-  "BoardList",
-  "boardIds",
-  "boards",
-  "map",
-  "id",
-  "mapStateToProps",
-  "sBoard",
-  "state"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;AACA;;AAEA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,OAA0B;AAAA,MAAvBC,QAAuB,QAAvBA,QAAuB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AAC1C,SAAOD,SAASE,GAAT,CAAa;AAAA,WAClB,8BAAC,mBAAD;AACE,WAAKC,EADP;AAEE,UAAIA;AAFN,MADkB;AAAA,GAAb,CAAP;AAMD,CAPD;;AASA,IAAMC,kBAAkB,SAAlBA,eAAkB;AAAA,SAAU;AAChCJ,cAAUK,kBAAOL,QAAP,CAAgBM,KAAhB,CADsB;AAEhCL,YAAQI,kBAAOJ,MAAP,CAAcK,KAAd;AAFwB,GAAV;AAAA,CAAxB;;kBAKe,yBACbF,eADa,EAEbL,SAFa,C"
-}
+{"version":3,"sources":["../../../src/component/page-boards/BoardList.jsx"],"names":["BoardList","boardIds","boards","map","id","mapStateToProps","state","sBoard"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,OAA0B;AAAA,MAAvBC,QAAuB,QAAvBA,QAAuB;AAAA,MAAbC,MAAa,QAAbA,MAAa;AAC1C,SAAOD,QAAQ,CAACE,GAAT,CAAa,UAAAC,EAAE;AAAA,WACpB,gCAAC,qBAAD;AACE,MAAA,GAAG,EAAEA,EADP;AAEE,MAAA,EAAE,EAAEA;AAFN,MADoB;AAAA,GAAf,CAAP;AAMD,CAPD;;AASA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAK;AAChCL,IAAAA,QAAQ,EAAEM,kBAAON,QAAP,CAAgBK,KAAhB,CADsB;AAEhCJ,IAAAA,MAAM,EAAEK,kBAAOL,MAAP,CAAcI,KAAd;AAFwB,GAAL;AAAA,CAA7B;;eAKe,yBACbD,eADa,EAEbL,SAFa,C","sourcesContent":["import React from 'react'\r\n\r\nimport { connect } from 'react-redux'\r\nimport { sBoard } from '../../flux/selectors'\r\n\r\nimport BoardCard from './BoardCard'\r\n\r\nconst BoardList = ({ boardIds, boards }) => {\r\n  return boardIds.map(id => (\r\n    <BoardCard\r\n      key={id}\r\n      id={id}\r\n    />\r\n  ));\r\n}\r\n\r\nconst mapStateToProps = state => ({\r\n  boardIds: sBoard.boardIds(state),\r\n  boards: sBoard.boards(state)\r\n});\r\n\r\nexport default connect(\r\n  mapStateToProps\r\n)(BoardList)\r\n"],"file":"BoardList.js"}

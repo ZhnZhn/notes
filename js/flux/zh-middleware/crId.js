@@ -1,14 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var crId = function crId() {
-  var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'a';
+exports.__esModule = true;
+exports["default"] = void 0;
+
+var crId = function crId(prefix) {
+  if (prefix === void 0) {
+    prefix = 'a';
+  }
 
   var id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 9)).toUpperCase().substr(12);
-  return prefix + '-' + id;
+  return prefix + "-" + id;
 };
 
-exports.default = crId;
+var _default = crId;
+exports["default"] = _default;
 //# sourceMappingURL=crId.js.map

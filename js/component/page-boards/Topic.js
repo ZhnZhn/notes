@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Card = require('../zhn-card/Card');
-
-var _Card2 = _interopRequireDefault(_Card);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 
 var S = {
   TOPIC: {
@@ -20,7 +15,7 @@ var S = {
     lineHeight: 2
   },
   COUNTER: {
-    float: 'right',
+    "float": 'right',
     paddingRight: 12
   }
 };
@@ -28,20 +23,14 @@ var S = {
 var Topic = function Topic(_ref) {
   var title = _ref.title,
       count = _ref.count;
-  return _react2.default.createElement(
-    'div',
-    { style: S.TOPIC },
-    _react2.default.createElement(
-      'span',
-      null,
-      title
-    ),
-    _react2.default.createElement(_Card2.default.Counter, {
-      style: S.COUNTER,
-      value: count
-    })
-  );
+  return _react["default"].createElement("div", {
+    style: S.TOPIC
+  }, _react["default"].createElement("span", null, title), _react["default"].createElement(_Card["default"].Counter, {
+    style: S.COUNTER,
+    value: count
+  }));
 };
 
-exports.default = Topic;
+var _default = Topic;
+exports["default"] = _default;
 //# sourceMappingURL=Topic.js.map

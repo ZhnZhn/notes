@@ -1,31 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _actions = require('../note/actions');
+var _actions = require("../note/actions");
 
-var _actions2 = require('../modal/actions');
+var _actions2 = require("../modal/actions");
 
-var _crId = require('./crId');
+var _crId = _interopRequireDefault(require("./crId"));
 
-var _crId2 = _interopRequireDefault(_crId);
+var _selectors = require("../selectors");
 
-var _selectors = require('../selectors');
-
-var _appConf = require('../appConf');
-
-var _appConf2 = _interopRequireDefault(_appConf);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _appConf = _interopRequireDefault(require("../appConf"));
 
 var _isMax = function _isMax(state, columnId) {
-  return _selectors.sColumn.noteIds(state, columnId).length >= _appConf2.default.MAX_NOTES;
+  return _selectors.sColumn.noteIds(state, columnId).length >= _appConf["default"].MAX_NOTES;
 };
 
 var taskIdMiddleware = function taskIdMiddleware(_ref) {
@@ -35,17 +28,20 @@ var taskIdMiddleware = function taskIdMiddleware(_ref) {
     return function (action) {
       if (action.type === _actions.ACTION.ADD_NOTE) {
         if (_isMax(getState(), action.columnId)) {
-          dispatch((0, _actions2.showNotif)(_appConf2.default.N_MAX_NOTES));
+          dispatch((0, _actions2.showNotif)(_appConf["default"].N_MAX_NOTES));
           return false;
         }
-        action = (0, _extends3.default)({}, action, {
-          noteId: (0, _crId2.default)(_appConf2.default.NOTES_PREFIX)
+
+        action = (0, _extends2["default"])({}, action, {
+          noteId: (0, _crId["default"])(_appConf["default"].NOTES_PREFIX)
         });
       }
+
       return next(action);
     };
   };
 };
 
-exports.default = taskIdMiddleware;
+var _default = taskIdMiddleware;
+exports["default"] = _default;
 //# sourceMappingURL=noteId.js.map

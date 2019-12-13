@@ -1,30 +1,31 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _reducerFns = require('../reducerFns');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _reducerFns2 = _interopRequireDefault(_reducerFns);
+var _reducerFns = _interopRequireDefault(require("../reducerFns"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var filterByProp = _reducerFns["default"].filterByProp;
 
-var filterByProp = _reducerFns2.default.filterByProp;
-
-
-var crMsg = function crMsg(id /*: string */
-, msg /*: string */
+var crMsg = function crMsg(id
+/*: string */
+, msg
+/*: string */
 ) {
-  return (/*: DrawerMsg */{
+  return (
+    /*: DrawerMsg */
+    {
       id: id,
       msg: msg
     }
   );
 };
 
-exports.default = {
+var _default = {
   crMsg: crMsg,
   filterByProp: filterByProp
 };
+exports["default"] = _default;
 //# sourceMappingURL=fns.js.map

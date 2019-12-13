@@ -1,21 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _hocDnD = require('../zhn-dnd/hocDnD');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _hocDnD2 = _interopRequireDefault(_hocDnD);
+var _hocDnD = _interopRequireDefault(require("../zhn-dnd/hocDnD"));
 
-var _Topic = require('./Topic');
+var _Topic = _interopRequireDefault(require("./Topic"));
 
-var _Topic2 = _interopRequireDefault(_Topic);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DnDTopic = (0, _hocDnD2.default)(_Topic2.default);
+var DnDTopic = (0, _hocDnD["default"])(_Topic["default"]);
 DnDTopic.displayName = 'DnDTopic';
-
-exports.default = DnDTopic;
+var _default = DnDTopic;
+exports["default"] = _default;
 //# sourceMappingURL=DnDTopic.js.map

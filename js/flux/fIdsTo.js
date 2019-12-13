@@ -1,25 +1,26 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _defineProperty2 = require("babel-runtime/helpers/defineProperty");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends3 = require("babel-runtime/helpers/extends");
+var fIdsTo = function fIdsTo(propName
+/*: string */
+) {
+  return function (state
+  /*: {} */
+  , ids
+  /*: Array<string> */
+  ) {
+    var _extends2;
 
-var _extends4 = _interopRequireDefault(_extends3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var fIdsTo = function fIdsTo(propName /*: string */) {
-  return function (state /*: {} */
-  , ids /*: Array<string> */) {
-    return (0, _extends4.default)({}, state, (0, _defineProperty3.default)({}, propName, ids));
+    return (0, _extends3["default"])({}, state, (_extends2 = {}, _extends2[propName] = ids, _extends2));
   };
 };
 
-exports.default = fIdsTo;
+var _default = fIdsTo;
+exports["default"] = _default;
 //# sourceMappingURL=fIdsTo.js.map

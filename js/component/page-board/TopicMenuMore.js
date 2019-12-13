@@ -1,38 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _withTheme = require('../hoc/withTheme');
+var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
 
-var _withTheme2 = _interopRequireDefault(_withTheme);
+var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 
-var _Comp = require('../style/Comp.Style');
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _Comp2 = _interopRequireDefault(_Comp);
-
-var _ModalPane = require('../zhn-ch/ModalPane');
-
-var _ModalPane2 = _interopRequireDefault(_ModalPane);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../style/CL"));
 
 var TopicMenuMore = function TopicMenuMore(_ref) {
   var style = _ref.style,
@@ -41,37 +26,25 @@ var TopicMenuMore = function TopicMenuMore(_ref) {
       onHideTopic = _ref.onHideTopic,
       onAddNote = _ref.onAddNote,
       onClose = _ref.onClose;
-
-  var TS = theme.createStyle(_Comp2.default);
-  return _react2.default.createElement(
-    _ModalPane2.default,
-    {
-      className: _CL2.default.MODAL_PANE,
-      style: (0, _extends3.default)({}, style, TS.COMP),
-      isShow: isShow,
-      onClose: onClose
-    },
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_FlatButton2.default, {
-        caption: 'Hide Topic',
-        title: 'Click to hide Topic',
-        onClick: onHideTopic
-      })
-    ),
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_FlatButton2.default, {
-        caption: 'Add Note',
-        title: 'Click to add new Note',
-        timeout: 100,
-        onClick: onAddNote
-      })
-    )
-  );
+  var TS = theme.createStyle(_Comp["default"]);
+  return _react["default"].createElement(_ModalPane["default"], {
+    className: _CL["default"].MODAL_PANE,
+    style: (0, _extends2["default"])({}, style, {}, TS.COMP),
+    isShow: isShow,
+    onClose: onClose
+  }, _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+    caption: "Hide Topic",
+    title: "Click to hide Topic",
+    onClick: onHideTopic
+  })), _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+    caption: "Add Note",
+    title: "Click to add new Note",
+    timeout: 100,
+    onClick: onAddNote
+  })));
 };
 
-exports.default = (0, _withTheme2.default)(TopicMenuMore);
+var _default = (0, _withTheme["default"])(TopicMenuMore);
+
+exports["default"] = _default;
 //# sourceMappingURL=TopicMenuMore.js.map

@@ -1,17 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.showNotif = exports.showSettings = exports.showDetails = exports.showModal = exports.ACTION = undefined;
+exports.__esModule = true;
+exports["default"] = exports.showNotif = exports.showSettings = exports.showDetails = exports.showModal = exports.ACTION = void 0;
 
-var _modalRouter = require('../../component/dialogs/modalRouter');
+var _modalRouter = require("../../component/dialogs/modalRouter");
 
-var ACTION = exports.ACTION = {
+var ACTION = {
   SHOW_MODAL: 'SHOW_MODAL'
 };
-var showModal = exports.showModal = function showModal(id /*: string */
-, data /*: {} */
+exports.ACTION = ACTION;
+
+var showModal = function showModal(id
+/*: string */
+, data
+/*: {} */
 ) {
   return {
     type: ACTION.SHOW_MODAL,
@@ -20,20 +22,23 @@ var showModal = exports.showModal = function showModal(id /*: string */
   };
 };
 
-var showDetails = exports.showDetails = showModal.bind(null, _modalRouter.MD.DETAILS);
-var showSettings = exports.showSettings = showModal.bind(null, _modalRouter.MD.SETTINGS);
-var showNotif = exports.showNotif = showModal.bind(null, _modalRouter.MD.NOTIF);
-
+exports.showModal = showModal;
+var showDetails = showModal.bind(null, _modalRouter.MD.DETAILS);
+exports.showDetails = showDetails;
+var showSettings = showModal.bind(null, _modalRouter.MD.SETTINGS);
+exports.showSettings = showSettings;
+var showNotif = showModal.bind(null, _modalRouter.MD.NOTIF);
 /*::
 export type ModalAction =
   | $Call<typeof showModal, string, {}>
   | $Call<typeof showDetails, {}>
 */
 
+exports.showNotif = showNotif;
 var actions = {
   showModal: showModal,
   showDetails: showDetails
 };
-
-exports.default = actions;
+var _default = actions;
+exports["default"] = _default;
 //# sourceMappingURL=actions.js.map

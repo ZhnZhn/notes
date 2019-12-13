@@ -1,11 +1,10 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var _crMaxDescr = function _crMaxDescr(domain, n) {
-  return 'Max number (' + n + ') of ' + domain + ' reached.';
+  return "Max number (" + n + ") of " + domain + " reached.";
 };
 
 var MAX = {
@@ -13,7 +12,6 @@ var MAX = {
   COLUMNS: 8,
   NOTES: 12
 };
-
 var CONF = {
   STORAGE_KEY: 'notes-manager',
   DMSG_PREFIX: 'm',
@@ -21,27 +19,23 @@ var CONF = {
   MSG_SAVE_FAIL: 'Boards not saved',
   MSG_CLEANED: 'localStorage cleaned',
   MSG_CLEAN_FAIL: 'localStorage not cleaned',
-
   BOARDS_PREFIX: 'b',
   MAX_BOARDS: MAX.BOARDS,
   N_MAX_BOARDS: {
     descr: _crMaxDescr('boards', MAX.BOARDS)
   },
-
   MAX_COLUMNS: MAX.COLUMNS,
   COLUMNS_PREFIX: 'c',
   N_MAX_COLUMNS: {
     descr: _crMaxDescr('columns', MAX.COLUMNS)
   },
-
   MAX_NOTES: MAX.NOTES,
   NOTES_PREFIX: 'n',
   N_MAX_NOTES: {
     descr: _crMaxDescr('notes', MAX.NOTES)
   },
-
   NLABELS_PREFIX: 'nl'
 };
-
-exports.default = CONF;
+var _default = CONF;
+exports["default"] = _default;
 //# sourceMappingURL=appConf.js.map

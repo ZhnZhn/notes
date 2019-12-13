@@ -1,25 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _hocDnD = require('../zhn-dnd/hocDnD');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _hocDnD2 = _interopRequireDefault(_hocDnD);
+var _hocDnD = _interopRequireDefault(require("../zhn-dnd/hocDnD"));
 
-var _Note = require('./Note');
+var _Note = _interopRequireDefault(require("./Note"));
 
-var _Note2 = _interopRequireDefault(_Note);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DnDNote = (0, _hocDnD2.default)({
+var DnDNote = (0, _hocDnD["default"])({
   notDragBg: '#9e9e9e',
   isDragHanlerProps: true
-})(_Note2.default);
-
+})(_Note["default"]);
 DnDNote.displayName = 'DnDNote';
-
-exports.default = DnDNote;
+var _default = DnDNote;
+exports["default"] = _default;
 //# sourceMappingURL=DnDNote.js.map

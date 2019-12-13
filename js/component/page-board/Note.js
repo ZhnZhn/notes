@@ -1,49 +1,27 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactRedux = require("react-redux");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _actions = require("../../flux/note/actions");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _actions2 = _interopRequireDefault(require("../../flux/modal/actions"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _NoteCaption = _interopRequireDefault(require("./NoteCaption"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRedux = require('react-redux');
-
-var _actions = require('../../flux/note/actions');
-
-var _actions2 = require('../../flux/modal/actions');
-
-var _actions3 = _interopRequireDefault(_actions2);
-
-var _NoteCaption = require('./NoteCaption');
-
-var _NoteCaption2 = _interopRequireDefault(_NoteCaption);
-
-var _NoteDetails = require('./NoteDetails');
-
-var _NoteDetails2 = _interopRequireDefault(_NoteDetails);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _NoteDetails = _interopRequireDefault(require("./NoteDetails"));
 
 var CL = 'note';
-//import PropsType from 'prop-types'
 
 var _getState = function _getState(props) {
   return {
@@ -53,8 +31,10 @@ var _getState = function _getState(props) {
   };
 };
 
-var DnDNote = function (_Component) {
-  (0, _inherits3.default)(DnDNote, _Component);
+var DnDNote =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(DnDNote, _Component);
 
   /*
   static propTypes = {
@@ -63,11 +43,10 @@ var DnDNote = function (_Component) {
     columnId: PropsType.string
   }
   */
-
   function DnDNote(props) {
-    (0, _classCallCheck3.default)(this, DnDNote);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DnDNote.__proto__ || Object.getPrototypeOf(DnDNote)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._openMenuMore = function () {
       if (!_this.state.isMenuMore) {
@@ -88,7 +67,6 @@ var DnDNote = function (_Component) {
           deleteNote = _this$props.deleteNote,
           columnId = _this$props.columnId,
           note = _this$props.note;
-
       deleteNote(columnId, note.id);
     };
 
@@ -115,7 +93,6 @@ var DnDNote = function (_Component) {
       var _this$props3 = _this.props,
           note = _this$props3.note,
           editDetails = _this$props3.editDetails;
-
       editDetails(note);
     };
 
@@ -123,54 +100,47 @@ var DnDNote = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(DnDNote, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          dragHandleProps = _props.dragHandleProps,
-          note = _props.note,
-          _state = this.state,
-          noteTitle = _state.noteTitle,
-          isMenuMore = _state.isMenuMore,
-          isDetails = _state.isDetails;
+  var _proto = DnDNote.prototype;
 
+  _proto.render = function render() {
+    var _this$props4 = this.props,
+        dragHandleProps = _this$props4.dragHandleProps,
+        note = _this$props4.note,
+        _this$state = this.state,
+        noteTitle = _this$state.noteTitle,
+        isMenuMore = _this$state.isMenuMore,
+        isDetails = _this$state.isDetails;
+    return _react["default"].createElement("div", {
+      className: CL,
+      id: note.id
+    }, _react["default"].createElement(_NoteCaption["default"], {
+      dragHandleProps: dragHandleProps,
+      isDetails: isDetails,
+      onClickHandle: this._toggleDetails,
+      noteTitle: noteTitle,
+      onBlurTitle: this._blurTitle,
+      isMenuMore: isMenuMore,
+      onClickMenuMore: this._openMenuMore,
+      onCloseMenuMore: this._closeMenuMore,
+      onEditDetails: this._editDetails,
+      onRemoveNote: this._deleteNote
+    }), _react["default"].createElement(_NoteDetails["default"], {
+      isShow: isDetails,
+      note: note,
+      editDetails: this._editDetails
+    }));
+  };
 
-      return _react2.default.createElement(
-        'div',
-        {
-          className: CL,
-          id: note.id
-        },
-        _react2.default.createElement(_NoteCaption2.default, {
-          dragHandleProps: dragHandleProps,
-          isDetails: isDetails,
-          onClickHandle: this._toggleDetails,
-
-          noteTitle: noteTitle,
-          onBlurTitle: this._blurTitle,
-
-          isMenuMore: isMenuMore,
-          onClickMenuMore: this._openMenuMore,
-          onCloseMenuMore: this._closeMenuMore,
-          onEditDetails: this._editDetails,
-          onRemoveNote: this._deleteNote
-        }),
-        _react2.default.createElement(_NoteDetails2.default, {
-          isShow: isDetails,
-          note: note,
-          editDetails: this._editDetails
-        })
-      );
-    }
-  }]);
   return DnDNote;
 }(_react.Component);
 
 var mapDispatchToProps = {
   deleteNote: _actions.deleteNote,
   editNoteTitle: _actions.editNoteTitle,
-  editDetails: _actions3.default.showDetails
+  editDetails: _actions2["default"].showDetails
 };
 
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DnDNote);
+var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DnDNote);
+
+exports["default"] = _default;
 //# sourceMappingURL=Note.js.map

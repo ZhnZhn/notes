@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-boards/PageBoards.js"
- ],
- "file": "../../../src/component/page-boards/PageBoards.js",
- "names": [
-  "PageBoards",
-  "_hDragEnd",
-  "result",
-  "props",
-  "moveColumn",
-  "Component",
-  "mapDispatchToProps"
- ],
- "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;AACA;;AAEA;;AAEA;;;;AAEA;;;;AACA;;;;AACA;;;;;;IAEMA,U;;;;;;;;;;;;;;4MACJC,S,GAAY,UAACC,MAAD,EAAY;AACtB,UAAI,wBAASA,MAAT,CAAJ,EAAqB;AACnB;AACD;AACD,YAAKC,KAAL,CAAWC,UAAX,CAAsBF,MAAtB;AACD,K;;;;;6BAEQ;AACP,aAAO,CACL,8BAAC,gBAAD,IAAQ,KAAI,QAAZ,GADK,EAEL;AAAC,0CAAD;AAAA;AACG,eAAI,KADP;AAEG,qBAAW,KAAKD;AAFnB;AAIE;AAAC,wBAAD;AAAA;AACE,wCAAC,mBAAD;AADF;AAJF,OAFK,CAAP;AAWD;;;EApBsBI,gB;;AAuBzB,IAAMC,qBAAqB;AACzBF;AADyB,CAA3B;;kBAIe,yBACb,IADa,EAEbE,kBAFa,EAGbN,UAHa,C"
-}
+{"version":3,"sources":["../../../src/component/page-boards/PageBoards.jsx"],"names":["PageBoards","_hDragEnd","result","props","moveColumn","render","Component","mapDispatchToProps"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;IAEMA,U;;;;;;;;;;;;;;UACJC,S,GAAY,UAACC,MAAD,EAAY;AACtB,UAAI,0BAASA,MAAT,CAAJ,EAAqB;AACnB;AACD;;AACD,YAAKC,KAAL,CAAWC,UAAX,CAAsBF,MAAtB;AACD,K;;;;;;;SAEDG,M,GAAA,kBAAS;AACP,WAAO,CACL,gCAAC,kBAAD;AAAQ,MAAA,GAAG,EAAC;AAAZ,MADK,EAEL,gCAAC,kCAAD;AACG,MAAA,GAAG,EAAC,KADP;AAEG,MAAA,SAAS,EAAE,KAAKJ;AAFnB,OAIE,gCAAC,gBAAD,QACE,gCAAC,qBAAD,OADF,CAJF,CAFK,CAAP;AAWD,G;;;EApBsBK,gB;;AAuBzB,IAAMC,kBAAkB,GAAG;AACzBH,EAAAA,UAAU,EAAVA;AADyB,CAA3B;;eAIe,yBACb,IADa,EAEbG,kBAFa,EAGbP,UAHa,C","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport { connect } from 'react-redux'\r\nimport { DragDropContext } from 'react-beautiful-dnd'\r\n\r\nimport { moveColumn } from '../../flux/column/actions'\r\n\r\nimport isNotDnD from '../zhn-dnd/isNotDnD'\r\n\r\nimport Header from './Header'\r\nimport Main from '../zhn-ch/Main'\r\nimport BoardList from './BoardList'\r\n\r\nclass PageBoards extends Component {\r\n  _hDragEnd = (result) => {\r\n    if (isNotDnD(result)){\r\n      return;\r\n    }\r\n    this.props.moveColumn(result)\r\n  }\r\n\r\n  render() {\r\n    return [\r\n      <Header key=\"header\" />,\r\n      <DragDropContext\r\n         key=\"ddc\"\r\n         onDragEnd={this._hDragEnd}\r\n      >\r\n        <Main>\r\n          <BoardList />\r\n        </Main>\r\n      </DragDropContext>\r\n    ];\r\n  }\r\n}\r\n\r\nconst mapDispatchToProps = {\r\n  moveColumn\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(PageBoards)\r\n"],"file":"PageBoards.js"}

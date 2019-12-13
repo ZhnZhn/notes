@@ -1,9 +1,8 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ACTION = exports.ACTION = {
+exports.__esModule = true;
+exports["default"] = exports.addNote = exports.editNoteTitle = exports.deleteNote = exports.moveNote = exports.ACTION = void 0;
+var ACTION = {
   MOVE_NOTE: 'MOVE_NOTE',
   DELETE_NOTE: 'DELETE_NOTE',
   ADD_NOTE: 'ADD_NOTE',
@@ -11,8 +10,9 @@ var ACTION = exports.ACTION = {
   EDIT_NOTE_DESCR: 'EDIT_NOTE_DESCR',
   EDIT_NOTE_LABELS: 'EDIT_NOTE_LABELS'
 };
+exports.ACTION = ACTION;
 
-var moveNote = exports.moveNote = function moveNote(_ref) {
+var moveNote = function moveNote(_ref) {
   var draggableId = _ref.draggableId,
       source = _ref.source,
       destination = _ref.destination;
@@ -24,8 +24,12 @@ var moveNote = exports.moveNote = function moveNote(_ref) {
   };
 };
 
-var deleteNote = exports.deleteNote = function deleteNote(columnId /*: string */
-, noteId /*: string */
+exports.moveNote = moveNote;
+
+var deleteNote = function deleteNote(columnId
+/*: string */
+, noteId
+/*: string */
 ) {
   return {
     type: ACTION.DELETE_NOTE,
@@ -34,8 +38,12 @@ var deleteNote = exports.deleteNote = function deleteNote(columnId /*: string */
   };
 };
 
-var editNoteTitle = exports.editNoteTitle = function editNoteTitle(noteId /*: string */
-, title /*: string */
+exports.deleteNote = deleteNote;
+
+var editNoteTitle = function editNoteTitle(noteId
+/*: string */
+, title
+/*: string */
 ) {
   return {
     type: ACTION.EDIT_NOTE_TITLE,
@@ -44,8 +52,12 @@ var editNoteTitle = exports.editNoteTitle = function editNoteTitle(noteId /*: st
   };
 };
 
-var editNoteDescr = function editNoteDescr(noteId /*: string */
-, descr /*: string */
+exports.editNoteTitle = editNoteTitle;
+
+var editNoteDescr = function editNoteDescr(noteId
+/*: string */
+, descr
+/*: string */
 ) {
   return {
     type: ACTION.EDIT_NOTE_DESCR,
@@ -54,10 +66,14 @@ var editNoteDescr = function editNoteDescr(noteId /*: string */
   };
 };
 
-var editNoteLabels = function editNoteLabels(noteId /*: string */
-, labels /*: [] */
-, labelsTo /*?: [] */
-, newLabels /*?: [] */
+var editNoteLabels = function editNoteLabels(noteId
+/*: string */
+, labels
+/*: [] */
+, labelsTo
+/*?: [] */
+, newLabels
+/*?: [] */
 ) {
   return {
     type: ACTION.EDIT_NOTE_LABELS,
@@ -68,8 +84,10 @@ var editNoteLabels = function editNoteLabels(noteId /*: string */
   };
 };
 
-var addNote = exports.addNote = function addNote(columnId /*: string */
-, noteId /*: string */
+var addNote = function addNote(columnId
+/*: string */
+, noteId
+/*: string */
 ) {
   return {
     type: ACTION.ADD_NOTE,
@@ -77,7 +95,6 @@ var addNote = exports.addNote = function addNote(columnId /*: string */
     noteId: noteId
   };
 };
-
 /*::
 export type NoteAction =
   | $Call<typeof moveNote, string, {}, {}>
@@ -88,6 +105,8 @@ export type NoteAction =
   | $Call<typeof addNote, string, string>
 */
 
+
+exports.addNote = addNote;
 var actions = {
   moveNote: moveNote,
   deleteNote: deleteNote,
@@ -96,6 +115,6 @@ var actions = {
   editNoteLabels: editNoteLabels,
   addNote: addNote
 };
-
-exports.default = actions;
+var _default = actions;
+exports["default"] = _default;
 //# sourceMappingURL=actions.js.map

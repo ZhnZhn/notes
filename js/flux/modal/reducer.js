@@ -1,20 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _actions = require('./actions');
+var _actions = require("./actions");
 
-var _initialState = require('../initialState');
-
-var _initialState2 = _interopRequireDefault(_initialState);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _initialState = _interopRequireDefault(require("../initialState"));
 
 /*
 const initState = {
@@ -22,27 +17,33 @@ const initState = {
  data: null
 }
 */
-
-var reducer = function reducer() /*: ModalAction */
-/*: ModalState */{
-  var state /*: ModalState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.modal;
-  var action = arguments[1];
+var reducer = function reducer(state
+/*: ModalState */
+, action
+/*: ModalAction */
+)
+/*: ModalState */
+{
+  if (state === void 0) {
+    state = _initialState["default"].modal;
+  }
 
   switch (action.type) {
     case _actions.ACTION.SHOW_MODAL:
       {
         var id = action.id,
             data = action.data;
-
-        return (0, _extends3.default)({}, state, {
+        return (0, _extends2["default"])({}, state, {
           id: id,
           data: data
         });
       }
+
     default:
       return state;
   }
 };
 
-exports.default = reducer;
+var _default = reducer;
+exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

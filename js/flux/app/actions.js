@@ -1,34 +1,38 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ACTION = exports.ACTION = {
+exports.__esModule = true;
+exports["default"] = exports.setUiTheme = exports.cleanStorage = exports.saveBoard = exports.ACTION = void 0;
+var ACTION = {
   SAVE_BOARD: 'SAVE_BOARD',
   CLEAN_STORAGE: 'CLEAN_STORAGE',
   SET_UI_THEME: 'SET_UI_THEME'
 };
+exports.ACTION = ACTION;
 
-var saveBoard = exports.saveBoard = function saveBoard() {
+var saveBoard = function saveBoard() {
   return {
     type: ACTION.SAVE_BOARD
   };
 };
 
-var cleanStorage = exports.cleanStorage = function cleanStorage() {
+exports.saveBoard = saveBoard;
+
+var cleanStorage = function cleanStorage() {
   return {
     type: ACTION.CLEAN_STORAGE
   };
 };
 
-var setUiTheme = exports.setUiTheme = function setUiTheme(uiTheme /*: UiTheme */
+exports.cleanStorage = cleanStorage;
+
+var setUiTheme = function setUiTheme(uiTheme
+/*: UiTheme */
 ) {
   return {
     type: ACTION.SET_UI_THEME,
     uiTheme: uiTheme
   };
 };
-
 /*::
 export type TopicAction =
   | $Call<typeof saveBoard>
@@ -36,11 +40,13 @@ export type TopicAction =
   | $Call<typeof setUiTheme, UiTheme>
 */
 
+
+exports.setUiTheme = setUiTheme;
 var actions = {
   saveBoard: saveBoard,
   cleanStorage: cleanStorage,
   setUiTheme: setUiTheme
 };
-
-exports.default = actions;
+var _default = actions;
+exports["default"] = _default;
 //# sourceMappingURL=actions.js.map

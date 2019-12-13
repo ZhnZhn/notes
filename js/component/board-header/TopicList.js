@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _TopicItem = require('./TopicItem');
-
-var _TopicItem2 = _interopRequireDefault(_TopicItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TopicItem = _interopRequireDefault(require("./TopicItem"));
 
 var S = {
   UL: {
@@ -25,10 +20,9 @@ var _renderTopics = function _renderTopics(_ref) {
       columns = _ref.columns,
       toggleColumn = _ref.toggleColumn;
   var _board$columnIds = board.columnIds,
-      columnIds = _board$columnIds === undefined ? [] : _board$columnIds;
-
+      columnIds = _board$columnIds === void 0 ? [] : _board$columnIds;
   return columnIds.map(function (cId) {
-    return _react2.default.createElement(_TopicItem2.default, {
+    return _react["default"].createElement(_TopicItem["default"], {
       key: cId,
       topic: columns[cId],
       onClick: toggleColumn.bind(null, cId)
@@ -37,16 +31,14 @@ var _renderTopics = function _renderTopics(_ref) {
 };
 
 var TopicList = function TopicList(props) {
-  return _react2.default.createElement(
-    'ul',
-    { style: S.UL },
-    _renderTopics(props)
-  );
+  return _react["default"].createElement("ul", {
+    style: S.UL
+  }, _renderTopics(props));
 };
 
 TopicList.defaultProps = {
   toggleColumn: function toggleColumn() {}
 };
-
-exports.default = TopicList;
+var _default = TopicList;
+exports["default"] = _default;
 //# sourceMappingURL=TopicList.js.map

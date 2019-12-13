@@ -5,7 +5,7 @@ import initialState from '../../initialState'
 describe('reducer noteLabels', ()=>{
   test('should init to initial state', ()=>{
     expect(reducer(undefined, {}))
-      .toEqual(initialState.noteLabel)
+      .toEqual(initialState.noteLabels)
   })
   test('should add new labels for notes', ()=>{
     const id = 'nl-1'

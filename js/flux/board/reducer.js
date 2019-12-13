@@ -1,43 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _toConsumableArray2 = require('babel-runtime/helpers/toConsumableArray');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _actions = require("./actions");
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _actions2 = require("../column/actions");
 
-var _actions = require('./actions');
+var _initialState = _interopRequireDefault(require("../initialState"));
 
-var _actions2 = require('../column/actions');
+var _reducerFns = _interopRequireDefault(require("../reducerFns"));
 
-var _initialState = require('../initialState');
+var _fDnDMoveFns2 = _interopRequireDefault(require("../fDnDMoveFns"));
 
-var _initialState2 = _interopRequireDefault(_initialState);
+var setInObj = _reducerFns["default"].setInObj,
+    removeProp = _reducerFns["default"].removeProp,
+    filterBy = _reducerFns["default"].filterBy;
 
-var _reducerFns = require('../reducerFns');
-
-var _reducerFns2 = _interopRequireDefault(_reducerFns);
-
-var _fDnDMoveFns2 = require('../fDnDMoveFns');
-
-var _fDnDMoveFns3 = _interopRequireDefault(_fDnDMoveFns2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var setInObj = _reducerFns2.default.setInObj,
-    removeProp = _reducerFns2.default.removeProp,
-    filterBy = _reducerFns2.default.filterBy;
-
-var _fDnDMoveFns = (0, _fDnDMoveFns3.default)('columnIds'),
+var _fDnDMoveFns = (0, _fDnDMoveFns2["default"])('columnIds'),
     moveInternal = _fDnDMoveFns.moveInternal,
     moveExternal = _fDnDMoveFns.moveExternal;
-
 /*
 boards: {
   'b-1': {
@@ -48,57 +34,67 @@ boards: {
 }
 */
 
-var reducer = function reducer() /*: BoardAction */
-/*: BoardState */{
-  var state /*: BoardState */ = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _initialState2.default.boards;
-  var action = arguments[1];
+
+var reducer = function reducer(state
+/*: BoardState */
+, action
+/*: BoardAction */
+)
+/*: BoardState */
+{
+  if (state === void 0) {
+    state = _initialState["default"].boards;
+  }
 
   switch (action.type) {
     case _actions.ACTION.EDIT_BOARD_TITLE:
       {
         var boardId = action.boardId,
             title = action.title,
-            newBoard = (0, _extends3.default)({}, state[boardId], { title: title });
-
+            newBoard = (0, _extends2["default"])({}, state[boardId], {
+          title: title
+        });
         return setInObj(state, boardId, newBoard);
       }
+
     case _actions.ACTION.ADD_BOARD:
       {
         var _boardId = action.boardId;
-
         return setInObj(state, _boardId, {
           id: _boardId,
           title: 'New Board',
           columnIds: []
         });
       }
+
     case _actions.ACTION.REMOVE_BOARD:
       {
         var _boardId2 = action.boardId;
-
         return removeProp(state, _boardId2);
       }
+
     case _actions2.ACTION.ADD_COLUMN:
       {
         var _boardId3 = action.boardId,
             columnId = action.columnId,
             oldBoard = state[_boardId3],
-            _newBoard = (0, _extends3.default)({}, oldBoard, {
-          columnIds: [].concat((0, _toConsumableArray3.default)(oldBoard.columnIds), [columnId])
+            _newBoard = (0, _extends2["default"])({}, oldBoard, {
+          columnIds: [].concat(oldBoard.columnIds, [columnId])
         });
 
         return setInObj(state, _boardId3, _newBoard);
       }
+
     case _actions2.ACTION.REMOVE_COLUMN:
       {
         var _boardId4 = action.boardId,
             _columnId = action.columnId,
             _oldBoard = state[_boardId4];
-
-        return setInObj(state, _boardId4, (0, _extends3.default)({}, _oldBoard, {
+        return setInObj(state, _boardId4, (0, _extends2["default"])({}, _oldBoard, {
           columnIds: filterBy(_oldBoard.columnIds, _columnId)
         }));
       }
+
     case _actions2.ACTION.MOVE_COLUMN:
       {
         var _columnId2 = action.columnId,
@@ -106,13 +102,14 @@ var reducer = function reducer() /*: BoardAction */
             destination = action.destination,
             from = state[source.droppableId],
             to = state[destination.droppableId];
-
         return from === to ? moveInternal(state, _columnId2, source, destination, from) : moveExternal(state, _columnId2, source, destination, from, to);
       }
+
     default:
       return state;
   }
 };
 
-exports.default = reducer;
+var _default = reducer;
+exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

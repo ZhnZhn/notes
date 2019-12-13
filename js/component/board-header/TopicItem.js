@@ -1,28 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _FlatButton = require('../zhn-m/FlatButton');
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _CL = require('./CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("./CL"));
 
 var C = {
   HIDE: 'hide',
   SHOW: 'show'
 };
-
 var S = {
   LI: {
     position: 'relative'
@@ -31,15 +23,13 @@ var S = {
 
 var Badge = function Badge(_ref) {
   var isHide = _ref.isHide;
-  return _react2.default.createElement(
-    'span',
-    { className: _CL2.default.BADGE },
-    isHide ? 'H' : 'S'
-  );
+  return _react["default"].createElement("span", {
+    className: _CL["default"].BADGE
+  }, isHide ? 'H' : 'S');
 };
 
 var _crTitle = function _crTitle(is) {
-  return 'Click to ' + (is ? C.SHOW : C.HIDE) + ' topic';
+  return "Click to " + (is ? C.SHOW : C.HIDE) + " topic";
 };
 
 var TopicItem = function TopicItem(_ref2) {
@@ -50,23 +40,22 @@ var TopicItem = function TopicItem(_ref2) {
       title = topic.title,
       _title = _crTitle(isHide);
 
-  return _react2.default.createElement(
-    'li',
-    { style: S.LI },
-    _react2.default.createElement(_FlatButton2.default, {
-      className: _CL2.default.BT,
-      caption: title,
-      title: _title,
-      timeout: 0,
-      onClick: onClick
-    }),
-    _react2.default.createElement(Badge, { isHide: isHide })
-  );
+  return _react["default"].createElement("li", {
+    style: S.LI
+  }, _react["default"].createElement(_FlatButton["default"], {
+    className: _CL["default"].BT,
+    caption: title,
+    title: _title,
+    timeout: 0,
+    onClick: onClick
+  }), _react["default"].createElement(Badge, {
+    isHide: isHide
+  }));
 };
 
 TopicItem.defaultProps = {
   topic: {}
 };
-
-exports.default = TopicItem;
+var _default = TopicItem;
+exports["default"] = _default;
 //# sourceMappingURL=TopicItem.js.map

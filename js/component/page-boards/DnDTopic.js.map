@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-boards/DnDTopic.js"
- ],
- "file": "../../../src/component/page-boards/DnDTopic.js",
- "names": [
-  "DnDTopic",
-  "Topic",
-  "displayName"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,WAAW,sBAAOC,eAAP,CAAjB;AACAD,SAASE,WAAT,GAAuB,UAAvB;;kBAEeF,Q"
-}
+{"version":3,"sources":["../../../src/component/page-boards/DnDTopic.jsx"],"names":["DnDTopic","Topic","displayName"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,QAAQ,GAAG,wBAAOC,iBAAP,CAAjB;AACAD,QAAQ,CAACE,WAAT,GAAuB,UAAvB;eAEeF,Q","sourcesContent":["import hocDnD from '../zhn-dnd/hocDnD'\r\nimport Topic from './Topic'\r\n\r\nconst DnDTopic = hocDnD(Topic);\r\nDnDTopic.displayName = 'DnDTopic'\r\n\r\nexport default DnDTopic\r\n"],"file":"DnDTopic.js"}

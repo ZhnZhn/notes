@@ -1,58 +1,33 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _reactRouterDom = require("react-router-dom");
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _reactRedux = require("react-redux");
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _actions = require("../../flux/board/actions");
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _selectors = require("../../flux/selectors");
 
-var _react = require('react');
+var _CL = _interopRequireDefault(require("../style/CL"));
 
-var _react2 = _interopRequireDefault(_react);
+var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
 
-var _reactRouterDom = require('react-router-dom');
+var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 
-var _reactRedux = require('react-redux');
+var _DnDTopicList = _interopRequireDefault(require("./DnDTopicList"));
 
-var _actions = require('../../flux/board/actions');
-
-var _selectors = require('../../flux/selectors');
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-var _isArrEmpty = require('../../utils/isArrEmpty');
-
-var _isArrEmpty2 = _interopRequireDefault(_isArrEmpty);
-
-var _Card = require('../zhn-card/Card');
-
-var _Card2 = _interopRequireDefault(_Card);
-
-var _DnDTopicList = require('./DnDTopicList');
-
-var _DnDTopicList2 = _interopRequireDefault(_DnDTopicList);
-
-var _FlatButton = require('../zhn-m/FlatButton');
-
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var S = {
   LINK: {
@@ -62,94 +37,80 @@ var S = {
   }
 };
 
-var BoardCard = function (_Component) {
-  (0, _inherits3.default)(BoardCard, _Component);
+var BoardCard =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(BoardCard, _Component);
 
   function BoardCard() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, BoardCard);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = BoardCard.__proto__ || Object.getPrototypeOf(BoardCard)).call.apply(_ref, [this].concat(args))), _this), _this._hBlurTitle = function (evt) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._hBlurTitle = function (evt) {
       var _this$props = _this.props,
           board = _this$props.board,
           editBoardTitle = _this$props.editBoardTitle;
-
       editBoardTitle(board.id, evt.target.value);
-    }, _this._hSetCurrent = function () {
+    };
+
+    _this._hSetCurrent = function () {
       var _this$props2 = _this.props,
           board = _this$props2.board,
           setBoardCurrent = _this$props2.setBoardCurrent;
-
       setBoardCurrent(board.id);
-    }, _this._hRemove = function () {
+    };
+
+    _this._hRemove = function () {
       var _this$props3 = _this.props,
           board = _this$props3.board,
           removeBoard = _this$props3.removeBoard;
-
       removeBoard(board.id);
-    }, _this._hToNotes = function () {
+    };
+
+    _this._hToNotes = function () {
       var _this$props4 = _this.props,
           board = _this$props4.board,
           setBoardCurrent = _this$props4.setBoardCurrent;
-
       setBoardCurrent(board.id);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(BoardCard, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          id = _props.id,
-          board = _props.board,
-          columns = _props.columns,
-          columnIds = board.columnIds;
+  var _proto = BoardCard.prototype;
 
+  _proto.render = function render() {
+    var _this$props5 = this.props,
+        id = _this$props5.id,
+        board = _this$props5.board,
+        columns = _this$props5.columns,
+        columnIds = board.columnIds;
+    return _react["default"].createElement(_Card["default"].Item, null, _react["default"].createElement(_Card["default"].Title, {
+      value: board.title,
+      onBlur: this._hBlurTitle
+    }), _react["default"].createElement(_Card["default"].Counter, {
+      value: columnIds.length
+    }), _react["default"].createElement(_DnDTopicList["default"], {
+      id: id,
+      columnIds: columnIds,
+      columns: columns
+    }), _react["default"].createElement(_reactRouterDom.NavLink, {
+      to: "/boards/" + board.id,
+      className: _CL["default"].NAV_LINK,
+      style: S.LINK,
+      onClick: this._hToNotes
+    }, "ToNotes"), _react["default"].createElement("div", null, (0, _isArrEmpty["default"])(columnIds) && _react["default"].createElement(_FlatButton["default"], {
+      clCaption: _CL["default"].CARD_BT,
+      caption: "Remove Board",
+      onClick: this._hRemove
+    })));
+  };
 
-      return _react2.default.createElement(
-        _Card2.default.Item,
-        null,
-        _react2.default.createElement(_Card2.default.Title, {
-          value: board.title,
-          onBlur: this._hBlurTitle
-        }),
-        _react2.default.createElement(_Card2.default.Counter, {
-          value: columnIds.length
-        }),
-        _react2.default.createElement(_DnDTopicList2.default, {
-          id: id,
-          columnIds: columnIds,
-          columns: columns
-        }),
-        _react2.default.createElement(
-          _reactRouterDom.NavLink,
-          {
-            to: '/boards/' + board.id,
-            className: _CL2.default.NAV_LINK,
-            style: S.LINK,
-            onClick: this._hToNotes
-          },
-          'ToNotes'
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          (0, _isArrEmpty2.default)(columnIds) && _react2.default.createElement(_FlatButton2.default, {
-            clCaption: _CL2.default.CARD_BT,
-            caption: 'Remove Board',
-            onClick: this._hRemove
-          })
-        )
-      );
-    }
-  }]);
   return BoardCard;
 }(_react.Component);
 
@@ -166,5 +127,7 @@ var mapDispatchToProps = {
   removeBoard: _actions.removeBoard
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BoardCard);
+var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(BoardCard);
+
+exports["default"] = _default;
 //# sourceMappingURL=BoardCard.js.map

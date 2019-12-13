@@ -1,35 +1,28 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var LabelNote = function LabelNote(_ref) {
   var className = _ref.className,
       clClose = _ref.clClose,
       item = _ref.item,
       onRemove = _ref.onRemove;
-  return _react2.default.createElement(
-    'button',
-    {
-      className: className,
-      style: { backgroundColor: item.color },
-      onClick: onRemove
+  return _react["default"].createElement("button", {
+    className: className,
+    style: {
+      backgroundColor: item.color
     },
-    item.title,
-    onRemove && _react2.default.createElement(
-      'span',
-      { className: clClose },
-      'x'
-    )
-  );
+    onClick: onRemove
+  }, item.title, onRemove && _react["default"].createElement("span", {
+    className: clClose
+  }, "x"));
 };
 
-exports.default = LabelNote;
+var _default = LabelNote;
+exports["default"] = _default;
 //# sourceMappingURL=LabelNote.js.map

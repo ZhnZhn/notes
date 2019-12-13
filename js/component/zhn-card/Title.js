@@ -1,32 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 
-var _InputText = require('../zhn/InputText');
-
-var _InputText2 = _interopRequireDefault(_InputText);
-
-var _CL = require('../style/CL');
-
-var _CL2 = _interopRequireDefault(_CL);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Title = function Title(props) {
-  return _react2.default.createElement(_InputText2.default, (0, _extends3.default)({
-    className: _CL2.default.CARD_TITLE
+  return _react["default"].createElement(_InputText["default"], (0, _extends2["default"])({
+    className: _CL["default"].CARD_TITLE
   }, props));
 };
 
-exports.default = Title;
+var _default = Title;
+exports["default"] = _default;
 //# sourceMappingURL=Title.js.map

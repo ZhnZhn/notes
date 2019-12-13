@@ -1,36 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _DrawerLeft = require('../zhn-ch/DrawerLeft');
+var _DrawerLeft = _interopRequireDefault(require("../zhn-ch/DrawerLeft"));
 
-var _DrawerLeft2 = _interopRequireDefault(_DrawerLeft);
+var _HeaderCaption = _interopRequireDefault(require("./HeaderCaption"));
 
-var _HeaderCaption = require('./HeaderCaption');
-
-var _HeaderCaption2 = _interopRequireDefault(_HeaderCaption);
-
-var _TopicDrawerMenu = require('./TopicDrawerMenu');
-
-var _TopicDrawerMenu2 = _interopRequireDefault(_TopicDrawerMenu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _TopicDrawerMenu = _interopRequireDefault(require("./TopicDrawerMenu"));
 
 var TopicDrawer = function TopicDrawer() {
-  return _react2.default.createElement(
-    _DrawerLeft2.default,
-    {
-      captionComp: _react2.default.createElement(_HeaderCaption2.default, null)
-    },
-    _react2.default.createElement(_TopicDrawerMenu2.default, null)
-  );
+  return _react["default"].createElement(_DrawerLeft["default"], {
+    captionComp: _react["default"].createElement(_HeaderCaption["default"], null)
+  }, _react["default"].createElement(_TopicDrawerMenu["default"], null));
 };
 
-exports.default = TopicDrawer;
+var _default = TopicDrawer;
+exports["default"] = _default;
 //# sourceMappingURL=TopicDrawer.js.map

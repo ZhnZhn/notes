@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var initState /*: StoreState */ = {
+exports.__esModule = true;
+exports["default"] = void 0;
+var initState
+/*: StoreState */
+= {
   app: {
     boardId: 'b-1',
     boardIds: ['b-1'],
@@ -21,11 +22,9 @@ var initState /*: StoreState */ = {
       columnIds: ['c-1', 'c-2']
     }
   },
-  notes: {
-    //'n-1': { id: 'n-1', title: 'Note 1' },
+  notes: {//'n-1': { id: 'n-1', title: 'Note 1' },
   },
-  noteLabel: {
-    //'nl-1': { id: 'nl-1', title: 'Label', color: 'green' },
+  noteLabels: {//'nl-1': { id: 'nl-1', title: 'Label', color: 'green' },
   },
   columns: {
     'c-1': {
@@ -39,8 +38,9 @@ var initState /*: StoreState */ = {
       title: 'Topic 2',
       noteIds: []
     }
-    //columnOrder: [ 'column-1', 'column-2', 'column-3' ]
-  } };
+  } //columnOrder: [ 'column-1', 'column-2', 'column-3' ]
 
-exports.default = initState;
+};
+var _default = initState;
+exports["default"] = _default;
 //# sourceMappingURL=initialState.js.map

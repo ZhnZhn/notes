@@ -1,34 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
+var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 
-var _InputText = require('../zhn/InputText');
+var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
 
-var _InputText2 = _interopRequireDefault(_InputText);
+var _NoteHandle = _interopRequireDefault(require("./NoteHandle"));
 
-var _SvgMore = require('../zhn/SvgMore');
-
-var _SvgMore2 = _interopRequireDefault(_SvgMore);
-
-var _NoteHandle = require('./NoteHandle');
-
-var _NoteHandle2 = _interopRequireDefault(_NoteHandle);
-
-var _NoteMenuMore = require('./NoteMenuMore');
-
-var _NoteMenuMore2 = _interopRequireDefault(_NoteMenuMore);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _NoteMenuMore = _interopRequireDefault(require("./NoteMenuMore"));
 
 var CL = {
   CAPTION: 'note__caption',
@@ -47,32 +34,26 @@ var NoteCaption = function NoteCaption(_ref) {
       onCloseMenuMore = _ref.onCloseMenuMore,
       onEditDetails = _ref.onEditDetails,
       onRemoveNote = _ref.onRemoveNote;
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_NoteHandle2.default, (0, _extends3.default)({}, dragHandleProps, {
-      isDetails: isDetails,
-      onClick: onClickHandle
-    })),
-    _react2.default.createElement(_InputText2.default, {
-      className: CL.CAPTION,
-      value: noteTitle,
-      onBlur: onBlurTitle
-    }),
-    _react2.default.createElement(_SvgMore2.default, {
-      className: CL.BT_MORE,
-      title: 'Click to open note menu',
-      onClick: onClickMenuMore
-    }),
-    isMenuMore && _react2.default.createElement(_NoteMenuMore2.default, {
-      isShow: isMenuMore,
-      className: CL.MENU_MORE,
-      onClose: onCloseMenuMore,
-      onEdit: onEditDetails,
-      onRemove: onRemoveNote
-    })
-  );
+  return _react["default"].createElement("div", null, _react["default"].createElement(_NoteHandle["default"], (0, _extends2["default"])({}, dragHandleProps, {
+    isDetails: isDetails,
+    onClick: onClickHandle
+  })), _react["default"].createElement(_InputText["default"], {
+    className: CL.CAPTION,
+    value: noteTitle,
+    onBlur: onBlurTitle
+  }), _react["default"].createElement(_SvgMore["default"], {
+    className: CL.BT_MORE,
+    title: "Click to open note menu",
+    onClick: onClickMenuMore
+  }), isMenuMore && _react["default"].createElement(_NoteMenuMore["default"], {
+    isShow: isMenuMore,
+    className: CL.MENU_MORE,
+    onClose: onCloseMenuMore,
+    onEdit: onEditDetails,
+    onRemove: onRemoveNote
+  }));
 };
 
-exports.default = NoteCaption;
+var _default = NoteCaption;
+exports["default"] = _default;
 //# sourceMappingURL=NoteCaption.js.map

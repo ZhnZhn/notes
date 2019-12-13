@@ -1,33 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _Item = require('./Item');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Item2 = _interopRequireDefault(_Item);
+var _Item = _interopRequireDefault(require("./Item"));
 
-var _Title = require('./Title');
+var _Title = _interopRequireDefault(require("./Title"));
 
-var _Title2 = _interopRequireDefault(_Title);
+var _Counter = _interopRequireDefault(require("./Counter"));
 
-var _Counter = require('./Counter');
-
-var _Counter2 = _interopRequireDefault(_Counter);
-
-var _BtCircle = require('./BtCircle');
-
-var _BtCircle2 = _interopRequireDefault(_BtCircle);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _BtCircle = _interopRequireDefault(require("./BtCircle"));
 
 var Card = {
-  Item: _Item2.default,
-  Title: _Title2.default,
-  Counter: _Counter2.default,
-  BtCircle: _BtCircle2.default
+  Item: _Item["default"],
+  Title: _Title["default"],
+  Counter: _Counter["default"],
+  BtCircle: _BtCircle["default"]
 };
-
-exports.default = Card;
+var _default = Card;
+exports["default"] = _default;
 //# sourceMappingURL=Card.js.map

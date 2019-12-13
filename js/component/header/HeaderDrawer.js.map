@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/header/HeaderDrawer.js"
- ],
- "file": "../../../src/component/header/HeaderDrawer.js",
- "names": [
-  "HeaderDrawer"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,eAAe,SAAfA,YAAe;AAAA,SACnB;AAAC,oBAAD;AAAA;AACE,kCAAC,oBAAD;AADF,GADmB;AAAA,CAArB;;kBAMeA,Y"
-}
+{"version":3,"sources":["../../../src/component/header/HeaderDrawer.jsx"],"names":["HeaderDrawer"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,YAAY,GAAG,SAAfA,YAAe;AAAA,SACnB,gCAAC,kBAAD,QACE,gCAAC,sBAAD,OADF,CADmB;AAAA,CAArB;;eAMeA,Y","sourcesContent":["import React from 'react'\r\n\r\nimport Drawer from '../zhn-ch/Drawer'\r\nimport DrawerMenu from './DrawerMenu'\r\n\r\nconst HeaderDrawer = () => (\r\n  <Drawer>\r\n    <DrawerMenu />\r\n  </Drawer>\r\n);\r\n\r\nexport default HeaderDrawer\r\n"],"file":"HeaderDrawer.js"}
