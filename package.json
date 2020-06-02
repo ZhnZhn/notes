@@ -10,7 +10,7 @@
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
-    "lint": "eslint -c .eslintrc-build.json ./src > lint.txt",
+    "lint": "eslint -c .eslintrc-build.js ./src > lint.txt",
     "css:min": "gulp",
     "css:sass": "gulp sass",
     "css:all": "npm run css:sass && npm run css:min",

@@ -1,16 +1,16 @@
-{
+module.exports = {
     "parser": "babel-eslint",
     "env": {
         "es6" : true,
         "browser": true,
         "jest": true
-    },    
+    },
     "plugins" : [
           "react",
-          "jsx-a11y" 
+          "jsx-a11y"
     ],
 
-    "extends": [ 
+    "extends": [
       "eslint:recommended",
       "plugin:jsx-a11y/recommended"
     ],
@@ -55,7 +55,7 @@
     "react/jsx-wrap-multilines": [1, {"declaration": false, "assignment": false}],
 
 
-      "jsx-a11y/no-access-key": 0 
+      "jsx-a11y/no-access-key": 0
 
     }
 
