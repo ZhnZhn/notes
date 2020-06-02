@@ -19,9 +19,9 @@ var Header = function Header(props) {
       theme = props.theme,
       children = props.children,
       TS = theme.createStyle(_Comp["default"]);
-  return _react["default"].createElement("header", {
+  return /*#__PURE__*/_react["default"].createElement("header", {
     className: className,
-    style: (0, _extends2["default"])({}, style, {}, TS.COMP)
+    style: (0, _extends2["default"])({}, style, TS.COMP)
   }, children);
 };
 

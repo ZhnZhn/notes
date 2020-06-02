@@ -26,9 +26,9 @@ var Item = function Item(props) {
       theme = props.theme,
       children = props.children,
       TS = theme.createStyle(_Item["default"]),
-      _style = isHide ? (0, _extends2["default"])({}, TS.ITEM, {}, S.HIDE) : TS.ITEM;
+      _style = isHide ? (0, _extends2["default"])({}, TS.ITEM, S.HIDE) : TS.ITEM;
 
-  return _react["default"].createElement("section", {
+  return /*#__PURE__*/_react["default"].createElement("section", {
     className: _CL["default"].ITEM_CARD,
     style: _style
   }, children);

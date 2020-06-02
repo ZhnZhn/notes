@@ -23,9 +23,9 @@ var S = {
 var Topic = function Topic(_ref) {
   var title = _ref.title,
       count = _ref.count;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.TOPIC
-  }, _react["default"].createElement("span", null, title), _react["default"].createElement(_Card["default"].Counter, {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, title), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
     style: S.COUNTER,
     value: count
   }));

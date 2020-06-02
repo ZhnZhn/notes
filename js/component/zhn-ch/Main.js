@@ -11,7 +11,7 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Main = function Main(_ref) {
   var children = _ref.children;
-  return _react["default"].createElement("main", {
+  return /*#__PURE__*/_react["default"].createElement("main", {
     className: _CL["default"].CONT
   }, children);
 };

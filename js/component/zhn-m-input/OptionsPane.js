@@ -46,7 +46,7 @@ var _renderOptions = function _renderOptions(options, currentItem, clItem, onSel
         _onSelect = onSelect.bind(null, item),
         _onKeyPress = _fOnKeyPress(_onSelect);
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       role: "button",
       tabIndex: "0",
       key: item.value,
@@ -66,13 +66,13 @@ var OptionsPane = function OptionsPane(_ref) {
       clItem = _ref.clItem,
       onSelect = _ref.onSelect,
       onClose = _ref.onClose;
-  return _react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
     style: rootStyle,
     isShow: isShow,
     onClose: onClose
-  }, _react["default"].createElement(_ShowHide["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
     isShow: isShow,
-    style: (0, _extends2["default"])({}, S.PANE, {}, rootStyle)
+    style: (0, _extends2["default"])({}, S.PANE, rootStyle)
   }, _renderOptions(options, item, clItem, onSelect, isShow)));
 };
 

@@ -20,9 +20,7 @@ var _isKeyDelete = function _isKeyDelete(evt) {
   return evt.key === K.DELETE || evt.keyCode === K.DELETE_CODE;
 };
 
-var InputTextArea =
-/*#__PURE__*/
-function (_Component) {
+var InputTextArea = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputTextArea, _Component);
 
   /*
@@ -69,7 +67,7 @@ function (_Component) {
         style = _this$props.style,
         maxLength = _this$props.maxLength;
     var value = this.state.value;
-    return _react["default"].createElement("textarea", {
+    return /*#__PURE__*/_react["default"].createElement("textarea", {
       ref: this._refInputNode,
       className: className,
       style: style,

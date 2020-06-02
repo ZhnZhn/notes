@@ -49,9 +49,7 @@ var S = {
   }
 };
 
-var DrawerLeft =
-/*#__PURE__*/
-function (_Component) {
+var DrawerLeft = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DrawerLeft, _Component);
 
   function DrawerLeft() {
@@ -91,22 +89,22 @@ function (_Component) {
         _onClickWrapper = isOpen ? this._hToggle : undefined,
         TS = theme.createStyle(_Comp["default"]);
 
-    return [_react["default"].createElement("button", {
+    return [/*#__PURE__*/_react["default"].createElement("button", {
       key: "bt-drawer",
       className: CL.DRAWER_BT,
-      style: (0, _extends2["default"])({}, S.BT_DRAWER, {}, btStyle),
+      style: (0, _extends2["default"])({}, S.BT_DRAWER, btStyle),
       "aria-label": "Open Drawer",
       onClick: this._hToggle
-    }, captionComp), _react["default"].createElement("div", {
+    }, captionComp), /*#__PURE__*/_react["default"].createElement("div", {
       key: "wrapper",
       "aria-hidden": !isOpen,
       className: CL.DRAWER_MODAL,
       style: _drawerModalStyle,
       onClick: _onClickWrapper
-    }), _react["default"].createElement("aside", {
+    }), /*#__PURE__*/_react["default"].createElement("aside", {
       key: "aside",
       className: CL.DRAWER,
-      style: (0, _extends2["default"])({}, _drawerStyle, {}, TS.COMP)
+      style: (0, _extends2["default"])({}, _drawerStyle, TS.COMP)
     }, children)];
   };
 

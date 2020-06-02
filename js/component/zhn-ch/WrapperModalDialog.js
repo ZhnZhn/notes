@@ -29,9 +29,7 @@ var S = {
   }
 };
 
-var WrapperModalDialog =
-/*#__PURE__*/
-function (_Component) {
+var WrapperModalDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WrapperModalDialog, _Component);
 
   /*
@@ -91,7 +89,7 @@ function (_Component) {
       _isHidden = false;
     }
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: _className,
       style: _style,
       "aria-hidden": _isHidden,

@@ -27,16 +27,16 @@ var _crTopicList = function _crTopicList(_ref) {
       snapshot = _ref.snapshot,
       columnIds = _ref.columnIds,
       columns = _ref.columns;
-  return _react["default"].createElement(_DroppableDiv["default"], (0, _extends2["default"])({}, provided.droppableProps, {
+  return /*#__PURE__*/_react["default"].createElement(_DroppableDiv["default"], (0, _extends2["default"])({}, provided.droppableProps, {
     innerRef: provided.innerRef,
     isDraggingOver: snapshot.isDraggingOver
   }), columnIds.map(function (tId, index) {
-    return _react["default"].createElement(_reactBeautifulDnd.Draggable, {
+    return /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.Draggable, {
       key: tId,
       draggableId: tId,
       index: index
     }, function (provided, snap) {
-      return _react["default"].createElement(_DnDTopic["default"], (0, _extends2["default"])({
+      return /*#__PURE__*/_react["default"].createElement(_DnDTopic["default"], (0, _extends2["default"])({
         draggableProps: provided.draggableProps,
         innerRef: provided.innerRef,
         isDragging: snap.isDragging,
@@ -50,7 +50,7 @@ var DnDTopicList = function DnDTopicList(_ref2) {
   var id = _ref2.id,
       columnIds = _ref2.columnIds,
       columns = _ref2.columns;
-  return _react["default"].createElement(_reactBeautifulDnd.Droppable, {
+  return /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.Droppable, {
     droppableId: id
   }, function (provided, snapshot) {
     return _crTopicList({

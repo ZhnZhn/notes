@@ -15,20 +15,20 @@ var SvgClose = function SvgClose(_ref) {
       style = _ref.style,
       tabIndex = _ref.tabIndex,
       onClose = _ref.onClose;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     tabIndex: tabIndex,
     className: CL_ROOT + " " + className,
     style: style,
     onClick: onClose
-  }, _react["default"].createElement("svg", {
+  }, /*#__PURE__*/_react["default"].createElement("svg", {
     viewBox: "0 0 12 12",
     width: "100%",
     height: "100%",
     preserveAspectRatio: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, _react["default"].createElement("path", {
+  }, /*#__PURE__*/_react["default"].createElement("path", {
     d: "M 0,0 L 12,12"
-  }), _react["default"].createElement("path", {
+  }), /*#__PURE__*/_react["default"].createElement("path", {
     d: "M 12,0 L 0,12"
   })));
 };

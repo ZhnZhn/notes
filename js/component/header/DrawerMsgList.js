@@ -22,13 +22,13 @@ var CL = {
 var DrawerMsgList = function DrawerMsgList(_ref) {
   var items = _ref.items,
       removeDrawerMsg = _ref.removeDrawerMsg;
-  return _react["default"].createElement("ul", {
+  return /*#__PURE__*/_react["default"].createElement("ul", {
     className: CL.UL
   }, items.map(function (item) {
-    return _react["default"].createElement("li", {
+    return /*#__PURE__*/_react["default"].createElement("li", {
       key: item.id,
       className: CL.LI
-    }, _react["default"].createElement("button", {
+    }, /*#__PURE__*/_react["default"].createElement("button", {
       className: CL.LI_BT,
       onClick: removeDrawerMsg.bind(null, item.id)
     }, item.msg));

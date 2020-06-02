@@ -28,15 +28,15 @@ var NoteMenuMore = function NoteMenuMore(_ref) {
       onEdit = _ref.onEdit,
       onRemove = _ref.onRemove;
   var TS = theme.createStyle(_Comp["default"]);
-  return _react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
     className: _CL["default"].MODAL_PANE + " " + (className || ''),
-    style: (0, _extends2["default"])({}, style, {}, TS.COMP),
+    style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
     onClose: onClose
-  }, _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     caption: "Edit Details",
     onClick: onEdit
-  })), _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     caption: "Remove Note",
     onClick: onRemove
   })));

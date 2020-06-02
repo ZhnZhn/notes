@@ -37,9 +37,7 @@ var S = {
   }
 };
 
-var BoardCard =
-/*#__PURE__*/
-function (_Component) {
+var BoardCard = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(BoardCard, _Component);
 
   function BoardCard() {
@@ -90,21 +88,21 @@ function (_Component) {
         board = _this$props5.board,
         columns = _this$props5.columns,
         columnIds = board.columnIds;
-    return _react["default"].createElement(_Card["default"].Item, null, _react["default"].createElement(_Card["default"].Title, {
+    return /*#__PURE__*/_react["default"].createElement(_Card["default"].Item, null, /*#__PURE__*/_react["default"].createElement(_Card["default"].Title, {
       value: board.title,
       onBlur: this._hBlurTitle
-    }), _react["default"].createElement(_Card["default"].Counter, {
+    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
       value: columnIds.length
-    }), _react["default"].createElement(_DnDTopicList["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_DnDTopicList["default"], {
       id: id,
       columnIds: columnIds,
       columns: columns
-    }), _react["default"].createElement(_reactRouterDom.NavLink, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.NavLink, {
       to: "/boards/" + board.id,
       className: _CL["default"].NAV_LINK,
       style: S.LINK,
       onClick: this._hToNotes
-    }, "ToNotes"), _react["default"].createElement("div", null, (0, _isArrEmpty["default"])(columnIds) && _react["default"].createElement(_FlatButton["default"], {
+    }, "ToNotes"), /*#__PURE__*/_react["default"].createElement("div", null, (0, _isArrEmpty["default"])(columnIds) && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       clCaption: _CL["default"].CARD_BT,
       caption: "Remove Board",
       onClick: this._hRemove

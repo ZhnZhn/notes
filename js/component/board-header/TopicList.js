@@ -22,7 +22,7 @@ var _renderTopics = function _renderTopics(_ref) {
   var _board$columnIds = board.columnIds,
       columnIds = _board$columnIds === void 0 ? [] : _board$columnIds;
   return columnIds.map(function (cId) {
-    return _react["default"].createElement(_TopicItem["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_TopicItem["default"], {
       key: cId,
       topic: columns[cId],
       onClick: toggleColumn.bind(null, cId)
@@ -31,7 +31,7 @@ var _renderTopics = function _renderTopics(_ref) {
 };
 
 var TopicList = function TopicList(props) {
-  return _react["default"].createElement("ul", {
+  return /*#__PURE__*/_react["default"].createElement("ul", {
     style: S.UL
   }, _renderTopics(props));
 };

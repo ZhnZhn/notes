@@ -46,9 +46,7 @@ var _initColor = function _initColor(props) {
   return props.initColor || C_DF;
 };
 
-var PaneColors =
-/*#__PURE__*/
-function (_Component) {
+var PaneColors = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PaneColors, _Component);
 
   function PaneColors(props) {
@@ -72,7 +70,7 @@ function (_Component) {
 
     _this._renderColors = function (colors, isLong) {
       return colors.map(function (c) {
-        return _react["default"].createElement(_CellColor["default"], {
+        return /*#__PURE__*/_react["default"].createElement(_CellColor["default"], {
           key: c,
           color: c,
           style: S.CELL,
@@ -99,13 +97,13 @@ function (_Component) {
 
   _proto.render = function render() {
     var color = this.state.color;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROOT
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_CellColor["default"], {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_CellColor["default"], {
       color: color,
-      style: (0, _extends2["default"])({}, S.CELL, {}, S.TO_CELL),
+      style: (0, _extends2["default"])({}, S.CELL, S.TO_CELL),
       onClick: this._hInit
-    }), this._renderColors(COLORS1)), _react["default"].createElement("div", {
+    }), this._renderColors(COLORS1)), /*#__PURE__*/_react["default"].createElement("div", {
       style: S.ROW2
     }, this._renderColors(COLORS2)));
   };

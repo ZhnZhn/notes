@@ -15,27 +15,27 @@ var SvgMore = function SvgMore(_ref) {
       svgStyle = _ref.svgStyle,
       title = _ref.title,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: CL + " " + className,
     style: style,
     title: title,
     onClick: onClick
-  }, _react["default"].createElement("svg", {
+  }, /*#__PURE__*/_react["default"].createElement("svg", {
     style: svgStyle,
     width: "6px",
     height: "22px",
     viewBox: "0 0 6 22",
     preserveAspectRatio: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, _react["default"].createElement("circle", {
+  }, /*#__PURE__*/_react["default"].createElement("circle", {
     cx: "3",
     cy: "4",
     r: "2"
-  }), _react["default"].createElement("circle", {
+  }), /*#__PURE__*/_react["default"].createElement("circle", {
     cx: "3",
     cy: "11",
     r: "2"
-  }), _react["default"].createElement("circle", {
+  }), /*#__PURE__*/_react["default"].createElement("circle", {
     cx: "3",
     cy: "18",
     r: "2"

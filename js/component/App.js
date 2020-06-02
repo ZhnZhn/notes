@@ -27,9 +27,7 @@ var _PageBoards = _interopRequireDefault(require("./page-boards/PageBoards"));
 
 var _WrapperContainer = _interopRequireDefault(require("./zhn-cont/WrapperContainer"));
 
-var App =
-/*#__PURE__*/
-function (_Component) {
+var App = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(App, _Component);
 
   function App(props) {
@@ -79,19 +77,19 @@ function (_Component) {
         basename = _this$props.basename,
         store = _this$props.store,
         theme = this.state.theme;
-    return _react["default"].createElement(_react["default"].StrictMode, null, _react["default"].createElement(_reactRouterDom.BrowserRouter, {
+    return /*#__PURE__*/_react["default"].createElement(_react["default"].StrictMode, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.BrowserRouter, {
       basename: basename
-    }, _react["default"].createElement(_ThemeContext["default"].Provider, {
+    }, /*#__PURE__*/_react["default"].createElement(_ThemeContext["default"].Provider, {
       value: theme
-    }, _react["default"].createElement(_WrapperContainer["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_WrapperContainer["default"], {
       store: store
-    }), _react["default"].createElement(_reactRouterDom.Switch, null, _react["default"].createElement(_reactRouterDom.Route, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
       path: "/boards/:id",
       component: _PageBoard["default"]
-    }), _react["default"].createElement(_reactRouterDom.Route, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
       path: "/boards",
       component: _PageBoards["default"]
-    }), _react["default"].createElement(_reactRouterDom.Redirect, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Redirect, {
       from: "/",
       to: "/boards"
     })))));

@@ -57,9 +57,7 @@ var _crInitItem = function _crInitItem(uiTheme) {
   return (0, _extends2["default"])({}, item);
 };
 
-var SettingsDialog =
-/*#__PURE__*/
-function (_Component) {
+var SettingsDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
 
   function SettingsDialog(props) {
@@ -104,13 +102,13 @@ function (_Component) {
         onClose = _this$props2.onClose,
         initItem = this.state.initItem,
         TS = theme.createStyle(_Dialog["default"]);
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       className: CL,
       style: TS.DIALOG,
       caption: "User Settings",
       isShow: isShow,
       onClose: onClose
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_InputSelect["default"], {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
       styleConfig: TS.SELECT,
       caption: "UI Theme (Default: Dark)",
       initItem: initItem,

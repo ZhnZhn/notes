@@ -19,10 +19,10 @@ var _crTitle = _interopRequireDefault(require("./crTitle"));
 
 var HeaderCaption = function HeaderCaption(_ref) {
   var board = _ref.board;
-  return [_react["default"].createElement(_Logo["default"], {
+  return [/*#__PURE__*/_react["default"].createElement(_Logo["default"], {
     key: "logo",
     className: _CL["default"].LOGO_BOARD
-  }), _react["default"].createElement("span", {
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     key: "title",
     className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD
   }, (0, _crTitle["default"])(board))];

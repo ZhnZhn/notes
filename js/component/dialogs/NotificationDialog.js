@@ -19,9 +19,7 @@ var CL = {
   DESCR: 'd-notif__descr'
 };
 
-var NotificationDialog =
-/*#__PURE__*/
-function (_Component) {
+var NotificationDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NotificationDialog, _Component);
 
   function NotificationDialog() {
@@ -49,18 +47,18 @@ function (_Component) {
         caption = _data$caption === void 0 ? '' : _data$caption,
         _data$descr = data.descr,
         descr = _data$descr === void 0 ? '' : _data$descr;
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       style: TS.DIALOG,
       caption: "Notification",
       isShow: isShow,
       onClose: onClose
-    }, caption && _react["default"].createElement("div", {
+    }, caption && /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.ROW
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       className: CL.CAPTION
-    }, caption)), _react["default"].createElement("div", {
+    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.ROW
-    }, _react["default"].createElement("p", {
+    }, /*#__PURE__*/_react["default"].createElement("p", {
       className: CL.DESCR
     }, descr)));
   };

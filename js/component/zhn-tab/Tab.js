@@ -49,13 +49,13 @@ var Tab = function Tab(_ref) {
       _onClick = _crOnClick(isSelected, onClick),
       _onKeyDown = _crOnKeyDown(isSelected, onClick);
 
-  return _react["default"].createElement("li", {
+  return /*#__PURE__*/_react["default"].createElement("li", {
     role: "tab",
     tabIndex: 0,
     className: _cl,
     onClick: _onClick,
     onKeyDown: _onKeyDown
-  }, _react["default"].createElement("span", null, title));
+  }, /*#__PURE__*/_react["default"].createElement("span", null, title));
 };
 
 var _default = Tab;

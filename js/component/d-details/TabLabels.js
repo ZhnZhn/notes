@@ -41,9 +41,7 @@ var S = {
   }
 };
 
-var TabLabels =
-/*#__PURE__*/
-function (_Component) {
+var TabLabels = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TabLabels, _Component);
 
   function TabLabels(props) {
@@ -109,24 +107,24 @@ function (_Component) {
   _proto.render = function render() {
     var onClose = this.props.onClose,
         labels = this.state.labels;
-    return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
       style: S.LABELS
-    }, _react["default"].createElement(_LabelList["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_LabelList["default"], {
       labels: labels,
       onRemove: this._onRemoveLabel
-    }), _react["default"].createElement(_InputText["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
       ref: this._refInputLabel,
       onBlur: this._onBlurLabel
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       clCaption: _CL["default"].CARD_BT,
       rootStyle: S.BT_ADD,
       caption: "AddLabel",
       title: "Click to add a new label",
       timeout: 400,
       onClick: this._onAddLabel
-    })), _react["default"].createElement(_PaneColors["default"], {
+    })), /*#__PURE__*/_react["default"].createElement(_PaneColors["default"], {
       ref: this._refInputColor
-    }), _react["default"].createElement(_DialogButtons["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogButtons["default"], {
       ref: this._refButtons,
       className: _CL["default"].MD_ACTIONS,
       onSave: this._saveLabels,

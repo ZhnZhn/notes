@@ -14,7 +14,7 @@ var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Title = function Title(props) {
-  return _react["default"].createElement(_InputText["default"], (0, _extends2["default"])({
+  return /*#__PURE__*/_react["default"].createElement(_InputText["default"], (0, _extends2["default"])({
     className: _CL["default"].CARD_TITLE
   }, props));
 };

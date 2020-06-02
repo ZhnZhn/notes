@@ -19,9 +19,8 @@ var _modalRouter = _interopRequireDefault(require("../dialogs/modalRouter"));
 
 var _WrapperModalDialog = _interopRequireDefault(require("../zhn-ch/WrapperModalDialog"));
 
-var WrapperContainer =
-/*#__PURE__*/
-function (_Component) {
+//import PropTypes from 'prop-types'
+var WrapperContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WrapperContainer, _Component);
 
   function WrapperContainer() {
@@ -110,7 +109,7 @@ function (_Component) {
       return dialogs.map(function (dialog) {
         var type = dialog.type,
             comp = dialog.comp;
-        return _react["default"].createElement(comp, {
+        return /*#__PURE__*/_react["default"].createElement(comp, {
           key: type,
           isShow: shows[type],
           data: data[type],
@@ -147,7 +146,7 @@ function (_Component) {
     var _this$state2 = this.state,
         isShow = _this$state2.isShow,
         currentDialog = _this$state2.currentDialog;
-    return _react["default"].createElement(_WrapperModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_WrapperModalDialog["default"], {
       isShow: isShow,
       onClose: this._hClose.bind(null, currentDialog)
     }, this._renderDialogs());

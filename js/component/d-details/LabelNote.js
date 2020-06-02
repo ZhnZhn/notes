@@ -12,13 +12,13 @@ var LabelNote = function LabelNote(_ref) {
       clClose = _ref.clClose,
       item = _ref.item,
       onRemove = _ref.onRemove;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: className,
     style: {
       backgroundColor: item.color
     },
     onClick: onRemove
-  }, item.title, onRemove && _react["default"].createElement("span", {
+  }, item.title, onRemove && /*#__PURE__*/_react["default"].createElement("span", {
     className: clClose
   }, "x"));
 };

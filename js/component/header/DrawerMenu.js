@@ -38,29 +38,29 @@ var DrawerMenu = function DrawerMenu(_ref) {
   var showSettings = _ref.showSettings,
       saveBoard = _ref.saveBoard,
       cleanStorage = _ref.cleanStorage;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: CL.ROOT
-  }, _react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: CL.HEADER,
     style: S.HEADER
-  }, TITLE), _react["default"].createElement("ul", {
+  }, TITLE), /*#__PURE__*/_react["default"].createElement("ul", {
     style: S.UL
-  }, _react["default"].createElement("li", null, _react["default"].createElement(_FlatButton["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     className: CL.BT,
     caption: "User Settings",
     title: "Click to open user settings dialog",
     onClick: showSettings
-  })), _react["default"].createElement("li", null, _react["default"].createElement(_FlatButton["default"], {
+  })), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     className: CL.BT,
     caption: "Save Boards",
     title: "Click to save boards to localStorage",
     onClick: saveBoard
-  })), _react["default"].createElement("li", null, _react["default"].createElement(_FlatButton["default"], {
+  })), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     className: CL.BT,
     caption: "Clean Storage",
     title: "Click to remove boards from localStorage",
     onClick: cleanStorage
-  }))), _react["default"].createElement(_DrawerMsgList["default"], null));
+  }))), /*#__PURE__*/_react["default"].createElement(_DrawerMsgList["default"], null));
 };
 
 var mapDispatchToProps = {

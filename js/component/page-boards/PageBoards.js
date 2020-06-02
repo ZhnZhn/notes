@@ -25,9 +25,7 @@ var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
 var _BoardList = _interopRequireDefault(require("./BoardList"));
 
-var PageBoards =
-/*#__PURE__*/
-function (_Component) {
+var PageBoards = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PageBoards, _Component);
 
   function PageBoards() {
@@ -53,12 +51,12 @@ function (_Component) {
   var _proto = PageBoards.prototype;
 
   _proto.render = function render() {
-    return [_react["default"].createElement(_Header["default"], {
+    return [/*#__PURE__*/_react["default"].createElement(_Header["default"], {
       key: "header"
-    }), _react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
       key: "ddc",
       onDragEnd: this._hDragEnd
-    }, _react["default"].createElement(_Main["default"], null, _react["default"].createElement(_BoardList["default"], null)))];
+    }, /*#__PURE__*/_react["default"].createElement(_Main["default"], null, /*#__PURE__*/_react["default"].createElement(_BoardList["default"], null)))];
   };
 
   return PageBoards;

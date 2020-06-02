@@ -15,7 +15,7 @@ var TOPICS = 'Topics';
 
 var TopicDrawerCaption = function TopicDrawerCaption(_ref) {
   var board = _ref.board;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _CL["default"].DRAWER_TITLE
   }, (0, _crTitle["default"])(board, TOPICS));
 };

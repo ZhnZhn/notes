@@ -21,6 +21,7 @@ var _NoteCaption = _interopRequireDefault(require("./NoteCaption"));
 
 var _NoteDetails = _interopRequireDefault(require("./NoteDetails"));
 
+//import PropsType from 'prop-types'
 var CL = 'note';
 
 var _getState = function _getState(props) {
@@ -31,9 +32,7 @@ var _getState = function _getState(props) {
   };
 };
 
-var DnDNote =
-/*#__PURE__*/
-function (_Component) {
+var DnDNote = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DnDNote, _Component);
 
   /*
@@ -110,10 +109,10 @@ function (_Component) {
         noteTitle = _this$state.noteTitle,
         isMenuMore = _this$state.isMenuMore,
         isDetails = _this$state.isDetails;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL,
       id: note.id
-    }, _react["default"].createElement(_NoteCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_NoteCaption["default"], {
       dragHandleProps: dragHandleProps,
       isDetails: isDetails,
       onClickHandle: this._toggleDetails,
@@ -124,7 +123,7 @@ function (_Component) {
       onCloseMenuMore: this._closeMenuMore,
       onEditDetails: this._editDetails,
       onRemoveNote: this._deleteNote
-    }), _react["default"].createElement(_NoteDetails["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_NoteDetails["default"], {
       isShow: isDetails,
       note: note,
       editDetails: this._editDetails

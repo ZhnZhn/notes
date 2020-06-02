@@ -13,9 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var DialogButtons =
-/*#__PURE__*/
-function (_Component) {
+var DialogButtons = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogButtons, _Component);
 
   function DialogButtons() {
@@ -41,13 +39,13 @@ function (_Component) {
         className = _this$props.className,
         onSave = _this$props.onSave,
         onClose = _this$props.onClose;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: className
-    }, _react["default"].createElement(_FlatButton["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       caption: "Save",
       timeout: 100,
       onClick: onSave
-    }), _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       ref: this._refBtClose,
       caption: "Close",
       timeout: 0,

@@ -21,12 +21,12 @@ var DialogCaption = function DialogCaption(_ref) {
       caption = _ref.caption,
       children = _ref.children,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: CL.HEADER,
     style: rootStyle
-  }, _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
     className: CL.CAPTION
-  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
     className: CL.CLOSE,
     onClose: onClose
   }));

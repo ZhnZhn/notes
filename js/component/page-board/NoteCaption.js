@@ -34,18 +34,18 @@ var NoteCaption = function NoteCaption(_ref) {
       onCloseMenuMore = _ref.onCloseMenuMore,
       onEditDetails = _ref.onEditDetails,
       onRemoveNote = _ref.onRemoveNote;
-  return _react["default"].createElement("div", null, _react["default"].createElement(_NoteHandle["default"], (0, _extends2["default"])({}, dragHandleProps, {
+  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_NoteHandle["default"], (0, _extends2["default"])({}, dragHandleProps, {
     isDetails: isDetails,
     onClick: onClickHandle
-  })), _react["default"].createElement(_InputText["default"], {
+  })), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
     className: CL.CAPTION,
     value: noteTitle,
     onBlur: onBlurTitle
-  }), _react["default"].createElement(_SvgMore["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
     className: CL.BT_MORE,
     title: "Click to open note menu",
     onClick: onClickMenuMore
-  }), isMenuMore && _react["default"].createElement(_NoteMenuMore["default"], {
+  }), isMenuMore && /*#__PURE__*/_react["default"].createElement(_NoteMenuMore["default"], {
     isShow: isMenuMore,
     className: CL.MENU_MORE,
     onClose: onCloseMenuMore,

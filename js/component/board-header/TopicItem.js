@@ -23,7 +23,7 @@ var S = {
 
 var Badge = function Badge(_ref) {
   var isHide = _ref.isHide;
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/_react["default"].createElement("span", {
     className: _CL["default"].BADGE
   }, isHide ? 'H' : 'S');
 };
@@ -40,15 +40,15 @@ var TopicItem = function TopicItem(_ref2) {
       title = topic.title,
       _title = _crTitle(isHide);
 
-  return _react["default"].createElement("li", {
+  return /*#__PURE__*/_react["default"].createElement("li", {
     style: S.LI
-  }, _react["default"].createElement(_FlatButton["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     className: _CL["default"].BT,
     caption: title,
     title: _title,
     timeout: 0,
     onClick: onClick
-  }), _react["default"].createElement(Badge, {
+  }), /*#__PURE__*/_react["default"].createElement(Badge, {
     isHide: isHide
   }));
 };

@@ -22,14 +22,14 @@ var NoteDetails = function NoteDetails(_ref) {
 
   var _descr = (0, _getNoteDescr["default"])(note);
 
-  return _react["default"].createElement(_ShowHide["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
     className: CL,
     isShow: isShow
-  }, _react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     onClick: editDetails
-  }, _react["default"].createElement(_LabelList["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_LabelList["default"], {
     labels: note.labels
-  }), _react["default"].createElement("div", null, _descr)));
+  }), /*#__PURE__*/_react["default"].createElement("div", null, _descr)));
 };
 
 var _default = NoteDetails;

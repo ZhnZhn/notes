@@ -20,10 +20,10 @@ var S = {
 var LabelList = function LabelList(_ref) {
   var labels = _ref.labels,
       onRemove = _ref.onRemove;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     style: S.ROOT
   }, labels.map(function (item) {
-    return _react["default"].createElement(_LabelNote["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_LabelNote["default"], {
       key: item.id || item.title,
       className: _CL["default"].NOTE_LABEL,
       clClose: _CL["default"].NOTE_LABEL_CLOSE,

@@ -16,7 +16,7 @@ var BtCircle = function BtCircle(_ref) {
       _ref$tabIndex = _ref.tabIndex,
       tabIndex = _ref$tabIndex === void 0 ? "-1" : _ref$tabIndex,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/_react["default"].createElement("button", {
     className: _CL["default"].BT_CIRCLE,
     style: style,
     tabIndex: tabIndex,

@@ -25,15 +25,15 @@ var TopicDrawerMenu = function TopicDrawerMenu(_ref) {
   var board = _ref.board,
       columns = _ref.columns,
       toggleColumn = _ref.toggleColumn;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
     className: _CL["default"].ROOT
-  }, _react["default"].createElement(_TopicDrawerCaption["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_TopicDrawerCaption["default"], {
     board: board
-  }), _react["default"].createElement(_TopicList["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_TopicList["default"], {
     board: board,
     columns: columns,
     toggleColumn: toggleColumn
-  }), _react["default"].createElement(_DrawerMsgList["default"], null));
+  }), /*#__PURE__*/_react["default"].createElement(_DrawerMsgList["default"], null));
 };
 
 var mapStateToProps = function mapStateToProps(state) {

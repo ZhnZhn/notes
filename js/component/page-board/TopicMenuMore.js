@@ -27,16 +27,16 @@ var TopicMenuMore = function TopicMenuMore(_ref) {
       onAddNote = _ref.onAddNote,
       onClose = _ref.onClose;
   var TS = theme.createStyle(_Comp["default"]);
-  return _react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
     className: _CL["default"].MODAL_PANE,
-    style: (0, _extends2["default"])({}, style, {}, TS.COMP),
+    style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
     onClose: onClose
-  }, _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     caption: "Hide Topic",
     title: "Click to hide Topic",
     onClick: onHideTopic
-  })), _react["default"].createElement("div", null, _react["default"].createElement(_FlatButton["default"], {
+  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     caption: "Add Note",
     title: "Click to add new Note",
     timeout: 100,

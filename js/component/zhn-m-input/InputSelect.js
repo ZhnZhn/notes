@@ -24,9 +24,7 @@ var CL = {
   INPUT_LINE: 'm-select__line'
 };
 
-var InputSelect =
-/*#__PURE__*/
-function (_Component) {
+var InputSelect = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputSelect, _Component);
 
   function InputSelect(props) {
@@ -75,11 +73,11 @@ function (_Component) {
         _this$state = this.state,
         isShow = _this$state.isShow,
         item = _this$state.item;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.SELECT,
       style: TS.ROOT,
       onClick: this._handleOpen
-    }, _react["default"].createElement(_OptionsPane["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_OptionsPane["default"], {
       rootStyle: TS.MODAL_PANE,
       isShow: isShow,
       item: item,
@@ -87,16 +85,16 @@ function (_Component) {
       clItem: TS.CL_ITEM,
       onSelect: this._handleSelect,
       onClose: this._handleClose
-    }), _react["default"].createElement("label", {
+    }), /*#__PURE__*/_react["default"].createElement("label", {
       className: CL.LABEL
-    }, caption), _react["default"].createElement("div", {
+    }, caption), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.DIV
-    }, _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.DIV_VALUE
-    }, item.caption), _react["default"].createElement("button", {
+    }, item.caption), /*#__PURE__*/_react["default"].createElement("button", {
       className: CL.DIV_BT,
       tabIndex: "0"
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_ArrowCell["default"], null))), _react["default"].createElement("div", {
+    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_ArrowCell["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
       className: CL.INPUT_LINE
     })));
   };

@@ -24,20 +24,20 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 var Header = function Header(_ref) {
   var style = _ref.style,
       addBoard = _ref.addBoard;
-  return _react["default"].createElement(_Header["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: _CL["default"].HEADER,
     style: style
-  }, _react["default"].createElement(_Logo["default"], null), _react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement(_Logo["default"], null), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CL["default"].TITLE_GAP
-  }), _react["default"].createElement("span", {
+  }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CL["default"].HEADER_TITLE
-  }, "Notes: Boards"), _react["default"].createElement(_FlatButton["default"], {
+  }, "Notes: Boards"), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
     caption: "Add Board",
     title: "Click to add new board",
     accessKey: "a",
     timeout: 200,
     onClick: addBoard
-  }), _react["default"].createElement(_HeaderDrawer["default"], null));
+  }), /*#__PURE__*/_react["default"].createElement(_HeaderDrawer["default"], null));
 };
 
 var mapDispatchToProps = {

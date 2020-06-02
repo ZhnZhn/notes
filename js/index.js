@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === 'development') {
 /*eslint-enable no-undef*/
 
 
-(0, _reactDom.render)(_react["default"].createElement(_reactRedux.Provider, {
+(0, _reactDom.render)( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
   store: _store["default"]
-}, _react["default"].createElement(_App["default"], {
+}, /*#__PURE__*/_react["default"].createElement(_App["default"], {
   basename: basename,
   store: _store["default"]
 })), document.getElementById('app'));

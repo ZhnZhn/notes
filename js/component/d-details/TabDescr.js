@@ -24,9 +24,7 @@ var CL = {
   ACTIONS: 'md__actions'
 };
 
-var TabDescr =
-/*#__PURE__*/
-function (_Component) {
+var TabDescr = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TabDescr, _Component);
 
   function TabDescr() {
@@ -76,13 +74,13 @@ function (_Component) {
         onClose = _this$props2.onClose,
         _initDescr = (0, _getNoteDescr["default"])(note);
 
-    return _react["default"].createElement(_react.Fragment, null, _react["default"].createElement(_InputTextArea["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement(_InputTextArea["default"], {
       ref: this._refInputDescr,
       key: note.id,
       className: CL.DESCR,
       maxLength: 250,
       initValue: _initDescr
-    }), _react["default"].createElement(_DialogButtons["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_DialogButtons["default"], {
       ref: this._refButtons,
       className: CL.ACTIONS,
       onSave: this._editDescr,

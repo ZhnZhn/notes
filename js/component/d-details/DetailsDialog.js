@@ -43,9 +43,7 @@ var _crCaption = function _crCaption(note) {
   return "Details: " + _title + _sufix;
 };
 
-var DetailsDialog =
-/*#__PURE__*/
-function (_Component) {
+var DetailsDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DetailsDialog, _Component);
 
   function DetailsDialog() {
@@ -72,7 +70,7 @@ function (_Component) {
         _caption = _crCaption(data),
         TS = theme.createStyle(_Dialog["default"]);
 
-    return _react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
       className: CL.DIALOG,
       style: TS.DIALOG,
       captionStyle: S.CAPTION,
@@ -80,18 +78,18 @@ function (_Component) {
       isShow: isShow,
       withoutClose: true,
       onClose: onClose
-    }, _react["default"].createElement(_TabPane["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_TabPane["default"], {
       width: "100%",
       key: data.id
-    }, _react["default"].createElement(_Tab["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_Tab["default"], {
       title: "Descr"
-    }, _react["default"].createElement(_TabDescr["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_TabDescr["default"], {
       note: data,
       dispatch: dispatch,
       onClose: onClose
-    })), _react["default"].createElement(_Tab["default"], {
+    })), /*#__PURE__*/_react["default"].createElement(_Tab["default"], {
       title: "Labels"
-    }, _react["default"].createElement(_TabLabels["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_TabLabels["default"], {
       note: data,
       dispatch: dispatch,
       onClose: onClose

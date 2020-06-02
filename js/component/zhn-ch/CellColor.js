@@ -13,9 +13,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var CellColor =
-/*#__PURE__*/
-function (_Component) {
+//import PropTypes from 'prop-types'
+var CellColor = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(CellColor, _Component);
 
   function CellColor() {
@@ -56,10 +55,10 @@ function (_Component) {
     } : undefined,
         _onClick = onClick ? onClick.bind(null, color) : undefined;
 
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/_react["default"].createElement("button", {
       ref: this._refCellNode,
       tabIndex: tabIndex,
-      style: (0, _extends2["default"])({}, style, {}, _styleColor),
+      style: (0, _extends2["default"])({}, style, _styleColor),
       onClick: _onClick
     }, children);
   };

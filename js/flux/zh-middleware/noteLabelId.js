@@ -66,7 +66,7 @@ var noteLabelIdMiddleware = function noteLabelIdMiddleware(_ref) {
       if (action.type === _actions.ACTION.EDIT_NOTE_LABELS) {
         var hmLabels = _selectors.sNoteLabel.labels(getState());
 
-        action = (0, _extends2["default"])({}, action, {}, _crLabels(hmLabels, action.labels));
+        action = (0, _extends2["default"])({}, action, _crLabels(hmLabels, action.labels));
       }
 
       return next(action);

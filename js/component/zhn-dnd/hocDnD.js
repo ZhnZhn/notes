@@ -41,10 +41,10 @@ var _hocDnDImpl = function _hocDnDImpl(ItemComp, options) {
         _style = _crTopicStyle(isDragging, dragBg, notDragBg),
         _dragHandleProps = isDragHanlerProps ? undefined : dragHandleProps;
 
-    return _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
       ref: innerRef,
-      style: (0, _extends2["default"])({}, style, {}, _style)
-    }, draggablePropsRest, _dragHandleProps), _react["default"].createElement(ItemComp, (0, _extends2["default"])({
+      style: (0, _extends2["default"])({}, style, _style)
+    }, draggablePropsRest, _dragHandleProps), /*#__PURE__*/_react["default"].createElement(ItemComp, (0, _extends2["default"])({
       dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined
     }, rest)));
   };

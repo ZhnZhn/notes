@@ -39,9 +39,7 @@ var S = {
   }
 };
 
-var Topic =
-/*#__PURE__*/
-function (_Component) {
+var Topic = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(Topic, _Component);
 
   function Topic() {
@@ -114,34 +112,34 @@ function (_Component) {
         title = column.title,
         withAdd = column.withAdd,
         noteIds = column.noteIds;
-    return _react["default"].createElement(_Card["default"].Item, {
+    return /*#__PURE__*/_react["default"].createElement(_Card["default"].Item, {
       isHide: isHide
-    }, _react["default"].createElement(_SvgMore["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
       style: S.SVG_MORE,
       title: "Click to open topic menu",
       onClick: this._openMenuMore
-    }), isMenuMore && _react["default"].createElement(_TopicMenuMore["default"], {
+    }), isMenuMore && /*#__PURE__*/_react["default"].createElement(_TopicMenuMore["default"], {
       style: S.MENU_MORE,
       isShow: isMenuMore,
       onAddNote: this._hAddNewTask,
       onHideTopic: this._hHideTopic,
       onClose: this._closeMenuMore
-    }), _react["default"].createElement(_Card["default"].Title, {
+    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Title, {
       value: title,
       onBlur: this._hBlurTitle
-    }), _react["default"].createElement(_Card["default"].Counter, {
+    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
       value: noteIds.length
-    }), withAdd && _react["default"].createElement(_FlatButton["default"], {
+    }), withAdd && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       clCaption: _CL["default"].CARD_BT,
       caption: "AddNote",
       title: "Click to add a new note",
       timeout: 1000,
       onClick: this._hAddNewTask
-    }), _react["default"].createElement(_DnDNoteList["default"], {
+    }), /*#__PURE__*/_react["default"].createElement(_DnDNoteList["default"], {
       cId: id,
       noteIds: noteIds,
       notes: notes
-    }), _react["default"].createElement("div", null, (0, _isArrEmpty["default"])(noteIds) && _react["default"].createElement(_FlatButton["default"], {
+    }), /*#__PURE__*/_react["default"].createElement("div", null, (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
       clCaption: _CL["default"].CARD_BT,
       caption: "Remove Topic",
       onClick: this._hRemoveColumn

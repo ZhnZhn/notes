@@ -37,10 +37,10 @@ var DroppableDiv = function DroppableDiv(props) {
       rest = (0, _objectWithoutPropertiesLoose2["default"])(props, ["className", "style", "innerRef", "isDraggingOver", "notDraggingStyle", "children"]),
       _style = _crRootStyle(isDraggingOver, notDraggingStyle);
 
-  return _react["default"].createElement("div", (0, _extends2["default"])({}, rest, {
+  return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({}, rest, {
     ref: innerRef,
     className: className,
-    style: (0, _extends2["default"])({}, S.ROOT, {}, style, {}, _style)
+    style: (0, _extends2["default"])({}, S.ROOT, style, _style)
   }), children);
 };
 

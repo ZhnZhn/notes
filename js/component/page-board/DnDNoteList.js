@@ -30,18 +30,18 @@ var _crNoteList = function _crNoteList(_ref) {
       noteIds = _ref.noteIds,
       notes = _ref.notes,
       cId = _ref.cId;
-  return _react["default"].createElement(_DroppableDiv["default"], (0, _extends2["default"])({}, provided.droppableProps, {
+  return /*#__PURE__*/_react["default"].createElement(_DroppableDiv["default"], (0, _extends2["default"])({}, provided.droppableProps, {
     innerRef: provided.innerRef,
     isDraggingOver: snapshot.isDraggingOver,
     style: S.ROOT,
     notDraggingStyle: S.NOT_DRAGGING_OVER
   }), noteIds.map(function (nId, index) {
-    return _react["default"].createElement(_reactBeautifulDnd.Draggable, {
+    return /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.Draggable, {
       key: nId,
       draggableId: nId,
       index: index
     }, function (provided, snap) {
-      return _react["default"].createElement(_DnDNote["default"], {
+      return /*#__PURE__*/_react["default"].createElement(_DnDNote["default"], {
         draggableProps: provided.draggableProps,
         innerRef: provided.innerRef,
         isDragging: snap.isDragging,
@@ -57,7 +57,7 @@ var DnDNoteList = function DnDNoteList(_ref2) {
   var cId = _ref2.cId,
       noteIds = _ref2.noteIds,
       notes = _ref2.notes;
-  return _react["default"].createElement(_reactBeautifulDnd.Droppable, {
+  return /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.Droppable, {
     droppableId: cId
   }, function (provided, snapshot) {
     return _crNoteList({

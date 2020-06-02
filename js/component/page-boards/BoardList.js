@@ -17,7 +17,7 @@ var BoardList = function BoardList(_ref) {
   var boardIds = _ref.boardIds,
       boards = _ref.boards;
   return boardIds.map(function (id) {
-    return _react["default"].createElement(_BoardCard["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_BoardCard["default"], {
       key: id,
       id: id
     });

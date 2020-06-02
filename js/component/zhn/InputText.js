@@ -34,9 +34,7 @@ var _getState = function _getState(props) {
   };
 };
 
-var InputText =
-/*#__PURE__*/
-function (_Component) {
+var InputText = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputText, _Component);
 
   function InputText() {
@@ -86,7 +84,7 @@ function (_Component) {
         _className = className ? _CL["default"].INPUT + " " + className : _CL["default"].INPUT,
         value = this.state.value;
 
-    return _react["default"].createElement("input", {
+    return /*#__PURE__*/_react["default"].createElement("input", {
       type: "text",
       className: _className,
       style: style,

@@ -20,8 +20,8 @@ var S = {
 var Counter = function Counter(_ref) {
   var style = _ref.style,
       value = _ref.value;
-  return _react["default"].createElement("span", {
-    style: (0, _extends2["default"])({}, S.COUNTER, {}, style)
+  return /*#__PURE__*/_react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, S.COUNTER, style)
   }, value);
 };
 

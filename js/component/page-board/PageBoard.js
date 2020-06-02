@@ -29,9 +29,7 @@ var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
 var _Topic = _interopRequireDefault(require("./Topic"));
 
-var PageBoard =
-/*#__PURE__*/
-function (_Component) {
+var PageBoard = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PageBoard, _Component);
 
   function PageBoard() {
@@ -54,7 +52,7 @@ function (_Component) {
     _this._renderColumns = function (board, columns, notes, addNote) {
       return board.columnIds.map(function (cId) {
         var column = columns[cId];
-        return _react["default"].createElement(_Topic["default"], {
+        return /*#__PURE__*/_react["default"].createElement(_Topic["default"], {
           key: column.id,
           boardId: board.id,
           column: column,
@@ -82,13 +80,13 @@ function (_Component) {
         notes = _this$props2.notes,
         columns = _this$props2.columns,
         addNote = _this$props2.addNote;
-    return [_react["default"].createElement(_Header["default"], {
+    return [/*#__PURE__*/_react["default"].createElement(_Header["default"], {
       key: "header",
       addColumn: this._hAddColumn
-    }), _react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
+    }), /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
       key: "ddc",
       onDragEnd: this._hDragEnd
-    }, _react["default"].createElement(_Main["default"], null, this._renderColumns(board, columns, notes, addNote)))];
+    }, /*#__PURE__*/_react["default"].createElement(_Main["default"], null, this._renderColumns(board, columns, notes, addNote)))];
   };
 
   return PageBoard;

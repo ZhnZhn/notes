@@ -22,7 +22,7 @@ var NoteHandle = function NoteHandle(_ref) {
 
   var _cl = isDetails ? CL.HANDLE + " " + CL.OPEN : CL.HANDLE;
 
-  return _react["default"].createElement("span", (0, _extends2["default"])({
+  return /*#__PURE__*/_react["default"].createElement("span", (0, _extends2["default"])({
     className: _cl
   }, rest));
 };

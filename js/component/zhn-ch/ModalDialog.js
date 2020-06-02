@@ -17,6 +17,7 @@ var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+//import { PropTypes } from 'react'
 var CL = {
   DIALOG: 'modal-dialog',
   ACTIONS: 'md__actions',
@@ -36,9 +37,7 @@ var S = {
   }
 };
 
-var ModalDialog =
-/*#__PURE__*/
-function (_Component) {
+var ModalDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalDialog, _Component);
 
   /*
@@ -73,9 +72,9 @@ function (_Component) {
           commandButtons = _this$props.commandButtons,
           withoutClose = _this$props.withoutClose,
           onClose = _this$props.onClose;
-      return _react["default"].createElement("div", {
+      return /*#__PURE__*/_react["default"].createElement("div", {
         className: CL.ACTIONS
-      }, commandButtons, !withoutClose && _react["default"].createElement(_FlatButton["default"], {
+      }, commandButtons, !withoutClose && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
         ref: _this._refBtClose,
         caption: "Close",
         timeout: 0,
@@ -152,16 +151,16 @@ function (_Component) {
       }
     }
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/_react["default"].createElement("div", {
       role: "dialog",
       className: _className,
-      style: (0, _extends2["default"])({}, style, {}, _style),
+      style: (0, _extends2["default"])({}, style, _style),
       onClick: this._hClickDialog
-    }, _react["default"].createElement(_DialogCaption["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_DialogCaption["default"], {
       rootStyle: captionStyle,
       caption: caption,
       onClose: onClose
-    }), _react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton());
+    }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton());
   };
 
   return ModalDialog;

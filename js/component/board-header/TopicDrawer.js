@@ -14,9 +14,9 @@ var _HeaderCaption = _interopRequireDefault(require("./HeaderCaption"));
 var _TopicDrawerMenu = _interopRequireDefault(require("./TopicDrawerMenu"));
 
 var TopicDrawer = function TopicDrawer() {
-  return _react["default"].createElement(_DrawerLeft["default"], {
-    captionComp: _react["default"].createElement(_HeaderCaption["default"], null)
-  }, _react["default"].createElement(_TopicDrawerMenu["default"], null));
+  return /*#__PURE__*/_react["default"].createElement(_DrawerLeft["default"], {
+    captionComp: /*#__PURE__*/_react["default"].createElement(_HeaderCaption["default"], null)
+  }, /*#__PURE__*/_react["default"].createElement(_TopicDrawerMenu["default"], null));
 };
 
 var _default = TopicDrawer;
