@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
 
@@ -21,15 +21,17 @@ var DialogCaption = function DialogCaption(_ref) {
       caption = _ref.caption,
       children = _ref.children,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL.HEADER,
-    style: rootStyle
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: CL.CAPTION
-  }, caption), children, /*#__PURE__*/_react["default"].createElement(_SvgClose["default"], {
-    className: CL.CLOSE,
-    onClose: onClose
-  }));
+    style: rootStyle,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: CL.CAPTION,
+      children: caption
+    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose["default"], {
+      className: CL.CLOSE,
+      onClose: onClose
+    })]
+  });
 };
 
 var _default = DialogCaption;

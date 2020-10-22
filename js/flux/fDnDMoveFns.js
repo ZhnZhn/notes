@@ -58,7 +58,9 @@ var _crMoveExternal = function _crMoveExternal(propName, idsTo) {
 
 var fDnDMoveFns = function fDnDMoveFns(propName
 /*: string */
-) {
+)
+/*: {} */
+{
   var _idsTo = (0, _fIdsTo["default"])(propName);
 
   return {

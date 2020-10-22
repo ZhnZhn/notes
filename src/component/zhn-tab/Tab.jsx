@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CL = {
   TAB: 'tab not-selected',
   SELECTED: 'tab--selected'

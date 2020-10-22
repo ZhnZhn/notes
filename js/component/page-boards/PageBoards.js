@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactRedux = require("react-redux");
 
@@ -51,12 +51,12 @@ var PageBoards = /*#__PURE__*/function (_Component) {
   var _proto = PageBoards.prototype;
 
   _proto.render = function render() {
-    return [/*#__PURE__*/_react["default"].createElement(_Header["default"], {
-      key: "header"
-    }), /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
-      key: "ddc",
-      onDragEnd: this._hDragEnd
-    }, /*#__PURE__*/_react["default"].createElement(_Main["default"], null, /*#__PURE__*/_react["default"].createElement(_BoardList["default"], null)))];
+    return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {}, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
+      onDragEnd: this._hDragEnd,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardList["default"], {})
+      })
+    }, "ddc")];
   };
 
   return PageBoards;

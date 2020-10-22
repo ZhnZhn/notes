@@ -1,5 +1,3 @@
-import React from 'react'
-
 import withTheme from '../hoc/withTheme'
 import styleConfig from '../style/Item.Style'
 import CL from '../style/CL'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ShowHide from '../zhn-ch/ShowHide'
 import LabelList from '../d-details/LabelList'
 

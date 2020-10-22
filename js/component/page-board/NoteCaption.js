@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 
@@ -34,24 +34,26 @@ var NoteCaption = function NoteCaption(_ref) {
       onCloseMenuMore = _ref.onCloseMenuMore,
       onEditDetails = _ref.onEditDetails,
       onRemoveNote = _ref.onRemoveNote;
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_NoteHandle["default"], (0, _extends2["default"])({}, dragHandleProps, {
-    isDetails: isDetails,
-    onClick: onClickHandle
-  })), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
-    className: CL.CAPTION,
-    value: noteTitle,
-    onBlur: onBlurTitle
-  }), /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
-    className: CL.BT_MORE,
-    title: "Click to open note menu",
-    onClick: onClickMenuMore
-  }), isMenuMore && /*#__PURE__*/_react["default"].createElement(_NoteMenuMore["default"], {
-    isShow: isMenuMore,
-    className: CL.MENU_MORE,
-    onClose: onCloseMenuMore,
-    onEdit: onEditDetails,
-    onRemove: onRemoveNote
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteHandle["default"], (0, _extends2["default"])({}, dragHandleProps, {
+      isDetails: isDetails,
+      onClick: onClickHandle
+    })), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
+      className: CL.CAPTION,
+      value: noteTitle,
+      onBlur: onBlurTitle
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+      className: CL.BT_MORE,
+      title: "Click to open note menu",
+      onClick: onClickMenuMore
+    }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteMenuMore["default"], {
+      isShow: isMenuMore,
+      className: CL.MENU_MORE,
+      onClose: onCloseMenuMore,
+      onEdit: onEditDetails,
+      onRemove: onRemoveNote
+    })]
+  });
 };
 
 var _default = NoteCaption;

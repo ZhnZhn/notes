@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -28,18 +28,23 @@ var NoteMenuMore = function NoteMenuMore(_ref) {
       onEdit = _ref.onEdit,
       onRemove = _ref.onRemove;
   var TS = theme.createStyle(_Comp["default"]);
-  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalPane["default"], {
     className: _CL["default"].MODAL_PANE + " " + (className || ''),
     style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
-    onClose: onClose
-  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    caption: "Edit Details",
-    onClick: onEdit
-  })), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    caption: "Remove Note",
-    onClick: onRemove
-  })));
+    onClose: onClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        caption: "Edit Details",
+        onClick: onEdit
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        caption: "Remove Note",
+        onClick: onRemove
+      })
+    })]
+  });
 };
 
 var _default = (0, _withTheme["default"])(NoteMenuMore);

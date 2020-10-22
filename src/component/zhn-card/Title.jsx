@@ -1,5 +1,3 @@
-import React from 'react'
-
 import InputText from '../zhn/InputText'
 import CL from '../style/CL'
 

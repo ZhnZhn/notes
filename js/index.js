@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactDom = require("react-dom");
 
@@ -21,10 +21,11 @@ if (process.env.NODE_ENV === 'development') {
 /*eslint-enable no-undef*/
 
 
-(0, _reactDom.render)( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
-  store: _store["default"]
-}, /*#__PURE__*/_react["default"].createElement(_App["default"], {
-  basename: basename,
-  store: _store["default"]
-})), document.getElementById('app'));
+(0, _reactDom.render)( /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
+  store: _store["default"],
+  children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_App["default"], {
+    basename: basename,
+    store: _store["default"]
+  })
+}), document.getElementById('app'));
 //# sourceMappingURL=index.js.map

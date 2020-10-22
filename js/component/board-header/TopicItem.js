@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
@@ -23,9 +23,10 @@ var S = {
 
 var Badge = function Badge(_ref) {
   var isHide = _ref.isHide;
-  return /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CL["default"].BADGE
-  }, isHide ? 'H' : 'S');
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    className: _CL["default"].BADGE,
+    children: isHide ? 'H' : 'S'
+  });
 };
 
 var _crTitle = function _crTitle(is) {
@@ -40,17 +41,18 @@ var TopicItem = function TopicItem(_ref2) {
       title = topic.title,
       _title = _crTitle(isHide);
 
-  return /*#__PURE__*/_react["default"].createElement("li", {
-    style: S.LI
-  }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    className: _CL["default"].BT,
-    caption: title,
-    title: _title,
-    timeout: 0,
-    onClick: onClick
-  }), /*#__PURE__*/_react["default"].createElement(Badge, {
-    isHide: isHide
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("li", {
+    style: S.LI,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      className: _CL["default"].BT,
+      caption: title,
+      title: _title,
+      timeout: 0,
+      onClick: onClick
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(Badge, {
+      isHide: isHide
+    })]
+  });
 };
 
 TopicItem.defaultProps = {

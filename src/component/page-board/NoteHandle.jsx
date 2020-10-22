@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL = {
   HANDLE: 'note__handle',
   OPEN: 'note__handle--open'

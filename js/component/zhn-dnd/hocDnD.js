@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _crTopicStyle = function _crTopicStyle(is, dragBg, notDragBg) {
   if (dragBg === void 0) {
@@ -41,12 +41,14 @@ var _hocDnDImpl = function _hocDnDImpl(ItemComp, options) {
         _style = _crTopicStyle(isDragging, dragBg, notDragBg),
         _dragHandleProps = isDragHanlerProps ? undefined : dragHandleProps;
 
-    return /*#__PURE__*/_react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
       ref: innerRef,
       style: (0, _extends2["default"])({}, style, _style)
-    }, draggablePropsRest, _dragHandleProps), /*#__PURE__*/_react["default"].createElement(ItemComp, (0, _extends2["default"])({
-      dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined
-    }, rest)));
+    }, draggablePropsRest, _dragHandleProps, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemComp, (0, _extends2["default"])({
+        dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined
+      }, rest))
+    }));
   };
 };
 

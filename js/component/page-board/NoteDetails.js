@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-ch/ShowHide"));
 
@@ -22,14 +22,18 @@ var NoteDetails = function NoteDetails(_ref) {
 
   var _descr = (0, _getNoteDescr["default"])(note);
 
-  return /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
     className: CL,
-    isShow: isShow
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    onClick: editDetails
-  }, /*#__PURE__*/_react["default"].createElement(_LabelList["default"], {
-    labels: note.labels
-  }), /*#__PURE__*/_react["default"].createElement("div", null, _descr)));
+    isShow: isShow,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      onClick: editDetails,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LabelList["default"], {
+        labels: note.labels
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: _descr
+      })]
+    })
+  });
 };
 
 var _default = NoteDetails;

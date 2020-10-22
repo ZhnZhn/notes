@@ -1,5 +1,3 @@
-import React from 'react'
-
 import CL from './CL'
 import crTitle from './crTitle'
 

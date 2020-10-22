@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var S = {
   UL: {
@@ -37,8 +37,7 @@ var S = {
     display: 'none'
   }
 };
-var toArray = _react["default"].Children.toArray;
-var cloneElement = _react["default"].cloneElement;
+var toArray = _react.Children.toArray;
 
 var TabPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TabPane, _Component);
@@ -62,7 +61,7 @@ var TabPane = /*#__PURE__*/function (_Component) {
       var selectedTabIndex = _this.state.selectedTabIndex;
       return children.map(function (tab, index) {
         var isSelected = index === selectedTabIndex ? true : false;
-        return cloneElement(tab, {
+        return /*#__PURE__*/(0, _react.cloneElement)(tab, {
           key: index,
           onClick: _this._hClickTab.bind((0, _assertThisInitialized2["default"])(_this), index, tab),
           isSelected: isSelected
@@ -77,17 +76,17 @@ var TabPane = /*#__PURE__*/function (_Component) {
       return components.map(function (comp, index) {
         var isSelected = index === selectedTabIndex;
         var divStyle = isSelected ? S.TAB_SELECTED : S.NONE;
-        return /*#__PURE__*/_react["default"].createElement("div", {
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
           style: divStyle,
-          key: 'a' + index
-        }, /*#__PURE__*/_react["default"].cloneElement(comp, {
-          isSelected: isSelected
-        }));
+          children: /*#__PURE__*/(0, _react.cloneElement)(comp, {
+            isSelected: isSelected
+          })
+        }, 'a' + index);
       });
     };
 
     var _components = toArray(props.children).map(function (tab, index) {
-      return cloneElement(tab.props.children, {
+      return /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
         key: 'comp' + index
       });
     });
@@ -109,16 +108,19 @@ var TabPane = /*#__PURE__*/function (_Component) {
         children = _this$props.children,
         _tabs = toArray(children);
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: {
         width: width,
         height: height
-      }
-    }, /*#__PURE__*/_react["default"].createElement("ul", {
-      style: (0, _extends2["default"])({}, S.UL, tabsStyle)
-    }, this._renderTabs(_tabs)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.TABS
-    }, this._renderComponents()));
+      },
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
+        style: (0, _extends2["default"])({}, S.UL, tabsStyle),
+        children: this._renderTabs(_tabs)
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.TABS,
+        children: this._renderComponents()
+      })]
+    });
   };
 
   _proto.getSelectedTabIndex = function getSelectedTabIndex() {

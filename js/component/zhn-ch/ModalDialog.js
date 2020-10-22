@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
@@ -72,14 +72,15 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
           commandButtons = _this$props.commandButtons,
           withoutClose = _this$props.withoutClose,
           onClose = _this$props.onClose;
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: CL.ACTIONS
-      }, commandButtons, !withoutClose && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-        ref: _this._refBtClose,
-        caption: "Close",
-        timeout: 0,
-        onClick: onClose
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.ACTIONS,
+        children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          ref: _this._refBtClose,
+          caption: "Close",
+          timeout: 0,
+          onClick: onClose
+        })]
+      });
     };
 
     _this.wasClosing = false;
@@ -151,16 +152,19 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
       }
     }
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       role: "dialog",
       className: _className,
       style: (0, _extends2["default"])({}, style, _style),
-      onClick: this._hClickDialog
-    }, /*#__PURE__*/_react["default"].createElement(_DialogCaption["default"], {
-      rootStyle: captionStyle,
-      caption: caption,
-      onClose: onClose
-    }), /*#__PURE__*/_react["default"].createElement("div", null, children), isWithButton && this._renderCommandButton());
+      onClick: this._hClickDialog,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption["default"], {
+        rootStyle: captionStyle,
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: children
+      }), isWithButton && this._renderCommandButton()]
+    });
   };
 
   return ModalDialog;

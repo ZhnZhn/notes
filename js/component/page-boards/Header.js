@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -24,20 +24,22 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 var Header = function Header(_ref) {
   var style = _ref.style,
       addBoard = _ref.addBoard;
-  return /*#__PURE__*/_react["default"].createElement(_Header["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header["default"], {
     className: _CL["default"].HEADER,
-    style: style
-  }, /*#__PURE__*/_react["default"].createElement(_Logo["default"], null), /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CL["default"].TITLE_GAP
-  }), /*#__PURE__*/_react["default"].createElement("span", {
-    className: _CL["default"].HEADER_TITLE
-  }, "Notes: Boards"), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    caption: "Add Board",
-    title: "Click to add new board",
-    accessKey: "a",
-    timeout: 200,
-    onClick: addBoard
-  }), /*#__PURE__*/_react["default"].createElement(_HeaderDrawer["default"], null));
+    style: style,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: _CL["default"].TITLE_GAP
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: _CL["default"].HEADER_TITLE,
+      children: "Notes: Boards"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      caption: "Add Board",
+      title: "Click to add new board",
+      accessKey: "a",
+      timeout: 200,
+      onClick: addBoard
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderDrawer["default"], {})]
+  });
 };
 
 var mapDispatchToProps = {

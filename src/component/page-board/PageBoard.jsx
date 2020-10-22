@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import { DragDropContext } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'

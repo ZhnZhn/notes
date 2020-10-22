@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -28,10 +28,11 @@ var Item = function Item(props) {
       TS = theme.createStyle(_Item["default"]),
       _style = isHide ? (0, _extends2["default"])({}, TS.ITEM, S.HIDE) : TS.ITEM;
 
-  return /*#__PURE__*/_react["default"].createElement("section", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("section", {
     className: _CL["default"].ITEM_CARD,
-    style: _style
-  }, children);
+    style: _style,
+    children: children
+  });
 };
 
 var _default = (0, _withTheme["default"])(Item);

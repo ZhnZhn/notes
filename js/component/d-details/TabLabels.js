@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _actions = _interopRequireDefault(require("../../flux/note/actions"));
 
@@ -107,29 +107,32 @@ var TabLabels = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var onClose = this.props.onClose,
         labels = this.state.labels;
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.LABELS
-    }, /*#__PURE__*/_react["default"].createElement(_LabelList["default"], {
-      labels: labels,
-      onRemove: this._onRemoveLabel
-    }), /*#__PURE__*/_react["default"].createElement(_InputText["default"], {
-      ref: this._refInputLabel,
-      onBlur: this._onBlurLabel
-    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      clCaption: _CL["default"].CARD_BT,
-      rootStyle: S.BT_ADD,
-      caption: "AddLabel",
-      title: "Click to add a new label",
-      timeout: 400,
-      onClick: this._onAddLabel
-    })), /*#__PURE__*/_react["default"].createElement(_PaneColors["default"], {
-      ref: this._refInputColor
-    }), /*#__PURE__*/_react["default"].createElement(_DialogButtons["default"], {
-      ref: this._refButtons,
-      className: _CL["default"].MD_ACTIONS,
-      onSave: this._saveLabels,
-      onClose: onClose
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.LABELS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LabelList["default"], {
+          labels: labels,
+          onRemove: this._onRemoveLabel
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
+          ref: this._refInputLabel,
+          onBlur: this._onBlurLabel
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          clCaption: _CL["default"].CARD_BT,
+          rootStyle: S.BT_ADD,
+          caption: "AddLabel",
+          title: "Click to add a new label",
+          timeout: 400,
+          onClick: this._onAddLabel
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneColors["default"], {
+        ref: this._refInputColor
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"], {
+        ref: this._refButtons,
+        className: _CL["default"].MD_ACTIONS,
+        onSave: this._saveLabels,
+        onClose: onClose
+      })]
+    });
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {

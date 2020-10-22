@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import { Component } from 'react'
 
 import na from '../../flux/note/actions'
 
@@ -42,7 +42,7 @@ class TabDescr extends Component {
     , _initDescr = getNoteDescr(note);
 
     return (
-      <Fragment>
+      <>
         <InputTextArea
           ref={this._refInputDescr}
           key={note.id}
@@ -56,7 +56,7 @@ class TabDescr extends Component {
           onSave={this._editDescr}
           onClose={onClose}
         />
-      </Fragment>
+      </>
     );
   }
 

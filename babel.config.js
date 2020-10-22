@@ -2,7 +2,7 @@ module.exports = {
   presets: [
     '@babel/preset-flow',
     ['@babel/preset-env', { loose: true }],
-    '@babel/preset-react'
+    ['@babel/preset-react', { "runtime": "automatic" } ]
   ],
   plugins: [
     ['@babel/plugin-transform-runtime'],

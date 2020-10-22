@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _CellColor = _interopRequireDefault(require("../zhn-ch/CellColor"));
 
@@ -70,12 +70,11 @@ var PaneColors = /*#__PURE__*/function (_Component) {
 
     _this._renderColors = function (colors, isLong) {
       return colors.map(function (c) {
-        return /*#__PURE__*/_react["default"].createElement(_CellColor["default"], {
-          key: c,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_CellColor["default"], {
           color: c,
           style: S.CELL,
           onClick: _this._hClick
-        });
+        }, c);
       });
     };
 
@@ -97,15 +96,19 @@ var PaneColors = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var color = this.state.color;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROOT
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_CellColor["default"], {
-      color: color,
-      style: (0, _extends2["default"])({}, S.CELL, S.TO_CELL),
-      onClick: this._hInit
-    }), this._renderColors(COLORS1)), /*#__PURE__*/_react["default"].createElement("div", {
-      style: S.ROW2
-    }, this._renderColors(COLORS2)));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S.ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CellColor["default"], {
+          color: color,
+          style: (0, _extends2["default"])({}, S.CELL, S.TO_CELL),
+          onClick: this._hInit
+        }), this._renderColors(COLORS1)]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.ROW2,
+        children: this._renderColors(COLORS2)
+      })]
+    });
   };
 
   _proto.getColor = function getColor() {

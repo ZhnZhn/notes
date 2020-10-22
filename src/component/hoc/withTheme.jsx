@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import ThemeContext from './ThemeContext'
 
 const withTheme = (Wrapper) => class extends Component {

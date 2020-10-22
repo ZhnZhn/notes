@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -21,18 +21,22 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Header = function Header(_ref) {
   var addColumn = _ref.addColumn;
-  return /*#__PURE__*/_react["default"].createElement(_Header["default"], {
-    className: _CL["default"].HEADER
-  }, /*#__PURE__*/_react["default"].createElement(_TopicDrawer["default"], null), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    caption: "Add Topic",
-    title: "Click to add topic to board",
-    accessKey: "a",
-    timeout: 500,
-    onClick: addColumn
-  }), /*#__PURE__*/_react["default"].createElement("nav", null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.NavLink, {
-    to: "/boards",
-    className: _CL["default"].NAV_LINK + " " + _CL["default"].ML_8
-  }, "ToBoards")), /*#__PURE__*/_react["default"].createElement(_HeaderDrawer["default"], null));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header["default"], {
+    className: _CL["default"].HEADER,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawer["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      caption: "Add Topic",
+      title: "Click to add topic to board",
+      accessKey: "a",
+      timeout: 500,
+      onClick: addColumn
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("nav", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
+        to: "/boards",
+        className: _CL["default"].NAV_LINK + " " + _CL["default"].ML_8,
+        children: "ToBoards"
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderDrawer["default"], {})]
+  });
 };
 
 var _default = Header;

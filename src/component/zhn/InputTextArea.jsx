@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 const K = {
   DELETE: 'Delete',
@@ -22,7 +22,7 @@ class InputTextArea extends Component {
   }
 
   constructor(props){
-    super(props)    
+    super(props)
     this.state = {
       value: props.initValue
     }

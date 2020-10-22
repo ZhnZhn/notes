@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactRedux = require("react-redux");
 
@@ -109,25 +109,26 @@ var DnDNote = /*#__PURE__*/function (_Component) {
         noteTitle = _this$state.noteTitle,
         isMenuMore = _this$state.isMenuMore,
         isDetails = _this$state.isDetails;
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL,
-      id: note.id
-    }, /*#__PURE__*/_react["default"].createElement(_NoteCaption["default"], {
-      dragHandleProps: dragHandleProps,
-      isDetails: isDetails,
-      onClickHandle: this._toggleDetails,
-      noteTitle: noteTitle,
-      onBlurTitle: this._blurTitle,
-      isMenuMore: isMenuMore,
-      onClickMenuMore: this._openMenuMore,
-      onCloseMenuMore: this._closeMenuMore,
-      onEditDetails: this._editDetails,
-      onRemoveNote: this._deleteNote
-    }), /*#__PURE__*/_react["default"].createElement(_NoteDetails["default"], {
-      isShow: isDetails,
-      note: note,
-      editDetails: this._editDetails
-    }));
+      id: note.id,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteCaption["default"], {
+        dragHandleProps: dragHandleProps,
+        isDetails: isDetails,
+        onClickHandle: this._toggleDetails,
+        noteTitle: noteTitle,
+        onBlurTitle: this._blurTitle,
+        isMenuMore: isMenuMore,
+        onClickMenuMore: this._openMenuMore,
+        onCloseMenuMore: this._closeMenuMore,
+        onEditDetails: this._editDetails,
+        onRemoveNote: this._deleteNote
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteDetails["default"], {
+        isShow: isDetails,
+        note: note,
+        editDetails: this._editDetails
+      })]
+    });
   };
 
   return DnDNote;

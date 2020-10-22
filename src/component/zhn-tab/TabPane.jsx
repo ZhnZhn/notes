@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component, Children, cloneElement } from 'react';
 
 const S = {
   UL: {
@@ -23,8 +23,8 @@ const S = {
   }
 };
 
-const toArray = React.Children.toArray;
-const cloneElement = React.cloneElement;
+const toArray = Children.toArray;
+
 
 class TabPane extends Component {
 
@@ -73,7 +73,7 @@ class TabPane extends Component {
                     : S.NONE;
           return (
              <div style={divStyle} key={'a'+index}>
-                {React.cloneElement(comp, { isSelected })}
+                {cloneElement(comp, { isSelected })}
              </div>
            );
       });

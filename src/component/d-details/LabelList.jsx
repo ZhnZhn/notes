@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Label from './LabelNote'
 import CL from '../style/CL'
 

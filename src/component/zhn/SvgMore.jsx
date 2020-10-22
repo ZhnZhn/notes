@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL = "bt-svg-more";
 
 const SvgMore = ({

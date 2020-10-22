@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   TAB: 'tab not-selected',
@@ -49,13 +47,16 @@ var Tab = function Tab(_ref) {
       _onClick = _crOnClick(isSelected, onClick),
       _onKeyDown = _crOnKeyDown(isSelected, onClick);
 
-  return /*#__PURE__*/_react["default"].createElement("li", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
     role: "tab",
     tabIndex: 0,
     className: _cl,
     onClick: _onClick,
-    onKeyDown: _onKeyDown
-  }, /*#__PURE__*/_react["default"].createElement("span", null, title));
+    onKeyDown: _onKeyDown,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: title
+    })
+  });
 };
 
 var _default = Tab;

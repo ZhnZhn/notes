@@ -5,15 +5,16 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _CL = _interopRequireDefault(require("../style/CL"));
 
 var Main = function Main(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/_react["default"].createElement("main", {
-    className: _CL["default"].CONT
-  }, children);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("main", {
+    className: _CL["default"].CONT,
+    children: children
+  });
 };
 
 var _default = Main;

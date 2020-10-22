@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import CellColor from '../zhn-ch/CellColor'
 
@@ -75,7 +75,7 @@ class PaneColors extends Component {
       />
     ));
    }
-  
+
   render(){
     const { color } = this.state;
     return (

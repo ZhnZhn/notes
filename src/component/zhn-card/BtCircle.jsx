@@ -1,5 +1,3 @@
-import React from 'react'
-
 import CL from '../style/CL'
 
 const BtCircle = ({

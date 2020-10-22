@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactRedux = require("react-redux");
 
@@ -112,38 +112,41 @@ var Topic = /*#__PURE__*/function (_Component) {
         title = column.title,
         withAdd = column.withAdd,
         noteIds = column.noteIds;
-    return /*#__PURE__*/_react["default"].createElement(_Card["default"].Item, {
-      isHide: isHide
-    }, /*#__PURE__*/_react["default"].createElement(_SvgMore["default"], {
-      style: S.SVG_MORE,
-      title: "Click to open topic menu",
-      onClick: this._openMenuMore
-    }), isMenuMore && /*#__PURE__*/_react["default"].createElement(_TopicMenuMore["default"], {
-      style: S.MENU_MORE,
-      isShow: isMenuMore,
-      onAddNote: this._hAddNewTask,
-      onHideTopic: this._hHideTopic,
-      onClose: this._closeMenuMore
-    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Title, {
-      value: title,
-      onBlur: this._hBlurTitle
-    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
-      value: noteIds.length
-    }), withAdd && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      clCaption: _CL["default"].CARD_BT,
-      caption: "AddNote",
-      title: "Click to add a new note",
-      timeout: 1000,
-      onClick: this._hAddNewTask
-    }), /*#__PURE__*/_react["default"].createElement(_DnDNoteList["default"], {
-      cId: id,
-      noteIds: noteIds,
-      notes: notes
-    }), /*#__PURE__*/_react["default"].createElement("div", null, (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      clCaption: _CL["default"].CARD_BT,
-      caption: "Remove Topic",
-      onClick: this._hRemoveColumn
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
+      isHide: isHide,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+        style: S.SVG_MORE,
+        title: "Click to open topic menu",
+        onClick: this._openMenuMore
+      }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore["default"], {
+        style: S.MENU_MORE,
+        isShow: isMenuMore,
+        onAddNote: this._hAddNewTask,
+        onHideTopic: this._hHideTopic,
+        onClose: this._closeMenuMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
+        value: title,
+        onBlur: this._hBlurTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+        value: noteIds.length
+      }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        clCaption: _CL["default"].CARD_BT,
+        caption: "AddNote",
+        title: "Click to add a new note",
+        timeout: 1000,
+        onClick: this._hAddNewTask
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDNoteList["default"], {
+        cId: id,
+        noteIds: noteIds,
+        notes: notes
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          clCaption: _CL["default"].CARD_BT,
+          caption: "Remove Topic",
+          onClick: this._hRemoveColumn
+        })
+      })]
+    });
   };
 
   return Topic;

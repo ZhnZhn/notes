@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux'
 import { sDrawer } from '../../flux/selectors'
 import { removeDrawerMsg } from '../../flux/drawerMsg/actions'

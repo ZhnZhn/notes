@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { StrictMode, Component } from 'react'
 import {
   BrowserRouter,
   Switch, Route, Redirect
@@ -55,7 +55,7 @@ class App extends Component {
     } = this.props
     , { theme } = this.state;
     return (
-      <React.StrictMode>
+      <StrictMode>
         <BrowserRouter basename={basename}>
           <ThemeContext.Provider value={theme}>
             <WrapperContainer store={store} />
@@ -66,7 +66,7 @@ class App extends Component {
             </Switch>
           </ThemeContext.Provider>
         </BrowserRouter>
-      </React.StrictMode>
+      </StrictMode>
     );
   }
 }

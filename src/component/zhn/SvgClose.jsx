@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL_ROOT = "bt-svg-close";
 
 const SvgClose = ({

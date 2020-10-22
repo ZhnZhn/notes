@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _actions = _interopRequireDefault(require("../../flux/note/actions"));
 
@@ -74,18 +74,19 @@ var TabDescr = /*#__PURE__*/function (_Component) {
         onClose = _this$props2.onClose,
         _initDescr = (0, _getNoteDescr["default"])(note);
 
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement(_InputTextArea["default"], {
-      ref: this._refInputDescr,
-      key: note.id,
-      className: CL.DESCR,
-      maxLength: 250,
-      initValue: _initDescr
-    }), /*#__PURE__*/_react["default"].createElement(_DialogButtons["default"], {
-      ref: this._refButtons,
-      className: CL.ACTIONS,
-      onSave: this._editDescr,
-      onClose: onClose
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_InputTextArea["default"], {
+        ref: this._refInputDescr,
+        className: CL.DESCR,
+        maxLength: 250,
+        initValue: _initDescr
+      }, note.id), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"], {
+        ref: this._refButtons,
+        className: CL.ACTIONS,
+        onSave: this._editDescr,
+        onClose: onClose
+      })]
+    });
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {

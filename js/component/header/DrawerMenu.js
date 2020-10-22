@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -38,29 +38,38 @@ var DrawerMenu = function DrawerMenu(_ref) {
   var showSettings = _ref.showSettings,
       saveBoard = _ref.saveBoard,
       cleanStorage = _ref.cleanStorage;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: CL.ROOT
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: CL.HEADER,
-    style: S.HEADER
-  }, TITLE), /*#__PURE__*/_react["default"].createElement("ul", {
-    style: S.UL
-  }, /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    className: CL.BT,
-    caption: "User Settings",
-    title: "Click to open user settings dialog",
-    onClick: showSettings
-  })), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    className: CL.BT,
-    caption: "Save Boards",
-    title: "Click to save boards to localStorage",
-    onClick: saveBoard
-  })), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-    className: CL.BT,
-    caption: "Clean Storage",
-    title: "Click to remove boards from localStorage",
-    onClick: cleanStorage
-  }))), /*#__PURE__*/_react["default"].createElement(_DrawerMsgList["default"], null));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: CL.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL.HEADER,
+      style: S.HEADER,
+      children: TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("ul", {
+      style: S.UL,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          className: CL.BT,
+          caption: "User Settings",
+          title: "Click to open user settings dialog",
+          onClick: showSettings
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          className: CL.BT,
+          caption: "Save Boards",
+          title: "Click to save boards to localStorage",
+          onClick: saveBoard
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          className: CL.BT,
+          caption: "Clean Storage",
+          title: "Click to remove boards from localStorage",
+          onClick: cleanStorage
+        })
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DrawerMsgList["default"], {})]
+  });
 };
 
 var mapDispatchToProps = {

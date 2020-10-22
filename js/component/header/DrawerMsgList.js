@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -22,17 +20,19 @@ var CL = {
 var DrawerMsgList = function DrawerMsgList(_ref) {
   var items = _ref.items,
       removeDrawerMsg = _ref.removeDrawerMsg;
-  return /*#__PURE__*/_react["default"].createElement("ul", {
-    className: CL.UL
-  }, items.map(function (item) {
-    return /*#__PURE__*/_react["default"].createElement("li", {
-      key: item.id,
-      className: CL.LI
-    }, /*#__PURE__*/_react["default"].createElement("button", {
-      className: CL.LI_BT,
-      onClick: removeDrawerMsg.bind(null, item.id)
-    }, item.msg));
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
+    className: CL.UL,
+    children: items.map(function (item) {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
+        className: CL.LI,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          className: CL.LI_BT,
+          onClick: removeDrawerMsg.bind(null, item.id),
+          children: item.msg
+        })
+      }, item.id);
+    })
+  });
 };
 
 var mapStateToProps = function mapStateToProps(state) {

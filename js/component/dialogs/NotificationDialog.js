@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
 
@@ -47,20 +47,25 @@ var NotificationDialog = /*#__PURE__*/function (_Component) {
         caption = _data$caption === void 0 ? '' : _data$caption,
         _data$descr = data.descr,
         descr = _data$descr === void 0 ? '' : _data$descr;
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
       style: TS.DIALOG,
       caption: "Notification",
       isShow: isShow,
-      onClose: onClose
-    }, caption && /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.ROW
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      className: CL.CAPTION
-    }, caption)), /*#__PURE__*/_react["default"].createElement("div", {
-      className: CL.ROW
-    }, /*#__PURE__*/_react["default"].createElement("p", {
-      className: CL.DESCR
-    }, descr)));
+      onClose: onClose,
+      children: [caption && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: CL.ROW,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          className: CL.CAPTION,
+          children: caption
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: CL.ROW,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          className: CL.DESCR,
+          children: descr
+        })
+      })]
+    });
   };
 
   return NotificationDialog;

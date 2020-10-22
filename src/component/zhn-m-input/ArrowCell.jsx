@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL = 'm-select__svg-arrow';
 
 const ArrowCell = () => (

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -102,19 +102,22 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
         onClose = _this$props2.onClose,
         initItem = this.state.initItem,
         TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/_react["default"].createElement(_ModalDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
       className: CL,
       style: TS.DIALOG,
       caption: "User Settings",
       isShow: isShow,
-      onClose: onClose
-    }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_InputSelect["default"], {
-      styleConfig: TS.SELECT,
-      caption: "UI Theme (Default: Dark)",
-      initItem: initItem,
-      options: _themeOptions,
-      onSelect: this._selectTheme
-    })));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+          styleConfig: TS.SELECT,
+          caption: "UI Theme (Default: Dark)",
+          initItem: initItem,
+          options: _themeOptions,
+          onSelect: this._selectTheme
+        })
+      })
+    });
   };
 
   return SettingsDialog;

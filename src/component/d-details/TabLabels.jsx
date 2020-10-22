@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import { Component } from 'react'
 
 import na from '../../flux/note/actions'
 
@@ -85,7 +85,7 @@ class TabLabels extends Component {
     , { labels } = this.state;
 
     return (
-      <Fragment>
+      <>
         <div style={S.LABELS}>
           <LabelList
             labels={labels}
@@ -113,7 +113,7 @@ class TabLabels extends Component {
           onSave={this._saveLabels}
           onClose={onClose}
         />
-      </Fragment>
+      </>
     );
   }
 

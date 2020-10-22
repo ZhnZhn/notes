@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -19,13 +19,12 @@ var _crTitle = _interopRequireDefault(require("./crTitle"));
 
 var HeaderCaption = function HeaderCaption(_ref) {
   var board = _ref.board;
-  return [/*#__PURE__*/_react["default"].createElement(_Logo["default"], {
-    key: "logo",
+  return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {
     className: _CL["default"].LOGO_BOARD
-  }), /*#__PURE__*/_react["default"].createElement("span", {
-    key: "title",
-    className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD
-  }, (0, _crTitle["default"])(board))];
+  }, "logo"), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD,
+    children: (0, _crTitle["default"])(board)
+  }, "title")];
 };
 
 var mapStateToProps = function mapStateToProps(state

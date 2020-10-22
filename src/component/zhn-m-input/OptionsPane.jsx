@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ModalPane from '../zhn-ch/ModalPane'
 import ShowHide from '../zhn-ch/ShowHide'
 

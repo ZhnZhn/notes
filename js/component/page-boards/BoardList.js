@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -17,10 +17,9 @@ var BoardList = function BoardList(_ref) {
   var boardIds = _ref.boardIds,
       boards = _ref.boards;
   return boardIds.map(function (id) {
-    return /*#__PURE__*/_react["default"].createElement(_BoardCard["default"], {
-      key: id,
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardCard["default"], {
       id: id
-    });
+    }, id);
   });
 };
 

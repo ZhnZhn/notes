@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var K = {
   DELETE: 'Delete',
@@ -67,7 +67,7 @@ var InputTextArea = /*#__PURE__*/function (_Component) {
         style = _this$props.style,
         maxLength = _this$props.maxLength;
     var value = this.state.value;
-    return /*#__PURE__*/_react["default"].createElement("textarea", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("textarea", {
       ref: this._refInputNode,
       className: className,
       style: style,

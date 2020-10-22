@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 
@@ -46,15 +46,15 @@ var _renderOptions = function _renderOptions(options, currentItem, clItem, onSel
         _onSelect = onSelect.bind(null, item),
         _onKeyPress = _fOnKeyPress(_onSelect);
 
-    return /*#__PURE__*/_react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       role: "button",
       tabIndex: "0",
-      key: item.value,
       style: _style,
       className: clItem,
       onClick: _onSelect,
-      onKeyPress: _onKeyPress
-    }, item.caption);
+      onKeyPress: _onKeyPress,
+      children: item.caption
+    }, item.value);
   });
 };
 
@@ -66,14 +66,16 @@ var OptionsPane = function OptionsPane(_ref) {
       clItem = _ref.clItem,
       onSelect = _ref.onSelect,
       onClose = _ref.onClose;
-  return /*#__PURE__*/_react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
     style: rootStyle,
     isShow: isShow,
-    onClose: onClose
-  }, /*#__PURE__*/_react["default"].createElement(_ShowHide["default"], {
-    isShow: isShow,
-    style: (0, _extends2["default"])({}, S.PANE, rootStyle)
-  }, _renderOptions(options, item, clItem, onSelect, isShow)));
+    onClose: onClose,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
+      isShow: isShow,
+      style: (0, _extends2["default"])({}, S.PANE, rootStyle),
+      children: _renderOptions(options, item, clItem, onSelect, isShow)
+    })
+  });
 };
 
 var _default = OptionsPane;

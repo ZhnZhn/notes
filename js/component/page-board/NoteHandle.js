@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   HANDLE: 'note__handle',
@@ -22,7 +22,7 @@ var NoteHandle = function NoteHandle(_ref) {
 
   var _cl = isDetails ? CL.HANDLE + " " + CL.OPEN : CL.HANDLE;
 
-  return /*#__PURE__*/_react["default"].createElement("span", (0, _extends2["default"])({
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", (0, _extends2["default"])({
     className: _cl
   }, rest));
 };

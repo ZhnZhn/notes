@@ -1,5 +1,3 @@
-import React from 'react'
-
 const _crTopicStyle = (is,
   dragBg = '#1e90ff',
   notDragBg = 'transparent'

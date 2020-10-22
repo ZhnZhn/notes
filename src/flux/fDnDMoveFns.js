@@ -37,7 +37,9 @@ const _crMoveExternal = (propName, idsTo) => (
 };
 
 
-const fDnDMoveFns = (propName /*: string */) => {
+const fDnDMoveFns = (
+  propName /*: string */
+) /*: {} */ => {
   const _idsTo = fIdsTo(propName);
   return {
     idsTo: _idsTo,

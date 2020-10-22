@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SvgClose from '../zhn/SvgClose'
 
 const CL = {
@@ -18,7 +16,7 @@ const DialogCaption = ({ rootStyle, svgStyle, caption, children, onClose }) => (
     </span>
     {children}
     <SvgClose
-      className={CL.CLOSE}      
+      className={CL.CLOSE}
       onClose={onClose}
     />
   </div>

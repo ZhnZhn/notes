@@ -1,5 +1,3 @@
-import React from 'react'
-
 import InputText from '../zhn/InputText'
 import SvgMore from '../zhn/SvgMore'
 import NoteHandle from './NoteHandle'

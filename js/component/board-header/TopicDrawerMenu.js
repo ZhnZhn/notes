@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactRedux = require("react-redux");
 
@@ -25,15 +25,16 @@ var TopicDrawerMenu = function TopicDrawerMenu(_ref) {
   var board = _ref.board,
       columns = _ref.columns,
       toggleColumn = _ref.toggleColumn;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: _CL["default"].ROOT
-  }, /*#__PURE__*/_react["default"].createElement(_TopicDrawerCaption["default"], {
-    board: board
-  }), /*#__PURE__*/_react["default"].createElement(_TopicList["default"], {
-    board: board,
-    columns: columns,
-    toggleColumn: toggleColumn
-  }), /*#__PURE__*/_react["default"].createElement(_DrawerMsgList["default"], null));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: _CL["default"].ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawerCaption["default"], {
+      board: board
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicList["default"], {
+      board: board,
+      columns: columns,
+      toggleColumn: toggleColumn
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DrawerMsgList["default"], {})]
+  });
 };
 
 var mapStateToProps = function mapStateToProps(state) {

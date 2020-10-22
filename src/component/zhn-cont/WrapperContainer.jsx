@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createElement } from 'react'
 //import PropTypes from 'prop-types'
 
 import withTheme from '../hoc/withTheme'
@@ -89,8 +89,8 @@ class WrapperContainer extends Component {
     const { store, theme } = this.props;
     const { shows, data, dialogs } = this.state;
     return dialogs.map(dialog => {
-      const { type, comp } = dialog;      
-      return React.createElement(comp, {
+      const { type, comp } = dialog;
+      return createElement(comp, {
         key: type,
         isShow: shows[type],
         data: data[type],

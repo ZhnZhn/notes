@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 
@@ -23,12 +23,15 @@ var S = {
 var Topic = function Topic(_ref) {
   var title = _ref.title,
       count = _ref.count;
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    style: S.TOPIC
-  }, /*#__PURE__*/_react["default"].createElement("span", null, title), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
-    style: S.COUNTER,
-    value: count
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.TOPIC,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: title
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+      style: S.COUNTER,
+      value: count
+    })]
+  });
 };
 
 var _default = Topic;

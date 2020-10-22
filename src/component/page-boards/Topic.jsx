@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Card from '../zhn-card/Card'
 
 const S = {

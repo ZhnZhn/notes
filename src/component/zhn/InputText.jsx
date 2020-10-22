@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import CL from '../style/CL'
 
@@ -21,10 +21,10 @@ const _getState = (props) => ({
 class InputText extends Component {
   /*
   static propTypes = {
-    className: React.PropsType.string,
-    style: React.PropsType.obj,
-    value: React.PropsType.string,
-    onBlur: React.PropsType.func
+    className: PropsType.string,
+    style: PropsType.obj,
+    value: PropsType.string,
+    onBlur: PropsType.func
   }
   */
 

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
@@ -39,18 +39,19 @@ var DialogButtons = /*#__PURE__*/function (_Component) {
         className = _this$props.className,
         onSave = _this$props.onSave,
         onClose = _this$props.onClose;
-    return /*#__PURE__*/_react["default"].createElement("div", {
-      className: className
-    }, /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      caption: "Save",
-      timeout: 100,
-      onClick: onSave
-    }), /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      ref: this._refBtClose,
-      caption: "Close",
-      timeout: 0,
-      onClick: onClose
-    }));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: className,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        caption: "Save",
+        timeout: 100,
+        onClick: onSave
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        ref: this._refBtClose,
+        caption: "Close",
+        timeout: 0,
+        onClick: onClose
+      })]
+    });
   };
 
   _proto.focusBtClose = function focusBtClose() {

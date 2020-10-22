@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -88,25 +88,30 @@ var BoardCard = /*#__PURE__*/function (_Component) {
         board = _this$props5.board,
         columns = _this$props5.columns,
         columnIds = board.columnIds;
-    return /*#__PURE__*/_react["default"].createElement(_Card["default"].Item, null, /*#__PURE__*/_react["default"].createElement(_Card["default"].Title, {
-      value: board.title,
-      onBlur: this._hBlurTitle
-    }), /*#__PURE__*/_react["default"].createElement(_Card["default"].Counter, {
-      value: columnIds.length
-    }), /*#__PURE__*/_react["default"].createElement(_DnDTopicList["default"], {
-      id: id,
-      columnIds: columnIds,
-      columns: columns
-    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.NavLink, {
-      to: "/boards/" + board.id,
-      className: _CL["default"].NAV_LINK,
-      style: S.LINK,
-      onClick: this._hToNotes
-    }, "ToNotes"), /*#__PURE__*/_react["default"].createElement("div", null, (0, _isArrEmpty["default"])(columnIds) && /*#__PURE__*/_react["default"].createElement(_FlatButton["default"], {
-      clCaption: _CL["default"].CARD_BT,
-      caption: "Remove Board",
-      onClick: this._hRemove
-    })));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
+        value: board.title,
+        onBlur: this._hBlurTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+        value: columnIds.length
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDTopicList["default"], {
+        id: id,
+        columnIds: columnIds,
+        columns: columns
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
+        to: "/boards/" + board.id,
+        className: _CL["default"].NAV_LINK,
+        style: S.LINK,
+        onClick: this._hToNotes,
+        children: "ToNotes"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: (0, _isArrEmpty["default"])(columnIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          clCaption: _CL["default"].CARD_BT,
+          caption: "Remove Board",
+          onClick: this._hRemove
+        })
+      })]
+    });
   };
 
   return BoardCard;

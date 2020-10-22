@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactBeautifulDnd = require("react-beautiful-dnd");
 
@@ -52,13 +52,12 @@ var PageBoard = /*#__PURE__*/function (_Component) {
     _this._renderColumns = function (board, columns, notes, addNote) {
       return board.columnIds.map(function (cId) {
         var column = columns[cId];
-        return /*#__PURE__*/_react["default"].createElement(_Topic["default"], {
-          key: column.id,
+        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Topic["default"], {
           boardId: board.id,
           column: column,
           notes: notes,
           addNote: addNote
-        });
+        }, column.id);
       });
     };
 
@@ -80,13 +79,14 @@ var PageBoard = /*#__PURE__*/function (_Component) {
         notes = _this$props2.notes,
         columns = _this$props2.columns,
         addNote = _this$props2.addNote;
-    return [/*#__PURE__*/_react["default"].createElement(_Header["default"], {
-      key: "header",
+    return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {
       addColumn: this._hAddColumn
-    }), /*#__PURE__*/_react["default"].createElement(_reactBeautifulDnd.DragDropContext, {
-      key: "ddc",
-      onDragEnd: this._hDragEnd
-    }, /*#__PURE__*/_react["default"].createElement(_Main["default"], null, this._renderColumns(board, columns, notes, addNote)))];
+    }, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
+      onDragEnd: this._hDragEnd,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
+        children: this._renderColumns(board, columns, notes, addNote)
+      })
+    }, "ddc")];
   };
 
   return PageBoard;

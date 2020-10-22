@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -77,22 +77,28 @@ var App = /*#__PURE__*/function (_Component) {
         basename = _this$props.basename,
         store = _this$props.store,
         theme = this.state.theme;
-    return /*#__PURE__*/_react["default"].createElement(_react["default"].StrictMode, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.BrowserRouter, {
-      basename: basename
-    }, /*#__PURE__*/_react["default"].createElement(_ThemeContext["default"].Provider, {
-      value: theme
-    }, /*#__PURE__*/_react["default"].createElement(_WrapperContainer["default"], {
-      store: store
-    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
-      path: "/boards/:id",
-      component: _PageBoard["default"]
-    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
-      path: "/boards",
-      component: _PageBoards["default"]
-    }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Redirect, {
-      from: "/",
-      to: "/boards"
-    })))));
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.BrowserRouter, {
+        basename: basename,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ThemeContext["default"].Provider, {
+          value: theme,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperContainer["default"], {
+            store: store
+          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+              path: "/boards/:id",
+              component: _PageBoard["default"]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+              path: "/boards",
+              component: _PageBoards["default"]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
+              from: "/",
+              to: "/boards"
+            })]
+          })]
+        })
+      })
+    });
   };
 
   return App;

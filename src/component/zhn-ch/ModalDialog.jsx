@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import { PropTypes } from 'react'
 
 import DialogCaption from './DialogCaption'

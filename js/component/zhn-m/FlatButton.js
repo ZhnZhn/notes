@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _react = require("react");
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
@@ -88,21 +88,23 @@ var FlatButton = /*#__PURE__*/function (_Component) {
         _clCaption = clCaption ? CL.BT_SPAN + " " + clCaption : CL.BT_SPAN,
         _title = accessKey ? title + " [" + accessKey + "]" : title;
 
-    return /*#__PURE__*/_react["default"].createElement("button", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       ref: this._refNode,
       className: _className,
       style: _style,
       accessKey: accessKey,
       tabIndex: 0,
       title: _title,
-      onClick: this._hClick
-    }, /*#__PURE__*/_react["default"].createElement("div", {
-      className: clDiv
-    }, /*#__PURE__*/_react["default"].createElement(_CaptionInput["default"], {
-      className: _clCaption,
-      caption: caption,
-      accessKey: accessKey
-    }), children));
+      onClick: this._hClick,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: clDiv,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
+          className: _clCaption,
+          caption: caption,
+          accessKey: accessKey
+        }), children]
+      })
+    });
   };
 
   _proto.focus = function focus() {
