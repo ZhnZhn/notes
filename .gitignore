@@ -1,20 +1,9 @@
 .languagebabel
-jspm_packages
 node_modules
-node_modules_b7
 _start_server.bat
-bundle.min.js
-bundle.min.js.map
-config.js
-dependency-bundle.js
-dependency-bundle.js.map
 notes.html
 notes
 lint.txt
-dll
-webpack.dev.dll.js
-webpack.dev.dll-jsx.js
-app/*_dev_*.js
 
 
 

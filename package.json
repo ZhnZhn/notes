@@ -7,16 +7,13 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "flow:check": "flow check",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
+    "test:watch": "jest --watch",    
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint": "eslint -c .eslintrc-build.js ./src > lint.txt",
     "css:min": "gulp",
     "css:sass": "gulp sass",
     "css:all": "npm run css:sass && npm run css:min",
-    "build:dev:dll": "webpack --colors --progress --config webpack.dev.dll.js",
-    "build:dev:dll-jsx": "webpack --colors --progress --config webpack.dev.dll-jsx.js",
     "build:dll": "webpack --colors --progress --config webpack.dll.js",
     "build:dll-jsx": "webpack --colors --progress --config webpack.dll-jsx.js",
     "build:all": "npm run lint && npm run css:min && npm run build:dll-jsx"
@@ -60,25 +57,12 @@
     "gulp-sass": "^4.1.0",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^25.1.0",
-    "jspm": "^0.16.55",
     "react-refresh": "^0.9.0",
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.4.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
-  },
-  "jspm": {
-    "dependencies": {
-      "@babel/runtime": "npm:@babel/runtime@^7.12.1",
-      "react": "npm:react@16.14.0",
-      "react-beautiful-dnd": "npm:react-beautiful-dnd@^13.0.0",
-      "react-dom": "npm:react-dom@16.14.0",
-      "react-redux": "npm:react-redux@^7.2.1",
-      "react-router-dom": "npm:react-router-dom@^5.2.0",
-      "redux": "npm:redux@^4.0.5"
-    },
-    "devDependencies": {}
-  },
+  },  
   "jest": {
     "roots": [
       "<rootDir>/js/utils/",
