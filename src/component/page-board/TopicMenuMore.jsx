@@ -5,6 +5,14 @@ import ModalPane from '../zhn-ch/ModalPane'
 import FlatButton from '../zhn-m/FlatButton'
 import CL from '../style/CL'
 
+const S = {
+  BT: {
+    paddingLeft: 8,
+    width: '100%',
+    textAlign: 'left'
+  }
+}
+
 const TopicMenuMore = ({
   style,
   theme,
@@ -21,21 +29,19 @@ const TopicMenuMore = ({
       isShow={isShow}
       onClose={onClose}
     >
-      <div>
         <FlatButton
+          rootStyle={S.BT}
           caption="Hide Topic"
           title="Click to hide Topic"
           onClick={onHideTopic}
         />
-      </div>
-      <div>
         <FlatButton
+          rootStyle={S.BT}
           caption="Add Note"
           title="Click to add new Note"
           timeout={100}
           onClick={onAddNote}
         />
-      </div>
     </ModalPane>
   );
 };

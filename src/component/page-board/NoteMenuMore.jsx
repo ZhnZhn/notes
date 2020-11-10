@@ -5,6 +5,14 @@ import ModalPane from '../zhn-ch/ModalPane'
 import FlatButton from '../zhn-m/FlatButton'
 import CL from '../style/CL'
 
+const S = {
+  BT: {
+    paddingLeft: 8,
+    width: '100%',
+    textAlign: 'left'
+  }
+}
+
 const NoteMenuMore = ({
   theme,
   className,
@@ -22,18 +30,16 @@ const NoteMenuMore = ({
       isShow={isShow}
       onClose={onClose}
     >
-      <div>
         <FlatButton
+          rootStyle={S.BT}
           caption="Edit Details"
           onClick={onEdit}
         />
-      </div>
-      <div>
         <FlatButton
+          rootStyle={S.BT}
           caption="Remove Note"
           onClick={onRemove}
         />
-      </div>
     </ModalPane>
   );
 };

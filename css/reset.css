@@ -26,5 +26,13 @@ button {
   button:focus {
     outline: 0; }
   button:hover {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color; }
+    background-color: rgba(120, 120, 120, 0.2); }
+
+input:focus,
+input:hover {
+  outline: 0; }
+
+div[role="button"]:hover,
+div[role="button"]:focus {
+  outline: 0;
+  background-color: rgba(120, 120, 120, 0.2); }

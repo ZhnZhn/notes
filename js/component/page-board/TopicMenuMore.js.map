@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/component/page-board/TopicMenuMore.jsx"],"names":["TopicMenuMore","style","theme","isShow","onHideTopic","onAddNote","onClose","TS","createStyle","styleConfig","CL","MODAL_PANE","COMP"],"mappings":";;;;;;;;;;;AAAA;;AACA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,aAAa,GAAG,SAAhBA,aAAgB,OAOhB;AAAA,MANJC,KAMI,QANJA,KAMI;AAAA,MALJC,KAKI,QALJA,KAKI;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,WAGI,QAHJA,WAGI;AAAA,MAFJC,SAEI,QAFJA,SAEI;AAAA,MADJC,OACI,QADJA,OACI;AACJ,MAAMC,EAAE,GAAGL,KAAK,CAACM,WAAN,CAAkBC,gBAAlB,CAAX;AACA,sBACE,sBAAC,qBAAD;AACE,IAAA,SAAS,EAAEC,eAAGC,UADhB;AAEE,IAAA,KAAK,gCAAMV,KAAN,EAAgBM,EAAE,CAACK,IAAnB,CAFP;AAGE,IAAA,MAAM,EAAET,MAHV;AAIE,IAAA,OAAO,EAAEG,OAJX;AAAA,4BAME;AAAA,6BACE,qBAAC,sBAAD;AACE,QAAA,OAAO,EAAC,YADV;AAEE,QAAA,KAAK,EAAC,qBAFR;AAGE,QAAA,OAAO,EAAEF;AAHX;AADF,MANF,eAaE;AAAA,6BACE,qBAAC,sBAAD;AACE,QAAA,OAAO,EAAC,UADV;AAEE,QAAA,KAAK,EAAC,uBAFR;AAGE,QAAA,OAAO,EAAE,GAHX;AAIE,QAAA,OAAO,EAAEC;AAJX;AADF,MAbF;AAAA,IADF;AAwBD,CAjCD;;eAmCe,2BAAUL,aAAV,C","sourcesContent":["import withTheme from '../hoc/withTheme'\r\nimport styleConfig from '../style/Comp.Style'\r\n\r\nimport ModalPane from '../zhn-ch/ModalPane'\r\nimport FlatButton from '../zhn-m/FlatButton'\r\nimport CL from '../style/CL'\r\n\r\nconst TopicMenuMore = ({\r\n  style,\r\n  theme,\r\n  isShow,\r\n  onHideTopic,\r\n  onAddNote,\r\n  onClose\r\n}) => {\r\n  const TS = theme.createStyle(styleConfig);\r\n  return (\r\n    <ModalPane\r\n      className={CL.MODAL_PANE}\r\n      style={{...style, ...TS.COMP}}\r\n      isShow={isShow}\r\n      onClose={onClose}\r\n    >\r\n      <div>\r\n        <FlatButton\r\n          caption=\"Hide Topic\"\r\n          title=\"Click to hide Topic\"\r\n          onClick={onHideTopic}\r\n        />\r\n      </div>\r\n      <div>\r\n        <FlatButton\r\n          caption=\"Add Note\"\r\n          title=\"Click to add new Note\"\r\n          timeout={100}\r\n          onClick={onAddNote}\r\n        />\r\n      </div>\r\n    </ModalPane>\r\n  );\r\n};\r\n\r\nexport default withTheme(TopicMenuMore)\r\n"],"file":"TopicMenuMore.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/TopicMenuMore.js"
+ ],
+ "file": "../../../src/component/page-board/TopicMenuMore.js",
+ "names": [
+  "S",
+  "BT",
+  "paddingLeft",
+  "width",
+  "textAlign",
+  "TopicMenuMore",
+  "style",
+  "theme",
+  "isShow",
+  "onHideTopic",
+  "onAddNote",
+  "onClose",
+  "TS",
+  "createStyle",
+  "styleConfig",
+  "CL",
+  "MODAL_PANE",
+  "COMP"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AACA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,EAAE,EAAE;AACFC,IAAAA,WAAW,EAAE,CADX;AAEFC,IAAAA,KAAK,EAAE,MAFL;AAGFC,IAAAA,SAAS,EAAE;AAHT;AADI,CAAV;;AAQA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,OAOhB;AAAA,MANJC,KAMI,QANJA,KAMI;AAAA,MALJC,KAKI,QALJA,KAKI;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,WAGI,QAHJA,WAGI;AAAA,MAFJC,SAEI,QAFJA,SAEI;AAAA,MADJC,OACI,QADJA,OACI;AACJ,MAAMC,EAAE,GAAGL,KAAK,CAACM,WAAN,CAAkBC,gBAAlB,CAAX;AACA,sBACE,sBAAC,qBAAD;AACE,IAAA,SAAS,EAAEC,eAAGC,UADhB;AAEE,IAAA,KAAK,gCAAMV,KAAN,EAAgBM,EAAE,CAACK,IAAnB,CAFP;AAGE,IAAA,MAAM,EAAET,MAHV;AAIE,IAAA,OAAO,EAAEG,OAJX;AAAA,4BAMI,qBAAC,sBAAD;AACE,MAAA,SAAS,EAAEX,CAAC,CAACC,EADf;AAEE,MAAA,OAAO,EAAC,YAFV;AAGE,MAAA,KAAK,EAAC,qBAHR;AAIE,MAAA,OAAO,EAAEQ;AAJX,MANJ,eAYI,qBAAC,sBAAD;AACE,MAAA,SAAS,EAAET,CAAC,CAACC,EADf;AAEE,MAAA,OAAO,EAAC,UAFV;AAGE,MAAA,KAAK,EAAC,uBAHR;AAIE,MAAA,OAAO,EAAE,GAJX;AAKE,MAAA,OAAO,EAAES;AALX,MAZJ;AAAA,IADF;AAsBD,CA/BD;;eAiCe,2BAAUL,aAAV,C"
+}

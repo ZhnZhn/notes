@@ -19,7 +19,6 @@ var S = {
     top: 12,
     zIndex: 20,
     width: '100%',
-    paddingLeft: 16,
     paddingTop: 12,
     paddingBottom: 12,
     lineHeight: 1.8,
@@ -28,6 +27,10 @@ var S = {
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
   ITEM: {
+    lineHeight: 2.2,
+    paddingLeft: 12
+  },
+  ITEM_CURRENT: {
     color: 'greenyellow'
   }
 };
@@ -42,7 +45,7 @@ var _fOnKeyPress = function _fOnKeyPress(onKeyPress) {
 
 var _renderOptions = function _renderOptions(options, currentItem, clItem, onSelect, isShow) {
   return options.map(function (item) {
-    var _style = item.value === currentItem.value ? S.ITEM : undefined,
+    var _style = item.value === currentItem.value ? (0, _extends2["default"])({}, S.ITEM, S.ITEM_CURRENT) : S.ITEM,
         _onSelect = onSelect.bind(null, item),
         _onKeyPress = _fOnKeyPress(_onSelect);
 

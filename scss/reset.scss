@@ -1,3 +1,4 @@
+@import 'variables/backgrounds';
 
 * {
   padding: 0;
@@ -37,7 +38,18 @@ button {
     outline: 0;
   }
   &:hover {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+    background-color: $bgBtFocus;
   }
+}
+
+input:focus, 
+input:hover {
+  outline: 0;
+}
+
+
+div[role="button"]:hover,
+div[role="button"]:focus {
+  outline: 0;
+  background-color: $bgBtFocus;
 }

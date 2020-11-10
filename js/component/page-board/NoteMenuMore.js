@@ -19,6 +19,14 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
 
+var S = {
+  BT: {
+    paddingLeft: 8,
+    width: '100%',
+    textAlign: 'left'
+  }
+};
+
 var NoteMenuMore = function NoteMenuMore(_ref) {
   var theme = _ref.theme,
       className = _ref.className,
@@ -33,16 +41,14 @@ var NoteMenuMore = function NoteMenuMore(_ref) {
     style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
     onClose: onClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        caption: "Edit Details",
-        onClick: onEdit
-      })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        caption: "Remove Note",
-        onClick: onRemove
-      })
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      rootStyle: S.BT,
+      caption: "Edit Details",
+      onClick: onEdit
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      rootStyle: S.BT,
+      caption: "Remove Note",
+      onClick: onRemove
     })]
   });
 };

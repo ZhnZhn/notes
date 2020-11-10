@@ -16,8 +16,9 @@ $shDialog
   border: solid 2px #607d8b;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
   display: block;
-  padding-left: 16px;
-  padding-top: 4px;
-  padding-bottom: 2px;
+  padding-top: 8px;
+  padding-bottom: 6px;
   border-radius: 5px;
   overflow: hidden; }
+  .modal-pane:focus {
+    outline: 0; }

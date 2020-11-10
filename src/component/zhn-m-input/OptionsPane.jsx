@@ -7,7 +7,6 @@ const S = {
     top: 12,
     zIndex: 20,
     width: '100%',
-    paddingLeft: 16,
     paddingTop: 12,
     paddingBottom: 12,
     lineHeight: 1.8,
@@ -16,6 +15,10 @@ const S = {
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
   ITEM: {
+    lineHeight: 2.2,
+    paddingLeft: 12
+  },
+  ITEM_CURRENT: {
     color: 'greenyellow'
   }
 };
@@ -33,10 +36,10 @@ const _renderOptions = (
 ) => {
   return options.map(item => {
     const _style = (item.value === currentItem.value)
-             ? S.ITEM
-             : undefined
-        , _onSelect = onSelect.bind(null, item)
-        , _onKeyPress = _fOnKeyPress(_onSelect);
+         ? {...S.ITEM, ...S.ITEM_CURRENT }
+         : S.ITEM
+    , _onSelect = onSelect.bind(null, item)
+    , _onKeyPress = _fOnKeyPress(_onSelect);
 
     return (
       <div

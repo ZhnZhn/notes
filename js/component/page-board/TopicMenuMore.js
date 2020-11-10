@@ -19,6 +19,14 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
 
+var S = {
+  BT: {
+    paddingLeft: 8,
+    width: '100%',
+    textAlign: 'left'
+  }
+};
+
 var TopicMenuMore = function TopicMenuMore(_ref) {
   var style = _ref.style,
       theme = _ref.theme,
@@ -32,19 +40,17 @@ var TopicMenuMore = function TopicMenuMore(_ref) {
     style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
     onClose: onClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        caption: "Hide Topic",
-        title: "Click to hide Topic",
-        onClick: onHideTopic
-      })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        caption: "Add Note",
-        title: "Click to add new Note",
-        timeout: 100,
-        onClick: onAddNote
-      })
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      rootStyle: S.BT,
+      caption: "Hide Topic",
+      title: "Click to hide Topic",
+      onClick: onHideTopic
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+      rootStyle: S.BT,
+      caption: "Add Note",
+      title: "Click to add new Note",
+      timeout: 100,
+      onClick: onAddNote
     })]
   });
 };
