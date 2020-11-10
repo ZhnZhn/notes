@@ -17,11 +17,11 @@ module.exports = {
   devServer: {
     port: 8090
   },
-
   output: {
       path: path.resolve('dev'),
       filename: "[name]_dev_[contenthash].js",
-      chunkFilename: "[name]_dev_[contenthash].js"
+      chunkFilename: "[name]_dev_[contenthash].js",
+      publicPath: '/'
   },
   module: {
     rules: [
@@ -41,6 +41,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   resolve: {
     modules: ['local_modules','node_modules'],
