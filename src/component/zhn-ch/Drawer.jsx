@@ -1,6 +1,8 @@
-import { Component } from 'react'
+import { useState, useCallback } from 'react'
 
-import withTheme from '../hoc/withTheme'
+import useToggle from '../hooks/useToggle'
+import useTheme from '../hooks/useTheme'
+//import withTheme from '../hoc/withTheme'
 import styleConfig from '../style/Comp.Style'
 
 const CL = {
@@ -37,68 +39,58 @@ const S = {
   }
 }
 
-class Drawer extends Component {
-  state = { isOpen: false }
-
-  _hToggle = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
-    }))
-  }
-
-  render(){
-    const {
-       btStyle,
-       theme,
-       children
-     } = this.props
-    , { isOpen } = this.state
-    , _drawerStyle = isOpen
-         ? S.DRAWER_ON
-         : S.DRAWER_OFF
+const Drawer = ({
+  btStyle,
+  children
+}) => {
+  const [isOpen, toggleIsOpen] = useToggle(false)
+  , TS = useTheme(styleConfig)
+  , _drawerStyle = isOpen
+      ? S.DRAWER_ON
+      : S.DRAWER_OFF
     , _drawerModalStyle = isOpen
-         ? S.MODAL_ON
-         : S.MODAL_OFF
+      ? S.MODAL_ON
+      : S.MODAL_OFF
     , _onClickWrapper = isOpen
-         ? this._hToggle
-         : undefined
-    , TS = theme.createStyle(styleConfig);
+      ? toggleIsOpen
+      : void 0;
+
     return [
-        <button
-          key="bt-drawer"
-          className={CL.DRAWER_BT}
-          style={{ ...S.BT_DRAWER, ...btStyle }}
-          aria-label="Open Drawer"
-          onClick={this._hToggle}
-        >
-          <span className={CL.DRAWER_SPAN}>
-            <svg
-               className={CL.DRAWER_SVG}
-               focusable="false"
-               viewBox="0 0 24 24"
-               aria-hidden="true"
-            >
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-            </svg>
-          </span>
-        </button>,
-        <div
-          key="wrapper"
-          aria-hidden={!isOpen}
-          className={CL.DRAWER_MODAL}
-          style={_drawerModalStyle}
-          onClick={_onClickWrapper}
-        />,
-        <aside
-          key="aside"
-          className={CL.DRAWER}
-          style={{ ..._drawerStyle, ...TS.COMP }}
-         >
-          {children}
-        </aside>
-      ];
-  }
+      <button
+        key="bt-drawer"
+        className={CL.DRAWER_BT}
+        style={{ ...S.BT_DRAWER, ...btStyle }}
+        aria-label="Open Drawer"
+        onClick={toggleIsOpen}
+      >
+        <span className={CL.DRAWER_SPAN}>
+          <svg
+             className={CL.DRAWER_SVG}
+             focusable="false"
+             viewBox="0 0 24 24"
+             aria-hidden="true"
+          >
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      </button>,
+      <div
+        key="wrapper"
+        aria-hidden={!isOpen}
+        className={CL.DRAWER_MODAL}
+        style={_drawerModalStyle}
+        onClick={_onClickWrapper}
+      />,
+      <aside
+        key="aside"
+        className={CL.DRAWER}
+        style={{ ..._drawerStyle, ...TS.COMP }}
+       >
+        {children}
+      </aside>
+    ];
 }
 
-export default withTheme(Drawer)
+
+export default Drawer

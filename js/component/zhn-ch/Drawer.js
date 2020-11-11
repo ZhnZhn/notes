@@ -7,16 +7,17 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = require("react");
 
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
 
+//import withTheme from '../hoc/withTheme'
 var CL = {
   DRAWER_BT: 'drawer-bt',
   DRAWER_SPAN: 'drawer-span',
@@ -50,81 +51,50 @@ var S = {
   }
 };
 
-var Drawer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(Drawer, _Component);
+var Drawer = function Drawer(_ref) {
+  var btStyle = _ref.btStyle,
+      children = _ref.children;
 
-  function Drawer() {
-    var _this;
+  var _useToggle = (0, _useToggle2["default"])(false),
+      isOpen = _useToggle[0],
+      toggleIsOpen = _useToggle[1],
+      TS = (0, _useTheme["default"])(_Comp["default"]),
+      _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
+      _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
+      _onClickWrapper = isOpen ? toggleIsOpen : void 0;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      isOpen: false
-    };
-
-    _this._hToggle = function () {
-      _this.setState(function (prevState) {
-        return {
-          isOpen: !prevState.isOpen
-        };
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = Drawer.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        btStyle = _this$props.btStyle,
-        theme = _this$props.theme,
-        children = _this$props.children,
-        isOpen = this.state.isOpen,
-        _drawerStyle = isOpen ? S.DRAWER_ON : S.DRAWER_OFF,
-        _drawerModalStyle = isOpen ? S.MODAL_ON : S.MODAL_OFF,
-        _onClickWrapper = isOpen ? this._hToggle : undefined,
-        TS = theme.createStyle(_Comp["default"]);
-
-    return [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-      className: CL.DRAWER_BT,
-      style: (0, _extends2["default"])({}, S.BT_DRAWER, btStyle),
-      "aria-label": "Open Drawer",
-      onClick: this._hToggle,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        className: CL.DRAWER_SPAN,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-          className: CL.DRAWER_SVG,
-          focusable: "false",
-          viewBox: "0 0 24 24",
-          "aria-hidden": "true",
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-            fill: "none",
-            d: "M0 0h24v24H0z"
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-            d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-          })]
-        })
+  return [/*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    className: CL.DRAWER_BT,
+    style: (0, _extends2["default"])({}, S.BT_DRAWER, btStyle),
+    "aria-label": "Open Drawer",
+    onClick: toggleIsOpen,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: CL.DRAWER_SPAN,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+        className: CL.DRAWER_SVG,
+        focusable: "false",
+        viewBox: "0 0 24 24",
+        "aria-hidden": "true",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+          fill: "none",
+          d: "M0 0h24v24H0z"
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+          d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+        })]
       })
-    }, "bt-drawer"), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      "aria-hidden": !isOpen,
-      className: CL.DRAWER_MODAL,
-      style: _drawerModalStyle,
-      onClick: _onClickWrapper
-    }, "wrapper"), /*#__PURE__*/(0, _jsxRuntime.jsx)("aside", {
-      className: CL.DRAWER,
-      style: (0, _extends2["default"])({}, _drawerStyle, TS.COMP),
-      children: children
-    }, "aside")];
-  };
+    })
+  }, "bt-drawer"), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    "aria-hidden": !isOpen,
+    className: CL.DRAWER_MODAL,
+    style: _drawerModalStyle,
+    onClick: _onClickWrapper
+  }, "wrapper"), /*#__PURE__*/(0, _jsxRuntime.jsx)("aside", {
+    className: CL.DRAWER,
+    style: (0, _extends2["default"])({}, _drawerStyle, TS.COMP),
+    children: children
+  }, "aside")];
+};
 
-  return Drawer;
-}(_react.Component);
-
-var _default = (0, _withTheme["default"])(Drawer);
-
+var _default = Drawer;
 exports["default"] = _default;
 //# sourceMappingURL=Drawer.js.map
