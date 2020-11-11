@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { createRef, Component } from 'react'
 
 import na from '../../flux/note/actions'
 
@@ -14,10 +14,15 @@ const CL = {
 
 class TabDescr extends Component {
 
+  constructor(props){
+    super(props)
+    this._refBtClose = createRef()
+  }
+
   _focusBtClose = () => {
-    if (this.props.isSelected
-      && this._buttons) {
-      this._buttons.focusBtClose()
+    const _btClose = this._refBtClose.current;
+    if (this.props.isSelected && _btClose) {
+      _btClose.focus()      
     }
   }
 
@@ -32,7 +37,7 @@ class TabDescr extends Component {
   }
 
   _refInputDescr = (node) => this._inputDescr = node
-  _refButtons = (node) => this._buttons = node
+  //_refButtons = (node) => this._buttons = node
 
   render(){
     const {
@@ -51,7 +56,8 @@ class TabDescr extends Component {
           initValue={_initDescr}
         />
         <DialogButtons
-          ref={this._refButtons}
+          //ref={this._refButtons}
+          refBtClose={this._refBtClose}
           className={CL.ACTIONS}
           onSave={this._editDescr}
           onClose={onClose}

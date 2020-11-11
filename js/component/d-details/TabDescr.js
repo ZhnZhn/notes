@@ -27,18 +27,16 @@ var CL = {
 var TabDescr = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TabDescr, _Component);
 
-  function TabDescr() {
+  function TabDescr(props) {
     var _this;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._focusBtClose = function () {
-      if (_this.props.isSelected && _this._buttons) {
-        _this._buttons.focusBtClose();
+      var _btClose = _this._refBtClose.current;
+
+      if (_this.props.isSelected && _btClose) {
+        _btClose.focus();
       }
     };
 
@@ -55,10 +53,7 @@ var TabDescr = /*#__PURE__*/function (_Component) {
       return _this._inputDescr = node;
     };
 
-    _this._refButtons = function (node) {
-      return _this._buttons = node;
-    };
-
+    _this._refBtClose = /*#__PURE__*/(0, _react.createRef)();
     return _this;
   }
 
@@ -68,6 +63,7 @@ var TabDescr = /*#__PURE__*/function (_Component) {
     this._focusBtClose();
   };
 
+  //_refButtons = (node) => this._buttons = node
   _proto.render = function render() {
     var _this$props2 = this.props,
         note = _this$props2.note,
@@ -80,8 +76,9 @@ var TabDescr = /*#__PURE__*/function (_Component) {
         className: CL.DESCR,
         maxLength: 250,
         initValue: _initDescr
-      }, note.id), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"], {
-        ref: this._refButtons,
+      }, note.id), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"] //ref={this._refButtons}
+      , {
+        refBtClose: this._refBtClose,
         className: CL.ACTIONS,
         onSave: this._editDescr,
         onClose: onClose

@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { createRef, Component } from 'react'
 
 import na from '../../flux/note/actions'
 
@@ -34,15 +34,16 @@ class TabLabels extends Component {
 
   constructor(props) {
     super(props)
+    this._refBtClose = createRef()
     this.state = {
       labels: props.note.labels || []
     }
   }
 
   _focusBtClose = () => {
-    if (this.props.isSelected
-      && this._buttons) {
-       this._buttons.focusBtClose()
+    const _btClose = this._refBtClose.current;
+    if (this.props.isSelected && _btClose) {
+       _btClose.focus()
     }
   }
 
@@ -75,7 +76,7 @@ class TabLabels extends Component {
 
   _refInputLabel = (node) => this._inputLabel = node
   _refInputColor = (node) => this._inputColor = node
-  _refButtons = (node) => this._buttons = node
+  //_refButtons = (node) => this._buttons = node
 
   render(){
     const {
@@ -108,7 +109,8 @@ class TabLabels extends Component {
           ref={this._refInputColor}
         />
         <DialogButtons
-          ref={this._refButtons}
+          refBtClose={this._refBtClose}
+          //ref={this._refButtons}
           className={CL.MD_ACTIONS}
           onSave={this._saveLabels}
           onClose={onClose}

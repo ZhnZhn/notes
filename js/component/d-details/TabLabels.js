@@ -50,8 +50,10 @@ var TabLabels = /*#__PURE__*/function (_Component) {
     _this = _Component.call(this, props) || this;
 
     _this._focusBtClose = function () {
-      if (_this.props.isSelected && _this._buttons) {
-        _this._buttons.focusBtClose();
+      var _btClose = _this._refBtClose.current;
+
+      if (_this.props.isSelected && _btClose) {
+        _btClose.focus();
       }
     };
 
@@ -88,10 +90,7 @@ var TabLabels = /*#__PURE__*/function (_Component) {
       return _this._inputColor = node;
     };
 
-    _this._refButtons = function (node) {
-      return _this._buttons = node;
-    };
-
+    _this._refBtClose = /*#__PURE__*/(0, _react.createRef)();
     _this.state = {
       labels: props.note.labels || []
     };
@@ -104,6 +103,7 @@ var TabLabels = /*#__PURE__*/function (_Component) {
     this._focusBtClose();
   };
 
+  //_refButtons = (node) => this._buttons = node
   _proto.render = function render() {
     var onClose = this.props.onClose,
         labels = this.state.labels;
@@ -127,7 +127,8 @@ var TabLabels = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_PaneColors["default"], {
         ref: this._refInputColor
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"], {
-        ref: this._refButtons,
+        refBtClose: this._refBtClose //ref={this._refButtons}
+        ,
         className: _CL["default"].MD_ACTIONS,
         onSave: this._saveLabels,
         onClose: onClose
