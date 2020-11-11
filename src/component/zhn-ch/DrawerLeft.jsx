@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import useToggle from '../hooks/useToggle'
+import useTheme from '../hooks/useTheme'
 
-import withTheme from '../hoc/withTheme'
 import styleConfig from '../style/Comp.Style'
 
 const CL = {
@@ -36,59 +36,48 @@ const S = {
   }
 }
 
-class DrawerLeft extends Component {
-  state = { isOpen: false }
+const DrawerLeft = ({
+  btStyle,
+  captionComp,
+  children
+}) => {
+  const [isOpen, toggleIsOpen] = useToggle(false)
+  , TS = useTheme(styleConfig)
+  , _drawerStyle = isOpen
+       ? S.DRAWER_ON
+       : S.DRAWER_OFF
+  , _drawerModalStyle = isOpen
+       ? S.MODAL_ON
+       : S.MODAL_OFF
+  , _onClickWrapper = isOpen
+       ? toggleIsOpen
+       : void 0;
 
-  _hToggle = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
-    }))
-  }
-
-  render(){
-    const {
-       btStyle,
-       theme,
-       captionComp,
-       children
-     } = this.props
-    , { isOpen } = this.state
-    , _drawerStyle = isOpen
-         ? S.DRAWER_ON
-         : S.DRAWER_OFF
-    , _drawerModalStyle = isOpen
-         ? S.MODAL_ON
-         : S.MODAL_OFF
-    , _onClickWrapper = isOpen
-         ? this._hToggle
-         : undefined
-    , TS = theme.createStyle(styleConfig);
-    return [
-        <button
-          key="bt-drawer"
-          className={CL.DRAWER_BT}
-          style={{ ...S.BT_DRAWER, ...btStyle }}
-          aria-label="Open Drawer"
-          onClick={this._hToggle}
-        >
-          {captionComp}
-        </button>,
-        <div
-          key="wrapper"
-          aria-hidden={!isOpen}
-          className={CL.DRAWER_MODAL}
-          style={_drawerModalStyle}
-          onClick={_onClickWrapper}
-        />,
-        <aside
-          key="aside"
-          className={CL.DRAWER}
-          style={{ ..._drawerStyle, ...TS.COMP }}
-         >
-          {children}
-        </aside>
-      ];
-  }
+  return [
+      <button
+        key="bt-drawer"
+        className={CL.DRAWER_BT}
+        style={{ ...S.BT_DRAWER, ...btStyle }}
+        aria-label="Open Drawer"
+        onClick={toggleIsOpen}
+      >
+        {captionComp}
+      </button>,
+      <div
+        key="wrapper"
+        aria-hidden={!isOpen}
+        className={CL.DRAWER_MODAL}
+        style={_drawerModalStyle}
+        onClick={_onClickWrapper}
+      />,
+      <aside
+        key="aside"
+        className={CL.DRAWER}
+        style={{ ..._drawerStyle, ...TS.COMP }}
+       >
+        {children}
+      </aside>
+    ];
 }
 
-export default withTheme(DrawerLeft)
+export default DrawerLeft
