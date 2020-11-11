@@ -1,1 +1,15 @@
-{"version":3,"sources":["../../../src/component/page-boards/PageBoards.jsx"],"names":["PageBoards","_hDragEnd","result","props","moveColumn","render","Component","mapDispatchToProps"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;IAEMA,U;;;;;;;;;;;;UACJC,S,GAAY,UAACC,MAAD,EAAY;AACtB,UAAI,0BAASA,MAAT,CAAJ,EAAqB;AACnB;AACD;;AACD,YAAKC,KAAL,CAAWC,UAAX,CAAsBF,MAAtB;AACD,K;;;;;;;SAEDG,M,GAAA,kBAAS;AACP,WAAO,cACL,qBAAC,kBAAD,MAAY,QAAZ,CADK,eAEL,qBAAC,kCAAD;AAEG,MAAA,SAAS,EAAE,KAAKJ,SAFnB;AAAA,6BAIE,qBAAC,gBAAD;AAAA,+BACE,qBAAC,qBAAD;AADF;AAJF,OACO,KADP,CAFK,CAAP;AAWD,G;;;EApBsBK,gB;;AAuBzB,IAAMC,kBAAkB,GAAG;AACzBH,EAAAA,UAAU,EAAVA;AADyB,CAA3B;;eAIe,yBACb,IADa,EAEbG,kBAFa,EAGbP,UAHa,C","sourcesContent":["import { Component } from 'react'\r\n\r\nimport { connect } from 'react-redux'\r\nimport { DragDropContext } from 'react-beautiful-dnd'\r\n\r\nimport { moveColumn } from '../../flux/column/actions'\r\n\r\nimport isNotDnD from '../zhn-dnd/isNotDnD'\r\n\r\nimport Header from './Header'\r\nimport Main from '../zhn-ch/Main'\r\nimport BoardList from './BoardList'\r\n\r\nclass PageBoards extends Component {\r\n  _hDragEnd = (result) => {\r\n    if (isNotDnD(result)){\r\n      return;\r\n    }\r\n    this.props.moveColumn(result)\r\n  }\r\n\r\n  render() {\r\n    return [\r\n      <Header key=\"header\" />,\r\n      <DragDropContext\r\n         key=\"ddc\"\r\n         onDragEnd={this._hDragEnd}\r\n      >\r\n        <Main>\r\n          <BoardList />\r\n        </Main>\r\n      </DragDropContext>\r\n    ];\r\n  }\r\n}\r\n\r\nconst mapDispatchToProps = {\r\n  moveColumn\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(PageBoards)\r\n"],"file":"PageBoards.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/PageBoards.js"
+ ],
+ "file": "../../../src/component/page-boards/PageBoards.js",
+ "names": [
+  "PageBoards",
+  "moveColumn",
+  "_hDragEnd",
+  "result",
+  "mapDispatchToProps"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,OAAqB;AAAA,MAAlBC,UAAkB,QAAlBA,UAAkB;;AACtC,MAAMC,SAAS,GAAG,wBAAY,UAAAC,MAAM,EAAI;AACtC,QAAI,0BAASA,MAAT,CAAJ,EAAqB;AACnB;AACD;;AACDF,IAAAA,UAAU,CAACE,MAAD,CAAV;AACD,GALiB,EAKf,CAACF,UAAD,CALe,CAAlB;;AAOA,SAAO,cACL,qBAAC,kBAAD,MAAY,QAAZ,CADK,eAEL,qBAAC,kCAAD;AAEG,IAAA,SAAS,EAAEC,SAFd;AAAA,2BAIE,qBAAC,gBAAD;AAAA,6BACE,qBAAC,qBAAD;AADF;AAJF,KACO,KADP,CAFK,CAAP;AAWD,CAnBD;;AAqBA,IAAME,kBAAkB,GAAG;AACzBH,EAAAA,UAAU,EAAVA;AADyB,CAA3B;;eAIe,yBACb,IADa,EAEbG,kBAFa,EAGbJ,UAHa,C"
+}

@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useCallback } from 'react'
 
 import { connect } from 'react-redux'
 import { DragDropContext } from 'react-beautiful-dnd'
@@ -11,27 +11,25 @@ import Header from './Header'
 import Main from '../zhn-ch/Main'
 import BoardList from './BoardList'
 
-class PageBoards extends Component {
-  _hDragEnd = (result) => {
+const PageBoards = ({ moveColumn }) =>  {
+  const _hDragEnd = useCallback(result => {
     if (isNotDnD(result)){
       return;
     }
-    this.props.moveColumn(result)
-  }
+    moveColumn(result)
+  }, [moveColumn]);
 
-  render() {
-    return [
-      <Header key="header" />,
-      <DragDropContext
-         key="ddc"
-         onDragEnd={this._hDragEnd}
-      >
-        <Main>
-          <BoardList />
-        </Main>
-      </DragDropContext>
-    ];
-  }
+  return [
+    <Header key="header" />,
+    <DragDropContext
+       key="ddc"
+       onDragEnd={_hDragEnd}
+    >
+      <Main>
+        <BoardList />
+      </Main>
+    </DragDropContext>
+  ];
 }
 
 const mapDispatchToProps = {

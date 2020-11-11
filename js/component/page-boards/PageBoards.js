@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = require("react");
@@ -25,42 +23,24 @@ var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
 var _BoardList = _interopRequireDefault(require("./BoardList"));
 
-var PageBoards = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(PageBoards, _Component);
+var PageBoards = function PageBoards(_ref) {
+  var moveColumn = _ref.moveColumn;
 
-  function PageBoards() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+  var _hDragEnd = (0, _react.useCallback)(function (result) {
+    if ((0, _isNotDnD["default"])(result)) {
+      return;
     }
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    moveColumn(result);
+  }, [moveColumn]);
 
-    _this._hDragEnd = function (result) {
-      if ((0, _isNotDnD["default"])(result)) {
-        return;
-      }
-
-      _this.props.moveColumn(result);
-    };
-
-    return _this;
-  }
-
-  var _proto = PageBoards.prototype;
-
-  _proto.render = function render() {
-    return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {}, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
-      onDragEnd: this._hDragEnd,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardList["default"], {})
-      })
-    }, "ddc")];
-  };
-
-  return PageBoards;
-}(_react.Component);
+  return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {}, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
+    onDragEnd: _hDragEnd,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardList["default"], {})
+    })
+  }, "ddc")];
+};
 
 var mapDispatchToProps = {
   moveColumn: _actions.moveColumn
