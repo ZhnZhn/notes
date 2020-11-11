@@ -9,16 +9,15 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
 
-var Header = function Header(props) {
-  var className = props.className,
-      style = props.style,
-      theme = props.theme,
-      children = props.children,
-      TS = theme.createStyle(_Comp["default"]);
+var Header = function Header(_ref) {
+  var className = _ref.className,
+      style = _ref.style,
+      children = _ref.children;
+  var TS = (0, _useTheme["default"])(_Comp["default"]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
     className: className,
     style: (0, _extends2["default"])({}, style, TS.COMP),
@@ -26,7 +25,6 @@ var Header = function Header(props) {
   });
 };
 
-var _default = (0, _withTheme["default"])(Header);
-
+var _default = Header;
 exports["default"] = _default;
 //# sourceMappingURL=Header.js.map

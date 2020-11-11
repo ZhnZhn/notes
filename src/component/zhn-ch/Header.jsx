@@ -1,14 +1,12 @@
-import withTheme from '../hoc/withTheme'
+import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Comp.Style'
 
-const Header = (props) => {
-  const {
-    className,
-    style,
-    theme,
-    children
-  } = props
-  , TS = theme.createStyle(styleConfig);
+const Header = ({
+  className,
+  style,
+  children
+}) => {
+  const TS = useTheme(styleConfig);
   return (
     <header
        className={className}
@@ -19,4 +17,4 @@ const Header = (props) => {
   );
 }
 
-export default withTheme(Header)
+export default Header
