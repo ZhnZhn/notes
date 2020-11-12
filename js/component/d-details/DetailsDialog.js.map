@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../../src/component/d-details/DetailsDialog.jsx"],"names":["CL","DIALOG","S","CAPTION","marginBottom","_crCaption","note","title","_title","substring","_sufix","length","DetailsDialog","shouldComponentUpdate","nextProps","nextState","props","isShow","render","theme","data","dispatch","onClose","_caption","TS","createStyle","styleConfig","id","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,EAAE,GAAG;AACTC,EAAAA,MAAM,EAAE;AADC,CAAX;AAIA,IAAMC,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAE;AACPC,IAAAA,YAAY,EAAE;AADP;AADD,CAAV;;AAMA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CAACC,IAAD,EAAU;AAAA,oBACNA,IADM,CACnBC,KADmB;AAAA,MACnBA,KADmB,4BACb,EADa;AAAA,MAEzBC,MAFyB,GAEhBD,KAAK,CAACE,SAAN,CAAgB,CAAhB,EAAmB,EAAnB,CAFgB;AAAA,MAGzBC,MAHyB,GAGhBH,KAAK,CAACI,MAAN,GAAeH,MAAM,CAACG,MAAtB,GACN,KADM,GAEN,EALsB;;AAM3B,uBAAmBH,MAAnB,GAA4BE,MAA5B;AACD,CAPD;;IASME,a;;;;;;;;;SAEJC,qB,GAAA,+BAAsBC,SAAtB,EAAiCC,SAAjC,EAA2C;AACzC,QAAID,SAAS,KAAK,KAAKE,KAAnB,IACCF,SAAS,CAACG,MAAV,KAAqB,KAAKD,KAAL,CAAWC,MADrC,EAC6C;AAC3C,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,G;;SAGDC,M,GAAA,kBAAQ;AAAA,sBAOF,KAAKF,KAPH;AAAA,QAEJC,MAFI,eAEJA,MAFI;AAAA,QAGJE,KAHI,eAGJA,KAHI;AAAA,QAIJC,IAJI,eAIJA,IAJI;AAAA,QAKJC,QALI,eAKJA,QALI;AAAA,QAMJC,OANI,eAMJA,OANI;AAAA,QAQJC,QARI,GAQOlB,UAAU,CAACe,IAAD,CARjB;AAAA,QASJI,EATI,GASCL,KAAK,CAACM,WAAN,CAAkBC,kBAAlB,CATD;;AAWN,wBACE,qBAAC,uBAAD;AACE,MAAA,SAAS,EAAE1B,EAAE,CAACC,MADhB;AAEE,MAAA,KAAK,EAAEuB,EAAE,CAACvB,MAFZ;AAGE,MAAA,YAAY,EAAEC,CAAC,CAACC,OAHlB;AAIE,MAAA,OAAO,EAAEoB,QAJX;AAKE,MAAA,MAAM,EAAEN,MALV;AAME,MAAA,YAAY,EAAE,IANhB;AAOE,MAAA,OAAO,EAAEK,OAPX;AAAA,6BASE,sBAAC,mBAAD;AAAS,QAAA,KAAK,EAAC,MAAf;AAAA,gCACE,qBAAC,eAAD;AAAK,UAAA,KAAK,EAAC,OAAX;AAAA,iCACE,qBAAC,oBAAD;AACE,YAAA,IAAI,EAAEF,IADR;AAEE,YAAA,QAAQ,EAAEC,QAFZ;AAGE,YAAA,OAAO,EAAEC;AAHX;AADF,UADF,eAQE,qBAAC,eAAD;AAAK,UAAA,KAAK,EAAC,QAAX;AAAA,iCACE,qBAAC,qBAAD;AACE,YAAA,IAAI,EAAEF,IADR;AAEE,YAAA,QAAQ,EAAEC,QAFZ;AAGE,YAAA,OAAO,EAAEC;AAHX;AADF,UARF;AAAA,SAA2BF,IAAI,CAACO,EAAhC;AATF,MADF;AA4BD,G;;;EAlDyBC,gB;;eAqDb,2BAAUhB,aAAV,C","sourcesContent":["import { Component } from 'react'\r\n\r\nimport withTheme from '../hoc/withTheme'\r\nimport styleConfig from '../style/Dialog.Style'\r\n\r\nimport ModalDialog from '../zhn-ch/ModalDialog'\r\nimport TabPane from '../zhn-tab/TabPane'\r\nimport Tab from '../zhn-tab/Tab'\r\n\r\nimport TabDescr from './TabDescr'\r\nimport TabLabels from './TabLabels'\r\n\r\nconst CL = {\r\n  DIALOG: 'md-details'\r\n};\r\n\r\nconst S = {\r\n  CAPTION: {\r\n    marginBottom: 0\r\n  }\r\n};\r\n\r\nconst _crCaption = (note) => {\r\n  const { title='' } = note\r\n  , _title = title.substring(0, 12)\r\n  , _sufix = title.length > _title.length\r\n     ? '...'\r\n     : '';\r\n  return `Details: ${_title}${_sufix}`;\r\n};\r\n\r\nclass DetailsDialog extends Component {\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (nextProps !== this.props\r\n      && nextProps.isShow === this.props.isShow) {\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n\r\n  render(){\r\n    const {\r\n      isShow,\r\n      theme,\r\n      data,\r\n      dispatch,\r\n      onClose\r\n    } = this.props\r\n    , _caption = _crCaption(data)\r\n    , TS = theme.createStyle(styleConfig);\r\n\r\n    return (\r\n      <ModalDialog\r\n        className={CL.DIALOG}\r\n        style={TS.DIALOG}\r\n        captionStyle={S.CAPTION}\r\n        caption={_caption}\r\n        isShow={isShow}\r\n        withoutClose={true}\r\n        onClose={onClose}\r\n      >\r\n        <TabPane width=\"100%\" key={data.id}>\r\n          <Tab title=\"Descr\">\r\n            <TabDescr\r\n              note={data}\r\n              dispatch={dispatch}\r\n              onClose={onClose}\r\n            />\r\n          </Tab>\r\n          <Tab title=\"Labels\">\r\n            <TabLabels\r\n              note={data}\r\n              dispatch={dispatch}\r\n              onClose={onClose}\r\n            />\r\n          </Tab>\r\n       </TabPane>\r\n      </ModalDialog>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme(DetailsDialog)\r\n"],"file":"DetailsDialog.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/DetailsDialog.js"
+ ],
+ "file": "../../../src/component/d-details/DetailsDialog.js",
+ "names": [
+  "CL",
+  "DIALOG",
+  "S",
+  "CAPTION",
+  "marginBottom",
+  "_crCaption",
+  "note",
+  "title",
+  "_title",
+  "substring",
+  "_sufix",
+  "length",
+  "DetailsDialog",
+  "isShow",
+  "data",
+  "dispatch",
+  "onClose",
+  "TS",
+  "styleConfig",
+  "_caption",
+  "id",
+  "_areEqualProps",
+  "prevProps",
+  "nextProps"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,EAAE,GAAG;AACTC,EAAAA,MAAM,EAAE;AADC,CAAX;AAIA,IAAMC,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAE;AACPC,IAAAA,YAAY,EAAE;AADP;AADD,CAAV;;AAMA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CAACC,IAAD,EAAU;AAAA,oBACNA,IADM,CACnBC,KADmB;AAAA,MACnBA,KADmB,4BACb,EADa;AAAA,MAEzBC,MAFyB,GAEhBD,KAAK,CAACE,SAAN,CAAgB,CAAhB,EAAmB,EAAnB,CAFgB;AAAA,MAGzBC,MAHyB,GAGhBH,KAAK,CAACI,MAAN,GAAeH,MAAM,CAACG,MAAtB,GACN,KADM,GAEN,EALsB;;AAM3B,uBAAmBH,MAAnB,GAA4BE,MAA5B;AACD,CAPD;;AASA,IAAME,aAAa,GAAG,SAAhBA,aAAgB,OAKhB;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,IAGI,QAHJA,IAGI;AAAA,MAFJC,QAEI,QAFJA,QAEI;AAAA,MADJC,OACI,QADJA,OACI;;AACJ,MAAMC,EAAE,GAAG,0BAASC,kBAAT,CAAX;AAAA,MACEC,QAAQ,GAAGd,UAAU,CAACS,IAAD,CADvB;;AAGA,sBACI,qBAAC,uBAAD;AACE,IAAA,SAAS,EAAEd,EAAE,CAACC,MADhB;AAEE,IAAA,KAAK,EAAEgB,EAAE,CAAChB,MAFZ;AAGE,IAAA,YAAY,EAAEC,CAAC,CAACC,OAHlB;AAIE,IAAA,OAAO,EAAEgB,QAJX;AAKE,IAAA,MAAM,EAAEN,MALV;AAME,IAAA,YAAY,EAAE,IANhB;AAOE,IAAA,OAAO,EAAEG,OAPX;AAAA,2BASE,sBAAC,mBAAD;AAAS,MAAA,KAAK,EAAC,MAAf;AAAA,8BACE,qBAAC,eAAD;AAAK,QAAA,KAAK,EAAC,OAAX;AAAA,+BACE,qBAAC,oBAAD;AACE,UAAA,IAAI,EAAEF,IADR;AAEE,UAAA,QAAQ,EAAEC,QAFZ;AAGE,UAAA,OAAO,EAAEC;AAHX;AADF,QADF,eAQE,qBAAC,eAAD;AAAK,QAAA,KAAK,EAAC,QAAX;AAAA,+BACE,qBAAC,qBAAD;AACE,UAAA,IAAI,EAAEF,IADR;AAEE,UAAA,QAAQ,EAAEC,QAFZ;AAGE,UAAA,OAAO,EAAEC;AAHX;AADF,QARF;AAAA,OAA2BF,IAAI,CAACM,EAAhC;AATF,IADJ;AA4BD,CArCD;;AAuCA,IAAMC,cAAc,GAAG,SAAjBA,cAAiB,CAACC,SAAD,EAAYC,SAAZ;AAAA,SACrBD,SAAS,CAACT,MAAV,KAAqBU,SAAS,CAACV,MADV;AAAA,CAAvB;;4BAIe,iBAAKD,aAAL,EAAoBS,cAApB,C"
+}

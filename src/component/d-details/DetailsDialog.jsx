@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { memo } from 'react'
 
-import withTheme from '../hoc/withTheme'
+import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Dialog.Style'
 
 import ModalDialog from '../zhn-ch/ModalDialog'
@@ -29,29 +29,16 @@ const _crCaption = (note) => {
   return `Details: ${_title}${_sufix}`;
 };
 
-class DetailsDialog extends Component {
+const DetailsDialog = ({
+  isShow,
+  data,
+  dispatch,
+  onClose
+}) => {
+  const TS = useTheme(styleConfig)
+  , _caption = _crCaption(data);
 
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props
-      && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-
-  render(){
-    const {
-      isShow,
-      theme,
-      data,
-      dispatch,
-      onClose
-    } = this.props
-    , _caption = _crCaption(data)
-    , TS = theme.createStyle(styleConfig);
-
-    return (
+  return (
       <ModalDialog
         className={CL.DIALOG}
         style={TS.DIALOG}
@@ -79,7 +66,10 @@ class DetailsDialog extends Component {
        </TabPane>
       </ModalDialog>
     );
-  }
 }
 
-export default withTheme(DetailsDialog)
+const _areEqualProps = (prevProps, nextProps) =>
+  prevProps.isShow === nextProps.isShow;
+
+
+export default memo(DetailsDialog, _areEqualProps)

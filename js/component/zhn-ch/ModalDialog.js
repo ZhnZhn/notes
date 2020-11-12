@@ -57,7 +57,7 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
   function ModalDialog(props) {
     var _this;
 
-    _this = _Component.call(this) || this;
+    _this = _Component.call(this, props) || this;
 
     _this._hClickDialog = function (event) {
       event.stopPropagation();
@@ -116,7 +116,8 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
         timeout = _this$props2.timeout,
         isShow = _this$props2.isShow;
 
-    if (this.wasClosing) {
+    if (prevProps.isShow && !isShow) {
+      this.wasClosing = true;
       setTimeout(function () {
         _this2.setState({});
       }, timeout);
@@ -146,10 +147,6 @@ var ModalDialog = /*#__PURE__*/function (_Component) {
     } else {
       _className = isShow ? CL.DIALOG + " " + className + " " + CL.SHOWING : CL.DIALOG + " " + className + " " + CL.HIDING;
       _style = isShow ? S.SHOW : S.HIDE_POPUP;
-
-      if (!isShow) {
-        this.wasClosing = true;
-      }
     }
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {

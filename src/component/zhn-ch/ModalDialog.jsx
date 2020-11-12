@@ -48,7 +48,7 @@ class ModalDialog extends Component {
    }
 
    constructor(props){
-     super()
+     super(props)
      this.wasClosing = false
    }
 
@@ -73,7 +73,8 @@ class ModalDialog extends Component {
 
    componentDidUpdate(prevProps, prevState){
     const { timeout, isShow } = this.props
-     if (this.wasClosing){
+    if (prevProps.isShow && !isShow){
+       this.wasClosing = true
        setTimeout(
          () => { this.setState({}) },
          timeout
@@ -134,9 +135,6 @@ class ModalDialog extends Component {
       _style = isShow
           ? S.SHOW
           : S.HIDE_POPUP
-      if (!isShow){
-        this.wasClosing = true
-      }
     }
 
     return (
