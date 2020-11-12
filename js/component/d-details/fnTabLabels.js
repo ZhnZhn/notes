@@ -10,34 +10,24 @@ var fnTabLabels = {
 
     var _str = str.trim();
 
-    if (_str && _str.length > 1) {
-      return _str[0].toUpperCase() + _str.substring(1).trim();
-    }
-
-    return _str;
+    return _str && _str.length > 0 ? _str[0].toUpperCase() + _str.slice(1) : _str;
   },
-  addLabel: function addLabel(prevState, title, color) {
-    var labels = prevState.labels;
-
+  addLabel: function addLabel(labels, title, color) {
     if (!title || labels.find(function (item) {
       return item.title === title;
     })) {
-      return null;
+      return labels;
     }
 
-    return {
-      labels: [].concat(labels, [{
-        title: title,
-        color: color
-      }])
-    };
+    return labels.concat({
+      title: title,
+      color: color
+    });
   },
-  removeLabel: function removeLabel(prevState, label) {
-    return {
-      labels: prevState.labels.filter(function (item) {
-        return item.title !== label.title;
-      })
-    };
+  removeLabel: function removeLabel(labels, label) {
+    return labels.filter(function (item) {
+      return item.title !== label.title;
+    });
   }
 };
 var _default = fnTabLabels;

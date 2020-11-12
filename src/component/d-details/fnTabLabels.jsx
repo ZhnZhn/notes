@@ -4,31 +4,23 @@ const fnTabLabels = {
     if (typeof str !== 'string') {
       return '';
     }
-    const _str = str.trim()
-    if (_str && _str.length>1) {
-      return _str[0].toUpperCase()+_str.substring(1).trim();
-    }
-    return _str;
+    const _str = str.trim();
+    return (_str && _str.length>0)
+      ? _str[0].toUpperCase()+_str.slice(1)
+      : _str
   },
 
-  addLabel: (prevState, title, color) => {
-    const { labels } = prevState;
+  addLabel: (labels, title, color) => {
     if (!title
      || labels.find(item => item.title === title)) {
-      return null;
+      return labels;
     }
-    return {
-      labels: [ ...labels, {
-        title,
-        color
-      }]
-    };
+    return labels.concat({ title, color });
   },
 
-  removeLabel: (prevState, label) => ({
-    labels: prevState.labels
-      .filter(item => item.title !== label.title)
-  })
+  removeLabel: (labels, label) => labels
+    .filter(item => item.title !== label.title)
+
 };
 
 export default fnTabLabels

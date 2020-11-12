@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/component/d-details/fnTabLabels.jsx"],"names":["fnTabLabels","toTitle","str","_str","trim","length","toUpperCase","substring","addLabel","prevState","title","color","labels","find","item","removeLabel","label","filter"],"mappings":";;;;AACA,IAAMA,WAAW,GAAG;AAClBC,EAAAA,OAAO,EAAE,iBAACC,GAAD,EAAS;AAChB,QAAI,OAAOA,GAAP,KAAe,QAAnB,EAA6B;AAC3B,aAAO,EAAP;AACD;;AACD,QAAMC,IAAI,GAAGD,GAAG,CAACE,IAAJ,EAAb;;AACA,QAAID,IAAI,IAAIA,IAAI,CAACE,MAAL,GAAY,CAAxB,EAA2B;AACzB,aAAOF,IAAI,CAAC,CAAD,CAAJ,CAAQG,WAAR,KAAsBH,IAAI,CAACI,SAAL,CAAe,CAAf,EAAkBH,IAAlB,EAA7B;AACD;;AACD,WAAOD,IAAP;AACD,GAViB;AAYlBK,EAAAA,QAAQ,EAAE,kBAACC,SAAD,EAAYC,KAAZ,EAAmBC,KAAnB,EAA6B;AAAA,QAC7BC,MAD6B,GAClBH,SADkB,CAC7BG,MAD6B;;AAErC,QAAI,CAACF,KAAD,IACAE,MAAM,CAACC,IAAP,CAAY,UAAAC,IAAI;AAAA,aAAIA,IAAI,CAACJ,KAAL,KAAeA,KAAnB;AAAA,KAAhB,CADJ,EAC+C;AAC7C,aAAO,IAAP;AACD;;AACD,WAAO;AACLE,MAAAA,MAAM,YAAOA,MAAP,GAAe;AACnBF,QAAAA,KAAK,EAALA,KADmB;AAEnBC,QAAAA,KAAK,EAALA;AAFmB,OAAf;AADD,KAAP;AAMD,GAxBiB;AA0BlBI,EAAAA,WAAW,EAAE,qBAACN,SAAD,EAAYO,KAAZ;AAAA,WAAuB;AAClCJ,MAAAA,MAAM,EAAEH,SAAS,CAACG,MAAV,CACLK,MADK,CACE,UAAAH,IAAI;AAAA,eAAIA,IAAI,CAACJ,KAAL,KAAeM,KAAK,CAACN,KAAzB;AAAA,OADN;AAD0B,KAAvB;AAAA;AA1BK,CAApB;eAgCeV,W","sourcesContent":["\r\nconst fnTabLabels = {\r\n  toTitle: (str) => {\r\n    if (typeof str !== 'string') {\r\n      return '';\r\n    }\r\n    const _str = str.trim()\r\n    if (_str && _str.length>1) {\r\n      return _str[0].toUpperCase()+_str.substring(1).trim();\r\n    }\r\n    return _str;\r\n  },\r\n\r\n  addLabel: (prevState, title, color) => {\r\n    const { labels } = prevState;\r\n    if (!title\r\n     || labels.find(item => item.title === title)) {\r\n      return null;\r\n    }\r\n    return {\r\n      labels: [ ...labels, {\r\n        title,\r\n        color\r\n      }]\r\n    };\r\n  },\r\n\r\n  removeLabel: (prevState, label) => ({\r\n    labels: prevState.labels\r\n      .filter(item => item.title !== label.title)\r\n  })\r\n};\r\n\r\nexport default fnTabLabels\r\n"],"file":"fnTabLabels.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/fnTabLabels.js"
+ ],
+ "file": "../../../src/component/d-details/fnTabLabels.js",
+ "names": [
+  "fnTabLabels",
+  "toTitle",
+  "str",
+  "_str",
+  "trim",
+  "length",
+  "toUpperCase",
+  "slice",
+  "addLabel",
+  "labels",
+  "title",
+  "color",
+  "find",
+  "item",
+  "concat",
+  "removeLabel",
+  "label",
+  "filter"
+ ],
+ "mappings": ";;;;AACA,IAAMA,WAAW,GAAG;AAClBC,EAAAA,OAAO,EAAE,iBAACC,GAAD,EAAS;AAChB,QAAI,OAAOA,GAAP,KAAe,QAAnB,EAA6B;AAC3B,aAAO,EAAP;AACD;;AACD,QAAMC,IAAI,GAAGD,GAAG,CAACE,IAAJ,EAAb;;AACA,WAAQD,IAAI,IAAIA,IAAI,CAACE,MAAL,GAAY,CAArB,GACHF,IAAI,CAAC,CAAD,CAAJ,CAAQG,WAAR,KAAsBH,IAAI,CAACI,KAAL,CAAW,CAAX,CADnB,GAEHJ,IAFJ;AAGD,GATiB;AAWlBK,EAAAA,QAAQ,EAAE,kBAACC,MAAD,EAASC,KAAT,EAAgBC,KAAhB,EAA0B;AAClC,QAAI,CAACD,KAAD,IACAD,MAAM,CAACG,IAAP,CAAY,UAAAC,IAAI;AAAA,aAAIA,IAAI,CAACH,KAAL,KAAeA,KAAnB;AAAA,KAAhB,CADJ,EAC+C;AAC7C,aAAOD,MAAP;AACD;;AACD,WAAOA,MAAM,CAACK,MAAP,CAAc;AAAEJ,MAAAA,KAAK,EAALA,KAAF;AAASC,MAAAA,KAAK,EAALA;AAAT,KAAd,CAAP;AACD,GAjBiB;AAmBlBI,EAAAA,WAAW,EAAE,qBAACN,MAAD,EAASO,KAAT;AAAA,WAAmBP,MAAM,CACnCQ,MAD6B,CACtB,UAAAJ,IAAI;AAAA,aAAIA,IAAI,CAACH,KAAL,KAAeM,KAAK,CAACN,KAAzB;AAAA,KADkB,CAAnB;AAAA;AAnBK,CAApB;eAwBeV,W"
+}

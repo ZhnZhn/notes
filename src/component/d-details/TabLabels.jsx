@@ -1,4 +1,4 @@
-import { createRef, Component } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 
 import na from '../../flux/note/actions'
 
@@ -29,72 +29,60 @@ const S = {
   }
 };
 
+const _getCurrent = ref => ref.current;
 
-class TabLabels extends Component {
+const TabLabels = (props) => {
+  const {
+    isSelected,
+    note,
+    dispatch,
+    onClose
+  } = props
+  , { id } = note
+  , [ labels, setLabels] = useState(() => note.labels || [])
+  , _refBtClose = useRef(null)
+  , _refLabel = useRef('')
+  , _refInputLabel = useRef(null)
+  , _refInputColor = useRef(null)
+  , _onBlurLabel = useCallback(evt => {
+     _refLabel.current = evt.target.value
+  }, [])
+  , _onAddLabel = useCallback(() => {
+    setLabels(prevState => addLabel(
+      prevState,
+      toTitle(_getCurrent(_refLabel)),
+      _refInputColor.current.getColor()
+    ), _refInputLabel.current.setValue(''))
+  }, [])
+  , _onRemoveLabel = useCallback(label => {
+     setLabels(prevState => removeLabel(
+       prevState,
+       label
+     ))
+  }, [])
+  , _saveLabels = useCallback(() => {
+    dispatch(na.editNoteLabels(id, labels))
+  }, [id, labels]);
+  //dispatch
 
-  constructor(props) {
-    super(props)
-    this._refBtClose = createRef()
-    this.state = {
-      labels: props.note.labels || []
-    }
-  }
-
-  _focusBtClose = () => {
-    const _btClose = this._refBtClose.current;
-    if (this.props.isSelected && _btClose) {
+  useEffect(() => {
+    const _btClose = _refBtClose.current;
+    if (isSelected && _btClose) {
        _btClose.focus()
     }
-  }
+  }, [props])
+  //isSelected
 
-  componentDidMount(){
-    this._focusBtClose()
-  }
-
-  _onBlurLabel = (evt) => {
-    this._label = evt.target.value
-  }
-  _onAddLabel = () => {
-    this.setState(prevState => addLabel(
-      prevState,
-      toTitle(this._label),
-      this._inputColor.getColor()
-    ), () => this._inputLabel.setValue(''))
-  }
-  _onRemoveLabel = (label) => {
-    this.setState(prevState => removeLabel(
-      prevState,
-      label
-    ))
-  }
-  _saveLabels = () => {
-    const { note, dispatch } = this.props;
-    dispatch(na.editNoteLabels(
-      note.id, this.state.labels
-    ))
-  }
-
-  _refInputLabel = (node) => this._inputLabel = node
-  _refInputColor = (node) => this._inputColor = node
-  //_refButtons = (node) => this._buttons = node
-
-  render(){
-    const {
-      //note,
-      onClose
-    } = this.props
-    , { labels } = this.state;
-
-    return (
+  return (
       <>
         <div style={S.LABELS}>
           <LabelList
             labels={labels}
-            onRemove={this._onRemoveLabel}
+            onRemove={_onRemoveLabel}
           />
           <InputText
-            ref={this._refInputLabel}
-            onBlur={this._onBlurLabel}
+            ref={_refInputLabel}
+            onBlur={_onBlurLabel}
           />
           <FlatButton
             clCaption={CL.CARD_BT}
@@ -102,29 +90,21 @@ class TabLabels extends Component {
             caption="AddLabel"
             title="Click to add a new label"
             timeout={400}
-            onClick={this._onAddLabel}
+            onClick={_onAddLabel}
           />
         </div>
         <PaneColors
-          ref={this._refInputColor}
+          ref={_refInputColor}
         />
         <DialogButtons
-          refBtClose={this._refBtClose}
-          //ref={this._refButtons}
+          refBtClose={_refBtClose}
           className={CL.MD_ACTIONS}
-          onSave={this._saveLabels}
+          onSave={_saveLabels}
           onClose={onClose}
         />
       </>
-    );
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props !== prevProps
-    && this.props.isSelected) {
-      this._focusBtClose()
-    }
-  }
+  );
 }
+
 
 export default TabLabels
