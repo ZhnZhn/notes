@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../../src/component/dialogs/SettingsDialog.jsx"],"names":["CL","DF_THEME","caption","value","_themeOptions","_crInitItem","uiTheme","item","find","SettingsDialog","props","_selectTheme","theme","dispatch","getThemeName","forceUpdate","sApp","store","getState","state","initItem","shouldComponentUpdate","nextProps","nextState","isShow","render","onClose","TS","createStyle","styleConfig","DIALOG","SELECT","Component"],"mappings":";;;;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,EAAE,GAAG,aAAX;AAEA,IAAMC,QAAQ,GAAG;AAAEC,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAAjB;AACA,IAAMC,aAAa,GAAG,CACpB;AAAEF,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CADoB,EAEpB;AAAED,EAAAA,OAAO,EAAE,OAAX;AAAoBC,EAAAA,KAAK,EAAE;AAA3B,CAFoB,EAGpB;AAAED,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAHoB,CAAtB;;AAMA,IAAME,WAAW,GAAG,SAAdA,WAAc,CAACC,OAAD,EAAa;AAC/B,MAAI,CAACA,OAAL,EAAc;AACZ,WAAOL,QAAP;AACD;;AACD,MAAMM,IAAI,GAAGH,aAAa,CACvBI,IADU,CACL,UAAAD,IAAI;AAAA,WAAIA,IAAI,CAACJ,KAAL,KAAeG,OAAnB;AAAA,GADC,CAAb;;AAEA,MAAI,CAACC,IAAL,EAAW;AACT,WAAON,QAAP;AACD;;AACD,uCAAYM,IAAZ;AACD,CAVD;;IAYME,c;;;AAEJ,0BAAYC,KAAZ,EAAkB;AAAA;;AAChB;;AADgB,UAgBlBC,YAhBkB,GAgBH,UAACJ,IAAD,EAAU;AAAA,wBACK,MAAKG,KADV;AAAA,UACfE,KADe,eACfA,KADe;AAAA,UACRC,QADQ,eACRA,QADQ;;AAEvB,UAAIN,IAAI,CAACJ,KAAL,KAAeS,KAAK,CAACE,YAAN,EAAnB,EAAyC;AACvCD,QAAAA,QAAQ,CAAC,yBAAWN,IAAI,CAACJ,KAAhB,CAAD,CAAR;;AACA,cAAKY,WAAL;AACD;AACF,KAtBiB;;AAEhB,QAAMT,OAAO,GAAGU,gBAAKV,OAAL,CAAaI,KAAK,CAACO,KAAN,CAAYC,QAAZ,EAAb,CAAhB;;AACA,UAAKC,KAAL,GAAa;AACXC,MAAAA,QAAQ,EAAEf,WAAW,CAACC,OAAD;AADV,KAAb;AAHgB;AAMjB;;;;SAEDe,qB,GAAA,+BAAsBC,SAAtB,EAAiCC,SAAjC,EAA2C;AACzC,QAAID,SAAS,KAAK,KAAKZ,KAAnB,IACCY,SAAS,CAACE,MAAV,KAAqB,KAAKd,KAAL,CAAWc,MADrC,EAC6C;AAC3C,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,G;;SAUDC,M,GAAA,kBAAQ;AAAA,uBAKF,KAAKf,KALH;AAAA,QAEJc,MAFI,gBAEJA,MAFI;AAAA,QAGJZ,KAHI,gBAGJA,KAHI;AAAA,QAIJc,OAJI,gBAIJA,OAJI;AAAA,QAOJN,QAPI,GAQF,KAAKD,KARH,CAOJC,QAPI;AAAA,QASJO,EATI,GASCf,KAAK,CAACgB,WAAN,CAAkBC,kBAAlB,CATD;AAWN,wBACE,qBAAC,uBAAD;AACE,MAAA,SAAS,EAAE7B,EADb;AAEE,MAAA,KAAK,EAAE2B,EAAE,CAACG,MAFZ;AAGE,MAAA,OAAO,EAAC,eAHV;AAIE,MAAA,MAAM,EAAEN,MAJV;AAKE,MAAA,OAAO,EAAEE,OALX;AAAA,6BAOE;AAAA,+BACE,qBAAC,uBAAD;AACE,UAAA,WAAW,EAAEC,EAAE,CAACI,MADlB;AAEE,UAAA,OAAO,EAAC,0BAFV;AAGE,UAAA,QAAQ,EAAEX,QAHZ;AAIE,UAAA,OAAO,EAAEhB,aAJX;AAKE,UAAA,QAAQ,EAAE,KAAKO;AALjB;AADF;AAPF,MADF;AAmBD,G;;;EAxD0BqB,gB;;eA2Dd,2BAAUvB,cAAV,C","sourcesContent":["import { Component } from 'react'\r\n\r\nimport withTheme from '../hoc/withTheme'\r\nimport styleConfig from '../style/Dialog.Style'\r\nimport { setUiTheme } from '../../flux/app/actions'\r\nimport { sApp } from '../../flux/selectors'\r\n\r\nimport ModalDialog from '../zhn-ch/ModalDialog'\r\nimport InputSelect from '../zhn-m-input/InputSelect'\r\n\r\nconst CL = 'md-settings';\r\n\r\nconst DF_THEME = { caption: \"Dark\", value: \"DARK\" };\r\nconst _themeOptions = [\r\n  { caption: \"Dark\", value: \"DARK\" },\r\n  { caption: \"Light\", value: \"WHITE\" },\r\n  { caption: \"Sand\", value: \"SAND\" }\r\n];\r\n\r\nconst _crInitItem = (uiTheme) => {\r\n  if (!uiTheme) {\r\n    return DF_THEME;\r\n  }\r\n  const item = _themeOptions\r\n    .find(item => item.value === uiTheme);\r\n  if (!item) {\r\n    return DF_THEME;\r\n  }\r\n  return { ...item };\r\n}\r\n\r\nclass SettingsDialog extends Component {\r\n\r\n  constructor(props){\r\n    super()\r\n    const uiTheme = sApp.uiTheme(props.store.getState())\r\n    this.state = {\r\n      initItem: _crInitItem(uiTheme)\r\n    }\r\n  }\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (nextProps !== this.props\r\n      && nextProps.isShow === this.props.isShow) {\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n  _selectTheme = (item) => {\r\n    const { theme, dispatch } = this.props;\r\n    if (item.value !== theme.getThemeName()) {\r\n      dispatch(setUiTheme(item.value))\r\n      this.forceUpdate()\r\n    }\r\n  }\r\n\r\n  render(){\r\n    const {\r\n      isShow,\r\n      theme,\r\n      onClose\r\n    } = this.props\r\n    , {\r\n      initItem\r\n    } = this.state\r\n    , TS = theme.createStyle(styleConfig);\r\n\r\n    return (\r\n      <ModalDialog\r\n        className={CL}\r\n        style={TS.DIALOG}\r\n        caption=\"User Settings\"\r\n        isShow={isShow}\r\n        onClose={onClose}\r\n      >\r\n        <div>\r\n          <InputSelect\r\n            styleConfig={TS.SELECT}\r\n            caption=\"UI Theme (Default: Dark)\"\r\n            initItem={initItem}\r\n            options={_themeOptions}\r\n            onSelect={this._selectTheme}\r\n          />\r\n        </div>\r\n      </ModalDialog>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme(SettingsDialog)\r\n"],"file":"SettingsDialog.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/SettingsDialog.js"
+ ],
+ "file": "../../../src/component/dialogs/SettingsDialog.js",
+ "names": [
+  "CL",
+  "DF_THEME",
+  "caption",
+  "value",
+  "_themeOptions",
+  "_crInitItem",
+  "uiTheme",
+  "item",
+  "find",
+  "SettingsDialog",
+  "isShow",
+  "store",
+  "dispatch",
+  "onClose",
+  "sApp",
+  "getState",
+  "initItem",
+  "setInitItem",
+  "TS",
+  "styleConfig",
+  "_selectTheme",
+  "DIALOG",
+  "SELECT",
+  "_areEqualProps",
+  "prevProps",
+  "nextProps"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,EAAE,GAAG,aAAX;AAEA,IAAMC,QAAQ,GAAG;AAAEC,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAAjB;AACA,IAAMC,aAAa,GAAG,CACpB;AAAEF,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CADoB,EAEpB;AAAED,EAAAA,OAAO,EAAE,OAAX;AAAoBC,EAAAA,KAAK,EAAE;AAA3B,CAFoB,EAGpB;AAAED,EAAAA,OAAO,EAAE,MAAX;AAAmBC,EAAAA,KAAK,EAAE;AAA1B,CAHoB,CAAtB;;AAMA,IAAME,WAAW,GAAG,SAAdA,WAAc,CAACC,OAAD,EAAa;AAC/B,MAAI,CAACA,OAAL,EAAc;AACZ,WAAOL,QAAP;AACD;;AACD,MAAMM,IAAI,GAAGH,aAAa,CACvBI,IADU,CACL,UAAAD,IAAI;AAAA,WAAIA,IAAI,CAACJ,KAAL,KAAeG,OAAnB;AAAA,GADC,CAAb;;AAEA,MAAI,CAACC,IAAL,EAAW;AACT,WAAON,QAAP;AACD;;AACD,uCAAYM,IAAZ;AACD,CAVD;;AAYA,IAAME,cAAc,GAAG,SAAjBA,cAAiB,OAKjB;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,KAGI,QAHJA,KAGI;AAAA,MAFJC,QAEI,QAFJA,QAEI;AAAA,MADJC,OACI,QADJA,OACI;;AAAA,kBAE4B,qBAAS;AAAA,WAAMR,WAAW,CAACS,gBAAKR,OAAL,CAAaK,KAAK,CAACI,QAAN,EAAb,CAAD,CAAjB;AAAA,GAAT,CAF5B;AAAA,MAEGC,QAFH;AAAA,MAEaC,WAFb;AAAA,MAGFC,EAHE,GAGG,0BAASC,kBAAT,CAHH;AAAA,MAIFC,YAJE,GAIa,wBAAY,iBAAe;AAAA,QAAZjB,KAAY,SAAZA,KAAY;;AAC1C,QAAIA,KAAK,KAAKa,QAAd,EAAwB;AACtBJ,MAAAA,QAAQ,CAAC,yBAAWT,KAAX,CAAD,CAAR;AACAc,MAAAA,WAAW,CAACd,KAAD,CAAX;AACD;AACF,GALgB,EAKd,EALc,CAJb;;AAWJ,sBACE,qBAAC,uBAAD;AACE,IAAA,SAAS,EAAEH,EADb;AAEE,IAAA,KAAK,EAAEkB,EAAE,CAACG,MAFZ;AAGE,IAAA,OAAO,EAAC,eAHV;AAIE,IAAA,MAAM,EAAEX,MAJV;AAKE,IAAA,OAAO,EAAEG,OALX;AAAA,2BAOE;AAAA,6BACE,qBAAC,uBAAD;AACE,QAAA,WAAW,EAAEK,EAAE,CAACI,MADlB;AAEE,QAAA,OAAO,EAAC,0BAFV;AAGE,QAAA,QAAQ,EAAEN,QAHZ;AAIE,QAAA,OAAO,EAAEZ,aAJX;AAKE,QAAA,QAAQ,EAAEgB;AALZ;AADF;AAPF,IADF;AAmBD,CAnCD;;AAsCA,IAAMG,cAAc,GAAG,SAAjBA,cAAiB,CAACC,SAAD,EAAYC,SAAZ;AAAA,SACrBD,SAAS,CAACd,MAAV,KAAqBe,SAAS,CAACf,MADV;AAAA,CAAvB;;4BAGe,iBAAKD,cAAL,EAAqBc,cAArB,C"
+}

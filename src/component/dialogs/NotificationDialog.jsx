@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { memo } from 'react'
 
 import ModalDialog from '../zhn-ch/ModalDialog'
 
@@ -8,26 +8,16 @@ const CL = {
   DESCR: 'd-notif__descr'
 };
 
-class NotificationDialog extends Component {
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-    return true;
-  }
-
-  render(){
-    const {
-      isShow,
-      data={},
-      TS,
-      onClose
-    } = this.props
-    , {
+const NotificationDialog = ({
+  isShow,
+  data={},
+  TS,
+  onClose
+}) => {
+   const {
       caption='',
       descr=''
-    } = data;
+   } = data;
 
     return (
       <ModalDialog
@@ -50,7 +40,9 @@ class NotificationDialog extends Component {
          </div>
       </ModalDialog>
     );
-  }
 }
 
-export default NotificationDialog
+const _areEqualProps = (prevProps, nextProps) =>
+  prevProps.isShow === nextProps.isShow
+
+export default memo(NotificationDialog, _areEqualProps)

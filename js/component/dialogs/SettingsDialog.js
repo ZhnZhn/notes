@@ -5,15 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = require("react");
 
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
 
@@ -57,73 +55,50 @@ var _crInitItem = function _crInitItem(uiTheme) {
   return (0, _extends2["default"])({}, item);
 };
 
-var SettingsDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
+var SettingsDialog = function SettingsDialog(_ref) {
+  var isShow = _ref.isShow,
+      store = _ref.store,
+      dispatch = _ref.dispatch,
+      onClose = _ref.onClose;
 
-  function SettingsDialog(props) {
-    var _this;
+  var _useState = (0, _react.useState)(function () {
+    return _crInitItem(_selectors.sApp.uiTheme(store.getState()));
+  }),
+      initItem = _useState[0],
+      setInitItem = _useState[1],
+      TS = (0, _useTheme["default"])(_Dialog["default"]),
+      _selectTheme = (0, _react.useCallback)(function (_ref2) {
+    var value = _ref2.value;
 
-    _this = _Component.call(this) || this;
-
-    _this._selectTheme = function (item) {
-      var _this$props = _this.props,
-          theme = _this$props.theme,
-          dispatch = _this$props.dispatch;
-
-      if (item.value !== theme.getThemeName()) {
-        dispatch((0, _actions.setUiTheme)(item.value));
-
-        _this.forceUpdate();
-      }
-    };
-
-    var uiTheme = _selectors.sApp.uiTheme(props.store.getState());
-
-    _this.state = {
-      initItem: _crInitItem(uiTheme)
-    };
-    return _this;
-  }
-
-  var _proto = SettingsDialog.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
+    if (value !== initItem) {
+      dispatch((0, _actions.setUiTheme)(value));
+      setInitItem(value);
     }
+  }, []);
 
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        isShow = _this$props2.isShow,
-        theme = _this$props2.theme,
-        onClose = _this$props2.onClose,
-        initItem = this.state.initItem,
-        TS = theme.createStyle(_Dialog["default"]);
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
-      className: CL,
-      style: TS.DIALOG,
-      caption: "User Settings",
-      isShow: isShow,
-      onClose: onClose,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
-          styleConfig: TS.SELECT,
-          caption: "UI Theme (Default: Dark)",
-          initItem: initItem,
-          options: _themeOptions,
-          onSelect: this._selectTheme
-        })
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
+    className: CL,
+    style: TS.DIALOG,
+    caption: "User Settings",
+    isShow: isShow,
+    onClose: onClose,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+        styleConfig: TS.SELECT,
+        caption: "UI Theme (Default: Dark)",
+        initItem: initItem,
+        options: _themeOptions,
+        onSelect: _selectTheme
       })
-    });
-  };
+    })
+  });
+};
 
-  return SettingsDialog;
-}(_react.Component);
+var _areEqualProps = function _areEqualProps(prevProps, nextProps) {
+  return prevProps.isShow === nextProps.isShow;
+};
 
-var _default = (0, _withTheme["default"])(SettingsDialog);
+var _default = /*#__PURE__*/(0, _react.memo)(SettingsDialog, _areEqualProps);
 
 exports["default"] = _default;
 //# sourceMappingURL=SettingsDialog.js.map

@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = require("react");
@@ -19,58 +17,42 @@ var CL = {
   DESCR: 'd-notif__descr'
 };
 
-var NotificationDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(NotificationDialog, _Component);
+var NotificationDialog = function NotificationDialog(_ref) {
+  var isShow = _ref.isShow,
+      _ref$data = _ref.data,
+      data = _ref$data === void 0 ? {} : _ref$data,
+      TS = _ref.TS,
+      onClose = _ref.onClose;
+  var _data$caption = data.caption,
+      caption = _data$caption === void 0 ? '' : _data$caption,
+      _data$descr = data.descr,
+      descr = _data$descr === void 0 ? '' : _data$descr;
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
+    style: TS.DIALOG,
+    caption: "Notification",
+    isShow: isShow,
+    onClose: onClose,
+    children: [caption && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL.ROW,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+        className: CL.CAPTION,
+        children: caption
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL.ROW,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+        className: CL.DESCR,
+        children: descr
+      })
+    })]
+  });
+};
 
-  function NotificationDialog() {
-    return _Component.apply(this, arguments) || this;
-  }
+var _areEqualProps = function _areEqualProps(prevProps, nextProps) {
+  return prevProps.isShow === nextProps.isShow;
+};
 
-  var _proto = NotificationDialog.prototype;
+var _default = /*#__PURE__*/(0, _react.memo)(NotificationDialog, _areEqualProps);
 
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        isShow = _this$props.isShow,
-        _this$props$data = _this$props.data,
-        data = _this$props$data === void 0 ? {} : _this$props$data,
-        TS = _this$props.TS,
-        onClose = _this$props.onClose,
-        _data$caption = data.caption,
-        caption = _data$caption === void 0 ? '' : _data$caption,
-        _data$descr = data.descr,
-        descr = _data$descr === void 0 ? '' : _data$descr;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
-      style: TS.DIALOG,
-      caption: "Notification",
-      isShow: isShow,
-      onClose: onClose,
-      children: [caption && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: CL.ROW,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          className: CL.CAPTION,
-          children: caption
-        })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: CL.ROW,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          className: CL.DESCR,
-          children: descr
-        })
-      })]
-    });
-  };
-
-  return NotificationDialog;
-}(_react.Component);
-
-var _default = NotificationDialog;
 exports["default"] = _default;
 //# sourceMappingURL=NotificationDialog.js.map
