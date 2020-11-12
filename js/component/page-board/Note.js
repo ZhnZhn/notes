@@ -93,6 +93,8 @@ var DnDNote = /*#__PURE__*/function (_Component) {
           note = _this$props3.note,
           editDetails = _this$props3.editDetails;
       editDetails(note);
+
+      _this._closeMenuMore();
     };
 
     _this.state = _getState(props);

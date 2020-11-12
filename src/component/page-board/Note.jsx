@@ -69,6 +69,7 @@ class DnDNote extends Component {
   _editDetails = () => {
     const { note, editDetails } = this.props;
     editDetails(note)
+    this._closeMenuMore()
   }
 
   render(){
