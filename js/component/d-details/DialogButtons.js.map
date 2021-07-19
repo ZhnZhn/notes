@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/d-details/DialogButtons.js"
- ],
- "file": "../../../src/component/d-details/DialogButtons.js",
- "names": [
-  "DialogButtons",
-  "refBtClose",
-  "className",
-  "onSave",
-  "onClose"
- ],
- "mappings": ";;;;;;;;;AAAA;;AAEA,IAAMA,aAAa,GAAG,SAAhBA,aAAgB;AAAA,MACpBC,UADoB,QACpBA,UADoB;AAAA,MAEpBC,SAFoB,QAEpBA,SAFoB;AAAA,MAGpBC,MAHoB,QAGpBA,MAHoB;AAAA,MAIpBC,OAJoB,QAIpBA,OAJoB;AAAA,sBAMpB;AAAK,IAAA,SAAS,EAAEF,SAAhB;AAAA,4BACE,qBAAC,sBAAD;AACE,MAAA,OAAO,EAAC,MADV;AAEE,MAAA,OAAO,EAAE,GAFX;AAGE,MAAA,OAAO,EAAEC;AAHX,MADF,eAME,qBAAC,sBAAD;AACE,MAAA,GAAG,EAAEF,UADP;AAEE,MAAA,OAAO,EAAC,OAFV;AAGE,MAAA,OAAO,EAAE,CAHX;AAIE,MAAA,OAAO,EAAEG;AAJX,MANF;AAAA,IANoB;AAAA,CAAtB;;eAsBeJ,a"
-}
+{"version":3,"sources":["../../../src/component/d-details/DialogButtons.jsx"],"names":["DialogButtons","refBtClose","className","onSave","onClose"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,aAAa,GAAG,SAAhBA,aAAgB;AAAA,MACpBC,UADoB,QACpBA,UADoB;AAAA,MAEpBC,SAFoB,QAEpBA,SAFoB;AAAA,MAGpBC,MAHoB,QAGpBA,MAHoB;AAAA,MAIpBC,OAJoB,QAIpBA,OAJoB;AAAA,sBAMpB;AAAK,IAAA,SAAS,EAAEF,SAAhB;AAAA,4BACE,qBAAC,sBAAD;AACE,MAAA,OAAO,EAAC,MADV;AAEE,MAAA,OAAO,EAAE,GAFX;AAGE,MAAA,OAAO,EAAEC;AAHX,MADF,eAME,qBAAC,sBAAD;AACE,MAAA,GAAG,EAAEF,UADP;AAEE,MAAA,OAAO,EAAC,OAFV;AAGE,MAAA,OAAO,EAAE,CAHX;AAIE,MAAA,OAAO,EAAEG;AAJX,MANF;AAAA,IANoB;AAAA,CAAtB;;eAsBeJ,a","sourcesContent":["import FlatButton from '../zhn-m/FlatButton'\r\n\r\nconst DialogButtons = ({\r\n  refBtClose,\r\n  className,\r\n  onSave,\r\n  onClose\r\n}) => (\r\n  <div className={className}>\r\n    <FlatButton\r\n      caption=\"Save\"\r\n      timeout={100}\r\n      onClick={onSave}\r\n    />\r\n    <FlatButton\r\n      ref={refBtClose}\r\n      caption=\"Close\"\r\n      timeout={0}\r\n      onClick={onClose}\r\n    />\r\n  </div>\r\n);\r\n\r\n\r\nexport default DialogButtons\r\n"],"file":"DialogButtons.js"}

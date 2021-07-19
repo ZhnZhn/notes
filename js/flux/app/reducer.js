@@ -32,8 +32,12 @@ var reducer = function reducer(state
 )
 /*: AppState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].app;
+  if (state
+  /*: AppState */
+  === void 0) {
+    state
+    /*: AppState */
+    = _initialState["default"].app;
   }
 
   switch (action.type) {

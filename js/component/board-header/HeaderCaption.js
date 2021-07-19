@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _selectors = _interopRequireDefault(require("../../flux/selectors"));
@@ -16,6 +14,8 @@ var _Logo = _interopRequireDefault(require("../zhn/Logo"));
 var _CL = _interopRequireDefault(require("../style/CL"));
 
 var _crTitle = _interopRequireDefault(require("./crTitle"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var HeaderCaption = function HeaderCaption(_ref) {
   var board = _ref.board;

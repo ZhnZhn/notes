@@ -30,8 +30,12 @@ var reducer = function reducer(state
 )
 /*: TopicState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].columns;
+  if (state
+  /*: TopicState */
+  === void 0) {
+    state
+    /*: TopicState */
+    = _initialState["default"].columns;
   }
 
   switch (action.type) {

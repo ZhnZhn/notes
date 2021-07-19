@@ -29,8 +29,12 @@ var crColumn = function crColumn(columnId
 , withAdd
 /*: boolean */
 ) {
-  if (withAdd === void 0) {
-    withAdd = true;
+  if (withAdd
+  /*: boolean */
+  === void 0) {
+    withAdd
+    /*: boolean */
+    = true;
   }
 
   return (

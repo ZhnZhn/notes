@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _selectors = _interopRequireDefault(require("../../flux/selectors"));
@@ -20,6 +18,8 @@ var _TopicDrawerCaption = _interopRequireDefault(require("./TopicDrawerCaption")
 var _TopicList = _interopRequireDefault(require("./TopicList"));
 
 var _DrawerMsgList = _interopRequireDefault(require("../header/DrawerMsgList"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var TopicDrawerMenu = function TopicDrawerMenu(_ref) {
   var board = _ref.board,

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactRouterDom = require("react-router-dom");
@@ -28,6 +26,8 @@ var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 var _DnDTopicList = _interopRequireDefault(require("./DnDTopicList"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   LINK: {

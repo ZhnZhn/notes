@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/app/actions");
@@ -16,6 +14,8 @@ var _actions2 = require("../../flux/modal/actions");
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _DrawerMsgList = _interopRequireDefault(require("./DrawerMsgList"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var TITLE = "Web App Notes v0.2.0";
 var CL = {

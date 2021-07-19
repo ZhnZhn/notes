@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _LabelNote = _interopRequireDefault(require("./LabelNote"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   ROOT: {

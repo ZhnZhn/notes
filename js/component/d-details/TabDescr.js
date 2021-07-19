@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _actions = _interopRequireDefault(require("../../flux/note/actions"));
@@ -16,6 +14,8 @@ var _InputTextArea = _interopRequireDefault(require("../zhn/InputTextArea"));
 var _DialogButtons = _interopRequireDefault(require("./DialogButtons"));
 
 var _getNoteDescr = _interopRequireDefault(require("../page-board/getNoteDescr"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   DESCR: 'md-details__descr',

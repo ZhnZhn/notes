@@ -9,8 +9,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactRouterDom = require("react-router-dom");
@@ -26,6 +24,8 @@ var _PageBoard = _interopRequireDefault(require("./page-board/PageBoard"));
 var _PageBoards = _interopRequireDefault(require("./page-boards/PageBoards"));
 
 var _WrapperContainer = _interopRequireDefault(require("./zhn-cont/WrapperContainer"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var App = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(App, _Component);

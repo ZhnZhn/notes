@@ -3,13 +3,13 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _selectors = require("../../flux/selectors");
 
 var _actions = require("../../flux/drawerMsg/actions");
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   UL: 'drawer__msg-ul',

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactRedux = require("react-redux");
@@ -20,6 +18,8 @@ var _actions2 = _interopRequireDefault(require("../../flux/modal/actions"));
 var _NoteCaption = _interopRequireDefault(require("./NoteCaption"));
 
 var _NoteDetails = _interopRequireDefault(require("./NoteDetails"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropsType from 'prop-types'
 var CL = 'note';

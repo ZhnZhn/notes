@@ -29,8 +29,12 @@ var filterByProp = function filterByProp(arr
 , prName
 /*: string */
 ) {
-  if (prName === void 0) {
-    prName = 'id';
+  if (prName
+  /*: string */
+  === void 0) {
+    prName
+    /*: string */
+    = 'id';
   }
 
   return (

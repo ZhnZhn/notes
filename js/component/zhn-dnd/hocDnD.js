@@ -11,6 +11,9 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+var _excluded = ["draggableProps", "innerRef", "isDragging", "dragHandleProps"],
+    _excluded2 = ["style"];
+
 var _crTopicStyle = function _crTopicStyle(is, dragBg, notDragBg) {
   if (dragBg === void 0) {
     dragBg = '#1e90ff';
@@ -31,13 +34,13 @@ var _hocDnDImpl = function _hocDnDImpl(ItemComp, options) {
         innerRef = props.innerRef,
         isDragging = props.isDragging,
         dragHandleProps = props.dragHandleProps,
-        rest = (0, _objectWithoutPropertiesLoose2["default"])(props, ["draggableProps", "innerRef", "isDragging", "dragHandleProps"]),
+        rest = (0, _objectWithoutPropertiesLoose2["default"])(props, _excluded),
         _ref = options || {},
         dragBg = _ref.dragBg,
         notDragBg = _ref.notDragBg,
         isDragHanlerProps = _ref.isDragHanlerProps,
         style = draggableProps.style,
-        draggablePropsRest = (0, _objectWithoutPropertiesLoose2["default"])(draggableProps, ["style"]),
+        draggablePropsRest = (0, _objectWithoutPropertiesLoose2["default"])(draggableProps, _excluded2),
         _style = _crTopicStyle(isDragging, dragBg, notDragBg),
         _dragHandleProps = isDragHanlerProps ? undefined : dragHandleProps;
 

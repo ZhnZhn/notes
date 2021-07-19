@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   HEADER: 'dialog__header',

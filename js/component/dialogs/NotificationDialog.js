@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   ROW: 'd-notif__row',

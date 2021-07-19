@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var Header = function Header(_ref) {
   var className = _ref.className,

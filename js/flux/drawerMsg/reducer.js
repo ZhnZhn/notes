@@ -21,8 +21,12 @@ var reducer = function reducer(state
 )
 /*: DrawerMsgState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].drawerMsg;
+  if (state
+  /*: DrawerMsgState */
+  === void 0) {
+    state
+    /*: DrawerMsgState */
+    = _initialState["default"].drawerMsg;
   }
 
   switch (action.type) {

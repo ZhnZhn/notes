@@ -24,8 +24,12 @@ var reducer = function reducer(state
 )
 /*: ModalState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].modal;
+  if (state
+  /*: ModalState */
+  === void 0) {
+    state
+    /*: ModalState */
+    = _initialState["default"].modal;
   }
 
   switch (action.type) {

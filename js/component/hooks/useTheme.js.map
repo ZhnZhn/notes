@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/hooks/useTheme.js"
- ],
- "file": "../../../src/component/hooks/useTheme.js",
- "names": [
-  "useTheme",
-  "styleConfig",
-  "ThemeContext",
-  "createStyle"
- ],
- "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAAC,WAAW;AAAA,SAAI,uBAAWC,wBAAX,EAC9BC,WAD8B,CAClBF,WADkB,CAAJ;AAAA,CAA5B;;eAGeD,Q"
-}
+{"version":3,"sources":["../../../src/component/hooks/useTheme.js"],"names":["useTheme","styleConfig","ThemeContext","createStyle"],"mappings":";;;;;;;AAAA;;AAEA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAAC,WAAW;AAAA,SAAI,uBAAWC,wBAAX,EAC9BC,WAD8B,CAClBF,WADkB,CAAJ;AAAA,CAA5B;;eAGeD,Q","sourcesContent":["import { useContext } from 'react'\r\n\r\nimport ThemeContext  from '../hoc/ThemeContext'\r\n\r\nconst useTheme = styleConfig => useContext(ThemeContext)\r\n .createStyle(styleConfig);\r\n\r\nexport default useTheme\r\n"],"file":"useTheme.js"}

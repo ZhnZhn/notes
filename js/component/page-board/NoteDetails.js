@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _ShowHide = _interopRequireDefault(require("../zhn-ch/ShowHide"));
 
 var _LabelList = _interopRequireDefault(require("../d-details/LabelList"));
 
 var _getNoteDescr = _interopRequireDefault(require("./getNoteDescr"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = 'note__details';
 

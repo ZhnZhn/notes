@@ -10,8 +10,12 @@ var crTitle = function crTitle(board
 )
 /*: string */
 {
-  if (prefix === void 0) {
-    prefix = 'Notes';
+  if (prefix
+  /*: string */
+  === void 0) {
+    prefix
+    /*: string */
+    = 'Notes';
   }
 
   if (board == null) {

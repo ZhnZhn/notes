@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactRedux = require("react-redux");
@@ -22,6 +20,8 @@ var _Header = _interopRequireDefault(require("./Header"));
 var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
 var _BoardList = _interopRequireDefault(require("./BoardList"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var PageBoards = function PageBoards(_ref) {
   var moveColumn = _ref.moveColumn;

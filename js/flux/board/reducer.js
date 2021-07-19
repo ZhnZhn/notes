@@ -42,8 +42,12 @@ var reducer = function reducer(state
 )
 /*: BoardState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].boards;
+  if (state
+  /*: BoardState */
+  === void 0) {
+    state
+    /*: BoardState */
+    = _initialState["default"].boards;
   }
 
   switch (action.type) {

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactRedux = require("react-redux");
@@ -28,6 +26,8 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DnDNoteList = _interopRequireDefault(require("./DnDNoteList"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   SVG_MORE: {

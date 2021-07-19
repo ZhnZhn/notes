@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
@@ -22,6 +20,8 @@ var _selectors = require("../../flux/selectors");
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
 
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = 'md-settings';
 var DF_THEME = {

@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _actions = _interopRequireDefault(require("../../flux/note/actions"));
@@ -24,6 +22,8 @@ var _DialogButtons = _interopRequireDefault(require("./DialogButtons"));
 var _fnTabLabels = _interopRequireDefault(require("./fnTabLabels"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var toTitle = _fnTabLabels["default"].toTitle,
     addLabel = _fnTabLabels["default"].addLabel,

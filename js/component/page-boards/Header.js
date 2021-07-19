@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/board/actions");
@@ -20,6 +18,8 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var Header = function Header(_ref) {
   var style = _ref.style,

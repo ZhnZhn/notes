@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactDom = require("react-dom");
 
 var _reactRedux = require("react-redux");
@@ -11,6 +9,8 @@ var _reactRedux = require("react-redux");
 var _store = _interopRequireDefault(require("./flux/store"));
 
 var _App = _interopRequireDefault(require("./component/App"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var basename = "/notes";
 /*eslint-disable no-undef*/

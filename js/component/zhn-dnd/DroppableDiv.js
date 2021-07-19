@@ -11,6 +11,7 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+var _excluded = ["className", "style", "innerRef", "isDraggingOver", "notDraggingStyle", "children"];
 var S = {
   ROOT: {
     minHeight: 100
@@ -34,7 +35,7 @@ var DroppableDiv = function DroppableDiv(props) {
       isDraggingOver = props.isDraggingOver,
       notDraggingStyle = props.notDraggingStyle,
       children = props.children,
-      rest = (0, _objectWithoutPropertiesLoose2["default"])(props, ["className", "style", "innerRef", "isDraggingOver", "notDraggingStyle", "children"]),
+      rest = (0, _objectWithoutPropertiesLoose2["default"])(props, _excluded),
       _style = _crRootStyle(isDraggingOver, notDraggingStyle);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({}, rest, {

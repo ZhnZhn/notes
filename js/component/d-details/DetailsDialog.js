@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
@@ -22,6 +20,8 @@ var _Tab = _interopRequireDefault(require("../zhn-tab/Tab"));
 var _TabDescr = _interopRequireDefault(require("./TabDescr"));
 
 var _TabLabels = _interopRequireDefault(require("./TabLabels"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   DIALOG: 'md-details'

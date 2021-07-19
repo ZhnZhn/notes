@@ -7,13 +7,13 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactBeautifulDnd = require("react-beautiful-dnd");
 
 var _DroppableDiv = _interopRequireDefault(require("../zhn-dnd/DroppableDiv"));
 
 var _DnDTopic = _interopRequireDefault(require("./DnDTopic"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _crTopicProps = function _crTopicProps(topic) {
   return {

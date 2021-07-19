@@ -30,8 +30,12 @@ var reducer = function reducer(state
 )
 /*: NoteState */
 {
-  if (state === void 0) {
-    state = _initialState["default"].notes;
+  if (state
+  /*: NoteState */
+  === void 0) {
+    state
+    /*: NoteState */
+    = _initialState["default"].notes;
   }
 
   switch (action.type) {

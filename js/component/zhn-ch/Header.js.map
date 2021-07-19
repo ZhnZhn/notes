@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/zhn-ch/Header.js"
- ],
- "file": "../../../src/component/zhn-ch/Header.js",
- "names": [
-  "Header",
-  "className",
-  "style",
-  "children",
-  "TS",
-  "styleConfig",
-  "COMP"
- ],
- "mappings": ";;;;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,OAIT;AAAA,MAHJC,SAGI,QAHJA,SAGI;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJC,QACI,QADJA,QACI;AACJ,MAAMC,EAAE,GAAG,0BAASC,gBAAT,CAAX;AACA,sBACE;AACG,IAAA,SAAS,EAAEJ,SADd;AAEG,IAAA,KAAK,gCAAMC,KAAN,EAAgBE,EAAE,CAACE,IAAnB,CAFR;AAAA,cAIIH;AAJJ,IADF;AAQD,CAdD;;eAgBeH,M"
-}
+{"version":3,"sources":["../../../src/component/zhn-ch/Header.jsx"],"names":["Header","className","style","children","TS","styleConfig","COMP"],"mappings":";;;;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,OAIT;AAAA,MAHJC,SAGI,QAHJA,SAGI;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJC,QACI,QADJA,QACI;AACJ,MAAMC,EAAE,GAAG,0BAASC,gBAAT,CAAX;AACA,sBACE;AACG,IAAA,SAAS,EAAEJ,SADd;AAEG,IAAA,KAAK,gCAAMC,KAAN,EAAgBE,EAAE,CAACE,IAAnB,CAFR;AAAA,cAIIH;AAJJ,IADF;AAQD,CAdD;;eAgBeH,M","sourcesContent":["import useTheme from '../hooks/useTheme'\r\nimport styleConfig from '../style/Comp.Style'\r\n\r\nconst Header = ({\r\n  className,\r\n  style,\r\n  children\r\n}) => {\r\n  const TS = useTheme(styleConfig);\r\n  return (\r\n    <header\r\n       className={className}\r\n       style={{...style, ...TS.COMP}}\r\n    >\r\n       {children}\r\n    </header>\r\n  );\r\n}\r\n\r\nexport default Header\r\n"],"file":"Header.js"}

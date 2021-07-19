@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 
 var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
@@ -16,6 +14,8 @@ var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
 var _NoteHandle = _interopRequireDefault(require("./NoteHandle"));
 
 var _NoteMenuMore = _interopRequireDefault(require("./NoteMenuMore"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   CAPTION: 'note__caption',

@@ -9,11 +9,11 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _CellColor = _interopRequireDefault(require("../zhn-ch/CellColor"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var C_DF = '#2f7ed8';
 var COLORS1 = ['#8abb5d', '#f7a35c', '#795548', '#f45b5b', '#d2b772', '#dda0dd'];

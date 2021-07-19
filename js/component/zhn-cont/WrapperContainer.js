@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -18,6 +16,8 @@ var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
 var _modalRouter = _interopRequireDefault(require("../dialogs/modalRouter"));
 
 var _WrapperModalDialog = _interopRequireDefault(require("../zhn-ch/WrapperModalDialog"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var WrapperContainer = /*#__PURE__*/function (_Component) {

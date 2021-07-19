@@ -11,6 +11,7 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+var _excluded = ["isDetails"];
 var CL = {
   HANDLE: 'note__handle',
   OPEN: 'note__handle--open'
@@ -18,7 +19,7 @@ var CL = {
 
 var NoteHandle = function NoteHandle(_ref) {
   var isDetails = _ref.isDetails,
-      rest = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["isDetails"]);
+      rest = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
 
   var _cl = isDetails ? CL.HANDLE + " " + CL.OPEN : CL.HANDLE;
 

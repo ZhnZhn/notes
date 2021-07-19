@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _reactRedux = require("react-redux");
 
 var _selectors = require("../../flux/selectors");
 
 var _BoardCard = _interopRequireDefault(require("./BoardCard"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var BoardList = function BoardList(_ref) {
   var boardIds = _ref.boardIds,

@@ -11,11 +11,11 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL = {
   BT: 'bt-flat',

@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _reactBeautifulDnd = require("react-beautiful-dnd");
@@ -28,6 +26,8 @@ var _Header = _interopRequireDefault(require("../board-header/Header"));
 var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
 
 var _Topic = _interopRequireDefault(require("./Topic"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var PageBoard = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PageBoard, _Component);
