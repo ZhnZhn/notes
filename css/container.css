@@ -4,7 +4,8 @@ modal-dialog, modal-pane
 */
 .container-list {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+}
 
 .modal-root {
   z-index: 1250;
@@ -18,4 +19,5 @@ modal-dialog, modal-pane
   overflow-y: hidden;
   opacity: 1;
   background: rgba(0, 0, 0, 0.3) none repeat scroll 0% 0%;
-  outline: 0px none; }
+  outline: 0px none;
+}

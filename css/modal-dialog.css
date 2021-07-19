@@ -17,7 +17,8 @@ $shDialog
   width: 350px;
   height: 150px;
   margin: auto;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .md__actions {
   position: absolute;
@@ -25,16 +26,20 @@ $shDialog
   bottom: 0;
   margin-top: 8px;
   margin-bottom: 10px;
-  cursor: default; }
+  cursor: default;
+}
 
 .md-settings {
   width: 300px;
-  height: 200px; }
+  height: 200px;
+}
 
 .md-details {
   width: 300px;
-  height: 310px; }
-  .md-details__descr {
-    margin-left: 14px;
-    width: 90%;
-    height: 135px; }
+  height: 310px;
+}
+.md-details__descr {
+  margin-left: 14px;
+  width: 90%;
+  height: 135px;
+}

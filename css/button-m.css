@@ -7,7 +7,8 @@ $cCircleBt, $cCloseBt
 */
 .bt__card {
   color: darkcyan;
-  text-transform: none; }
+  text-transform: none;
+}
 
 .bt-circle {
   color: #9e9e9e;
@@ -19,7 +20,8 @@ $cCircleBt, $cCloseBt
   border-radius: 50%;
   text-align: center;
   font-weight: 600;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .bt-svg-close {
   stroke: #d64336;
@@ -37,18 +39,21 @@ $cCircleBt, $cCloseBt
   transition: transform 0.3s ease-out;
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
-  transform-origin: center center; }
-  .bt-svg-close:hover {
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg) scale(1.3, 1.3) translateY(-3px); }
+  transform-origin: center center;
+}
+.bt-svg-close:hover {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.3, 1.3) translateY(-3px);
+}
 
 .bt-svg-more {
   fill: #1b2836;
   stroke: #1b2836;
   vertical-align: middle;
   padding-left: 6px;
-  padding-right: 6px; }
+  padding-right: 6px;
+}
 
 .not-selected {
   -webkit-touch-callout: none;
@@ -62,4 +67,5 @@ $cCircleBt, $cCloseBt
   -ms-user-select: none;
   /* IE 10+ */
   user-select: none;
-  /* Likely future */ }
+  /* Likely future */
+}

@@ -10,7 +10,8 @@ textarea {
   border-radius: 2px;
   padding: 8px;
   font-size: 18px;
-  resize: none; }
+  resize: none;
+}
 
 .input-text {
   border: none;
@@ -25,8 +26,10 @@ textarea {
   padding-bottom: 4px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .input-text:focus,
 .input-text:hover {
-  border: 1px solid darkcyan; }
+  border: 1px solid darkcyan;
+}

@@ -7,9 +7,11 @@
   margin-right: 8px;
   border: 1px solid #4d4d4d;
   border-radius: 2px;
-  box-shadow: 1px 4px 6px 1px rgba(0, 0, 0, 0.6); }
-  .card__title {
-    margin-top: 8px;
-    margin-bottom: 12px;
-    font-size: 18px;
-    font-weight: bold; }
+  box-shadow: 1px 4px 6px 1px rgba(0, 0, 0, 0.6);
+}
+.card__title {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}

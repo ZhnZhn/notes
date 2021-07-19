@@ -19,6 +19,8 @@ $shDialog
   padding-top: 8px;
   padding-bottom: 6px;
   border-radius: 5px;
-  overflow: hidden; }
-  .modal-pane:focus {
-    outline: 0; }
+  overflow: hidden;
+}
+.modal-pane:focus {
+  outline: 0;
+}
