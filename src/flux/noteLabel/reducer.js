@@ -1,20 +1,20 @@
-import { ACTION as NA } from '../note/actions'
-import initialState from '../initialState'
+import { createSlice } from '@reduxjs/toolkit';
+import { editNoteLabels } from '../note/actions';
 
-const reducer = function(
-  state = initialState.noteLabels,
-  action
-) {
-  switch(action.type){
-    case NA.EDIT_NOTE_LABELS: {
-      const { newLabels } = action;
+import initialState from '../initialState';
+
+const noteLabelsSlice = createSlice({
+  name: "noteLabels",
+  initialState: initialState.noteLabels,
+  extraReducers: builder => builder
+    .addCase(editNoteLabels, (state, action) => {
+      const { newLabels } = action.payload
       newLabels.forEach(item => {
         state[item.id] = item
       })
-      return { ...state };
-    }
-    default: return state;
-  }
-}
+    })
+});
+
+const { reducer } = noteLabelsSlice
 
 export default reducer

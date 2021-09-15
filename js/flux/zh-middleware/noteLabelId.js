@@ -63,10 +63,11 @@ var noteLabelIdMiddleware = function noteLabelIdMiddleware(_ref) {
       dispatch = _ref.dispatch;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.EDIT_NOTE_LABELS) {
-        var hmLabels = _selectors.sNoteLabel.labels(getState());
+      if (action.type === _actions.editNoteLabels.type) {
+        var hmLabels = _selectors.sNoteLabel.labels(getState()),
+            payload = action.payload;
 
-        action = (0, _extends2["default"])({}, action, _crLabels(hmLabels, action.labels));
+        action.payload = (0, _extends2["default"])({}, payload, _crLabels(hmLabels, payload.labels));
       }
 
       return next(action);

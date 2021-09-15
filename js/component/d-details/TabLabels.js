@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
-var _actions = _interopRequireDefault(require("../../flux/note/actions"));
+var _actions = require("../../flux/note/actions");
 
 var _LabelList = _interopRequireDefault(require("./LabelList"));
 
@@ -72,7 +72,10 @@ var TabLabels = function TabLabels(props) {
     });
   }, []),
       _saveLabels = (0, _react.useCallback)(function () {
-    dispatch(_actions["default"].editNoteLabels(id, labels));
+    dispatch((0, _actions.editNoteLabels)({
+      noteId: id,
+      labels: labels
+    }));
   }, [id, labels]); //dispatch
 
 

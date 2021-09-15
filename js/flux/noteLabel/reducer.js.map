@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../src/flux/noteLabel/reducer.js"],"names":["reducer","state","action","initialState","noteLabels","type","NA","EDIT_NOTE_LABELS","newLabels","forEach","item","id"],"mappings":";;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CACdC,KADc,EAEdC,MAFc,EAGd;AAAA,MAFAD,KAEA;AAFAA,IAAAA,KAEA,GAFQE,yBAAaC,UAErB;AAAA;;AACA,UAAOF,MAAM,CAACG,IAAd;AACE,SAAKC,gBAAGC,gBAAR;AAA0B;AACxB,YAAQC,SAAR,GAAsBN,MAAtB,CAAQM,SAAR;AACAA,QAAAA,SAAS,CAACC,OAAV,CAAkB,UAAAC,IAAI,EAAI;AACxBT,UAAAA,KAAK,CAACS,IAAI,CAACC,EAAN,CAAL,GAAiBD,IAAjB;AACD,SAFD;AAGA,6CAAYT,KAAZ;AACD;;AACD;AAAS,aAAOA,KAAP;AARX;AAUD,CAdD;;eAgBeD,O","sourcesContent":["import { ACTION as NA } from '../note/actions'\r\nimport initialState from '../initialState'\r\n\r\nconst reducer = function(\r\n  state = initialState.noteLabels,\r\n  action\r\n) {\r\n  switch(action.type){\r\n    case NA.EDIT_NOTE_LABELS: {\r\n      const { newLabels } = action;\r\n      newLabels.forEach(item => {\r\n        state[item.id] = item\r\n      })\r\n      return { ...state };\r\n    }\r\n    default: return state;\r\n  }\r\n}\r\n\r\nexport default reducer\r\n"],"file":"reducer.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/noteLabel/reducer.js"
+ ],
+ "file": "../../../src/flux/noteLabel/reducer.js",
+ "names": [
+  "noteLabelsSlice",
+  "name",
+  "initialState",
+  "noteLabels",
+  "extraReducers",
+  "builder",
+  "addCase",
+  "editNoteLabels",
+  "state",
+  "action",
+  "newLabels",
+  "payload",
+  "forEach",
+  "item",
+  "id",
+  "reducer"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA;;AAEA,IAAMA,eAAe,GAAG,0BAAY;AAClCC,EAAAA,IAAI,EAAE,YAD4B;AAElCC,EAAAA,YAAY,EAAEA,yBAAaC,UAFO;AAGlCC,EAAAA,aAAa,EAAE,uBAAAC,OAAO;AAAA,WAAIA,OAAO,CAC9BC,OADuB,CACfC,uBADe,EACC,UAACC,KAAD,EAAQC,MAAR,EAAmB;AAC1C,UAAQC,SAAR,GAAsBD,MAAM,CAACE,OAA7B,CAAQD,SAAR;AACAA,MAAAA,SAAS,CAACE,OAAV,CAAkB,UAAAC,IAAI,EAAI;AACxBL,QAAAA,KAAK,CAACK,IAAI,CAACC,EAAN,CAAL,GAAiBD,IAAjB;AACD,OAFD;AAGD,KANuB,CAAJ;AAAA;AAHY,CAAZ,CAAxB;AAYA,IAAQE,OAAR,GAAoBf,eAApB,CAAQe,OAAR;eAEeA,O"
+}

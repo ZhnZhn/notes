@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 
-import na from '../../flux/note/actions'
+import { editNoteLabels } from '../../flux/note/actions'
 
 import LabelList from './LabelList'
 import InputText from '../zhn/InputText'
@@ -61,7 +61,7 @@ const TabLabels = (props) => {
      ))
   }, [])
   , _saveLabels = useCallback(() => {
-    dispatch(na.editNoteLabels(id, labels))
+    dispatch(editNoteLabels({ noteId: id, labels }))
   }, [id, labels]);
   //dispatch
 

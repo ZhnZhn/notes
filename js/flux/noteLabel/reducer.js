@@ -5,32 +5,25 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _toolkit = require("@reduxjs/toolkit");
 
 var _actions = require("../note/actions");
 
 var _initialState = _interopRequireDefault(require("../initialState"));
 
-var reducer = function reducer(state, action) {
-  if (state === void 0) {
-    state = _initialState["default"].noteLabels;
+var noteLabelsSlice = (0, _toolkit.createSlice)({
+  name: "noteLabels",
+  initialState: _initialState["default"].noteLabels,
+  extraReducers: function extraReducers(builder) {
+    return builder.addCase(_actions.editNoteLabels, function (state, action) {
+      var newLabels = action.payload.newLabels;
+      newLabels.forEach(function (item) {
+        state[item.id] = item;
+      });
+    });
   }
-
-  switch (action.type) {
-    case _actions.ACTION.EDIT_NOTE_LABELS:
-      {
-        var newLabels = action.newLabels;
-        newLabels.forEach(function (item) {
-          state[item.id] = item;
-        });
-        return (0, _extends2["default"])({}, state);
-      }
-
-    default:
-      return state;
-  }
-};
-
+});
+var reducer = noteLabelsSlice.reducer;
 var _default = reducer;
 exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

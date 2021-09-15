@@ -1,4 +1,4 @@
-import { ACTION as NA } from '../note/actions'
+import { editNoteLabels } from '../note/actions'
 import { sNoteLabel } from '../selectors'
 import hmToArr from '../../utils/hmToArr'
 import crId from './crId'
@@ -42,11 +42,12 @@ const _crLabels = (hmLabel, labels) => {
 };
 
 const noteLabelIdMiddleware = ({ getState, dispatch }) => next => action => {
-  if (action.type === NA.EDIT_NOTE_LABELS) {
-    const hmLabels = sNoteLabel.labels(getState());    
-    action = {
-      ...action,
-      ..._crLabels(hmLabels, action.labels)
+  if (action.type === editNoteLabels.type) {
+    const hmLabels = sNoteLabel.labels(getState())
+    , { payload } = action;
+    action.payload = {
+      ...payload,
+      ..._crLabels(hmLabels, payload.labels)
     }
   }
   return next(action);
