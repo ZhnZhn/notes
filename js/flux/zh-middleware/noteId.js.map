@@ -1,1 +1,29 @@
-{"version":3,"sources":["../../../src/flux/zh-middleware/noteId.js"],"names":["_isMax","state","columnId","sColumn","noteIds","length","CONF","MAX_NOTES","taskIdMiddleware","getState","dispatch","next","action","type","ACTION","ADD_NOTE","N_MAX_NOTES","noteId","NOTES_PREFIX"],"mappings":";;;;;;;;;AAAA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,CAACC,KAAD,EAAQC,QAAR;AAAA,SAAqBC,mBACjCC,OADiC,CACzBH,KADyB,EAClBC,QADkB,EACRG,MADQ,IACEC,oBAAKC,SAD5B;AAAA,CAAf;;AAGA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MAAGC,QAAH,QAAGA,QAAH;AAAA,MAAaC,QAAb,QAAaA,QAAb;AAAA,SAA4B,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AACrE,UAAIA,MAAM,CAACC,IAAP,KAAgBC,gBAAOC,QAA3B,EAAqC;AACnC,YAAKf,MAAM,CAACS,QAAQ,EAAT,EAAaG,MAAM,CAACV,QAApB,CAAX,EAA2C;AACzCQ,UAAAA,QAAQ,CAAC,yBAAUJ,oBAAKU,WAAf,CAAD,CAAR;AACA,iBAAO,KAAP;AACD;;AACDJ,QAAAA,MAAM,iCACDA,MADC;AAEJK,UAAAA,MAAM,EAAE,sBAAKX,oBAAKY,YAAV;AAFJ,UAAN;AAID;;AACD,aAAOP,IAAI,CAACC,MAAD,CAAX;AACD,KAZwD;AAAA,GAAhC;AAAA,CAAzB;;eAceJ,gB","sourcesContent":["import { ACTION } from '../note/actions'\r\nimport { showNotif } from '../modal/actions'\r\nimport crId from './crId'\r\nimport { sColumn } from '../selectors'\r\nimport CONF from '../appConf'\r\n\r\nconst _isMax = (state, columnId) => sColumn\r\n  .noteIds(state, columnId).length >= CONF.MAX_NOTES;\r\n\r\nconst taskIdMiddleware = ({ getState, dispatch }) => next => action => {\r\n  if (action.type === ACTION.ADD_NOTE) {\r\n    if ( _isMax(getState(), action.columnId) ) {\r\n      dispatch(showNotif(CONF.N_MAX_NOTES))\r\n      return false;\r\n    }\r\n    action = {\r\n      ...action,\r\n      noteId: crId(CONF.NOTES_PREFIX)\r\n    }\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default taskIdMiddleware\r\n"],"file":"noteId.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/noteId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/noteId.js",
+ "names": [
+  "_isMax",
+  "state",
+  "columnId",
+  "sColumn",
+  "noteIds",
+  "length",
+  "CONF",
+  "MAX_NOTES",
+  "taskIdMiddleware",
+  "getState",
+  "dispatch",
+  "next",
+  "action",
+  "type",
+  "ACTION",
+  "ADD_NOTE",
+  "N_MAX_NOTES",
+  "noteId",
+  "NOTES_PREFIX"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,CAACC,KAAD,EAAQC,QAAR;AAAA,SAAqBC,mBACjCC,OADiC,CACzBH,KADyB,EAClBC,QADkB,EACRG,MADQ,IACEC,oBAAKC,SAD5B;AAAA,CAAf;;AAGA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MAAGC,QAAH,QAAGA,QAAH;AAAA,MAAaC,QAAb,QAAaA,QAAb;AAAA,SAA4B,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AACrE,UAAIA,MAAM,CAACC,IAAP,KAAgBC,gBAAOC,QAA3B,EAAqC;AACnC,YAAKf,MAAM,CAACS,QAAQ,EAAT,EAAaG,MAAM,CAACV,QAApB,CAAX,EAA2C;AACzCQ,UAAAA,QAAQ,CAAC,wBAAUJ,oBAAKU,WAAf,CAAD,CAAR;AACA,iBAAO,KAAP;AACD;;AACDJ,QAAAA,MAAM,iCACDA,MADC;AAEJK,UAAAA,MAAM,EAAE,sBAAKX,oBAAKY,YAAV;AAFJ,UAAN;AAID;;AACD,aAAOP,IAAI,CAACC,MAAD,CAAX;AACD,KAZwD;AAAA,GAAhC;AAAA,CAAzB;;eAceJ,gB"
+}

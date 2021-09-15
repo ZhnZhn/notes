@@ -6,7 +6,7 @@ import {
   deleteNote,
   editNoteTitle
 } from '../../flux/note/actions'
-import ma from '../../flux/modal/actions'
+import { showDetails } from '../../flux/modal/reducer'
 
 import NoteCaption from './NoteCaption'
 import NoteDetails from './NoteDetails'
@@ -115,7 +115,8 @@ class DnDNote extends Component {
 const mapDispatchToProps = {
   deleteNote,
   editNoteTitle,
-  editDetails: ma.showDetails
+  //editDetails: ma.showDetails
+  editDetails: showDetails
 };
 
 export default connect(

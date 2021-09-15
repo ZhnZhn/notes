@@ -9,7 +9,7 @@ var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/app/actions");
 
-var _actions2 = require("../../flux/modal/actions");
+var _reducer = require("../../flux/modal/reducer");
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
@@ -73,7 +73,7 @@ var DrawerMenu = function DrawerMenu(_ref) {
 };
 
 var mapDispatchToProps = {
-  showSettings: _actions2.showSettings,
+  showSettings: _reducer.showSettings,
   saveBoard: _actions.saveBoard,
   cleanStorage: _actions.cleanStorage
 };

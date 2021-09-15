@@ -13,7 +13,7 @@ var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/note/actions");
 
-var _actions2 = _interopRequireDefault(require("../../flux/modal/actions"));
+var _reducer = require("../../flux/modal/reducer");
 
 var _NoteCaption = _interopRequireDefault(require("./NoteCaption"));
 
@@ -139,7 +139,8 @@ var DnDNote = /*#__PURE__*/function (_Component) {
 var mapDispatchToProps = {
   deleteNote: _actions.deleteNote,
   editNoteTitle: _actions.editNoteTitle,
-  editDetails: _actions2["default"].showDetails
+  //editDetails: ma.showDetails
+  editDetails: _reducer.showDetails
 };
 
 var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DnDNote);

@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _actions = require("../note/actions");
 
-var _actions2 = require("../modal/actions");
+var _reducer = require("../modal/reducer");
 
 var _crId = _interopRequireDefault(require("./crId"));
 
@@ -28,7 +28,7 @@ var taskIdMiddleware = function taskIdMiddleware(_ref) {
     return function (action) {
       if (action.type === _actions.ACTION.ADD_NOTE) {
         if (_isMax(getState(), action.columnId)) {
-          dispatch((0, _actions2.showNotif)(_appConf["default"].N_MAX_NOTES));
+          dispatch((0, _reducer.showNotif)(_appConf["default"].N_MAX_NOTES));
           return false;
         }
 

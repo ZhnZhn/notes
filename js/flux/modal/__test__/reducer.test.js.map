@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../../src/flux/modal/__test__/reducer.test.js"],"names":["state","initialState","modal","describe","test","expect","undefined","toEqual","mId","data","descr","ma","showModal","id"],"mappings":";;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,KAAK,GAAGC,yBAAaC,KAA3B;AACA;AACA;AACA;AACA;AACA;AACA;;AAEAC,QAAQ,CAAC,gBAAD,EAAmB,YAAI;AAC7BC,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtCC,IAAAA,MAAM,CAAC,yBAAQC,SAAR,EAAmB,EAAnB,CAAD,CAAN,CAA+BC,OAA/B,CAAuCP,KAAvC;AACD,GAFG,CAAJ;AAGAI,EAAAA,IAAI,CAAC,0BAAD,EAA6B,YAAI;AACnC,QAAMI,GAAG,GAAG,OAAZ;AAAA,QAAqBC,IAAI,GAAG;AAAEC,MAAAA,KAAK,EAAE;AAAT,KAA5B;AACAL,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAeW,oBAAGC,SAAH,CAAaJ,GAAb,EAAkBC,IAAlB,CAAf,CADI,CAAN,CAEEF,OAFF,CAEU;AACRM,MAAAA,EAAE,EAAEL,GADI;AAERC,MAAAA,IAAI,EAAEA;AAFE,KAFV;AAMD,GARG,CAAJ;AASD,CAbO,CAAR","sourcesContent":["import reducer from '../reducer'\r\nimport ma from '../actions'\r\nimport initialState from '../../initialState'\r\n\r\nconst state = initialState.modal\r\n/*\r\nconst initState = {\r\n  id: undefined,\r\n  data: undefined\r\n}\r\n*/\r\n\r\ndescribe('reducer columm', ()=>{\r\n  test('should init to initialState', ()=>{\r\n    expect(reducer(undefined, {})).toEqual(state)\r\n  })\r\n  test('should show modal dialog', ()=>{\r\n    const mId = 'NOTIF', data = { descr: 'Description' };\r\n    expect(\r\n      reducer(state, ma.showModal(mId, data))\r\n    ).toEqual({\r\n      id: mId,\r\n      data: data\r\n    })\r\n  })\r\n})\r\n"],"file":"reducer.test.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/modal/__test__/reducer.test.js"
+ ],
+ "file": "../../../../src/flux/modal/__test__/reducer.test.js",
+ "names": [
+  "dispatch",
+  "store",
+  "getState",
+  "_selectModal",
+  "modal",
+  "_testActionResult",
+  "prevState",
+  "expectedState",
+  "nextState",
+  "expect",
+  "toEqual",
+  "not",
+  "toBe",
+  "describe",
+  "test",
+  "initialState",
+  "data",
+  "id",
+  "MD",
+  "DETAILS",
+  "SETTINGS",
+  "NOTIF"
+ ],
+ "mappings": ";;;;AAAA;;AACA;;AACA;;;;;;AAOA,IAAQA,QAAR,GAA+BC,iBAA/B,CAAQD,QAAR;AAAA,IAAkBE,QAAlB,GAA+BD,iBAA/B,CAAkBC,QAAlB;;AACA,IAAMC,YAAY,GAAG,SAAfA,YAAe;AAAA,SAAMD,QAAQ,GAAGE,KAAjB;AAAA,CAArB;;AAEA,IAAMC,iBAAiB,GAAG,SAApBA,iBAAoB,CAACC,SAAD,EAAYC,aAAZ,EAA8B;AACtD,MAAMC,SAAS,GAAGL,YAAY,EAA9B;;AACAM,EAAAA,MAAM,CAACD,SAAD,CAAN,CAAkBE,OAAlB,CAA0BH,aAA1B;AACAE,EAAAA,MAAM,CAACD,SAAD,CAAN,CAAkBG,GAAlB,CAAsBC,IAAtB,CAA2BN,SAA3B;AACD,CAJD;;AAMAO,QAAQ,CAAC,aAAD,EAAgB,YAAI;AAC1BC,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtCL,IAAAA,MAAM,CAAC,yBAAQ,KAAK,CAAb,EAAgB,EAAhB,CAAD,CAAN,CAA4BC,OAA5B,CAAoCK,qBAApC;AACD,GAFG,CAAJ;AAIAD,EAAAA,IAAI,CAAC,+BAAD,EAAkC,YAAI;AACxC,QAAMR,SAAS,GAAGH,YAAY,EAA9B;;AACA,QAAMa,IAAI,GAAG;AAAEC,MAAAA,EAAE,EAAE;AAAN,KAAb;AACAjB,IAAAA,QAAQ,CAAC,0BAAYgB,IAAZ,CAAD,CAAR;;AAEAX,IAAAA,iBAAiB,CAACC,SAAD,EAAY;AAC3BW,MAAAA,EAAE,EAAEC,gBAAGC,OADoB;AACXH,MAAAA,IAAI,EAAJA;AADW,KAAZ,CAAjB;AAGD,GARG,CAAJ;AASAF,EAAAA,IAAI,CAAC,gCAAD,EAAmC,YAAI;AACzC,QAAMR,SAAS,GAAGH,YAAY,EAA9B;;AACAH,IAAAA,QAAQ,CAAC,4BAAD,CAAR;;AAEAK,IAAAA,iBAAiB,CAACC,SAAD,EAAY;AAC3BW,MAAAA,EAAE,EAAEC,gBAAGE,QADoB;AAE3BJ,MAAAA,IAAI,EAAE,KAAK;AAFgB,KAAZ,CAAjB;AAID,GARG,CAAJ;AASAF,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtC,QAAMR,SAAS,GAAGH,YAAY,EAA9B;;AACA,QAAMa,IAAI,GAAG,MAAb;AACAhB,IAAAA,QAAQ,CAAC,wBAAUgB,IAAV,CAAD,CAAR;;AAEAX,IAAAA,iBAAiB,CAACC,SAAD,EAAY;AAC3BW,MAAAA,EAAE,EAAEC,gBAAGG,KADoB;AAE3BL,MAAAA,IAAI,EAAJA;AAF2B,KAAZ,CAAjB;AAID,GATG,CAAJ;AAUD,CAjCO,CAAR"
+}

@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _actions = require("../board/actions");
 
-var _actions2 = require("../modal/actions");
+var _reducer = require("../modal/reducer");
 
 var _crId = _interopRequireDefault(require("./crId"));
 
@@ -28,7 +28,7 @@ var boardIdMiddleware = function boardIdMiddleware(_ref) {
     return function (action) {
       if (action.type === _actions.ACTION.ADD_BOARD) {
         if (_isMax(getState())) {
-          dispatch((0, _actions2.showNotif)(_appConf["default"].N_MAX_BOARDS));
+          dispatch((0, _reducer.showNotif)(_appConf["default"].N_MAX_BOARDS));
           return false;
         }
 

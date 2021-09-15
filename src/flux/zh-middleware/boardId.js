@@ -1,5 +1,5 @@
 import { ACTION } from '../board/actions'
-import { showNotif } from '../modal/actions'
+import { showNotif } from '../modal/reducer'
 import crId from './crId'
 import { sApp } from '../selectors'
 import CONF from '../appConf'

@@ -3,7 +3,7 @@ import {
   saveBoard,
   cleanStorage
 } from '../../flux/app/actions'
-import { showSettings } from '../../flux/modal/actions'
+import { showSettings } from '../../flux/modal/reducer'
 
 import FlatButton  from '../zhn-m/FlatButton'
 import DrawerMsgList from './DrawerMsgList'
