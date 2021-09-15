@@ -1,54 +1,47 @@
-import { ACTION } from './actions'
-import initialState from '../initialState'
-
-import fns from '../reducerFns'
-
-const {
-  setInObj,
-  removeProp
-} = fns;
+import { createSlice } from '@reduxjs/toolkit';
 
 const _crNewNote = (noteId) => ({
   id: noteId,
   title: 'New Note'
 });
 
-const reducer = function(
-  state /*: NoteState */=initialState.notes,
-  action /*: NoteAction */
-) /*: NoteState */ {
-  switch(action.type){
-    case ACTION.EDIT_NOTE_TITLE: {
-      const { noteId, title } = action
-      , note = state[noteId]
-      , newNote = { ...note, title };
-      return setInObj(state, noteId, newNote);
+
+export const initialState = {
+  //'n-1': { id: 'n-1', title: 'Note 1' },
+}
+
+const notesSlice = createSlice({
+  name: 'notes',
+  initialState,
+  reducers: {
+    addNote(state, action){
+      const { noteId } = action.payload;
+      state[noteId] = _crNewNote(noteId)
+    },
+    deleteNote(state, action){
+      const { noteId } = action.payload;
+      delete state[noteId];      
+    },
+    editNoteTitle(state, action){
+      const { noteId, title } = action.payload;
+      state[noteId].title = title
+    },
+    editNoteDescr(state, action){
+      const { noteId, descr } = action.payload;
+      state[noteId].descr = descr
+    },
+    editNoteLabels(state, action){
+      const { noteId, labelsTo } = action.payload;
+      state[noteId].labels = labelsTo
     }
-    case ACTION.EDIT_NOTE_DESCR: {
-      const { noteId, descr } = action
-      , note = state[noteId]
-      , newNote = { ...note, descr };
-      return setInObj(state, noteId, newNote);
-    }
-    case ACTION.EDIT_NOTE_LABELS: {
-      const { noteId, labelsTo } = action
-      , note = state[noteId]
-      , newNote = { ...note, labels: labelsTo };
-      return setInObj(state, noteId, newNote);
-    }
-    case ACTION.ADD_NOTE: {
-      const { noteId } = action;
-      return {
-        ...state,
-        [noteId]: _crNewNote(noteId)
-      }
-    }
-    case ACTION.DELETE_NOTE: {
-      const { noteId } = action;
-      return removeProp(state, noteId);
-    }
-    default: return state;
   }
-};
+})
+
+const { reducer, actions } = notesSlice
+
+export const {
+  editNoteTitle,
+  editNoteDescr
+} = actions
 
 export default reducer

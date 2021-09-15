@@ -53,7 +53,7 @@ class Topic extends Component {
 
   _hAddNewTask = () => {
     const { column, addNote } = this.props;
-    addNote(column.id)
+    addNote({ columnId: column.id })
   }
 
   _hBlurTitle = (evt) => {

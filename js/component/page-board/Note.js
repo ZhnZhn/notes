@@ -13,7 +13,9 @@ var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/note/actions");
 
-var _reducer = require("../../flux/modal/reducer");
+var _reducer = require("../../flux/note/reducer");
+
+var _reducer2 = require("../../flux/modal/reducer");
 
 var _NoteCaption = _interopRequireDefault(require("./NoteCaption"));
 
@@ -66,7 +68,10 @@ var DnDNote = /*#__PURE__*/function (_Component) {
           deleteNote = _this$props.deleteNote,
           columnId = _this$props.columnId,
           note = _this$props.note;
-      deleteNote(columnId, note.id);
+      deleteNote({
+        columnId: columnId,
+        noteId: note.id
+      });
     };
 
     _this._blurTitle = function (evt) {
@@ -76,7 +81,10 @@ var DnDNote = /*#__PURE__*/function (_Component) {
           editNoteTitle = _this$props2.editNoteTitle;
 
       if (newTitle !== note.title) {
-        editNoteTitle(note.id, newTitle);
+        editNoteTitle({
+          noteId: note.id,
+          title: newTitle
+        });
       }
     };
 
@@ -138,9 +146,8 @@ var DnDNote = /*#__PURE__*/function (_Component) {
 
 var mapDispatchToProps = {
   deleteNote: _actions.deleteNote,
-  editNoteTitle: _actions.editNoteTitle,
-  //editDetails: ma.showDetails
-  editDetails: _reducer.showDetails
+  editNoteTitle: _reducer.editNoteTitle,
+  editDetails: _reducer2.showDetails
 };
 
 var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DnDNote);

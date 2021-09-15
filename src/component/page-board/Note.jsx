@@ -2,10 +2,10 @@ import { Component } from 'react'
 //import PropsType from 'prop-types'
 
 import { connect } from 'react-redux'
-import {
-  deleteNote,
-  editNoteTitle
-} from '../../flux/note/actions'
+
+import { deleteNote } from '../../flux/note/actions'
+import { editNoteTitle } from '../../flux/note/reducer'
+
 import { showDetails } from '../../flux/modal/reducer'
 
 import NoteCaption from './NoteCaption'
@@ -49,14 +49,14 @@ class DnDNote extends Component {
 
   _deleteNote = () => {
     const { deleteNote, columnId, note } = this.props
-    deleteNote(columnId, note.id)
+    deleteNote({ columnId, noteId: note.id})
   }
 
   _blurTitle = (evt) => {
     const newTitle = evt.target.value
     , { note, editNoteTitle } = this.props;
     if (newTitle !== note.title) {
-      editNoteTitle(note.id, newTitle)
+      editNoteTitle({ noteId: note.id, title: newTitle })
     }
   }
 
@@ -115,7 +115,6 @@ class DnDNote extends Component {
 const mapDispatchToProps = {
   deleteNote,
   editNoteTitle,
-  //editDetails: ma.showDetails
   editDetails: showDetails
 };
 

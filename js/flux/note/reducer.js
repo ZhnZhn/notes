@@ -1,20 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
+exports["default"] = exports.editNoteDescr = exports.editNoteTitle = exports.initialState = void 0;
 
-var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _actions = require("./actions");
-
-var _initialState = _interopRequireDefault(require("../initialState"));
-
-var _reducerFns = _interopRequireDefault(require("../reducerFns"));
-
-var setInObj = _reducerFns["default"].setInObj,
-    removeProp = _reducerFns["default"].removeProp;
+var _toolkit = require("@reduxjs/toolkit");
 
 var _crNewNote = function _crNewNote(noteId) {
   return {
@@ -23,76 +12,47 @@ var _crNewNote = function _crNewNote(noteId) {
   };
 };
 
-var reducer = function reducer(state
-/*: NoteState */
-, action
-/*: NoteAction */
-)
-/*: NoteState */
-{
-  if (state
-  /*: NoteState */
-  === void 0) {
-    state
-    /*: NoteState */
-    = _initialState["default"].notes;
-  }
-
-  switch (action.type) {
-    case _actions.ACTION.EDIT_NOTE_TITLE:
-      {
-        var noteId = action.noteId,
-            title = action.title,
-            note = state[noteId],
-            newNote = (0, _extends3["default"])({}, note, {
-          title: title
-        });
-        return setInObj(state, noteId, newNote);
-      }
-
-    case _actions.ACTION.EDIT_NOTE_DESCR:
-      {
-        var _noteId = action.noteId,
-            descr = action.descr,
-            _note = state[_noteId],
-            _newNote = (0, _extends3["default"])({}, _note, {
-          descr: descr
-        });
-
-        return setInObj(state, _noteId, _newNote);
-      }
-
-    case _actions.ACTION.EDIT_NOTE_LABELS:
-      {
-        var _noteId2 = action.noteId,
-            labelsTo = action.labelsTo,
-            _note2 = state[_noteId2],
-            _newNote2 = (0, _extends3["default"])({}, _note2, {
-          labels: labelsTo
-        });
-
-        return setInObj(state, _noteId2, _newNote2);
-      }
-
-    case _actions.ACTION.ADD_NOTE:
-      {
-        var _extends2;
-
-        var _noteId3 = action.noteId;
-        return (0, _extends3["default"])({}, state, (_extends2 = {}, _extends2[_noteId3] = _crNewNote(_noteId3), _extends2));
-      }
-
-    case _actions.ACTION.DELETE_NOTE:
-      {
-        var _noteId4 = action.noteId;
-        return removeProp(state, _noteId4);
-      }
-
-    default:
-      return state;
-  }
+var initialState = {//'n-1': { id: 'n-1', title: 'Note 1' },
 };
-
+exports.initialState = initialState;
+var notesSlice = (0, _toolkit.createSlice)({
+  name: 'notes',
+  initialState: initialState,
+  reducers: {
+    addNote: function addNote(state, action) {
+      var noteId = action.payload.noteId;
+      state[noteId] = _crNewNote(noteId);
+    },
+    deleteNote: function deleteNote(state, action) {
+      var noteId = action.payload.noteId;
+      delete state[noteId];
+    },
+    editNoteTitle: function editNoteTitle(state, action) {
+      var _action$payload = action.payload,
+          noteId = _action$payload.noteId,
+          title = _action$payload.title;
+      state[noteId].title = title;
+    },
+    editNoteDescr: function editNoteDescr(state, action) {
+      var _action$payload2 = action.payload,
+          noteId = _action$payload2.noteId,
+          descr = _action$payload2.descr;
+      state[noteId].descr = descr;
+    },
+    editNoteLabels: function editNoteLabels(state, action) {
+      var _action$payload3 = action.payload,
+          noteId = _action$payload3.noteId,
+          labelsTo = _action$payload3.labelsTo;
+      state[noteId].labels = labelsTo;
+    }
+  }
+});
+var reducer = notesSlice.reducer,
+    actions = notesSlice.actions;
+var editNoteTitle = actions.editNoteTitle,
+    editNoteDescr = actions.editNoteDescr;
+exports.editNoteDescr = editNoteDescr;
+exports.editNoteTitle = editNoteTitle;
 var _default = reducer;
 exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

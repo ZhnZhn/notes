@@ -1,6 +1,6 @@
 import { useRef, useCallback, useEffect } from 'react'
 
-import na from '../../flux/note/actions'
+import { editNoteDescr } from '../../flux/note/reducer'
 
 import InputTextArea from '../zhn/InputTextArea'
 import DialogButtons from './DialogButtons'
@@ -23,8 +23,10 @@ const TabDescr = (props) => {
   , _refBtClose = useRef(null)
   , _refInputDescr = useRef(null)
   , _editDescr = useCallback(() => {
-    const _descr = _refInputDescr.current.getValue();
-    dispatch(na.editNoteDescr(id, _descr))
+    dispatch(editNoteDescr({
+      noteId: id,
+      descr: _refInputDescr.current.getValue()
+    }))
   }, [id])
   //dispatch
 

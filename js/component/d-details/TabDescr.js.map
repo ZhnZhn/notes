@@ -1,1 +1,30 @@
-{"version":3,"sources":["../../../src/component/d-details/TabDescr.jsx"],"names":["CL","DESCR","ACTIONS","TabDescr","props","isSelected","note","dispatch","onClose","id","_refBtClose","_refInputDescr","_editDescr","_descr","current","getValue","na","editNoteDescr","_btClose","focus","_initDescr"],"mappings":";;;;;;;AAAA;;AAEA;;AAEA;;AACA;;AAEA;;;;AAEA,IAAMA,EAAE,GAAG;AACTC,EAAAA,KAAK,EAAE,mBADE;AAETC,EAAAA,OAAO,EAAE;AAFA,CAAX;;AAKA,IAAMC,QAAQ,GAAG,SAAXA,QAAW,CAACC,KAAD,EAAW;AAC1B,MACEC,UADF,GAKID,KALJ,CACEC,UADF;AAAA,MAEEC,IAFF,GAKIF,KALJ,CAEEE,IAFF;AAAA,MAGEC,QAHF,GAKIH,KALJ,CAGEG,QAHF;AAAA,MAIEC,OAJF,GAKIJ,KALJ,CAIEI,OAJF;AAAA,MAMIC,EANJ,GAMWH,IANX,CAMIG,EANJ;AAAA,MAOEC,WAPF,GAOgB,mBAAO,IAAP,CAPhB;AAAA,MAQEC,cARF,GAQmB,mBAAO,IAAP,CARnB;AAAA,MASEC,UATF,GASe,wBAAY,YAAM;AAC/B,QAAMC,MAAM,GAAGF,cAAc,CAACG,OAAf,CAAuBC,QAAvB,EAAf;;AACAR,IAAAA,QAAQ,CAACS,oBAAGC,aAAH,CAAiBR,EAAjB,EAAqBI,MAArB,CAAD,CAAR;AACD,GAHc,EAGZ,CAACJ,EAAD,CAHY,CATf,CAD0B,CAc1B;;;AAEA,wBAAU,YAAM;AACd,QAAMS,QAAQ,GAAGR,WAAW,CAACI,OAA7B;;AACA,QAAIT,UAAU,IAAIa,QAAlB,EAA4B;AAC1BA,MAAAA,QAAQ,CAACC,KAAT;AACD;AACF,GALD,EAKG,CAACf,KAAD,CALH,EAhB0B,CAsB1B;;AAEA,MAAMgB,UAAU,GAAG,8BAAad,IAAb,CAAnB;;AAEA,sBACE;AAAA,4BACE,qBAAC,yBAAD;AAEE,MAAA,GAAG,EAAEK,cAFP;AAGE,MAAA,SAAS,EAAEX,EAAE,CAACC,KAHhB;AAIE,MAAA,SAAS,EAAE,GAJb;AAKE,MAAA,SAAS,EAAEmB;AALb,OACOX,EADP,CADF,eAQE,qBAAC,yBAAD;AACE,MAAA,UAAU,EAAEC,WADd;AAEE,MAAA,SAAS,EAAEV,EAAE,CAACE,OAFhB;AAGE,MAAA,MAAM,EAAEU,UAHV;AAIE,MAAA,OAAO,EAAEJ;AAJX,MARF;AAAA,IADF;AAiBD,CA3CD;;eA6CeL,Q","sourcesContent":["import { useRef, useCallback, useEffect } from 'react'\r\n\r\nimport na from '../../flux/note/actions'\r\n\r\nimport InputTextArea from '../zhn/InputTextArea'\r\nimport DialogButtons from './DialogButtons'\r\n\r\nimport getNoteDescr from '../page-board/getNoteDescr'\r\n\r\nconst CL = {\r\n  DESCR: 'md-details__descr',\r\n  ACTIONS: 'md__actions'\r\n};\r\n\r\nconst TabDescr = (props) => {\r\n  const {\r\n    isSelected,\r\n    note,\r\n    dispatch,\r\n    onClose\r\n  } = props\r\n  , { id } = note\r\n  , _refBtClose = useRef(null)\r\n  , _refInputDescr = useRef(null)\r\n  , _editDescr = useCallback(() => {\r\n    const _descr = _refInputDescr.current.getValue();\r\n    dispatch(na.editNoteDescr(id, _descr))\r\n  }, [id])\r\n  //dispatch\r\n\r\n  useEffect(() => {\r\n    const _btClose = _refBtClose.current;\r\n    if (isSelected && _btClose) {\r\n      _btClose.focus()\r\n    }\r\n  }, [props])\r\n  //isSelected\r\n\r\n  const _initDescr = getNoteDescr(note);\r\n\r\n  return (\r\n    <>\r\n      <InputTextArea\r\n        key={id}\r\n        ref={_refInputDescr}\r\n        className={CL.DESCR}\r\n        maxLength={250}\r\n        initValue={_initDescr}\r\n      />\r\n      <DialogButtons\r\n        refBtClose={_refBtClose}\r\n        className={CL.ACTIONS}\r\n        onSave={_editDescr}\r\n        onClose={onClose}\r\n      />\r\n    </>\r\n  );\r\n}\r\n\r\nexport default TabDescr\r\n"],"file":"TabDescr.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/TabDescr.js"
+ ],
+ "file": "../../../src/component/d-details/TabDescr.js",
+ "names": [
+  "CL",
+  "DESCR",
+  "ACTIONS",
+  "TabDescr",
+  "props",
+  "isSelected",
+  "note",
+  "dispatch",
+  "onClose",
+  "id",
+  "_refBtClose",
+  "_refInputDescr",
+  "_editDescr",
+  "noteId",
+  "descr",
+  "current",
+  "getValue",
+  "_btClose",
+  "focus",
+  "_initDescr"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA;;AACA;;AAEA;;;;AAEA,IAAMA,EAAE,GAAG;AACTC,EAAAA,KAAK,EAAE,mBADE;AAETC,EAAAA,OAAO,EAAE;AAFA,CAAX;;AAKA,IAAMC,QAAQ,GAAG,SAAXA,QAAW,CAACC,KAAD,EAAW;AAC1B,MACEC,UADF,GAKID,KALJ,CACEC,UADF;AAAA,MAEEC,IAFF,GAKIF,KALJ,CAEEE,IAFF;AAAA,MAGEC,QAHF,GAKIH,KALJ,CAGEG,QAHF;AAAA,MAIEC,OAJF,GAKIJ,KALJ,CAIEI,OAJF;AAAA,MAMIC,EANJ,GAMWH,IANX,CAMIG,EANJ;AAAA,MAOEC,WAPF,GAOgB,mBAAO,IAAP,CAPhB;AAAA,MAQEC,cARF,GAQmB,mBAAO,IAAP,CARnB;AAAA,MASEC,UATF,GASe,wBAAY,YAAM;AAC/BL,IAAAA,QAAQ,CAAC,4BAAc;AACrBM,MAAAA,MAAM,EAAEJ,EADa;AAErBK,MAAAA,KAAK,EAAEH,cAAc,CAACI,OAAf,CAAuBC,QAAvB;AAFc,KAAd,CAAD,CAAR;AAID,GALc,EAKZ,CAACP,EAAD,CALY,CATf,CAD0B,CAgB1B;;;AAEA,wBAAU,YAAM;AACd,QAAMQ,QAAQ,GAAGP,WAAW,CAACK,OAA7B;;AACA,QAAIV,UAAU,IAAIY,QAAlB,EAA4B;AAC1BA,MAAAA,QAAQ,CAACC,KAAT;AACD;AACF,GALD,EAKG,CAACd,KAAD,CALH,EAlB0B,CAwB1B;;AAEA,MAAMe,UAAU,GAAG,8BAAab,IAAb,CAAnB;;AAEA,sBACE;AAAA,4BACE,qBAAC,yBAAD;AAEE,MAAA,GAAG,EAAEK,cAFP;AAGE,MAAA,SAAS,EAAEX,EAAE,CAACC,KAHhB;AAIE,MAAA,SAAS,EAAE,GAJb;AAKE,MAAA,SAAS,EAAEkB;AALb,OACOV,EADP,CADF,eAQE,qBAAC,yBAAD;AACE,MAAA,UAAU,EAAEC,WADd;AAEE,MAAA,SAAS,EAAEV,EAAE,CAACE,OAFhB;AAGE,MAAA,MAAM,EAAEU,UAHV;AAIE,MAAA,OAAO,EAAEJ;AAJX,MARF;AAAA,IADF;AAiBD,CA7CD;;eA+CeL,Q"
+}

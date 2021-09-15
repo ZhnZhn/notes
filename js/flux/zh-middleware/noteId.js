@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _actions = require("../note/actions");
 
 var _reducer = require("../modal/reducer");
@@ -26,15 +24,15 @@ var taskIdMiddleware = function taskIdMiddleware(_ref) {
       dispatch = _ref.dispatch;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.ADD_NOTE) {
-        if (_isMax(getState(), action.columnId)) {
+      if (action.type === _actions.addNote.type) {
+        var columnId = action.payload.columnId;
+
+        if (_isMax(getState(), columnId)) {
           dispatch((0, _reducer.showNotif)(_appConf["default"].N_MAX_NOTES));
           return false;
         }
 
-        action = (0, _extends2["default"])({}, action, {
-          noteId: (0, _crId["default"])(_appConf["default"].NOTES_PREFIX)
-        });
+        action.payload.noteId = (0, _crId["default"])(_appConf["default"].NOTES_PREFIX);
       }
 
       return next(action);

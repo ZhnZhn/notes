@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
-var _actions = _interopRequireDefault(require("../../flux/note/actions"));
+var _reducer = require("../../flux/note/reducer");
 
 var _InputTextArea = _interopRequireDefault(require("../zhn/InputTextArea"));
 
@@ -31,9 +31,10 @@ var TabDescr = function TabDescr(props) {
       _refBtClose = (0, _react.useRef)(null),
       _refInputDescr = (0, _react.useRef)(null),
       _editDescr = (0, _react.useCallback)(function () {
-    var _descr = _refInputDescr.current.getValue();
-
-    dispatch(_actions["default"].editNoteDescr(id, _descr));
+    dispatch((0, _reducer.editNoteDescr)({
+      noteId: id,
+      descr: _refInputDescr.current.getValue()
+    }));
   }, [id]); //dispatch
 
 

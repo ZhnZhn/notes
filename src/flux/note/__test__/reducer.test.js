@@ -1,7 +1,15 @@
-import reducer from '../reducer'
-import ta from '../actions'
-import initialState from '../../initialState'
+import reducer, {
+  initialState,
+  editNoteTitle,
+  editNoteDescr
+} from '../reducer';
+import { addNote, deleteNote } from '../actions';
+import store from '../../store';
 
+const { dispatch, getState } = store;
+
+
+/*
 const state = {
   'n-1': {
     id: 'n-1',
@@ -12,75 +20,47 @@ const state = {
     title: 'Note 2'
   }
 };
+*/
 
-describe('reducer note', () => {
+const _getIdFromSlice = (pathSlice) => Object
+ .keys(getState()[pathSlice])[0];
+const _selectNotes = () => getState().notes
+
+describe('reducer notes', ()=>{
   test('should init to initialState', () => {
-    expect(reducer(undefined, {})).toEqual(initialState.notes)
+    expect(reducer(undefined, {}))
+      .toEqual(initialState)
   })
-  test('should edit note title', ()=>{
-    const nId ='n-1'
-    , newTitle = 'Note'
-    , state = { [nId]: { id: nId, title: 'Title' }};
-    expect(
-      reducer(state, ta.editNoteTitle(nId, newTitle))
-    ).toEqual({
-      [nId]: {
-        id: nId,
-        title: newTitle
-      }
-    })
-  })
+  test('should handle actions', ()=>{
+     const columnId = _getIdFromSlice('columns')
+     dispatch(addNote({ columnId }))
+     const noteId = _getIdFromSlice('notes')
+     expect(_selectNotes()).toEqual({
+       [noteId]: {
+         id: noteId,
+         title: "New Note"
+       }
+     })
 
-  test('should edit note descr', ()=>{
-    const nId ='n-1', newDescr = 'Note'
-    , state = { [nId]: { id: nId, title: 'Title' }}
-    expect(
-      reducer(state, ta.editNoteDescr(nId, newDescr))
-    ).toEqual({
-      [nId]: {
-        id: nId,
-        title: 'Title',
-        descr: newDescr
-      }
-    })
-  })
+     const title = 'Title'
+     dispatch(editNoteTitle({ noteId, title }))
+     expect(_selectNotes()).toEqual({
+       [noteId]: {
+         id: noteId,
+         title
+       }
+     })
 
-  test('should set new labels', ()=>{
-    const nId ='n-1'
-    , labelsTo = [{ id: 'nl-1', title: 'Story', color: 'green'}]
-    , state = { [nId]: { id: nId, title: 'Title'}};
-    expect(reducer(state, ta.editNoteLabels(
-      nId, [], labelsTo, []
-    ))).toEqual({
-      [nId]: {
-        id: nId,
-        title: 'Title',
-        labels: labelsTo
-      }
-    })
-  })
+     const descr = "Description"
+     dispatch(editNoteDescr({ noteId, descr }))
+     expect(_selectNotes()).toEqual({
+       [noteId]: {
+         id: noteId,
+         title, descr
+       }
+     })
 
-  test('should add note', ()=>{
-    const cId = 'c-1', nId = 'n-3'
-    expect(
-      reducer(state, ta.addNote(cId, nId))
-    ).toEqual({
-      ...state,
-      [nId]: {
-        id: nId,
-        title: 'New Note'
-      }
-    })
-  })
-  test('should remove note', ()=>{
-    const cId = 'c-1', nId = 'n-1';
-    expect(
-      reducer(state, ta.deleteNote(cId, nId))
-    ).toEqual({
-      'n-2': {
-        id: 'n-2',
-        title: 'Note 2'
-      }
-    })
+     dispatch(deleteNote({ noteId, columnId }))
+     expect(_selectNotes()).toEqual({})
   })
 })

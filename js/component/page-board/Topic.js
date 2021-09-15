@@ -79,7 +79,9 @@ var Topic = /*#__PURE__*/function (_Component) {
       var _this$props2 = _this.props,
           column = _this$props2.column,
           addNote = _this$props2.addNote;
-      addNote(column.id);
+      addNote({
+        columnId: column.id
+      });
     };
 
     _this._hBlurTitle = function (evt) {

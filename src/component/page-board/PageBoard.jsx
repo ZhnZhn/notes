@@ -8,6 +8,7 @@ import {
   moveNote,
   addNote
 } from '../../flux/note/actions'
+
 import {
    addColumn
  } from '../../flux/column/actions'

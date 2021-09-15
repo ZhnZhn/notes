@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../../src/flux/zh-middleware/noteTitleValidation.js"],"names":["_isEmpty","str","trim","noteTitleValidation","store","next","action","type","ACTION","EDIT_NOTE_TITLE","title"],"mappings":";;;;;;;;;AAAA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAAC,GAAG;AAAA,SAAI,OAAOA,GAAP,KAAe,QAAf,IAClB,CAACA,GAAG,CAACC,IAAJ,EADa;AAAA,CAApB;;AAGA,IAAMC,mBAAmB,GAAG,SAAtBA,mBAAsB,CAAAC,KAAK;AAAA,SAAI,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AACrD,UAAIA,MAAM,CAACC,IAAP,KAAgBC,gBAAOC,eAAvB,IACGT,QAAQ,CAACM,MAAM,CAACI,KAAR,CADf,EAC+B;AAC7BL,QAAAA,IAAI,+BAAKC,MAAL;AAAaI,UAAAA,KAAK,EAAE;AAApB,WAAJ;AACA,eAAO,KAAP;AACD;;AACD,aAAOL,IAAI,CAACC,MAAD,CAAX;AACD,KAPwC;AAAA,GAAR;AAAA,CAAjC;;eASeH,mB","sourcesContent":["import { ACTION } from '../note/actions'\r\n\r\nconst _isEmpty = str => typeof str !== 'string'\r\n   || !str.trim();\r\n\r\nconst noteTitleValidation = store => next => action => {\r\n  if (action.type === ACTION.EDIT_NOTE_TITLE\r\n      && _isEmpty(action.title)) {\r\n    next({...action, title: 'New Note'})\r\n    return false;\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default noteTitleValidation\r\n"],"file":"noteTitleValidation.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/noteTitleValidation.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/noteTitleValidation.js",
+ "names": [
+  "_isEmpty",
+  "str",
+  "trim",
+  "noteTitleValidation",
+  "store",
+  "next",
+  "action",
+  "type",
+  "editNoteTitle",
+  "payload",
+  "title",
+  "console",
+  "log"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAAC,GAAG;AAAA,SAAI,OAAOA,GAAP,KAAe,QAAf,IAClB,CAACA,GAAG,CAACC,IAAJ,EADa;AAAA,CAApB;;AAGA,IAAMC,mBAAmB,GAAG,SAAtBA,mBAAsB,CAAAC,KAAK;AAAA,SAAI,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AACrD,UAAIA,MAAM,CAACC,IAAP,KAAgBC,uBAAcD,IAA9B,IACGP,QAAQ,CAACM,MAAM,CAACG,OAAP,CAAeC,KAAhB,CADf,EACuC;AACrCC,QAAAA,OAAO,CAACC,GAAR,CAAY,gBAAZ;AACAN,QAAAA,MAAM,CAACG,OAAP,CAAeC,KAAf,GAAuB,UAAvB;AACAL,QAAAA,IAAI,CAACC,MAAD,CAAJ;AACA,eAAO,KAAP;AACD;;AACD,aAAOD,IAAI,CAACC,MAAD,CAAX;AACD,KATwC;AAAA,GAAR;AAAA,CAAjC;;eAWeH,mB"
+}
