@@ -1,1 +1,46 @@
-{"version":3,"sources":["../../../src/flux/board/reducer.js"],"names":["setInObj","fns","removeProp","filterBy","moveInternal","moveExternal","reducer","state","action","initState","boards","type","ACTION","EDIT_BOARD_TITLE","boardId","title","newBoard","ADD_BOARD","id","columnIds","REMOVE_BOARD","CA","ADD_COLUMN","columnId","oldBoard","REMOVE_COLUMN","MOVE_COLUMN","source","destination","from","droppableId","to"],"mappings":"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","sourcesContent":["import { ACTION } from './actions'\r\nimport { ACTION as CA } from '../column/actions'\r\nimport initState from '../initialState'\r\n\r\nimport fns from '../reducerFns'\r\nimport fDnDMoveFns from '../fDnDMoveFns'\r\n\r\nconst {\r\n  setInObj,\r\n  removeProp,\r\n  filterBy\r\n} = fns;\r\nconst {\r\n  moveInternal,\r\n  moveExternal\r\n} = fDnDMoveFns('columnIds');\r\n\r\n\r\n/*\r\nboards: {\r\n  'b-1': {\r\n    id: 'b-1',\r\n    title: 'Board 1',\r\n    columnIds: ['c-1','c-2']\r\n  }\r\n}\r\n*/\r\n\r\nconst reducer = function (\r\n  state /*: BoardState */=initState.boards,\r\n  action /*: BoardAction */\r\n) /*: BoardState */ {\r\n  switch(action.type){\r\n    case ACTION.EDIT_BOARD_TITLE: {\r\n      const { boardId, title } = action\r\n         , newBoard = {...state[boardId], title };\r\n      return setInObj(state, boardId, newBoard)\r\n    }\r\n    case ACTION.ADD_BOARD: {\r\n      const { boardId } = action;\r\n      return setInObj(state, boardId, {\r\n        id: boardId,\r\n        title: 'New Board',\r\n        columnIds: []\r\n      });\r\n    }\r\n    case ACTION.REMOVE_BOARD: {\r\n      const { boardId } = action;\r\n      return removeProp(state, boardId);\r\n    }\r\n    case CA.ADD_COLUMN: {\r\n      const { boardId, columnId } = action\r\n      , oldBoard = state[boardId]\r\n      , newBoard = {\r\n        ...oldBoard,\r\n        columnIds: [\r\n          ...oldBoard.columnIds\r\n          , columnId\r\n        ]\r\n      }\r\n      return setInObj(state, boardId, newBoard);\r\n    }\r\n    case CA.REMOVE_COLUMN:{\r\n      const { boardId, columnId } = action\r\n      , oldBoard = state[boardId];\r\n      return setInObj(state, boardId, {\r\n        ...oldBoard,\r\n        columnIds: filterBy(oldBoard.columnIds, columnId)\r\n      });\r\n    }\r\n    case CA.MOVE_COLUMN: {\r\n      const { columnId, source, destination } = action\r\n      , from = state[source.droppableId]\r\n      , to = state[destination.droppableId];\r\n      return from === to\r\n        ? moveInternal(state, columnId, source, destination, from)\r\n        : moveExternal(state, columnId, source, destination, from, to);\r\n    }\r\n    default: return state;\r\n  }\r\n};\r\n\r\nexport default reducer\r\n"],"file":"reducer.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/board/reducer.js"
+ ],
+ "file": "../../../src/flux/board/reducer.js",
+ "names": [
+  "moveInternal",
+  "moveExternal",
+  "crBoard",
+  "id",
+  "title",
+  "columnIds",
+  "boardsSlice",
+  "name",
+  "initialState",
+  "boards",
+  "reducers",
+  "editBoardTitle",
+  "state",
+  "action",
+  "payload",
+  "boardId",
+  "addBoard",
+  "removeBoard",
+  "extraReducers",
+  "builder",
+  "addCase",
+  "addColumn",
+  "columnId",
+  "push",
+  "removeColumn",
+  "board",
+  "filter",
+  "moveColumn",
+  "draggableId",
+  "source",
+  "destination",
+  "from",
+  "droppableId",
+  "to",
+  "actions",
+  "reducer"
+ ],
+ "mappings": "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"
+}

@@ -7,13 +7,16 @@ var _actions = require("../board/actions");
 
 var _selectors = require("../selectors");
 
-var canRemoveBoard = function canRemoveBoard(store) {
+var _isArr = Array.isArray;
+
+var canRemoveBoard = function canRemoveBoard(_ref) {
+  var getState = _ref.getState;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.REMOVE_BOARD) {
-        var columnIds = _selectors.sBoard.columnIds(store.getState(), action.boardId);
+      if (action.type === _actions.removeBoard.type) {
+        var columnIds = _selectors.sBoard.columnIds(getState(), action.payload.boardId);
 
-        if (!Array.isArray(columnIds) || columnIds.length !== 0) {
+        if (!_isArr(columnIds) || columnIds.length !== 0) {
           return false;
         }
       }

@@ -1,10 +1,24 @@
-import reducer from '../reducer'
-import ba from '../actions'
-import ca from '../../column/actions'
-import initialState from '../../initialState'
+import reducer, {
+  crBoard,
+  editBoardTitle
+} from '../reducer';
+import {
+  addBoard,
+  removeBoard
+} from '../actions';
+import {
+  addColumn,
+  removeColumn,
+  moveColumn
+} from '../../column/actions';
+
+import initialState from '../../initialState';
+import store from '../../store';
+
+const { getState, dispatch } = store;
+const _selectBoards = () => getState().boards;
 
 
-const state = initialState.boards;
 /*
 const initState = {
   'b-1': {
@@ -17,70 +31,41 @@ const initState = {
 
 describe('reducer board', () => {
   test('should init to initialState', ()=>{
-    expect(reducer(undefined, {})).toEqual(state)
+    expect(reducer(undefined, {})).toEqual(initialState.boards)
   })
 
-  test('should edit board title', ()=>{
-    const bId = 'b-1'
-    , newTitle = 'Board';
-    expect(
-      reducer(state, ba.editBoardTitle(bId, newTitle))
-    ).toEqual({
-      ...state,
-      [bId]: {
-        ...state[bId],
-        title: newTitle
-      }
+  test('should handle board actions correctly', ()=>{
+    const beforeBoards = _selectBoards()
+
+    const boardId = dispatch(addBoard())
+    expect(_selectBoards()).toEqual({
+      ...beforeBoards,
+      [boardId]: crBoard(boardId)
     })
-  })
 
-  test('should add new board', ()=>{
-    const bId = 'b-2';
-    expect(
-      reducer(state, ba.addBoard(bId))
-    ).toEqual({
-      ...state,
-      [bId]: {
-        id: bId,
-        title: 'New Board',
-        columnIds: []
-      }
-    })
-  })
+    const title = "Test Title"
+    dispatch(editBoardTitle({ boardId, title }))
+    expect(_selectBoards()[boardId].title).toBe(title)
 
-  test('should remove board', ()=>{
-    const bId = 'b-1'
-    expect(
-      reducer(state, ba.removeBoard(bId))
-    ).toEqual({})
-  })
+    const columnId_1 = dispatch(addColumn({boardId}))
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_1])
+    const columnId_2 = dispatch(addColumn({boardId}))
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_1, columnId_2])
 
-  test('should add column', () => {
-    const bId = 'b-1', cId = 'c-4';
-    expect(
-      reducer(state, ca.addColumn(bId, cId))
-    ).toEqual({
-      ...state,
-      [bId]: {
-        ...state[bId],
-        columnIds: [
-          ...state[bId].columnIds,
-          cId
-        ]
-      }
-    })
-  })
+    dispatch(moveColumn({
+      draggableId: columnId_2,
+      source: { droppableId: boardId, index: 1 },
+      destination: { droppableId: boardId, index: 0 }
+    }))
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_2, columnId_1])
 
-  test('should remove column', () => {
-    const bId = 'b-1', cId = 'c-1';
-    expect(
-      reducer(state, ca.removeColumn(bId, cId))
-    ).toEqual({
-      ...state,
-      [bId]: {
-        ...state[bId],
-        columnIds: [ 'c-2' ]
-      }
-    })
+    dispatch(removeColumn({boardId, columnId: columnId_1}))
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_2])
+    expect(dispatch(removeBoard({ boardId }))).toBe(false)
+    dispatch(removeColumn({boardId, columnId: columnId_2}))
+    expect(_selectBoards()[boardId].columnIds).toEqual([])
+
+    dispatch(removeBoard({ boardId }))
+    expect(_selectBoards()).toEqual(beforeBoards)
   })
 })

@@ -1,83 +1,67 @@
-import { ACTION } from './actions'
-import { ACTION as CA } from '../column/actions'
-import initState from '../initialState'
+import { createSlice } from '@reduxjs/toolkit';
 
-import fns from '../reducerFns'
-import fDnDMoveFns from '../fDnDMoveFns'
+import {
+  addColumn,
+  removeColumn,
+  moveColumn
+} from '../column/actions';
 
-const {
-  setInObj,
-  removeProp,
-  filterBy
-} = fns;
+import initialState from '../initialState';
+import fDnDMoveFns from '../fDnDMoveFns';
+
 const {
   moveInternal,
   moveExternal
 } = fDnDMoveFns('columnIds');
 
+export const crBoard = id => ({
+  id,
+  title: 'New Board',
+  columnIds: []
+})
 
-/*
-boards: {
-  'b-1': {
-    id: 'b-1',
-    title: 'Board 1',
-    columnIds: ['c-1','c-2']
-  }
-}
-*/
+const boardsSlice = createSlice({
+  name: "boards",
+  initialState: initialState.boards,
+  reducers: {
+    editBoardTitle(state, action){
+      const { boardId, title } = action.payload
+      state[boardId].title = title
+    },
+    addBoard(state, action){
+      const { boardId } = action.payload;
+      state[boardId] = crBoard(boardId);
+    },
+    removeBoard(state, action){
+      const { boardId } = action.payload;
+      delete state[boardId]
+    }
+  },
+  extraReducers: builder => builder
+     .addCase(addColumn, (state, action) => {
+        const { boardId, columnId } = action.payload
+        state[boardId].columnIds.push(columnId)
+     })
+     .addCase(removeColumn, (state, action) => {
+       const { boardId, columnId } = action.payload
+       , board = state[boardId];
+       board.columnIds = board.columnIds
+         .filter(id => id !== columnId)
+     })
+     .addCase(moveColumn, (state, action) => {
+       const { draggableId, source, destination } = action.payload
+       , from = state[source.droppableId]
+       , to = state[destination.droppableId];
+       if (from === to) {
+         moveInternal(state, draggableId, source, destination, from)
+       } else {
+         moveExternal(state, draggableId, source, destination, from, to);
+       }
+     })
+})
 
-const reducer = function (
-  state /*: BoardState */=initState.boards,
-  action /*: BoardAction */
-) /*: BoardState */ {
-  switch(action.type){
-    case ACTION.EDIT_BOARD_TITLE: {
-      const { boardId, title } = action
-         , newBoard = {...state[boardId], title };
-      return setInObj(state, boardId, newBoard)
-    }
-    case ACTION.ADD_BOARD: {
-      const { boardId } = action;
-      return setInObj(state, boardId, {
-        id: boardId,
-        title: 'New Board',
-        columnIds: []
-      });
-    }
-    case ACTION.REMOVE_BOARD: {
-      const { boardId } = action;
-      return removeProp(state, boardId);
-    }
-    case CA.ADD_COLUMN: {
-      const { boardId, columnId } = action
-      , oldBoard = state[boardId]
-      , newBoard = {
-        ...oldBoard,
-        columnIds: [
-          ...oldBoard.columnIds
-          , columnId
-        ]
-      }
-      return setInObj(state, boardId, newBoard);
-    }
-    case CA.REMOVE_COLUMN:{
-      const { boardId, columnId } = action
-      , oldBoard = state[boardId];
-      return setInObj(state, boardId, {
-        ...oldBoard,
-        columnIds: filterBy(oldBoard.columnIds, columnId)
-      });
-    }
-    case CA.MOVE_COLUMN: {
-      const { columnId, source, destination } = action
-      , from = state[source.droppableId]
-      , to = state[destination.droppableId];
-      return from === to
-        ? moveInternal(state, columnId, source, destination, from)
-        : moveExternal(state, columnId, source, destination, from, to);
-    }
-    default: return state;
-  }
-};
+const { actions, reducer } = boardsSlice
+
+export const { editBoardTitle } = actions
 
 export default reducer

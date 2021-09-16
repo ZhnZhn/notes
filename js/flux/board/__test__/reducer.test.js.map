@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../../../src/flux/board/__test__/reducer.test.js"],"names":["state","initialState","boards","describe","test","expect","undefined","toEqual","bId","newTitle","ba","editBoardTitle","title","addBoard","id","columnIds","removeBoard","cId","ca","addColumn","removeColumn"],"mappings":";;;;;;AAAA;;AACA;;AACA;;AACA;;AAGA,IAAMA,KAAK,GAAGC,yBAAaC,MAA3B;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEAC,QAAQ,CAAC,eAAD,EAAkB,YAAM;AAC9BC,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtCC,IAAAA,MAAM,CAAC,yBAAQC,SAAR,EAAmB,EAAnB,CAAD,CAAN,CAA+BC,OAA/B,CAAuCP,KAAvC;AACD,GAFG,CAAJ;AAIAI,EAAAA,IAAI,CAAC,yBAAD,EAA4B,YAAI;AAAA;;AAClC,QAAMI,GAAG,GAAG,KAAZ;AAAA,QACEC,QAAQ,GAAG,OADb;AAEAJ,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAeU,oBAAGC,cAAH,CAAkBH,GAAlB,EAAuBC,QAAvB,CAAf,CADI,CAAN,CAEEF,OAFF,+BAGKP,KAHL,6BAIGQ,GAJH,kCAKOR,KAAK,CAACQ,GAAD,CALZ;AAMII,MAAAA,KAAK,EAAEH;AANX;AASD,GAZG,CAAJ;AAcAL,EAAAA,IAAI,CAAC,sBAAD,EAAyB,YAAI;AAAA;;AAC/B,QAAMI,GAAG,GAAG,KAAZ;AACAH,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAeU,oBAAGG,QAAH,CAAYL,GAAZ,CAAf,CADI,CAAN,CAEED,OAFF,+BAGKP,KAHL,6BAIGQ,GAJH,IAIS;AACLM,MAAAA,EAAE,EAAEN,GADC;AAELI,MAAAA,KAAK,EAAE,WAFF;AAGLG,MAAAA,SAAS,EAAE;AAHN,KAJT;AAUD,GAZG,CAAJ;AAcAX,EAAAA,IAAI,CAAC,qBAAD,EAAwB,YAAI;AAC9B,QAAMI,GAAG,GAAG,KAAZ;AACAH,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAeU,oBAAGM,WAAH,CAAeR,GAAf,CAAf,CADI,CAAN,CAEED,OAFF,CAEU,EAFV;AAGD,GALG,CAAJ;AAOAH,EAAAA,IAAI,CAAC,mBAAD,EAAsB,YAAM;AAAA;;AAC9B,QAAMI,GAAG,GAAG,KAAZ;AAAA,QAAmBS,GAAG,GAAG,KAAzB;AACAZ,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAekB,qBAAGC,SAAH,CAAaX,GAAb,EAAkBS,GAAlB,CAAf,CADI,CAAN,CAEEV,OAFF,+BAGKP,KAHL,6BAIGQ,GAJH,kCAKOR,KAAK,CAACQ,GAAD,CALZ;AAMIO,MAAAA,SAAS,YACJf,KAAK,CAACQ,GAAD,CAAL,CAAWO,SADP,GAEPE,GAFO;AANb;AAYD,GAdG,CAAJ;AAgBAb,EAAAA,IAAI,CAAC,sBAAD,EAAyB,YAAM;AAAA;;AACjC,QAAMI,GAAG,GAAG,KAAZ;AAAA,QAAmBS,GAAG,GAAG,KAAzB;AACAZ,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAekB,qBAAGE,YAAH,CAAgBZ,GAAhB,EAAqBS,GAArB,CAAf,CADI,CAAN,CAEEV,OAFF,+BAGKP,KAHL,6BAIGQ,GAJH,kCAKOR,KAAK,CAACQ,GAAD,CALZ;AAMIO,MAAAA,SAAS,EAAE,CAAE,KAAF;AANf;AASD,GAXG,CAAJ;AAYD,CApEO,CAAR","sourcesContent":["import reducer from '../reducer'\r\nimport ba from '../actions'\r\nimport ca from '../../column/actions'\r\nimport initialState from '../../initialState'\r\n\r\n\r\nconst state = initialState.boards;\r\n/*\r\nconst initState = {\r\n  'b-1': {\r\n    id: 'b-1',\r\n    title: 'Board 1',\r\n    columnIds: ['c-1','c-2']\r\n  }\r\n};\r\n*/\r\n\r\ndescribe('reducer board', () => {\r\n  test('should init to initialState', ()=>{\r\n    expect(reducer(undefined, {})).toEqual(state)\r\n  })\r\n\r\n  test('should edit board title', ()=>{\r\n    const bId = 'b-1'\r\n    , newTitle = 'Board';\r\n    expect(\r\n      reducer(state, ba.editBoardTitle(bId, newTitle))\r\n    ).toEqual({\r\n      ...state,\r\n      [bId]: {\r\n        ...state[bId],\r\n        title: newTitle\r\n      }\r\n    })\r\n  })\r\n\r\n  test('should add new board', ()=>{\r\n    const bId = 'b-2';\r\n    expect(\r\n      reducer(state, ba.addBoard(bId))\r\n    ).toEqual({\r\n      ...state,\r\n      [bId]: {\r\n        id: bId,\r\n        title: 'New Board',\r\n        columnIds: []\r\n      }\r\n    })\r\n  })\r\n\r\n  test('should remove board', ()=>{\r\n    const bId = 'b-1'\r\n    expect(\r\n      reducer(state, ba.removeBoard(bId))\r\n    ).toEqual({})\r\n  })\r\n\r\n  test('should add column', () => {\r\n    const bId = 'b-1', cId = 'c-4';\r\n    expect(\r\n      reducer(state, ca.addColumn(bId, cId))\r\n    ).toEqual({\r\n      ...state,\r\n      [bId]: {\r\n        ...state[bId],\r\n        columnIds: [\r\n          ...state[bId].columnIds,\r\n          cId\r\n        ]\r\n      }\r\n    })\r\n  })\r\n\r\n  test('should remove column', () => {\r\n    const bId = 'b-1', cId = 'c-1';\r\n    expect(\r\n      reducer(state, ca.removeColumn(bId, cId))\r\n    ).toEqual({\r\n      ...state,\r\n      [bId]: {\r\n        ...state[bId],\r\n        columnIds: [ 'c-2' ]\r\n      }\r\n    })\r\n  })\r\n})\r\n"],"file":"reducer.test.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/board/__test__/reducer.test.js"
+ ],
+ "file": "../../../../src/flux/board/__test__/reducer.test.js",
+ "names": [
+  "getState",
+  "store",
+  "dispatch",
+  "_selectBoards",
+  "boards",
+  "describe",
+  "test",
+  "expect",
+  "undefined",
+  "toEqual",
+  "initialState",
+  "beforeBoards",
+  "boardId",
+  "title",
+  "toBe",
+  "columnId_1",
+  "columnIds",
+  "columnId_2",
+  "draggableId",
+  "source",
+  "droppableId",
+  "index",
+  "destination",
+  "columnId"
+ ],
+ "mappings": "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"
+}

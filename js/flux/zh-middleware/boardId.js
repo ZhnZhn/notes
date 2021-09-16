@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _actions = require("../board/actions");
 
 var _reducer = require("../modal/reducer");
@@ -26,15 +24,18 @@ var boardIdMiddleware = function boardIdMiddleware(_ref) {
       dispatch = _ref.dispatch;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.ADD_BOARD) {
+      if (action.type === _actions.addBoard.type) {
         if (_isMax(getState())) {
           dispatch((0, _reducer.showNotif)(_appConf["default"].N_MAX_BOARDS));
           return false;
         }
 
-        action = (0, _extends2["default"])({}, action, {
-          boardId: (0, _crId["default"])(_appConf["default"].BOARDS_PREFIX)
-        });
+        var boardId = (0, _crId["default"])(_appConf["default"].BOARDS_PREFIX);
+        action.payload = {
+          boardId: boardId
+        };
+        next(action);
+        return boardId;
       }
 
       return next(action);

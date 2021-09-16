@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import {
-  editBoardTitle,
-  setBoardCurrent,
+  setCurrentBoard,
   removeBoard
 } from '../../flux/board/actions'
+import {
+  editBoardTitle
+} from '../../flux/board/reducer'
 import { sBoard, sColumn } from '../../flux/selectors'
 
 import CL from '../style/CL'
@@ -29,22 +31,25 @@ class BoardCard extends Component {
 
   _hBlurTitle = (evt) => {
     const { board, editBoardTitle } = this.props;
-    editBoardTitle(board.id, evt.target.value)
+    editBoardTitle({
+      boardId: board.id,
+      title: evt.target.value
+    })
   }
 
   _hSetCurrent = () => {
     const { board, setBoardCurrent } = this.props
-    setBoardCurrent(board.id)
+    setBoardCurrent({ boardId: board.id })
   }
 
   _hRemove = () => {
     const { board, removeBoard } = this.props
-    removeBoard(board.id)
+    removeBoard({ boardId: board.id })
   }
 
   _hToNotes = () => {
-    const { board, setBoardCurrent } = this.props;
-    setBoardCurrent(board.id)
+    const { board, setCurrentBoard } = this.props;
+    setCurrentBoard({ boardId: board.id})
   }
 
   render(){
@@ -95,7 +100,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = {
   editBoardTitle,
-  setBoardCurrent,
+  setCurrentBoard,
   removeBoard
 };
 

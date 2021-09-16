@@ -2,17 +2,28 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends6 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reducer = _interopRequireDefault(require("../reducer"));
+var _reducer = _interopRequireWildcard(require("../reducer"));
 
-var _actions = _interopRequireDefault(require("../actions"));
+var _actions = require("../actions");
 
-var _actions2 = _interopRequireDefault(require("../../column/actions"));
+var _actions2 = require("../../column/actions");
 
 var _initialState = _interopRequireDefault(require("../../initialState"));
 
-var state = _initialState["default"].boards;
+var _store = _interopRequireDefault(require("../../store"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var getState = _store["default"].getState,
+    dispatch = _store["default"].dispatch;
+
+var _selectBoards = function _selectBoards() {
+  return getState().boards;
+};
 /*
 const initState = {
   'b-1': {
@@ -23,50 +34,61 @@ const initState = {
 };
 */
 
+
 describe('reducer board', function () {
   test('should init to initialState', function () {
-    expect((0, _reducer["default"])(undefined, {})).toEqual(state);
+    expect((0, _reducer["default"])(undefined, {})).toEqual(_initialState["default"].boards);
   });
-  test('should edit board title', function () {
+  test('should handle board actions correctly', function () {
     var _extends2;
 
-    var bId = 'b-1',
-        newTitle = 'Board';
-    expect((0, _reducer["default"])(state, _actions["default"].editBoardTitle(bId, newTitle))).toEqual((0, _extends6["default"])({}, state, (_extends2 = {}, _extends2[bId] = (0, _extends6["default"])({}, state[bId], {
-      title: newTitle
-    }), _extends2)));
-  });
-  test('should add new board', function () {
-    var _extends3;
+    var beforeBoards = _selectBoards();
 
-    var bId = 'b-2';
-    expect((0, _reducer["default"])(state, _actions["default"].addBoard(bId))).toEqual((0, _extends6["default"])({}, state, (_extends3 = {}, _extends3[bId] = {
-      id: bId,
-      title: 'New Board',
-      columnIds: []
-    }, _extends3)));
-  });
-  test('should remove board', function () {
-    var bId = 'b-1';
-    expect((0, _reducer["default"])(state, _actions["default"].removeBoard(bId))).toEqual({});
-  });
-  test('should add column', function () {
-    var _extends4;
-
-    var bId = 'b-1',
-        cId = 'c-4';
-    expect((0, _reducer["default"])(state, _actions2["default"].addColumn(bId, cId))).toEqual((0, _extends6["default"])({}, state, (_extends4 = {}, _extends4[bId] = (0, _extends6["default"])({}, state[bId], {
-      columnIds: [].concat(state[bId].columnIds, [cId])
-    }), _extends4)));
-  });
-  test('should remove column', function () {
-    var _extends5;
-
-    var bId = 'b-1',
-        cId = 'c-1';
-    expect((0, _reducer["default"])(state, _actions2["default"].removeColumn(bId, cId))).toEqual((0, _extends6["default"])({}, state, (_extends5 = {}, _extends5[bId] = (0, _extends6["default"])({}, state[bId], {
-      columnIds: ['c-2']
-    }), _extends5)));
+    var boardId = dispatch((0, _actions.addBoard)());
+    expect(_selectBoards()).toEqual((0, _extends3["default"])({}, beforeBoards, (_extends2 = {}, _extends2[boardId] = (0, _reducer.crBoard)(boardId), _extends2)));
+    var title = "Test Title";
+    dispatch((0, _reducer.editBoardTitle)({
+      boardId: boardId,
+      title: title
+    }));
+    expect(_selectBoards()[boardId].title).toBe(title);
+    var columnId_1 = dispatch((0, _actions2.addColumn)({
+      boardId: boardId
+    }));
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_1]);
+    var columnId_2 = dispatch((0, _actions2.addColumn)({
+      boardId: boardId
+    }));
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_1, columnId_2]);
+    dispatch((0, _actions2.moveColumn)({
+      draggableId: columnId_2,
+      source: {
+        droppableId: boardId,
+        index: 1
+      },
+      destination: {
+        droppableId: boardId,
+        index: 0
+      }
+    }));
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_2, columnId_1]);
+    dispatch((0, _actions2.removeColumn)({
+      boardId: boardId,
+      columnId: columnId_1
+    }));
+    expect(_selectBoards()[boardId].columnIds).toEqual([columnId_2]);
+    expect(dispatch((0, _actions.removeBoard)({
+      boardId: boardId
+    }))).toBe(false);
+    dispatch((0, _actions2.removeColumn)({
+      boardId: boardId,
+      columnId: columnId_2
+    }));
+    expect(_selectBoards()[boardId].columnIds).toEqual([]);
+    dispatch((0, _actions.removeBoard)({
+      boardId: boardId
+    }));
+    expect(_selectBoards()).toEqual(beforeBoards);
   });
 });
 //# sourceMappingURL=reducer.test.js.map

@@ -15,6 +15,8 @@ var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/board/actions");
 
+var _reducer = require("../../flux/board/reducer");
+
 var _selectors = require("../../flux/selectors");
 
 var _CL = _interopRequireDefault(require("../style/CL"));
@@ -53,28 +55,37 @@ var BoardCard = /*#__PURE__*/function (_Component) {
       var _this$props = _this.props,
           board = _this$props.board,
           editBoardTitle = _this$props.editBoardTitle;
-      editBoardTitle(board.id, evt.target.value);
+      editBoardTitle({
+        boardId: board.id,
+        title: evt.target.value
+      });
     };
 
     _this._hSetCurrent = function () {
       var _this$props2 = _this.props,
           board = _this$props2.board,
           setBoardCurrent = _this$props2.setBoardCurrent;
-      setBoardCurrent(board.id);
+      setBoardCurrent({
+        boardId: board.id
+      });
     };
 
     _this._hRemove = function () {
       var _this$props3 = _this.props,
           board = _this$props3.board,
           removeBoard = _this$props3.removeBoard;
-      removeBoard(board.id);
+      removeBoard({
+        boardId: board.id
+      });
     };
 
     _this._hToNotes = function () {
       var _this$props4 = _this.props,
           board = _this$props4.board,
-          setBoardCurrent = _this$props4.setBoardCurrent;
-      setBoardCurrent(board.id);
+          setCurrentBoard = _this$props4.setCurrentBoard;
+      setCurrentBoard({
+        boardId: board.id
+      });
     };
 
     return _this;
@@ -125,8 +136,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 };
 
 var mapDispatchToProps = {
-  editBoardTitle: _actions.editBoardTitle,
-  setBoardCurrent: _actions.setBoardCurrent,
+  editBoardTitle: _reducer.editBoardTitle,
+  setCurrentBoard: _actions.setCurrentBoard,
   removeBoard: _actions.removeBoard
 };
 

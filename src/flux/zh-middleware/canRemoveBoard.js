@@ -1,11 +1,12 @@
-import { ACTION } from '../board/actions'
-import { sBoard } from '../selectors'
+import { removeBoard } from '../board/actions';
+import { sBoard } from '../selectors';
 
-const canRemoveBoard = store => next => action => {
-  if (action.type === ACTION.REMOVE_BOARD) {
-    const columnIds = sBoard.columnIds(store.getState(), action.boardId)
-    if (!Array.isArray(columnIds) ||
-         columnIds.length !== 0) {        
+const _isArr = Array.isArray;
+
+const canRemoveBoard = ({ getState }) => next => action => {
+  if (action.type === removeBoard.type) {
+    const columnIds = sBoard.columnIds(getState(), action.payload.boardId)
+    if (!_isArr(columnIds) || columnIds.length !== 0) {
        return false;
     }
   }
