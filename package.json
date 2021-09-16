@@ -14,9 +14,7 @@
     "css:min": "gulp",
     "css:sass": "gulp sass",
     "css:all": "npm run css:sass && npm run css:min",
-    "build:dll": "webpack --color --progress --config webpack.dll.js",
-    "build:dll-jsx": "webpack --color --progress --config webpack.dll-jsx.js",
-    "build:all": "npm run lint && npm run css:min && npm run build:dll-jsx"
+    "build:prod": "webpack --color --progress --config webpack.prod.js"    
   },
   "author": "Yevhenii Molodyi",
   "license": "BSD-3-Clause",

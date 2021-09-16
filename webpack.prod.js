@@ -3,7 +3,6 @@
 const path = require('path')
     , webpack = require('webpack')
     , HtmlWebpackPlugin = require('html-webpack-plugin')
-    , postProcessing = require('./plugins/post-processing')
     , HtmlProcessingWebpackPlugin = require('./plugins/html-processing-webpack-plugin')
     , babelConfig = require('./babel.config')
     , TerserPlugin = require('terser-webpack-plugin');
@@ -12,7 +11,15 @@ module.exports = {
   mode: "production",
   cache: true,
   entry: {
-    app: path.resolve('src', 'index.jsx')
+    app: {
+     import: path.resolve('src', 'index.jsx'),
+     dependOn: 'lib'
+    },
+    lib: [
+            "react", "react-dom",
+            "@reduxjs/toolkit", "react-redux",
+            "react-router-dom", "react-beautiful-dnd"
+          ]
   },
   output: {
       path: path.resolve('app'),
@@ -24,12 +31,12 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
              cacheDirectory: true,
-             ...babelConfig  
+             ...babelConfig
           }
         },
         include: [
@@ -43,17 +50,12 @@ module.exports = {
     modules: ['local_modules','node_modules'],
     extensions: ['.js', '.jsx']
   },
-  plugins : [    
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./dll/lib-manifest.json')
-    }),    
+  plugins : [
     new HtmlWebpackPlugin({
-        minify: false, 
+        minify: false,
         filename: path.resolve('index.html'),
         template: path.resolve('template', 'index.ejs'),
         inject: false,
-        postProcessing: postProcessing
     }),
     new HtmlProcessingWebpackPlugin()
   ],
