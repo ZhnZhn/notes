@@ -55,10 +55,14 @@ var FlatButton = /*#__PURE__*/function (_Component) {
       _this._setPointerEvents('none');
 
       var _this$props = _this.props,
+          isEvent = _this$props.isEvent,
           timeout = _this$props.timeout,
           onClick = _this$props.onClick;
       setTimeout(_this._setPointerEvents, timeout);
-      onClick(event);
+
+      var _arg = isEvent ? event : void 0;
+
+      onClick(_arg);
     };
 
     _this._refNode = function (node) {
@@ -115,7 +119,8 @@ var FlatButton = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 FlatButton.defaultProps = {
-  timeout: 3000
+  timeout: 3000,
+  isEvent: true
 };
 var _default = FlatButton;
 exports["default"] = _default;

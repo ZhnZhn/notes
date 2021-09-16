@@ -36,6 +36,7 @@ var Header = function Header(_ref) {
       caption: "Add Board",
       title: "Click to add new board",
       accessKey: "a",
+      isEvent: false,
       timeout: 200,
       onClick: addBoard
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderDrawer["default"], {})]

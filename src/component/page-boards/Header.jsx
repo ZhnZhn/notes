@@ -22,6 +22,7 @@ const Header = ({
       caption="Add Board"
       title="Click to add new board"
       accessKey="a"
+      isEvent={false}
       timeout={200}
       onClick={addBoard}
     />

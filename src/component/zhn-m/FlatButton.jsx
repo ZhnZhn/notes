@@ -17,7 +17,8 @@ const POINTER_EVENTS = 'pointer-events';
 class FlatButton extends Component {
 
   static defaultProps = {
-    timeout: 3000
+    timeout: 3000,
+    isEvent: true
   }
 
   _setPointerEvents = (value='auto') => {
@@ -28,9 +29,10 @@ class FlatButton extends Component {
 
   _hClick = (event) => {
     this._setPointerEvents('none')
-    const { timeout, onClick } = this.props;
+    const { isEvent, timeout, onClick } = this.props;
     setTimeout(this._setPointerEvents, timeout)
-    onClick(event)
+    const _arg = isEvent ? event : void 0
+    onClick(_arg)
   }
 
   _refNode = node => this.rootNode = node
