@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _redux = require("redux");
+var _toolkit = require("@reduxjs/toolkit");
 
 var _reducer = _interopRequireDefault(require("./app/reducer"));
 
@@ -21,7 +21,7 @@ var _reducer6 = _interopRequireDefault(require("./noteLabel/reducer"));
 
 var _reducer7 = _interopRequireDefault(require("./column/reducer"));
 
-var rootReducer = (0, _redux.combineReducers)({
+var rootReducer = (0, _toolkit.combineReducers)({
   app: _reducer["default"],
   drawerMsg: _reducer2["default"],
   modal: _reducer3["default"],

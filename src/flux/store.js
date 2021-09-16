@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { configureStore } from '@reduxjs/toolkit';
 
 import CONF from './appConf'
 import rootReducer from './rootReducer'
@@ -9,12 +9,9 @@ const _middlewares = [
   ...middlewares
 ];
 
-let _composeEnhancer = compose;
 /*eslint-disable no-undef, no-console*/
 if (process.env.NODE_ENV === 'development'){
-    _composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-       || compose
-
+/*eslint-enable no-undef, no-console*/
     const logger = store => next => action => {
       let result;
       try {
@@ -31,8 +28,6 @@ if (process.env.NODE_ENV === 'development'){
     }
     _middlewares.push(logger)
  }
- /*eslint-enable no-undef, no-console*/
-
 
 const _getInitialState = () => {
   let _initialState;
@@ -46,14 +41,17 @@ const _getInitialState = () => {
      console.log(e.msg)
   }
   return _initialState || initialState;
-}
+};
 
-const store = createStore(
-  rootReducer,
-  _getInitialState(),
-  _composeEnhancer(
-    applyMiddleware(..._middlewares)
-  )
-);
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: _getInitialState(),
+  /*eslint-disable no-undef, no-console*/
+  devTools: process.env.NODE_ENV === 'development',
+  middleware: getDefaultMiddleware => process.env.NODE_ENV === 'development'
+     ? getDefaultMiddleware().concat(_middlewares)
+     : _middlewares
+  /*eslint-enable no-undef, no-console*/
+});
 
 export default store

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _redux = require("redux");
+var _toolkit = require("@reduxjs/toolkit");
 
 var _appConf = _interopRequireDefault(require("./appConf"));
 
@@ -16,13 +16,11 @@ var _initialState2 = _interopRequireDefault(require("./initialState"));
 var _middlewares2 = _interopRequireDefault(require("./zh-middleware/middlewares"));
 
 var _middlewares = [].concat(_middlewares2["default"]);
-
-var _composeEnhancer = _redux.compose;
 /*eslint-disable no-undef, no-console*/
 
-if (process.env.NODE_ENV === 'development') {
-  _composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 
+if (process.env.NODE_ENV === 'development') {
+  /*eslint-enable no-undef, no-console*/
   var logger = function logger(store) {
     return function (next) {
       return function (action) {
@@ -45,8 +43,6 @@ if (process.env.NODE_ENV === 'development') {
 
   _middlewares.push(logger);
 }
-/*eslint-enable no-undef, no-console*/
-
 
 var _getInitialState = function _getInitialState() {
   var _initialState;
@@ -64,7 +60,18 @@ var _getInitialState = function _getInitialState() {
   return _initialState || _initialState2["default"];
 };
 
-var store = (0, _redux.createStore)(_rootReducer["default"], _getInitialState(), _composeEnhancer(_redux.applyMiddleware.apply(void 0, _middlewares)));
+var store = (0, _toolkit.configureStore)({
+  reducer: _rootReducer["default"],
+  preloadedState: _getInitialState(),
+
+  /*eslint-disable no-undef, no-console*/
+  devTools: process.env.NODE_ENV === 'development',
+  middleware: function middleware(getDefaultMiddleware) {
+    return process.env.NODE_ENV === 'development' ? getDefaultMiddleware().concat(_middlewares) : _middlewares;
+  }
+  /*eslint-enable no-undef, no-console*/
+
+});
 var _default = store;
 exports["default"] = _default;
 //# sourceMappingURL=store.js.map
