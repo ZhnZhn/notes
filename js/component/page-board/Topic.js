@@ -11,6 +11,8 @@ var _react = require("react");
 
 var _reactRedux = require("react-redux");
 
+var _reducer = require("../../flux/column/reducer");
+
 var _actions = require("../../flux/column/actions");
 
 var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
@@ -72,7 +74,9 @@ var Topic = /*#__PURE__*/function (_Component) {
       var _this$props = _this.props,
           toggleColumn = _this$props.toggleColumn,
           column = _this$props.column;
-      toggleColumn(column.id);
+      toggleColumn({
+        columnId: column.id
+      });
     };
 
     _this._hAddNewTask = function () {
@@ -88,7 +92,10 @@ var Topic = /*#__PURE__*/function (_Component) {
       var _this$props3 = _this.props,
           column = _this$props3.column,
           editColumnTitle = _this$props3.editColumnTitle;
-      editColumnTitle(column.id, evt.target.value);
+      editColumnTitle({
+        columnId: column.id,
+        title: evt.target.value
+      });
     };
 
     _this._hRemoveColumn = function () {
@@ -96,7 +103,10 @@ var Topic = /*#__PURE__*/function (_Component) {
           boardId = _this$props4.boardId,
           column = _this$props4.column,
           removeColumn = _this$props4.removeColumn;
-      removeColumn(boardId, column.id);
+      removeColumn({
+        boardId: boardId,
+        columnId: column.id
+      });
     };
 
     return _this;
@@ -155,9 +165,9 @@ var Topic = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 var mapDispatchToProps = {
-  editColumnTitle: _actions.editColumnTitle,
+  editColumnTitle: _reducer.editColumnTitle,
   removeColumn: _actions.removeColumn,
-  toggleColumn: _actions.toggleColumn
+  toggleColumn: _reducer.toggleColumn
 };
 
 var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Topic);

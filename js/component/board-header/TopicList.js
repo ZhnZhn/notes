@@ -15,16 +15,22 @@ var S = {
   }
 };
 
+var _fnNoop = function _fnNoop() {};
+
 var _renderTopics = function _renderTopics(_ref) {
   var board = _ref.board,
       columns = _ref.columns,
-      toggleColumn = _ref.toggleColumn;
-  var _board$columnIds = board.columnIds,
-      columnIds = _board$columnIds === void 0 ? [] : _board$columnIds;
-  return columnIds.map(function (cId) {
+      _ref$toggleColumn = _ref.toggleColumn,
+      toggleColumn = _ref$toggleColumn === void 0 ? _fnNoop : _ref$toggleColumn;
+  var columnIds = board.columnIds;
+  return (columnIds || []).map(function (cId) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicItem["default"], {
       topic: columns[cId],
-      onClick: toggleColumn.bind(null, cId)
+      onClick: function onClick() {
+        return toggleColumn({
+          columnId: cId
+        });
+      }
     }, cId);
   });
 };
@@ -36,9 +42,6 @@ var TopicList = function TopicList(props) {
   });
 };
 
-TopicList.defaultProps = {
-  toggleColumn: function toggleColumn() {}
-};
 var _default = TopicList;
 exports["default"] = _default;
 //# sourceMappingURL=TopicList.js.map

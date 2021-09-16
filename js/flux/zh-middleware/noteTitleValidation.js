@@ -9,11 +9,10 @@ var _isEmpty = function _isEmpty(str) {
   return typeof str !== 'string' || !str.trim();
 };
 
-var noteTitleValidation = function noteTitleValidation(store) {
+var noteTitleValidation = function noteTitleValidation() {
   return function (next) {
     return function (action) {
       if (action.type === _reducer.editNoteTitle.type && _isEmpty(action.payload.title)) {
-        console.log('New Note Title');
         action.payload.title = 'New Note';
         next(action);
         return false;

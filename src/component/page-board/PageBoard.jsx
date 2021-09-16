@@ -46,8 +46,8 @@ class PageBoard extends Component {
     const {
       addColumn,
       board
-    } = this.props;
-    addColumn(board.id)
+    } = this.props;    
+    addColumn({ boardId: board.id })
   }
 
   render(){

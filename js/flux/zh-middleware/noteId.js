@@ -32,7 +32,10 @@ var taskIdMiddleware = function taskIdMiddleware(_ref) {
           return false;
         }
 
-        action.payload.noteId = (0, _crId["default"])(_appConf["default"].NOTES_PREFIX);
+        var noteId = (0, _crId["default"])(_appConf["default"].NOTES_PREFIX);
+        action.payload.noteId = noteId;
+        next(action);
+        return noteId;
       }
 
       return next(action);

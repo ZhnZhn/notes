@@ -3,105 +3,95 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports["default"] = exports.toggleColumn = exports.editColumnTitle = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _toolkit = require("@reduxjs/toolkit");
 
-var _actions = require("./actions");
-
-var _actions2 = require("../note/actions");
-
-var _initialState = _interopRequireDefault(require("../initialState"));
+var _actions = require("../note/actions");
 
 var _fns = _interopRequireDefault(require("./fns"));
 
-var setInObj = _fns["default"].setInObj,
-    crColumn = _fns["default"].crColumn,
-    noteIdsTo = _fns["default"].noteIdsTo,
-    filterNoteIds = _fns["default"].filterNoteIds,
-    removeProp = _fns["default"].removeProp,
+var _initialState = _interopRequireDefault(require("../initialState"));
+
+var crColumn = _fns["default"].crColumn,
     moveExternal = _fns["default"].moveExternal,
     moveInternal = _fns["default"].moveInternal;
-
-var reducer = function reducer(state
-/*: TopicState */
-, action
-/*: TopicAction */
-)
-/*: TopicState */
-{
-  if (state
-  /*: TopicState */
-  === void 0) {
-    state
-    /*: TopicState */
-    = _initialState["default"].columns;
-  }
-
-  switch (action.type) {
-    case _actions.ACTION.EDIT_COLUMN_TITLE:
-      {
-        var columnId = action.columnId,
-            title = action.title;
-        return setInObj(state, columnId, (0, _extends2["default"])({}, state[columnId], {
-          title: title
-        }));
-      }
-
-    case _actions.ACTION.ADD_COLUMN:
-      {
-        var _columnId = action.columnId;
-        return setInObj(state, _columnId, crColumn(_columnId));
-      }
-
-    case _actions.ACTION.REMOVE_COLUMN:
-      {
-        var _columnId2 = action.columnId;
-        return removeProp(state, _columnId2);
-      }
-
-    case _actions.ACTION.TOGGLE_COLUMN:
-      {
-        var _columnId3 = action.columnId,
-            column = state[_columnId3];
-        return setInObj(state, _columnId3, (0, _extends2["default"])({}, column, {
-          isHide: !column.isHide
-        }));
-      }
-
-    case _actions2.ACTION.MOVE_NOTE:
-      {
-        var noteId = action.noteId,
-            source = action.source,
-            destination = action.destination,
-            from = state[source.droppableId],
-            to = state[destination.droppableId];
-        return from === to ? moveInternal(state, noteId, source, destination, from) : moveExternal(state, noteId, source, destination, from, to);
-      }
-
-    case _actions2.ACTION.DELETE_NOTE:
-      {
-        var _columnId4 = action.columnId,
-            _noteId = action.noteId,
-            _column = state[_columnId4],
-            newNodeIds = filterNoteIds(_column, _noteId);
-        return setInObj(state, _columnId4, noteIdsTo(_column, newNodeIds));
-      }
-
-    case _actions2.ACTION.ADD_NOTE:
-      {
-        var _columnId5 = action.columnId,
-            _noteId2 = action.noteId,
-            _column2 = state[_columnId5],
-            newNoteIds = [_noteId2].concat(_column2.noteIds);
-        return setInObj(state, _columnId5, noteIdsTo(_column2, newNoteIds));
-      }
-
-    default:
-      return state;
+/*
+const initialState = {
+  'c-1': {
+    id: 'c-1',
+    title: 'Topic 1',
+    noteIds: [],
+    withAdd: true
+  },
+  'c-2': {
+    id: 'c-2',
+    title: 'Topic 2',
+    noteIds: []
   }
 };
+*/
 
+var columnsSlice = (0, _toolkit.createSlice)({
+  name: 'columns',
+  initialState: _initialState["default"].columns,
+  reducers: {
+    editColumnTitle: function editColumnTitle(state, action) {
+      var _action$payload = action.payload,
+          columnId = _action$payload.columnId,
+          title = _action$payload.title;
+      state[columnId].title = title;
+    },
+    toggleColumn: function toggleColumn(state, action) {
+      var columnId = action.payload.columnId,
+          column = state[columnId];
+      state[columnId].isHide = !column.isHide;
+    },
+    addColumn: function addColumn(state, action) {
+      var columnId = action.payload.columnId;
+      state[columnId] = crColumn(columnId);
+    },
+    removeColumn: function removeColumn(state, action) {
+      var columnId = action.payload.columnId;
+      delete state[columnId];
+    }
+  },
+  extraReducers: function extraReducers(builder) {
+    builder.addCase(_actions.addNote, function (state, action) {
+      var _action$payload2 = action.payload,
+          columnId = _action$payload2.columnId,
+          noteId = _action$payload2.noteId;
+      state[columnId].noteIds.unshift(noteId);
+    }).addCase(_actions.deleteNote, function (state, action) {
+      var _action$payload3 = action.payload,
+          columnId = _action$payload3.columnId,
+          noteId = _action$payload3.noteId,
+          column = state[columnId];
+      column.noteIds = column.noteIds.filter(function (id) {
+        return id !== noteId;
+      });
+    }).addCase(_actions.moveNote, function (state, action) {
+      var _action$payload4 = action.payload,
+          draggableId = _action$payload4.draggableId,
+          source = _action$payload4.source,
+          destination = _action$payload4.destination,
+          from = state[source.droppableId],
+          to = state[destination.droppableId];
+
+      if (from === to) {
+        moveInternal(state, draggableId, source, destination, from);
+      } else {
+        moveExternal(state, draggableId, source, destination, from, to);
+      }
+    });
+  }
+});
+var actions = columnsSlice.actions,
+    reducer = columnsSlice.reducer;
+var editColumnTitle = actions.editColumnTitle,
+    toggleColumn = actions.toggleColumn;
+exports.toggleColumn = toggleColumn;
+exports.editColumnTitle = editColumnTitle;
 var _default = reducer;
 exports["default"] = _default;
 //# sourceMappingURL=reducer.js.map

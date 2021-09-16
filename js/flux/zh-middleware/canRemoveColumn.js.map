@@ -1,1 +1,25 @@
-{"version":3,"sources":["../../../src/flux/zh-middleware/canRemoveColumn.js"],"names":["canRemoveColumn","store","next","action","type","ACTION","REMOVE_COLUMN","_noteIds","sColumn","noteIds","getState","columnId","Array","isArray","length"],"mappings":";;;;;AAAA;;AACA;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAI,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AACjD,UAAIA,MAAM,CAACC,IAAP,KAAgBC,gBAAOC,aAA3B,EAAyC;AACvC,YAAMC,QAAQ,GAAGC,mBAAQC,OAAR,CAAgBR,KAAK,CAACS,QAAN,EAAhB,EAAkCP,MAAM,CAACQ,QAAzC,CAAjB;;AACA,YAAI,CAACC,KAAK,CAACC,OAAN,CAAcN,QAAd,CAAD,IACAA,QAAQ,CAACO,MAAT,KAAoB,CADxB,EAC2B;AACzB,iBAAO,KAAP;AACD;AACF;;AACD,aAAOZ,IAAI,CAACC,MAAD,CAAX;AACD,KAToC;AAAA,GAAR;AAAA,CAA7B;;eAWeH,e","sourcesContent":["import { ACTION } from '../column/actions'\r\nimport { sColumn } from '../selectors'\r\n\r\nconst canRemoveColumn = store => next => action => {\r\n  if (action.type === ACTION.REMOVE_COLUMN){\r\n    const _noteIds = sColumn.noteIds(store.getState(), action.columnId)\r\n    if (!Array.isArray(_noteIds) ||\r\n        _noteIds.length !== 0) {\r\n      return false;\r\n    }\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default canRemoveColumn\r\n"],"file":"canRemoveColumn.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/canRemoveColumn.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/canRemoveColumn.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "canRemoveColumn",
+  "getState",
+  "next",
+  "action",
+  "type",
+  "removeColumn",
+  "_noteIds",
+  "sColumn",
+  "noteIds",
+  "payload",
+  "columnId",
+  "length"
+ ],
+ "mappings": ";;;;;AAAA;;AACA;;AAEA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAArB;;AAEA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB;AAAA,MAAGC,QAAH,QAAGA,QAAH;AAAA,SAAkB,UAAAC,IAAI;AAAA,WAAI,UAAAC,MAAM,EAAI;AAC1D,UAAIA,MAAM,CAACC,IAAP,KAAgBC,sBAAaD,IAAjC,EAAsC;AACpC,YAAME,QAAQ,GAAGC,mBAAQC,OAAR,CAAgBP,QAAQ,EAAxB,EAA4BE,MAAM,CAACM,OAAP,CAAeC,QAA3C,CAAjB;;AACA,YAAI,CAACb,MAAM,CAACS,QAAD,CAAP,IAAqBA,QAAQ,CAACK,MAAT,KAAoB,CAA7C,EAAgD;AAC9C,iBAAO,KAAP;AACD;AACF;;AACD,aAAOT,IAAI,CAACC,MAAD,CAAX;AACD,KAR6C;AAAA,GAAtB;AAAA,CAAxB;;eAUeH,e"
+}

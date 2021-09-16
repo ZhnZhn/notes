@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _actions = require("../column/actions");
 
 var _reducer = require("../modal/reducer");
@@ -26,15 +24,16 @@ var columnIdMiddleware = function columnIdMiddleware(_ref) {
       dispatch = _ref.dispatch;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.ADD_COLUMN) {
-        if (_isMax(getState(), action.boardId)) {
+      if (action.type === _actions.addColumn.type) {
+        if (_isMax(getState(), action.payload.boardId)) {
           dispatch((0, _reducer.showNotif)(_appConf["default"].N_MAX_COLUMNS));
           return false;
         }
 
-        action = (0, _extends2["default"])({}, action, {
-          columnId: (0, _crId["default"])(_appConf["default"].COLUMNS_PREFIX)
-        });
+        var columnId = (0, _crId["default"])(_appConf["default"].COLUMNS_PREFIX);
+        action.payload.columnId = columnId;
+        next(action);
+        return columnId;
       }
 
       return next(action);

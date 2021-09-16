@@ -9,7 +9,7 @@ var _reactRedux = require("react-redux");
 
 var _selectors = _interopRequireDefault(require("../../flux/selectors"));
 
-var _actions = _interopRequireDefault(require("../../flux/column/actions"));
+var _reducer = require("../../flux/column/reducer");
 
 var _CL = _interopRequireDefault(require("./CL"));
 
@@ -45,7 +45,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  toggleColumn: _actions["default"].toggleColumn
+  toggleColumn: _reducer.toggleColumn
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TopicDrawerMenu);

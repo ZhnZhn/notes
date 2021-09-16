@@ -3,8 +3,10 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   editColumnTitle,
-  removeColumn,
   toggleColumn
+} from '../../flux/column/reducer'
+ import {
+   removeColumn
  } from '../../flux/column/actions'
 
 import isArrEmpty from '../../utils/isArrEmpty'
@@ -48,7 +50,7 @@ class Topic extends Component {
 
   _hHideTopic = () => {
     const { toggleColumn, column } = this.props;
-    toggleColumn(column.id)
+    toggleColumn({ columnId: column.id })
   }
 
   _hAddNewTask = () => {
@@ -58,12 +60,18 @@ class Topic extends Component {
 
   _hBlurTitle = (evt) => {
      const { column, editColumnTitle } = this.props;
-     editColumnTitle(column.id, evt.target.value)
+     editColumnTitle({
+       columnId: column.id,
+       title: evt.target.value
+     })
   }
 
   _hRemoveColumn = () => {
     const { boardId, column, removeColumn } = this.props;
-    removeColumn(boardId, column.id)
+    removeColumn({
+      boardId,
+      columnId: column.id
+    })
   }
 
   render() {

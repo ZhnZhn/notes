@@ -1,1 +1,18 @@
-{"version":3,"sources":["../../../src/flux/column/fns.js"],"names":["setInObj","fns","filterBy","removeProp","filterNoteIds","column","id","noteIds","crColumn","columnId","withAdd","title","idsTo","moveInternal","moveExternal","noteIdsTo"],"mappings":";;;;;;;AACA;;AACA;;AAEA,IACEA,QADF,GAIIC,sBAJJ,CACED,QADF;AAAA,IAEEE,QAFF,GAIID,sBAJJ,CAEEC,QAFF;AAAA,IAGEC,UAHF,GAIIF,sBAJJ,CAGEE,UAHF;;AAMA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,CACpBC;AAAO;AADa,EAEpBC;AAAG;AAFiB;AAAA;AAGpB;AAAwBJ,IAAAA,QAAQ,CAChCG,MAAM,CAACE,OADyB,EAEhCD,EAFgC;AAHZ;AAAA,CAAtB;;AAQA,IAAME,QAAQ,GAAG,SAAXA,QAAW,CACfC;AAAS;AADM,EAEfC;AAAQ;AAFO;AAAA,MAEfA;AAAQ;AAFO;AAEfA,IAAAA;AAAQ;AAFO,MAEU,IAFV;AAAA;;AAAA;AAGf;AAAiB;AACjBJ,MAAAA,EAAE,EAAEG,QADa;AAEjBE,MAAAA,KAAK,EAAE,WAFU;AAGjBJ,MAAAA,OAAO,EAAE,EAHQ;AAIjBG,MAAAA,OAAO,EAAEA;AAJQ;AAHF;AAAA,CAAjB;;AAUA,mBAII,8BAAY,SAAZ,CAJJ;AAAA,IACEE,KADF,gBACEA,KADF;AAAA,IAEEC,YAFF,gBAEEA,YAFF;AAAA,IAGEC,YAHF,gBAGEA,YAHF;;eAMe;AACbd,EAAAA,QAAQ,EAARA,QADa;AAEbQ,EAAAA,QAAQ,EAARA,QAFa;AAGbL,EAAAA,UAAU,EAAVA,UAHa;AAIbC,EAAAA,aAAa,EAAbA,aAJa;AAKbW,EAAAA,SAAS,EAAEH,KALE;AAMbE,EAAAA,YAAY,EAAZA,YANa;AAObD,EAAAA,YAAY,EAAZA;AAPa,C","sourcesContent":["// @flow\r\nimport fns from '../reducerFns'\r\nimport fDnDMoveFns from '../fDnDMoveFns'\r\n\r\nconst {\r\n  setInObj,\r\n  filterBy,\r\n  removeProp\r\n} = fns;\r\n\r\nconst filterNoteIds = (\r\n  column /*: Topic */,\r\n  id /*: string */\r\n) /*: Array<string> */ => filterBy(\r\n  column.noteIds,\r\n  id\r\n);\r\n\r\nconst crColumn = (\r\n  columnId /*: string */,\r\n  withAdd /*: boolean */ = true\r\n) /*: Topic */ => ({\r\n  id: columnId,\r\n  title: 'New Topic',\r\n  noteIds: [],\r\n  withAdd: withAdd\r\n});\r\n\r\nconst {\r\n  idsTo,\r\n  moveInternal,\r\n  moveExternal\r\n} = fDnDMoveFns('noteIds');\r\n\r\nexport default {\r\n  setInObj,\r\n  crColumn,\r\n  removeProp,\r\n  filterNoteIds,\r\n  noteIdsTo: idsTo,\r\n  moveExternal,\r\n  moveInternal\r\n}\r\n"],"file":"fns.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/column/fns.js"
+ ],
+ "file": "../../../src/flux/column/fns.js",
+ "names": [
+  "crColumn",
+  "columnId",
+  "withAdd",
+  "id",
+  "title",
+  "noteIds",
+  "moveInternal",
+  "moveExternal"
+ ],
+ "mappings": ";;;;;;;AACA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CACfC;AAAS;AADM,EAEfC;AAAQ;AAFO;AAAA,MAEfA;AAAQ;AAFO;AAEfA,IAAAA;AAAQ;AAFO,MAEU,IAFV;AAAA;;AAAA;AAGf;AAAiB;AACjBC,MAAAA,EAAE,EAAEF,QADa;AAEjBG,MAAAA,KAAK,EAAE,WAFU;AAGjBC,MAAAA,OAAO,EAAE,EAHQ;AAIjBH,MAAAA,OAAO,EAAEA;AAJQ;AAHF;AAAA,CAAjB;;AAUA,mBAGI,8BAAY,SAAZ,CAHJ;AAAA,IACEI,YADF,gBACEA,YADF;AAAA,IAEEC,YAFF,gBAEEA,YAFF;;eAKe;AACbP,EAAAA,QAAQ,EAARA,QADa;AAEbO,EAAAA,YAAY,EAAZA,YAFa;AAGbD,EAAAA,YAAY,EAAZA;AAHa,C"
+}

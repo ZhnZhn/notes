@@ -14,7 +14,10 @@ const taskIdMiddleware = ({ getState, dispatch }) => next => action => {
       dispatch(showNotif(CONF.N_MAX_NOTES))
       return false;
     }
-    action.payload.noteId = crId(CONF.NOTES_PREFIX)
+    const noteId = crId(CONF.NOTES_PREFIX)
+    action.payload.noteId = noteId
+    next(action)
+    return noteId;
   }
   return next(action);
 };

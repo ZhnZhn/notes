@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import s from '../../flux/selectors'
-import ca from '../../flux/column/actions'
+import { toggleColumn } from '../../flux/column/reducer'
 
 import CL from './CL'
 import TopicDrawerCaption from './TopicDrawerCaption'
@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  toggleColumn: ca.toggleColumn
+  toggleColumn
 };
 
 

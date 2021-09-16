@@ -1,12 +1,25 @@
-import reducer from '../reducer'
-import ca from '../actions'
-import na from '../../note/actions'
-import fns from '../fns'
-import initialState from '../../initialState'
+import reducer, { editColumnTitle, toggleColumn } from '../reducer';
+import {
+  addColumn,
+  removeColumn
+} from '../actions';
+
+import {
+  addNote,
+  deleteNote,
+  moveNote
+} from '../../note/actions';
+import fns from '../fns';
+
+import initialState from '../../initialState';
+import store from '../../store';
+
+const { crColumn } = fns;
+
+const { getState, dispatch } = store;
+const _selectColums = () => getState().columns;
 
 
-const crColumn = fns.crColumn;
-const state = initialState.columns;
 /*
 const initState = {
   'c-1': {
@@ -23,125 +36,50 @@ const initState = {
 };
 */
 
-const _crDnD = (droppableId, index) => ({
-  droppableId,
-  index
-});
+
+const boardId = Object.keys(getState().boards)[0]
 
 describe('reducer column', ()=>{
   test('should init initialState', ()=>{
-    expect(reducer(undefined, {})).toEqual(state)
-  })
-  test('should edit columm title', ()=>{
-    const cId = 'c-1', newTitle = 'Column';
-    expect(
-      reducer(state, ca.editColumnTitle(cId, newTitle))
-    ).toEqual({
-      ...state,
-      [cId]: {
-        ...state[cId],
-        title: newTitle
-      }
-    })
-  })
-  test('should toggle columm, property isHide', ()=>{
-    const cId = 'c-1'
-    , stateHide = reducer(state, ca.toggleColumn(cId));
-    expect(stateHide).toEqual({
-      ...state,
-      [cId]: {
-        ...state[cId],
-        isHide: true
-      }
-    })
-    expect(
-      reducer(stateHide, ca.toggleColumn(cId))
-    ).toEqual({
-      ...stateHide,
-      [cId]: {
-        ...state[cId],
-        isHide: false
-      }
-    })
-  })
-  test('should add column', ()=>{
-    const bId = 'b-1', cId = 'c-3';
-    expect(
-      reducer(state, ca.addColumn(bId, cId))
-    ).toEqual({
-      ...state,
-      [cId]: crColumn(cId)
-    })
-  })
-  test('should remove column', ()=>{
-    const bId = 'b-1', cId = 'c-1';
-    expect(
-      reducer(state, ca.removeColumn(bId, cId))
-    ).toEqual({
-      'c-2': {
-        id: 'c-2',
-        title: 'Topic 2',
-        noteIds: []
-      }
-    })
-  })
-  test('should add note', ()=>{
-    const cId = 'c-1', nId = 'n-1';
-    expect(
-      reducer(state, na.addNote(cId, nId))
-    ).toEqual({
-      ...state,
-      [cId]: {
-        ...state[cId],
-        noteIds: [nId, ...state[cId].noteIds]
-      }
-    })
-  })
-  test('should delete note', ()=>{
-    const cId = 'c-1', nId = 'n-1'
-    , stateWithTask = reducer(state, na.addNote(cId, nId));
-    expect(
-      reducer(stateWithTask, na.deleteNote(cId, nId))
-    ).toEqual({
-      ...state
-    })
-  })
-  test('should move note between column', ()=>{
-    const cFromId = 'c-1' , cToId = 'c-2', nId = 'n-1'
-    , source = _crDnD(cFromId, 0)
-    , destination = _crDnD(cToId, 0)
-    , stateWithTask = reducer(state, na.addNote(cFromId, nId));
-    expect(
-      reducer(stateWithTask, na.moveNote({
-        draggableId: nId, source, destination
-      }))
-    ).toEqual({
-        ...state,
-        [cToId]: {
-          ...state[cToId],
-          noteIds: [ nId ]
-        }
-     })
-  })
-  test('should move note between index in column', ()=>{
-    const cId = 'c-1', n1Id = 'n-1', n2Id = 'n-2'
-    , state1 = reducer(state, na.addNote(cId, n1Id))
-    , state2 = reducer(state1, na.addNote(cId, n2Id))
-    , source = _crDnD(cId, 1)
-    , destination = _crDnD(cId, 0);
-    expect(
-      reducer(state2, na.moveNote({
-        draggableId: n1Id, source, destination
-      }))
-    ).toEqual({
-      ...state,
-      [cId]: {
-        id: cId,
-        title: 'Topic 1',
-        noteIds: [n1Id, n2Id],
-        withAdd: true
-      }
-    })
+    expect(reducer(undefined, {})).toEqual(initialState.columns)
   })
 
+  test('should handle actions correctly', ()=>{
+    const beforeColums = _selectColums();
+
+    const columnId = dispatch(addColumn({ boardId }));
+    expect(_selectColums()).toEqual({
+      ...beforeColums,
+      [columnId]: crColumn(columnId)
+    })
+
+    const title = "Test Title"
+    dispatch(editColumnTitle({ columnId, title }))
+    expect(_selectColums()[columnId].title).toBe(title)
+
+    const noteId_1 = dispatch(addNote({ boardId, columnId }))
+    expect(_selectColums()[columnId].noteIds).toEqual([noteId_1])
+    const noteId_2 = dispatch(addNote({ boardId, columnId }))
+    expect(_selectColums()[columnId].noteIds).toEqual([noteId_2, noteId_1])
+
+    dispatch(moveNote({
+      draggableId: noteId_1,
+      source: { droppableId: columnId, index: 1 },
+      destination: { droppableId: columnId, index: 0 }
+    }))
+    expect(_selectColums()[columnId].noteIds).toEqual([noteId_1, noteId_2])
+
+    dispatch(deleteNote({ columnId, noteId: noteId_1 }))
+    expect(_selectColums()[columnId].noteIds).toEqual([noteId_2])
+    dispatch(deleteNote({ columnId, noteId: noteId_2 }))
+    expect(_selectColums()[columnId].noteIds).toEqual([])
+
+    dispatch(toggleColumn({ columnId }))
+    expect(_selectColums()[columnId].isHide).toBe(true)
+    dispatch(toggleColumn({ columnId }))
+    expect(_selectColums()[columnId].isHide).toBe(false)
+
+    dispatch(removeColumn({ boardId, columnId }))
+    expect(_selectColums()).toEqual(beforeColums)
+  })
 })

@@ -8,7 +8,7 @@ const _crMsg = msg => {
   return `${_formatTime(d.getHours())}:${_formatTime(d.getMinutes())} ${msg}`;
 };
 
-const drawerMsgMiddleware = store => next => action => {
+const drawerMsgMiddleware = () => next => action => {
   if (action.type === addDrawerMsg.type) {
     const { payload } = action
     , id = crId(CONF.DMSG_PREFIX);

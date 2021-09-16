@@ -7,13 +7,16 @@ var _actions = require("../column/actions");
 
 var _selectors = require("../selectors");
 
-var canRemoveColumn = function canRemoveColumn(store) {
+var _isArr = Array.isArray;
+
+var canRemoveColumn = function canRemoveColumn(_ref) {
+  var getState = _ref.getState;
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.REMOVE_COLUMN) {
-        var _noteIds = _selectors.sColumn.noteIds(store.getState(), action.columnId);
+      if (action.type === _actions.removeColumn.type) {
+        var _noteIds = _selectors.sColumn.noteIds(getState(), action.payload.columnId);
 
-        if (!Array.isArray(_noteIds) || _noteIds.length !== 0) {
+        if (!_isArr(_noteIds) || _noteIds.length !== 0) {
           return false;
         }
       }

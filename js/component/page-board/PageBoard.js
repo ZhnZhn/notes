@@ -65,7 +65,9 @@ var PageBoard = /*#__PURE__*/function (_Component) {
       var _this$props = _this.props,
           addColumn = _this$props.addColumn,
           board = _this$props.board;
-      addColumn(board.id);
+      addColumn({
+        boardId: board.id
+      });
     };
 
     return _this;

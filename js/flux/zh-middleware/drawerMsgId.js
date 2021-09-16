@@ -20,7 +20,7 @@ var _crMsg = function _crMsg(msg) {
   return _formatTime(d.getHours()) + ":" + _formatTime(d.getMinutes()) + " " + msg;
 };
 
-var drawerMsgMiddleware = function drawerMsgMiddleware(store) {
+var drawerMsgMiddleware = function drawerMsgMiddleware() {
   return function (next) {
     return function (action) {
       if (action.type === _reducer.addDrawerMsg.type) {

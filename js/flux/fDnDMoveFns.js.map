@@ -1,1 +1,29 @@
-{"version":3,"sources":["../../src/flux/fDnDMoveFns.js"],"names":["_crMoveInternal","propName","idsTo","state","id","source","destination","from","newIds","splice","index","_crMoveExternal","to","newFromIds","newToIds","fDnDMoveFns","_idsTo","moveInternal","moveExternal"],"mappings":";;;;;;;;;AACA;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CAACC,QAAD,EAAWC,KAAX;AAAA,SAAqB,UAC3CC;AAAM;AADqC,IAE3CC;AAAG;AAFwC,IAG3CC;AAAO;AAHoC,IAI3CC;AAAY;AAJ+B,IAK3CC;AAAK;AALsC,IAMxC;AAAA;;AACH,QAAMC,MAAM,aAAOD,IAAI,CAACN,QAAD,CAAX,CAAZ;AACAO,IAAAA,MAAM,CAACC,MAAP,CAAcJ,MAAM,CAACK,KAArB,EAA4B,CAA5B;AACAF,IAAAA,MAAM,CAACC,MAAP,CAAcH,WAAW,CAACI,KAA1B,EAAiC,CAAjC,EAAoCN,EAApC;AACA,yCACKD,KADL,6BAEGI,IAAI,CAACH,EAFR,IAEcF,KAAK,CAACK,IAAD,EAAOC,MAAP,CAFnB;AAID,GAduB;AAAA,CAAxB;;AAgBA,IAAMG,eAAe,GAAG,SAAlBA,eAAkB,CAACV,QAAD,EAAWC,KAAX;AAAA,SAAqB,UAC3CC;AAAM;AADqC,IAE3CC;AAAG;AAFwC,IAG3CC;AAAO;AAHoC,IAI3CC;AAAY;AAJ+B,IAK3CC;AAAK;AALsC,IAM3CK;AAAG;AANwC;AAO3C;AAAa;AAAA;;AACb,QAAMC,UAAU,aAAON,IAAI,CAACN,QAAD,CAAX,CAAhB;AACAY,IAAAA,UAAU,CAACJ,MAAX,CAAkBJ,MAAM,CAACK,KAAzB,EAAgC,CAAhC;AACA,QAAMI,QAAQ,aAAOF,EAAE,CAACX,QAAD,CAAT,CAAd;AACAa,IAAAA,QAAQ,CAACL,MAAT,CAAgBH,WAAW,CAACI,KAA5B,EAAmC,CAAnC,EAAsCN,EAAtC;AACA,yCACKD,KADL,6BAEGI,IAAI,CAACH,EAFR,IAEaF,KAAK,CAACK,IAAD,EAAOM,UAAP,CAFlB,YAGGD,EAAE,CAACR,EAHN,IAGWF,KAAK,CAACU,EAAD,EAAKE,QAAL,CAHhB;AAKD,GAjBuB;AAAA,CAAxB;;AAoBA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBd;AAAS;AADS;AAElB;AAAa;AACb,MAAMe,MAAM,GAAG,wBAAOf,QAAP,CAAf;;AACA,SAAO;AACLC,IAAAA,KAAK,EAAEc,MADF;AAELC,IAAAA,YAAY,EAAEjB,eAAe,CAACC,QAAD,EAAWe,MAAX,CAFxB;AAGLE,IAAAA,YAAY,EAAEP,eAAe,CAACV,QAAD,EAAWe,MAAX;AAHxB,GAAP;AAKD,CATD;;eAWeD,W","sourcesContent":["// @flow\r\nimport fIdsTo from './fIdsTo'\r\n\r\nconst _crMoveInternal = (propName, idsTo) => (\r\n  state /*: {} */,\r\n  id /*: string */,\r\n  source /*: { index: number } */,\r\n  destination /*: { index: number } */,\r\n  from /*: { id: string } */\r\n) => {\r\n  const newIds = [...from[propName]];\r\n  newIds.splice(source.index, 1)\r\n  newIds.splice(destination.index, 0, id)\r\n  return {\r\n    ...state,\r\n    [from.id] : idsTo(from, newIds)\r\n  };\r\n};\r\n\r\nconst _crMoveExternal = (propName, idsTo) => (\r\n  state /*: {} */,\r\n  id /*: string */,\r\n  source /*: { index: number } */,\r\n  destination /*: { index: number } */,\r\n  from /*: { id: string } */,\r\n  to /*: { id: string } */\r\n) /*: {} */ => {\r\n  const newFromIds = [...from[propName]];\r\n  newFromIds.splice(source.index, 1)\r\n  const newToIds = [...to[propName]];\r\n  newToIds.splice(destination.index, 0, id)\r\n  return {\r\n    ...state,\r\n    [from.id]: idsTo(from, newFromIds),\r\n    [to.id]: idsTo(to, newToIds)\r\n  };\r\n};\r\n\r\n\r\nconst fDnDMoveFns = (\r\n  propName /*: string */\r\n) /*: {} */ => {\r\n  const _idsTo = fIdsTo(propName);\r\n  return {\r\n    idsTo: _idsTo,\r\n    moveInternal: _crMoveInternal(propName, _idsTo),\r\n    moveExternal: _crMoveExternal(propName, _idsTo)\r\n  };\r\n};\r\n\r\nexport default fDnDMoveFns\r\n"],"file":"fDnDMoveFns.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/fDnDMoveFns.js"
+ ],
+ "file": "../../src/flux/fDnDMoveFns.js",
+ "names": [
+  "_crMoveInternal",
+  "propName",
+  "idsTo",
+  "state",
+  "id",
+  "source",
+  "destination",
+  "from",
+  "newIds",
+  "splice",
+  "index",
+  "_crMoveExternal",
+  "to",
+  "newFromIds",
+  "newToIds",
+  "fDnDMoveFns",
+  "_idsTo",
+  "moveInternal",
+  "moveExternal"
+ ],
+ "mappings": ";;;;;;;AACA;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB,CAACC,QAAD,EAAWC,KAAX;AAAA,SAAqB,UAC3CC;AAAM;AADqC,IAE3CC;AAAG;AAFwC,IAG3CC;AAAO;AAHoC,IAI3CC;AAAY;AAJ+B,IAK3CC;AAAK;AALsC,IAMxC;AACH,QAAMC,MAAM,aAAOD,IAAI,CAACN,QAAD,CAAX,CAAZ;AACAO,IAAAA,MAAM,CAACC,MAAP,CAAcJ,MAAM,CAACK,KAArB,EAA4B,CAA5B;AACAF,IAAAA,MAAM,CAACC,MAAP,CAAcH,WAAW,CAACI,KAA1B,EAAiC,CAAjC,EAAoCN,EAApC;AACAD,IAAAA,KAAK,CAACI,IAAI,CAACH,EAAN,CAAL,GAAiBF,KAAK,CAACK,IAAD,EAAOC,MAAP,CAAtB;AACD,GAXuB;AAAA,CAAxB;;AAaA,IAAMG,eAAe,GAAG,SAAlBA,eAAkB,CAACV,QAAD,EAAWC,KAAX;AAAA,SAAqB,UAC3CC;AAAM;AADqC,IAE3CC;AAAG;AAFwC,IAG3CC;AAAO;AAHoC,IAI3CC;AAAY;AAJ+B,IAK3CC;AAAK;AALsC,IAM3CK;AAAG;AANwC;AAO3C;AAAa;AACb,QAAMC,UAAU,aAAON,IAAI,CAACN,QAAD,CAAX,CAAhB;AACAY,IAAAA,UAAU,CAACJ,MAAX,CAAkBJ,MAAM,CAACK,KAAzB,EAAgC,CAAhC;AACA,QAAMI,QAAQ,aAAOF,EAAE,CAACX,QAAD,CAAT,CAAd;AACAa,IAAAA,QAAQ,CAACL,MAAT,CAAgBH,WAAW,CAACI,KAA5B,EAAmC,CAAnC,EAAsCN,EAAtC;AACAD,IAAAA,KAAK,CAACI,IAAI,CAACH,EAAN,CAAL,GAAiBF,KAAK,CAACK,IAAD,EAAOM,UAAP,CAAtB;AACAV,IAAAA,KAAK,CAACS,EAAE,CAACR,EAAJ,CAAL,GAAeF,KAAK,CAACU,EAAD,EAAKE,QAAL,CAApB;AACD,GAduB;AAAA,CAAxB;;AAiBA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBd;AAAS;AADS;AAElB;AAAa;AACb,MAAMe,MAAM,GAAG,wBAAOf,QAAP,CAAf;;AACA,SAAO;AACLC,IAAAA,KAAK,EAAEc,MADF;AAELC,IAAAA,YAAY,EAAEjB,eAAe,CAACC,QAAD,EAAWe,MAAX,CAFxB;AAGLE,IAAAA,YAAY,EAAEP,eAAe,CAACV,QAAD,EAAWe,MAAX;AAHxB,GAAP;AAKD,CATD;;eAWeD,W"
+}

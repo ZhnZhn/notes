@@ -6,17 +6,19 @@ const S = {
   }
 };
 
+const _fnNoop = () => {};
+
 const _renderTopics = ({
   board,
   columns,
-  toggleColumn
+  toggleColumn=_fnNoop
 }) => {
-  const { columnIds=[] } = board;
-  return columnIds.map(cId => (
+  const { columnIds } = board;
+  return (columnIds || []).map(cId => (
     <TopicItem
       key={cId}
       topic={columns[cId]}
-      onClick={toggleColumn.bind(null, cId)}
+      onClick={() => toggleColumn({ columnId: cId })}
     />
   ));
 }
@@ -26,9 +28,5 @@ const TopicList = (props) => (
     {_renderTopics(props)}
   </ul>
 );
-
-TopicList.defaultProps = {
-  toggleColumn: () => {}
-}
 
 export default TopicList

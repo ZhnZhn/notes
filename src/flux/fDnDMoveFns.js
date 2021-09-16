@@ -11,10 +11,7 @@ const _crMoveInternal = (propName, idsTo) => (
   const newIds = [...from[propName]];
   newIds.splice(source.index, 1)
   newIds.splice(destination.index, 0, id)
-  return {
-    ...state,
-    [from.id] : idsTo(from, newIds)
-  };
+  state[from.id] = idsTo(from, newIds)
 };
 
 const _crMoveExternal = (propName, idsTo) => (
@@ -29,11 +26,8 @@ const _crMoveExternal = (propName, idsTo) => (
   newFromIds.splice(source.index, 1)
   const newToIds = [...to[propName]];
   newToIds.splice(destination.index, 0, id)
-  return {
-    ...state,
-    [from.id]: idsTo(from, newFromIds),
-    [to.id]: idsTo(to, newToIds)
-  };
+  state[from.id] = idsTo(from, newFromIds)
+  state[to.id] = idsTo(to, newToIds)
 };
 
 

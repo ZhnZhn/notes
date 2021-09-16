@@ -2,7 +2,7 @@ import { useState, useCallback, memo } from 'react'
 
 import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Dialog.Style'
-import { setUiTheme } from '../../flux/app/actions'
+import { setUiTheme } from '../../flux/app/reducer'
 import { sApp } from '../../flux/selectors'
 
 import ModalDialog from '../zhn-ch/ModalDialog'
@@ -40,7 +40,7 @@ const SettingsDialog = ({
   , TS = useTheme(styleConfig)
   , _selectTheme = useCallback(({ value }) => {
     if (value !== initItem) {
-      dispatch(setUiTheme(value))
+      dispatch(setUiTheme({ uiTheme: value }))
       setInitItem(value)
     }
   }, []);

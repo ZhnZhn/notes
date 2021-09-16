@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../../src/component/board-header/TopicDrawerMenu.jsx"],"names":["TopicDrawerMenu","board","columns","toggleColumn","CL","ROOT","mapStateToProps","state","s","currentBoard","column","mapDispatchToProps","ca"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AACA;;;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB;AAAA,MACtBC,KADsB,QACtBA,KADsB;AAAA,MAEtBC,OAFsB,QAEtBA,OAFsB;AAAA,MAGtBC,YAHsB,QAGtBA,YAHsB;AAAA,sBAKtB;AAAK,IAAA,SAAS,EAAEC,eAAGC,IAAnB;AAAA,4BACE,qBAAC,8BAAD;AACE,MAAA,KAAK,EAAEJ;AADT,MADF,eAIE,qBAAC,qBAAD;AACE,MAAA,KAAK,EAAEA,KADT;AAEE,MAAA,OAAO,EAAEC,OAFX;AAGE,MAAA,YAAY,EAAEC;AAHhB,MAJF,eASE,qBAAC,yBAAD,KATF;AAAA,IALsB;AAAA,CAAxB;;AAkBA,IAAMG,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAK;AAChCN,IAAAA,KAAK,EAAEO,sBAAEP,KAAF,CAAQQ,YAAR,CAAqBF,KAArB,CADyB;AAEhCL,IAAAA,OAAO,EAAEM,sBAAEE,MAAF,CAASR,OAAT,CAAiBK,KAAjB;AAFuB,GAAL;AAAA,CAA7B;;AAKA,IAAMI,kBAAkB,GAAG;AACzBR,EAAAA,YAAY,EAAES,oBAAGT;AADQ,CAA3B;;eAKe,yBACbG,eADa,EAEbK,kBAFa,EAGbX,eAHa,C","sourcesContent":["import { connect } from 'react-redux'\r\nimport s from '../../flux/selectors'\r\nimport ca from '../../flux/column/actions'\r\n\r\nimport CL from './CL'\r\nimport TopicDrawerCaption from './TopicDrawerCaption'\r\nimport TopicList from './TopicList'\r\nimport DrawerMsgList from '../header/DrawerMsgList'\r\n\r\nconst TopicDrawerMenu = ({\r\n  board,\r\n  columns,\r\n  toggleColumn\r\n}) => (\r\n  <div className={CL.ROOT}>\r\n    <TopicDrawerCaption\r\n      board={board}\r\n    />\r\n    <TopicList\r\n      board={board}\r\n      columns={columns}\r\n      toggleColumn={toggleColumn}\r\n    />\r\n    <DrawerMsgList />\r\n  </div>\r\n);\r\n\r\nconst mapStateToProps = state => ({\r\n  board: s.board.currentBoard(state),\r\n  columns: s.column.columns(state)\r\n});\r\n\r\nconst mapDispatchToProps = {\r\n  toggleColumn: ca.toggleColumn\r\n};\r\n\r\n\r\nexport default connect(\r\n  mapStateToProps,\r\n  mapDispatchToProps\r\n)(TopicDrawerMenu)\r\n"],"file":"TopicDrawerMenu.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/TopicDrawerMenu.js"
+ ],
+ "file": "../../../src/component/board-header/TopicDrawerMenu.js",
+ "names": [
+  "TopicDrawerMenu",
+  "board",
+  "columns",
+  "toggleColumn",
+  "CL",
+  "ROOT",
+  "mapStateToProps",
+  "state",
+  "s",
+  "currentBoard",
+  "column",
+  "mapDispatchToProps"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AACA;;;;AAEA,IAAMA,eAAe,GAAG,SAAlBA,eAAkB;AAAA,MACtBC,KADsB,QACtBA,KADsB;AAAA,MAEtBC,OAFsB,QAEtBA,OAFsB;AAAA,MAGtBC,YAHsB,QAGtBA,YAHsB;AAAA,sBAKtB;AAAK,IAAA,SAAS,EAAEC,eAAGC,IAAnB;AAAA,4BACE,qBAAC,8BAAD;AACE,MAAA,KAAK,EAAEJ;AADT,MADF,eAIE,qBAAC,qBAAD;AACE,MAAA,KAAK,EAAEA,KADT;AAEE,MAAA,OAAO,EAAEC,OAFX;AAGE,MAAA,YAAY,EAAEC;AAHhB,MAJF,eASE,qBAAC,yBAAD,KATF;AAAA,IALsB;AAAA,CAAxB;;AAkBA,IAAMG,eAAe,GAAG,SAAlBA,eAAkB,CAAAC,KAAK;AAAA,SAAK;AAChCN,IAAAA,KAAK,EAAEO,sBAAEP,KAAF,CAAQQ,YAAR,CAAqBF,KAArB,CADyB;AAEhCL,IAAAA,OAAO,EAAEM,sBAAEE,MAAF,CAASR,OAAT,CAAiBK,KAAjB;AAFuB,GAAL;AAAA,CAA7B;;AAKA,IAAMI,kBAAkB,GAAG;AACzBR,EAAAA,YAAY,EAAZA;AADyB,CAA3B;;eAKe,yBACbG,eADa,EAEbK,kBAFa,EAGbX,eAHa,C"
+}

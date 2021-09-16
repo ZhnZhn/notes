@@ -13,7 +13,7 @@ var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
 
-var _actions = require("../../flux/app/actions");
+var _reducer = require("../../flux/app/reducer");
 
 var _selectors = require("../../flux/selectors");
 
@@ -71,7 +71,9 @@ var SettingsDialog = function SettingsDialog(_ref) {
     var value = _ref2.value;
 
     if (value !== initItem) {
-      dispatch((0, _actions.setUiTheme)(value));
+      dispatch((0, _reducer.setUiTheme)({
+        uiTheme: value
+      }));
       setInitItem(value);
     }
   }, []);

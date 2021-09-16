@@ -1,74 +1,89 @@
-import { ACTION } from './actions'
-import { ACTION as TA } from '../note/actions'
-import initState from '../initialState'
-import fns from './fns'
+import { createSlice } from '@reduxjs/toolkit';
+
+import {
+  addNote,
+  deleteNote,
+  moveNote
+} from '../note/actions';
+import fns from './fns';
+
+import initialState from '../initialState';
 
 const {
-  setInObj,
   crColumn,
-  noteIdsTo, filterNoteIds,
-  removeProp,
-  moveExternal, moveInternal
+  moveExternal,
+  moveInternal
 } = fns;
 
-const reducer = function(
-  state /*: TopicState */=initState.columns,
-  action /*: TopicAction */
-) /*: TopicState */ {
-  switch(action.type){
-    case ACTION.EDIT_COLUMN_TITLE: {
-      const { columnId, title } = action;
-      return setInObj(state, columnId, {
-        ...state[columnId],
-        title
-      });
-    }
-    case ACTION.ADD_COLUMN: {
-      const { columnId } = action;
-      return setInObj(state, columnId,
-        crColumn(columnId)
-      );
-    }
-    case ACTION.REMOVE_COLUMN: {
-      const { columnId } = action;
-      return removeProp(state, columnId);
-    }
-    case ACTION.TOGGLE_COLUMN: {
-      const { columnId } = action
-      , column = state[columnId];
-      return setInObj(state, columnId, {
-        ...column,
-        isHide: !column.isHide
-      });
-    }
-
-    case TA.MOVE_NOTE: {
-      const { noteId, source, destination } = action
-      , from = state[source.droppableId]
-      , to = state[destination.droppableId];
-      return from === to
-        ? moveInternal(state, noteId, source, destination, from)
-        : moveExternal(state, noteId, source, destination, from, to);
-    }
-    case TA.DELETE_NOTE: {
-      const { columnId, noteId } = action
-        , column = state[columnId]
-        , newNodeIds = filterNoteIds(column, noteId);
-      return setInObj(state, columnId,
-        noteIdsTo(column, newNodeIds)
-      );
-    }
-    case TA.ADD_NOTE: {
-      const { columnId, noteId } = action
-      , column = state[columnId]
-      , newNoteIds = [noteId, ...column.noteIds];
-      return setInObj(state, columnId,
-        noteIdsTo(column, newNoteIds)
-      );      
-    }
-
-    default: return state;
+/*
+const initialState = {
+  'c-1': {
+    id: 'c-1',
+    title: 'Topic 1',
+    noteIds: [],
+    withAdd: true
+  },
+  'c-2': {
+    id: 'c-2',
+    title: 'Topic 2',
+    noteIds: []
   }
 };
+*/
+
+const columnsSlice = createSlice({
+  name: 'columns',
+  initialState: initialState.columns,
+  reducers: {
+     editColumnTitle(state, action){
+       const { columnId, title } = action.payload
+       state[columnId].title = title
+     },
+     toggleColumn(state, action){
+       const { columnId } = action.payload
+       , column = state[columnId]
+       state[columnId].isHide = !column.isHide
+     },
+     addColumn(state, action){
+       const { columnId } = action.payload
+       state[columnId] = crColumn(columnId)
+     },
+     removeColumn(state, action){
+       const { columnId } = action.payload
+       delete state[columnId]
+     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addNote, (state, action) => {
+        const { columnId, noteId } = action.payload
+        state[columnId].noteIds.unshift(noteId)
+      })
+      .addCase(deleteNote, (state, action) => {
+        const { columnId, noteId } = action.payload
+        , column = state[columnId];
+        column.noteIds = column.noteIds
+          .filter(id => id !== noteId)
+      })
+      .addCase(moveNote, (state, action) => {
+         const { draggableId, source, destination } = action.payload
+         , from = state[source.droppableId]
+         , to = state[destination.droppableId];
+
+         if (from === to) {
+           moveInternal(state, draggableId, source, destination, from)
+         } else {
+           moveExternal(state, draggableId, source, destination, from, to);
+         }
+      })
+  }
+})
+
+const { actions, reducer } = columnsSlice;
+
+export const {
+  editColumnTitle,
+  toggleColumn
+} = actions
 
 export default reducer
