@@ -1,30 +1,27 @@
-import { ACTION } from './actions'
-import initState from '../initialState'
-import fns from './fns'
+import { createSlice } from '@reduxjs/toolkit';
 
-const {
-  crMsg,
-  filterByProp
-} = fns;
+import initialState from '../initialState';
+import fns from './fns';
 
-const reducer = function(
-  state /*: DrawerMsgState */=initState.drawerMsg,
-  action /*: DrawerAction */
-) /*: DrawerMsgState */ {
-  switch(action.type){
-    case ACTION.ADD_DRAWER_MSG: {
-      const { id, msg } = action;
-      return [
-        crMsg(id, msg),
-        ...state
-      ];
+const { crMsg } = fns;
+
+const drawerSlice = createSlice({
+  name: "drawerMsg",
+  initialState: initialState.drawerMsg,
+  reducers: {
+    addDrawerMsg(state, action){
+      const { id, msg } = action.payload;
+      state.unshift(crMsg(id, msg))
+    },
+    removeDrawerMsg(state, action){
+      const { id } = action.payload;
+      return state.filter(item => item.id !== id);
     }
-    case ACTION.REMOVE_DRAWER_MSG: {
-      const { id } = action;
-      return filterByProp(state, id);
-    }
-    default: return state;
   }
-}
+});
+
+const { actions, reducer } = drawerSlice;
+
+export const { addDrawerMsg, removeDrawerMsg } = actions
 
 export default reducer

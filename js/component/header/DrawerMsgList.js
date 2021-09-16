@@ -7,7 +7,7 @@ var _reactRedux = require("react-redux");
 
 var _selectors = require("../../flux/selectors");
 
-var _actions = require("../../flux/drawerMsg/actions");
+var _reducer = require("../../flux/drawerMsg/reducer");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -27,7 +27,11 @@ var DrawerMsgList = function DrawerMsgList(_ref) {
         className: CL.LI,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
           className: CL.LI_BT,
-          onClick: removeDrawerMsg.bind(null, item.id),
+          onClick: function onClick() {
+            return removeDrawerMsg({
+              id: item.id
+            });
+          },
           children: item.msg
         })
       }, item.id);
@@ -42,7 +46,7 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 var mapDispatchToProps = {
-  removeDrawerMsg: _actions.removeDrawerMsg
+  removeDrawerMsg: _reducer.removeDrawerMsg
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DrawerMsgList);

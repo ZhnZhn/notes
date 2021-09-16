@@ -1,1 +1,13 @@
-{"version":3,"sources":["../../../src/flux/drawerMsg/fns.js"],"names":["filterByProp","fns","crMsg","id","msg"],"mappings":";;;;;;;AAAA;;AAIA,IAAQA,YAAR,GAAyBC,sBAAzB,CAAQD,YAAR;;AAEA,IAAME,KAAK,GAAG,SAARA,KAAQ,CACZC;AAAG;AADS,EAEZC;AAAI;AAFQ;AAAA;AAGZ;AAAqB;AACrBD,MAAAA,EAAE,EAAFA,EADqB;AAErBC,MAAAA,GAAG,EAAHA;AAFqB;AAHT;AAAA,CAAd;;eAQe;AACbF,EAAAA,KAAK,EAALA,KADa;AAEbF,EAAAA,YAAY,EAAZA;AAFa,C","sourcesContent":["import fns from '../reducerFns'\r\n\r\n// @flow\r\n\r\nconst { filterByProp } = fns;\r\n\r\nconst crMsg = (\r\n  id /*: string */,\r\n  msg /*: string */\r\n) /*: DrawerMsg */ => ({\r\n  id,\r\n  msg\r\n});\r\n\r\nexport default {\r\n  crMsg,\r\n  filterByProp\r\n}\r\n"],"file":"fns.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/drawerMsg/fns.js"
+ ],
+ "file": "../../../src/flux/drawerMsg/fns.js",
+ "names": [
+  "crMsg",
+  "id",
+  "msg"
+ ],
+ "mappings": ";;;;;AAEA,IAAMA,KAAK,GAAG,SAARA,KAAQ,CACZC;AAAG;AADS,EAEZC;AAAI;AAFQ;AAAA;AAGZ;AAAqB;AACrBD,MAAAA,EAAE,EAAFA,EADqB;AAErBC,MAAAA,GAAG,EAAHA;AAFqB;AAHT;AAAA,CAAd;;eAQe;AACbF,EAAAA,KAAK,EAALA;AADa,C"
+}

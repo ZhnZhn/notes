@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { sDrawer } from '../../flux/selectors'
-import { removeDrawerMsg } from '../../flux/drawerMsg/actions'
+import { removeDrawerMsg } from '../../flux/drawerMsg/reducer'
 
 const CL = {
   UL: 'drawer__msg-ul',
@@ -18,7 +18,7 @@ const DrawerMsgList = ({ items, removeDrawerMsg }) => (
           >
             <button
               className={CL.LI_BT}
-              onClick={removeDrawerMsg.bind(null, item.id)}
+              onClick={() => removeDrawerMsg({id : item.id })}
             >
               {item.msg}
             </button>

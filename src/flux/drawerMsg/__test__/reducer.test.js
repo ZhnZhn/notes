@@ -1,31 +1,28 @@
-import reducer from '../reducer'
-import dma from '../actions'
-import fns from '../fns'
-import initialState from '../../initialState'
+import reducer, { addDrawerMsg, removeDrawerMsg } from '../reducer';
 
+import initialState from '../../initialState';
+import store from '../../store';
 
-const { crMsg } = fns;
-const state = initialState.drawerMsg;
+const { getState, dispatch } = store
+
+const _selectDrawerMsg = () => getState().drawerMsg;
 
 describe('reducer drawerMsg', ()=>{
-  test('should init to []', ()=>{
-    expect(reducer(undefined, {})).toEqual([])
+  test('should init to initialState', ()=>{
+    expect(reducer(undefined, {}))
+      .toEqual(initialState.drawerMsg)
   })
-  /*
-  test('should add drawer msg', ()=>{
-    const mId = 'm-1', msg = 'Msg';
-    expect(
-      reducer(state, dma.addDrawerMsg(msg, mId))
-    ).toEqual([
-      crMsg(mId, msg)
-    ])
-  })
-  */
-  test('should remove drawer msg', ()=>{
-    const mId = 'm-1', msg = 'Msg'
-    , state1 = reducer(state, dma.addDrawerMsg(msg, mId));
-    expect(
-      reducer(state1, dma.removeDrawerMsg(mId))
-    ).toEqual(state)
+
+  test('should handle actions correctly', ()=>{
+    // addDrawerMsg
+    const msg = 'Msg'
+    , id = dispatch(addDrawerMsg({ msg }))
+    , itemMsg = _selectDrawerMsg()[0];
+    expect(itemMsg.id).toBe(id)
+    expect(itemMsg.msg.indexOf(msg)).not.toBe(-1)
+
+    // removeDrawerMsg
+    dispatch(removeDrawerMsg({ id }))
+    expect(_selectDrawerMsg()).toEqual([])
   })
 })

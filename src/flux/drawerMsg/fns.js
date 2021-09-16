@@ -1,8 +1,4 @@
-import fns from '../reducerFns'
-
 // @flow
-
-const { filterByProp } = fns;
 
 const crMsg = (
   id /*: string */,
@@ -13,6 +9,5 @@ const crMsg = (
 });
 
 export default {
-  crMsg,
-  filterByProp
+  crMsg
 }

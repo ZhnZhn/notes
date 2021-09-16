@@ -5,21 +5,31 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _actions = require("../drawerMsg/actions");
+var _reducer = require("../drawerMsg/reducer");
 
 var _crId = _interopRequireDefault(require("./crId"));
 
 var _appConf = _interopRequireDefault(require("../appConf"));
 
+var _formatTime = function _formatTime(n) {
+  return n < 10 ? "0" + n : "" + n;
+};
+
+var _crMsg = function _crMsg(msg) {
+  var d = new Date();
+  return _formatTime(d.getHours()) + ":" + _formatTime(d.getMinutes()) + " " + msg;
+};
+
 var drawerMsgMiddleware = function drawerMsgMiddleware(store) {
   return function (next) {
     return function (action) {
-      if (action.type === _actions.ACTION.ADD_DRAWER_MSG) {
-        action = (0, _extends2["default"])({}, action, {
-          id: (0, _crId["default"])(_appConf["default"].DMSG_PREFIX)
-        });
+      if (action.type === _reducer.addDrawerMsg.type) {
+        var payload = action.payload,
+            id = (0, _crId["default"])(_appConf["default"].DMSG_PREFIX);
+        payload.id = id;
+        payload.msg = _crMsg(payload.msg);
+        next(action);
+        return id;
       }
 
       return next(action);
