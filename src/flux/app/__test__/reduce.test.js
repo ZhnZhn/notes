@@ -1,10 +1,17 @@
-import reducer from '../reducer'
-import aa from '../actions'
-import ba from '../../board/actions'
-import initialState from '../../initialState'
+import reducer, { setUiTheme } from '../reducer';
+import {
+  addBoard,
+  removeBoard,
+  setCurrentBoard
+} from '../../board/actions';
 
+import initialState from '../../initialState';
+import store from '../../store';
 
-const state = initialState.app;
+const { getState, dispatch } = store;
+
+const _selectApp = () => getState().app;
+
 /*
 const initState = {
   boardId: 'b-1',
@@ -15,51 +22,26 @@ const initState = {
 
 describe('reducer app', ()=>{
   test('should init to initialState', ()=>{
-    expect(reducer(undefined, {})).toEqual(state)
+    expect(reducer(undefined, {}))
+      .toEqual(initialState.app)
   })
 
-  test('should set uiTheme', ()=>{
-    const uiThemeId = 'LIGHT';
-    expect(
-      reducer(state, aa.setUiTheme(uiThemeId))
-    ).toEqual({
-      ...state,
-      uiTheme: uiThemeId
-    })
+  test('should handle app actions correctly', ()=>{
+    const uiTheme = "SAND"
+    dispatch(setUiTheme({uiTheme}))
+    expect(_selectApp().uiTheme).toBe(uiTheme)
   })
 
-  test('should set board current', ()=>{
-    const bId = 'b-2';
-    expect(
-      reducer(state, ba.setBoardCurrent(bId))
-    ).toEqual({
-      ...state,
-      boardId: bId
-    })
-  })
+  test('should handle board actions correctly', ()=>{
+    const initialBoardIds = _selectApp().boardIds;
 
-  test('should add board', ()=>{
-    const bId = 'b-2';
-    expect(
-      reducer(state, ba.addBoard(bId))
-    ).toEqual({
-      ...state,
-      boardIds: [
-        ...state.boardIds,
-        bId
-      ]
-    })
-  })
+    const boardId = dispatch(addBoard())
+    expect(_selectApp().boardIds[1]).toBe(boardId)
 
-  test('should remove board', ()=>{
-    const bId = 'b-1';
-    expect(
-      reducer(state, ba.removeBoard(bId))
-    ).toEqual({
-      ...state,
-      boardId: null,
-      boardIds: []
-    })
-  })
+    dispatch(setCurrentBoard({ boardId }))
+    expect(_selectApp().boardId).toBe(boardId)
 
+    dispatch(removeBoard({ boardId }))
+    expect(_selectApp().boardIds).toEqual(initialBoardIds)
+  })
 });

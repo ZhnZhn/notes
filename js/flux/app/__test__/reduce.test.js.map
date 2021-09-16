@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../../src/flux/app/__test__/reduce.test.js"],"names":["state","initialState","app","describe","test","expect","undefined","toEqual","uiThemeId","aa","setUiTheme","uiTheme","bId","ba","setBoardCurrent","boardId","addBoard","boardIds","removeBoard"],"mappings":";;;;;;AAAA;;AACA;;AACA;;AACA;;AAGA,IAAMA,KAAK,GAAGC,yBAAaC,GAA3B;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEAC,QAAQ,CAAC,aAAD,EAAgB,YAAI;AAC1BC,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtCC,IAAAA,MAAM,CAAC,yBAAQC,SAAR,EAAmB,EAAnB,CAAD,CAAN,CAA+BC,OAA/B,CAAuCP,KAAvC;AACD,GAFG,CAAJ;AAIAI,EAAAA,IAAI,CAAC,oBAAD,EAAuB,YAAI;AAC7B,QAAMI,SAAS,GAAG,OAAlB;AACAH,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAeS,oBAAGC,UAAH,CAAcF,SAAd,CAAf,CADI,CAAN,CAEED,OAFF,+BAGKP,KAHL;AAIEW,MAAAA,OAAO,EAAEH;AAJX;AAMD,GARG,CAAJ;AAUAJ,EAAAA,IAAI,CAAC,0BAAD,EAA6B,YAAI;AACnC,QAAMQ,GAAG,GAAG,KAAZ;AACAP,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAea,qBAAGC,eAAH,CAAmBF,GAAnB,CAAf,CADI,CAAN,CAEEL,OAFF,+BAGKP,KAHL;AAIEe,MAAAA,OAAO,EAAEH;AAJX;AAMD,GARG,CAAJ;AAUAR,EAAAA,IAAI,CAAC,kBAAD,EAAqB,YAAI;AAC3B,QAAMQ,GAAG,GAAG,KAAZ;AACAP,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAea,qBAAGG,QAAH,CAAYJ,GAAZ,CAAf,CADI,CAAN,CAEEL,OAFF,+BAGKP,KAHL;AAIEiB,MAAAA,QAAQ,YACHjB,KAAK,CAACiB,QADH,GAENL,GAFM;AAJV;AASD,GAXG,CAAJ;AAaAR,EAAAA,IAAI,CAAC,qBAAD,EAAwB,YAAI;AAC9B,QAAMQ,GAAG,GAAG,KAAZ;AACAP,IAAAA,MAAM,CACJ,yBAAQL,KAAR,EAAea,qBAAGK,WAAH,CAAeN,GAAf,CAAf,CADI,CAAN,CAEEL,OAFF,+BAGKP,KAHL;AAIEe,MAAAA,OAAO,EAAE,IAJX;AAKEE,MAAAA,QAAQ,EAAE;AALZ;AAOD,GATG,CAAJ;AAWD,CAjDO,CAAR","sourcesContent":["import reducer from '../reducer'\r\nimport aa from '../actions'\r\nimport ba from '../../board/actions'\r\nimport initialState from '../../initialState'\r\n\r\n\r\nconst state = initialState.app;\r\n/*\r\nconst initState = {\r\n  boardId: 'b-1',\r\n  boardIds: ['b-1']\r\n  uiTheme: 'DARK'\r\n};\r\n*/\r\n\r\ndescribe('reducer app', ()=>{\r\n  test('should init to initialState', ()=>{\r\n    expect(reducer(undefined, {})).toEqual(state)\r\n  })\r\n\r\n  test('should set uiTheme', ()=>{\r\n    const uiThemeId = 'LIGHT';\r\n    expect(\r\n      reducer(state, aa.setUiTheme(uiThemeId))\r\n    ).toEqual({\r\n      ...state,\r\n      uiTheme: uiThemeId\r\n    })\r\n  })\r\n\r\n  test('should set board current', ()=>{\r\n    const bId = 'b-2';\r\n    expect(\r\n      reducer(state, ba.setBoardCurrent(bId))\r\n    ).toEqual({\r\n      ...state,\r\n      boardId: bId\r\n    })\r\n  })\r\n\r\n  test('should add board', ()=>{\r\n    const bId = 'b-2';\r\n    expect(\r\n      reducer(state, ba.addBoard(bId))\r\n    ).toEqual({\r\n      ...state,\r\n      boardIds: [\r\n        ...state.boardIds,\r\n        bId\r\n      ]\r\n    })\r\n  })\r\n\r\n  test('should remove board', ()=>{\r\n    const bId = 'b-1';\r\n    expect(\r\n      reducer(state, ba.removeBoard(bId))\r\n    ).toEqual({\r\n      ...state,\r\n      boardId: null,\r\n      boardIds: []\r\n    })\r\n  })\r\n\r\n});\r\n"],"file":"reduce.test.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/flux/app/__test__/reduce.test.js"
+ ],
+ "file": "../../../../src/flux/app/__test__/reduce.test.js",
+ "names": [
+  "getState",
+  "store",
+  "dispatch",
+  "_selectApp",
+  "app",
+  "describe",
+  "test",
+  "expect",
+  "undefined",
+  "toEqual",
+  "initialState",
+  "uiTheme",
+  "toBe",
+  "initialBoardIds",
+  "boardIds",
+  "boardId"
+ ],
+ "mappings": ";;;;AAAA;;AACA;;AAMA;;AACA;;;;;;AAEA,IAAQA,QAAR,GAA+BC,iBAA/B,CAAQD,QAAR;AAAA,IAAkBE,QAAlB,GAA+BD,iBAA/B,CAAkBC,QAAlB;;AAEA,IAAMC,UAAU,GAAG,SAAbA,UAAa;AAAA,SAAMH,QAAQ,GAAGI,GAAjB;AAAA,CAAnB;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;;;AAEAC,QAAQ,CAAC,aAAD,EAAgB,YAAI;AAC1BC,EAAAA,IAAI,CAAC,6BAAD,EAAgC,YAAI;AACtCC,IAAAA,MAAM,CAAC,yBAAQC,SAAR,EAAmB,EAAnB,CAAD,CAAN,CACGC,OADH,CACWC,yBAAaN,GADxB;AAED,GAHG,CAAJ;AAKAE,EAAAA,IAAI,CAAC,qCAAD,EAAwC,YAAI;AAC9C,QAAMK,OAAO,GAAG,MAAhB;AACAT,IAAAA,QAAQ,CAAC,yBAAW;AAACS,MAAAA,OAAO,EAAPA;AAAD,KAAX,CAAD,CAAR;AACAJ,IAAAA,MAAM,CAACJ,UAAU,GAAGQ,OAAd,CAAN,CAA6BC,IAA7B,CAAkCD,OAAlC;AACD,GAJG,CAAJ;AAMAL,EAAAA,IAAI,CAAC,uCAAD,EAA0C,YAAI;AAChD,QAAMO,eAAe,GAAGV,UAAU,GAAGW,QAArC;;AAEA,QAAMC,OAAO,GAAGb,QAAQ,CAAC,wBAAD,CAAxB;AACAK,IAAAA,MAAM,CAACJ,UAAU,GAAGW,QAAb,CAAsB,CAAtB,CAAD,CAAN,CAAiCF,IAAjC,CAAsCG,OAAtC;AAEAb,IAAAA,QAAQ,CAAC,8BAAgB;AAAEa,MAAAA,OAAO,EAAPA;AAAF,KAAhB,CAAD,CAAR;AACAR,IAAAA,MAAM,CAACJ,UAAU,GAAGY,OAAd,CAAN,CAA6BH,IAA7B,CAAkCG,OAAlC;AAEAb,IAAAA,QAAQ,CAAC,0BAAY;AAAEa,MAAAA,OAAO,EAAPA;AAAF,KAAZ,CAAD,CAAR;AACAR,IAAAA,MAAM,CAACJ,UAAU,GAAGW,QAAd,CAAN,CAA8BL,OAA9B,CAAsCI,eAAtC;AACD,GAXG,CAAJ;AAYD,CAxBO,CAAR"
+}

@@ -2,17 +2,24 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _reducer = _interopRequireWildcard(require("../reducer"));
 
-var _reducer = _interopRequireDefault(require("../reducer"));
-
-var _actions = _interopRequireDefault(require("../actions"));
-
-var _actions2 = _interopRequireDefault(require("../../board/actions"));
+var _actions = require("../../board/actions");
 
 var _initialState = _interopRequireDefault(require("../../initialState"));
 
-var state = _initialState["default"].app;
+var _store = _interopRequireDefault(require("../../store"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var getState = _store["default"].getState,
+    dispatch = _store["default"].dispatch;
+
+var _selectApp = function _selectApp() {
+  return getState().app;
+};
 /*
 const initState = {
   boardId: 'b-1',
@@ -21,34 +28,31 @@ const initState = {
 };
 */
 
+
 describe('reducer app', function () {
   test('should init to initialState', function () {
-    expect((0, _reducer["default"])(undefined, {})).toEqual(state);
+    expect((0, _reducer["default"])(undefined, {})).toEqual(_initialState["default"].app);
   });
-  test('should set uiTheme', function () {
-    var uiThemeId = 'LIGHT';
-    expect((0, _reducer["default"])(state, _actions["default"].setUiTheme(uiThemeId))).toEqual((0, _extends2["default"])({}, state, {
-      uiTheme: uiThemeId
+  test('should handle app actions correctly', function () {
+    var uiTheme = "SAND";
+    dispatch((0, _reducer.setUiTheme)({
+      uiTheme: uiTheme
     }));
+    expect(_selectApp().uiTheme).toBe(uiTheme);
   });
-  test('should set board current', function () {
-    var bId = 'b-2';
-    expect((0, _reducer["default"])(state, _actions2["default"].setBoardCurrent(bId))).toEqual((0, _extends2["default"])({}, state, {
-      boardId: bId
+  test('should handle board actions correctly', function () {
+    var initialBoardIds = _selectApp().boardIds;
+
+    var boardId = dispatch((0, _actions.addBoard)());
+    expect(_selectApp().boardIds[1]).toBe(boardId);
+    dispatch((0, _actions.setCurrentBoard)({
+      boardId: boardId
     }));
-  });
-  test('should add board', function () {
-    var bId = 'b-2';
-    expect((0, _reducer["default"])(state, _actions2["default"].addBoard(bId))).toEqual((0, _extends2["default"])({}, state, {
-      boardIds: [].concat(state.boardIds, [bId])
+    expect(_selectApp().boardId).toBe(boardId);
+    dispatch((0, _actions.removeBoard)({
+      boardId: boardId
     }));
-  });
-  test('should remove board', function () {
-    var bId = 'b-1';
-    expect((0, _reducer["default"])(state, _actions2["default"].removeBoard(bId))).toEqual((0, _extends2["default"])({}, state, {
-      boardId: null,
-      boardIds: []
-    }));
+    expect(_selectApp().boardIds).toEqual(initialBoardIds);
   });
 });
 //# sourceMappingURL=reduce.test.js.map

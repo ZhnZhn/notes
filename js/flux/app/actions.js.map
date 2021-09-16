@@ -1,1 +1,12 @@
-{"version":3,"sources":["../../../src/flux/app/actions.js"],"names":["ACTION","SAVE_BOARD","CLEAN_STORAGE","SET_UI_THEME","saveBoard","type","cleanStorage","setUiTheme","uiTheme","actions"],"mappings":";;;;AAEO,IAAMA,MAAM,GAAG;AACpBC,EAAAA,UAAU,EAAE,YADQ;AAEpBC,EAAAA,aAAa,EAAE,eAFK;AAGpBC,EAAAA,YAAY,EAAE;AAHM,CAAf;;;AAMA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,SAAO;AAC9BC,IAAAA,IAAI,EAAEL,MAAM,CAACC;AADiB,GAAP;AAAA,CAAlB;;;;AAIA,IAAMK,YAAY,GAAG,SAAfA,YAAe;AAAA,SAAO;AACjCD,IAAAA,IAAI,EAAEL,MAAM,CAACE;AADoB,GAAP;AAAA,CAArB;;;;AAIA,IAAMK,UAAU,GAAG,SAAbA,UAAa,CACxBC;AAAQ;AADgB;AAAA,SAEpB;AACJH,IAAAA,IAAI,EAAEL,MAAM,CAACG,YADT;AAEJK,IAAAA,OAAO,EAAPA;AAFI,GAFoB;AAAA,CAAnB;AAOP;AACA;AACA;AACA;AACA;AACA;;;;AAEA,IAAMC,OAAO,GAAG;AACdL,EAAAA,SAAS,EAATA,SADc;AAEdE,EAAAA,YAAY,EAAZA,YAFc;AAGdC,EAAAA,UAAU,EAAVA;AAHc,CAAhB;eAMeE,O","sourcesContent":["// @flow\r\n\r\nexport const ACTION = {\r\n  SAVE_BOARD: 'SAVE_BOARD',\r\n  CLEAN_STORAGE: 'CLEAN_STORAGE',\r\n  SET_UI_THEME: 'SET_UI_THEME'\r\n};\r\n\r\nexport const saveBoard = () => ({\r\n  type: ACTION.SAVE_BOARD\r\n});\r\n\r\nexport const cleanStorage = () => ({\r\n  type: ACTION.CLEAN_STORAGE\r\n});\r\n\r\nexport const setUiTheme = (\r\n  uiTheme /*: UiTheme */\r\n) => ({\r\n  type: ACTION.SET_UI_THEME,\r\n  uiTheme\r\n});\r\n\r\n/*::\r\nexport type TopicAction =\r\n  | $Call<typeof saveBoard>\r\n  | $Call<typeof cleanStorage>\r\n  | $Call<typeof setUiTheme, UiTheme>\r\n*/\r\n\r\nconst actions = {\r\n  saveBoard,\r\n  cleanStorage,\r\n  setUiTheme\r\n};\r\n\r\nexport default actions\r\n"],"file":"actions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/app/actions.js"
+ ],
+ "file": "../../../src/flux/app/actions.js",
+ "names": [
+  "saveBoard",
+  "cleanStorage"
+ ],
+ "mappings": ";;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,2BAAa,eAAb,CAAlB;;AACA,IAAMC,YAAY,GAAG,2BAAa,kBAAb,CAArB"
+}

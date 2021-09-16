@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _actions = require("../app/actions");
 
-var _actions2 = _interopRequireDefault(require("../drawerMsg/actions"));
+var _reducer = require("../drawerMsg/reducer");
 
 var _appConf = _interopRequireDefault(require("../appConf"));
 
@@ -19,7 +19,7 @@ var appStorage = function appStorage(_ref) {
   return function (next) {
     return function (action) {
       switch (action.type) {
-        case _actions.ACTION.SAVE_BOARD:
+        case _actions.saveBoard.type:
           {
             try {
               window.localStorage.setItem(_appConf["default"].STORAGE_KEY, JSON.stringify((0, _extends2["default"])({}, getState(), {
@@ -29,23 +29,31 @@ var appStorage = function appStorage(_ref) {
                   data: null
                 }
               })));
-              dispatch(_actions2["default"].addDrawerMsg(_appConf["default"].MSG_SAVED));
+              dispatch((0, _reducer.addDrawerMsg)({
+                msg: _appConf["default"].MSG_SAVED
+              }));
               return true;
             } catch (e) {
-              dispatch(_actions2["default"].addDrawerMsg(_appConf["default"].MSG_SAVE_FAIL));
+              dispatch((0, _reducer.addDrawerMsg)({
+                msg: _appConf["default"].MSG_SAVE_FAIL
+              }));
               console.log(e.msg);
               return false;
             }
           }
 
-        case _actions.ACTION.CLEAN_STORAGE:
+        case _actions.cleanStorage.type:
           {
             try {
               window.localStorage.removeItem(_appConf["default"].STORAGE_KEY);
-              dispatch(_actions2["default"].addDrawerMsg(_appConf["default"].MSG_CLEANED));
+              dispatch((0, _reducer.addDrawerMsg)({
+                msg: _appConf["default"].MSG_CLEANED
+              }));
               return true;
             } catch (e) {
-              dispatch(_actions2["default"].addDrawerMsg(_appConf["default"].MSG_CLEAN_FAIL));
+              dispatch((0, _reducer.addDrawerMsg)({
+                msg: _appConf["default"].MSG_CLEAN_FAIL
+              }));
               console.log(e.msg);
               return false;
             }

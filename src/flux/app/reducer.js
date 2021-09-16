@@ -1,13 +1,7 @@
-import { ACTION } from './actions'
-import { ACTION as BA } from '../board/actions'
-import initialState from '../initialState'
+import { createSlice } from "@reduxjs/toolkit";
 
-import fns from '../reducerFns'
-
-const {
-  setInObj,
-  filterBy
-} = fns;
+import { addBoard, removeBoard, setCurrentBoard } from '../board/actions';
+import initialState from '../initialState';
 
 /*
 const initState = {
@@ -17,48 +11,33 @@ const initState = {
 };
 */
 
-const reducer = function(
-  state /*: AppState */=initialState.app,
-  action /*: AppAction */
-) /*: AppState */ {
-  switch (action.type) {
-    case ACTION.SET_UI_THEME: {
-      const { uiTheme } = action;
-      return {
-        ...state,
-        uiTheme
-      };
+const appSlice = createSlice({
+  name: "app",
+  initialState: initialState.app,
+  reducers: {
+    setUiTheme(state, action) {
+      const { uiTheme } = action.payload;
+      state.uiTheme = uiTheme
     }
-    case BA.SET_BOARD_CURRENT: {
-      const { boardId } = action;
-      return {
-        ...state,
-        boardId
-      };
-    }
-    case BA.ADD_BOARD: {
-      const { boardId } = action
-      , newBoardIds = [
-         ...state.boardIds,
-         boardId
-       ];
-      return setInObj(state,
-        'boardIds',
-        newBoardIds
-      );
-    }
-    case BA.REMOVE_BOARD: {
-      const { boardId } = action;
-      if (state.boardId === boardId) {
-        state.boardId = null
-      }
-      return setInObj(state,
-        'boardIds',
-        filterBy(state.boardIds, boardId)
-      );
-    }
-    default: return state;
-  }
-};
+  },
+  extraReducers: builder => builder
+    .addCase(addBoard, (state, action) =>{
+      const { boardId } = action.payload;
+      state.boardIds.push(boardId)
+    })
+    .addCase(removeBoard, (state, action) =>{
+      const { boardId } = action.payload;
+      state.boardIds = state.boardIds
+        .filter(id => id !== boardId)
+    })
+    .addCase(setCurrentBoard, (state, action) => {
+      const { boardId } = action.payload;      
+      state.boardId = boardId
+    })
+})
+
+const { actions, reducer } = appSlice;
+
+export const { setUiTheme } = actions
 
 export default reducer
