@@ -33,8 +33,7 @@ describe('reducer notes', ()=>{
   })
   test('should handle actions', ()=>{
      const columnId = _getIdFromSlice('columns')
-     dispatch(addNote({ columnId }))
-     const noteId = _getIdFromSlice('notes')
+     const noteId = dispatch(addNote({ columnId }))
      expect(_selectNotes()).toEqual({
        [noteId]: {
          id: noteId,

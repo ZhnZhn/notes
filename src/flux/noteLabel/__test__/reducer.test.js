@@ -17,19 +17,17 @@ describe('reducer noteLabels', ()=>{
   })
 
   test('should add labels to note label slice and note', ()=>{
-    const columnId = _getIdFromSlice('columns')
-    store.dispatch(addNote({ columnId }))
-
-    const noteId = _getIdFromSlice('notes')
-    const labels = [{ title: "L1", color: "#2f7ed8" }]
+    const columnId = _getIdFromSlice('columns');
+    const noteId = store.dispatch(addNote({ columnId }));
+    const labels = [{ title: "L1", color: "#2f7ed8" }];
     store.dispatch(editNoteLabels({ noteId, labels }))
 
-    const nextState = _getState()
-    const labelId = _getIdFromSlice('noteLabels')
+    const nextState = _getState();
+    const labelId = _getIdFromSlice('noteLabels');
     const labelConfig = {
       id: labelId,
      ...labels[0]
-    }
+   };
     //Add Labels To noteLabel Slice
     expect(nextState.noteLabels)
      .toEqual({ [labelId]: labelConfig })

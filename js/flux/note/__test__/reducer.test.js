@@ -44,12 +44,9 @@ describe('reducer notes', function () {
 
     var columnId = _getIdFromSlice('columns');
 
-    dispatch((0, _actions.addNote)({
+    var noteId = dispatch((0, _actions.addNote)({
       columnId: columnId
     }));
-
-    var noteId = _getIdFromSlice('notes');
-
     expect(_selectNotes()).toEqual((_expect$toEqual = {}, _expect$toEqual[noteId] = {
       id: noteId,
       title: "New Note"

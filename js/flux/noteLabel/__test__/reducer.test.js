@@ -29,11 +29,9 @@ describe('reducer noteLabels', function () {
 
     var columnId = _getIdFromSlice('columns');
 
-    _store["default"].dispatch((0, _actions.addNote)({
+    var noteId = _store["default"].dispatch((0, _actions.addNote)({
       columnId: columnId
     }));
-
-    var noteId = _getIdFromSlice('notes');
 
     var labels = [{
       title: "L1",
