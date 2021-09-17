@@ -11,40 +11,47 @@ var S = {
   }
 };
 
+var _crAccessKeyIndex = function _crAccessKeyIndex(accessKey, caption) {
+  return accessKey ? caption.toLowerCase().indexOf(accessKey) : -1;
+};
+
+var _crCaption = function _crCaption(accessKey, caption) {
+  var index = _crAccessKeyIndex(accessKey, caption);
+
+  if (index === -1) {
+    return caption;
+  }
+
+  var _before = caption.substring(0, index),
+      _key = caption.substring(index, index + 1),
+      _after = caption.substring(index + 1);
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: _before
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: S.KEY,
+      children: _key
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: _after
+    })]
+  });
+};
+
 var CaptionInput = function CaptionInput(_ref) {
   var className = _ref.className,
-      rootStyle = _ref.rootStyle,
-      _ref$caption = _ref.caption,
-      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      caption = _ref.caption,
       accessKey = _ref.accessKey,
       children = _ref.children;
 
-  var _index = caption.toLowerCase().indexOf(accessKey);
-
-  if (accessKey && _index !== -1) {
-    var _before = caption.substring(0, _index),
-        _key = caption.substring(_index, _index + 1),
-        _after = caption.substring(_index + 1);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-      className: className,
-      style: rootStyle,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        children: _before
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: S.KEY,
-        children: _key
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        children: _after
-      }), children]
-    });
-  } else {
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-      className: className,
-      style: rootStyle,
-      children: [caption, children]
-    });
+  if (!caption) {
+    return null;
   }
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+    className: className,
+    children: [_crCaption(accessKey, caption), children]
+  });
 };
 
 var _default = CaptionInput;
