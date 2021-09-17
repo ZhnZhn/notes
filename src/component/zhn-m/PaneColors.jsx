@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { forwardRef, useState, useCallback, useImperativeHandle } from 'react'
 
 import CellColor from '../zhn-ch/CellColor'
 
@@ -12,92 +12,83 @@ const COLORS2 = [
   '#000000','#607d8b','#7092be'
 ];
 
-const S = {
-  ROOT: {
+const S_PANE_COLOR = {
     paddingBottom: 4
   },
-  ROW2: {
+  S_ROW_2 = {
     paddingLeft: 56,
     paddingTop: 4
   },
-  TO_CELL: {
+  S_TO_CELL = {
     marginLeft: 12,
     marginRight: 12,
   },
-  CELL: {
-  marginRight: 4,
-  position: 'relative',
-  display: 'inline-block',
-  height: 32,
-  width: 32,
-  borderRadius: 2,
-  verticalAlign: 'bottom',
-  boxShadow: '0 2px 2px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)'
+  S_CELL = {
+    marginRight: 4,
+    position: 'relative',
+    display: 'inline-block',
+    height: 32,
+    width: 32,
+    borderRadius: 2,
+    verticalAlign: 'bottom',
+    boxShadow: '0 2px 2px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)'
   }
-};
+  , S_CELL_COLOR = {...S_CELL, ...S_TO_CELL};
 
-const _initColor = (props) => props.initColor || C_DF;
 
-class PaneColors extends Component {
-  constructor(props){
-    super()
-    this.state = {
-      color: _initColor(props)
+const ColorStack = ({
+  colors,
+  onClick
+}) => (
+  <>
+     {colors.map(c => (
+       <CellColor
+         key={c}
+         color={c}
+         style={S_CELL}
+         onClick={onClick}
+       />
+     ))}
+  </>
+);
+
+
+const PaneColors = forwardRef(({
+  initColor=C_DF
+}, ref) => {
+  const [color, setColor] = useState(initColor)
+  , _hClick = useCallback(color => {
+    if (color) {
+      setColor(color)
     }
-  }
+  }, [])
+  , _hInit = useCallback(() => setColor(initColor), [initColor]);
 
-  componentDidMount() {
-    const { onReg } = this.props;
-    if (typeof onReg === 'function'){
-      onReg(this)
-    }
-  }
+  useImperativeHandle(ref, () => ({
+    getColor: () => color
+  }), [color])
 
-  _hInit = () => {
-    this.setState({
-      color: _initColor(this.props)
-    })
-  }
-
-  _hClick = (color) => {
-     if (color) {
-       this.setState({ color })
-     }
-  }
-
-  _renderColors = (colors, isLong) => {
-    return colors.map(c => (
-      <CellColor
-        key={c}
-        color={c}
-        style={S.CELL}
-        onClick={this._hClick}
-      />
-    ));
-   }
-
-  render(){
-    const { color } = this.state;
-    return (
-      <div style={S.ROOT}>
-        <div>
-          <CellColor
-            color={color}
-            style={{ ...S.CELL, ...S.TO_CELL }}
-            onClick={this._hInit}
-          />
-          {this._renderColors(COLORS1)}
-        </div>
-        <div style={S.ROW2}>
-          {this._renderColors(COLORS2)}
-        </div>
+  return (
+    <div style={S_PANE_COLOR}>
+      <div>
+        <CellColor
+          style={S_CELL_COLOR}
+          color={color}
+          onClick={_hInit}
+        />
+        <ColorStack
+          colors={COLORS1}
+          onClick={_hClick}
+        />
       </div>
-    );
-  }
-
-  getColor(){
-    return this.state.color;
-  }
-}
+      <div style={S_ROW_2}>
+        <ColorStack
+          colors={COLORS2}
+          onClick={_hClick}
+        />
+      </div>
+    </div>
+  );
+})
 
 export default PaneColors
