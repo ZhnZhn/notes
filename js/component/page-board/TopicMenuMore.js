@@ -41,12 +41,12 @@ var TopicMenuMore = function TopicMenuMore(_ref) {
     isShow: isShow,
     onClose: onClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      rootStyle: S.BT,
+      style: S.BT,
       caption: "Hide Topic",
       title: "Click to hide Topic",
       onClick: onHideTopic
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      rootStyle: S.BT,
+      style: S.BT,
       caption: "Add Note",
       title: "Click to add new Note",
       timeout: 100,

@@ -86,7 +86,7 @@ const TabLabels = (props) => {
           />
           <FlatButton
             clCaption={CL.CARD_BT}
-            rootStyle={S.BT_ADD}
+            style={S.BT_ADD}
             caption="AddLabel"
             title="Click to add a new label"
             timeout={400}

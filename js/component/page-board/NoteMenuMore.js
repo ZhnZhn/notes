@@ -42,11 +42,11 @@ var NoteMenuMore = function NoteMenuMore(_ref) {
     isShow: isShow,
     onClose: onClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      rootStyle: S.BT,
+      style: S.BT,
       caption: "Edit Details",
       onClick: onEdit
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      rootStyle: S.BT,
+      style: S.BT,
       caption: "Remove Note",
       onClick: onRemove
     })]

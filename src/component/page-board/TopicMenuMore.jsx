@@ -30,13 +30,13 @@ const TopicMenuMore = ({
       onClose={onClose}
     >
         <FlatButton
-          rootStyle={S.BT}
+          style={S.BT}
           caption="Hide Topic"
           title="Click to hide Topic"
           onClick={onHideTopic}
         />
         <FlatButton
-          rootStyle={S.BT}
+          style={S.BT}
           caption="Add Note"
           title="Click to add new Note"
           timeout={100}

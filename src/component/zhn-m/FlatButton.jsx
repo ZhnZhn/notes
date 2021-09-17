@@ -1,6 +1,8 @@
-import { Component } from 'react'
+import { forwardRef, useRef, useCallback } from 'react';
 
-import CaptionInput from './CaptionInput'
+import crCn from '../zhn-utils/crCn';
+import crStyle from '../zhn-utils/crStyle';
+import CaptionInput from './CaptionInput';
 
 const CL = {
   BT: 'bt-flat',
@@ -12,62 +14,52 @@ const S = {
     color: '#607d8b'
   }
 };
-const POINTER_EVENTS = 'pointer-events';
 
-class FlatButton extends Component {
+const _crTitle = (title, accessKey) => accessKey
+  ? `${title} [${accessKey}]`
+  : title;
 
-  static defaultProps = {
-    timeout: 3000,
-    isEvent: true
-  }
-
-  _setPointerEvents = (value='auto') => {
-    if (this && this.rootNode && this.rootNode.style) {
-       this.rootNode.style[POINTER_EVENTS] = value
+const FlatButton = forwardRef(({
+  timeout=3000,
+  className,
+  style,
+  clDiv=CL.BT_DIV,
+  clCaption,
+  isPrimary,
+  title='',
+  caption,
+  accessKey,
+  children,
+  isEvent=true,
+  onClick
+}, ref) => {
+  const _refTimeStamp = useRef(null)
+  , _hClick = useCallback(event => {
+    const _args = isEvent ? event : void 0;
+    if (timeout === 0) {
+      onClick(_args)
+      return;
     }
-  }
-
-  _hClick = (event) => {
-    this._setPointerEvents('none')
-    const { isEvent, timeout, onClick } = this.props;
-    setTimeout(this._setPointerEvents, timeout)
-    const _arg = isEvent ? event : void 0
-    onClick(_arg)
-  }
-
-  _refNode = node => this.rootNode = node
-
-  render() {
-    const {
-           className,
-           rootStyle,
-           clDiv=CL.BT_DIV,
-           clCaption,
-           isPrimary,
-           title='', caption, accessKey,
-           children
-          } = this.props
-        , _style = isPrimary
-             ? {...rootStyle, ...S.PRIMARY }
-             : rootStyle
-        , _className = className
-             ? `${CL.BT} ${className}`
-             : CL.BT
-        , _clCaption = clCaption
-              ? `${CL.BT_SPAN} ${clCaption}`
-              : CL.BT_SPAN
-        , _title = accessKey
-             ? `${title} [${accessKey}]`
-             : title;
+    const _timeStampPrev = _refTimeStamp.current
+    , { timeStamp } = event;
+    if (_timeStampPrev == null
+        || timeStamp - _timeStampPrev > timeout) {
+      onClick(_args)
+      _refTimeStamp.current = timeStamp
+    }
+  }, [isEvent, timeout, onClick])
+  , _className = crCn(CL.BT, className)
+  , _clCaption = crCn(CL.BT_SPAN, clCaption)
+  , _style = crStyle(style, [isPrimary, S.PRIMARY])
+  , _title = _crTitle(title, accessKey);
   return (
     <button
-      ref = {this._refNode}
+      ref={ref}
       className={_className}
       style={_style}
       accessKey={accessKey}
-      tabIndex={0}
       title={_title}
-      onClick={this._hClick}
+      onClick={_hClick}
     >
       <div className={clDiv}>
         <CaptionInput
@@ -79,12 +71,6 @@ class FlatButton extends Component {
       </div>
     </button>
   );
- }
-
- focus(){
-   this.rootNode.focus()
- }
-
-}
+})
 
 export default FlatButton

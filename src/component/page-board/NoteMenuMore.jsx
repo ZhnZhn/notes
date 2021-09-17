@@ -31,12 +31,12 @@ const NoteMenuMore = ({
       onClose={onClose}
     >
         <FlatButton
-          rootStyle={S.BT}
+          style={S.BT}
           caption="Edit Details"
           onClick={onEdit}
         />
         <FlatButton
-          rootStyle={S.BT}
+          style={S.BT}
           caption="Remove Note"
           onClick={onRemove}
         />
