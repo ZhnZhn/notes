@@ -17,25 +17,18 @@ var _crTitle = _interopRequireDefault(require("./crTitle"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var HeaderCaption = function HeaderCaption(_ref) {
-  var board = _ref.board;
-  return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {
-    className: _CL["default"].LOGO_BOARD
-  }, "logo"), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD,
-    children: (0, _crTitle["default"])(board)
-  }, "title")];
+var HeaderCaption = function HeaderCaption() {
+  var board = (0, _reactRedux.useSelector)(_selectors["default"].board.currentBoard);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {
+      className: _CL["default"].LOGO_BOARD
+    }, "logo"), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: _CL["default"].HEADER_TITLE + " " + _CL["default"].TITLE_BOARD,
+      children: (0, _crTitle["default"])(board)
+    })]
+  });
 };
 
-var mapStateToProps = function mapStateToProps(state
-/*: StoreState */
-) {
-  return {
-    board: _selectors["default"].board.currentBoard(state)
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(HeaderCaption);
-
+var _default = HeaderCaption;
 exports["default"] = _default;
 //# sourceMappingURL=HeaderCaption.js.map
