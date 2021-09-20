@@ -19,7 +19,8 @@ var _isKeyBlank = function _isKeyBlank(evt) {
 };
 
 var Tab = function Tab(_ref) {
-  var title = _ref.title,
+  var id = _ref.id,
+      title = _ref.title,
       isSelected = _ref.isSelected,
       onClick = _ref.onClick;
 
@@ -39,6 +40,9 @@ var Tab = function Tab(_ref) {
     role: "tab",
     tabIndex: 0,
     className: _cl,
+    id: "tab-" + id,
+    "aria-selected": isSelected,
+    "aria-controls": "tabpanel-" + id,
     onClick: _onClick,
     onKeyDown: _onKeyDown,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {

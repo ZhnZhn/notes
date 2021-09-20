@@ -10,6 +10,7 @@ const _isKeyBlank = evt => evt.key === K_BLANK
   || evt.keyCode === K_BLANK_CODE;
 
 const Tab = ({
+  id,
   title,
   isSelected,
   onClick
@@ -31,6 +32,9 @@ const Tab = ({
           role="tab"
           tabIndex={0}
           className={_cl}
+          id={`tab-${id}`}
+          aria-selected={isSelected}
+          aria-controls={`tabpanel-${id}`}
           onClick={_onClick}
           onKeyDown={_onKeyDown}
        >
