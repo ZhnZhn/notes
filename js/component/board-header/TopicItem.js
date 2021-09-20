@@ -11,15 +11,8 @@ var _CL = _interopRequireDefault(require("./CL"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var C = {
-  HIDE: 'hide',
-  SHOW: 'show'
-};
-var S = {
-  LI: {
-    position: 'relative'
-  }
-};
+var HIDE = 'hide',
+    SHOW = 'show';
 
 var Badge = function Badge(_ref) {
   var isHide = _ref.isHide;
@@ -30,19 +23,22 @@ var Badge = function Badge(_ref) {
 };
 
 var _crTitle = function _crTitle(is) {
-  return "Click to " + (is ? C.SHOW : C.HIDE) + " topic";
+  return "Click to " + (is ? SHOW : HIDE) + " topic";
 };
 
 var TopicItem = function TopicItem(_ref2) {
   var topic = _ref2.topic,
       onClick = _ref2.onClick;
 
+  if (!topic) {
+    return null;
+  }
+
   var isHide = topic.isHide,
       title = topic.title,
       _title = _crTitle(isHide);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("li", {
-    style: S.LI,
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       className: _CL["default"].BT,
       caption: title,
@@ -55,9 +51,6 @@ var TopicItem = function TopicItem(_ref2) {
   });
 };
 
-TopicItem.defaultProps = {
-  topic: {}
-};
 var _default = TopicItem;
 exports["default"] = _default;
 //# sourceMappingURL=TopicItem.js.map

@@ -1,16 +1,8 @@
-import FlatButton from '../zhn-m/FlatButton'
-import CL from './CL'
+import FlatButton from '../zhn-m/FlatButton';
+import CL from './CL';
 
-const C  = {
-  HIDE: 'hide',
-  SHOW: 'show'
-};
-
-const S = {
-  LI: {
-    position: 'relative'
-  }
-};
+const HIDE = 'hide'
+, SHOW = 'show';
 
 const Badge = ({ isHide }) => (
   <span className={CL.BADGE}>
@@ -18,15 +10,18 @@ const Badge = ({ isHide }) => (
   </span>
 );
 
-const _crTitle = (is) => {
-  return `Click to ${is ? C.SHOW : C.HIDE} topic`;
-};
+const _crTitle = is =>
+  `Click to ${is ? SHOW : HIDE} topic`;
 
-const TopicItem = ({ topic, onClick }) => {
+const TopicItem = ({
+  topic,
+  onClick
+}) => {
+  if (!topic) { return null; }
   const { isHide, title } = topic
   , _title = _crTitle(isHide);
   return (
-    <li style={S.LI}>
+    <>
       <FlatButton
         className={CL.BT}
         caption={title}
@@ -35,13 +30,8 @@ const TopicItem = ({ topic, onClick }) => {
         onClick={onClick}
       />
       <Badge isHide={isHide} />
-    </li>
+    </>
   );
 };
-
-TopicItem.defaultProps = {
-  topic: {}
-}
-
 
 export default TopicItem

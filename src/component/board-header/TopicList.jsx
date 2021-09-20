@@ -1,10 +1,7 @@
-import TopicItem from './TopicItem'
+import TopicItem from './TopicItem';
 
-const S = {
-  UL: {
-    listStyleType: 'none'
-  }
-};
+const S_UL = { listStyleType: 'none' }
+, S_LI = { position: 'relative' };
 
 const _fnNoop = () => {};
 
@@ -15,16 +12,18 @@ const _renderTopics = ({
 }) => {
   const { columnIds } = board;
   return (columnIds || []).map(cId => (
-    <TopicItem
-      key={cId}
-      topic={columns[cId]}
-      onClick={() => toggleColumn({ columnId: cId })}
-    />
+    <li style={S_LI}>
+      <TopicItem
+        key={cId}
+        topic={columns[cId]}
+        onClick={() => toggleColumn({ columnId: cId })}
+      />
+    </li>
   ));
 }
 
 const TopicList = (props) => (
-  <ul style={S.UL}>
+  <ul style={S_UL}>
     {_renderTopics(props)}
   </ul>
 );
