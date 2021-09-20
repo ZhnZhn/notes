@@ -1,38 +1,30 @@
-const CL = {
-  TAB: 'tab not-selected',
-  SELECTED: 'tab--selected'
-};
+import crCn from '../zhn-utils/crCn';
 
-const K = {
-  BLANK: '',
-  BLANK_CODE: 32
-};
+const CL_TAB = 'tab not-selected'
+, CL_SELECTED = 'tab--selected';
 
-const _isKeyBlank = (evt) => evt.key === K.BLANK
-  || evt.keyCode === K.BLANK_CODE;
+const K_BLANK = ''
+, K_BLANK_CODE = 32;
 
-const _crOnKeyDown = (isSelected, onClick) => (evt) => {
-  if (_isKeyBlank(evt) && !isSelected) {
-    onClick()
-  }
-};
-const _crOnClick = (isSelected, onClick) => () => {
-  if (!isSelected) {
-    onClick()
-  }
-}
-const _crClass = isSelected => isSelected
-   ? `${CL.TAB} ${CL.SELECTED}`
-   : CL.TAB;
+const _isKeyBlank = evt => evt.key === K_BLANK
+  || evt.keyCode === K_BLANK_CODE;
 
 const Tab = ({
   title,
   isSelected,
   onClick
 }) => {
-    const _cl = _crClass(isSelected)
-    , _onClick = _crOnClick(isSelected, onClick)
-    , _onKeyDown = _crOnKeyDown(isSelected, onClick);
+    const _cl = crCn(CL_TAB, [isSelected, CL_SELECTED])
+    , _onClick = () => {
+      if (!isSelected) {
+        onClick()
+      }
+    }
+    , _onKeyDown = evt => {
+      if (_isKeyBlank(evt)) {
+        _onClick()
+      }
+    };
 
     return (
        <li
@@ -47,6 +39,6 @@ const Tab = ({
           </span>
        </li>
     );
-}
+};
 
 export default Tab
