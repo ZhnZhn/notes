@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../../src/component/d-details/LabelList.jsx"],"names":["S","ROOT","paddingBottom","LabelList","labels","onRemove","map","item","CL","NOTE_LABEL","NOTE_LABEL_CLOSE","bind","undefined","id","title","defaultProps"],"mappings":";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,aAAa,EAAE;AADX;AADE,CAAV;;AAMA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,MAChBC,MADgB,QAChBA,MADgB;AAAA,MAEhBC,QAFgB,QAEhBA,QAFgB;AAAA,sBAIhB;AAAK,IAAA,KAAK,EAAEL,CAAC,CAACC,IAAd;AAAA,cAEIG,MAAM,CAACE,GAAP,CAAW,UAAAC,IAAI;AAAA,0BACb,qBAAC,qBAAD;AAEE,QAAA,SAAS,EAAEC,eAAGC,UAFhB;AAGE,QAAA,OAAO,EAAED,eAAGE,gBAHd;AAIE,QAAA,IAAI,EAAEH,IAJR;AAKE,QAAA,QAAQ,EAAEF,QAAQ,GACdA,QAAQ,CAACM,IAAT,CAAc,IAAd,EAAoBJ,IAApB,CADc,GAEdK;AAPN,SACOL,IAAI,CAACM,EAAL,IAAWN,IAAI,CAACO,KADvB,CADa;AAAA,KAAf;AAFJ,IAJgB;AAAA,CAAlB;;AAqBAX,SAAS,CAACY,YAAV,GAAyB;AACvBX,EAAAA,MAAM,EAAE;AADe,CAAzB;eAIeD,S","sourcesContent":["import Label from './LabelNote'\r\nimport CL from '../style/CL'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    paddingBottom: 4\r\n  }\r\n};\r\n\r\nconst LabelList = ({\r\n  labels,\r\n  onRemove\r\n}) => (\r\n  <div style={S.ROOT}>\r\n    {\r\n      labels.map(item => (\r\n        <Label\r\n          key={item.id || item.title}\r\n          className={CL.NOTE_LABEL}\r\n          clClose={CL.NOTE_LABEL_CLOSE}\r\n          item={item}\r\n          onRemove={onRemove\r\n            ? onRemove.bind(null, item)\r\n            : undefined\r\n          }\r\n        />\r\n      ))\r\n    }\r\n  </div>\r\n);\r\nLabelList.defaultProps = {\r\n  labels: []\r\n}\r\n\r\nexport default LabelList\r\n"],"file":"LabelList.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/LabelList.js"
+ ],
+ "file": "../../../src/component/d-details/LabelList.js",
+ "names": [
+  "S_DIV",
+  "paddingBottom",
+  "LabelList",
+  "labels",
+  "onRemove",
+  "map",
+  "item",
+  "CL",
+  "NOTE_LABEL",
+  "NOTE_LABEL_CLOSE",
+  "bind",
+  "id",
+  "title"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,KAAK,GAAG;AAAEC,EAAAA,aAAa,EAAE;AAAjB,CAAd;;AAEA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,MAChBC,MADgB,QAChBA,MADgB;AAAA,MAEhBC,QAFgB,QAEhBA,QAFgB;AAAA,sBAIhB;AAAK,IAAA,KAAK,EAAEJ,KAAZ;AAAA,cAEI,CAACG,MAAM,IAAE,EAAT,EAAaE,GAAb,CAAiB,UAAAC,IAAI;AAAA,0BACnB,qBAAC,qBAAD;AAEE,QAAA,SAAS,EAAEC,eAAGC,UAFhB;AAGE,QAAA,OAAO,EAAED,eAAGE,gBAHd;AAIE,QAAA,IAAI,EAAEH,IAJR;AAKE,QAAA,QAAQ,EAAEF,QAAQ,GACdA,QAAQ,CAACM,IAAT,CAAc,IAAd,EAAoBJ,IAApB,CADc,GAEd,KAAK;AAPX,SACOA,IAAI,CAACK,EAAL,IAAWL,IAAI,CAACM,KADvB,CADmB;AAAA,KAArB;AAFJ,IAJgB;AAAA,CAAlB;;eAsBeV,S"
+}

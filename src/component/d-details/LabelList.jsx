@@ -1,19 +1,15 @@
-import Label from './LabelNote'
-import CL from '../style/CL'
+import Label from './LabelNote';
+import CL from '../style/CL';
 
-const S = {
-  ROOT: {
-    paddingBottom: 4
-  }
-};
+const S_DIV = { paddingBottom: 4 };
 
 const LabelList = ({
   labels,
   onRemove
 }) => (
-  <div style={S.ROOT}>
+  <div style={S_DIV}>
     {
-      labels.map(item => (
+      (labels||[]).map(item => (
         <Label
           key={item.id || item.title}
           className={CL.NOTE_LABEL}
@@ -21,15 +17,12 @@ const LabelList = ({
           item={item}
           onRemove={onRemove
             ? onRemove.bind(null, item)
-            : undefined
+            : void 0
           }
         />
       ))
     }
   </div>
 );
-LabelList.defaultProps = {
-  labels: []
-}
 
 export default LabelList
