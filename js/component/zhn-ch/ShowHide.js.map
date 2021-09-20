@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/component/zhn-ch/ShowHide.jsx"],"names":["CL","S","SHOW","display","HIDE","ShowHide","props","isShow","className","style","children","_styleShow","_classShow","_className","undefined"],"mappings":";;;;;;;;;;;AAAA;AAEA,IAAMA,EAAE,GAAG,YAAX;AACA,IAAMC,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,OAAO,EAAE;AADJ,GADC;AAIRC,EAAAA,IAAI,EAAG;AACLD,IAAAA,OAAO,EAAG;AADL;AAJC,CAAV;;AASA,IAAME,QAAQ,GAAG,SAAXA,QAAW,CAACC,KAAD,EAAW;AACxB,MAAQC,MAAR,GAA+CD,KAA/C,CAAQC,MAAR;AAAA,MAAgBC,SAAhB,GAA+CF,KAA/C,CAAgBE,SAAhB;AAAA,MAA2BC,KAA3B,GAA+CH,KAA/C,CAA2BG,KAA3B;AAAA,MAAkCC,QAAlC,GAA+CJ,KAA/C,CAAkCI,QAAlC;AAAA,MACMC,UADN,GACmBJ,MAAM,GACdN,CAAC,CAACC,IADY,GACLD,CAAC,CAACG,IAFtB;AAAA,MAGMQ,UAHN,GAGmBL,MAAM,GACdP,EADc,GACT,EAJhB;AAAA,MAKMa,UALN,GAKoBL,SAAD,GACJA,SADI,SACSI,UADT,GAEPA,UAAU,IAAIE,SAP1B;;AASA,sBACE;AACE,IAAA,SAAS,EAAED,UADb;AAEE,IAAA,KAAK,gCAAMJ,KAAN,EAAgBE,UAAhB,CAFP;AAAA,cAIGD;AAJH,IADF;AAQF,CAlBF;AAoBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeL,Q","sourcesContent":["//import PropTypes from 'prop-types'\r\n\r\nconst CL = 'show-popup';\r\nconst S = {\r\n  SHOW : {\r\n    display: 'block'\r\n  },\r\n  HIDE : {\r\n    display : 'none'\r\n  }\r\n};\r\n\r\nconst ShowHide = (props) => {\r\n    const { isShow, className, style, children } = props\r\n        , _styleShow = isShow\r\n             ? S.SHOW : S.HIDE\r\n        , _classShow = isShow\r\n             ? CL : ''\r\n        , _className = (className)\r\n              ? `${className} ${_classShow}`\r\n              : _classShow || undefined;\r\n\r\n    return (\r\n      <div\r\n        className={_className}\r\n        style={{...style, ..._styleShow}}\r\n      >\r\n        {children}\r\n      </div>\r\n    );\r\n }\r\n\r\n/*\r\nShowHide.propTypes = {\r\n  isShow: PropTypes.bool,\r\n  className: PropTypes.string,\r\n  style: PropTypes.object,\r\n  children: PropTypes.oneOfType[\r\n    PropTypes.arrayOf(PropTypes.node),\r\n    PropTypes.node\r\n  ]\r\n}\r\n*/\r\n\r\nexport default ShowHide\r\n"],"file":"ShowHide.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-ch/ShowHide.js"
+ ],
+ "file": "../../../src/component/zhn-ch/ShowHide.js",
+ "names": [
+  "CL",
+  "S_SHOW",
+  "display",
+  "S_HIDE",
+  "ShowHide",
+  "isShow",
+  "className",
+  "style",
+  "children",
+  "_cl",
+  "_style"
+ ],
+ "mappings": ";;;;;;;AACA;;AACA;;;;AAFA;AAIA,IAAMA,EAAE,GAAG,YAAX;AAAA,IACEC,MAAM,GAAG;AAAEC,EAAAA,OAAO,EAAE;AAAX,CADX;AAAA,IAEEC,MAAM,GAAG;AAAED,EAAAA,OAAO,EAAG;AAAZ,CAFX;;AAIA,IAAME,QAAQ,GAAG,SAAXA,QAAW,OAKX;AAAA,MAJJC,MAII,QAJJA,MAII;AAAA,MAHJC,SAGI,QAHJA,SAGI;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJC,QACI,QADJA,QACI;;AACF,MAAMC,GAAG,GAAG,sBAAKH,SAAL,EAAgB,CAACD,MAAD,EAASL,EAAT,CAAhB,CAAZ;AAAA,MACEU,MAAM,GAAG,yBAAQH,KAAR,EAAeF,MAAM,GAAGJ,MAAH,GAAYE,MAAjC,CADX;;AAGA,sBACE;AACE,IAAA,SAAS,EAAEM,GADb;AAEE,IAAA,KAAK,EAAEC,MAFT;AAAA,cAIGF;AAJH,IADF;AAQF,CAjBF;AAmBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeJ,Q"
+}

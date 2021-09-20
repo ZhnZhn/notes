@@ -1,34 +1,29 @@
-//import PropTypes from 'prop-types'
+//import { PropTypes } from 'react'
+import crCn from '../zhn-utils/crCn';
+import crStyle from '../zhn-utils/crStyle';
 
-const CL = 'show-popup';
-const S = {
-  SHOW : {
-    display: 'block'
-  },
-  HIDE : {
-    display : 'none'
-  }
-};
+const CL = 'show-popup'
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display : 'none'};
 
-const ShowHide = (props) => {
-    const { isShow, className, style, children } = props
-        , _styleShow = isShow
-             ? S.SHOW : S.HIDE
-        , _classShow = isShow
-             ? CL : ''
-        , _className = (className)
-              ? `${className} ${_classShow}`
-              : _classShow || undefined;
+const ShowHide = ({
+  isShow,
+  className,
+  style,
+  children
+}) => {
+    const _cl = crCn(className, [isShow, CL])
+    , _style = crStyle(style, isShow ? S_SHOW : S_HIDE);
 
     return (
       <div
-        className={_className}
-        style={{...style, ..._styleShow}}
+        className={_cl}
+        style={_style}
       >
         {children}
       </div>
     );
- }
+ };
 
 /*
 ShowHide.propTypes = {
