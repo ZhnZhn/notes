@@ -1,8 +1,8 @@
 import CL from '../style/CL'
 
-const TITLE = "Logo of web app Notes v0.2.0"
+const TITLE = "Logo of web app Notes v0.3.0"
 
-const IconLogoErc = ({
+const Logo = ({
   className=CL.LOGO,
   style,
   title=TITLE
@@ -54,4 +54,4 @@ const IconLogoErc = ({
 );
 
 
-export default IconLogoErc
+export default Logo

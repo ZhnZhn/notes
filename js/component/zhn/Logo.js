@@ -9,9 +9,9 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "Logo of web app Notes v0.2.0";
+var TITLE = "Logo of web app Notes v0.3.0";
 
-var IconLogoErc = function IconLogoErc(_ref) {
+var Logo = function Logo(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === void 0 ? _CL["default"].LOGO : _ref$className,
       style = _ref.style,
@@ -61,6 +61,6 @@ var IconLogoErc = function IconLogoErc(_ref) {
   });
 };
 
-var _default = IconLogoErc;
+var _default = Logo;
 exports["default"] = _default;
 //# sourceMappingURL=Logo.js.map

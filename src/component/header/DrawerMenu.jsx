@@ -8,7 +8,7 @@ import { showSettings } from '../../flux/modal/reducer'
 import FlatButton  from '../zhn-m/FlatButton'
 import DrawerMsgList from './DrawerMsgList'
 
-const TITLE = "Web App Notes v0.2.0";
+const TITLE = "Web App Notes v0.3.0";
 
 const CL = {
   HEADER: 'header__title',

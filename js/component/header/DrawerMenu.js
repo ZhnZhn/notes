@@ -17,7 +17,7 @@ var _DrawerMsgList = _interopRequireDefault(require("./DrawerMsgList"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "Web App Notes v0.2.0";
+var TITLE = "Web App Notes v0.3.0";
 var CL = {
   HEADER: 'header__title',
   ROOT: 'drawer__list',

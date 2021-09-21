@@ -13,10 +13,12 @@ module.exports = {
   entry: {
     app: path.resolve('src', 'index.jsx')
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    port: 8090
-  },
+  devtool: 'inline-source-map',    
+  devServer: {    
+    allowedHosts: ['localhost','client.webSocketURL.hostname'],
+    port: 8090,
+    historyApiFallback: true
+  },  
   output: {
       path: path.resolve('dev'),
       filename: "[name]_dev_[contenthash].js",
@@ -27,7 +29,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -41,10 +43,7 @@ module.exports = {
         ]
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true
-  },
+  },  
   resolve: {
     modules: ['local_modules','node_modules'],
     extensions: ['.js', '.jsx']
