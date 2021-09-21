@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
+
+var _reactRedux = require("react-redux");
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -27,82 +27,49 @@ var _WrapperContainer = _interopRequireDefault(require("./zhn-cont/WrapperContai
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var App = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(App, _Component);
+var App = function App(_ref) {
+  var basename = _ref.basename,
+      store = _ref.store;
 
-  function App(props) {
-    var _this;
+  var _useState = (0, _react.useState)(_theme["default"]),
+      theme = _useState[0],
+      setTheme = _useState[1],
+      uiTheme = (0, _reactRedux.useSelector)(_selectors.sApp.uiTheme);
+  /*eslint-disable react-hooks/exhaustive-deps */
 
-    _this = _Component.call(this) || this;
 
-    _this._onStore = function () {
-      var store = _this.props.store,
-          theme = _this.state.theme,
-          uiTheme = _selectors.sApp.uiTheme(store.getState());
+  (0, _react.useEffect)(function () {
+    if (theme.getThemeName !== uiTheme) {
+      theme.setThemeName(uiTheme);
+      setTheme((0, _extends2["default"])({}, theme));
+    }
+  }, [uiTheme]); //theme
 
-      if (uiTheme !== theme.getThemeName()) {
-        _this.setState(function (prevState) {
-          prevState.theme.setThemeName(uiTheme);
-          return {
-            theme: (0, _extends2["default"])({}, prevState.theme)
-          };
-        });
-      }
-    };
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-    var _store = props.store,
-        _uiTheme = _selectors.sApp.uiTheme(_store.getState());
-
-    _theme["default"].setThemeName(_uiTheme);
-
-    _this.state = {
-      theme: _theme["default"]
-    };
-    return _this;
-  }
-
-  var _proto = App.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var store = this.props.store;
-    this._unsubscribe = store.subscribe(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this._unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        basename = _this$props.basename,
-        store = _this$props.store,
-        theme = this.state.theme;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.BrowserRouter, {
-        basename: basename,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ThemeContext["default"].Provider, {
-          value: theme,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperContainer["default"], {
-            store: store
-          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-              path: "/boards/:id",
-              component: _PageBoard["default"]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
-              path: "/boards",
-              component: _PageBoards["default"]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
-              from: "/",
-              to: "/boards"
-            })]
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.BrowserRouter, {
+      basename: basename,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ThemeContext["default"].Provider, {
+        value: theme,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperContainer["default"], {
+          store: store
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+            path: "/boards/:id",
+            component: _PageBoard["default"]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+            path: "/boards",
+            component: _PageBoards["default"]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
+            from: "/",
+            to: "/boards"
           })]
-        })
+        })]
       })
-    });
-  };
-
-  return App;
-}(_react.Component);
+    })
+  });
+};
 
 var _default = App;
 exports["default"] = _default;
