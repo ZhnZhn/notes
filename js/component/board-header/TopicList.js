@@ -34,8 +34,8 @@ var _renderTopics = function _renderTopics(_ref) {
             columnId: cId
           });
         }
-      }, cId)
-    });
+      })
+    }, cId);
   });
 };
 

@@ -12,9 +12,8 @@ const _renderTopics = ({
 }) => {
   const { columnIds } = board;
   return (columnIds || []).map(cId => (
-    <li style={S_LI}>
+    <li style={S_LI} key={cId}>
       <TopicItem
-        key={cId}
         topic={columns[cId]}
         onClick={() => toggleColumn({ columnId: cId })}
       />
