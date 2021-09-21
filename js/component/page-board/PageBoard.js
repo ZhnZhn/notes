@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _reactBeautifulDnd = require("react-beautiful-dnd");
@@ -29,70 +27,66 @@ var _Topic = _interopRequireDefault(require("./Topic"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var PageBoard = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(PageBoard, _Component);
+var ColumnStack = function ColumnStack(_ref) {
+  var boardId = _ref.boardId,
+      columnIds = _ref.columnIds,
+      columns = _ref.columns,
+      notes = _ref.notes,
+      addNote = _ref.addNote;
+  return (columnIds || []).map(function (cId) {
+    var column = columns[cId];
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Topic["default"], {
+      boardId: boardId,
+      column: column,
+      notes: notes,
+      addNote: addNote
+    }, column.id);
+  });
+};
 
-  function PageBoard() {
-    var _this;
+var PageBoard = function PageBoard(_ref2) {
+  var board = _ref2.board,
+      notes = _ref2.notes,
+      columns = _ref2.columns,
+      addNote = _ref2.addNote,
+      moveNote = _ref2.moveNote,
+      addColumn = _ref2.addColumn;
+  var id = board.id,
+      columnIds = board.columnIds;
+  /*eslint-disable react-hooks/exhaustive-deps */
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+  var _hDragEnd = (0, _react.useCallback)(function (result) {
+    if (!(0, _isNotDnD["default"])(result)) {
+      moveNote(result);
     }
+  }, []) //moveNote
+  ,
+      _hAddColumn = (0, _react.useCallback)(function () {
+    addColumn({
+      boardId: id
+    });
+  }, []); //addColumn, id
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-    _this._hDragEnd = function (result) {
-      if ((0, _isNotDnD["default"])(result)) {
-        return;
-      }
 
-      _this.props.moveNote(result);
-    };
-
-    _this._renderColumns = function (board, columns, notes, addNote) {
-      return board.columnIds.map(function (cId) {
-        var column = columns[cId];
-        return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Topic["default"], {
-          boardId: board.id,
-          column: column,
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {
+      addColumn: _hAddColumn
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
+      onDragEnd: _hDragEnd,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ColumnStack, {
+          boardId: id,
+          columnIds: columnIds,
+          columns: columns,
           notes: notes,
           addNote: addNote
-        }, column.id);
-      });
-    };
-
-    _this._hAddColumn = function () {
-      var _this$props = _this.props,
-          addColumn = _this$props.addColumn,
-          board = _this$props.board;
-      addColumn({
-        boardId: board.id
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = PageBoard.prototype;
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        board = _this$props2.board,
-        notes = _this$props2.notes,
-        columns = _this$props2.columns,
-        addNote = _this$props2.addNote;
-    return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {
-      addColumn: this._hAddColumn
-    }, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
-      onDragEnd: this._hDragEnd,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
-        children: this._renderColumns(board, columns, notes, addNote)
+        })
       })
-    }, "ddc")];
-  };
-
-  return PageBoard;
-}(_react.Component);
+    })]
+  });
+};
 
 var mapStateToProps = function mapStateToProps(state) {
   return {

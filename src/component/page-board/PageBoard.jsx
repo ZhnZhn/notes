@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
 import { DragDropContext } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'
@@ -19,61 +19,68 @@ import Header from '../board-header/Header'
 import Main from '../zhn-ch/Main'
 import Topic from './Topic'
 
-class PageBoard extends Component {
-  _hDragEnd = (result) => {
-    if (isNotDnD(result)) {
-      return;
+const ColumnStack = ({
+  boardId,
+  columnIds,
+  columns,
+  notes,
+  addNote
+}) => (columnIds||[]).map(cId => {
+   const column = columns[cId];
+   return (
+    <Topic
+       key={column.id}
+       boardId={boardId}
+       column={column}
+       notes={notes}
+       addNote={addNote}
+    />
+   );
+});
+
+const PageBoard = ({
+  board,
+  notes,
+  columns,
+  addNote,
+  moveNote,
+  addColumn
+}) => {
+  const { id, columnIds } = board;
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hDragEnd = useCallback(result => {
+    if (!isNotDnD(result)) {
+      moveNote(result)
     }
-    this.props.moveNote(result)
-  }
+  }, [])
+  //moveNote
+  , _hAddColumn = useCallback(() => {
+    addColumn({ boardId: id })
+  }, [])
+  //addColumn, id
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _renderColumns = (board, columns, notes, addNote) => {
-    return board.columnIds.map(cId => {
-       const column = columns[cId];
-       return (
-         <Topic
-            key={column.id}
-            boardId={board.id}
-            column={column}
-            notes={notes}
-            addNote={addNote}
-         />
-       );
-    })
-  }
-
-  _hAddColumn = () => {
-    const {
-      addColumn,
-      board
-    } = this.props;    
-    addColumn({ boardId: board.id })
-  }
-
-  render(){
-    const {
-      board,
-      notes,
-      columns,
-      addNote
-    } = this.props;
-    return [
+  return (
+    <>
       <Header
-        key="header"
-        addColumn={this._hAddColumn}
-      />,
+        addColumn={_hAddColumn}
+      />
       <DragDropContext
-        key="ddc"
-        onDragEnd={this._hDragEnd}
+        onDragEnd={_hDragEnd}
       >
         <Main>
-          { this._renderColumns(board, columns, notes, addNote) }
+          <ColumnStack
+            boardId={id}
+            columnIds={columnIds}
+            columns={columns}
+            notes={notes}
+            addNote={addNote}
+          />
         </Main>
       </DragDropContext>
-    ];
-  }
-}
-
+    </>
+  );
+};
 
 const mapStateToProps = (state) => ({
   board: s.board.currentBoard(state),
