@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../src/component/page-board/DnDNoteList.jsx"],"names":["S","ROOT","minHeight","NOT_DRAGGING_OVER","border","_crNoteList","provided","snapshot","noteIds","notes","cId","droppableProps","innerRef","isDraggingOver","map","nId","index","snap","draggableProps","isDragging","dragHandleProps","placeholder","DnDNoteList"],"mappings":";;;;;;;;;AAAA;;AAEA;;AACA;;;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAE;AADP,GADE;AAIRC,EAAAA,iBAAiB,EAAE;AACjBC,IAAAA,MAAM,EAAE;AADS;AAJX,CAAV;;AASA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAClBC,QADkB,QAClBA,QADkB;AAAA,MACRC,QADQ,QACRA,QADQ;AAAA,MAElBC,OAFkB,QAElBA,OAFkB;AAAA,MAETC,KAFS,QAETA,KAFS;AAAA,MAEFC,GAFE,QAEFA,GAFE;AAAA,sBAIlB,sBAAC,wBAAD,gCACMJ,QAAQ,CAACK,cADf;AAEE,IAAA,QAAQ,EAAEL,QAAQ,CAACM,QAFrB;AAGE,IAAA,cAAc,EAAEL,QAAQ,CAACM,cAH3B;AAIE,IAAA,KAAK,EAAEb,CAAC,CAACC,IAJX;AAKE,IAAA,gBAAgB,EAAED,CAAC,CAACG,iBALtB;AAAA,eAOGK,OAAO,CAACM,GAAR,CAAY,UAACC,GAAD,EAAMC,KAAN;AAAA,0BACX,qBAAC,4BAAD;AAAqB,QAAA,WAAW,EAAED,GAAlC;AAAuC,QAAA,KAAK,EAAEC,KAA9C;AAAA,kBAEE,kBAACV,QAAD,EAAWW,IAAX;AAAA,8BACE,qBAAC,mBAAD;AACE,YAAA,cAAc,EAAEX,QAAQ,CAACY,cAD3B;AAEE,YAAA,QAAQ,EAAEZ,QAAQ,CAACM,QAFrB;AAGE,YAAA,UAAU,EAAEK,IAAI,CAACE,UAHnB;AAIE,YAAA,eAAe,EAAEb,QAAQ,CAACc,eAJ5B;AAKE,YAAA,IAAI,EAAEX,KAAK,CAACM,GAAD,CALb;AAME,YAAA,QAAQ,EAAEL;AANZ,YADF;AAAA;AAFF,SAAgBK,GAAhB,CADW;AAAA,KAAZ,CAPH,EAuBGT,QAAQ,CAACe,WAvBZ;AAAA,KAJkB;AAAA,CAApB;;AA+BA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGZ,GAAH,SAAGA,GAAH;AAAA,MAAQF,OAAR,SAAQA,OAAR;AAAA,MAAiBC,KAAjB,SAAiBA,KAAjB;AAAA,sBAClB,qBAAC,4BAAD;AAAW,IAAA,WAAW,EAAEC,GAAxB;AAAA,cAEI,kBAACJ,QAAD,EAAWC,QAAX;AAAA,aAAwBF,WAAW,CAAC;AACjCC,QAAAA,QAAQ,EAARA,QADiC;AACvBC,QAAAA,QAAQ,EAARA,QADuB;AAEjCC,QAAAA,OAAO,EAAPA,OAFiC;AAExBC,QAAAA,KAAK,EAALA,KAFwB;AAEjBC,QAAAA,GAAG,EAAHA;AAFiB,OAAD,CAAnC;AAAA;AAFJ,IADkB;AAAA,CAApB;;eAWeY,W","sourcesContent":["import { Droppable, Draggable } from 'react-beautiful-dnd'\r\n\r\nimport DroppableDiv from '../zhn-dnd/DroppableDiv'\r\nimport DnDNote from './DnDNote'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    minHeight: 50\r\n  },\r\n  NOT_DRAGGING_OVER: {\r\n    border: '2px solid #9e9e9e'\r\n  }\r\n};\r\n\r\nconst _crNoteList = ({\r\n  provided, snapshot,\r\n  noteIds, notes, cId\r\n}) => (\r\n  <DroppableDiv\r\n    {...provided.droppableProps}\r\n    innerRef={provided.innerRef}\r\n    isDraggingOver={snapshot.isDraggingOver}\r\n    style={S.ROOT}\r\n    notDraggingStyle={S.NOT_DRAGGING_OVER}\r\n  >\r\n    {noteIds.map((nId, index) => (\r\n      <Draggable key={nId} draggableId={nId} index={index}>\r\n      {\r\n        (provided, snap) => (\r\n          <DnDNote\r\n            draggableProps={provided.draggableProps}\r\n            innerRef={provided.innerRef}\r\n            isDragging={snap.isDragging}\r\n            dragHandleProps={provided.dragHandleProps}\r\n            note={notes[nId]}\r\n            columnId={cId}\r\n          />\r\n        )\r\n      }\r\n      </Draggable>\r\n    ))}\r\n    {provided.placeholder}\r\n  </DroppableDiv>\r\n);\r\n\r\nconst DnDNoteList = ({ cId, noteIds, notes }) => (\r\n  <Droppable droppableId={cId}>\r\n    {\r\n      (provided, snapshot) => _crNoteList({\r\n         provided, snapshot,\r\n         noteIds, notes, cId\r\n      })\r\n    }\r\n  </Droppable>\r\n);\r\n\r\nexport default DnDNoteList\r\n"],"file":"DnDNoteList.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/DnDNoteList.js"
+ ],
+ "file": "../../../src/component/page-board/DnDNoteList.js",
+ "names": [
+  "S_DIV",
+  "minHeight",
+  "S_NOT_DRAGGING_OVER",
+  "border",
+  "_crNoteList",
+  "provided",
+  "snapshot",
+  "noteIds",
+  "notes",
+  "cId",
+  "droppableProps",
+  "innerRef",
+  "isDraggingOver",
+  "map",
+  "nId",
+  "index",
+  "snap",
+  "draggableProps",
+  "isDragging",
+  "dragHandleProps",
+  "placeholder",
+  "DnDNoteList"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;;;AAEA,IAAMA,KAAK,GAAG;AAAEC,EAAAA,SAAS,EAAE;AAAb,CAAd;AAAA,IACEC,mBAAmB,GAAG;AACtBC,EAAAA,MAAM,EAAE;AADc,CADxB;;AAMA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAClBC,QADkB,QAClBA,QADkB;AAAA,MACRC,QADQ,QACRA,QADQ;AAAA,MAElBC,OAFkB,QAElBA,OAFkB;AAAA,MAETC,KAFS,QAETA,KAFS;AAAA,MAEFC,GAFE,QAEFA,GAFE;AAAA,sBAIlB,sBAAC,wBAAD,gCACMJ,QAAQ,CAACK,cADf;AAEE,IAAA,QAAQ,EAAEL,QAAQ,CAACM,QAFrB;AAGE,IAAA,cAAc,EAAEL,QAAQ,CAACM,cAH3B;AAIE,IAAA,KAAK,EAAEZ,KAJT;AAKE,IAAA,gBAAgB,EAAEE,mBALpB;AAAA,eAOGK,OAAO,CAACM,GAAR,CAAY,UAACC,GAAD,EAAMC,KAAN;AAAA,0BACX,qBAAC,4BAAD;AAAqB,QAAA,WAAW,EAAED,GAAlC;AAAuC,QAAA,KAAK,EAAEC,KAA9C;AAAA,kBAEE,kBAACV,QAAD,EAAWW,IAAX;AAAA,8BACE,qBAAC,mBAAD;AACE,YAAA,cAAc,EAAEX,QAAQ,CAACY,cAD3B;AAEE,YAAA,QAAQ,EAAEZ,QAAQ,CAACM,QAFrB;AAGE,YAAA,UAAU,EAAEK,IAAI,CAACE,UAHnB;AAIE,YAAA,eAAe,EAAEb,QAAQ,CAACc,eAJ5B;AAKE,YAAA,IAAI,EAAEX,KAAK,CAACM,GAAD,CALb;AAME,YAAA,QAAQ,EAAEL;AANZ,YADF;AAAA;AAFF,SAAgBK,GAAhB,CADW;AAAA,KAAZ,CAPH,EAuBGT,QAAQ,CAACe,WAvBZ;AAAA,KAJkB;AAAA,CAApB;;AA+BA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAAGZ,GAAH,SAAGA,GAAH;AAAA,MAAQF,OAAR,SAAQA,OAAR;AAAA,MAAiBC,KAAjB,SAAiBA,KAAjB;AAAA,sBAClB,qBAAC,4BAAD;AAAW,IAAA,WAAW,EAAEC,GAAxB;AAAA,cAEI,kBAACJ,QAAD,EAAWC,QAAX;AAAA,aAAwBF,WAAW,CAAC;AACjCC,QAAAA,QAAQ,EAARA,QADiC;AACvBC,QAAAA,QAAQ,EAARA,QADuB;AAEjCC,QAAAA,OAAO,EAAPA,OAFiC;AAExBC,QAAAA,KAAK,EAALA,KAFwB;AAEjBC,QAAAA,GAAG,EAAHA;AAFiB,OAAD,CAAnC;AAAA;AAFJ,IADkB;AAAA,CAApB;;eAWeY,W"
+}

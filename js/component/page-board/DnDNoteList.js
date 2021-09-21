@@ -15,13 +15,11 @@ var _DnDNote = _interopRequireDefault(require("./DnDNote"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ROOT: {
-    minHeight: 50
-  },
-  NOT_DRAGGING_OVER: {
-    border: '2px solid #9e9e9e'
-  }
+var S_DIV = {
+  minHeight: 50
+},
+    S_NOT_DRAGGING_OVER = {
+  border: '2px solid #9e9e9e'
 };
 
 var _crNoteList = function _crNoteList(_ref) {
@@ -33,8 +31,8 @@ var _crNoteList = function _crNoteList(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_DroppableDiv["default"], (0, _extends2["default"])({}, provided.droppableProps, {
     innerRef: provided.innerRef,
     isDraggingOver: snapshot.isDraggingOver,
-    style: S.ROOT,
-    notDraggingStyle: S.NOT_DRAGGING_OVER,
+    style: S_DIV,
+    notDraggingStyle: S_NOT_DRAGGING_OVER,
     children: [noteIds.map(function (nId, index) {
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.Draggable, {
         draggableId: nId,

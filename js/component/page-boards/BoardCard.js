@@ -100,11 +100,13 @@ var BoardCard = /*#__PURE__*/function (_Component) {
         columns = _this$props5.columns,
         columnIds = board.columnIds;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
-        value: board.title,
-        onBlur: this._hBlurTitle
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
-        value: columnIds.length
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Header, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
+          value: board.title,
+          onBlur: this._hBlurTitle
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+          value: columnIds.length
+        })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDTopicList["default"], {
         id: id,
         columnIds: columnIds,

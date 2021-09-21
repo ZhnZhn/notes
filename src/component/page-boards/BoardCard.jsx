@@ -58,13 +58,15 @@ class BoardCard extends Component {
 
     return (
       <Card.Item>
-        <Card.Title
-          value={board.title}
-          onBlur={this._hBlurTitle}
-        />
-        <Card.Counter
-          value={columnIds.length}
-        />
+        <Card.Header>
+           <Card.Title
+             value={board.title}
+             onBlur={this._hBlurTitle}
+           />
+           <Card.Counter
+             value={columnIds.length}
+           />
+        </Card.Header>
         <DnDTopicList
           id={id}
           columnIds={columnIds}

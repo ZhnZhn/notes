@@ -19,15 +19,12 @@ import DnDNoteList from './DnDNoteList'
 
 import CL from '../style/CL'
 
-const S = {
-  SVG_MORE: {
-    marginRight: 8
-  },
-  MENU_MORE: {
+const S_SVG_MORE = { marginRight: 8 }
+, S_MENU_MORE = {
     position: 'absolute',
     width: 150
-  }
 };
+
 
 class Topic extends Component {
   state = {
@@ -92,33 +89,35 @@ class Topic extends Component {
 
     return (
       <Card.Item isHide={isHide}>
-        <SvgMore
-          style={S.SVG_MORE}
-          title="Click to open topic menu"
-          onClick={this._openMenuMore}
-        />
-        { isMenuMore && <TopicMenuMore
-          style={S.MENU_MORE}
-          isShow={isMenuMore}
-          onAddNote={this._hAddNewTask}
-          onHideTopic={this._hHideTopic}
-          onClose={this._closeMenuMore}
-        />}
-        <Card.Title
-          value={title}
-          onBlur={this._hBlurTitle}
-        />
-        <Card.Counter value={noteIds.length} />
-        {
-          withAdd &&
-          <FlatButton
-            clCaption={CL.CARD_BT}
-            caption="AddNote"
-            title="Click to add a new note"
-            timeout={1000}
-            onClick={this._hAddNewTask}
+        <Card.Header>
+          <SvgMore
+            style={S_SVG_MORE}
+            title="Click to open topic menu"
+            onClick={this._openMenuMore}
           />
-        }
+          { isMenuMore && <TopicMenuMore
+            style={S_MENU_MORE}
+            isShow={isMenuMore}
+            onAddNote={this._hAddNewTask}
+            onHideTopic={this._hHideTopic}
+            onClose={this._closeMenuMore}
+          />}
+          <Card.Title
+            value={title}
+            onBlur={this._hBlurTitle}
+          />
+          <Card.Counter value={noteIds.length} />
+          {
+            withAdd &&
+            <FlatButton
+              clCaption={CL.CARD_BT}
+              caption="AddNote"
+              title="Click to add a new note"
+              timeout={1000}
+              onClick={this._hAddNewTask}
+            />
+          }
+        </Card.Header>
         <DnDNoteList
           cId={id}
           noteIds={noteIds}

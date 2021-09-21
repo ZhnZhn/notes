@@ -3,14 +3,11 @@ import { Droppable, Draggable } from 'react-beautiful-dnd'
 import DroppableDiv from '../zhn-dnd/DroppableDiv'
 import DnDNote from './DnDNote'
 
-const S = {
-  ROOT: {
-    minHeight: 50
-  },
-  NOT_DRAGGING_OVER: {
-    border: '2px solid #9e9e9e'
-  }
+const S_DIV = { minHeight: 50 }
+, S_NOT_DRAGGING_OVER = {
+  border: '2px solid #9e9e9e'
 };
+
 
 const _crNoteList = ({
   provided, snapshot,
@@ -20,8 +17,8 @@ const _crNoteList = ({
     {...provided.droppableProps}
     innerRef={provided.innerRef}
     isDraggingOver={snapshot.isDraggingOver}
-    style={S.ROOT}
-    notDraggingStyle={S.NOT_DRAGGING_OVER}
+    style={S_DIV}
+    notDraggingStyle={S_NOT_DRAGGING_OVER}
   >
     {noteIds.map((nId, index) => (
       <Draggable key={nId} draggableId={nId} index={index}>

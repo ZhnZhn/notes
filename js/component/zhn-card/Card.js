@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _Item = _interopRequireDefault(require("./Item"));
 
+var _Header = _interopRequireDefault(require("./Header"));
+
 var _Title = _interopRequireDefault(require("./Title"));
 
 var _Counter = _interopRequireDefault(require("./Counter"));
@@ -15,6 +17,7 @@ var _BtCircle = _interopRequireDefault(require("./BtCircle"));
 
 var Card = {
   Item: _Item["default"],
+  Header: _Header["default"],
   Title: _Title["default"],
   Counter: _Counter["default"],
   BtCircle: _BtCircle["default"]

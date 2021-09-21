@@ -31,14 +31,12 @@ var _CL = _interopRequireDefault(require("../style/CL"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  SVG_MORE: {
-    marginRight: 8
-  },
-  MENU_MORE: {
-    position: 'absolute',
-    width: 150
-  }
+var S_SVG_MORE = {
+  marginRight: 8
+},
+    S_MENU_MORE = {
+  position: 'absolute',
+  width: 150
 };
 
 var Topic = /*#__PURE__*/function (_Component) {
@@ -126,27 +124,29 @@ var Topic = /*#__PURE__*/function (_Component) {
         noteIds = column.noteIds;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
       isHide: isHide,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
-        style: S.SVG_MORE,
-        title: "Click to open topic menu",
-        onClick: this._openMenuMore
-      }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore["default"], {
-        style: S.MENU_MORE,
-        isShow: isMenuMore,
-        onAddNote: this._hAddNewTask,
-        onHideTopic: this._hHideTopic,
-        onClose: this._closeMenuMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
-        value: title,
-        onBlur: this._hBlurTitle
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
-        value: noteIds.length
-      }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        clCaption: _CL["default"].CARD_BT,
-        caption: "AddNote",
-        title: "Click to add a new note",
-        timeout: 1000,
-        onClick: this._hAddNewTask
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Header, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+          style: S_SVG_MORE,
+          title: "Click to open topic menu",
+          onClick: this._openMenuMore
+        }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore["default"], {
+          style: S_MENU_MORE,
+          isShow: isMenuMore,
+          onAddNote: this._hAddNewTask,
+          onHideTopic: this._hHideTopic,
+          onClose: this._closeMenuMore
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
+          value: title,
+          onBlur: this._hBlurTitle
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+          value: noteIds.length
+        }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+          clCaption: _CL["default"].CARD_BT,
+          caption: "AddNote",
+          title: "Click to add a new note",
+          timeout: 1000,
+          onClick: this._hAddNewTask
+        })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDNoteList["default"], {
         cId: id,
         noteIds: noteIds,
