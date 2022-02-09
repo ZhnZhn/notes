@@ -1,18 +1,17 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import CL from '../style/CL'
+import crCn from '../zhn-utils/crCn';
+import CL from '../style/CL';
 
-const K = {
-  ENTER: 'Enter',
-  ENTER_CODE: 13,
-  DELETE: 'Delete',
-  DELETE_CODE: 46
-};
+const K_ENTER = 'Enter'
+, K_ENTER_CODE = 13
+, K_DELETE = 'Delete'
+, K_DELETE_CODE = 46
 
-const _isKeyEnter = (evt) => evt.key === K.ENTER
-  || evt.keyCode === K.ENTER_CODE;
-const _isKeyDelete = (evt) => evt.key === K.DELETE
-  || evt.keyCode === K.DELETE_CODE;
+const _isKeyEnter = (evt) => evt.key === K_ENTER
+  || evt.keyCode === K_ENTER_CODE;
+const _isKeyDelete = (evt) => evt.key === K_DELETE
+  || evt.keyCode === K_DELETE_CODE;
 
 const _getState = (props) => ({
   value: props.value
@@ -29,7 +28,6 @@ class InputText extends Component {
   */
 
   static defaultProps = {
-    className: '',
     maxLength: 40
   }
 
@@ -59,9 +57,7 @@ class InputText extends Component {
       style,
       onBlur
     } = this.props
-    , _className = className
-        ? `${CL.INPUT} ${className}`
-        : CL.INPUT
+    , _className = crCn(CL.INPUT, className)
     , { value } = this.state;
     return (
       <input

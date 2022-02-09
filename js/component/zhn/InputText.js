@@ -9,23 +9,23 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
 var _CL = _interopRequireDefault(require("../style/CL"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var K = {
-  ENTER: 'Enter',
-  ENTER_CODE: 13,
-  DELETE: 'Delete',
-  DELETE_CODE: 46
-};
+var K_ENTER = 'Enter',
+    K_ENTER_CODE = 13,
+    K_DELETE = 'Delete',
+    K_DELETE_CODE = 46;
 
 var _isKeyEnter = function _isKeyEnter(evt) {
-  return evt.key === K.ENTER || evt.keyCode === K.ENTER_CODE;
+  return evt.key === K_ENTER || evt.keyCode === K_ENTER_CODE;
 };
 
 var _isKeyDelete = function _isKeyDelete(evt) {
-  return evt.key === K.DELETE || evt.keyCode === K.DELETE_CODE;
+  return evt.key === K_DELETE || evt.keyCode === K_DELETE_CODE;
 };
 
 var _getState = function _getState(props) {
@@ -81,7 +81,7 @@ var InputText = /*#__PURE__*/function (_Component) {
         className = _this$props.className,
         style = _this$props.style,
         onBlur = _this$props.onBlur,
-        _className = className ? _CL["default"].INPUT + " " + className : _CL["default"].INPUT,
+        _className = (0, _crCn["default"])(_CL["default"].INPUT, className),
         value = this.state.value;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
@@ -105,7 +105,6 @@ var InputText = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 InputText.defaultProps = {
-  className: '',
   maxLength: 40
 };
 var _default = InputText;
