@@ -12,12 +12,14 @@ const Logo = ({
      style={style}
      title={title}
   >
-    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-         fillRule="evenodd"
-         clipRule="evenodd"
-         strokeLinejoin="round"
-         strokeMiterlimit="2"
-         strokeWidth="2"
+    <svg
+      viewBox="0 0 32 32" 
+      xmlns="http://www.w3.org/2000/svg"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="2"
+      strokeWidth="2"
     >
       <rect
         ry="1.8825414"

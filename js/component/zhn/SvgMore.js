@@ -1,11 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = "bt-svg-more";
+var CL_SVG_MORE = "bt-svg-more";
 
 var SvgMore = function SvgMore(_ref) {
   var className = _ref.className,
@@ -14,7 +18,7 @@ var SvgMore = function SvgMore(_ref) {
       title = _ref.title,
       onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    className: CL + " " + className,
+    className: (0, _crCn["default"])(CL_SVG_MORE, className),
     style: style,
     title: title,
     onClick: onClick,
@@ -42,9 +46,6 @@ var SvgMore = function SvgMore(_ref) {
   });
 };
 
-SvgMore.defaultProps = {
-  className: ''
-};
 var _default = SvgMore;
 exports["default"] = _default;
 //# sourceMappingURL=SvgMore.js.map
