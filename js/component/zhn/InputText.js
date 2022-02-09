@@ -13,20 +13,11 @@ var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _CL = _interopRequireDefault(require("../style/CL"));
 
+var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
+
+var _isKeyDelete = _interopRequireDefault(require("./isKeyDelete"));
+
 var _jsxRuntime = require("react/jsx-runtime");
-
-var K_ENTER = 'Enter',
-    K_ENTER_CODE = 13,
-    K_DELETE = 'Delete',
-    K_DELETE_CODE = 46;
-
-var _isKeyEnter = function _isKeyEnter(evt) {
-  return evt.key === K_ENTER || evt.keyCode === K_ENTER_CODE;
-};
-
-var _isKeyDelete = function _isKeyDelete(evt) {
-  return evt.key === K_DELETE || evt.keyCode === K_DELETE_CODE;
-};
 
 var _getState = function _getState(props) {
   return {
@@ -58,13 +49,13 @@ var InputText = /*#__PURE__*/function (_Component) {
     };
 
     _this._hKeyDown = function (evt) {
-      if (_isKeyEnter(evt)) {
+      if ((0, _isKeyEnter["default"])(evt)) {
         var el = document.activeElement;
 
         if (el && typeof el.blur === 'function') {
           el.blur();
         }
-      } else if (_isKeyDelete(evt)) {
+      } else if ((0, _isKeyDelete["default"])(evt)) {
         _this.setState({
           value: ''
         });

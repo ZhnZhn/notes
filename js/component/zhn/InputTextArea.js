@@ -9,16 +9,9 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _isKeyDelete = _interopRequireDefault(require("./isKeyDelete"));
+
 var _jsxRuntime = require("react/jsx-runtime");
-
-var K = {
-  DELETE: 'Delete',
-  DELETE_CODE: 46
-};
-
-var _isKeyDelete = function _isKeyDelete(evt) {
-  return evt.key === K.DELETE || evt.keyCode === K.DELETE_CODE;
-};
 
 var InputTextArea = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(InputTextArea, _Component);
@@ -42,7 +35,7 @@ var InputTextArea = /*#__PURE__*/function (_Component) {
     };
 
     _this._hKeyDown = function (evt) {
-      if (_isKeyDelete(evt)) {
+      if ((0, _isKeyDelete["default"])(evt)) {
         _this.setState({
           value: ''
         });

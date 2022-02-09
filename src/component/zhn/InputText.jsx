@@ -3,15 +3,8 @@ import { Component } from 'react';
 import crCn from '../zhn-utils/crCn';
 import CL from '../style/CL';
 
-const K_ENTER = 'Enter'
-, K_ENTER_CODE = 13
-, K_DELETE = 'Delete'
-, K_DELETE_CODE = 46
-
-const _isKeyEnter = (evt) => evt.key === K_ENTER
-  || evt.keyCode === K_ENTER_CODE;
-const _isKeyDelete = (evt) => evt.key === K_DELETE
-  || evt.keyCode === K_DELETE_CODE;
+import isKeyEnter from './isKeyEnter';
+import isKeyDelete from './isKeyDelete';
 
 const _getState = (props) => ({
   value: props.value
@@ -41,12 +34,12 @@ class InputText extends Component {
   }
 
   _hKeyDown = (evt) => {
-    if (_isKeyEnter(evt)) {
+    if (isKeyEnter(evt)) {
       const el = document.activeElement;
       if (el && typeof el.blur === 'function' ) {
         el.blur()
       }
-    } else if (_isKeyDelete(evt)) {
+    } else if (isKeyDelete(evt)) {
       this.setState({ value: '' })
     }
   }

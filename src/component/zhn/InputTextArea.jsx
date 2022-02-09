@@ -1,12 +1,6 @@
 import { Component } from 'react'
 
-const K = {
-  DELETE: 'Delete',
-  DELETE_CODE: 46
-};
-
-const _isKeyDelete = (evt) => evt.key === K.DELETE
-  || evt.keyCode === K.DELETE_CODE;
+import isKeyDelete from './isKeyDelete';
 
 class InputTextArea extends Component {
   /*
@@ -34,7 +28,7 @@ class InputTextArea extends Component {
     })
   }
   _hKeyDown = (evt) => {
-    if (_isKeyDelete(evt)) {
+    if (isKeyDelete(evt)) {
       this.setState({ value: '' })
     }
   }
