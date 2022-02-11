@@ -1,5 +1,5 @@
-import InputText from '../zhn/InputText'
-import CL from '../style/CL'
+import InputText from '../zhn/InputText';
+import CL from '../style/CL';
 
 const Title = (props) => (
   <InputText

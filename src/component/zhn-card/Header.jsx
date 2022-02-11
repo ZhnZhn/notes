@@ -1,7 +1,6 @@
 
 const S_DIV = {
-  paddingTop: 8,
-  paddingBottom: 8,
+  padding: '8px 0',
   lineHeight: '36px'
 };
 

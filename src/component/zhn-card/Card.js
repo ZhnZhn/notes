@@ -1,9 +1,9 @@
 
-import Item from './Item'
-import Header from './Header'
-import Title from './Title'
-import Counter from './Counter'
-import BtCircle from './BtCircle'
+import Item from './Item';
+import Header from './Header';
+import Title from './Title';
+import Counter from './Counter';
+import BtCircle from './BtCircle';
 
 const Card = {
   Item,
