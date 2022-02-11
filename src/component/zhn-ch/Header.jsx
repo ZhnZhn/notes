@@ -1,5 +1,5 @@
-import useTheme from '../hooks/useTheme'
-import styleConfig from '../style/Comp.Style'
+import useTheme from '../hooks/useTheme';
+import styleConfig from '../style/Comp.Style';
 
 const Header = ({
   className,
@@ -15,6 +15,6 @@ const Header = ({
        {children}
     </header>
   );
-}
+};
 
 export default Header

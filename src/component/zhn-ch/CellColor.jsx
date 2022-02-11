@@ -1,18 +1,17 @@
-//import PropTypes from 'prop-types'
+
+const FN_NOOP = () => {}
 
 const CellColor = ({
   tabIndex='-1',
   style,
   color,
-  onClick,
+  onClick=FN_NOOP,
   children
 }) => {
     const _styleColor = color
        ? { backgroundColor: color }
        : void 0
-    , _onClick = onClick
-       ? onClick.bind(null, color)
-       : void 0;
+    , _onClick = () => onClick(color);
 
     return (
       <button
@@ -23,16 +22,6 @@ const CellColor = ({
          {children}
       </button>
     );
-}
-
-/*
-CellColor.propTypes = {
-  tabIndex: PropTypes.string,
-  style: PropTypes.object,
-  color: PropTypes.string,
-  onClick: PropTypes.func,  
-}
-*/
-
+};
 
 export default CellColor

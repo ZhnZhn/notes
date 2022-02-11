@@ -1,22 +1,26 @@
-import SvgClose from '../zhn/SvgClose'
+import SvgClose from '../zhn/SvgClose';
 
-const CL = {
-  HEADER: 'dialog__header',
-  CAPTION: 'dialog__caption not-selected',
-  CLOSE: 'dialog__svg-close'
-};
+const CL_HEADER = 'dialog__header'
+, CL_CAPTION = 'dialog__caption not-selected'
+, CL_CLOSE = 'dialog__svg-close';
 
-const DialogCaption = ({ rootStyle, svgStyle, caption, children, onClose }) => (
+const DialogCaption = ({
+  rootStyle,
+  svgStyle,
+  caption,
+  onClose,
+  children,
+}) => (
   <div
-    className={CL.HEADER}
+    className={CL_HEADER}
     style={rootStyle}
   >
-    <span className={CL.CAPTION}>
+    <span className={CL_CAPTION}>
        {caption}
     </span>
     {children}
     <SvgClose
-      className={CL.CLOSE}
+      className={CL_CLOSE}
       onClose={onClose}
     />
   </div>

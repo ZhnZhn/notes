@@ -1,4 +1,4 @@
-import CL from '../style/CL'
+import CL from '../style/CL';
 
 const Main = ({ children }) => (
   <main className={CL.CONT}>

@@ -4,24 +4,16 @@ import { Component } from 'react'
 import DialogCaption from './DialogCaption'
 import FlatButton from '../zhn-m/FlatButton'
 
-const CL = {
-  DIALOG: 'modal-dialog',
-  ACTIONS: 'md__actions',
-  SHOWING: 'show-popup',
-  HIDING: 'hide-popup'
-};
+const CL_DIALOG = 'modal-dialog'
+, CL_MD_ACTIONS = 'md__actions'
+, CL_SHOWING = 'show-popup'
+, CL_HIDING = 'hide-popup'
 
-const S = {
-  SHOW: {
-    display: 'block'
-  },
-  HIDE: {
-    display: 'none'
-  },
-  HIDE_POPUP: {
-    opacity: 0,
-    transform: 'scaleY(0)'
-  },
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display: 'none' }
+, S_HIDE_POPUP = {
+  opacity: 0,
+  transform: 'scaleY(0)'
 };
 
 class ModalDialog extends Component {
@@ -99,7 +91,7 @@ class ModalDialog extends Component {
             onClose
           } = this.props;
     return (
-      <div className={CL.ACTIONS}>
+      <div className={CL_MD_ACTIONS}>
         {commandButtons}
         { !withoutClose &&
            <FlatButton
@@ -126,15 +118,15 @@ class ModalDialog extends Component {
     let _className, _style;
 
     if (this.wasClosing){
-      _style = S.HIDE
+      _style = S_HIDE
       this.wasClosing = false
     } else {
       _className = isShow
-          ? `${CL.DIALOG} ${className} ${CL.SHOWING}`
-          : `${CL.DIALOG} ${className} ${CL.HIDING}`
+          ? `${CL_DIALOG} ${className} ${CL_SHOWING}`
+          : `${CL_DIALOG} ${className} ${CL_HIDING}`
       _style = isShow
-          ? S.SHOW
-          : S.HIDE_POPUP
+          ? S_SHOW
+          : S_HIDE_POPUP
     }
 
     return (

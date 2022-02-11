@@ -1,23 +1,15 @@
 import { Component } from 'react';
+
+import crCn from '../zhn-utils/crCn'
 //import PropTypes from 'prop-types'
 
-const CL = {
-  INIT: 'modal-root',
-  SHOWING: 'modal-root show-modal',
-  HIDING: 'modal-root hide-modal'
-};
+const CL_MODAL_ROOT = 'modal-root'
+, CL_SHOW_MODAL = 'show-modal'
+, CL_HIDE_MODAL = 'hide-modal'
 
-const S = {
-  SHOW: {
-    display: 'block'
-  },
-  HIDE: {
-    display: 'none'
-  },
-  HIDE_BACKGROUND : {
-    backgroundColor: 'rgba(0,0,0, 0)'
-  }
-}
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display: 'none' }
+, S_HIDE_BACKGROUND = { backgroundColor: 'rgba(0,0,0, 0)' };
 
 class WrapperModalDialog extends Component {
   /*
@@ -31,10 +23,8 @@ class WrapperModalDialog extends Component {
     timeout: 450
   }
 
-  constructor(props){
-    super();
-    this.wasClosing = true;
-  }
+  wasClosing = true
+
 
   shouldComponentUpdate(nextProps, nextState){
     if (!this.wasClosing
@@ -60,24 +50,31 @@ class WrapperModalDialog extends Component {
   }
 
   render(){
-    const { isShow, children, onClose } = this.props;
+    const {
+      isShow,
+      children,
+      onClose
+    } = this.props;
     let _className, _style, _isHidden;
     if (!isShow && this.wasClosing){
-       _className = CL.INIT;
-       _style = S.HIDE;
+       _className = CL_MODAL_ROOT;
+       _style = S_HIDE;
        _isHidden = true;
        this.wasClosing = false;
     } else {
-      _className = isShow
-          ? CL.SHOWING
-          : CL.HIDING;
+      _className = crCn(
+        CL_MODAL_ROOT,
+        isShow ? CL_SHOW_MODAL : CL_HIDE_MODAL
+      )
       _style = isShow
-          ? S.SHOW
-          : S.HIDE_BACKGROUND;
+          ? S_SHOW
+          : S_HIDE_BACKGROUND;
       _isHidden = false
     }
+
     return (
       <div
+        role="presentation"
         className={_className}
         style={_style}
         aria-hidden={_isHidden}
