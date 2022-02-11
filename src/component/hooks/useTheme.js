@@ -1,8 +1,9 @@
-import { useContext } from 'react'
+import { useContext } from '../uiApi';
 
-import ThemeContext  from '../hoc/ThemeContext'
+import ThemeContext  from '../hoc/ThemeContext';
 
-const useTheme = styleConfig => useContext(ThemeContext)
- .createStyle(styleConfig);
+const useTheme = styleConfig =>
+  useContext(ThemeContext)
+    .createStyle(styleConfig);
 
 export default useTheme

@@ -1,5 +1,6 @@
-import { useReducer } from 'react'
+import { useReducer } from '../uiApi';
 
-const useForceUpdate = () => useReducer( _ => Object.create(null));
+const useForceUpdate = () =>
+  useReducer( _ => Object.create(null));
 
 export default useForceUpdate
