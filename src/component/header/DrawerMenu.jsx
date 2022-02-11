@@ -1,48 +1,40 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
   saveBoard,
   cleanStorage
-} from '../../flux/app/actions'
-import { showSettings } from '../../flux/modal/reducer'
+} from '../../flux/app/actions';
+import { showSettings } from '../../flux/modal/reducer';
 
-import FlatButton  from '../zhn-m/FlatButton'
-import DrawerMsgList from './DrawerMsgList'
+import FlatButton  from '../zhn-m/FlatButton';
+import DrawerMsgList from './DrawerMsgList';
 
 const TITLE = "Web App Notes v0.3.0";
 
-const CL = {
-  HEADER: 'header__title',
-  ROOT: 'drawer__list',
-  BT: 'drawer__list-bt'
-};
-
-const S = {
-  HEADER: {
-    marginLeft: 16,
-    paddingTop: 16,
-    paddingBottom: 8
-  },
-  UL: {
-    listStyleType: 'none'
-  }
-};
+const CL_HEADER = 'header__title'
+, CL_DRAWER_LIST = 'drawer__list'
+, CL_DRAWER_BT = 'drawer__list-bt'
+, S_HEADER = {
+  padding: '16px 0 8px 0',
+  marginLeft: 16,
+}
+, S_UL = { listStyleType: 'none' }
 
 const DrawerMenu = ({
   showSettings,
   saveBoard,
   cleanStorage
 }) => (
-  <div className={CL.ROOT}>
+  <div className={CL_DRAWER_LIST}>
     <div
-      className={CL.HEADER}
-      style={S.HEADER}
+      className={CL_HEADER}
+      style={S_HEADER}
     >
       {TITLE}
     </div>
-    <ul style={S.UL}>
+    <ul style={S_UL}>
       <li>
         <FlatButton
-          className={CL.BT}
+          className={CL_DRAWER_BT}
           caption="User Settings"
           title="Click to open user settings dialog"
           onClick={showSettings}
@@ -50,7 +42,7 @@ const DrawerMenu = ({
       </li>
       <li>
         <FlatButton
-          className={CL.BT}
+          className={CL_DRAWER_BT}
           caption="Save Boards"
           title="Click to save boards to localStorage"
           onClick={saveBoard}
@@ -58,7 +50,7 @@ const DrawerMenu = ({
       </li>
       <li>
         <FlatButton
-          className={CL.BT}
+          className={CL_DRAWER_BT}
           caption="Clean Storage"
           title="Click to remove boards from localStorage"
           onClick={cleanStorage}

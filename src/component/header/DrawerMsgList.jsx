@@ -1,23 +1,24 @@
-import { connect } from 'react-redux'
-import { sDrawer } from '../../flux/selectors'
-import { removeDrawerMsg } from '../../flux/drawerMsg/reducer'
+import { connect } from 'react-redux';
+import { sDrawer } from '../../flux/selectors';
+import { removeDrawerMsg } from '../../flux/drawerMsg/reducer';
 
-const CL = {
-  UL: 'drawer__msg-ul',
-  LI: 'drawer__msg-li',
-  LI_BT: 'drawer__msg-bt'
-};
+const CL_UL = 'drawer__msg-ul'
+, CL_LI = 'drawer__msg-li'
+, CL_LI_BT = 'drawer__msg-bt';
 
-const DrawerMsgList = ({ items, removeDrawerMsg }) => (
-  <ul className={CL.UL}>
+const DrawerMsgList = ({
+  items,
+  removeDrawerMsg
+}) => (
+  <ul className={CL_UL}>
     {
        items.map(item => (
           <li
             key={item.id}
-            className={CL.LI}
+            className={CL_LI}
           >
             <button
-              className={CL.LI_BT}
+              className={CL_LI_BT}
               onClick={() => removeDrawerMsg({id : item.id })}
             >
               {item.msg}
