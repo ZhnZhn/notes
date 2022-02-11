@@ -1,56 +1,38 @@
-import { forwardRef, useRef, useCallback } from 'react';
+import { forwardRef } from 'react';
+
+import useThrottleClick from '../hooks/useThrottleClick';
 
 import crCn from '../zhn-utils/crCn';
 import crStyle from '../zhn-utils/crStyle';
 import CaptionInput from './CaptionInput';
 
-const CL = {
-  BT: 'bt-flat',
-  BT_DIV: 'bt-flat__div',
-  BT_SPAN: 'bt-flat__span'
-};
-const S = {
-  PRIMARY: {
-    color: '#607d8b'
-  }
-};
+const CL_BT_FLAT = 'bt-flat'
+, CL_BT_FLAT_DIV = 'bt-flat__div'
+, CL_BT_FLAT_SPAN = 'bt-flat__span'
+, S_PRIMARY = { color: '#607d8b' }
 
 const _crTitle = (title, accessKey) => accessKey
   ? `${title} [${accessKey}]`
   : title;
 
 const FlatButton = forwardRef(({
-  timeout=3000,
+  timeout,
   className,
   style,
-  clDiv=CL.BT_DIV,
+  clDiv=CL_BT_FLAT_DIV,
   clCaption,
   isPrimary,
   title='',
   caption,
   accessKey,
   children,
-  isEvent=true,
+  isEvent,
   onClick
 }, ref) => {
-  const _refTimeStamp = useRef(null)
-  , _hClick = useCallback(event => {
-    const _args = isEvent ? event : void 0;
-    if (timeout === 0) {
-      onClick(_args)
-      return;
-    }
-    const _timeStampPrev = _refTimeStamp.current
-    , { timeStamp } = event;
-    if (_timeStampPrev == null
-        || timeStamp - _timeStampPrev > timeout) {
-      onClick(_args)
-      _refTimeStamp.current = timeStamp
-    }
-  }, [isEvent, timeout, onClick])
-  , _className = crCn(CL.BT, className)
-  , _clCaption = crCn(CL.BT_SPAN, clCaption)
-  , _style = crStyle(style, [isPrimary, S.PRIMARY])
+  const _hClick = useThrottleClick(onClick, timeout, isEvent)
+  , _className = crCn(CL_BT_FLAT, className)
+  , _clCaption = crCn(CL_BT_FLAT_SPAN, clCaption)
+  , _style = crStyle(style, [isPrimary, S_PRIMARY])
   , _title = _crTitle(title, accessKey);
   return (
     <button
@@ -71,6 +53,6 @@ const FlatButton = forwardRef(({
       </div>
     </button>
   );
-})
+});
 
 export default FlatButton
