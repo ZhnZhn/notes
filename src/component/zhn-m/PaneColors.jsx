@@ -1,4 +1,9 @@
-import { forwardRef, useState, useCallback, useImperativeHandle } from 'react'
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useImperativeHandle
+} from '../uiApi';
 
 import CellColor from '../zhn-ch/CellColor'
 
@@ -12,29 +17,20 @@ const COLORS2 = [
   '#000000','#607d8b','#7092be'
 ];
 
-const S_PANE_COLOR = {
-    paddingBottom: 4
-  },
-  S_ROW_2 = {
-    paddingLeft: 56,
-    paddingTop: 4
-  },
-  S_TO_CELL = {
-    marginLeft: 12,
-    marginRight: 12,
-  },
-  S_CELL = {
-    marginRight: 4,
-    position: 'relative',
-    display: 'inline-block',
-    height: 32,
-    width: 32,
-    borderRadius: 2,
-    verticalAlign: 'bottom',
-    boxShadow: '0 2px 2px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)'
-  }
-  , S_CELL_COLOR = {...S_CELL, ...S_TO_CELL};
-
+const S_PANE_COLOR = { paddingBottom: 4 }
+, S_ROW_2 = { padding: '4px 0 0 56px' }
+, S_TO_CELL = { margin: '0 12px' }
+, S_CELL = {
+   position: 'relative',
+   display: 'inline-block',
+   height: 32,
+   width: 32,
+   marginRight: 4,
+   borderRadius: 2,
+   verticalAlign: 'bottom',
+   boxShadow: '0 2px 2px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)'
+}
+, S_CELL_COLOR = {...S_CELL, ...S_TO_CELL};
 
 const ColorStack = ({
   colors,

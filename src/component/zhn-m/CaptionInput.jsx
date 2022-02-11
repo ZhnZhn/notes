@@ -1,7 +1,5 @@
-const S = {
-  KEY: {
-    textDecoration: 'underline'
-  }
+const S_KEY = {
+  textDecoration: 'underline'
 };
 
 const _crAccessKeyIndex = (accessKey, caption) => accessKey
@@ -18,7 +16,7 @@ const _crCaption = (accessKey, caption) => {
   return (
     <>
      <span>{_before}</span>
-     <span style={S.KEY}>{_key}</span>
+     <span style={S_KEY}>{_key}</span>
      <span>{_after}</span>
     </>
   );

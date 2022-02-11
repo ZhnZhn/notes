@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../uiApi';
 
 import useThrottleClick from '../hooks/useThrottleClick';
 
@@ -9,7 +9,7 @@ import CaptionInput from './CaptionInput';
 const CL_BT_FLAT = 'bt-flat'
 , CL_BT_FLAT_DIV = 'bt-flat__div'
 , CL_BT_FLAT_SPAN = 'bt-flat__span'
-, S_PRIMARY = { color: '#607d8b' }
+, S_PRIMARY = { color: '#607d8b' };
 
 const _crTitle = (title, accessKey) => accessKey
   ? `${title} [${accessKey}]`
