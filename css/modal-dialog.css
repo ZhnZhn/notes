@@ -12,11 +12,10 @@ $shDialog
   background-color: #4d4d4d;
   border: solid 2px #607d8b;
   position: relative;
-  top: 10%;
   display: block;
   width: 350px;
   height: 150px;
-  margin: auto;
+  margin: 40 auto 0 auto;
   border-radius: 5px;
 }
 
