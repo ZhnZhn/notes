@@ -2,6 +2,8 @@ export {
   forwardRef,
   useRef,
   useState,
+  useReducer,
   useCallback,
-  useImperativeHandle 
+  useContext,
+  useImperativeHandle
 } from 'react';
