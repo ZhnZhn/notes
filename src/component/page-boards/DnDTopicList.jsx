@@ -9,8 +9,10 @@ const _crTopicProps = (topic) => ({
 });
 
 const _crTopicList = ({
-  provided, snapshot,
-  columnIds, columns
+  provided,
+  snapshot,
+  columnIds,
+  columns
 }) => (
   <DroppableDiv
      {...provided.droppableProps}
@@ -36,7 +38,11 @@ const _crTopicList = ({
   </DroppableDiv>
 );
 
-const DnDTopicList = ({ id, columnIds, columns }) => (
+const DnDTopicList = ({
+  id,
+  columnIds,
+  columns
+}) => (
   <Droppable droppableId={id}>
   {
     (provided, snapshot) => _crTopicList({
@@ -46,6 +52,5 @@ const DnDTopicList = ({ id, columnIds, columns }) => (
   }
   </Droppable>
 );
-
 
 export default DnDTopicList

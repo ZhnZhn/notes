@@ -19,12 +19,8 @@ import Card from '../zhn-card/Card'
 import DnDTopicList from './DnDTopicList'
 import FlatButton from '../zhn-m/FlatButton'
 
-const S  = {
-  LINK: {
-    marginTop: 8,
-    marginLeft: 8,
-    marginBottom: 4
-  }
+const S_LINK = {
+  margin: '8px 8px 4px 0'
 };
 
 class BoardCard extends Component {
@@ -75,7 +71,7 @@ class BoardCard extends Component {
         <NavLink
           to={`/boards/${board.id}`}
           className={CL.NAV_LINK}
-          style={S.LINK}
+          style={S_LINK}
           onClick={this._hToNotes}
         >
           ToNotes
