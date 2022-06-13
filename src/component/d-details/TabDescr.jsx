@@ -1,4 +1,8 @@
-import { useRef, useCallback, useEffect } from 'react'
+import {
+  useRef,
+  useCallback,
+  useEffect
+} from 'react'
 
 import { editNoteDescr } from '../../flux/note/reducer'
 
@@ -7,10 +11,8 @@ import DialogButtons from './DialogButtons'
 
 import getNoteDescr from '../page-board/getNoteDescr'
 
-const CL = {
-  DESCR: 'md-details__descr',
-  ACTIONS: 'md__actions'
-};
+const CL_DESCR = 'md-details__descr'
+, CL_ACTIONS = 'md__actions';
 
 const TabDescr = (props) => {
   const {
@@ -45,13 +47,13 @@ const TabDescr = (props) => {
       <InputTextArea
         key={id}
         ref={_refInputDescr}
-        className={CL.DESCR}
+        className={CL_DESCR}
         maxLength={250}
         initValue={_initDescr}
       />
       <DialogButtons
         refBtClose={_refBtClose}
-        className={CL.ACTIONS}
+        className={CL_ACTIONS}
         onSave={_editDescr}
         onClose={onClose}
       />

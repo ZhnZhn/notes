@@ -1,4 +1,9 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback
+} from 'react'
 
 import { editNoteLabels } from '../../flux/note/actions'
 
@@ -18,16 +23,8 @@ const {
 
 import CL from '../style/CL'
 
-const S = {
-  LABELS: {
-    paddingTop: 4,
-    paddingLeft: 12,
-    paddingBottom: 8
-  },
-  BT_ADD: {
-    marginLeft: 16
-  }
-};
+const S_LABELS = { padding: '4px 0 8px 12px' }
+, S_BT_ADD = { marginLeft: 16 };
 
 const _getCurrent = ref => ref.current;
 
@@ -75,7 +72,7 @@ const TabLabels = (props) => {
 
   return (
       <>
-        <div style={S.LABELS}>
+        <div style={S_LABELS}>
           <LabelList
             labels={labels}
             onRemove={_onRemoveLabel}
@@ -86,7 +83,7 @@ const TabLabels = (props) => {
           />
           <FlatButton
             clCaption={CL.CARD_BT}
-            style={S.BT_ADD}
+            style={S_BT_ADD}
             caption="AddLabel"
             title="Click to add a new label"
             timeout={400}
@@ -105,6 +102,5 @@ const TabLabels = (props) => {
       </>
   );
 }
-
 
 export default TabLabels
