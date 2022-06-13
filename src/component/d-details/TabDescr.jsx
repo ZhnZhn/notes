@@ -1,8 +1,9 @@
 import {
   useRef,
   useCallback,
-  useEffect
-} from 'react'
+  useEffect,
+  getRefValue
+} from '../uiApi'
 
 import { editNoteDescr } from '../../flux/note/reducer'
 
@@ -27,13 +28,13 @@ const TabDescr = (props) => {
   , _editDescr = useCallback(() => {
     dispatch(editNoteDescr({
       noteId: id,
-      descr: _refInputDescr.current.getValue()
+      descr: getRefValue(_refInputDescr).getValue()
     }))
   }, [id])
   //dispatch
 
   useEffect(() => {
-    const _btClose = _refBtClose.current;
+    const _btClose = getRefValue(_refBtClose);
     if (isSelected && _btClose) {
       _btClose.focus()
     }
