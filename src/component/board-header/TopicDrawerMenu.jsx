@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import s from '../../flux/selectors'
 import { toggleColumn } from '../../flux/column/reducer'
 
-import CL from './CL'
+import { CL_ROOT } from './CL'
 import TopicDrawerCaption from './TopicDrawerCaption'
 import TopicList from './TopicList'
 import DrawerMsgList from '../header/DrawerMsgList'
@@ -12,7 +12,7 @@ const TopicDrawerMenu = ({
   columns,
   toggleColumn
 }) => (
-  <div className={CL.ROOT}>
+  <div className={CL_ROOT}>
     <TopicDrawerCaption
       board={board}
     />

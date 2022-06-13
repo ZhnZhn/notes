@@ -1,11 +1,14 @@
 import FlatButton from '../zhn-m/FlatButton';
-import CL from './CL';
+import {
+  CL_BADGE,
+  CL_BT
+} from './CL';
 
 const HIDE = 'hide'
 , SHOW = 'show';
 
 const Badge = ({ isHide }) => (
-  <span className={CL.BADGE}>
+  <span className={CL_BADGE}>
     {isHide ? 'H' : 'S' }
   </span>
 );
@@ -23,7 +26,7 @@ const TopicItem = ({
   return (
     <>
       <FlatButton
-        className={CL.BT}
+        className={CL_BT}
         caption={title}
         title={_title}
         timeout={0}

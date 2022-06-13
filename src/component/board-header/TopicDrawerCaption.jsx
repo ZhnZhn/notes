@@ -1,4 +1,4 @@
-import CL from './CL'
+import { CL_DRAWER_TITLE } from './CL'
 import crTitle from './crTitle'
 
 // @flow
@@ -6,7 +6,7 @@ import crTitle from './crTitle'
 const TOPICS = 'Topics';
 
 const TopicDrawerCaption = ({ board /*: ?Board */ }) => (
-  <div className={CL.DRAWER_TITLE}>
+  <div className={CL_DRAWER_TITLE}>
     {crTitle(board, TOPICS)}
   </div>
 );
