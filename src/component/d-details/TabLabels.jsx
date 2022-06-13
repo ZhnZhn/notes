@@ -14,13 +14,11 @@ import PaneColors from '../zhn-m/PaneColors'
 import FlatButton from '../zhn-m/FlatButton'
 import DialogButtons from './DialogButtons'
 
-import fn from './fnTabLabels'
-
-const {
+import {
   toTitle,
   addLabel,
   removeLabel
- } = fn;
+} from './TabLabelsFn';
 
 import CL from '../style/CL'
 
