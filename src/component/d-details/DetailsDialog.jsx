@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import memoIsShow from '../hoc/memoIsShow'
 
 import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Dialog.Style'
@@ -10,15 +10,8 @@ import Tab from '../zhn-tab/Tab'
 import TabDescr from './TabDescr'
 import TabLabels from './TabLabels'
 
-const CL = {
-  DIALOG: 'md-details'
-};
-
-const S = {
-  CAPTION: {
-    marginBottom: 0
-  }
-};
+const CL_DIALOG = 'md-details'
+, S_CAPTION = { marginBottom: 0 }
 
 const _crCaption = (note) => {
   const { title='' } = note
@@ -29,7 +22,7 @@ const _crCaption = (note) => {
   return `Details: ${_title}${_sufix}`;
 };
 
-const DetailsDialog = ({
+const DetailsDialog = memoIsShow(({
   isShow,
   data,
   dispatch,
@@ -40,9 +33,9 @@ const DetailsDialog = ({
 
   return (
       <ModalDialog
-        className={CL.DIALOG}
+        className={CL_DIALOG}
         style={TS.DIALOG}
-        captionStyle={S.CAPTION}
+        captionStyle={S_CAPTION}
         caption={_caption}
         isShow={isShow}
         withoutClose={true}
@@ -66,10 +59,6 @@ const DetailsDialog = ({
        </TabPane>
       </ModalDialog>
     );
-}
+})
 
-const _areEqualProps = (prevProps, nextProps) =>
-  prevProps.isShow === nextProps.isShow;
-
-
-export default memo(DetailsDialog, _areEqualProps)
+export default DetailsDialog
