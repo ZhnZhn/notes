@@ -1,23 +1,21 @@
-import { memo } from 'react'
+import memoIsShow from '../hoc/memoIsShow';
 
-import ModalDialog from '../zhn-ch/ModalDialog'
+import ModalDialog from '../zhn-ch/ModalDialog';
 
-const CL = {
-  ROW: 'd-notif__row',
-  CAPTION: 'd-notif__caption',
-  DESCR: 'd-notif__descr'
-};
+const CL_ROW = 'd-notif__row'
+, CL_CAPTION = 'd-notif__caption'
+, CL_DESCR = 'd-notif__descr';
 
-const NotificationDialog = ({
+const NotificationDialog = memoIsShow(({
   isShow,
-  data={},
+  data,
   TS,
   onClose
 }) => {
    const {
       caption='',
       descr=''
-   } = data;
+   } = data || {};
 
     return (
       <ModalDialog
@@ -27,22 +25,19 @@ const NotificationDialog = ({
         onClose={onClose}
       >
          { caption &&
-           <div className={CL.ROW}>
-              <p className={CL.CAPTION}>
+           <div className={CL_ROW}>
+              <p className={CL_CAPTION}>
                 {caption}
               </p>
            </div>
          }
-         <div className={CL.ROW}>
-            <p className={CL.DESCR}>
+         <div className={CL_ROW}>
+            <p className={CL_DESCR}>
               {descr}
             </p>
          </div>
       </ModalDialog>
     );
-}
+})
 
-const _areEqualProps = (prevProps, nextProps) =>
-  prevProps.isShow === nextProps.isShow
-
-export default memo(NotificationDialog, _areEqualProps)
+export default NotificationDialog
