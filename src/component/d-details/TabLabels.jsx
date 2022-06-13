@@ -1,9 +1,10 @@
 import {
-  useState,
   useRef,
+  useState,
+  useCallback,
   useEffect,
-  useCallback
-} from 'react'
+  getRefValue
+} from '../uiApi'
 
 import { editNoteLabels } from '../../flux/note/actions'
 
@@ -26,8 +27,6 @@ import CL from '../style/CL'
 const S_LABELS = { padding: '4px 0 8px 12px' }
 , S_BT_ADD = { marginLeft: 16 };
 
-const _getCurrent = ref => ref.current;
-
 const TabLabels = (props) => {
   const {
     isSelected,
@@ -47,9 +46,9 @@ const TabLabels = (props) => {
   , _onAddLabel = useCallback(() => {
     setLabels(prevState => addLabel(
       prevState,
-      toTitle(_getCurrent(_refLabel)),
-      _refInputColor.current.getColor()
-    ), _refInputLabel.current.setValue(''))
+      toTitle(getRefValue(_refLabel)),
+      getRefValue(_refInputColor).getColor()
+    ), getRefValue(_refInputLabel).setValue(''))
   }, [])
   , _onRemoveLabel = useCallback(label => {
      setLabels(prevState => removeLabel(
@@ -63,7 +62,7 @@ const TabLabels = (props) => {
   //dispatch
 
   useEffect(() => {
-    const _btClose = _refBtClose.current;
+    const _btClose = getRefValue(_refBtClose);
     if (isSelected && _btClose) {
        _btClose.focus()
     }

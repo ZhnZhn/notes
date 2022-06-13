@@ -4,6 +4,9 @@ export {
   useState,
   useReducer,
   useCallback,
+  useEffect,
   useContext,
   useImperativeHandle
 } from 'react';
+
+export const getRefValue = ref => (ref || {}).current
