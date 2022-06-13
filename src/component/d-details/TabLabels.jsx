@@ -2,9 +2,9 @@ import {
   useRef,
   useState,
   useCallback,
-  useEffect,
   getRefValue
 } from '../uiApi'
+import useBtFocus from './useBtFocus'
 
 import { editNoteLabels } from '../../flux/note/actions'
 
@@ -59,13 +59,7 @@ const TabLabels = (props) => {
   }, [id, labels]);
   //dispatch
 
-  useEffect(() => {
-    const _btClose = getRefValue(_refBtClose);
-    if (isSelected && _btClose) {
-       _btClose.focus()
-    }
-  }, [props])
-  //isSelected
+  useBtFocus(_refBtClose, isSelected, props)
 
   return (
       <>
