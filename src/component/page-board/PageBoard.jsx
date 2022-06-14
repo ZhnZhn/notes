@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 import { DragDropContext } from 'react-beautiful-dnd'
 import { connect } from 'react-redux'

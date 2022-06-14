@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi'
 //import PropsType from 'prop-types'
 
 import { connect } from 'react-redux'

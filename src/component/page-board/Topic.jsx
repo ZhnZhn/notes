@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi'
 
 import { connect } from 'react-redux'
 import {
