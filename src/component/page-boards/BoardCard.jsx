@@ -56,7 +56,7 @@ class BoardCard extends Component {
       <Card.Item>
         <Card.Header>
            <Card.Title
-             value={board.title}
+             initialValue={board.title}
              onBlur={this._hBlurTitle}
            />
            <Card.Counter

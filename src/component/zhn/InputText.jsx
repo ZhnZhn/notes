@@ -1,4 +1,9 @@
-import { Component } from 'react';
+import {
+  forwardRef,
+  useState,
+  useCallback,
+  useImperativeHandle
+} from '../uiApi';
 
 import crCn from '../zhn-utils/crCn';
 import CL from '../style/CL';
@@ -6,68 +11,55 @@ import CL from '../style/CL';
 import isKeyEnter from './isKeyEnter';
 import isKeyDelete from './isKeyDelete';
 
-const _getState = (props) => ({
-  value: props.value
-})
-
-class InputText extends Component {
-  /*
-  static propTypes = {
-    className: PropsType.string,
-    style: PropsType.obj,
-    value: PropsType.string,
-    onBlur: PropsType.func
-  }
-  */
-
-  static defaultProps = {
-    maxLength: 40
-  }
-
-  state = _getState(this.props)
-
-  _hChange = (evt) => {
-    const value = evt.target.value;
-    if (value.length <= this.props.maxLength) {
-      this.setState({ value })
+const InputText = forwardRef(({
+  className,
+  style,
+  initialValue,
+  maxLength=40,
+  onBlur
+}, ref) => {
+  const [
+    value,
+    setValue
+  ] = useState(initialValue)
+  , _hChange = useCallback((evt) => {
+    const { value } = evt.target;
+    if (value.length <= maxLength) {
+      setValue(value)
     }
-  }
-
-  _hKeyDown = (evt) => {
+  }, [maxLength])
+  , _hKeyDown = useCallback((evt) => {
     if (isKeyEnter(evt)) {
       const el = document.activeElement;
       if (el && typeof el.blur === 'function' ) {
         el.blur()
       }
     } else if (isKeyDelete(evt)) {
-      this.setState({ value: '' })
+      setValue('')
     }
-  }
+  }, []);
 
-  render(){
-    const {
-      className,
-      style,
-      onBlur
-    } = this.props
-    , _className = crCn(CL.INPUT, className)
-    , { value } = this.state;
-    return (
-      <input
-        type="text"
-        className={_className}
-        style={style}
-        value={value}
-        onChange={this._hChange}
-        onBlur={onBlur}
-        onKeyDown={this._hKeyDown}
-      />
-    );
-  }
+  useImperativeHandle(ref, () => ({
+    setValue: (nextValue) => {
+      if (nextValue.length <= maxLength) {
+        setValue(nextValue)
+      }
+    }
+  }), [maxLength])
 
-  setValue(value) {
-    this.setState({ value })
-  }
-}
+  const _className = crCn(CL.INPUT, className);
+
+  return (
+    <input
+      type="text"
+      className={_className}
+      style={style}
+      value={value}
+      onChange={_hChange}
+      onBlur={onBlur}
+      onKeyDown={_hKeyDown}
+    />
+  );
+})
 
 export default InputText

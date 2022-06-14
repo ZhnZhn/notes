@@ -29,7 +29,7 @@ const NoteCaption = ({
     />
     <InputText
       className={CL_CAPTION}
-      value={noteTitle}
+      initialValue={noteTitle}
       onBlur={onBlurTitle}
     />
     <SvgMore

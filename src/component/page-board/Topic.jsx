@@ -103,7 +103,7 @@ class Topic extends Component {
             onClose={this._closeMenuMore}
           />}
           <Card.Title
-            value={title}
+            initialValue={title}
             onBlur={this._hBlurTitle}
           />
           <Card.Counter value={noteIds.length} />
