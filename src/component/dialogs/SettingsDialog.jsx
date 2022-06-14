@@ -1,4 +1,9 @@
-import { useState, useCallback, memo } from 'react'
+import {
+  useState,
+  useCallback
+} from '../uiApi'
+
+import memoIsShow from '../hoc/memoIsShow'
 
 import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Dialog.Style'
@@ -29,7 +34,7 @@ const _crInitItem = (uiTheme) => {
   return { ...item };
 }
 
-const SettingsDialog = ({
+const SettingsDialog = memoIsShow(({
   isShow,
   store,
   dispatch,
@@ -64,10 +69,6 @@ const SettingsDialog = ({
       </div>
     </ModalDialog>
   );
-}
+})
 
-
-const _areEqualProps = (prevProps, nextProps) =>
-  prevProps.isShow === nextProps.isShow
-
-export default memo(SettingsDialog, _areEqualProps)
+export default SettingsDialog
