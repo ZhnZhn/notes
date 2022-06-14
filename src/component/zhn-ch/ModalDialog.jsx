@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi'
 //import { PropTypes } from 'react'
 
 import DialogCaption from './DialogCaption'
@@ -107,13 +107,15 @@ class ModalDialog extends Component {
 
   render(){
     const {
-            className,
-            style,
-            isShow, isWithButton,
-            caption, captionStyle,
-            children,
-            onClose
-          } = this.props;
+      className,
+      style,
+      isShow,
+      isWithButton,
+      caption,
+      captionStyle,
+      children,
+      onClose
+    } = this.props;
 
     let _className, _style;
 

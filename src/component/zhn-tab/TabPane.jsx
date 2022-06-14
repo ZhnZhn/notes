@@ -1,8 +1,9 @@
 import {
   forwardRef,
-  useState, useImperativeHandle,
+  useState,
+  useImperativeHandle,
   cloneElement
-} from 'react';
+} from '../uiApi';
 
 const S_UL = {
   listStyle: 'outside none none',
@@ -25,7 +26,11 @@ S_NONE = {
   display: 'none'
 };
 
-const _renderTabs = (children, selectedTabIndex, hClickTab) => children
+const _renderTabs = (
+  children,
+  selectedTabIndex,
+  hClickTab
+) => children
  .map((tab, index) => cloneElement(tab, {
     key: index,
     id: index,
@@ -33,7 +38,10 @@ const _renderTabs = (children, selectedTabIndex, hClickTab) => children
     isSelected: index === selectedTabIndex
  }));
 
- const _renderComponents = (children, selectedTabIndex) => children
+ const _renderComponents = (
+   children,
+   selectedTabIndex
+ ) => children
   .map((tab, index) => {
      const _isSelected = (index === selectedTabIndex)
      , _divStyle = _isSelected ? S_TAB_SELECTED : S_NONE;
@@ -60,7 +68,10 @@ const TabPane = forwardRef(({
   tabsStyle,
   children
 }, ref) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0)
+  const [
+    selectedTabIndex,
+    setSelectedTabIndex
+  ] = useState(0)
 
   useImperativeHandle(ref, () => ({
     getSelectedTabIndex: () => selectedTabIndex

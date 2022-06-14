@@ -1,16 +1,14 @@
-import { Component } from 'react'
+import { Component } from '../uiApi'
 
 import ArrowCell from './ArrowCell'
 import OptionsPane from './OptionsPane'
 
-const CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-select__div',
-  DIV_VALUE: 'm-select__div__value',
-  DIV_BT: 'm-select__div__bt',
-  INPUT_LINE: 'm-select__line'
-};
+const CL_SELECT = 'm-select'
+, CL_LABEL = 'm-select__label'
+, CL_DIV = 'm-select__div'
+, CL_DIV_VALUE = 'm-select__div__value'
+, CL_DIV_BT = 'm-select__div__bt'
+, CL_INPUT_LINE = 'm-select__line';
 
 class InputSelect extends Component {
   static defaultProps = {
@@ -57,7 +55,7 @@ class InputSelect extends Component {
 
     return (
       <div
-        className={CL.SELECT}
+        className={CL_SELECT}
         style={TS.ROOT}
         onClick={this._handleOpen}
       >
@@ -70,19 +68,19 @@ class InputSelect extends Component {
            onSelect={this._handleSelect}
            onClose={this._handleClose}
          />
-        <label className={CL.LABEL}>
+        <label className={CL_LABEL}>
           {caption}
         </label>
-        <div className={CL.DIV}>
-          <div className={CL.DIV_VALUE}>
+        <div className={CL_DIV}>
+          <div className={CL_DIV_VALUE}>
              {item.caption}
           </div>
-          <button className={CL.DIV_BT} tabIndex="0">
+          <button className={CL_DIV_BT} tabIndex="0">
             <div>
               <ArrowCell />
             </div>
           </button>
-          <div className={CL.INPUT_LINE} />
+          <div className={CL_INPUT_LINE} />
         </div>
       </div>
     );

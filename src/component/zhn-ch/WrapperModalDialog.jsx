@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from '../uiApi';
 
 import crCn from '../zhn-utils/crCn'
 //import PropTypes from 'prop-types'

@@ -1,4 +1,7 @@
-import { Component, createElement } from 'react'
+import {
+  Component,
+  createElement
+} from '../uiApi'
 //import PropTypes from 'prop-types'
 
 import withTheme from '../hoc/withTheme'

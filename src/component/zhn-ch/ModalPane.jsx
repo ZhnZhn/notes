@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { Component } from '../uiApi'
 
 class ModalPane extends Component {
   /*
