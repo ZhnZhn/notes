@@ -1,70 +1,52 @@
-import { Component } from 'react'
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  useImperativeHandle,
+  getRefValue
+} from '../uiApi';
 
 import isKeyDelete from './isKeyDelete';
 
-class InputTextArea extends Component {
-  /*
-  static propTypes = {
-    className: PropsType.string
-    style: PropsType.object,
-    initValue: PropsType.string
-  }
-  */
-
-  static defaultProps = {
-    initValue: ''
-  }
-
-  constructor(props){
-    super(props)
-    this.state = {
-      value: props.initValue
-    }
-  }
-
-  _hChange = (evt) => {
-    this.setState({
-      value: evt.target.value
-    })
-  }
-  _hKeyDown = (evt) => {
+const InputTextArea = forwardRef(({
+  className,
+  style,
+  initialValue,
+  maxLength
+}, ref) => {
+  const _refInput = useRef()
+  , [value, setValue] = useState(initialValue)
+  , _hChange = useCallback((evt) => {
+    setValue(evt.target.value)
+  }, [])
+  , _hKeyDown = useCallback((evt) => {
     if (isKeyDelete(evt)) {
-      this.setState({ value: '' })
+      setValue('')
     }
-  }
+  });
 
-  _refInputNode = (node) => this._inputNode = node
-
-  render(){
-    const {
-      className,
-      style,
-      maxLength
-    } = this.props;
-    const { value } = this.state;
-    return (
-      <textarea
-        ref={this._refInputNode}
-        className={className}
-        style={style}
-        value={value}
-        maxLength={maxLength}
-        onChange={this._hChange}
-        onKeyDown={this._hKeyDown}
-      />
-    );
-  }
-
-  getValue() {
-    return this.state.value;
-  }
-  focus(){
-    if (this._inputNode
-      && this._inputNode.focus) {
-     this._inputNode.focus()
+  useImperativeHandle(ref, () => ({
+    getValue: () => value,
+    focus: () => {
+      const _input = getRefValue(_refInput);
+      if (_input) {
+        _input.focus()
+      }
     }
-  }
+  }), [value])
 
-}
+  return (
+    <textarea
+      ref={_refInput}
+      className={className}
+      style={style}
+      value={value}
+      maxLength={maxLength}
+      onChange={_hChange}
+      onKeyDown={_hKeyDown}
+    />
+  );
+})
 
 export default InputTextArea

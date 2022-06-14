@@ -33,9 +33,9 @@ const TabDescr = (props) => {
   }, [id])
   //dispatch
 
-  useBtFocus(_refBtClose, isSelected, props)  
+  useBtFocus(_refBtClose, isSelected, props)
 
-  const _initDescr = getNoteDescr(note);
+  const _initialDescr = getNoteDescr(note);
 
   return (
     <>
@@ -44,7 +44,7 @@ const TabDescr = (props) => {
         ref={_refInputDescr}
         className={CL_DESCR}
         maxLength={250}
-        initValue={_initDescr}
+        initialValue={_initialDescr}
       />
       <DialogButtons
         refBtClose={_refBtClose}
