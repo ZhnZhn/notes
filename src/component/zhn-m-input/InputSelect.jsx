@@ -3,12 +3,14 @@ import { Component } from '../uiApi'
 import ArrowCell from './ArrowCell'
 import OptionsPane from './OptionsPane'
 
-const CL_SELECT = 'm-select'
-, CL_LABEL = 'm-select__label'
-, CL_DIV = 'm-select__div'
-, CL_DIV_VALUE = 'm-select__div__value'
-, CL_DIV_BT = 'm-select__div__bt'
-, CL_INPUT_LINE = 'm-select__line';
+import {
+  CL_SELECT,
+  CL_LABEL,
+  CL_DIV,
+  CL_DIV_VALUE,
+  CL_DIV_BT,
+  CL_INPUT_LINE
+} from './CL';
 
 class InputSelect extends Component {
   static defaultProps = {
