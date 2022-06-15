@@ -12,15 +12,7 @@ var _App = _interopRequireDefault(require("./component/App"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var basename = "/notes";
-/*eslint-disable no-undef*/
-
-if (process.env.NODE_ENV === 'development') {
-  basename = undefined;
-}
-/*eslint-enable no-undef*/
-
-
+var basename = ((window || {}).location || {}).pathname;
 (0, _reactDom.render)( /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRedux.Provider, {
   store: _store["default"],
   children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_App["default"], {
