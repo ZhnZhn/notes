@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("./uiApi");
 
 var _reactRedux = require("react-redux");
 
@@ -31,14 +31,14 @@ var App = function App(_ref) {
   var basename = _ref.basename,
       store = _ref.store;
 
-  var _useState = (0, _react.useState)(_theme["default"]),
+  var _useState = (0, _uiApi.useState)(_theme["default"]),
       theme = _useState[0],
       setTheme = _useState[1],
       uiTheme = (0, _reactRedux.useSelector)(_selectors.sApp.uiTheme);
   /*eslint-disable react-hooks/exhaustive-deps */
 
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (theme.getThemeName !== uiTheme) {
       theme.setThemeName(uiTheme);
       setTheme((0, _extends2["default"])({}, theme));
@@ -47,23 +47,26 @@ var App = function App(_ref) {
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_uiApi.StrictMode, {
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.BrowserRouter, {
       basename: basename,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ThemeContext["default"].Provider, {
         value: theme,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperContainer["default"], {
           store: store
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Switch, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouterDom.Routes, {
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
             path: "/boards/:id",
-            component: _PageBoard["default"]
+            element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PageBoard["default"], {})
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
             path: "/boards",
-            component: _PageBoards["default"]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Redirect, {
-            from: "/",
-            to: "/boards"
+            element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PageBoards["default"], {})
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Route, {
+            path: "/",
+            element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.Navigate, {
+              to: "/boards",
+              replace: true
+            })
           })]
         })]
       })

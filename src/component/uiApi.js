@@ -1,4 +1,5 @@
 export {
+  StrictMode,
   Component,
   createElement,
   cloneElement,

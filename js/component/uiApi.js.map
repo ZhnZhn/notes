@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/component/uiApi.js"
+ ],
+ "file": "../../src/component/uiApi.js",
+ "names": [
+  "getRefValue",
+  "ref",
+  "current"
+ ],
+ "mappings": ";;;;;AAAA;;;;;;;;;;;;;;;;;AAiBO,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAAAC,GAAG;AAAA,SAAI,CAACA,GAAG,IAAI,EAAR,EAAYC,OAAhB;AAAA,CAAvB"
+}

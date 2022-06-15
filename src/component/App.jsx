@@ -1,8 +1,15 @@
-import { StrictMode, useState, useEffect } from 'react';
+import {
+  StrictMode,
+  useState,
+  useEffect
+} from './uiApi';
+
 import { useSelector } from 'react-redux';
 import {
   BrowserRouter,
-  Switch, Route, Redirect
+  Routes,
+  Route,
+  Navigate
 } from 'react-router-dom';
 
 import ThemeContext from './hoc/ThemeContext';
@@ -18,7 +25,10 @@ const App = ({
   basename,
   store
 }) => {
-  const [theme, setTheme] = useState(initialTheme)
+  const [
+    theme,
+    setTheme
+  ] = useState(initialTheme)
   , uiTheme = useSelector(sApp.uiTheme);
 
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -36,11 +46,11 @@ const App = ({
       <BrowserRouter basename={basename}>
         <ThemeContext.Provider value={theme}>
           <WrapperContainer store={store} />
-          <Switch>
-            <Route path="/boards/:id" component={PageBoard} />
-            <Route path="/boards" component={PageBoards} />
-            <Redirect from="/" to="/boards" />
-          </Switch>
+          <Routes>
+            <Route path="/boards/:id" element={<PageBoard />} />
+            <Route path="/boards" element={<PageBoards />} />
+            <Route path="/" element={<Navigate to="/boards" replace={true} />} />
+          </Routes>
         </ThemeContext.Provider>
       </BrowserRouter>
     </StrictMode>
