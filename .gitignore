@@ -1,8 +1,6 @@
 .languagebabel
 node_modules
 _start_server.bat
-notes.html
-notes
 lint.txt
 dev
 css-sass.js
