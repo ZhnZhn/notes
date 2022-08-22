@@ -17,16 +17,15 @@ var _NoteMenuMore = _interopRequireDefault(require("./NoteMenuMore"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = {
-  CAPTION: 'note__caption',
-  BT_MORE: 'note__bt-more',
-  MENU_MORE: 'note__menu-more'
-};
+var CL_CAPTION = 'note__caption',
+    CL_BT_MORE = 'note__bt-more',
+    CL_MENU_MORE = 'note__menu-more';
 
 var NoteCaption = function NoteCaption(_ref) {
   var dragHandleProps = _ref.dragHandleProps,
       isDetails = _ref.isDetails,
       onClickHandle = _ref.onClickHandle,
+      refTitle = _ref.refTitle,
       noteTitle = _ref.noteTitle,
       onBlurTitle = _ref.onBlurTitle,
       isMenuMore = _ref.isMenuMore,
@@ -39,16 +38,17 @@ var NoteCaption = function NoteCaption(_ref) {
       isDetails: isDetails,
       onClick: onClickHandle
     })), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputText["default"], {
-      className: CL.CAPTION,
-      value: noteTitle,
+      ref: refTitle,
+      className: CL_CAPTION,
+      initialValue: noteTitle,
       onBlur: onBlurTitle
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
-      className: CL.BT_MORE,
+      className: CL_BT_MORE,
       title: "Click to open note menu",
       onClick: onClickMenuMore
     }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteMenuMore["default"], {
       isShow: isMenuMore,
-      className: CL.MENU_MORE,
+      className: CL_MENU_MORE,
       onClose: onCloseMenuMore,
       onEdit: onEditDetails,
       onRemove: onRemoveNote

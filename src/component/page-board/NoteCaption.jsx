@@ -1,7 +1,7 @@
-import InputText from '../zhn/InputText'
-import SvgMore from '../zhn/SvgMore'
-import NoteHandle from './NoteHandle'
-import MenuMore from './NoteMenuMore'
+import InputText from '../zhn/InputText';
+import SvgMore from '../zhn/SvgMore';
+import NoteHandle from './NoteHandle';
+import MenuMore from './NoteMenuMore';
 
 const CL_CAPTION = 'note__caption'
 , CL_BT_MORE = 'note__bt-more'
@@ -12,6 +12,7 @@ const NoteCaption = ({
   isDetails,
   onClickHandle,
 
+  refTitle,
   noteTitle,
   onBlurTitle,
 
@@ -28,6 +29,7 @@ const NoteCaption = ({
       onClick={onClickHandle}
     />
     <InputText
+      ref={refTitle}
       className={CL_CAPTION}
       initialValue={noteTitle}
       onBlur={onBlurTitle}

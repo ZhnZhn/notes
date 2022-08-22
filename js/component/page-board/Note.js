@@ -5,9 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _uiApi = require("../uiApi");
 
-var _react = require("react");
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _reactRedux = require("react-redux");
 
@@ -26,131 +28,82 @@ var _jsxRuntime = require("react/jsx-runtime");
 //import PropsType from 'prop-types'
 var CL = 'note';
 
-var _getState = function _getState(props) {
-  return {
-    noteTitle: props.note.title,
-    isMenuMore: false,
-    isDetails: false
-  };
-};
+var DnDNote = function DnDNote(props) {
+  var columnId = props.columnId,
+      note = props.note,
+      dragHandleProps = props.dragHandleProps,
+      noteId = note.id,
+      noteTitle = note.title,
+      _refTitle = (0, _uiApi.useRef)(),
+      _useBool = (0, _useBool2["default"])(),
+      isMenuMore = _useBool[0],
+      openMenuMore = _useBool[1],
+      closeMenuMore = _useBool[2],
+      _useToggle = (0, _useToggle2["default"])(),
+      isDetails = _useToggle[0],
+      toggleDetails = _useToggle[1],
+      dispatch = (0, _reactRedux.useDispatch)(),
+      _deleteNote = (0, _uiApi.useCallback)(function () {
+    dispatch((0, _actions.deleteNote)({
+      columnId: columnId,
+      noteId: noteId
+    }));
+  }, [columnId]),
+      _blurTitle = (0, _uiApi.useCallback)(function (evt) {
+    var title = evt.target.value;
 
-var DnDNote = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DnDNote, _Component);
+    if (!title) {
+      var _titleInst = (0, _uiApi.getRefValue)(_refTitle);
 
-  /*
-  static propTypes = {
-    dragHandleProps: PropsType.object,
-    note: PropsType.object
-    columnId: PropsType.string
-  }
-  */
-  function DnDNote(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._openMenuMore = function () {
-      if (!_this.state.isMenuMore) {
-        _this.setState({
-          isMenuMore: true
-        });
+      if (_titleInst) {
+        _titleInst.setValue(noteTitle);
       }
-    };
+    } else if (title !== noteTitle) {
+      dispatch((0, _reducer.editNoteTitle)({
+        noteId: noteId,
+        title: title
+      }));
+    }
+  }, [noteTitle]),
+      _editDetails = (0, _uiApi.useCallback)(function () {
+    dispatch((0, _reducer2.showDetails)(note));
+    closeMenuMore();
+  }, [note]); // dispatch, closeMenuMore
 
-    _this._closeMenuMore = function () {
-      _this.setState({
-        isMenuMore: false
-      });
-    };
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-    _this._deleteNote = function () {
-      var _this$props = _this.props,
-          deleteNote = _this$props.deleteNote,
-          columnId = _this$props.columnId,
-          note = _this$props.note;
-      deleteNote({
-        columnId: columnId,
-        noteId: note.id
-      });
-    };
 
-    _this._blurTitle = function (evt) {
-      var newTitle = evt.target.value,
-          _this$props2 = _this.props,
-          note = _this$props2.note,
-          editNoteTitle = _this$props2.editNoteTitle;
-
-      if (newTitle !== note.title) {
-        editNoteTitle({
-          noteId: note.id,
-          title: newTitle
-        });
-      }
-    };
-
-    _this._toggleDetails = function () {
-      _this.setState(function (prevState) {
-        return {
-          isDetails: !prevState.isDetails
-        };
-      });
-    };
-
-    _this._editDetails = function () {
-      var _this$props3 = _this.props,
-          note = _this$props3.note,
-          editDetails = _this$props3.editDetails;
-      editDetails(note);
-
-      _this._closeMenuMore();
-    };
-
-    _this.state = _getState(props);
-    return _this;
-  }
-
-  var _proto = DnDNote.prototype;
-
-  _proto.render = function render() {
-    var _this$props4 = this.props,
-        dragHandleProps = _this$props4.dragHandleProps,
-        note = _this$props4.note,
-        _this$state = this.state,
-        noteTitle = _this$state.noteTitle,
-        isMenuMore = _this$state.isMenuMore,
-        isDetails = _this$state.isDetails;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL,
-      id: note.id,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteCaption["default"], {
-        dragHandleProps: dragHandleProps,
-        isDetails: isDetails,
-        onClickHandle: this._toggleDetails,
-        noteTitle: noteTitle,
-        onBlurTitle: this._blurTitle,
-        isMenuMore: isMenuMore,
-        onClickMenuMore: this._openMenuMore,
-        onCloseMenuMore: this._closeMenuMore,
-        onEditDetails: this._editDetails,
-        onRemoveNote: this._deleteNote
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteDetails["default"], {
-        isShow: isDetails,
-        note: note,
-        editDetails: this._editDetails
-      })]
-    });
-  };
-
-  return DnDNote;
-}(_react.Component);
-
-var mapDispatchToProps = {
-  deleteNote: _actions.deleteNote,
-  editNoteTitle: _reducer.editNoteTitle,
-  editDetails: _reducer2.showDetails
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    className: CL,
+    id: noteId,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteCaption["default"], {
+      dragHandleProps: dragHandleProps,
+      isDetails: isDetails,
+      onClickHandle: toggleDetails,
+      refTitle: _refTitle,
+      noteTitle: noteTitle,
+      onBlurTitle: _blurTitle,
+      isMenuMore: isMenuMore,
+      onClickMenuMore: openMenuMore,
+      onCloseMenuMore: closeMenuMore,
+      onEditDetails: _editDetails,
+      onRemoveNote: _deleteNote
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_NoteDetails["default"], {
+      isShow: isDetails,
+      note: note,
+      editDetails: _editDetails
+    })]
+  });
 };
+/*
+DnDNote.propTypes = {
+  dragHandleProps: PropsType.object,
+  note: PropsType.object
+  columnId: PropsType.string
+}
+*/
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(DnDNote);
 
+var _default = DnDNote;
 exports["default"] = _default;
 //# sourceMappingURL=Note.js.map

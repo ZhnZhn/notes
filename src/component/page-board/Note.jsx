@@ -1,124 +1,118 @@
-import { Component } from '../uiApi'
 //import PropsType from 'prop-types'
+import {
+  useRef,
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
-import { connect } from 'react-redux'
+import useBool from '../hooks/useBool';
+import useToggle from '../hooks/useToggle';
 
-import { deleteNote } from '../../flux/note/actions'
-import { editNoteTitle } from '../../flux/note/reducer'
+import { useDispatch } from 'react-redux';
 
-import { showDetails } from '../../flux/modal/reducer'
+import { deleteNote } from '../../flux/note/actions';
+import { editNoteTitle } from '../../flux/note/reducer';
 
-import NoteCaption from './NoteCaption'
-import NoteDetails from './NoteDetails'
+import { showDetails } from '../../flux/modal/reducer';
+
+import NoteCaption from './NoteCaption';
+import NoteDetails from './NoteDetails';
 
 const CL = 'note';
 
-const _getState = (props) => ({
-  noteTitle: props.note.title,
-  isMenuMore: false,
-  isDetails: false
-});
-
-class DnDNote extends Component {
-  /*
-  static propTypes = {
-    dragHandleProps: PropsType.object,
-    note: PropsType.object
-    columnId: PropsType.string
-  }
-  */
-
-  constructor(props){
-    super(props)
-    this.state = _getState(props)
-  }
-
-  _openMenuMore = () => {
-    if (!this.state.isMenuMore) {
-      this.setState({
-        isMenuMore: true
-      })
-    }
-  }
-
-  _closeMenuMore = () => {
-    this.setState({
-      isMenuMore: false
-    })
-  }
-
-  _deleteNote = () => {
-    const { deleteNote, columnId, note } = this.props
-    deleteNote({ columnId, noteId: note.id})
-  }
-
-  _blurTitle = (evt) => {
-    const newTitle = evt.target.value
-    , { note, editNoteTitle } = this.props;
-    if (newTitle !== note.title) {
-      editNoteTitle({ noteId: note.id, title: newTitle })
-    }
-  }
-
-  _toggleDetails = () => {
-    this.setState(prevState => ({
-      isDetails: !prevState.isDetails
+const DnDNote = (
+  props
+) => {
+  const {
+    columnId,
+    note,
+    dragHandleProps
+  } = props
+  , {
+    id:noteId,
+    title:noteTitle
+  } = note
+  , _refTitle = useRef()
+  , [
+    isMenuMore,
+    openMenuMore,
+    closeMenuMore
+  ] = useBool()
+  , [
+    isDetails,
+    toggleDetails
+  ] = useToggle()
+  , dispatch = useDispatch()
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _deleteNote = useCallback(() => {
+    dispatch(deleteNote({
+      columnId,
+      noteId
     }))
-  }
+  }, [columnId])
+  //dispatch, noteId
+  /*eslint-enable react-hooks/exhaustive-deps */
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _blurTitle = useCallback((evt) => {
+    const title = evt.target.value;
+    if (!title) {
+      const _titleInst = getRefValue(_refTitle);
+      if (_titleInst) {
+        _titleInst.setValue(noteTitle)
+      }
+    } else if (title !== noteTitle) {
+      dispatch(editNoteTitle({
+        noteId,
+        title
+      }))
+    }
+  }, [noteTitle])
+  // dispatch, noteId
+  /*eslint-enable react-hooks/exhaustive-deps */
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _editDetails = useCallback(() => {
+     dispatch(showDetails(note))
+     closeMenuMore()
+  }, [note]);
+  // dispatch, closeMenuMore
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _editDetails = () => {
-    const { note, editDetails } = this.props;
-    editDetails(note)
-    this._closeMenuMore()
-  }
 
-  render(){
-    const {
-      dragHandleProps,
-      note
-    } = this.props
-    , {
-      noteTitle,
-      isMenuMore,
-      isDetails
-    } = this.state;
+  return (
+    <div
+      className={CL}
+      id={noteId}
+    >
+      <NoteCaption
+        dragHandleProps={dragHandleProps}
+        isDetails={isDetails}
+        onClickHandle={toggleDetails}
 
-    return (
-      <div
-        className={CL}
-        id={note.id}
-      >
-        <NoteCaption
-          dragHandleProps={dragHandleProps}
-          isDetails={isDetails}
-          onClickHandle={this._toggleDetails}
+        refTitle={_refTitle}
+        noteTitle={noteTitle}
+        onBlurTitle={_blurTitle}
 
-          noteTitle={noteTitle}
-          onBlurTitle={this._blurTitle}
-
-          isMenuMore={isMenuMore}
-          onClickMenuMore={this._openMenuMore}
-          onCloseMenuMore={this._closeMenuMore}
-          onEditDetails={this._editDetails}
-          onRemoveNote={this._deleteNote}
-        />
-        <NoteDetails
-          isShow={isDetails}
-          note={note}
-          editDetails={this._editDetails}
-        />
-      </div>
-    );
-  }
+        isMenuMore={isMenuMore}
+        onClickMenuMore={openMenuMore}
+        onCloseMenuMore={closeMenuMore}
+        onEditDetails={_editDetails}
+        onRemoveNote={_deleteNote}
+      />
+      <NoteDetails
+        isShow={isDetails}
+        note={note}
+        editDetails={_editDetails}
+      />
+    </div>
+  );
 }
 
-const mapDispatchToProps = {
-  deleteNote,
-  editNoteTitle,
-  editDetails: showDetails
-};
+/*
+DnDNote.propTypes = {
+  dragHandleProps: PropsType.object,
+  note: PropsType.object
+  columnId: PropsType.string
+}
+*/
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(DnDNote)
+export default DnDNote
