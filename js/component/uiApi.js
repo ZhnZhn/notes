@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.memo = exports.getRefValue = exports.forwardRef = exports.createElement = exports.createContext = exports.cloneElement = exports.StrictMode = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.createElement = exports.createContext = exports.cloneElement = exports.StrictMode = exports.Component = void 0;
 
 var _react = require("react");
 
@@ -25,4 +25,12 @@ var getRefValue = function getRefValue(ref) {
 };
 
 exports.getRefValue = getRefValue;
+
+var setRefValue = function setRefValue(ref, value) {
+  if (ref) {
+    ref.current = value;
+  }
+};
+
+exports.setRefValue = setRefValue;
 //# sourceMappingURL=uiApi.js.map
