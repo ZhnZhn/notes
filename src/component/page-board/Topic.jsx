@@ -1,23 +1,30 @@
-import { Component } from '../uiApi'
+import {
+  useCallback
+} from '../uiApi';
 
-import { connect } from 'react-redux'
+import {
+  useDispatch
+} from 'react-redux';
+
+import useBool from '../hooks/useBool';
+
 import {
   editColumnTitle,
   toggleColumn
-} from '../../flux/column/reducer'
+} from '../../flux/column/reducer';
  import {
    removeColumn
- } from '../../flux/column/actions'
+ } from '../../flux/column/actions';
 
-import isArrEmpty from '../../utils/isArrEmpty'
+import isArrEmpty from '../../utils/isArrEmpty';
 
-import SvgMore from '../zhn/SvgMore'
-import TopicMenuMore from './TopicMenuMore'
-import Card from '../zhn-card/Card'
-import FlatButton from '../zhn-m/FlatButton'
-import DnDNoteList from './DnDNoteList'
+import SvgMore from '../zhn/SvgMore';
+import TopicMenuMore from './TopicMenuMore';
+import Card from '../zhn-card/Card';
+import FlatButton from '../zhn-m/FlatButton';
+import DnDNoteList from './DnDNoteList';
 
-import CL from '../style/CL'
+import CL from '../style/CL';
 
 const S_SVG_MORE = { marginRight: 8 }
 , S_MENU_MORE = {
@@ -25,126 +32,109 @@ const S_SVG_MORE = { marginRight: 8 }
     width: 150
 };
 
+const Topic = ({
+  boardId,
+  column,
+  notes,
+  addNote
+}) => {
+  const {
+    id:columnId,
+    isHide,
+    title,
+    withAdd,
+    noteIds
+  } = column
+  , [
+    isMenuMore,
+    _openMenuMore,
+    _closeMenuMore
+  ] = useBool()
+  , dispatch = useDispatch()
 
-class Topic extends Component {
-  state = {
-    isMenuMore: false
-  }
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hHideTopic = useCallback(() => {
+    dispatch(toggleColumn({
+      columnId
+    }))
+  }, [columnId])
+  // dispatch
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _openMenuMore = () => {
-    if (!this.state.isMenuMore) {
-      this.setState({
-        isMenuMore: true
-      })
-    }
-  }
+  , _hAddNewTask = useCallback(() => {
+    addNote({ columnId })
+  }, [addNote, columnId])
 
-  _closeMenuMore = () => {
-    this.setState({
-      isMenuMore: false
-    })
-  }
-
-  _hHideTopic = () => {
-    const { toggleColumn, column } = this.props;
-    toggleColumn({ columnId: column.id })
-  }
-
-  _hAddNewTask = () => {
-    const { column, addNote } = this.props;
-    addNote({ columnId: column.id })
-  }
-
-  _hBlurTitle = (evt) => {
-     const { column, editColumnTitle } = this.props;
-     editColumnTitle({
-       columnId: column.id,
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hBlurTitle = useCallback((evt) => {
+     dispatch(editColumnTitle({
+       columnId,
        title: evt.target.value
-     })
-  }
+     }))
+  }, [columnId])
+  // dispatch
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _hRemoveColumn = () => {
-    const { boardId, column, removeColumn } = this.props;
-    removeColumn({
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hRemoveColumn = useCallback(() => {
+    dispatch(removeColumn({
       boardId,
-      columnId: column.id
-    })
-  }
+      columnId
+    }))
+  }, [boardId, columnId])
+  // dispatch
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  render() {
-    const {
-      isMenuMore
-    } = this.state
-    , {
-      column,
-      notes
-    } = this.props
-    , {
-      id,
-      isHide,
-      title,
-      withAdd,
-      noteIds
-    } = column;
+  , _numberOfNotes = noteIds.length;
 
-    return (
-      <Card.Item isHide={isHide}>
-        <Card.Header>
-          <SvgMore
-            style={S_SVG_MORE}
-            title="Click to open topic menu"
-            onClick={this._openMenuMore}
+  return (
+    <Card.Item isHide={isHide}>
+      <Card.Header>
+        <SvgMore
+          style={S_SVG_MORE}
+          title="Click to open topic menu"
+          onClick={_openMenuMore}
+        />
+        { isMenuMore && <TopicMenuMore
+          style={S_MENU_MORE}
+          isShow={isMenuMore}
+          onAddNote={_hAddNewTask}
+          onHideTopic={_hHideTopic}
+          onClose={_closeMenuMore}
+        />}
+        <Card.Title
+          initialValue={title}
+          onBlur={_hBlurTitle}
+        />
+        <Card.Counter value={_numberOfNotes} />
+        {
+          withAdd &&
+          <FlatButton
+            clCaption={CL.CARD_BT}
+            caption="AddNote"
+            title="Click to add a new note"
+            timeout={1000}
+            onClick={_hAddNewTask}
           />
-          { isMenuMore && <TopicMenuMore
-            style={S_MENU_MORE}
-            isShow={isMenuMore}
-            onAddNote={this._hAddNewTask}
-            onHideTopic={this._hHideTopic}
-            onClose={this._closeMenuMore}
-          />}
-          <Card.Title
-            initialValue={title}
-            onBlur={this._hBlurTitle}
-          />
-          <Card.Counter value={noteIds.length} />
-          {
-            withAdd &&
+        }
+      </Card.Header>
+      <DnDNoteList
+        cId={columnId}
+        noteIds={noteIds}
+        notes={notes}
+      />
+      <div>
+        {
+          isArrEmpty(noteIds) &&
             <FlatButton
               clCaption={CL.CARD_BT}
-              caption="AddNote"
-              title="Click to add a new note"
-              timeout={1000}
-              onClick={this._hAddNewTask}
+              caption="Remove Topic"
+              onClick={_hRemoveColumn}
             />
-          }
-        </Card.Header>
-        <DnDNoteList
-          cId={id}
-          noteIds={noteIds}
-          notes={notes}
-        />
-        <div>
-          {
-            isArrEmpty(noteIds) &&
-              <FlatButton
-                clCaption={CL.CARD_BT}
-                caption="Remove Topic"
-                onClick={this._hRemoveColumn}
-              />
-          }
-        </div>
-      </Card.Item>
-    );
-  }
+        }
+      </div>
+    </Card.Item>
+  );
 }
 
-const mapDispatchToProps = {
-  editColumnTitle,
-  removeColumn,
-  toggleColumn
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Topic)
+export default Topic

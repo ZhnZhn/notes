@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _reactRedux = require("react-redux");
+
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _reducer = require("../../flux/column/reducer");
 
@@ -39,138 +39,85 @@ var S_SVG_MORE = {
   width: 150
 };
 
-var Topic = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(Topic, _Component);
+var Topic = function Topic(_ref) {
+  var boardId = _ref.boardId,
+      column = _ref.column,
+      notes = _ref.notes,
+      addNote = _ref.addNote;
 
-  function Topic() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      isMenuMore: false
-    };
-
-    _this._openMenuMore = function () {
-      if (!_this.state.isMenuMore) {
-        _this.setState({
-          isMenuMore: true
-        });
-      }
-    };
-
-    _this._closeMenuMore = function () {
-      _this.setState({
-        isMenuMore: false
-      });
-    };
-
-    _this._hHideTopic = function () {
-      var _this$props = _this.props,
-          toggleColumn = _this$props.toggleColumn,
-          column = _this$props.column;
-      toggleColumn({
-        columnId: column.id
-      });
-    };
-
-    _this._hAddNewTask = function () {
-      var _this$props2 = _this.props,
-          column = _this$props2.column,
-          addNote = _this$props2.addNote;
-      addNote({
-        columnId: column.id
-      });
-    };
-
-    _this._hBlurTitle = function (evt) {
-      var _this$props3 = _this.props,
-          column = _this$props3.column,
-          editColumnTitle = _this$props3.editColumnTitle;
-      editColumnTitle({
-        columnId: column.id,
-        title: evt.target.value
-      });
-    };
-
-    _this._hRemoveColumn = function () {
-      var _this$props4 = _this.props,
-          boardId = _this$props4.boardId,
-          column = _this$props4.column,
-          removeColumn = _this$props4.removeColumn;
-      removeColumn({
-        boardId: boardId,
-        columnId: column.id
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = Topic.prototype;
-
-  _proto.render = function render() {
-    var isMenuMore = this.state.isMenuMore,
-        _this$props5 = this.props,
-        column = _this$props5.column,
-        notes = _this$props5.notes,
-        id = column.id,
-        isHide = column.isHide,
-        title = column.title,
-        withAdd = column.withAdd,
-        noteIds = column.noteIds;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
-      isHide: isHide,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Header, {
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
-          style: S_SVG_MORE,
-          title: "Click to open topic menu",
-          onClick: this._openMenuMore
-        }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore["default"], {
-          style: S_MENU_MORE,
-          isShow: isMenuMore,
-          onAddNote: this._hAddNewTask,
-          onHideTopic: this._hHideTopic,
-          onClose: this._closeMenuMore
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
-          value: title,
-          onBlur: this._hBlurTitle
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
-          value: noteIds.length
-        }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-          clCaption: _CL["default"].CARD_BT,
-          caption: "AddNote",
-          title: "Click to add a new note",
-          timeout: 1000,
-          onClick: this._hAddNewTask
-        })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDNoteList["default"], {
-        cId: id,
-        noteIds: noteIds,
-        notes: notes
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        children: (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-          clCaption: _CL["default"].CARD_BT,
-          caption: "Remove Topic",
-          onClick: this._hRemoveColumn
-        })
-      })]
+  var columnId = column.id,
+      isHide = column.isHide,
+      title = column.title,
+      withAdd = column.withAdd,
+      noteIds = column.noteIds,
+      _useBool = (0, _useBool2["default"])(),
+      isMenuMore = _useBool[0],
+      _openMenuMore = _useBool[1],
+      _closeMenuMore = _useBool[2],
+      dispatch = (0, _reactRedux.useDispatch)(),
+      _hHideTopic = (0, _uiApi.useCallback)(function () {
+    dispatch((0, _reducer.toggleColumn)({
+      columnId: columnId
+    }));
+  }, [columnId]),
+      _hAddNewTask = (0, _uiApi.useCallback)(function () {
+    addNote({
+      columnId: columnId
     });
-  };
+  }, [addNote, columnId]),
+      _hBlurTitle = (0, _uiApi.useCallback)(function (evt) {
+    dispatch((0, _reducer.editColumnTitle)({
+      columnId: columnId,
+      title: evt.target.value
+    }));
+  }, [columnId]),
+      _hRemoveColumn = (0, _uiApi.useCallback)(function () {
+    dispatch((0, _actions.removeColumn)({
+      boardId: boardId,
+      columnId: columnId
+    }));
+  }, [boardId, columnId]),
+      _numberOfNotes = noteIds.length;
 
-  return Topic;
-}(_react.Component);
-
-var mapDispatchToProps = {
-  editColumnTitle: _reducer.editColumnTitle,
-  removeColumn: _actions.removeColumn,
-  toggleColumn: _reducer.toggleColumn
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {
+    isHide: isHide,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Header, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+        style: S_SVG_MORE,
+        title: "Click to open topic menu",
+        onClick: _openMenuMore
+      }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore["default"], {
+        style: S_MENU_MORE,
+        isShow: isMenuMore,
+        onAddNote: _hAddNewTask,
+        onHideTopic: _hHideTopic,
+        onClose: _closeMenuMore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Title, {
+        initialValue: title,
+        onBlur: _hBlurTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
+        value: _numberOfNotes
+      }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        clCaption: _CL["default"].CARD_BT,
+        caption: "AddNote",
+        title: "Click to add a new note",
+        timeout: 1000,
+        onClick: _hAddNewTask
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDNoteList["default"], {
+      cId: columnId,
+      noteIds: noteIds,
+      notes: notes
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        clCaption: _CL["default"].CARD_BT,
+        caption: "Remove Topic",
+        onClick: _hRemoveColumn
+      })
+    })]
+  });
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Topic);
-
+var _default = Topic;
 exports["default"] = _default;
 //# sourceMappingURL=Topic.js.map
