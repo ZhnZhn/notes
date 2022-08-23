@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.createElement = exports.createContext = exports.cloneElement = exports.StrictMode = exports.Component = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = exports.StrictMode = exports.Component = void 0;
 
 var _react = require("react");
 
@@ -33,4 +33,18 @@ var setRefValue = function setRefValue(ref, value) {
 };
 
 exports.setRefValue = setRefValue;
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
+var focusRefElement = function focusRefElement(ref1) {
+  var _el = getRefValue(ref1);
+
+  if (_el && _isFn(_el.focus)) {
+    _el.focus();
+  }
+};
+
+exports.focusRefElement = focusRefElement;
 //# sourceMappingURL=uiApi.js.map

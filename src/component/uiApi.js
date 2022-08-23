@@ -25,3 +25,14 @@ export const setRefValue = (
     ref.current = value
   }
 }
+
+const _isFn = fn => typeof fn === 'function';
+
+export const focusRefElement = (
+  ref1
+) => {
+  const _el = getRefValue(ref1);
+  if (_el && _isFn(_el.focus)) {
+    _el.focus()
+  }
+}

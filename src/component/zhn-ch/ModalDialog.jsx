@@ -1,155 +1,158 @@
-import { Component } from '../uiApi'
 //import { PropTypes } from 'react'
+import {
+  useRef,
+  useCallback,
+  useEffect,
+  getRefValue,
+  focusRefElement
+} from '../uiApi';
 
-import DialogCaption from './DialogCaption'
-import FlatButton from '../zhn-m/FlatButton'
+import useKeyEscape from '../hooks/useKeyEscape';
+
+import DialogCaption from './DialogCaption';
+import FlatButton from '../zhn-m/FlatButton';
 
 const CL_DIALOG = 'modal-dialog'
 , CL_MD_ACTIONS = 'md__actions'
 , CL_SHOWING = 'show-popup'
-, CL_HIDING = 'hide-popup'
-
 , S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' }
-, S_HIDE_POPUP = {
-  opacity: 0,
-  transform: 'scaleY(0)'
+, S_HIDE = { display: 'none' };
+
+const DialogButtons = ({
+  buttons,
+  refBtClose,
+  withoutClose,
+  onClose
+}) => (
+  <div className={CL_MD_ACTIONS}>
+    {buttons}
+    { !withoutClose &&
+       <FlatButton
+         ref={refBtClose}
+         caption="Close"
+         timeout={0}
+         onClick={onClose}
+       />
+    }
+  </div>
+);
+
+const _crClassNameStyle = (
+  isShow,
+  className
+) => {
+  const _cl = `${CL_DIALOG} ${className}`;
+  return isShow
+    ? [
+       `${_cl} ${CL_SHOWING}`,
+       S_SHOW
+      ]
+   :  [
+       _cl,
+       S_HIDE
+     ];
 };
 
-class ModalDialog extends Component {
-  /*
-   static propTypes = {
-     style: PropTypes.object,
-     caption: PropTypes.string,
-     isShow: PropTypes.bool,
-     isWithButton: PropTypes.bool,
-     isNotUpdate: PropTypes.bool,
-     withoutClose: PropTypes.bool,
-     isFocusClose: PropTypes.bool,
-     commandButtons: PropTypes.arrayOf(PropTypes.element),
-     timeout: PropTypes.number,
-     onClose: PropTypes.func
-   }
-   */
-   static defaultProps = {
-     className: '',
-     isWithButton: true,
-     isNotUpdate: false,
-     isFocusClose: true,
-     timeout: 450
-   }
+const _useFocusBtClose = (
+  isShow,
+  isFocusClose
+) => {
+  const _refBt = useRef()
+  , _refPrevFocused = useRef()
+  , _refIsShowPrev = useRef()
+  , focus = useCallback(() => {
+      _refPrevFocused.current = document.activeElement
+      if (isFocusClose) {
+        focusRefElement(_refBt)
+      }
+  }, [isFocusClose])
+  , focusPrev = useCallback(()=>{
+      focusRefElement(_refPrevFocused)
+      _refPrevFocused.current = null
+  }, []);
 
-   constructor(props){
-     super(props)
-     this.wasClosing = false
-   }
-
-   shouldComponentUpdate(nextProps, nextState){
-     if (nextProps !== this.props){
-       if (nextProps.isNotUpdate){
-         return false;
-       }
-     }
-     return true;
-   }
-
-   focusBtClose(){
-     if (this.props.isFocusClose && this._btClose) {
-       this._btClose.focus()
-     }
-   }
-
-   componentDidMount(){
-     this.focusBtClose()
-   }
-
-   componentDidUpdate(prevProps, prevState){
-    const { timeout, isShow } = this.props
-    if (prevProps.isShow && !isShow){
-       this.wasClosing = true
-       setTimeout(
-         () => { this.setState({}) },
-         timeout
-       )
-     }
-     if (prevProps.isShow === false && isShow) {
-       this.focusBtClose()
-     }
-   }
-
-
-  _hClickDialog = (event) => {
-     event.stopPropagation()
-   }
-
-  _refBtClose = n => this._btClose = n
-
-  _renderCommandButton = () => {
-    const {
-            commandButtons,
-            withoutClose,
-            onClose
-          } = this.props;
-    return (
-      <div className={CL_MD_ACTIONS}>
-        {commandButtons}
-        { !withoutClose &&
-           <FlatButton
-             ref={this._refBtClose}
-             caption="Close"
-             timeout={0}
-             onClick={onClose}
-           />
-        }
-      </div>
-    );
-  }
-
-  render(){
-    const {
-      className,
-      style,
-      isShow,
-      isWithButton,
-      caption,
-      captionStyle,
-      children,
-      onClose
-    } = this.props;
-
-    let _className, _style;
-
-    if (this.wasClosing){
-      _style = S_HIDE
-      this.wasClosing = false
-    } else {
-      _className = isShow
-          ? `${CL_DIALOG} ${className} ${CL_SHOWING}`
-          : `${CL_DIALOG} ${className} ${CL_HIDING}`
-      _style = isShow
-          ? S_SHOW
-          : S_HIDE_POPUP
+  useEffect(()=>{
+    const _isPrevShow = getRefValue(_refIsShowPrev);
+    if (isShow && !_isPrevShow) {
+      focus()
+    } else if (!isShow && _isPrevShow) {
+      focusPrev()
     }
+    _refIsShowPrev.current = isShow
+  }, [isShow, focus, focusPrev])
 
-    return (
-         <div
-            role="dialog"
-            className={_className}
-            style={{...style, ..._style}}
-            onClick={this._hClickDialog}
-         >
-            <DialogCaption
-               rootStyle={captionStyle}
-               caption={caption}
-               onClose={onClose}
-            />
-            <div>
-              {children}
-            </div>
-            { isWithButton && this._renderCommandButton() }
-        </div>
-    );
-  }
+  return _refBt;
+};
+
+const ModalDialog = ({
+  className='',
+  style,
+  isShow,
+  isWithButton=true,
+  isFocusClose=true,
+  caption,
+  captionStyle,
+  children,
+  commandButtons,
+  withoutClose,
+  onClose
+}) => {
+  const _refBtClose = _useFocusBtClose(
+     isShow,
+     isFocusClose
+   )
+  , _hClickDialog = useCallback(event => {
+    event.stopPropagation()
+  }, [])
+  , _hKeyDown = useKeyEscape(onClose)
+  , [
+    _className,
+    _style
+  ] = _crClassNameStyle(isShow, className);
+
+  return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+    <div
+       role="dialog"
+       aria-label={caption}
+       aria-hidden={!isShow}
+       className={_className}
+       style={{...style, ..._style}}
+       onClick={_hClickDialog}
+       onKeyDown={_hKeyDown}
+    >
+   {/*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/}
+       <DialogCaption
+          rootStyle={captionStyle}
+          caption={caption}
+          onClose={onClose}
+       />
+       <div>
+         {children}
+       </div>
+       { isWithButton && <DialogButtons
+           buttons={commandButtons}
+           refBtClose={_refBtClose}
+           withoutClose={withoutClose}
+           onClose={onClose}
+         /> }
+   </div>
+  );
 }
+
+/*
+ModalDialog.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.object,
+  caption: PropTypes.string,
+  captionStyle: PropTypes.object,
+  isShow: PropTypes.bool,
+  isWithButton: PropTypes.bool,
+  withoutClose: PropTypes.bool,
+  isFocusClose: PropTypes.bool,
+  commandButtons: PropTypes.arrayOf(PropTypes.element),
+  onClose: PropTypes.func
+}
+*/
 
 export default ModalDialog
