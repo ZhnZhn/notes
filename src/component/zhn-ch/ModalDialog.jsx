@@ -8,6 +8,7 @@ import {
 } from '../uiApi';
 
 import useKeyEscape from '../hooks/useKeyEscape';
+import crCn from '../zhn-utils/crCn';
 
 import DialogCaption from './DialogCaption';
 import FlatButton from '../zhn-m/FlatButton';
@@ -36,22 +37,6 @@ const DialogButtons = ({
     }
   </div>
 );
-
-const _crClassNameStyle = (
-  isShow,
-  className
-) => {
-  const _cl = `${CL_DIALOG} ${className}`;
-  return isShow
-    ? [
-       `${_cl} ${CL_SHOWING}`,
-       S_SHOW
-      ]
-   :  [
-       _cl,
-       S_HIDE
-     ];
-};
 
 const _useFocusBtClose = (
   isShow,
@@ -105,10 +90,9 @@ const ModalDialog = ({
     event.stopPropagation()
   }, [])
   , _hKeyDown = useKeyEscape(onClose)
-  , [
-    _className,
-    _style
-  ] = _crClassNameStyle(isShow, className);
+  , _className = crCn(`${CL_DIALOG} ${className}`, [isShow, CL_SHOWING])
+  , _style = isShow ? S_SHOW : S_HIDE;
+
 
   return (
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/

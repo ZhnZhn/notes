@@ -11,6 +11,8 @@ var _uiApi = require("../uiApi");
 
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
@@ -42,12 +44,6 @@ var DialogButtons = function DialogButtons(_ref) {
       onClick: onClose
     })]
   });
-};
-
-var _crClassNameStyle = function _crClassNameStyle(isShow, className) {
-  var _cl = CL_DIALOG + " " + className;
-
-  return isShow ? [_cl + " " + CL_SHOWING, S_SHOW] : [_cl, S_HIDE];
 };
 
 var _useFocusBtClose = function _useFocusBtClose(isShow, isFocusClose) {
@@ -101,9 +97,8 @@ var ModalDialog = function ModalDialog(_ref2) {
     event.stopPropagation();
   }, []),
       _hKeyDown = (0, _useKeyEscape["default"])(onClose),
-      _crClassNameStyle2 = _crClassNameStyle(isShow, className),
-      _className = _crClassNameStyle2[0],
-      _style = _crClassNameStyle2[1];
+      _className = (0, _crCn["default"])(CL_DIALOG + " " + className, [isShow, CL_SHOWING]),
+      _style = isShow ? S_SHOW : S_HIDE;
 
   return (
     /*#__PURE__*/
