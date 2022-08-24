@@ -63,21 +63,21 @@ const _renderOptions = (
 
 const OptionsPane = ({
   isShow,
+  style,
   options,
   item,
-  rootStyle,
   clItem,
   onSelect,
   onClose
 }) => (
   <ModalPane
     isShow={isShow}
-    style={rootStyle}
+    style={style}
     onClose={onClose}
   >
     <ShowHide
       isShow={isShow}
-      style={{...S_PANE, ...rootStyle}}
+      style={{...S_PANE, ...style}}
     >
       {_renderOptions(options, item, clItem, onSelect, isShow)}
     </ShowHide>
