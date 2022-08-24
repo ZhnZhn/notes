@@ -1,10 +1,10 @@
-import withTheme from '../hoc/withTheme'
-import styleConfig from '../style/Comp.Style'
-import crCn from '../zhn-utils/crCn'
+import useTheme from '../hooks/useTheme';
+import styleConfig from '../style/Comp.Style';
+import crCn from '../zhn-utils/crCn';
 
-import ModalPane from '../zhn-ch/ModalPane'
-import FlatButton from '../zhn-m/FlatButton'
-import CL from '../style/CL'
+import ModalPane from '../zhn-ch/ModalPane';
+import FlatButton from '../zhn-m/FlatButton';
+import CL from '../style/CL';
 
 const S_BT = {
   paddingLeft: 8,
@@ -13,15 +13,14 @@ const S_BT = {
 };
 
 const NoteMenuMore = ({
-  theme,
+  isShow,
   className,
   style,
-  isShow,
   onClose,
   onEdit,
   onRemove
 }) => {
-  const TS = theme.createStyle(styleConfig)
+  const TS = useTheme(styleConfig)
   , _className = crCn(CL.MODAL_PANE, className);
   return (
     <ModalPane
@@ -44,4 +43,4 @@ const NoteMenuMore = ({
   );
 };
 
-export default withTheme(NoteMenuMore)
+export default NoteMenuMore
