@@ -2,6 +2,7 @@
 
 export const sApp = {
   app: (state /*: StoreState */) => state.app || {},
+  modal: (state /*: StoreState */) => state.modal || {},
   //state.app.boardId
   currentBoard: (state /*: StoreState */) => sApp
     .app(state).boardId,

@@ -1,12 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = exports.sColumn = exports.sNoteLabel = exports.sNote = exports.sBoard = exports.sDrawer = exports.sApp = void 0;
+exports.sNoteLabel = exports.sNote = exports.sDrawer = exports.sColumn = exports.sBoard = exports.sApp = exports["default"] = void 0;
 var sApp = {
   app: function app(state
   /*: StoreState */
   ) {
     return state.app || {};
+  },
+  modal: function modal(state
+  /*: StoreState */
+  ) {
+    return state.modal || {};
   },
   //state.app.boardId
   currentBoard: function currentBoard(state
