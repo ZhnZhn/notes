@@ -2,7 +2,9 @@ import useTheme from '../hooks/useTheme';
 import crStyle from '../zhn-utils/crStyle';
 
 import styleConfig from '../style/Item.Style';
-import CL from '../style/CL';
+import {
+  CL_ITEM_CARD
+} from '../style/CL';
 
 const S_HIDE = { display: 'none' };
 
@@ -15,7 +17,7 @@ const Item = ({
 
   return (
     <section
-      className={CL.ITEM_CARD}
+      className={CL_ITEM_CARD}
       style={_style}
     >
       {children}

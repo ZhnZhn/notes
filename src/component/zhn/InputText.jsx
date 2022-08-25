@@ -6,7 +6,9 @@ import {
 } from '../uiApi';
 
 import crCn from '../zhn-utils/crCn';
-import CL from '../style/CL';
+import {
+  CL_INPUT
+} from '../style/CL';
 
 import isKeyEnter from './isKeyEnter';
 import isKeyDelete from './isKeyDelete';
@@ -47,7 +49,7 @@ const InputText = forwardRef(({
     }
   }), [maxLength])
 
-  const _className = crCn(CL.INPUT, className);
+  const _className = crCn(CL_INPUT, className);
 
   return (
     <input

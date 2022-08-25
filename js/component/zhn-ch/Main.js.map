@@ -1,1 +1,13 @@
-{"version":3,"sources":["../../../src/component/zhn-ch/Main.jsx"],"names":["Main","children","CL","CONT"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,QAAH,QAAGA,QAAH;AAAA,sBACX;AAAM,IAAA,SAAS,EAAEC,eAAGC,IAApB;AAAA,cACGF;AADH,IADW;AAAA,CAAb;;eAMeD,I","sourcesContent":["import CL from '../style/CL'\r\n\r\nconst Main = ({ children }) => (\r\n  <main className={CL.CONT}>\r\n    {children}\r\n  </main>\r\n);\r\n\r\nexport default Main\r\n"],"file":"Main.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-ch/Main.js"
+ ],
+ "file": "../../../src/component/zhn-ch/Main.js",
+ "names": [
+  "Main",
+  "children",
+  "CL_CONT"
+ ],
+ "mappings": ";;;;;AAAA;;;;AAEA,IAAMA,IAAI,GAAG,SAAPA,IAAO;EAAA,IAAGC,QAAH,QAAGA,QAAH;EAAA,oBACX;IAAM,SAAS,EAAEC,WAAjB;IAAA,UACGD;EADH,EADW;AAAA,CAAb;;eAMeD,I"
+}

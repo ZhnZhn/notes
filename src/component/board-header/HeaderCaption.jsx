@@ -1,17 +1,22 @@
 import { useSelector } from 'react-redux';
-import s from '../../flux/selectors';
+import { sBoard } from '../../flux/selectors';
 
 import Logo from '../zhn/Logo';
-import CL from '../style/CL';
-
 import crTitle from './crTitle';
+import {
+  CL_LOGO_BOARD,
+  CL_HEADER_TITLE,
+  CL_TITLE_BOARD
+} from '../style/CL';
+
+const _CL_TITLE = `${CL_HEADER_TITLE} ${CL_TITLE_BOARD}`;
 
 const HeaderCaption = () => {
-  const board = useSelector(s.board.currentBoard);
+  const board = useSelector(sBoard.currentBoard);
   return (
   <>
-    <Logo key="logo" className={CL.LOGO_BOARD} />
-    <span className={`${CL.HEADER_TITLE} ${CL.TITLE_BOARD}`}>
+    <Logo key="logo" className={CL_LOGO_BOARD} />
+    <span className={_CL_TITLE}>
       {crTitle(board)}
     </span>
   </>);

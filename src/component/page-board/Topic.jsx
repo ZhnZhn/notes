@@ -24,7 +24,9 @@ import Card from '../zhn-card/Card';
 import FlatButton from '../zhn-m/FlatButton';
 import DnDNoteList from './DnDNoteList';
 
-import CL from '../style/CL';
+import {
+  CL_CARD_BT
+} from '../style/CL';
 
 const S_SVG_MORE = { marginRight: 8 }
 , S_MENU_MORE = {
@@ -110,7 +112,7 @@ const Topic = ({
         {
           withAdd &&
           <FlatButton
-            clCaption={CL.CARD_BT}
+            clCaption={CL_CARD_BT}
             caption="AddNote"
             title="Click to add a new note"
             timeout={1000}
@@ -127,7 +129,7 @@ const Topic = ({
         {
           isArrEmpty(noteIds) &&
             <FlatButton
-              clCaption={CL.CARD_BT}
+              clCaption={CL_CARD_BT}
               caption="Remove Topic"
               onClick={_hRemoveColumn}
             />

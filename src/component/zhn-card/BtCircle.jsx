@@ -1,4 +1,6 @@
-import CL from '../style/CL';
+import {
+  CL_BT_CIRCLE
+} from '../style/CL';
 
 const BtCircle = ({
   style,
@@ -8,7 +10,7 @@ const BtCircle = ({
   onClick
 }) => (
   <button
-    className={CL.BT_CIRCLE}
+    className={CL_BT_CIRCLE}
     style={style}
     tabIndex={tabIndex}
     title={title}

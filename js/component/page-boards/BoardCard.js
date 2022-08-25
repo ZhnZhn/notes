@@ -19,7 +19,7 @@ var _selectors = require("../../flux/selectors");
 
 var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 
@@ -77,13 +77,13 @@ var BoardCard = function BoardCard(_ref) {
       columns: columns
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
       to: "/boards/" + boardId,
-      className: _CL["default"].NAV_LINK,
+      className: _CL.CL_NAV_LINK,
       style: S_LINK,
       onClick: _hToNotes,
       children: "ToNotes"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: (0, _isArrEmpty["default"])(columnIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        clCaption: _CL["default"].CARD_BT,
+        clCaption: _CL.CL_CARD_BT,
         caption: "Remove Board",
         onClick: _hRemove
       })

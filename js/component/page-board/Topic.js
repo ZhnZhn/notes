@@ -27,7 +27,7 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _DnDNoteList = _interopRequireDefault(require("./DnDNoteList"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -98,7 +98,7 @@ var Topic = function Topic(_ref) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
         value: _numberOfNotes
       }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        clCaption: _CL["default"].CARD_BT,
+        clCaption: _CL.CL_CARD_BT,
         caption: "AddNote",
         title: "Click to add a new note",
         timeout: 1000,
@@ -110,7 +110,7 @@ var Topic = function Topic(_ref) {
       notes: notes
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: (0, _isArrEmpty["default"])(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        clCaption: _CL["default"].CARD_BT,
+        clCaption: _CL.CL_CARD_BT,
         caption: "Remove Topic",
         onClick: _hRemoveColumn
       })

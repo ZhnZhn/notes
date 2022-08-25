@@ -3,7 +3,9 @@ import styleConfig from '../style/Comp.Style';
 
 import ModalPane from '../zhn-ch/ModalPane';
 import FlatButton from '../zhn-m/FlatButton';
-import CL from '../style/CL';
+import {
+  CL_MODAL_PANE
+} from '../style/CL';
 
 const S_BT = {
   paddingLeft: 8,
@@ -21,7 +23,7 @@ const TopicMenuMore = ({
   const TS = useTheme(styleConfig);
   return (
     <ModalPane
-      className={CL.MODAL_PANE}
+      className={CL_MODAL_PANE}
       style={{...style, ...TS.COMP}}
       isShow={isShow}
       onClose={onClose}

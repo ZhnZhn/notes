@@ -17,7 +17,7 @@ var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -36,7 +36,7 @@ var NoteMenuMore = function NoteMenuMore(_ref) {
       onRemove = _ref.onRemove;
 
   var TS = (0, _useTheme["default"])(_Comp["default"]),
-      _className = (0, _crCn["default"])(_CL["default"].MODAL_PANE, className);
+      _className = (0, _crCn["default"])(_CL.CL_MODAL_PANE, className);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalPane["default"], {
     className: _className,

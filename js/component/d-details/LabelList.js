@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _LabelNote = _interopRequireDefault(require("./LabelNote"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -22,8 +22,8 @@ var LabelList = function LabelList(_ref) {
     style: S_DIV,
     children: (labels || []).map(function (item) {
       return /*#__PURE__*/(0, _jsxRuntime.jsx)(_LabelNote["default"], {
-        className: _CL["default"].NOTE_LABEL,
-        clClose: _CL["default"].NOTE_LABEL_CLOSE,
+        className: _CL.CL_NOTE_LABEL,
+        clClose: _CL.CL_NOTE_LABEL_CLOSE,
         item: item,
         onRemove: onRemove ? onRemove.bind(null, item) : void 0
       }, item.id || item.title);

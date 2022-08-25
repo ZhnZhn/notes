@@ -1,27 +1,41 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var CL = {
-  HEADER: 'header',
-  LOGO: 'header__logo-notes',
-  TITLE_GAP: 'header__title-gap',
-  LOGO_BOARD: 'header-board__logo_notes',
-  HEADER_TITLE: 'header__title',
-  TITLE_BOARD: 'header-board__title',
-  CONT: 'container-list',
-  MODAL_PANE: 'modal-pane',
-  MD_ACTIONS: 'md__actions',
-  ITEM_CARD: 'card',
-  CARD_TITLE: 'card__title',
-  CARD_BT: 'bt__card',
-  NOTE_LABEL: 'note__label',
-  NOTE_LABEL_CLOSE: 'note__label__close',
-  INPUT: 'input-text',
-  BT_CIRCLE: 'bt-circle',
-  NAV_LINK: 'nav-link',
-  ML_8: 'ml-8'
-};
-var _default = CL;
-exports["default"] = _default;
+exports.CL_TITLE_GAP = exports.CL_TITLE_BOARD = exports.CL_NOTE_LABEL_CLOSE = exports.CL_NOTE_LABEL = exports.CL_NAV_LINK = exports.CL_MODAL_PANE = exports.CL_ML_8 = exports.CL_MD_ACTIONS = exports.CL_LOGO_BOARD = exports.CL_LOGO = exports.CL_ITEM_CARD = exports.CL_INPUT = exports.CL_HEADER_TITLE = exports.CL_HEADER = exports.CL_CONT = exports.CL_CARD_TITLE = exports.CL_CARD_BT = exports.CL_BT_CIRCLE = void 0;
+var CL_HEADER = 'header';
+exports.CL_HEADER = CL_HEADER;
+var CL_LOGO = CL_HEADER + "__logo-notes";
+exports.CL_LOGO = CL_LOGO;
+var CL_TITLE_GAP = CL_HEADER + "__title-gap";
+exports.CL_TITLE_GAP = CL_TITLE_GAP;
+var CL_LOGO_BOARD = CL_HEADER + "-board__logo_notes";
+exports.CL_LOGO_BOARD = CL_LOGO_BOARD;
+var CL_HEADER_TITLE = CL_HEADER + "__title";
+exports.CL_HEADER_TITLE = CL_HEADER_TITLE;
+var CL_TITLE_BOARD = 'header-board__title';
+exports.CL_TITLE_BOARD = CL_TITLE_BOARD;
+var CL_CONT = 'container-list';
+exports.CL_CONT = CL_CONT;
+var CL_MODAL_PANE = 'modal-pane';
+exports.CL_MODAL_PANE = CL_MODAL_PANE;
+var CL_MD_ACTIONS = 'md__actions';
+exports.CL_MD_ACTIONS = CL_MD_ACTIONS;
+var CL_ITEM_CARD = 'card';
+exports.CL_ITEM_CARD = CL_ITEM_CARD;
+var CL_CARD_TITLE = CL_ITEM_CARD + "__title";
+exports.CL_CARD_TITLE = CL_CARD_TITLE;
+var CL_CARD_BT = 'bt__card';
+exports.CL_CARD_BT = CL_CARD_BT;
+var CL_NOTE_LABEL = 'note__label';
+exports.CL_NOTE_LABEL = CL_NOTE_LABEL;
+var CL_NOTE_LABEL_CLOSE = CL_NOTE_LABEL + "__close";
+exports.CL_NOTE_LABEL_CLOSE = CL_NOTE_LABEL_CLOSE;
+var CL_INPUT = 'input-text';
+exports.CL_INPUT = CL_INPUT;
+var CL_BT_CIRCLE = 'bt-circle';
+exports.CL_BT_CIRCLE = CL_BT_CIRCLE;
+var CL_NAV_LINK = 'nav-link';
+exports.CL_NAV_LINK = CL_NAV_LINK;
+var CL_ML_8 = 'ml-8';
+exports.CL_ML_8 = CL_ML_8;
 //# sourceMappingURL=CL.js.map

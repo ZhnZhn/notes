@@ -15,7 +15,7 @@ var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -33,7 +33,7 @@ var TopicMenuMore = function TopicMenuMore(_ref) {
       onClose = _ref.onClose;
   var TS = (0, _useTheme["default"])(_Comp["default"]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalPane["default"], {
-    className: _CL["default"].MODAL_PANE,
+    className: _CL.CL_MODAL_PANE,
     style: (0, _extends2["default"])({}, style, TS.COMP),
     isShow: isShow,
     onClose: onClose,

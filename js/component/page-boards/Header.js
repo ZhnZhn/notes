@@ -17,7 +17,7 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -25,12 +25,12 @@ var Header = function Header(_ref) {
   var style = _ref.style,
       addBoard = _ref.addBoard;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header["default"], {
-    className: _CL["default"].HEADER,
+    className: _CL.CL_HEADER,
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL["default"].TITLE_GAP
+      className: _CL.CL_TITLE_GAP
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL["default"].HEADER_TITLE,
+      className: _CL.CL_HEADER_TITLE,
       children: "Notes: Boards"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       caption: "Add Board",

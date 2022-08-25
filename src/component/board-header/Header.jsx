@@ -1,19 +1,24 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
-import AppHeader from '../zhn-ch/Header'
-import TopicDrawer from './TopicDrawer'
-import FlatButton from '../zhn-m/FlatButton'
-import HeaderDrawer from '../header/HeaderDrawer'
+import AppHeader from '../zhn-ch/Header';
+import TopicDrawer from './TopicDrawer';
+import FlatButton from '../zhn-m/FlatButton';
+import HeaderDrawer from '../header/HeaderDrawer';
 
-import CL from '../style/CL'
+import {
+  CL_HEADER,
+  CL_NAV_LINK,
+  CL_ML_8
+} from '../style/CL';
 
 // @flow
+const _CL_NAV_LINK = `${CL_NAV_LINK} ${CL_ML_8}`;
 
 const Header = ({
   addColumn /*: TopicAction.addColumn */
 }) => (
   <AppHeader
-    className={CL.HEADER}
+    className={CL_HEADER}
   >
     <TopicDrawer />
     <FlatButton
@@ -26,7 +31,7 @@ const Header = ({
     <nav>
       <NavLink
         to="/boards"
-        className={`${CL.NAV_LINK} ${CL.ML_8}`}
+        className={_CL_NAV_LINK}
       >
          ToBoards
       </NavLink>

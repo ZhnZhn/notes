@@ -1,5 +1,8 @@
 import Label from './LabelNote';
-import CL from '../style/CL';
+import {
+  CL_NOTE_LABEL,
+  CL_NOTE_LABEL_CLOSE
+} from '../style/CL';
 
 const S_DIV = { paddingBottom: 4 };
 
@@ -12,8 +15,8 @@ const LabelList = ({
       (labels||[]).map(item => (
         <Label
           key={item.id || item.title}
-          className={CL.NOTE_LABEL}
-          clClose={CL.NOTE_LABEL_CLOSE}
+          className={CL_NOTE_LABEL}
+          clClose={CL_NOTE_LABEL_CLOSE}
           item={item}
           onRemove={onRemove
             ? onRemove.bind(null, item)

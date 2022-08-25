@@ -20,7 +20,10 @@ import {
 } from '../../flux/selectors';
 
 import isArrEmpty from '../../utils/isArrEmpty';
-import CL from '../style/CL';
+import {
+  CL_NAV_LINK,
+  CL_CARD_BT
+} from '../style/CL';
 
 import Card from '../zhn-card/Card';
 import DnDTopicList from './DnDTopicList';
@@ -70,7 +73,7 @@ const BoardCard = ({
       />
       <NavLink
         to={`/boards/${boardId}`}
-        className={CL.NAV_LINK}
+        className={CL_NAV_LINK}
         style={S_LINK}
         onClick={_hToNotes}
       >
@@ -80,7 +83,7 @@ const BoardCard = ({
       {
         isArrEmpty(columnIds) &&
           <FlatButton
-            clCaption={CL.CARD_BT}
+            clCaption={CL_CARD_BT}
             caption="Remove Board"
             onClick={_hRemove}
           />

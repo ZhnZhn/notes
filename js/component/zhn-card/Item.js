@@ -11,7 +11,7 @@ var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 
 var _Item = _interopRequireDefault(require("../style/Item.Style"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -27,7 +27,7 @@ var Item = function Item(_ref) {
       _style = (0, _crStyle["default"])(TS.ITEM, [isHide, S_HIDE]);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("section", {
-    className: _CL["default"].ITEM_CARD,
+    className: _CL.CL_ITEM_CARD,
     style: _style,
     children: children
   });

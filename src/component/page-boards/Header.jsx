@@ -1,21 +1,25 @@
-import { connect } from 'react-redux'
-import { addBoard } from '../../flux/board/actions'
+import { connect } from 'react-redux';
+import { addBoard } from '../../flux/board/actions';
 
-import ZhHeader from '../zhn-ch/Header'
-import Logo from '../zhn/Logo'
-import FlatButton from '../zhn-m/FlatButton'
-import HeaderDrawer from '../header/HeaderDrawer'
+import ZhHeader from '../zhn-ch/Header';
+import Logo from '../zhn/Logo';
+import FlatButton from '../zhn-m/FlatButton';
+import HeaderDrawer from '../header/HeaderDrawer';
 
-import CL from '../style/CL'
+import {
+  CL_HEADER,
+  CL_TITLE_GAP,
+  CL_HEADER_TITLE
+} from '../style/CL';
 
 const Header = ({
   style,
   addBoard
 }) => (
-  <ZhHeader className={CL.HEADER} style={style}>
+  <ZhHeader className={CL_HEADER} style={style}>
     <Logo />
-    <span className={CL.TITLE_GAP} />
-    <span className={CL.HEADER_TITLE}>
+    <span className={CL_TITLE_GAP} />
+    <span className={CL_HEADER_TITLE}>
       Notes: Boards
     </span>
     <FlatButton

@@ -15,14 +15,16 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
+
+var _CL_NAV_LINK = _CL.CL_NAV_LINK + " " + _CL.CL_ML_8;
 
 var Header = function Header(_ref) {
   var addColumn = _ref.addColumn;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header["default"], {
-    className: _CL["default"].HEADER,
+    className: _CL.CL_HEADER,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawer["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       caption: "Add Topic",
       title: "Click to add topic to board",
@@ -32,7 +34,7 @@ var Header = function Header(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("nav", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
         to: "/boards",
-        className: _CL["default"].NAV_LINK + " " + _CL["default"].ML_8,
+        className: _CL_NAV_LINK,
         children: "ToBoards"
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderDrawer["default"], {})]

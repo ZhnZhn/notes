@@ -20,7 +20,10 @@ import {
   removeLabel
 } from './TabLabelsFn';
 
-import CL from '../style/CL'
+import {
+  CL_CARD_BT,
+  CL_MD_ACTIONS
+} from '../style/CL';
 
 const S_LABELS = { padding: '4px 0 8px 12px' }
 , S_BT_ADD = { marginLeft: 16 };
@@ -33,7 +36,10 @@ const TabLabels = (props) => {
     onClose
   } = props
   , { id } = note
-  , [ labels, setLabels] = useState(() => note.labels || [])
+  , [
+    labels,
+    setLabels
+  ] = useState(() => note.labels || [])
   , _refBtClose = useRef(null)
   , _refLabel = useRef('')
   , _refInputLabel = useRef(null)
@@ -54,10 +60,12 @@ const TabLabels = (props) => {
        label
      ))
   }, [])
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _saveLabels = useCallback(() => {
     dispatch(editNoteLabels({ noteId: id, labels }))
   }, [id, labels]);
   //dispatch
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   useBtFocus(_refBtClose, isSelected, props)
 
@@ -73,7 +81,7 @@ const TabLabels = (props) => {
             onBlur={_onBlurLabel}
           />
           <FlatButton
-            clCaption={CL.CARD_BT}
+            clCaption={CL_CARD_BT}
             style={S_BT_ADD}
             caption="AddLabel"
             title="Click to add a new label"
@@ -86,7 +94,7 @@ const TabLabels = (props) => {
         />
         <DialogButtons
           refBtClose={_refBtClose}
-          className={CL.MD_ACTIONS}
+          className={CL_MD_ACTIONS}
           onSave={_saveLabels}
           onClose={onClose}
         />

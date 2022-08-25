@@ -1,7 +1,7 @@
-import CL from '../style/CL';
+import { CL_CONT } from '../style/CL';
 
 const Main = ({ children }) => (
-  <main className={CL.CONT}>
+  <main className={CL_CONT}>
     {children}
   </main>
 );

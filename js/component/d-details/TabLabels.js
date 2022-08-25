@@ -5,7 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
+
+var _useBtFocus = _interopRequireDefault(require("./useBtFocus"));
 
 var _actions = require("../../flux/note/actions");
 
@@ -19,28 +21,17 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _DialogButtons = _interopRequireDefault(require("./DialogButtons"));
 
-var _fnTabLabels = _interopRequireDefault(require("./fnTabLabels"));
+var _TabLabelsFn = require("./TabLabelsFn");
 
-var _CL = _interopRequireDefault(require("../style/CL"));
+var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var toTitle = _fnTabLabels["default"].toTitle,
-    addLabel = _fnTabLabels["default"].addLabel,
-    removeLabel = _fnTabLabels["default"].removeLabel;
-var S = {
-  LABELS: {
-    paddingTop: 4,
-    paddingLeft: 12,
-    paddingBottom: 8
-  },
-  BT_ADD: {
-    marginLeft: 16
-  }
-};
-
-var _getCurrent = function _getCurrent(ref) {
-  return ref.current;
+var S_LABELS = {
+  padding: '4px 0 8px 12px'
+},
+    S_BT_ADD = {
+  marginLeft: 16
 };
 
 var TabLabels = function TabLabels(props) {
@@ -49,47 +40,42 @@ var TabLabels = function TabLabels(props) {
       dispatch = props.dispatch,
       onClose = props.onClose,
       id = note.id,
-      _useState = (0, _react.useState)(function () {
+      _useState = (0, _uiApi.useState)(function () {
     return note.labels || [];
   }),
       labels = _useState[0],
       setLabels = _useState[1],
-      _refBtClose = (0, _react.useRef)(null),
-      _refLabel = (0, _react.useRef)(''),
-      _refInputLabel = (0, _react.useRef)(null),
-      _refInputColor = (0, _react.useRef)(null),
-      _onBlurLabel = (0, _react.useCallback)(function (evt) {
+      _refBtClose = (0, _uiApi.useRef)(null),
+      _refLabel = (0, _uiApi.useRef)(''),
+      _refInputLabel = (0, _uiApi.useRef)(null),
+      _refInputColor = (0, _uiApi.useRef)(null),
+      _onBlurLabel = (0, _uiApi.useCallback)(function (evt) {
     _refLabel.current = evt.target.value;
   }, []),
-      _onAddLabel = (0, _react.useCallback)(function () {
+      _onAddLabel = (0, _uiApi.useCallback)(function () {
     setLabels(function (prevState) {
-      return addLabel(prevState, toTitle(_getCurrent(_refLabel)), _refInputColor.current.getColor());
-    }, _refInputLabel.current.setValue(''));
+      return (0, _TabLabelsFn.addLabel)(prevState, (0, _TabLabelsFn.toTitle)((0, _uiApi.getRefValue)(_refLabel)), (0, _uiApi.getRefValue)(_refInputColor).getColor());
+    }, (0, _uiApi.getRefValue)(_refInputLabel).setValue(''));
   }, []),
-      _onRemoveLabel = (0, _react.useCallback)(function (label) {
+      _onRemoveLabel = (0, _uiApi.useCallback)(function (label) {
     setLabels(function (prevState) {
-      return removeLabel(prevState, label);
+      return (0, _TabLabelsFn.removeLabel)(prevState, label);
     });
   }, []),
-      _saveLabels = (0, _react.useCallback)(function () {
+      _saveLabels = (0, _uiApi.useCallback)(function () {
     dispatch((0, _actions.editNoteLabels)({
       noteId: id,
       labels: labels
     }));
   }, [id, labels]); //dispatch
 
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _react.useEffect)(function () {
-    var _btClose = _refBtClose.current;
 
-    if (isSelected && _btClose) {
-      _btClose.focus();
-    }
-  }, [props]); //isSelected
-
+  (0, _useBtFocus["default"])(_refBtClose, isSelected, props);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: S.LABELS,
+      style: S_LABELS,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_LabelList["default"], {
         labels: labels,
         onRemove: _onRemoveLabel
@@ -97,8 +83,8 @@ var TabLabels = function TabLabels(props) {
         ref: _refInputLabel,
         onBlur: _onBlurLabel
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-        clCaption: _CL["default"].CARD_BT,
-        style: S.BT_ADD,
+        clCaption: _CL.CL_CARD_BT,
+        style: S_BT_ADD,
         caption: "AddLabel",
         title: "Click to add a new label",
         timeout: 400,
@@ -108,7 +94,7 @@ var TabLabels = function TabLabels(props) {
       ref: _refInputColor
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons["default"], {
       refBtClose: _refBtClose,
-      className: _CL["default"].MD_ACTIONS,
+      className: _CL.CL_MD_ACTIONS,
       onSave: _saveLabels,
       onClose: onClose
     })]

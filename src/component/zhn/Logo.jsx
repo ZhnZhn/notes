@@ -1,9 +1,11 @@
-import CL from '../style/CL'
+import {
+  CL_LOGO
+} from '../style/CL';
 
 const TITLE = "Logo of web app Notes v0.3.0"
 
 const Logo = ({
-  className=CL.LOGO,
+  className=CL_LOGO,
   style,
   title=TITLE
 }) => (
@@ -13,7 +15,7 @@ const Logo = ({
      title={title}
   >
     <svg
-      viewBox="0 0 32 32" 
+      viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
       clipRule="evenodd"

@@ -1,9 +1,9 @@
 import InputText from '../zhn/InputText';
-import CL from '../style/CL';
+import { CL_CARD_TITLE } from '../style/CL';
 
 const Title = (props) => (
   <InputText
-    className={CL.CARD_TITLE}
+    className={CL_CARD_TITLE}
     {...props}
   />
 );

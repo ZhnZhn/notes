@@ -4,7 +4,9 @@ import crCn from '../zhn-utils/crCn';
 
 import ModalPane from '../zhn-ch/ModalPane';
 import FlatButton from '../zhn-m/FlatButton';
-import CL from '../style/CL';
+import {
+  CL_MODAL_PANE
+} from '../style/CL';
 
 const S_BT = {
   paddingLeft: 8,
@@ -21,7 +23,7 @@ const NoteMenuMore = ({
   onRemove
 }) => {
   const TS = useTheme(styleConfig)
-  , _className = crCn(CL.MODAL_PANE, className);
+  , _className = crCn(CL_MODAL_PANE, className);
   return (
     <ModalPane
       className={_className}
