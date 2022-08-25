@@ -11,7 +11,7 @@ var _selectors = _interopRequireDefault(require("../../flux/selectors"));
 
 var _reducer = require("../../flux/column/reducer");
 
-var _CL = _interopRequireDefault(require("./CL"));
+var _CL = require("./CL");
 
 var _TopicDrawerCaption = _interopRequireDefault(require("./TopicDrawerCaption"));
 
@@ -26,7 +26,7 @@ var TopicDrawerMenu = function TopicDrawerMenu(_ref) {
       columns = _ref.columns,
       toggleColumn = _ref.toggleColumn;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _CL["default"].ROOT,
+    className: _CL.CL_DRAWER_LIST,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawerCaption["default"], {
       board: board
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicList["default"], {

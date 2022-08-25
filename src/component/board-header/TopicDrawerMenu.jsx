@@ -1,18 +1,18 @@
-import { connect } from 'react-redux'
-import s from '../../flux/selectors'
-import { toggleColumn } from '../../flux/column/reducer'
+import { connect } from 'react-redux';
+import s from '../../flux/selectors';
+import { toggleColumn } from '../../flux/column/reducer';
 
-import { CL_ROOT } from './CL'
-import TopicDrawerCaption from './TopicDrawerCaption'
-import TopicList from './TopicList'
-import DrawerMsgList from '../header/DrawerMsgList'
+import { CL_DRAWER_LIST } from './CL';
+import TopicDrawerCaption from './TopicDrawerCaption';
+import TopicList from './TopicList';
+import DrawerMsgList from '../header/DrawerMsgList';
 
 const TopicDrawerMenu = ({
   board,
   columns,
   toggleColumn
 }) => (
-  <div className={CL_ROOT}>
+  <div className={CL_DRAWER_LIST}>
     <TopicDrawerCaption
       board={board}
     />

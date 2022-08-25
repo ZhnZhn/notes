@@ -1,13 +1,14 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var _default = {
-  HEADER: 'header__title',
-  DRAWER_TITLE: 'drawer__title',
-  ROOT: 'drawer__list',
-  BT: 'drawer__list-bt',
-  BADGE: 'drawer__list-bt__badge'
-};
-exports["default"] = _default;
+exports.CL_DRAWER_TITLE = exports.CL_DRAWER_LIST = exports.CL_BT = exports.CL_BADGE = void 0;
+var DRAWER = 'drawer';
+var CL_DRAWER_TITLE = DRAWER + "__title";
+exports.CL_DRAWER_TITLE = CL_DRAWER_TITLE;
+var CL_DRAWER_LIST = DRAWER + "__list";
+exports.CL_DRAWER_LIST = CL_DRAWER_LIST;
+var CL_BT = CL_DRAWER_LIST + "-bt";
+exports.CL_BT = CL_BT;
+var CL_BADGE = CL_BT + "__badge";
+exports.CL_BADGE = CL_BADGE;
 //# sourceMappingURL=CL.js.map
