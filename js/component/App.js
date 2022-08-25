@@ -9,8 +9,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("./uiApi");
 
-var _reactRedux = require("react-redux");
-
 var _reactRouterDom = require("react-router-dom");
 
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
@@ -34,7 +32,7 @@ var App = function App(_ref) {
   var _useState = (0, _uiApi.useState)(_theme["default"]),
       theme = _useState[0],
       setTheme = _useState[1],
-      uiTheme = (0, _reactRedux.useSelector)(_selectors.sApp.uiTheme);
+      uiTheme = (0, _uiApi.useSelector)(_selectors.sApp.uiTheme);
   /*eslint-disable react-hooks/exhaustive-deps */
 
 

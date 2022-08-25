@@ -1,7 +1,7 @@
-import { connect } from 'react-redux'
-import { sBoard } from '../../flux/selectors'
+import { connect } from '../uiApi';
+import { sBoard } from '../../flux/selectors';
 
-import BoardCard from './BoardCard'
+import BoardCard from './BoardCard';
 
 const BoardList = ({
   boardIds,

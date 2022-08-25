@@ -1,10 +1,7 @@
 import {
+  useDispatch,
   useCallback
 } from '../uiApi';
-
-import {
-  useDispatch
-} from 'react-redux';
 
 import useBool from '../hooks/useBool';
 

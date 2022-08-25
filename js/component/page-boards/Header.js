@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _reactRedux = require("react-redux");
+var _uiApi = require("../uiApi");
 
 var _actions = require("../../flux/board/actions");
 
@@ -47,7 +47,7 @@ var mapDispatchToProps = {
   addBoard: _actions.addBoard
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Header);
+var _default = (0, _uiApi.connect)(null, mapDispatchToProps)(Header);
 
 exports["default"] = _default;
 //# sourceMappingURL=Header.js.map

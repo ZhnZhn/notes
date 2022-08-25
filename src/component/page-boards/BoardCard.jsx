@@ -1,12 +1,10 @@
 import {
   NavLink,
+  useDispatch,
+  useSelector,
   useMemo
 } from '../uiApi';
 
-import {
-  useSelector,
-  useDispatch
-} from 'react-redux';
 import {
   setCurrentBoard,
   removeBoard

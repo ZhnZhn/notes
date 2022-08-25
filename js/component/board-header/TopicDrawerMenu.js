@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _reactRedux = require("react-redux");
+var _uiApi = require("../uiApi");
 
 var _selectors = _interopRequireDefault(require("../../flux/selectors"));
 
@@ -48,7 +48,7 @@ var mapDispatchToProps = {
   toggleColumn: _reducer.toggleColumn
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(TopicDrawerMenu);
+var _default = (0, _uiApi.connect)(mapStateToProps, mapDispatchToProps)(TopicDrawerMenu);
 
 exports["default"] = _default;
 //# sourceMappingURL=TopicDrawerMenu.js.map

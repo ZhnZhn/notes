@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
-var _reactRedux = require("react-redux");
-
 var _actions = require("../../flux/board/actions");
 
 var _reducer = require("../../flux/board/reducer");
@@ -34,7 +32,7 @@ var S_LINK = {
 var BoardCard = function BoardCard(_ref) {
   var boardId = _ref.id;
 
-  var dispatch = (0, _reactRedux.useDispatch)(),
+  var dispatch = (0, _uiApi.useDispatch)(),
       _useMemo = (0, _uiApi.useMemo)(function () {
     return [function (evt) {
       return dispatch((0, _reducer.editBoardTitle)({
@@ -57,8 +55,8 @@ var BoardCard = function BoardCard(_ref) {
       _hRemove = _useMemo[1],
       _hToNotes = _useMemo[2],
       _selectBoard = _useMemo[3],
-      board = (0, _reactRedux.useSelector)(_selectBoard),
-      columns = (0, _reactRedux.useSelector)(_selectors.sColumn.columns),
+      board = (0, _uiApi.useSelector)(_selectBoard),
+      columns = (0, _uiApi.useSelector)(_selectors.sColumn.columns),
       columnIds = board.columnIds;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card["default"].Item, {

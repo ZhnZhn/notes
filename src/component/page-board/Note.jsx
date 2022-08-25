@@ -1,5 +1,6 @@
 //import PropsType from 'prop-types'
 import {
+  useDispatch,
   useRef,
   useCallback,
   getRefValue
@@ -7,8 +8,6 @@ import {
 
 import useBool from '../hooks/useBool';
 import useToggle from '../hooks/useToggle';
-
-import { useDispatch } from 'react-redux';
 
 import { deleteNote } from '../../flux/note/actions';
 import { editNoteTitle } from '../../flux/note/reducer';

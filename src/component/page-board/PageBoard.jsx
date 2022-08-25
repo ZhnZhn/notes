@@ -1,7 +1,9 @@
-import { useCallback } from '../uiApi';
+import {
+  connect,
+  useCallback
+} from '../uiApi';
 
 import { DragDropContext } from 'react-beautiful-dnd'
-import { connect } from 'react-redux'
 
 import s from '../../flux/selectors'
 import {

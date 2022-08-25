@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
-var _reactRedux = require("react-redux");
-
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _reducer = require("../../flux/column/reducer");
@@ -54,7 +52,7 @@ var Topic = function Topic(_ref) {
       isMenuMore = _useBool[0],
       _openMenuMore = _useBool[1],
       _closeMenuMore = _useBool[2],
-      dispatch = (0, _reactRedux.useDispatch)(),
+      dispatch = (0, _uiApi.useDispatch)(),
       _hHideTopic = (0, _uiApi.useCallback)(function () {
     dispatch((0, _reducer.toggleColumn)({
       columnId: columnId

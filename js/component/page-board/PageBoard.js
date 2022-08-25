@@ -5,11 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _reactBeautifulDnd = require("react-beautiful-dnd");
-
-var _reactRedux = require("react-redux");
 
 var _selectors = _interopRequireDefault(require("../../flux/selectors"));
 
@@ -55,13 +53,13 @@ var PageBoard = function PageBoard(_ref2) {
       columnIds = board.columnIds;
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  var _hDragEnd = (0, _react.useCallback)(function (result) {
+  var _hDragEnd = (0, _uiApi.useCallback)(function (result) {
     if (!(0, _isNotDnD["default"])(result)) {
       moveNote(result);
     }
   }, []) //moveNote
   ,
-      _hAddColumn = (0, _react.useCallback)(function () {
+      _hAddColumn = (0, _uiApi.useCallback)(function () {
     addColumn({
       boardId: id
     });
@@ -102,7 +100,7 @@ var mapDispatchToProps = {
   addColumn: _actions2.addColumn
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PageBoard);
+var _default = (0, _uiApi.connect)(mapStateToProps, mapDispatchToProps)(PageBoard);
 
 exports["default"] = _default;
 //# sourceMappingURL=PageBoard.js.map

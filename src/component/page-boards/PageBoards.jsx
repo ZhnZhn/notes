@@ -1,6 +1,8 @@
-import { useCallback } from '../uiApi'
+import {
+  connect,
+  useCallback
+} from '../uiApi';
 
-import { connect } from 'react-redux'
 import { DragDropContext } from 'react-beautiful-dnd'
 
 import { moveColumn } from '../../flux/column/actions'

@@ -11,8 +11,6 @@ var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
-var _reactRedux = require("react-redux");
-
 var _actions = require("../../flux/note/actions");
 
 var _reducer = require("../../flux/note/reducer");
@@ -42,7 +40,7 @@ var DnDNote = function DnDNote(props) {
       _useToggle = (0, _useToggle2["default"])(),
       isDetails = _useToggle[0],
       toggleDetails = _useToggle[1],
-      dispatch = (0, _reactRedux.useDispatch)(),
+      dispatch = (0, _uiApi.useDispatch)(),
       _deleteNote = (0, _uiApi.useCallback)(function () {
     dispatch((0, _actions.deleteNote)({
       columnId: columnId,

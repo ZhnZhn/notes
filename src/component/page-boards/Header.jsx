@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect } from '../uiApi';
 import { addBoard } from '../../flux/board/actions';
 
 import ZhHeader from '../zhn-ch/Header';

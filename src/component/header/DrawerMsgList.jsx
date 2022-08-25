@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect } from '../uiApi';
 import { sDrawer } from '../../flux/selectors';
 import { removeDrawerMsg } from '../../flux/drawerMsg/reducer';
 

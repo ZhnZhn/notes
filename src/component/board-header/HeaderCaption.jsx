@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from '../uiApi';
 import { sBoard } from '../../flux/selectors';
 
 import Logo from '../zhn/Logo';

@@ -5,9 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
-
-var _reactRedux = require("react-redux");
+var _uiApi = require("../uiApi");
 
 var _reactBeautifulDnd = require("react-beautiful-dnd");
 
@@ -26,7 +24,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var PageBoards = function PageBoards(_ref) {
   var moveColumn = _ref.moveColumn;
 
-  var _hDragEnd = (0, _react.useCallback)(function (result) {
+  var _hDragEnd = (0, _uiApi.useCallback)(function (result) {
     if ((0, _isNotDnD["default"])(result)) {
       return;
     }
@@ -46,7 +44,7 @@ var mapDispatchToProps = {
   moveColumn: _actions.moveColumn
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(PageBoards);
+var _default = (0, _uiApi.connect)(null, mapDispatchToProps)(PageBoards);
 
 exports["default"] = _default;
 //# sourceMappingURL=PageBoards.js.map

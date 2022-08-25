@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _reactRedux = require("react-redux");
+var _uiApi = require("../uiApi");
 
 var _selectors = require("../../flux/selectors");
 
@@ -30,7 +30,7 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps)(BoardList);
+var _default = (0, _uiApi.connect)(mapStateToProps)(BoardList);
 
 exports["default"] = _default;
 //# sourceMappingURL=BoardList.js.map

@@ -1,11 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
+exports.useState = exports.useSelector = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useDispatch = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.connect = exports.cloneElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
 
 var _reactRouterDom = require("react-router-dom");
 
 exports.NavLink = _reactRouterDom.NavLink;
+
+var _reactRedux = require("react-redux");
+
+exports.connect = _reactRedux.connect;
+exports.useDispatch = _reactRedux.useDispatch;
+exports.useSelector = _reactRedux.useSelector;
 
 var _react = require("react");
 

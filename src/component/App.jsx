@@ -1,10 +1,10 @@
 import {
   StrictMode,
+  useSelector,
   useState,
   useEffect
 } from './uiApi';
 
-import { useSelector } from 'react-redux';
 import {
   BrowserRouter,
   Routes,

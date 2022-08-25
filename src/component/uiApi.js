@@ -1,6 +1,12 @@
 export { NavLink } from 'react-router-dom';
 
 export {
+  connect,
+  useDispatch,
+  useSelector
+} from 'react-redux';
+
+export {
   StrictMode,
   Component,
   createElement,

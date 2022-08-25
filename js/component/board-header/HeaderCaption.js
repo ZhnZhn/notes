@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _reactRedux = require("react-redux");
+var _uiApi = require("../uiApi");
 
 var _selectors = require("../../flux/selectors");
 
@@ -20,7 +20,7 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _CL_TITLE = _CL.CL_HEADER_TITLE + " " + _CL.CL_TITLE_BOARD;
 
 var HeaderCaption = function HeaderCaption() {
-  var board = (0, _reactRedux.useSelector)(_selectors.sBoard.currentBoard);
+  var board = (0, _uiApi.useSelector)(_selectors.sBoard.currentBoard);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {
       className: _CL.CL_LOGO_BOARD
