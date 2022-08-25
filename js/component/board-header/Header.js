@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _reactRouterDom = require("react-router-dom");
+var _uiApi = require("../uiApi");
 
 var _Header = _interopRequireDefault(require("../zhn-ch/Header"));
 
@@ -32,7 +32,7 @@ var Header = function Header(_ref) {
       timeout: 500,
       onClick: addColumn
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("nav", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_uiApi.NavLink, {
         to: "/boards",
         className: _CL_NAV_LINK,
         children: "ToBoards"

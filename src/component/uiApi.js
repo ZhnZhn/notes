@@ -1,3 +1,5 @@
+export { NavLink } from 'react-router-dom';
+
 export {
   StrictMode,
   Component,

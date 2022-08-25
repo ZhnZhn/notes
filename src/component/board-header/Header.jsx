@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from '../uiApi';
 
 import AppHeader from '../zhn-ch/Header';
 import TopicDrawer from './TopicDrawer';

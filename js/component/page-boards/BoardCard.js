@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
-var _reactRouterDom = require("react-router-dom");
-
 var _reactRedux = require("react-redux");
 
 var _actions = require("../../flux/board/actions");
@@ -75,7 +73,7 @@ var BoardCard = function BoardCard(_ref) {
       id: boardId,
       columnIds: columnIds,
       columns: columns
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouterDom.NavLink, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_uiApi.NavLink, {
       to: "/boards/" + boardId,
       className: _CL.CL_NAV_LINK,
       style: S_LINK,

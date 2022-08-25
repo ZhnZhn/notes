@@ -1,7 +1,7 @@
 import {
+  NavLink,
   useMemo
 } from '../uiApi';
-import { NavLink } from 'react-router-dom';
 
 import {
   useSelector,
