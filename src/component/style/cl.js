@@ -10,8 +10,10 @@ export const CL_TITLE_BOARD = 'header-board__title'
 export const CL_CONT = 'container-list'
 
 export const CL_MODAL_PANE = 'modal-pane'
-
+export const CL_MODAL_DIALOG = 'modal-dialog'
 export const CL_MD_ACTIONS = 'md__actions'
+
+export const CL_SHOWING = 'show-popup'
 
 export const CL_ITEM_CARD = 'card'
 export const CL_CARD_TITLE = `${CL_ITEM_CARD}__title`

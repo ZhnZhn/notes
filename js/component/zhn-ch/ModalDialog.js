@@ -17,13 +17,12 @@ var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
+var _CL = require("../style/CL");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import { PropTypes } from 'react'
-var CL_DIALOG = 'modal-dialog',
-    CL_MD_ACTIONS = 'md__actions',
-    CL_SHOWING = 'show-popup',
-    S_SHOW = {
+//import { PropTypes } from 'prop-types'
+var S_SHOW = {
   display: 'block'
 },
     S_HIDE = {
@@ -36,7 +35,7 @@ var DialogButtons = function DialogButtons(_ref) {
       withoutClose = _ref.withoutClose,
       onClose = _ref.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL_MD_ACTIONS,
+    className: _CL.CL_MD_ACTIONS,
     children: [buttons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
       ref: refBtClose,
       caption: "Close",
@@ -97,7 +96,7 @@ var ModalDialog = function ModalDialog(_ref2) {
     event.stopPropagation();
   }, []),
       _hKeyDown = (0, _useKeyEscape["default"])(onClose),
-      _className = (0, _crCn["default"])(CL_DIALOG + " " + className, [isShow, CL_SHOWING]),
+      _className = (0, _crCn["default"])(_CL.CL_MODAL_DIALOG + " " + className, [isShow, _CL.CL_SHOWING]),
       _style = isShow ? S_SHOW : S_HIDE;
 
   return (

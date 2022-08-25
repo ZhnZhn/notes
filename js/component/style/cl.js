@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.CL_TITLE_GAP = exports.CL_TITLE_BOARD = exports.CL_NOTE_LABEL_CLOSE = exports.CL_NOTE_LABEL = exports.CL_NAV_LINK = exports.CL_MODAL_PANE = exports.CL_ML_8 = exports.CL_MD_ACTIONS = exports.CL_LOGO_BOARD = exports.CL_LOGO = exports.CL_ITEM_CARD = exports.CL_INPUT = exports.CL_HEADER_TITLE = exports.CL_HEADER = exports.CL_CONT = exports.CL_CARD_TITLE = exports.CL_CARD_BT = exports.CL_BT_CIRCLE = void 0;
+exports.CL_TITLE_GAP = exports.CL_TITLE_BOARD = exports.CL_SHOWING = exports.CL_NOTE_LABEL_CLOSE = exports.CL_NOTE_LABEL = exports.CL_NAV_LINK = exports.CL_MODAL_PANE = exports.CL_MODAL_DIALOG = exports.CL_ML_8 = exports.CL_MD_ACTIONS = exports.CL_LOGO_BOARD = exports.CL_LOGO = exports.CL_ITEM_CARD = exports.CL_INPUT = exports.CL_HEADER_TITLE = exports.CL_HEADER = exports.CL_CONT = exports.CL_CARD_TITLE = exports.CL_CARD_BT = exports.CL_BT_CIRCLE = void 0;
 var CL_HEADER = 'header';
 exports.CL_HEADER = CL_HEADER;
 var CL_LOGO = CL_HEADER + "__logo-notes";
@@ -18,8 +18,12 @@ var CL_CONT = 'container-list';
 exports.CL_CONT = CL_CONT;
 var CL_MODAL_PANE = 'modal-pane';
 exports.CL_MODAL_PANE = CL_MODAL_PANE;
+var CL_MODAL_DIALOG = 'modal-dialog';
+exports.CL_MODAL_DIALOG = CL_MODAL_DIALOG;
 var CL_MD_ACTIONS = 'md__actions';
 exports.CL_MD_ACTIONS = CL_MD_ACTIONS;
+var CL_SHOWING = 'show-popup';
+exports.CL_SHOWING = CL_SHOWING;
 var CL_ITEM_CARD = 'card';
 exports.CL_ITEM_CARD = CL_ITEM_CARD;
 var CL_CARD_TITLE = CL_ITEM_CARD + "__title";

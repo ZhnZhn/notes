@@ -1,4 +1,4 @@
-//import { PropTypes } from 'react'
+//import { PropTypes } from 'prop-types'
 import {
   useRef,
   useCallback,
@@ -13,10 +13,13 @@ import crCn from '../zhn-utils/crCn';
 import DialogCaption from './DialogCaption';
 import FlatButton from '../zhn-m/FlatButton';
 
-const CL_DIALOG = 'modal-dialog'
-, CL_MD_ACTIONS = 'md__actions'
-, CL_SHOWING = 'show-popup'
-, S_SHOW = { display: 'block' }
+import {
+  CL_MODAL_DIALOG,
+  CL_MD_ACTIONS,
+  CL_SHOWING
+} from '../style/CL';
+
+const S_SHOW = { display: 'block' }
 , S_HIDE = { display: 'none' };
 
 const DialogButtons = ({
@@ -90,7 +93,7 @@ const ModalDialog = ({
     event.stopPropagation()
   }, [])
   , _hKeyDown = useKeyEscape(onClose)
-  , _className = crCn(`${CL_DIALOG} ${className}`, [isShow, CL_SHOWING])
+  , _className = crCn(`${CL_MODAL_DIALOG} ${className}`, [isShow, CL_SHOWING])
   , _style = isShow ? S_SHOW : S_HIDE;
 
 
