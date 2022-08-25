@@ -1,7 +1,7 @@
 {
   "name": "notes",
-  "version": "0.3.0",
-  "description": "Web app that give the ability to note draggable notes to topics on boards",
+  "version": "0.4.0",
+  "description": "Web app Notes that give the ability to note draggable notes to topics on boards",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
