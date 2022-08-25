@@ -19,6 +19,8 @@ var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
 
 var _CL = require("../style/CL");
 
+var _titles = require("../titles");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 var Header = function Header(_ref) {
@@ -27,7 +29,9 @@ var Header = function Header(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header["default"], {
     className: _CL.CL_HEADER,
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo["default"], {
+      title: _titles.APP_TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: _CL.CL_TITLE_GAP
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: _CL.CL_HEADER_TITLE,

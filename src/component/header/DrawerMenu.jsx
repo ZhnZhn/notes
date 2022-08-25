@@ -8,7 +8,8 @@ import { showSettings } from '../../flux/modal/reducer';
 import FlatButton  from '../zhn-m/FlatButton';
 import DrawerMsgList from './DrawerMsgList';
 
-const TITLE = "Web App Notes v0.3.0";
+import { APP_TITLE } from '../titles';
+
 
 const CL_HEADER = 'header__title'
 , CL_DRAWER_LIST = 'drawer__list'
@@ -29,7 +30,7 @@ const DrawerMenu = ({
       className={CL_HEADER}
       style={S_HEADER}
     >
-      {TITLE}
+      {APP_TITLE}
     </div>
     <ul style={S_UL}>
       <li>

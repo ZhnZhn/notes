@@ -1,0 +1,11 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/component/titles.js"
+ ],
+ "file": "../../src/component/titles.js",
+ "names": [
+  "APP_TITLE"
+ ],
+ "mappings": ";;;;AAAO,IAAMA,SAAS,GAAG,sBAAlB"
+}

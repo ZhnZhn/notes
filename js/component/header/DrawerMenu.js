@@ -15,9 +15,10 @@ var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
 var _DrawerMsgList = _interopRequireDefault(require("./DrawerMsgList"));
 
+var _titles = require("../titles");
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "Web App Notes v0.3.0";
 var CL_HEADER = 'header__title',
     CL_DRAWER_LIST = 'drawer__list',
     CL_DRAWER_BT = 'drawer__list-bt',
@@ -38,7 +39,7 @@ var DrawerMenu = function DrawerMenu(_ref) {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: CL_HEADER,
       style: S_HEADER,
-      children: TITLE
+      children: _titles.APP_TITLE
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("ul", {
       style: S_UL,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("li", {

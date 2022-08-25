@@ -7,14 +7,11 @@ var _CL = require("../style/CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "Logo of web app Notes v0.3.0";
-
 var Logo = function Logo(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === void 0 ? _CL.CL_LOGO : _ref$className,
       style = _ref.style,
-      _ref$title = _ref.title,
-      title = _ref$title === void 0 ? TITLE : _ref$title;
+      title = _ref.title;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: className,
     style: style,

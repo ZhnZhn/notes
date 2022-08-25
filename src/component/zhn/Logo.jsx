@@ -2,12 +2,10 @@ import {
   CL_LOGO
 } from '../style/CL';
 
-const TITLE = "Logo of web app Notes v0.3.0"
-
 const Logo = ({
   className=CL_LOGO,
   style,
-  title=TITLE
+  title
 }) => (
   <span
      className={className}
