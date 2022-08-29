@@ -1,17 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/crArrFromHm.js"
- ],
- "file": "../../src/utils/crArrFromHm.js",
- "names": [
-  "_getObjetcKeys",
-  "Object",
-  "keys",
-  "crArrFormHm",
-  "hm",
-  "map",
-  "key"
- ],
- "mappings": ";;;;AACA,IAAMA,cAAc,GAAGC,MAAM,CAACC,IAA9B;;AAEA,IAAMC,WAAW,GAAG;EAElB;AAFIA,WAAc,CAClBC;AAAG;AADe;EAAA,OAENJ,cAAc,CAACI,EAAD,CAAd,CACXC,GADW,CACP,UAAAC,GAAG;IAAA,OAAIF,EAAE,CAACE,GAAD,CAAN;EAAA,CADI,CAFM;AAAA,CAApB;;eAKeH,W"
-}
+{"version":3,"file":"crArrFromHm.js","names":["_getObjetcKeys","Object","keys","crArrFormHm","hm","map","key"],"sources":["../../src/utils/crArrFromHm.js"],"sourcesContent":["//@flow\r\nconst _getObjetcKeys = Object.keys;\r\n\r\nconst crArrFormHm = (\r\n  hm /*: {}*/\r\n) /*: []*/ => _getObjetcKeys(hm)\r\n  .map(key => hm[key]);\r\n\r\nexport default crArrFormHm\r\n"],"mappings":";;;;AACA,IAAMA,cAAc,GAAGC,MAAM,CAACC,IAA9B;;AAEA,IAAMC,WAAW,GAAG;EAElB;AAFIA,WAAc,CAClBC;AAAG;AADe;EAAA,OAENJ,cAAc,CAACI,EAAD,CAAd,CACXC,GADW,CACP,UAAAC,GAAG;IAAA,OAAIF,EAAE,CAACE,GAAD,CAAN;EAAA,CADI,CAFM;AAAA,CAApB;;eAKeH,W"}

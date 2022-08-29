@@ -2,13 +2,14 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
+var _isArr = Array.isArray;
 
-var isArrEmpty = function isArrEmpty(arr
+var isArrEmpty = function
+  /*: boolean*/
+isArrEmpty(arr
 /*: mixed*/
-)
-/*: boolean*/
-{
-  return !Array.isArray(arr) || arr.length === 0 ? true : false;
+) {
+  return !_isArr(arr) || arr.length === 0;
 };
 
 var _default = isArrEmpty;
