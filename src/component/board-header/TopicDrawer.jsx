@@ -1,11 +1,11 @@
-import DrawerLeft from '../zhn-ch/DrawerLeft'
-import Caption from './HeaderCaption'
-import DrawerMenu from './TopicDrawerMenu'
+import DrawerLeft from '../zhn-ch/DrawerLeft';
+import Caption from './HeaderCaption';
+import DrawerMenu from './TopicDrawerMenu';
+
+const _captionEl = <Caption />
 
 const TopicDrawer = () => (
-  <DrawerLeft
-    captionComp={<Caption />}
-  >
+  <DrawerLeft captionEl={_captionEl}>
     <DrawerMenu />
   </DrawerLeft>
 );

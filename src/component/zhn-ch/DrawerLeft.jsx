@@ -12,10 +12,11 @@ const CL_DRAWER_BT = 'drawer-bt'
 },
 S_DRAWER_OFF = {
   transform: 'translateX(-264px)',
-  //transform: 'translateX(264px)',
   pointerEvents: 'none'
 }
-, S_DRAWER_ON = { transform: 'translate(0px, 0px)' }
+, S_DRAWER_ON = {
+  transform: 'translate(0px, 0px)'
+}
 , S_MODAL_OFF = {
   opacity: 0,
   zIndex: -1,
@@ -27,23 +28,29 @@ S_DRAWER_OFF = {
   transition: 'opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
 };
 
-
 const DrawerLeft = ({
   btStyle,
-  captionComp,
+  captionEl,
   children
 }) => {
-  const [isOpen, toggleIsOpen] = useToggle(false)
+  const [
+    isOpen,
+    toggleIsOpen
+  ] = useToggle(false)
   , TS = useTheme(styleConfig)
-  , _drawerStyle = isOpen
-       ? S_DRAWER_ON
-       : S_DRAWER_OFF
-  , _drawerModalStyle = isOpen
-       ? S_MODAL_ON
-       : S_MODAL_OFF
-  , _onClickWrapper = isOpen
-       ? toggleIsOpen
-       : void 0;
+  , [
+    _drawerStyle,
+    _drawerModalStyle,
+    _onClickWrapper
+  ] = isOpen
+    ? [
+      S_DRAWER_ON,
+      S_MODAL_ON,
+      toggleIsOpen
+    ] : [
+      S_DRAWER_OFF,
+      S_MODAL_OFF
+    ];
 
   return [
       <button
@@ -53,7 +60,7 @@ const DrawerLeft = ({
         aria-label="Open Drawer"
         onClick={toggleIsOpen}
       >
-        {captionComp}
+        {captionEl}
       </button>,
       <div
         role="presentation"

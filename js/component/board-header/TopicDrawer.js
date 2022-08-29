@@ -13,9 +13,11 @@ var _TopicDrawerMenu = _interopRequireDefault(require("./TopicDrawerMenu"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+var _captionEl = /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderCaption["default"], {});
+
 var TopicDrawer = function TopicDrawer() {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DrawerLeft["default"], {
-    captionComp: /*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderCaption["default"], {}),
+    captionEl: _captionEl,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawerMenu["default"], {})
   });
 };
