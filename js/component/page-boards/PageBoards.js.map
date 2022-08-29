@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-boards/PageBoards.js"
- ],
- "file": "../../../src/component/page-boards/PageBoards.js",
- "names": [
-  "PageBoards",
-  "moveColumn",
-  "_hDragEnd",
-  "useCallback",
-  "result",
-  "isNotDnD",
-  "mapDispatchToProps",
-  "connect"
- ],
- "mappings": ";;;;;;;AAAA;;AAKA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,OAAqB;EAAA,IAAlBC,UAAkB,QAAlBA,UAAkB;;EACtC,IAAMC,SAAS,GAAG,IAAAC,kBAAA,EAAY,UAAAC,MAAM,EAAI;IACtC,IAAI,IAAAC,oBAAA,EAASD,MAAT,CAAJ,EAAqB;MACnB;IACD;;IACDH,UAAU,CAACG,MAAD,CAAV;EACD,CALiB,EAKf,CAACH,UAAD,CALe,CAAlB;;EAOA,OAAO,cACL,qBAAC,kBAAD,MAAY,QAAZ,CADK,eAEL,qBAAC,kCAAD;IAEG,SAAS,EAAEC,SAFd;IAAA,uBAIE,qBAAC,gBAAD;MAAA,uBACE,qBAAC,qBAAD;IADF;EAJF,GACO,KADP,CAFK,CAAP;AAWD,CAnBD;;AAqBA,IAAMI,kBAAkB,GAAG;EACzBL,UAAU,EAAVA;AADyB,CAA3B;;eAIe,IAAAM,cAAA,EACb,IADa,EAEbD,kBAFa,EAGbN,UAHa,C"
-}
+{"version":3,"file":"PageBoards.js","names":["PageBoards","moveColumn","_hDragEnd","useCallback","result","isNotDnD","mapDispatchToProps","connect"],"sources":["../../../src/component/page-boards/PageBoards.jsx"],"sourcesContent":["import {\r\n  connect,\r\n  useCallback\r\n} from '../uiApi';\r\n\r\nimport { DragDropContext } from 'react-beautiful-dnd'\r\n\r\nimport { moveColumn } from '../../flux/column/actions'\r\n\r\nimport isNotDnD from '../zhn-dnd/isNotDnD'\r\n\r\nimport Header from './Header'\r\nimport Main from '../zhn-ch/Main'\r\nimport BoardList from './BoardList'\r\n\r\nconst PageBoards = ({ moveColumn }) =>  {\r\n  const _hDragEnd = useCallback(result => {\r\n    if (isNotDnD(result)){\r\n      return;\r\n    }\r\n    moveColumn(result)\r\n  }, [moveColumn]);\r\n\r\n  return [\r\n    <Header key=\"header\" />,\r\n    <DragDropContext\r\n       key=\"ddc\"\r\n       onDragEnd={_hDragEnd}\r\n    >\r\n      <Main>\r\n        <BoardList />\r\n      </Main>\r\n    </DragDropContext>\r\n  ];\r\n}\r\n\r\nconst mapDispatchToProps = {\r\n  moveColumn\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(PageBoards)\r\n"],"mappings":";;;;;;;AAAA;;AAKA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,OAAqB;EAAA,IAAlBC,UAAkB,QAAlBA,UAAkB;;EACtC,IAAMC,SAAS,GAAG,IAAAC,kBAAA,EAAY,UAAAC,MAAM,EAAI;IACtC,IAAI,IAAAC,oBAAA,EAASD,MAAT,CAAJ,EAAqB;MACnB;IACD;;IACDH,UAAU,CAACG,MAAD,CAAV;EACD,CALiB,EAKf,CAACH,UAAD,CALe,CAAlB;;EAOA,OAAO,cACL,qBAAC,kBAAD,MAAY,QAAZ,CADK,eAEL,qBAAC,kCAAD;IAEG,SAAS,EAAEC,SAFd;IAAA,uBAIE,qBAAC,gBAAD;MAAA,uBACE,qBAAC,qBAAD;IADF;EAJF,GACO,KADP,CAFK,CAAP;AAWD,CAnBD;;AAqBA,IAAMI,kBAAkB,GAAG;EACzBL,UAAU,EAAVA;AADyB,CAA3B;;eAIe,IAAAM,cAAA,EACb,IADa,EAEbD,kBAFa,EAGbN,UAHa,C"}

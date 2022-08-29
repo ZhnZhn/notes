@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/drawerMsg/fns.js"
- ],
- "file": "../../../src/flux/drawerMsg/fns.js",
- "names": [
-  "crMsg",
-  "id",
-  "msg"
- ],
- "mappings": ";;;;;AAEA,IAAMA,KAAK,GAAG,SAARA,KAAQ,CACZC;AAAG;AADS,EAEZC;AAAI;AAFQ;AAAA;AAGZ;AAAqB;AACrBD,MAAAA,EAAE,EAAFA,EADqB;AAErBC,MAAAA,GAAG,EAAHA;AAFqB;AAHT;AAAA,CAAd;;eAQe;AACbF,EAAAA,KAAK,EAALA;AADa,C"
-}
+{"version":3,"file":"fns.js","names":["crMsg","id","msg"],"sources":["../../../src/flux/drawerMsg/fns.js"],"sourcesContent":["// @flow\r\n\r\nconst crMsg = (\r\n  id /*: string */,\r\n  msg /*: string */\r\n) /*: DrawerMsg */ => ({\r\n  id,\r\n  msg\r\n});\r\n\r\nexport default {\r\n  crMsg\r\n}\r\n"],"mappings":";;;;;AAEA,IAAMA,KAAK,GAAG;EAGZ;AAHIA,KAAQ,CACZC;AAAG;AADS,EAEZC;AAAI;AAFQ;EAAA,OAGS;IACrBD,EAAE,EAAFA,EADqB;IAErBC,GAAG,EAAHA;EAFqB,CAHT;AAAA,CAAd;;eAQe;EACbF,KAAK,EAALA;AADa,C"}

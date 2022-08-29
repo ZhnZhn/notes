@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.moveColumn = exports.removeColumn = exports.addColumn = void 0;
+exports.removeColumn = exports.moveColumn = exports.addColumn = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/board-header/TopicDrawer.js"
- ],
- "file": "../../../src/component/board-header/TopicDrawer.js",
- "names": [
-  "_captionEl",
-  "TopicDrawer"
- ],
- "mappings": ";;;;;;;AAAA;;AACA;;AACA;;;;AAEA,IAAMA,UAAU,gBAAG,qBAAC,yBAAD,KAAnB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;EAAA,oBAClB,qBAAC,sBAAD;IAAY,SAAS,EAAED,UAAvB;IAAA,uBACE,qBAAC,2BAAD;EADF,EADkB;AAAA,CAApB;;eAMeC,W"
-}
+{"version":3,"file":"TopicDrawer.js","names":["_captionEl","TopicDrawer"],"sources":["../../../src/component/board-header/TopicDrawer.jsx"],"sourcesContent":["import DrawerLeft from '../zhn-ch/DrawerLeft';\r\nimport Caption from './HeaderCaption';\r\nimport DrawerMenu from './TopicDrawerMenu';\r\n\r\nconst _captionEl = <Caption />\r\n\r\nconst TopicDrawer = () => (\r\n  <DrawerLeft captionEl={_captionEl}>\r\n    <DrawerMenu />\r\n  </DrawerLeft>\r\n);\r\n\r\nexport default TopicDrawer\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;;;AAEA,IAAMA,UAAU,gBAAG,qBAAC,yBAAD,KAAnB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;EAAA,oBAClB,qBAAC,sBAAD;IAAY,SAAS,EAAED,UAAvB;IAAA,uBACE,qBAAC,2BAAD;EADF,EADkB;AAAA,CAApB;;eAMeC,W"}

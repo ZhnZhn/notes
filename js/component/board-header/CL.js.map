@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/board-header/CL.js"
- ],
- "file": "../../../src/component/board-header/CL.js",
- "names": [
-  "DRAWER",
-  "CL_DRAWER_TITLE",
-  "CL_DRAWER_LIST",
-  "CL_BT",
-  "CL_BADGE"
- ],
- "mappings": ";;;;AACA,IAAMA,MAAM,GAAG,QAAf;AACO,IAAMC,eAAe,GAAMD,MAAN,YAArB;;AACA,IAAME,cAAc,GAAMF,MAAN,WAApB;;AACA,IAAMG,KAAK,GAAMD,cAAN,QAAX;;AACA,IAAME,QAAQ,GAAMD,KAAN,YAAd"
-}
+{"version":3,"file":"CL.js","names":["DRAWER","CL_DRAWER_TITLE","CL_DRAWER_LIST","CL_BT","CL_BADGE"],"sources":["../../../src/component/board-header/CL.js"],"sourcesContent":["\r\nconst DRAWER = 'drawer';\r\nexport const CL_DRAWER_TITLE = `${DRAWER}__title`\r\nexport const CL_DRAWER_LIST = `${DRAWER}__list`\r\nexport const CL_BT = `${CL_DRAWER_LIST}-bt`\r\nexport const CL_BADGE = `${CL_BT}__badge`\r\n"],"mappings":";;;;AACA,IAAMA,MAAM,GAAG,QAAf;AACO,IAAMC,eAAe,GAAMD,MAAN,YAArB;;AACA,IAAME,cAAc,GAAMF,MAAN,WAApB;;AACA,IAAMG,KAAK,GAAMD,cAAN,QAAX;;AACA,IAAME,QAAQ,GAAMD,KAAN,YAAd"}

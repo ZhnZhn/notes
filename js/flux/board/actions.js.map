@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/board/actions.js"
- ],
- "file": "../../../src/flux/board/actions.js",
- "names": [
-  "addBoard",
-  "removeBoard",
-  "setCurrentBoard"
- ],
- "mappings": ";;;;;AAAA;;AAEO,IAAMA,QAAQ,GAAG,2BAAa,iBAAb,CAAjB;;AACA,IAAMC,WAAW,GAAG,2BAAa,oBAAb,CAApB;;AAEA,IAAMC,eAAe,GAAG,2BAAa,wBAAb,CAAxB"
-}
+{"version":3,"file":"actions.js","names":["addBoard","createAction","removeBoard","setCurrentBoard"],"sources":["../../../src/flux/board/actions.js"],"sourcesContent":["import { createAction } from '@reduxjs/toolkit';\r\n\r\nexport const addBoard = createAction(\"boards/addBoard\")\r\nexport const removeBoard = createAction(\"boards/removeBoard\")\r\n\r\nexport const setCurrentBoard = createAction(\"boards/setCurrentBoard\")\r\n"],"mappings":";;;;;AAAA;;AAEO,IAAMA,QAAQ,GAAG,IAAAC,qBAAA,EAAa,iBAAb,CAAjB;;AACA,IAAMC,WAAW,GAAG,IAAAD,qBAAA,EAAa,oBAAb,CAApB;;AAEA,IAAME,eAAe,GAAG,IAAAF,qBAAA,EAAa,wBAAb,CAAxB"}

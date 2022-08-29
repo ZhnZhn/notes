@@ -27,7 +27,9 @@ var _crMoveInternal = function _crMoveInternal(propName, idsTo) {
 };
 
 var _crMoveExternal = function _crMoveExternal(propName, idsTo) {
-  return function (state
+  return function
+    /*: {} */
+  (state
   /*: {} */
   , id
   /*: string */
@@ -39,9 +41,7 @@ var _crMoveExternal = function _crMoveExternal(propName, idsTo) {
   /*: { id: string } */
   , to
   /*: { id: string } */
-  )
-  /*: {} */
-  {
+  ) {
     var newFromIds = [].concat(from[propName]);
     newFromIds.splice(source.index, 1);
     var newToIds = [].concat(to[propName]);
@@ -51,11 +51,11 @@ var _crMoveExternal = function _crMoveExternal(propName, idsTo) {
   };
 };
 
-var fDnDMoveFns = function fDnDMoveFns(propName
+var fDnDMoveFns = function
+  /*: {} */
+fDnDMoveFns(propName
 /*: string */
-)
-/*: {} */
-{
+) {
   var _idsTo = (0, _fIdsTo["default"])(propName);
 
   return {

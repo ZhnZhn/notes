@@ -3,18 +3,17 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var crMsg = function crMsg(id
+var crMsg = function
+  /*: DrawerMsg */
+crMsg(id
 /*: string */
 , msg
 /*: string */
 ) {
-  return (
-    /*: DrawerMsg */
-    {
-      id: id,
-      msg: msg
-    }
-  );
+  return {
+    id: id,
+    msg: msg
+  };
 };
 
 var _default = {

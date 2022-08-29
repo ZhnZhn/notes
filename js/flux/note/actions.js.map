@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/note/actions.js"
- ],
- "file": "../../../src/flux/note/actions.js",
- "names": [
-  "addNote",
-  "deleteNote",
-  "moveNote",
-  "editNoteLabels"
- ],
- "mappings": ";;;;;AAAA;;AAEO,IAAMA,OAAO,GAAG,2BAAa,eAAb,CAAhB;;AACA,IAAMC,UAAU,GAAG,2BAAa,kBAAb,CAAnB;;AAEA,IAAMC,QAAQ,GAAG,2BAAa,gBAAb,CAAjB;;AACA,IAAMC,cAAc,GAAG,2BAAa,sBAAb,CAAvB"
-}
+{"version":3,"file":"actions.js","names":["addNote","createAction","deleteNote","moveNote","editNoteLabels"],"sources":["../../../src/flux/note/actions.js"],"sourcesContent":["import { createAction } from '@reduxjs/toolkit';\r\n\r\nexport const addNote = createAction(\"notes/addNote\")\r\nexport const deleteNote = createAction(\"notes/deleteNote\")\r\n\r\nexport const moveNote = createAction(\"notes/moveNote\")\r\nexport const editNoteLabels = createAction(\"notes/editNoteLabels\")\r\n"],"mappings":";;;;;AAAA;;AAEO,IAAMA,OAAO,GAAG,IAAAC,qBAAA,EAAa,eAAb,CAAhB;;AACA,IAAMC,UAAU,GAAG,IAAAD,qBAAA,EAAa,kBAAb,CAAnB;;AAEA,IAAME,QAAQ,GAAG,IAAAF,qBAAA,EAAa,gBAAb,CAAjB;;AACA,IAAMG,cAAc,GAAG,IAAAH,qBAAA,EAAa,sBAAb,CAAvB"}

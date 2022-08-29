@@ -5,10 +5,8 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  KEY: {
-    textDecoration: 'underline'
-  }
+var S_KEY = {
+  textDecoration: 'underline'
 };
 
 var _crAccessKeyIndex = function _crAccessKeyIndex(accessKey, caption) {
@@ -30,7 +28,7 @@ var _crCaption = function _crCaption(accessKey, caption) {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: _before
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      style: S.KEY,
+      style: S_KEY,
       children: _key
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: _after

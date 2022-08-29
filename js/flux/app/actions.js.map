@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/app/actions.js"
- ],
- "file": "../../../src/flux/app/actions.js",
- "names": [
-  "saveBoard",
-  "cleanStorage"
- ],
- "mappings": ";;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,2BAAa,eAAb,CAAlB;;AACA,IAAMC,YAAY,GAAG,2BAAa,kBAAb,CAArB"
-}
+{"version":3,"file":"actions.js","names":["saveBoard","createAction","cleanStorage"],"sources":["../../../src/flux/app/actions.js"],"sourcesContent":["import { createAction } from \"@reduxjs/toolkit\";\r\n\r\nexport const saveBoard = createAction(\"app/saveBoard\")\r\nexport const cleanStorage = createAction(\"app/cleanStorage\")\r\n"],"mappings":";;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,IAAAC,qBAAA,EAAa,eAAb,CAAlB;;AACA,IAAMC,YAAY,GAAG,IAAAD,qBAAA,EAAa,kBAAb,CAArB"}

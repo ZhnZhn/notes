@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -23,13 +23,9 @@ var _TabLabels = _interopRequireDefault(require("./TabLabels"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = {
-  DIALOG: 'md-details'
-};
-var S = {
-  CAPTION: {
-    marginBottom: 0
-  }
+var CL_DIALOG = 'md-details',
+    S_CAPTION = {
+  marginBottom: 0
 };
 
 var _crCaption = function _crCaption(note) {
@@ -41,7 +37,7 @@ var _crCaption = function _crCaption(note) {
   return "Details: " + _title + _sufix;
 };
 
-var DetailsDialog = function DetailsDialog(_ref) {
+var DetailsDialog = (0, _memoIsShow["default"])(function (_ref) {
   var isShow = _ref.isShow,
       data = _ref.data,
       dispatch = _ref.dispatch,
@@ -51,9 +47,9 @@ var DetailsDialog = function DetailsDialog(_ref) {
       _caption = _crCaption(data);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
-    className: CL.DIALOG,
+    className: CL_DIALOG,
     style: TS.DIALOG,
-    captionStyle: S.CAPTION,
+    captionStyle: S_CAPTION,
     caption: _caption,
     isShow: isShow,
     withoutClose: true,
@@ -77,13 +73,7 @@ var DetailsDialog = function DetailsDialog(_ref) {
       })]
     }, data.id)
   });
-};
-
-var _areEqualProps = function _areEqualProps(prevProps, nextProps) {
-  return prevProps.isShow === nextProps.isShow;
-};
-
-var _default = /*#__PURE__*/(0, _react.memo)(DetailsDialog, _areEqualProps);
-
+});
+var _default = DetailsDialog;
 exports["default"] = _default;
 //# sourceMappingURL=DetailsDialog.js.map

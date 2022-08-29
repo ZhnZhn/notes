@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.removeDrawerMsg = exports.addDrawerMsg = void 0;
+exports.removeDrawerMsg = exports["default"] = exports.addDrawerMsg = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

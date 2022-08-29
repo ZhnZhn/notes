@@ -9,20 +9,21 @@ var _extends3 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var filterBy =
 /*:: <T: string | number> */
-function filterBy(arr
+function
+  /*: Array<T> */
+filterBy(arr
 /*: Array<T> */
 , id
 /*: T */
 ) {
-  return (
-    /*: Array<T> */
-    Array.isArray(arr) ? arr.filter(function (str) {
-      return str !== id;
-    }) : arr
-  );
+  return Array.isArray(arr) ? arr.filter(function (str) {
+    return str !== id;
+  }) : arr;
 };
 
-var filterByProp = function filterByProp(arr
+var filterByProp = function
+  /*: Array<{}>*/
+filterByProp(arr
 /*: Array<{}> */
 , prValue
 /*: mixed */
@@ -37,21 +38,18 @@ var filterByProp = function filterByProp(arr
     = 'id';
   }
 
-  return (
-    /*: Array<{}>*/
-    Array.isArray(arr) ? arr.filter(function (obj) {
-      return obj[prName] !== prValue;
-    }) : arr
-  );
+  return Array.isArray(arr) ? arr.filter(function (obj) {
+    return obj[prName] !== prValue;
+  }) : arr;
 };
 
-var removeProp = function removeProp(obj
+var removeProp = function
+  /*: {} */
+removeProp(obj
 /*: {} */
 , key
 /*: string */
-)
-/*: {} */
-{
+) {
   var _r = {};
   Object.keys(obj).forEach(function (k) {
     if (k !== key) {
@@ -61,7 +59,9 @@ var removeProp = function removeProp(obj
   return _r;
 };
 
-var setInObj = function setInObj(state
+var setInObj = function
+  /*: {} */
+setInObj(state
 /*: {} */
 , key
 /*: string */
@@ -70,10 +70,7 @@ var setInObj = function setInObj(state
 ) {
   var _extends2;
 
-  return (
-    /*: {} */
-    (0, _extends3["default"])({}, state, (_extends2 = {}, _extends2[key] = obj, _extends2))
-  );
+  return (0, _extends3["default"])({}, state, (_extends2 = {}, _extends2[key] = obj, _extends2));
 };
 
 var _default = {

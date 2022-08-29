@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/hooks/useKeyEscape.js"
- ],
- "file": "../../../src/component/hooks/useKeyEscape.js",
- "names": [
-  "useKeyEscape",
-  "fUseKey",
-  "isKeyEscape"
- ],
- "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,YAAY,GAAG,IAAAC,mBAAA,EAAQC,uBAAR,CAArB;eAEeF,Y"
-}
+{"version":3,"file":"useKeyEscape.js","names":["useKeyEscape","fUseKey","isKeyEscape"],"sources":["../../../src/component/hooks/useKeyEscape.js"],"sourcesContent":["import fUseKey from './fUseKey';\r\nimport isKeyEscape from '../zhn/isKeyEscape';\r\n\r\nconst useKeyEscape = fUseKey(isKeyEscape);\r\n\r\nexport default useKeyEscape\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,YAAY,GAAG,IAAAC,mBAAA,EAAQC,uBAAR,CAArB;eAEeF,Y"}

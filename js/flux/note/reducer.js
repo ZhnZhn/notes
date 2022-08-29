@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = exports.editNoteDescr = exports.editNoteTitle = exports.initialState = void 0;
+exports.initialState = exports.editNoteTitle = exports.editNoteDescr = exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

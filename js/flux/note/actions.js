@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.editNoteLabels = exports.moveNote = exports.deleteNote = exports.addNote = void 0;
+exports.moveNote = exports.editNoteLabels = exports.deleteNote = exports.addNote = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

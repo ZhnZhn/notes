@@ -7,7 +7,9 @@ exports["default"] = void 0;
 
 var _fDnDMoveFns2 = _interopRequireDefault(require("../fDnDMoveFns"));
 
-var crColumn = function crColumn(columnId
+var crColumn = function
+  /*: Topic */
+crColumn(columnId
 /*: string */
 , withAdd
 /*: boolean */
@@ -20,15 +22,12 @@ var crColumn = function crColumn(columnId
     = true;
   }
 
-  return (
-    /*: Topic */
-    {
-      id: columnId,
-      title: 'New Topic',
-      noteIds: [],
-      withAdd: withAdd
-    }
-  );
+  return {
+    id: columnId,
+    title: 'New Topic',
+    noteIds: [],
+    withAdd: withAdd
+  };
 };
 
 var _fDnDMoveFns = (0, _fDnDMoveFns2["default"])('noteIds'),

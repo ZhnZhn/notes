@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/zhn/isKeyEscape.js"
- ],
- "file": "../../../src/component/zhn/isKeyEscape.js",
- "names": [
-  "isKeyEscape",
-  "evt",
-  "keyCode",
-  "key"
- ],
- "mappings": ";;;;;AAAA,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAAAC,GAAG;EAAA,OAAIA,GAAG,CAACC,OAAJ,KAAgB,EAAhB,IACvBD,GAAG,CAACE,GAAJ,KAAY,QADO;AAAA,CAAvB;;eAGeH,W"
-}
+{"version":3,"file":"isKeyEscape.js","names":["isKeyEscape","evt","keyCode","key"],"sources":["../../../src/component/zhn/isKeyEscape.js"],"sourcesContent":["const isKeyEscape = evt => evt.keyCode === 27\r\n || evt.key === 'Escape';\r\n\r\nexport default isKeyEscape \r\n"],"mappings":";;;;;AAAA,IAAMA,WAAW,GAAG,SAAdA,WAAc,CAAAC,GAAG;EAAA,OAAIA,GAAG,CAACC,OAAJ,KAAgB,EAAhB,IACvBD,GAAG,CAACE,GAAJ,KAAY,QADO;AAAA,CAAvB;;eAGeH,W"}

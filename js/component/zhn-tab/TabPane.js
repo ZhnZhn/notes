@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -34,7 +34,7 @@ var S_UL = {
 
 var _renderTabs = function _renderTabs(children, selectedTabIndex, hClickTab) {
   return children.map(function (tab, index) {
-    return /*#__PURE__*/(0, _react.cloneElement)(tab, {
+    return (0, _uiApi.cloneElement)(tab, {
       key: index,
       id: index,
       onClick: function onClick() {
@@ -55,7 +55,7 @@ var _renderComponents = function _renderComponents(children, selectedTabIndex) {
       role: "tabpanel",
       id: "tabpanel-" + index,
       "aria-labelledby": "tab-" + index,
-      children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+      children: (0, _uiApi.cloneElement)(tab.props.children, {
         key: 'comp' + index,
         isSelected: _isSelected
       })
@@ -63,17 +63,17 @@ var _renderComponents = function _renderComponents(children, selectedTabIndex) {
   });
 };
 
-var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var TabPane = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var width = _ref.width,
       height = _ref.height,
       tabsStyle = _ref.tabsStyle,
       children = _ref.children;
 
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _uiApi.useState)(0),
       selectedTabIndex = _useState[0],
       setSelectedTabIndex = _useState[1];
 
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getSelectedTabIndex: function getSelectedTabIndex() {
         return selectedTabIndex;

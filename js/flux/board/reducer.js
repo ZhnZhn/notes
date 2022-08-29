@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.editBoardTitle = exports.crBoard = void 0;
+exports.editBoardTitle = exports["default"] = exports.crBoard = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

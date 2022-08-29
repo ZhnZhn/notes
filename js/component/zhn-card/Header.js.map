@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/zhn-card/Header.js"
- ],
- "file": "../../../src/component/zhn-card/Header.js",
- "names": [
-  "S_DIV",
-  "paddingTop",
-  "paddingBottom",
-  "lineHeight",
-  "Header",
-  "children"
- ],
- "mappings": ";;;;;;;AACA,IAAMA,KAAK,GAAG;AACZC,EAAAA,UAAU,EAAE,CADA;AAEZC,EAAAA,aAAa,EAAE,CAFH;AAGZC,EAAAA,UAAU,EAAE;AAHA,CAAd;;AAMA,IAAMC,MAAM,GAAG,SAATA,MAAS;AAAA,MACbC,QADa,QACbA,QADa;AAAA,sBAGb;AAAK,IAAA,KAAK,EAAEL,KAAZ;AAAA,cACGK;AADH,IAHa;AAAA,CAAf;;eAQeD,M"
-}
+{"version":3,"file":"Header.js","names":["S_DIV","padding","lineHeight","Header","children"],"sources":["../../../src/component/zhn-card/Header.jsx"],"sourcesContent":["\r\nconst S_DIV = {\r\n  padding: '8px 0',\r\n  lineHeight: '36px'\r\n};\r\n\r\nconst Header = ({\r\n  children\r\n}) => (\r\n  <div style={S_DIV}>\r\n    {children}\r\n  </div>\r\n);\r\n\r\nexport default Header\r\n"],"mappings":";;;;;;;AACA,IAAMA,KAAK,GAAG;EACZC,OAAO,EAAE,OADG;EAEZC,UAAU,EAAE;AAFA,CAAd;;AAKA,IAAMC,MAAM,GAAG,SAATA,MAAS;EAAA,IACbC,QADa,QACbA,QADa;EAAA,oBAGb;IAAK,KAAK,EAAEJ,KAAZ;IAAA,UACGI;EADH,EAHa;AAAA,CAAf;;eAQeD,M"}

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _CellColor = _interopRequireDefault(require("../zhn-ch/CellColor"));
 
@@ -20,19 +20,17 @@ var S_PANE_COLOR = {
   paddingBottom: 4
 },
     S_ROW_2 = {
-  paddingLeft: 56,
-  paddingTop: 4
+  padding: '4px 0 0 56px'
 },
     S_TO_CELL = {
-  marginLeft: 12,
-  marginRight: 12
+  margin: '0 12px'
 },
     S_CELL = {
-  marginRight: 4,
   position: 'relative',
   display: 'inline-block',
   height: 32,
   width: 32,
+  marginRight: 4,
   borderRadius: 2,
   verticalAlign: 'bottom',
   boxShadow: '0 2px 2px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.1)'
@@ -53,23 +51,23 @@ var ColorStack = function ColorStack(_ref) {
   });
 };
 
-var PaneColors = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) {
+var PaneColors = (0, _uiApi.forwardRef)(function (_ref2, ref) {
   var _ref2$initColor = _ref2.initColor,
       initColor = _ref2$initColor === void 0 ? C_DF : _ref2$initColor;
 
-  var _useState = (0, _react.useState)(initColor),
+  var _useState = (0, _uiApi.useState)(initColor),
       color = _useState[0],
       setColor = _useState[1],
-      _hClick = (0, _react.useCallback)(function (color) {
+      _hClick = (0, _uiApi.useCallback)(function (color) {
     if (color) {
       setColor(color);
     }
   }, []),
-      _hInit = (0, _react.useCallback)(function () {
+      _hInit = (0, _uiApi.useCallback)(function () {
     return setColor(initColor);
   }, [initColor]);
 
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getColor: function getColor() {
         return color;

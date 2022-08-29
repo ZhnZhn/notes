@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/hooks/fUseKey.js"
- ],
- "file": "../../../src/component/hooks/fUseKey.js",
- "names": [
-  "fUseKey",
-  "isKey",
-  "fn",
-  "deps",
-  "useCallback",
-  "event",
-  "preventDefault",
-  "stopPropagation"
- ],
- "mappings": ";;;;;AAAA;;AAEA;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CAAAC,KAAK;EAAA,OAAI,UAACC,EAAD,EAAKC,IAAL;IAAA,OAAc,IAAAC,kBAAA,EAAY,UAAAC,KAAK,EAAI;MAC1D,IAAIJ,KAAK,CAACI,KAAD,CAAT,EAAkB;QAChBA,KAAK,CAACC,cAAN;QACAD,KAAK,CAACE,eAAN;QACAL,EAAE,CAACG,KAAD,CAAF;MACD;IACF,CANsC,EAMpCF,IAAI,IAAI,EAN4B,CAAd;EAAA,CAAJ;AAAA,CAArB;AAOA;;;eAEeH,O"
-}
+{"version":3,"file":"fUseKey.js","names":["fUseKey","isKey","fn","deps","useCallback","event","preventDefault","stopPropagation"],"sources":["../../../src/component/hooks/fUseKey.js"],"sourcesContent":["import { useCallback } from '../uiApi';\r\n\r\n/*eslint-disable react-hooks/exhaustive-deps */\r\nconst fUseKey = isKey => (fn, deps) => useCallback(event => {\r\n  if (isKey(event)) {\r\n    event.preventDefault()\r\n    event.stopPropagation()\r\n    fn(event)\r\n  }\r\n}, deps || []);\r\n/*eslint-enable react-hooks/exhaustive-deps */\r\n\r\nexport default fUseKey\r\n"],"mappings":";;;;;AAAA;;AAEA;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CAAAC,KAAK;EAAA,OAAI,UAACC,EAAD,EAAKC,IAAL;IAAA,OAAc,IAAAC,kBAAA,EAAY,UAAAC,KAAK,EAAI;MAC1D,IAAIJ,KAAK,CAACI,KAAD,CAAT,EAAkB;QAChBA,KAAK,CAACC,cAAN;QACAD,KAAK,CAACE,eAAN;QACAL,EAAE,CAACG,KAAD,CAAF;MACD;IACF,CANsC,EAMpCF,IAAI,IAAI,EAN4B,CAAd;EAAA,CAAJ;AAAA,CAArB;AAOA;;;eAEeH,O"}

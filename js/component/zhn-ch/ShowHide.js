@@ -11,8 +11,7 @@ var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import { PropTypes } from 'react'
-var CL = 'show-popup',
+var CL_SHOW_POPUP = 'show-popup',
     S_SHOW = {
   display: 'block'
 },
@@ -26,7 +25,7 @@ var ShowHide = function ShowHide(_ref) {
       style = _ref.style,
       children = _ref.children;
 
-  var _cl = (0, _crCn["default"])(className, [isShow, CL]),
+  var _cl = (0, _crCn["default"])(className, [isShow, CL_SHOW_POPUP]),
       _style = (0, _crStyle["default"])(style, isShow ? S_SHOW : S_HIDE);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -35,18 +34,6 @@ var ShowHide = function ShowHide(_ref) {
     children: children
   });
 };
-/*
-ShowHide.propTypes = {
-  isShow: PropTypes.bool,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  children: PropTypes.oneOfType[
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]
-}
-*/
-
 
 var _default = ShowHide;
 exports["default"] = _default;

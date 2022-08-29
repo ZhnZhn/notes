@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.toggleColumn = exports.editColumnTitle = void 0;
+exports.toggleColumn = exports.editColumnTitle = exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

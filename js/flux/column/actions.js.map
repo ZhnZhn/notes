@@ -1,13 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/flux/column/actions.js"
- ],
- "file": "../../../src/flux/column/actions.js",
- "names": [
-  "addColumn",
-  "removeColumn",
-  "moveColumn"
- ],
- "mappings": ";;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,2BAAa,mBAAb,CAAlB;;AACA,IAAMC,YAAY,GAAG,2BAAa,sBAAb,CAArB;;AAEA,IAAMC,UAAU,GAAG,2BAAa,oBAAb,CAAnB"
-}
+{"version":3,"file":"actions.js","names":["addColumn","createAction","removeColumn","moveColumn"],"sources":["../../../src/flux/column/actions.js"],"sourcesContent":["import { createAction } from '@reduxjs/toolkit';\r\n\r\nexport const addColumn = createAction(\"columns/addColumn\")\r\nexport const removeColumn = createAction(\"columns/removeColumn\")\r\n\r\nexport const moveColumn = createAction(\"columns/moveColumn\")\r\n"],"mappings":";;;;;AAAA;;AAEO,IAAMA,SAAS,GAAG,IAAAC,qBAAA,EAAa,mBAAb,CAAlB;;AACA,IAAMC,YAAY,GAAG,IAAAD,qBAAA,EAAa,sBAAb,CAArB;;AAEA,IAAME,UAAU,GAAG,IAAAF,qBAAA,EAAa,oBAAb,CAAnB"}

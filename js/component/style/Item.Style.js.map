@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/style/Item.Style.js"
- ],
- "file": "../../../src/component/style/Item.Style.js",
- "names": [
-  "styleConfig",
-  "themeName",
-  "style",
-  "createStyle",
-  "CSS_RULE",
-  "ITEM"
- ],
- "mappings": ";;;;;;;;;AAAA,IAAMA,WAAW,GAAG;EAClBC,SAAS,EAAE,KAAK,CADE;EAElBC,KAAK,EAAE,KAAK,CAFM;EAIlBC,WAAW,EAAE,qBAACC,QAAD,EAAc;IACzB,OAAO;MACLC,IAAI,gCACCD,QAAQ,CAACC,IADV;IADC,CAAP;EAKD;AAViB,CAApB;eAaeL,W"
-}
+{"version":3,"file":"Item.Style.js","names":["styleConfig","themeName","style","createStyle","CSS_RULE","ITEM"],"sources":["../../../src/component/style/Item.Style.js"],"sourcesContent":["const styleConfig = {\r\n  themeName: void 0,\r\n  style: void 0,\r\n\r\n  createStyle: (CSS_RULE) => {\r\n    return {\r\n      ITEM: {\r\n        ...CSS_RULE.ITEM\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"mappings":";;;;;;;;;AAAA,IAAMA,WAAW,GAAG;EAClBC,SAAS,EAAE,KAAK,CADE;EAElBC,KAAK,EAAE,KAAK,CAFM;EAIlBC,WAAW,EAAE,qBAACC,QAAD,EAAc;IACzB,OAAO;MACLC,IAAI,gCACCD,QAAQ,CAACC,IADV;IADC,CAAP;EAKD;AAViB,CAApB;eAaeL,W"}

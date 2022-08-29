@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.cleanStorage = exports.saveBoard = void 0;
+exports.saveBoard = exports.cleanStorage = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

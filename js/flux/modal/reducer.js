@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = exports.showNotif = exports.showSettings = exports.showDetails = exports.initialState = void 0;
+exports.showSettings = exports.showNotif = exports.showDetails = exports.initialState = exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

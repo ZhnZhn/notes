@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.setUiTheme = void 0;
+exports.setUiTheme = exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 

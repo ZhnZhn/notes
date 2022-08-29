@@ -9,19 +9,23 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from 'prop-types'
+var FN_NOOP = function FN_NOOP() {};
+
 var CellColor = function CellColor(_ref) {
   var _ref$tabIndex = _ref.tabIndex,
       tabIndex = _ref$tabIndex === void 0 ? '-1' : _ref$tabIndex,
       style = _ref.style,
       color = _ref.color,
-      onClick = _ref.onClick,
+      _ref$onClick = _ref.onClick,
+      onClick = _ref$onClick === void 0 ? FN_NOOP : _ref$onClick,
       children = _ref.children;
 
   var _styleColor = color ? {
     backgroundColor: color
   } : void 0,
-      _onClick = onClick ? onClick.bind(null, color) : void 0;
+      _onClick = function _onClick() {
+    return onClick(color);
+  };
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     tabIndex: tabIndex,
@@ -30,15 +34,6 @@ var CellColor = function CellColor(_ref) {
     children: children
   });
 };
-/*
-CellColor.propTypes = {
-  tabIndex: PropTypes.string,
-  style: PropTypes.object,
-  color: PropTypes.string,
-  onClick: PropTypes.func,  
-}
-*/
-
 
 var _default = CellColor;
 exports["default"] = _default;

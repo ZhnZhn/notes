@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/board-header/Header.js"
- ],
- "file": "../../../src/component/board-header/Header.js",
- "names": [
-  "_CL_NAV_LINK",
-  "CL_NAV_LINK",
-  "CL_ML_8",
-  "Header",
-  "addColumn",
-  "CL_HEADER"
- ],
- "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;;;AAOA,IAAMA,YAAY,GAAMC,eAAN,SAAqBC,WAAvC;;AAEA,IAAMC,MAAM,GAAG,SAATA,MAAS;EAAA,IACbC,SADa,QACbA,SADa;EAAA,oBAGb,sBAAC,kBAAD;IACE,SAAS,EAAEC,aADb;IAAA,wBAGE,qBAAC,uBAAD,KAHF,eAIE,qBAAC,sBAAD;MACG,OAAO,EAAC,WADX;MAEG,KAAK,EAAC,6BAFT;MAGG,SAAS,EAAC,GAHb;MAIG,OAAO,EAAE,GAJZ;MAKG,OAAO,EAAED;IALZ,EAJF,eAWE;MAAA,uBACE,qBAAC,cAAD;QACE,EAAE,EAAC,SADL;QAEE,SAAS,EAAEJ,YAFb;QAAA;MAAA;IADF,EAXF,eAmBE,qBAAC,wBAAD,KAnBF;EAAA,EAHa;AAAA,CAAf;;eA0BeG,M"
-}
+{"version":3,"file":"Header.js","names":["_CL_NAV_LINK","CL_NAV_LINK","CL_ML_8","Header","addColumn","CL_HEADER"],"sources":["../../../src/component/board-header/Header.jsx"],"sourcesContent":["import { NavLink } from '../uiApi';\r\n\r\nimport AppHeader from '../zhn-ch/Header';\r\nimport TopicDrawer from './TopicDrawer';\r\nimport FlatButton from '../zhn-m/FlatButton';\r\nimport HeaderDrawer from '../header/HeaderDrawer';\r\n\r\nimport {\r\n  CL_HEADER,\r\n  CL_NAV_LINK,\r\n  CL_ML_8\r\n} from '../style/CL';\r\n\r\n// @flow\r\nconst _CL_NAV_LINK = `${CL_NAV_LINK} ${CL_ML_8}`;\r\n\r\nconst Header = ({\r\n  addColumn /*: TopicAction.addColumn */\r\n}) => (\r\n  <AppHeader\r\n    className={CL_HEADER}\r\n  >\r\n    <TopicDrawer />\r\n    <FlatButton\r\n       caption=\"Add Topic\"\r\n       title=\"Click to add topic to board\"\r\n       accessKey=\"a\"\r\n       timeout={500}\r\n       onClick={addColumn}\r\n    />\r\n    <nav>\r\n      <NavLink\r\n        to=\"/boards\"\r\n        className={_CL_NAV_LINK}\r\n      >\r\n         ToBoards\r\n      </NavLink>\r\n    </nav>\r\n    <HeaderDrawer />\r\n  </AppHeader>\r\n);\r\n\r\nexport default Header\r\n"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AACA;;AACA;;AAEA;;;;AAOA,IAAMA,YAAY,GAAMC,eAAN,SAAqBC,WAAvC;;AAEA,IAAMC,MAAM,GAAG,SAATA,MAAS;EAAA,IACbC,SADa,QACbA,SADa;EAAA,oBAGb,sBAAC,kBAAD;IACE,SAAS,EAAEC,aADb;IAAA,wBAGE,qBAAC,uBAAD,KAHF,eAIE,qBAAC,sBAAD;MACG,OAAO,EAAC,WADX;MAEG,KAAK,EAAC,6BAFT;MAGG,SAAS,EAAC,GAHb;MAIG,OAAO,EAAE,GAJZ;MAKG,OAAO,EAAED;IALZ,EAJF,eAWE;MAAA,uBACE,qBAAC,cAAD;QACE,EAAE,EAAC,SADL;QAEE,SAAS,EAAEJ,YAFb;QAAA;MAAA;IADF,EAXF,eAmBE,qBAAC,wBAAD,KAnBF;EAAA,EAHa;AAAA,CAAf;;eA0BeG,M"}

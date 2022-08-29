@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 
-var _CL = _interopRequireDefault(require("./CL"));
+var _CL = require("./CL");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -17,7 +17,7 @@ var HIDE = 'hide',
 var Badge = function Badge(_ref) {
   var isHide = _ref.isHide;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    className: _CL["default"].BADGE,
+    className: _CL.CL_BADGE,
     children: isHide ? 'H' : 'S'
   });
 };
@@ -40,7 +40,7 @@ var TopicItem = function TopicItem(_ref2) {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
-      className: _CL["default"].BT,
+      className: _CL.CL_BT,
       caption: title,
       title: _title,
       timeout: 0,

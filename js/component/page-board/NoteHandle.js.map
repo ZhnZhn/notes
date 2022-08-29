@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/component/page-board/NoteHandle.js"
- ],
- "file": "../../../src/component/page-board/NoteHandle.js",
- "names": [
-  "CL_HANDLE",
-  "CL_OPEN",
-  "NoteHandle",
-  "isDetails",
-  "rest",
-  "_cl"
- ],
- "mappings": ";;;;;;;;;;;AAAA;;;;;AAEA,IAAMA,SAAS,GAAG,cAAlB;AAAA,IACEC,OAAO,GAAG,oBADZ;;AAGA,IAAMC,UAAU,GAAG,SAAbA,UAAa,OAA4B;AAAA,MAAzBC,SAAyB,QAAzBA,SAAyB;AAAA,MAAXC,IAAW;;AAC7C,MAAMC,GAAG,GAAG,sBAAKL,SAAL,EAAgB,CAACG,SAAD,EAAYF,OAAZ,CAAhB,CAAZ;;AACA,sBACC;AACG,IAAA,SAAS,EAAEI;AADd,KAEOD,IAFP,EADD;AAMD,CARD;;eAUeF,U"
-}
+{"version":3,"file":"NoteHandle.js","names":["CL_HANDLE","CL_OPEN","NoteHandle","isDetails","rest","_cl","crCn"],"sources":["../../../src/component/page-board/NoteHandle.jsx"],"sourcesContent":["import crCn from '../zhn-utils/crCn';\r\n\r\nconst CL_HANDLE = 'note__handle'\r\n, CL_OPEN = 'note__handle--open';\r\n\r\nconst NoteHandle = ({ isDetails, ...rest }) => {\r\n  const _cl = crCn(CL_HANDLE, [isDetails, CL_OPEN]);\r\n  return (\r\n   <span\r\n      className={_cl}\r\n      {...rest}\r\n   />\r\n  );\r\n};\r\n\r\nexport default NoteHandle\r\n"],"mappings":";;;;;;;;;;;AAAA;;;;;AAEA,IAAMA,SAAS,GAAG,cAAlB;AAAA,IACEC,OAAO,GAAG,oBADZ;;AAGA,IAAMC,UAAU,GAAG,SAAbA,UAAa,OAA4B;EAAA,IAAzBC,SAAyB,QAAzBA,SAAyB;EAAA,IAAXC,IAAW;;EAC7C,IAAMC,GAAG,GAAG,IAAAC,gBAAA,EAAKN,SAAL,EAAgB,CAACG,SAAD,EAAYF,OAAZ,CAAhB,CAAZ;;EACA,oBACC;IACG,SAAS,EAAEI;EADd,GAEOD,IAFP,EADD;AAMD,CARD;;eAUeF,U"}
