@@ -11,11 +11,16 @@ var _actions = require("../note/actions");
 
 var _selectors = require("../selectors");
 
-var _hmToArr = _interopRequireDefault(require("../../utils/hmToArr"));
+var _crArrFromHm = _interopRequireDefault(require("../../utils/crArrFromHm"));
 
 var _crId = _interopRequireDefault(require("./crId"));
 
 var _appConf = _interopRequireDefault(require("../appConf"));
+
+var _isArr = Array.isArray,
+    _isObj = function _isObj(v) {
+  return v && typeof v === 'object';
+};
 
 var _fIsLabel = function _fIsLabel(item) {
   return function (_) {
@@ -27,14 +32,14 @@ var _crLabels = function _crLabels(hmLabel, labels) {
   var labelsTo = [],
       newLabels = [];
 
-  if (!hmLabel || typeof hmLabel !== 'object' || !Array.isArray(labels)) {
+  if (!_isObj(hmLabel) || !_isArr(labels)) {
     return {
       labelsTo: labelsTo,
       newLabels: newLabels
     };
   }
 
-  var _arrLabels = (0, _hmToArr["default"])(hmLabel);
+  var _arrLabels = (0, _crArrFromHm["default"])(hmLabel);
 
   labels.forEach(function (item) {
     if (item.id) {

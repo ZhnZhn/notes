@@ -1,24 +1,31 @@
-import { editNoteLabels } from '../note/actions'
-import { sNoteLabel } from '../selectors'
-import hmToArr from '../../utils/hmToArr'
-import crId from './crId'
-import CONF from '../appConf'
+import { editNoteLabels } from '../note/actions';
+import { sNoteLabel } from '../selectors';
+import crArrFormHm from '../../utils/crArrFromHm';
+import crId from './crId';
+import CONF from '../appConf';
+
+const _isArr = Array.isArray
+, _isObj = v => v && typeof v === 'object';
 
 const _fIsLabel = (item) => _ =>
   _.title === item.title
   && _.color === item.color;
 
-const _crLabels = (hmLabel, labels) => {
+const _crLabels = (
+  hmLabel,
+  labels
+) => {
    const labelsTo = []
-      , newLabels = [];
+   , newLabels = [];
 
-   if (!hmLabel
-     || typeof hmLabel !== 'object'
-     || !Array.isArray(labels)) {
-     return { labelsTo, newLabels };
+   if (!_isObj(hmLabel) || !_isArr(labels)) {
+     return {
+       labelsTo,
+       newLabels
+     };
    }
 
-   const _arrLabels = hmToArr(hmLabel);
+   const _arrLabels = crArrFormHm(hmLabel);
    labels.forEach(item => {
       if (item.id) {
         labelsTo.push(item)
@@ -41,7 +48,10 @@ const _crLabels = (hmLabel, labels) => {
    };
 };
 
-const noteLabelIdMiddleware = ({ getState, dispatch }) => next => action => {
+const noteLabelIdMiddleware = ({
+  getState,
+  dispatch
+}) => next => action => {
   if (action.type === editNoteLabels.type) {
     const hmLabels = sNoteLabel.labels(getState())
     , { payload } = action;
