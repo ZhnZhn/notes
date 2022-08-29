@@ -2,29 +2,27 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
+var _isArr = Array.isArray;
 
-var crTitle = function crTitle(board
+var _crTitle = function _crTitle(board
+/*: ?Board */
+) {
+  var title = board.title || '',
+      columnIds = board.columnIds,
+      count = _isArr(columnIds) ? columnIds.length : 0;
+  return title + " (" + count + ")";
+};
+
+var crTitle = function
+  /*: string */
+crTitle(board
 /*: ?Board */
 , prefix
 /*: string */
-)
-/*: string */
-{
-  if (prefix
-  /*: string */
-  === void 0) {
-    prefix
-    /*: string */
-    = 'Notes';
-  }
+) {
+  var _title = board == null ? 'Not Exist' : _crTitle(board);
 
-  if (board == null) {
-    return prefix + ": Not Exist";
-  }
-
-  var title = board.title || '',
-      count = Array.isArray(board.columnIds) ? board.columnIds.length : 0;
-  return prefix + ": " + title + " (" + count + ")";
+  return (prefix || 'Notes') + ": " + _title;
 };
 
 var _default = crTitle;
