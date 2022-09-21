@@ -24,6 +24,9 @@ $cFlatBt
     &--open {
       background-color: $cCompBorder;
     }
+    &:hover {
+      cursor: grab;
+    }
   }
 
   &__caption {

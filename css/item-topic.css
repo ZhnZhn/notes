@@ -1,0 +1,8 @@
+.topic {
+  padding-left: 12px;
+  line-height: 2;
+}
+
+.topic:hover {
+  cursor: grab;
+}

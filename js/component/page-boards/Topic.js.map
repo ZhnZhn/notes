@@ -1,1 +1,16 @@
-{"version":3,"file":"Topic.js","names":["S_TOPIC","paddingLeft","lineHeight","S_COUNTER","paddingRight","Topic","title","count"],"sources":["../../../src/component/page-boards/Topic.jsx"],"sourcesContent":["import Card from '../zhn-card/Card'\r\n\r\nconst S_TOPIC = {\r\n  paddingLeft: 12,\r\n  lineHeight: 2\r\n}\r\n, S_COUNTER = {\r\n  float: 'right',\r\n  paddingRight: 12\r\n};\r\n\r\nconst Topic = ({\r\n  title,\r\n  count\r\n}) => (\r\n  <div style={S_TOPIC} >\r\n    <span>\r\n      {title}\r\n    </span>\r\n    <Card.Counter\r\n       style={S_COUNTER}\r\n       value={count}\r\n    />\r\n  </div>\r\n);\r\n\r\nexport default Topic\r\n"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,OAAO,GAAG;EACdC,WAAW,EAAE,EADC;EAEdC,UAAU,EAAE;AAFE,CAAhB;AAAA,IAIEC,SAAS,GAAG;EACZ,SAAO,OADK;EAEZC,YAAY,EAAE;AAFF,CAJd;;AASA,IAAMC,KAAK,GAAG,SAARA,KAAQ;EAAA,IACZC,KADY,QACZA,KADY;EAAA,IAEZC,KAFY,QAEZA,KAFY;EAAA,oBAIZ;IAAK,KAAK,EAAEP,OAAZ;IAAA,wBACE;MAAA,UACGM;IADH,EADF,eAIE,qBAAC,gBAAD,CAAM,OAAN;MACG,KAAK,EAAEH,SADV;MAEG,KAAK,EAAEI;IAFV,EAJF;EAAA,EAJY;AAAA,CAAd;;eAeeF,K"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/Topic.js"
+ ],
+ "file": "../../../src/component/page-boards/Topic.js",
+ "names": [
+  "CL_TOPIC",
+  "S_COUNTER",
+  "paddingRight",
+  "Topic",
+  "title",
+  "count"
+ ],
+ "mappings": ";;;;;;;AAAA;;;;AAEA,IAAMA,QAAQ,GAAG,OAAjB;AAAA,IACEC,SAAS,GAAG;EACZ,SAAO,OADK;EAEZC,YAAY,EAAE;AAFF,CADd;;AAMA,IAAMC,KAAK,GAAG,SAARA,KAAQ;EAAA,IACZC,KADY,QACZA,KADY;EAAA,IAEZC,KAFY,QAEZA,KAFY;EAAA,oBAIZ;IAAK,SAAS,EAAEL,QAAhB;IAAA,wBACE;MAAA,UACGI;IADH,EADF,eAIE,qBAAC,gBAAD,CAAM,OAAN;MACG,KAAK,EAAEH,SADV;MAEG,KAAK,EAAEI;IAFV,EAJF;EAAA,EAJY;AAAA,CAAd;;eAeeF,K"
+}

@@ -1,9 +1,6 @@
 import Card from '../zhn-card/Card'
 
-const S_TOPIC = {
-  paddingLeft: 12,
-  lineHeight: 2
-}
+const CL_TOPIC = 'topic'
 , S_COUNTER = {
   float: 'right',
   paddingRight: 12
@@ -13,7 +10,7 @@ const Topic = ({
   title,
   count
 }) => (
-  <div style={S_TOPIC} >
+  <div className={CL_TOPIC} >
     <span>
       {title}
     </span>

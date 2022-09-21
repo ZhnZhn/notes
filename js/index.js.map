@@ -1,1 +1,18 @@
-{"version":3,"file":"index.js","names":["basename","window","location","pathname","render","store","document","getElementById"],"sources":["../src/index.jsx"],"sourcesContent":["import { render } from 'react-dom'\r\nimport { Provider } from 'react-redux'\r\n\r\nimport store from './flux/store'\r\nimport App from './component/App'\r\n\r\nconst basename = ((window || {}).location || {}).pathname;\r\n\r\nrender(\r\n  (\r\n    <Provider store={store}>\r\n      <App\r\n        basename={basename}\r\n        store={store}\r\n      />\r\n    </Provider>\r\n  ),\r\n  document.getElementById('app')\r\n)\r\n"],"mappings":";;;;AAAA;;AACA;;AAEA;;AACA;;;;AAEA,IAAMA,QAAQ,GAAG,CAAC,CAACC,MAAM,IAAI,EAAX,EAAeC,QAAf,IAA2B,EAA5B,EAAgCC,QAAjD;AAEA,IAAAC,gBAAA,gBAEI,qBAAC,oBAAD;EAAU,KAAK,EAAEC,iBAAjB;EAAA,uBACE,qBAAC,eAAD;IACE,QAAQ,EAAEL,QADZ;IAEE,KAAK,EAAEK;EAFT;AADF,EAFJ,EASEC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CATF"}
+{
+ "version": 3,
+ "sources": [
+  "../src/index.js"
+ ],
+ "file": "../src/index.js",
+ "names": [
+  "basename",
+  "window",
+  "location",
+  "pathname",
+  "render",
+  "store",
+  "document",
+  "getElementById"
+ ],
+ "mappings": ";;;;AAAA;;AACA;;AAEA;;AACA;;;;AAEA,IAAMA,QAAQ,GAAG,CAAC,CAACC,MAAM,IAAI,EAAX,EAAeC,QAAf,IAA2B,EAA5B,EAAgCC,QAAjD;AAEA,IAAAC,gBAAA,gBAEI,qBAAC,oBAAD;EAAU,KAAK,EAAEC,iBAAjB;EAAA,uBACE,qBAAC,eAAD;IACE,QAAQ,EAAEL,QADZ;IAEE,KAAK,EAAEK;EAFT;AADF,EAFJ,EASEC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CATF"
+}

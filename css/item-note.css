@@ -22,6 +22,9 @@ $cFlatBt
 .note__handle--open {
   background-color: darkcyan;
 }
+.note__handle:hover {
+  cursor: grab;
+}
 .note__caption {
   display: inline-block;
   vertical-align: super;
