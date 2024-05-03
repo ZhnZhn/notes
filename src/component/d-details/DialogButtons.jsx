@@ -13,7 +13,7 @@ const DialogButtons = ({
       onClick={onSave}
     />
     <FlatButton
-      ref={refBtClose}
+      refEl={refBtClose}
       caption="Close"
       timeout={0}
       onClick={onClose}

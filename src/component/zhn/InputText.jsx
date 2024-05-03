@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useState,
   useCallback,
   useImperativeHandle
@@ -13,13 +12,14 @@ import {
 import isKeyEnter from './isKeyEnter';
 import isKeyDelete from './isKeyDelete';
 
-const InputText = forwardRef(({
+const InputText = ({
+  refEl,
   className,
   style,
   initialValue,
   maxLength=40,
   onBlur
-}, ref) => {
+}) => {
   const [
     value,
     setValue
@@ -41,7 +41,7 @@ const InputText = forwardRef(({
     }
   }, []);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     setValue: (nextValue) => {
       if (nextValue.length <= maxLength) {
         setValue(nextValue)
@@ -62,6 +62,6 @@ const InputText = forwardRef(({
       onKeyDown={_hKeyDown}
     />
   );
-})
+};
 
 export default InputText

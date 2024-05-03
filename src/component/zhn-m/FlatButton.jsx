@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi';
-
 import useThrottleClick from '../hooks/useThrottleClick';
 
 import crCn from '../zhn-utils/crCn';
@@ -15,7 +13,8 @@ const _crTitle = (title, accessKey) => accessKey
   ? `${title} [${accessKey}]`
   : title;
 
-const FlatButton = forwardRef(({
+const FlatButton = ({
+  refEl,
   timeout,
   className,
   style,
@@ -28,7 +27,7 @@ const FlatButton = forwardRef(({
   children,
   isEvent,
   onClick
-}, ref) => {
+}) => {
   const _hClick = useThrottleClick(onClick, timeout, isEvent)
   , _className = crCn(CL_BT_FLAT, className)
   , _clCaption = crCn(CL_BT_FLAT_SPAN, clCaption)
@@ -36,7 +35,7 @@ const FlatButton = forwardRef(({
   , _title = _crTitle(title, accessKey);
   return (
     <button
-      ref={ref}
+      ref={refEl}
       className={_className}
       style={_style}
       accessKey={accessKey}
@@ -53,6 +52,6 @@ const FlatButton = forwardRef(({
       </div>
     </button>
   );
-});
+};
 
 export default FlatButton

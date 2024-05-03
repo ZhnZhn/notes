@@ -1,1 +1,23 @@
-{"version":3,"file":"useBtFocus.js","names":["useBtFocus","refBt","isSelected","props","useEffect","_bt","getRefValue","focus"],"sources":["../../../src/component/d-details/useBtFocus.js"],"sourcesContent":["import {\r\n  useEffect,\r\n  getRefValue\r\n} from '../uiApi';\r\n\r\nconst useBtFocus = (\r\n  refBt,\r\n  isSelected,\r\n  props\r\n) => useEffect(() => {\r\n  const _bt = getRefValue(_bt);\r\n  if (isSelected && _bt) {\r\n    _bt.focus()\r\n  }\r\n}, [props])\r\n// isSelected\r\n\r\nexport default useBtFocus\r\n"],"mappings":";;;;;AAAA;;AAKA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CACjBC,KADiB,EAEjBC,UAFiB,EAGjBC,KAHiB;EAAA,OAId,IAAAC,gBAAA,EAAU,YAAM;IACnB,IAAMC,GAAG,GAAG,IAAAC,kBAAA,EAAYD,GAAZ,CAAZ;;IACA,IAAIH,UAAU,IAAIG,GAAlB,EAAuB;MACrBA,GAAG,CAACE,KAAJ;IACD;EACF,CALI,EAKF,CAACJ,KAAD,CALE,CAJc;AAAA,CAAnB,C,CAUA;;;eAEeH,U"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/useBtFocus.js"
+ ],
+ "file": "../../../src/component/d-details/useBtFocus.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useBtFocus",
+  "refBt",
+  "isSelected",
+  "props",
+  "useEffect",
+  "_bt",
+  "getRefValue",
+  "focus",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,UAAU,GAAGA,CACjBC,KAAK,EACLC,UAAU,EACVC,KAAK,KACF,IAAAC,gBAAS,EAAC,MAAM;EACnB,MAAMC,GAAG,GAAG,IAAAC,kBAAW,EAACL,KAAK,CAAC;EAC9B,IAAIC,UAAU,IAAIG,GAAG,EAAE;IACrBA,GAAG,CAACE,KAAK,CAAC,CAAC;EACb;AACF,CAAC,EAAE,CAACJ,KAAK,CAAC,CAAC;AACX;AAAA,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEeV,UAAU"
+}

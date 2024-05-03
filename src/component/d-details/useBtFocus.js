@@ -8,7 +8,7 @@ const useBtFocus = (
   isSelected,
   props
 ) => useEffect(() => {
-  const _bt = getRefValue(_bt);
+  const _bt = getRefValue(refBt);
   if (isSelected && _bt) {
     _bt.focus()
   }

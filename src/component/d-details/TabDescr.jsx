@@ -30,8 +30,7 @@ const TabDescr = (props) => {
       noteId: id,
       descr: getRefValue(_refInputDescr).getValue()
     }))
-  }, [id])
-  //dispatch
+  }, [id, dispatch])
 
   useBtFocus(_refBtClose, isSelected, props)
 
@@ -41,7 +40,7 @@ const TabDescr = (props) => {
     <>
       <InputTextArea
         key={id}
-        ref={_refInputDescr}
+        refEl={_refInputDescr}
         className={CL_DESCR}
         maxLength={250}
         initialValue={_initialDescr}

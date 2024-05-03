@@ -1,7 +1,5 @@
 import {
-  forwardRef,
-  useState,
-  useImperativeHandle,
+  useState,  
   cloneElement
 } from '../uiApi';
 
@@ -62,20 +60,16 @@ const _renderTabs = (
  });
 
 
-const TabPane = forwardRef(({
+const TabPane = ({
   width,
   height,
   tabsStyle,
   children
-}, ref) => {
+}) => {
   const [
     selectedTabIndex,
     setSelectedTabIndex
   ] = useState(0)
-
-  useImperativeHandle(ref, () => ({
-    getSelectedTabIndex: () => selectedTabIndex
-  }), [selectedTabIndex])
 
   return (
     <div style={{width, height}}>
@@ -87,6 +81,6 @@ const TabPane = forwardRef(({
       </div>
     </div>
   );
-});
+};
 
 export default TabPane

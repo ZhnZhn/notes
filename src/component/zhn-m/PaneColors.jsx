@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useState,
   useCallback,
   useImperativeHandle
@@ -48,11 +47,14 @@ const ColorStack = ({
   </>
 );
 
-
-const PaneColors = forwardRef(({
+const PaneColors = ({
+  refEl,
   initColor=C_DF
-}, ref) => {
-  const [color, setColor] = useState(initColor)
+}) => {
+  const [
+    color,
+    setColor
+  ] = useState(initColor)
   , _hClick = useCallback(color => {
     if (color) {
       setColor(color)
@@ -60,7 +62,7 @@ const PaneColors = forwardRef(({
   }, [])
   , _hInit = useCallback(() => setColor(initColor), [initColor]);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getColor: () => color
   }), [color])
 
@@ -85,6 +87,6 @@ const PaneColors = forwardRef(({
       </div>
     </div>
   );
-})
+};
 
 export default PaneColors

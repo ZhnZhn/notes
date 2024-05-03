@@ -29,7 +29,7 @@ const NoteCaption = ({
       onClick={onClickHandle}
     />
     <InputText
-      ref={refTitle}
+      refEl={refTitle}
       className={CL_CAPTION}
       initialValue={noteTitle}
       onBlur={onBlurTitle}

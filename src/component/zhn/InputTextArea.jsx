@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useCallback,
@@ -9,12 +8,13 @@ import {
 
 import isKeyDelete from './isKeyDelete';
 
-const InputTextArea = forwardRef(({
+const InputTextArea = ({
+  refEl,
   className,
   style,
   initialValue,
   maxLength
-}, ref) => {
+}) => {
   const _refInput = useRef()
   , [value, setValue] = useState(initialValue)
   , _hChange = useCallback((evt) => {
@@ -24,9 +24,9 @@ const InputTextArea = forwardRef(({
     if (isKeyDelete(evt)) {
       setValue('')
     }
-  });
+  }, []);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     getValue: () => value,
     focus: () => {
       const _input = getRefValue(_refInput);
@@ -47,6 +47,6 @@ const InputTextArea = forwardRef(({
       onKeyDown={_hKeyDown}
     />
   );
-})
+};
 
 export default InputTextArea

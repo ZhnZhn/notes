@@ -77,7 +77,7 @@ const TabLabels = (props) => {
             onRemove={_onRemoveLabel}
           />
           <InputText
-            ref={_refInputLabel}
+            refEl={_refInputLabel}
             onBlur={_onBlurLabel}
           />
           <FlatButton
@@ -90,7 +90,7 @@ const TabLabels = (props) => {
           />
         </div>
         <PaneColors
-          ref={_refInputColor}
+          refEl={_refInputColor}
         />
         <DialogButtons
           refBtClose={_refBtClose}
