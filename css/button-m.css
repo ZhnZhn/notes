@@ -24,7 +24,7 @@ $cCircleBt, $cCloseBt
 }
 
 .bt-svg-close {
-  stroke: #d64336;
+  stroke: azure;
   stroke-width: 2px;
   stroke-linecap: round;
   display: inline-block;
@@ -33,17 +33,11 @@ $cCircleBt, $cCloseBt
   padding: 2px;
   margin-right: 10px;
   cursor: pointer;
-  will-change: transform;
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -ms-transition: -ms-transform 0.3s ease-out;
+  will-change: transform;  
   transition: transform 0.3s ease-out;
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
   transform-origin: center center;
 }
-.bt-svg-close:hover {
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
+.bt-svg-close:hover {  
   transform: rotate(90deg) scale(1.3, 1.3) translateY(-3px);
 }
 
@@ -57,9 +51,6 @@ $cCircleBt, $cCloseBt
 
 .not-selected {
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome all / Safari all / Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox all */
-  -ms-user-select: none; /* IE 10+ */
+  -webkit-user-select: none; /* Chrome all / Safari all / Opera */  
   user-select: none; /* Likely future */
 }
