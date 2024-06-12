@@ -1,24 +1,23 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _CL = require("../style/CL");
-
+var _Svg = _interopRequireDefault(require("./Svg"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-var Logo = function Logo(_ref) {
-  var _ref$className = _ref.className,
-      className = _ref$className === void 0 ? _CL.CL_LOGO : _ref$className,
-      style = _ref.style,
-      title = _ref.title;
+const Logo = _ref => {
+  let {
+    className = _CL.CL_LOGO,
+    style,
+    title
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: className,
     style: style,
     title: title,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-      viewBox: "0 0 32 32",
-      xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Svg.default, {
+      w: "32",
       fillRule: "evenodd",
       clipRule: "evenodd",
       strokeLinejoin: "round",
@@ -55,7 +54,5 @@ var Logo = function Logo(_ref) {
     })
   });
 };
-
-var _default = Logo;
-exports["default"] = _default;
+var _default = exports.default = Logo;
 //# sourceMappingURL=Logo.js.map
