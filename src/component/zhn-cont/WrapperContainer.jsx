@@ -1,6 +1,5 @@
 //import PropTypes from 'prop-types'
 import {
-  createElement,
   memo,
   useRef,
   useState,
@@ -8,15 +7,15 @@ import {
   useEffect,
   getRefValue,
   setRefValue
-} from '../uiApi';
+} from "../uiApi";
 
-import useTheme from '../hooks/useTheme';
-import styleConfig from '../style/Dialog.Style';
+import useTheme from "../hooks/useTheme";
+import styleConfig from "../style/Dialog.Style";
 
-import { sApp } from '../../flux/selectors';
+import { sApp } from "../../flux/selectors";
 
-import Router from '../dialogs/modalRouter';
-import WrapperModalDialog from '../zhn-ch/WrapperModalDialog';
+import Router from "../dialogs/modalRouter";
+import WrapperModalDialog from "../zhn-ch/WrapperModalDialog";
 
 const DialogStack = ({
   TS,
@@ -26,16 +25,19 @@ const DialogStack = ({
   dialogs,
   onClose
 }) => dialogs.map(dialog => {
-  const { type, comp } = dialog;
-  return createElement(comp, {
-    TS,
-    key: type,
-    isShow: shows[type],
-    data: data[type],
-    store: store,
-    dispatch: store.dispatch,
-    onClose: onClose.bind(null, type)
-  });
+  const {
+    type,
+    comp:DialogComp
+  } = dialog;
+  return (<DialogComp
+    key={type}
+    TS={TS}
+    isShow={shows[type]}
+    data={data[type]}
+    store={store}
+    dispatch={store.dispatch}
+    onClose={onClose.bind(null, type)}
+  />);
 });
 
 const WrapperContainer = memo(({

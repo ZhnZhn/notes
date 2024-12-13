@@ -1,126 +1,118 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-
 var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
-
 var _selectors = require("../../flux/selectors");
-
 var _modalRouter = _interopRequireDefault(require("../dialogs/modalRouter"));
-
 var _WrapperModalDialog = _interopRequireDefault(require("../zhn-ch/WrapperModalDialog"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
 //import PropTypes from 'prop-types'
-var DialogStack = function DialogStack(_ref) {
-  var TS = _ref.TS,
-      store = _ref.store,
-      shows = _ref.shows,
-      data = _ref.data,
-      dialogs = _ref.dialogs,
-      onClose = _ref.onClose;
-  return dialogs.map(function (dialog) {
-    var type = dialog.type,
-        comp = dialog.comp;
-    return (0, _uiApi.createElement)(comp, {
+
+const DialogStack = _ref => {
+  let {
+    TS,
+    store,
+    shows,
+    data,
+    dialogs,
+    onClose
+  } = _ref;
+  return dialogs.map(dialog => {
+    const {
+      type,
+      comp: DialogComp
+    } = dialog;
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogComp, {
       TS: TS,
-      key: type,
       isShow: shows[type],
       data: data[type],
       store: store,
       dispatch: store.dispatch,
       onClose: onClose.bind(null, type)
-    });
+    }, type);
   });
 };
-
-var WrapperContainer = (0, _uiApi.memo)(function (_ref2) {
-  var store = _ref2.store;
-
-  var TS = (0, _useTheme["default"])(_Dialog["default"]),
-      _refModal = (0, _uiApi.useRef)(),
-      _useState = (0, _uiApi.useState)({
-    isShow: false,
-    currentDialog: null,
-    dialogs: [],
-    inits: {},
-    shows: {},
-    data: {}
-  }),
-      state = _useState[0],
-      setState = _useState[1],
-      _hClose = (0, _uiApi.useCallback)(function (type) {
-    setState(function (prevState) {
-      prevState.shows[type] = false;
-      return (0, _extends2["default"])({}, prevState, {
-        isShow: false,
-        currentDialog: null,
-        shows: prevState.shows
+const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
+  let {
+    store
+  } = _ref2;
+  const TS = (0, _useTheme.default)(_Dialog.default),
+    _refModal = (0, _uiApi.useRef)(),
+    [state, setState] = (0, _uiApi.useState)({
+      isShow: false,
+      currentDialog: null,
+      dialogs: [],
+      inits: {},
+      shows: {},
+      data: {}
+    }),
+    _hClose = (0, _uiApi.useCallback)(type => {
+      setState(prevState => {
+        prevState.shows[type] = false;
+        return {
+          ...prevState,
+          isShow: false,
+          currentDialog: null,
+          shows: prevState.shows
+        };
       });
-    });
-  }, []);
+    }, []);
+
   /*eslint-disable react-hooks/exhaustive-deps */
-
-
-  (0, _uiApi.useEffect)(function () {
-    var _onStore = function _onStore() {
-      var modal = _selectors.sApp.modal(store.getState()),
-          type = modal.id,
-          _modal$data = modal.data,
-          dialogProps = _modal$data === void 0 ? {} : _modal$data,
-          _modal = (0, _uiApi.getRefValue)(_refModal);
-
+  (0, _uiApi.useEffect)(() => {
+    const _onStore = () => {
+      const modal = _selectors.sApp.modal(store.getState()),
+        {
+          id: type,
+          data: dialogProps = {}
+        } = modal,
+        _modal = (0, _uiApi.getRefValue)(_refModal);
       if (type && _modal !== modal) {
         (0, _uiApi.setRefValue)(_refModal, modal);
-        setState(function (prevState) {
-          var inits = prevState.inits,
-              shows = prevState.shows,
-              data = prevState.data,
-              dialogs = prevState.dialogs;
-
+        setState(prevState => {
+          const {
+            inits,
+            shows,
+            data,
+            dialogs
+          } = prevState;
           if (!inits[type]) {
             dialogs.push({
-              type: type,
-              comp: _modalRouter["default"].getDialog(type)
+              type,
+              comp: _modalRouter.default.getDialog(type)
             });
             inits[type] = true;
           }
-
           shows[type] = true;
           data[type] = dialogProps;
           return {
             isShow: true,
             currentDialog: type,
-            shows: shows,
-            data: data,
-            dialogs: dialogs,
-            inits: inits
+            shows,
+            data,
+            dialogs,
+            inits
           };
         });
       }
     };
-
     return store.subscribe(_onStore);
-  }, []); // store
-
+  }, []);
+  // store
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  var isShow = state.isShow,
-      currentDialog = state.currentDialog,
-      shows = state.shows,
-      data = state.data,
-      dialogs = state.dialogs;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperModalDialog["default"], {
+  const {
+    isShow,
+    currentDialog,
+    shows,
+    data,
+    dialogs
+  } = state;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperModalDialog.default, {
     isShow: isShow,
     onClose: _hClose.bind(null, currentDialog),
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogStack, {
@@ -133,6 +125,7 @@ var WrapperContainer = (0, _uiApi.memo)(function (_ref2) {
     })
   });
 });
+
 /*
 WrapperContainer.propTypes = {
   store: PropTypes.shape({
@@ -140,7 +133,5 @@ WrapperContainer.propTypes = {
   })
 }
 */
-
-var _default = WrapperContainer;
-exports["default"] = _default;
+var _default = exports.default = WrapperContainer;
 //# sourceMappingURL=WrapperContainer.js.map

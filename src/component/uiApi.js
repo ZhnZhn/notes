@@ -1,15 +1,14 @@
-export { NavLink } from 'react-router-dom';
+export { NavLink } from "react-router-dom";
 
 export {
   connect,
   useDispatch,
   useSelector
-} from 'react-redux';
+} from "react-redux";
 
 export {
   StrictMode,
   Component,
-  createElement,
   cloneElement,
   createContext,
   memo,
@@ -21,7 +20,7 @@ export {
   useEffect,
   useContext,
   useImperativeHandle
-} from 'react';
+} from "react";
 
 export const getRefValue = ref => (ref || {}).current
 
@@ -34,7 +33,7 @@ export const setRefValue = (
   }
 }
 
-const _isFn = fn => typeof fn === 'function';
+const _isFn = fn => typeof fn === "function";
 
 export const focusRefElement = (
   ref1
