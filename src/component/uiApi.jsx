@@ -9,7 +9,6 @@ export {
 export {
   StrictMode,
   Component,
-  cloneElement,
   createContext,
   memo,
   useRef,
@@ -22,6 +21,18 @@ export {
   useImperativeHandle
 } from "react";
 
+const _isFn = fn => typeof fn === "function";
+
+export const cloneUiElement = (
+  Element,
+  overrideProps,
+  key=Element.key
+) => (<Element.type
+  key={key}
+  {...Element.props}
+  {...overrideProps}
+/>)
+
 export const getRefValue = ref => (ref || {}).current
 
 export const setRefValue = (
@@ -32,8 +43,6 @@ export const setRefValue = (
     ref.current = value
   }
 }
-
-const _isFn = fn => typeof fn === "function";
 
 export const focusRefElement = (
   ref1

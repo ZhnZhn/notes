@@ -1,27 +1,27 @@
 import {
-  useState,  
-  cloneElement
-} from '../uiApi';
+  useState,
+  cloneUiElement
+} from "../uiApi";
 
 const S_UL = {
-  listStyle: 'outside none none',
+  listStyle: "outside none none",
   marginTop: 4,
   marginLeft: 12,
   marginRight: 5,
   marginBottom: 8,
-  textAlign: 'left'
+  textAlign: "left"
 },
 S_TABS = {
   width: "100%",
   height: "100%"
 },
 S_TAB_SELECTED = {
-  display: 'block',
+  display: "block",
   width: "100%",
   height: "100%"
 },
 S_NONE = {
-  display: 'none'
+  display: "none"
 };
 
 const _renderTabs = (
@@ -29,32 +29,32 @@ const _renderTabs = (
   selectedTabIndex,
   hClickTab
 ) => children
- .map((tab, index) => cloneElement(tab, {
-    key: index,
+ .map((ElementTab, index) => cloneUiElement(ElementTab, {
     id: index,
     onClick: () => hClickTab(index),
     isSelected: index === selectedTabIndex
- }));
+ }, index));
 
  const _renderComponents = (
    children,
    selectedTabIndex
  ) => children
-  .map((tab, index) => {
+  .map((ElementTab, index) => {
      const _isSelected = (index === selectedTabIndex)
-     , _divStyle = _isSelected ? S_TAB_SELECTED : S_NONE;
+     , _divStyle = _isSelected
+         ? S_TAB_SELECTED
+         : S_NONE;
      return (
         <div
-          key={'a'+index}
+          key={"a"+index}
           style={_divStyle}
           role="tabpanel"
           id={`tabpanel-${index}`}
           aria-labelledby={`tab-${index}`}
         >
-           {cloneElement(tab.props.children, {
-             key: 'comp'+index,
+           {cloneUiElement(ElementTab.props.children, {
              isSelected: _isSelected
-           })}
+           }, "comp"+index)}
         </div>
      );
  });
