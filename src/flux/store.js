@@ -9,9 +9,8 @@ const _middlewares = [
   ...middlewares
 ];
 
-/*eslint-disable no-undef, no-console*/
+/*eslint-disable no-undef*/
 if (process.env.NODE_ENV === 'development'){
-/*eslint-enable no-undef, no-console*/
     const logger = store => next => action => {
       let result;
       try {
@@ -24,10 +23,11 @@ if (process.env.NODE_ENV === 'development'){
       } catch (err){
         console.log(err);
         return result;
+/*eslint-enable no-undef*/
       }
     }
     _middlewares.push(logger)
- }
+}
 
 const _getInitialState = () => {
   let _initialState;
@@ -46,12 +46,12 @@ const _getInitialState = () => {
 const store = configureStore({
   reducer: rootReducer,
   preloadedState: _getInitialState(),
-  /*eslint-disable no-undef, no-console*/
+  /*eslint-disable no-undef*/
   devTools: process.env.NODE_ENV === 'development',
   middleware: getDefaultMiddleware => process.env.NODE_ENV === 'development'
      ? getDefaultMiddleware().concat(_middlewares)
      : _middlewares
-  /*eslint-enable no-undef, no-console*/
+  /*eslint-enable no-undef*/
 });
 
 export default store

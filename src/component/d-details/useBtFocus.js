@@ -3,6 +3,7 @@ import {
   getRefValue
 } from '../uiApi';
 
+/*eslint-disable react-hooks/exhaustive-deps */
 const useBtFocus = (
   refBt,
   isSelected,
@@ -13,6 +14,7 @@ const useBtFocus = (
     _bt.focus()
   }
 }, [props])
-// isSelected
+// refBt, isSelected
+/*eslint-enable react-hooks/exhaustive-deps */
 
 export default useBtFocus

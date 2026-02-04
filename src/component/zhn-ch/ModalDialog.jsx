@@ -41,7 +41,7 @@ const DialogButtons = ({
   </div>
 );
 
-const _useFocusBtClose = (
+const useFocusBtClose = (
   isShow,
   isFocusClose
 ) => {
@@ -85,12 +85,12 @@ const ModalDialog = ({
   withoutClose,
   onClose
 }) => {
-  const _refBtClose = _useFocusBtClose(
+  const _refBtClose = useFocusBtClose(
      isShow,
      isFocusClose
    )
-  , _hClickDialog = useCallback(event => {
-    event.stopPropagation()
+  , _hClickDialog = useCallback(evt => {
+    evt.stopPropagation()
   }, [])
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn(`${CL_MODAL_DIALOG} ${className}`, [isShow, CL_SHOWING])

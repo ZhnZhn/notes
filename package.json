@@ -10,7 +10,7 @@
     "test:watch": "jest --watch",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
-    "lint": "eslint -c .eslintrc-build.js ./src > lint.txt",
+    "lint:one": "eslint -c eslint.config.js",
     "css:min": "node css-min.js",
     "css:sass": "node css-sass.js",
     "css:all": "npm run css:sass && npm run css:min",

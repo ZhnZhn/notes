@@ -35,7 +35,7 @@ const DialogButtons = _ref => {
     })]
   });
 };
-const _useFocusBtClose = (isShow, isFocusClose) => {
+const useFocusBtClose = (isShow, isFocusClose) => {
   const _refBt = (0, _uiApi.useRef)(),
     _refPrevFocused = (0, _uiApi.useRef)(),
     _refIsShowPrev = (0, _uiApi.useRef)(),
@@ -74,41 +74,37 @@ const ModalDialog = _ref2 => {
     withoutClose,
     onClose
   } = _ref2;
-  const _refBtClose = _useFocusBtClose(isShow, isFocusClose),
-    _hClickDialog = (0, _uiApi.useCallback)(event => {
-      event.stopPropagation();
+  const _refBtClose = useFocusBtClose(isShow, isFocusClose),
+    _hClickDialog = (0, _uiApi.useCallback)(evt => {
+      evt.stopPropagation();
     }, []),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
-    _className = (0, _crCn.default)(_CL.CL_MODAL_DIALOG + " " + className, [isShow, _CL.CL_SHOWING]),
+    _className = (0, _crCn.default)(`${_CL.CL_MODAL_DIALOG} ${className}`, [isShow, _CL.CL_SHOWING]),
     _style = isShow ? S_SHOW : S_HIDE;
-  return (
-    /*#__PURE__*/
-    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-    (0, _jsxRuntime.jsxs)("div", {
-      role: "dialog",
-      "aria-label": caption,
-      "aria-hidden": !isShow,
-      className: _className,
-      style: {
-        ...style,
-        ..._style
-      },
-      onClick: _hClickDialog,
-      onKeyDown: _hKeyDown,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption.default, {
-        rootStyle: captionStyle,
-        caption: caption,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        children: children
-      }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
-        buttons: commandButtons,
-        refBtClose: _refBtClose,
-        withoutClose: withoutClose,
-        onClose: onClose
-      })]
-    })
-  );
+  return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
+    role: "dialog",
+    "aria-label": caption,
+    "aria-hidden": !isShow,
+    className: _className,
+    style: {
+      ...style,
+      ..._style
+    },
+    onClick: _hClickDialog,
+    onKeyDown: _hKeyDown,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption.default, {
+      rootStyle: captionStyle,
+      caption: caption,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: children
+    }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
+      buttons: commandButtons,
+      refBtClose: _refBtClose,
+      withoutClose: withoutClose,
+      onClose: onClose
+    })]
+  });
 };
 
 /*
