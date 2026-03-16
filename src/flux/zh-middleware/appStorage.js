@@ -22,7 +22,9 @@ const appStorage = ({ getState, dispatch }) => next => action => {
         dispatch(
           addDrawerMsg({ msg: CONF.MSG_SAVE_FAIL })
         )
+        /*eslint-disable no-undef */
         console.log(e.msg)
+        /*eslint-enable no-undef */
         return false;
       }
     }
@@ -37,7 +39,9 @@ const appStorage = ({ getState, dispatch }) => next => action => {
         dispatch(
           addDrawerMsg({ msg: CONF.MSG_CLEAN_FAIL })
         )
+        /*eslint-disable no-undef */
         console.log(e.msg)
+        /*eslint-enable no-undef */
         return false;
       }
     }

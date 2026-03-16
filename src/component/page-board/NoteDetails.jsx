@@ -17,6 +17,10 @@ const NoteDetails = ({
       className={CL}
       isShow={isShow}
     >
+    {
+     /*eslint-disable jsx-a11y/no-static-element-interactions*/
+     /*eslint-disable jsx-a11y/click-events-have-key-events*/
+    }
        <div onClick={editDetails}>
          <LabelList
            labels={note.labels}
@@ -25,6 +29,10 @@ const NoteDetails = ({
            {_descr}
          </div>
        </div>
+    {
+      /*eslint-enable jsx-a11y/no-static-element-interactions*/
+      /*eslint-enable jsx-a11y/click-events-have-key-events*/
+    }
     </ShowHide>
   );
 };

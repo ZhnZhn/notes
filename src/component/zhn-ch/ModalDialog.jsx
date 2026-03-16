@@ -108,7 +108,7 @@ const ModalDialog = ({
        onClick={_hClickDialog}
        onKeyDown={_hKeyDown}
     >
-   {/*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/}
+   {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
        <DialogCaption
           rootStyle={captionStyle}
           caption={caption}

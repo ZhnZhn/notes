@@ -38,7 +38,9 @@ const _getInitialState = () => {
       _initialState = JSON.parse(_str)
     }
   } catch(e) {
+     /*eslint-disable no-undef */
      console.log(e.msg)
+     /*eslint-enable no-undef */  
   }
   return _initialState || initialState;
 };
