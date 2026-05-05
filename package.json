@@ -34,10 +34,10 @@
     "@babel/eslint-parser": "^7.28.6",
     "@babel/plugin-transform-react-jsx": "^7.28.6",
     "@babel/plugin-transform-runtime": "^7.29.0",
-    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-env": "^7.29.3",
     "@babel/preset-flow": "^7.27.1",
     "@babel/preset-react": "^7.28.5",
-    "@biomejs/biome": "^2.4.13",
+    "@biomejs/biome": "^2.4.14",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.2",
     "babel-loader": "^10.1.1",
     "clean-css": "^5.3.3",
@@ -49,16 +49,12 @@
     "jest": "^30.3.0",
     "sass": "^1.99.0",
     "terser-webpack-plugin": "^5.5.0",
-    "typescript-eslint": "^8.59.1",
     "webpack": "^5.106.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3"
   },
   "overrides": {
-    "js-yaml": "~4.1.1",
-    "glob": "~11.1.0",
-    "serialize-javascript": "~7.0.3",
-    "brace-expansion": "~5.0.5",
+    "glob": "~13.0.6",
     "uuid": "~14.0.0"
   },
   "jest": {
