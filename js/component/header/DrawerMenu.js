@@ -1,39 +1,28 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
 var _actions = require("../../flux/app/actions");
-
 var _reducer = require("../../flux/modal/reducer");
-
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-
 var _DrawerMsgList = _interopRequireDefault(require("./DrawerMsgList"));
-
 var _titles = require("../titles");
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_HEADER = 'header__title',
-    CL_DRAWER_LIST = 'drawer__list',
-    CL_DRAWER_BT = 'drawer__list-bt',
-    S_HEADER = {
-  padding: '16px 0 8px 0',
-  marginLeft: 16
-},
-    S_UL = {
-  listStyleType: 'none'
-};
-
-var DrawerMenu = function DrawerMenu(_ref) {
-  var showSettings = _ref.showSettings,
-      saveBoard = _ref.saveBoard,
-      cleanStorage = _ref.cleanStorage;
+const CL_HEADER = 'header__title',
+  CL_DRAWER_LIST = 'drawer__list',
+  CL_DRAWER_BT = `${CL_DRAWER_LIST}-bt`,
+  S_HEADER = {
+    padding: '16px 0 8px 0',
+    marginLeft: 16
+  },
+  S_UL = {
+    listStyleType: 'none'
+  };
+const DrawerMenu = () => {
+  const dispatch = (0, _uiApi.useDispatch)(),
+    [_hShowSettings, _hSaveBoard, _hCleanStorage] = (0, _uiApi.useMemo)(() => [() => dispatch((0, _reducer.showSettings)()), () => dispatch((0, _actions.saveBoard)()), () => dispatch((0, _actions.cleanStorage)())], [dispatch]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL_DRAWER_LIST,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -43,38 +32,29 @@ var DrawerMenu = function DrawerMenu(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("ul", {
       style: S_UL,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
           className: CL_DRAWER_BT,
           caption: "User Settings",
           title: "Click to open user settings dialog",
-          onClick: showSettings
+          onClick: _hShowSettings
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
           className: CL_DRAWER_BT,
           caption: "Save Boards",
           title: "Click to save boards to localStorage",
-          onClick: saveBoard
+          onClick: _hSaveBoard
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
           className: CL_DRAWER_BT,
           caption: "Clean Storage",
           title: "Click to remove boards from localStorage",
-          onClick: cleanStorage
+          onClick: _hCleanStorage
         })
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DrawerMsgList["default"], {})]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DrawerMsgList.default, {})]
   });
 };
-
-var mapDispatchToProps = {
-  showSettings: _reducer.showSettings,
-  saveBoard: _actions.saveBoard,
-  cleanStorage: _actions.cleanStorage
-};
-
-var _default = (0, _uiApi.connect)(null, mapDispatchToProps)(DrawerMenu);
-
-exports["default"] = _default;
+var _default = exports.default = DrawerMenu;
 //# sourceMappingURL=DrawerMenu.js.map

@@ -1,25 +1,26 @@
 import {
-  connect,
+  useDispatch,
   useCallback
 } from '../uiApi';
 
-import { DragDropContext } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd';
 
-import { moveColumn } from '../../flux/column/actions'
+import { moveColumn } from '../../flux/column/actions';
 
-import isNotDnD from '../zhn-dnd/isNotDnD'
+import isNotDnD from '../zhn-dnd/isNotDnD';
 
-import Header from './Header'
-import Main from '../zhn-ch/Main'
-import BoardList from './BoardList'
+import Header from './Header';
+import Main from '../zhn-ch/Main';
+import BoardList from './BoardList';
 
-const PageBoards = ({ moveColumn }) =>  {
-  const _hDragEnd = useCallback(result => {
+const PageBoards = () =>  {
+  const dispatch = useDispatch()
+  , _hDragEnd = useCallback(result => {
     if (isNotDnD(result)){
       return;
     }
-    moveColumn(result)
-  }, [moveColumn]);
+    dispatch(moveColumn(result))
+  }, [dispatch]);
 
   return [
     <Header key="header" />,
@@ -32,13 +33,6 @@ const PageBoards = ({ moveColumn }) =>  {
       </Main>
     </DragDropContext>
   ];
-}
-
-const mapDispatchToProps = {
-  moveColumn
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(PageBoards)
+export default PageBoards

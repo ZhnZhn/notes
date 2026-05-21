@@ -1,1 +1,35 @@
-{"version":3,"file":"PageBoards.js","names":["PageBoards","moveColumn","_hDragEnd","useCallback","result","isNotDnD","mapDispatchToProps","connect"],"sources":["../../../src/component/page-boards/PageBoards.jsx"],"sourcesContent":["import {\r\n  connect,\r\n  useCallback\r\n} from '../uiApi';\r\n\r\nimport { DragDropContext } from 'react-beautiful-dnd'\r\n\r\nimport { moveColumn } from '../../flux/column/actions'\r\n\r\nimport isNotDnD from '../zhn-dnd/isNotDnD'\r\n\r\nimport Header from './Header'\r\nimport Main from '../zhn-ch/Main'\r\nimport BoardList from './BoardList'\r\n\r\nconst PageBoards = ({ moveColumn }) =>  {\r\n  const _hDragEnd = useCallback(result => {\r\n    if (isNotDnD(result)){\r\n      return;\r\n    }\r\n    moveColumn(result)\r\n  }, [moveColumn]);\r\n\r\n  return [\r\n    <Header key=\"header\" />,\r\n    <DragDropContext\r\n       key=\"ddc\"\r\n       onDragEnd={_hDragEnd}\r\n    >\r\n      <Main>\r\n        <BoardList />\r\n      </Main>\r\n    </DragDropContext>\r\n  ];\r\n}\r\n\r\nconst mapDispatchToProps = {\r\n  moveColumn\r\n};\r\n\r\nexport default connect(\r\n  null,\r\n  mapDispatchToProps\r\n)(PageBoards)\r\n"],"mappings":";;;;;;;AAAA;;AAKA;;AAEA;;AAEA;;AAEA;;AACA;;AACA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,OAAqB;EAAA,IAAlBC,UAAkB,QAAlBA,UAAkB;;EACtC,IAAMC,SAAS,GAAG,IAAAC,kBAAA,EAAY,UAAAC,MAAM,EAAI;IACtC,IAAI,IAAAC,oBAAA,EAASD,MAAT,CAAJ,EAAqB;MACnB;IACD;;IACDH,UAAU,CAACG,MAAD,CAAV;EACD,CALiB,EAKf,CAACH,UAAD,CALe,CAAlB;;EAOA,OAAO,cACL,qBAAC,kBAAD,MAAY,QAAZ,CADK,eAEL,qBAAC,kCAAD;IAEG,SAAS,EAAEC,SAFd;IAAA,uBAIE,qBAAC,gBAAD;MAAA,uBACE,qBAAC,qBAAD;IADF;EAJF,GACO,KADP,CAFK,CAAP;AAWD,CAnBD;;AAqBA,IAAMI,kBAAkB,GAAG;EACzBL,UAAU,EAAVA;AADyB,CAA3B;;eAIe,IAAAM,cAAA,EACb,IADa,EAEbD,kBAFa,EAGbN,UAHa,C"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-boards/PageBoards.js"
+ ],
+ "file": "../../../src/component/page-boards/PageBoards.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_reactBeautifulDnd",
+  "_actions",
+  "_isNotDnD",
+  "_interopRequireDefault",
+  "_Header",
+  "_Main",
+  "_BoardList",
+  "_jsxRuntime",
+  "PageBoards",
+  "dispatch",
+  "useDispatch",
+  "_hDragEnd",
+  "useCallback",
+  "result",
+  "isNotDnD",
+  "moveColumn",
+  "jsx",
+  "default",
+  "DragDropContext",
+  "onDragEnd",
+  "children",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,IAAAC,kBAAA,GAAAD,OAAA;AAEA,IAAAE,QAAA,GAAAF,OAAA;AAEA,IAAAG,SAAA,GAAAC,sBAAA,CAAAJ,OAAA;AAEA,IAAAK,OAAA,GAAAD,sBAAA,CAAAJ,OAAA;AACA,IAAAM,KAAA,GAAAF,sBAAA,CAAAJ,OAAA;AACA,IAAAO,UAAA,GAAAH,sBAAA,CAAAJ,OAAA;AAAoC,IAAAQ,WAAA,GAAAR,OAAA;AAEpC,MAAMS,UAAU,GAAGA,CAAA,KAAO;EACxB,MAAMC,QAAQ,GAAG,IAAAC,kBAAW,EAAC,CAAC;IAC5BC,SAAS,GAAG,IAAAC,kBAAW,EAACC,MAAM,IAAI;MAClC,IAAI,IAAAC,iBAAQ,EAACD,MAAM,CAAC,EAAC;QACnB;MACF;MACAJ,QAAQ,CAAC,IAAAM,mBAAU,EAACF,MAAM,CAAC,CAAC;IAC9B,CAAC,EAAE,CAACJ,QAAQ,CAAC,CAAC;EAEd,OAAO,cACL,IAAAF,WAAA,CAAAS,GAAA,EAACZ,OAAA,CAAAa,OAAM,MAAK,QAAU,CAAC,eACvB,IAAAV,WAAA,CAAAS,GAAA,EAAChB,kBAAA,CAAAkB,eAAe;IAEbC,SAAS,EAAER,SAAU;IAAAS,QAAA,eAEtB,IAAAb,WAAA,CAAAS,GAAA,EAACX,KAAA,CAAAY,OAAI;MAAAG,QAAA,eACH,IAAAb,WAAA,CAAAS,GAAA,EAACV,UAAA,CAAAW,OAAS,IAAE;IAAC,CACT;EAAC,GALF,KAMU,CAAC,CACnB;AACH,CAAC;AAAC,IAAAI,QAAA,GAAAC,OAAA,CAAAL,OAAA,GAEaT,UAAU"
+}

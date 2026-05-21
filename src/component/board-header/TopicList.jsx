@@ -16,7 +16,7 @@ const TopicList = ({
         <li style={S_LI} key={cId}>
           <TopicItem
             topic={columns[cId]}
-            onClick={() => toggleColumn({ columnId: cId })}
+            onClick={() => toggleColumn(cId)}            
           />
         </li>
       ))}

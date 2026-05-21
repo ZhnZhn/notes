@@ -1,32 +1,38 @@
 import {
-  connect,
+  useSelector,
+  useDispatch,
   useCallback
 } from '../uiApi';
 
-import { DragDropContext } from 'react-beautiful-dnd'
+import {
+  DragDropContext
+} from 'react-beautiful-dnd';
 
-import s from '../../flux/selectors'
+import {
+  selectBoard,
+  selectNotes,
+  selectColumns
+} from '../../flux/selectors';
+
 import {
   moveNote,
   addNote
-} from '../../flux/note/actions'
-
+} from '../../flux/note/actions';
 import {
    addColumn
- } from '../../flux/column/actions'
+ } from '../../flux/column/actions';
 
-import isNotDnD from '../zhn-dnd/isNotDnD'
+import isNotDnD from '../zhn-dnd/isNotDnD';
 
-import Header from '../board-header/Header'
-import Main from '../zhn-ch/Main'
-import Topic from './Topic'
+import Header from '../board-header/Header';
+import Main from '../zhn-ch/Main';
+import Topic from './Topic';
 
 const ColumnStack = ({
   boardId,
   columnIds,
   columns,
-  notes,
-  addNote
+  notes
 }) => (columnIds||[]).map(cId => {
    const column = columns[cId];
    return (
@@ -35,31 +41,28 @@ const ColumnStack = ({
        boardId={boardId}
        column={column}
        notes={notes}
-       addNote={addNote}
     />
    );
 });
 
-const PageBoard = ({
-  board,
-  notes,
-  columns,
-  addNote,
-  moveNote,
-  addColumn
-}) => {
+const PageBoard = () => {
+  const board = useSelector(selectBoard)
+  , notes = useSelector(selectNotes)
+  , columns = useSelector(selectColumns)
+  , dispatch = useDispatch();
+
   const { id, columnIds } = board;
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hDragEnd = useCallback(result => {
     if (!isNotDnD(result)) {
-      moveNote(result)
+      dispatch(moveNote(result))
     }
   }, [])
   //moveNote
   , _hAddColumn = useCallback(() => {
-    addColumn({ boardId: id })
+    dispatch(addColumn({ boardId: id }))
   }, [])
-  //addColumn, id
+  //addColumn, id, dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -76,7 +79,6 @@ const PageBoard = ({
             columnIds={columnIds}
             columns={columns}
             notes={notes}
-            addNote={addNote}
           />
         </Main>
       </DragDropContext>
@@ -84,18 +86,4 @@ const PageBoard = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  board: s.board.currentBoard(state),
-  notes: s.note.notes(state),
-  columns: s.column.columns(state)
-});
-const mapDispatchToProps = {
-  moveNote,
-  addNote,
-  addColumn
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PageBoard)
+export default PageBoard

@@ -1,7 +1,12 @@
-import { connect } from '../uiApi';
-import { addBoard } from '../../flux/board/actions';
+import {
+  useDispatch,
+  useCallback
+} from '../uiApi';
+import {
+  addBoard
+} from '../../flux/board/actions';
 
-import ZhHeader from '../zhn-ch/Header';
+import AppHeader from '../zhn-ch/Header';
 import Logo from '../zhn/Logo';
 import FlatButton from '../zhn-m/FlatButton';
 import HeaderDrawer from '../header/HeaderDrawer';
@@ -17,32 +22,30 @@ import {
 } from '../titles';
 
 const Header = ({
-  style,
-  addBoard
-}) => (
-  <ZhHeader className={CL_HEADER} style={style}>
-    <Logo title={APP_TITLE} />
-    <span className={CL_TITLE_GAP} />
-    <span className={CL_HEADER_TITLE}>
-      Notes: Boards
-    </span>
-    <FlatButton
-      caption="Add Board"
-      title="Click to add new board"
-      accessKey="a"
-      isEvent={false}
-      timeout={200}
-      onClick={addBoard}
-    />
-    <HeaderDrawer />
-  </ZhHeader>
-);
+  style
+}) => {
+  const dispatch = useDispatch()
+  , _hAddBoard = useCallback(() => {
+    dispatch(addBoard())
+  }, [dispatch]);
+  return (
+    <AppHeader className={CL_HEADER} style={style}>
+      <Logo title={APP_TITLE} />
+      <span className={CL_TITLE_GAP} />
+      <span className={CL_HEADER_TITLE}>
+        Notes: Boards
+      </span>
+      <FlatButton
+        caption="Add Board"
+        title="Click to add new board"
+        accessKey="a"
+        isEvent={false}
+        timeout={200}
+        onClick={_hAddBoard}
+      />
+      <HeaderDrawer />
+    </AppHeader>
+  );
+}
 
-const mapDispatchToProps = {
-  addBoard
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Header)
+export default Header

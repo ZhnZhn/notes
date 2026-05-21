@@ -1,1 +1,35 @@
-{"version":3,"file":"TopicList.js","names":["S_UL","listStyleType","S_LI","position","FN_NOOP","TopicList","board","columns","toggleColumn","columnIds","map","cId","columnId"],"sources":["../../../src/component/board-header/TopicList.jsx"],"sourcesContent":["import TopicItem from './TopicItem';\r\n\r\nconst S_UL = { listStyleType: 'none' }\r\n, S_LI = { position: 'relative' }\r\n, FN_NOOP = () => {};\r\n\r\nconst TopicList = ({\r\n  board,\r\n  columns,\r\n  toggleColumn=FN_NOOP\r\n}) => {\r\n  const { columnIds } = board;\r\n  return (\r\n    <ul style={S_UL}>\r\n      {(columnIds || []).map(cId => (\r\n        <li style={S_LI} key={cId}>\r\n          <TopicItem\r\n            topic={columns[cId]}\r\n            onClick={() => toggleColumn({ columnId: cId })}\r\n          />\r\n        </li>\r\n      ))}\r\n    </ul>\r\n  );\r\n}\r\n\r\nexport default TopicList\r\n"],"mappings":";;;;;;;AAAA;;;;AAEA,IAAMA,IAAI,GAAG;EAAEC,aAAa,EAAE;AAAjB,CAAb;AAAA,IACEC,IAAI,GAAG;EAAEC,QAAQ,EAAE;AAAZ,CADT;AAAA,IAEEC,OAAO,GAAG,SAAVA,OAAU,GAAM,CAAE,CAFpB;;AAIA,IAAMC,SAAS,GAAG,SAAZA,SAAY,OAIZ;EAAA,IAHJC,KAGI,QAHJA,KAGI;EAAA,IAFJC,OAEI,QAFJA,OAEI;EAAA,6BADJC,YACI;EAAA,IADJA,YACI,kCADSJ,OACT;EACJ,IAAQK,SAAR,GAAsBH,KAAtB,CAAQG,SAAR;EACA,oBACE;IAAI,KAAK,EAAET,IAAX;IAAA,UACG,CAACS,SAAS,IAAI,EAAd,EAAkBC,GAAlB,CAAsB,UAAAC,GAAG;MAAA,oBACxB;QAAI,KAAK,EAAET,IAAX;QAAA,uBACE,qBAAC,qBAAD;UACE,KAAK,EAAEK,OAAO,CAACI,GAAD,CADhB;UAEE,OAAO,EAAE;YAAA,OAAMH,YAAY,CAAC;cAAEI,QAAQ,EAAED;YAAZ,CAAD,CAAlB;UAAA;QAFX;MADF,GAAsBA,GAAtB,CADwB;IAAA,CAAzB;EADH,EADF;AAYD,CAlBD;;eAoBeN,S"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/TopicList.js"
+ ],
+ "file": "../../../src/component/board-header/TopicList.js",
+ "names": [
+  "_TopicItem",
+  "_interopRequireDefault",
+  "require",
+  "_jsxRuntime",
+  "S_UL",
+  "listStyleType",
+  "S_LI",
+  "position",
+  "FN_NOOP",
+  "TopicList",
+  "_ref",
+  "board",
+  "columns",
+  "toggleColumn",
+  "columnIds",
+  "jsx",
+  "style",
+  "children",
+  "map",
+  "cId",
+  "default",
+  "topic",
+  "onClick",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,UAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAoC,IAAAC,WAAA,GAAAD,OAAA;AAEpC,MAAME,IAAI,GAAG;IAAEC,aAAa,EAAE;EAAO,CAAC;EACpCC,IAAI,GAAG;IAAEC,QAAQ,EAAE;EAAW,CAAC;EAC/BC,OAAO,GAAGA,CAAA,KAAM,CAAC,CAAC;AAEpB,MAAMC,SAAS,GAAGC,IAAA,IAIZ;EAAA,IAJa;IACjBC,KAAK;IACLC,OAAO;IACPC,YAAY,GAACL;EACf,CAAC,GAAAE,IAAA;EACC,MAAM;IAAEI;EAAU,CAAC,GAAGH,KAAK;EAC3B,oBACE,IAAAR,WAAA,CAAAY,GAAA;IAAIC,KAAK,EAAEZ,IAAK;IAAAa,QAAA,EACb,CAACH,SAAS,IAAI,EAAE,EAAEI,GAAG,CAACC,GAAG,iBACxB,IAAAhB,WAAA,CAAAY,GAAA;MAAIC,KAAK,EAAEV,IAAK;MAAAW,QAAA,eACd,IAAAd,WAAA,CAAAY,GAAA,EAACf,UAAA,CAAAoB,OAAS;QACRC,KAAK,EAAET,OAAO,CAACO,GAAG,CAAE;QACpBG,OAAO,EAAEA,CAAA,KAAMT,YAAY,CAACM,GAAG;MAAE,CAClC;IAAC,GAJkBA,GAKlB,CACL;EAAC,CACA,CAAC;AAET,CAAC;AAAA,IAAAI,QAAA,GAAAC,OAAA,CAAAJ,OAAA,GAEcX,SAAS"
+}

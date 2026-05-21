@@ -1,7 +1,8 @@
-export { NavLink } from "react-router-dom";
+export {
+  NavLink
+} from "react-router-dom";
 
 export {
-  connect,
   useDispatch,
   useSelector
 } from "react-redux";

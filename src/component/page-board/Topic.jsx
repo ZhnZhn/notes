@@ -12,6 +12,9 @@ import {
  import {
    removeColumn
  } from '../../flux/column/actions';
+ import {
+   addNote
+ } from '../../flux/note/actions';
 
 import isArrEmpty from '../../utils/isArrEmpty';
 
@@ -34,8 +37,7 @@ const S_SVG_MORE = { marginRight: 8 }
 const Topic = ({
   boardId,
   column,
-  notes,
-  addNote
+  notes
 }) => {
   const {
     id:columnId,
@@ -58,13 +60,12 @@ const Topic = ({
     }))
   }, [columnId])
   // dispatch
-  /*eslint-enable react-hooks/exhaustive-deps */
 
   , _hAddNewTask = useCallback(() => {
-    addNote({ columnId })
-  }, [addNote, columnId])
+    dispatch(addNote({ columnId }))
+  }, [columnId])
+  //dispatch
 
-  /*eslint-disable react-hooks/exhaustive-deps */
   , _hBlurTitle = useCallback((evt) => {
      dispatch(editColumnTitle({
        columnId,
@@ -72,9 +73,7 @@ const Topic = ({
      }))
   }, [columnId])
   // dispatch
-  /*eslint-enable react-hooks/exhaustive-deps */
 
-  /*eslint-disable react-hooks/exhaustive-deps */
   , _hRemoveColumn = useCallback(() => {
     dispatch(removeColumn({
       boardId,

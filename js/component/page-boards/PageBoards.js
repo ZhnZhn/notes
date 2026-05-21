@@ -1,50 +1,30 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
 var _reactBeautifulDnd = require("react-beautiful-dnd");
-
 var _actions = require("../../flux/column/actions");
-
 var _isNotDnD = _interopRequireDefault(require("../zhn-dnd/isNotDnD"));
-
 var _Header = _interopRequireDefault(require("./Header"));
-
 var _Main = _interopRequireDefault(require("../zhn-ch/Main"));
-
 var _BoardList = _interopRequireDefault(require("./BoardList"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var PageBoards = function PageBoards(_ref) {
-  var moveColumn = _ref.moveColumn;
-
-  var _hDragEnd = (0, _uiApi.useCallback)(function (result) {
-    if ((0, _isNotDnD["default"])(result)) {
-      return;
-    }
-
-    moveColumn(result);
-  }, [moveColumn]);
-
-  return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header["default"], {}, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
+const PageBoards = () => {
+  const dispatch = (0, _uiApi.useDispatch)(),
+    _hDragEnd = (0, _uiApi.useCallback)(result => {
+      if ((0, _isNotDnD.default)(result)) {
+        return;
+      }
+      dispatch((0, _actions.moveColumn)(result));
+    }, [dispatch]);
+  return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Header.default, {}, "header"), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.DragDropContext, {
     onDragEnd: _hDragEnd,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main["default"], {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardList["default"], {})
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Main.default, {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardList.default, {})
     })
   }, "ddc")];
 };
-
-var mapDispatchToProps = {
-  moveColumn: _actions.moveColumn
-};
-
-var _default = (0, _uiApi.connect)(null, mapDispatchToProps)(PageBoards);
-
-exports["default"] = _default;
+var _default = exports.default = PageBoards;
 //# sourceMappingURL=PageBoards.js.map

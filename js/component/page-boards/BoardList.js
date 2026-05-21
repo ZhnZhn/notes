@@ -1,36 +1,17 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
 var _selectors = require("../../flux/selectors");
-
 var _BoardCard = _interopRequireDefault(require("./BoardCard"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var BoardList = function BoardList(_ref) {
-  var boardIds = _ref.boardIds,
-      boards = _ref.boards;
-  return boardIds.map(function (id) {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardCard["default"], {
-      id: id
-    }, id);
-  });
+const BoardList = () => {
+  const boardIds = (0, _uiApi.useSelector)(_selectors.selectBoardIds);
+  return boardIds.map(id => /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardCard.default, {
+    id: id
+  }, id));
 };
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    boardIds: _selectors.sBoard.boardIds(state),
-    boards: _selectors.sBoard.boards(state)
-  };
-};
-
-var _default = (0, _uiApi.connect)(mapStateToProps)(BoardList);
-
-exports["default"] = _default;
+var _default = exports.default = BoardList;
 //# sourceMappingURL=BoardList.js.map
