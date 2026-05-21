@@ -1,129 +1,60 @@
 "use strict";
 
 exports.__esModule = true;
-exports.sNoteLabel = exports.sNote = exports.sDrawer = exports.sColumn = exports.sBoard = exports.sApp = exports["default"] = void 0;
-var sApp = {
-  app: function app(state
-  /*: StoreState */
-  ) {
-    return state.app || {};
-  },
-  modal: function modal(state
-  /*: StoreState */
-  ) {
-    return state.modal || {};
-  },
+exports.selectNotes = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.sNoteLabel = exports.sNote = exports.sColumn = exports.sBoard = exports.sApp = exports.default = void 0;
+const sApp = exports.sApp = {
+  app: (state /*: StoreState */) => state.app || {},
+  modal: (state /*: StoreState */) => state.modal || {},
   //state.app.boardId
-  currentBoard: function currentBoard(state
-  /*: StoreState */
-  ) {
-    return sApp.app(state).boardId;
-  },
+  currentBoard: (state /*: StoreState */) => sApp.app(state).boardId,
   //state.app.boardIds
-  boardIds: function boardIds(state
-  /*: StoreState */
-  ) {
-    return sApp.app(state).boardIds || [];
-  },
+  boardIds: (state /*: StoreState */) => sApp.app(state).boardIds || [],
   //state.app.uiTheme
-  uiTheme: function uiTheme(state
-  /*: StoreState */
-  ) {
-    return sApp.app(state).uiTheme;
-  }
+  uiTheme: (state /*: StoreState */) => sApp.app(state).uiTheme
 };
-exports.sApp = sApp;
-var sDrawer = {
-  msg: function msg(state
-  /*: StoreState */
-  ) {
-    return state.drawerMsg || [];
-  }
+const sDrawer = {
+  msg: (state /*: StoreState */) => state.drawerMsg || []
 };
-exports.sDrawer = sDrawer;
-var sBoard = {
-  boards: function boards(state
-  /*: StoreState */
-  ) {
-    return state.boards || {};
-  },
+const selectDrawerItems = (state /*: StoreState */) => sDrawer.msg(state);
+exports.selectDrawerItems = selectDrawerItems;
+const sBoard = exports.sBoard = {
+  boards: (state /*: StoreState */) => state.boards || {},
   //state.boards[state.app.boardId]
-  currentBoard: function currentBoard(state
-  /*: StoreState */
-  ) {
-    return sBoard.boards(state)[sApp.currentBoard(state)] || {};
-  },
+  currentBoard: (state /*: StoreState */) => sBoard.boards(state)[sApp.currentBoard(state)] || {},
   //state.boards[id]
-  board: function board(state
-  /*: StoreState */
-  , boardId
-  /*: string */
-  ) {
-    return sBoard.boards(state)[boardId] || {};
-  },
+  board: (state /*: StoreState */, boardId /*: string */) => sBoard.boards(state)[boardId] || {},
   //state.boards[boardId].columnIds
-  columnIds: function columnIds(state
-  /*: StoreState */
-  , boardId
-  /*: string */
-  ) {
-    return sBoard.board(state, boardId).columnIds || [];
-  },
+  columnIds: (state /*: StoreState */, boardId /*: string */) => sBoard.board(state, boardId).columnIds || [],
   //state.app.boardIds
-  boardIds: function boardIds(state
-  /*: StoreState */
-  ) {
-    return sApp.boardIds(state);
-  }
+  boardIds: (state /*: StoreState */) => sApp.boardIds(state)
 };
-exports.sBoard = sBoard;
-var sNote = {
-  notes: function notes(state
-  /*: StoreState */
-  ) {
-    return state.notes || {};
-  }
+const selectBoardIds = (state /*: StoreState */) => sBoard.boardIds(state);
+exports.selectBoardIds = selectBoardIds;
+const selectBoard = (state /*: StoreState */) => sBoard.currentBoard(state);
+exports.selectBoard = selectBoard;
+const sNote = exports.sNote = {
+  notes: (state /*: StoreState */) => state.notes || {}
 };
-exports.sNote = sNote;
-var sNoteLabel = {
-  labels: function labels(state
-  /*: StoreState */
-  ) {
-    return state.noteLabels || {};
-  }
+const selectNotes = (state /*: StoreState */) => sNote.notes(state);
+exports.selectNotes = selectNotes;
+const sNoteLabel = exports.sNoteLabel = {
+  labels: (state /*: StoreState */) => state.noteLabels || {}
 };
-exports.sNoteLabel = sNoteLabel;
-var sColumn = {
-  columns: function columns(state
-  /*: StoreState */
-  ) {
-    return state.columns || {};
-  },
+const sColumn = exports.sColumn = {
+  columns: (state /*: StoreState */) => state.columns || {},
   //state.columns[columnId]
-  column: function column(state
-  /*: StoreState */
-  , columnId
-  /*: string */
-  ) {
-    return sColumn.columns(state)[columnId] || {};
-  },
+  column: (state /*: StoreState */, columnId /*: string */) => sColumn.columns(state)[columnId] || {},
   //state.columns[columnId].noteIds
-  noteIds: function noteIds(state
-  /*: StoreState */
-  , columnId
-  /*: string */
-  ) {
-    return sColumn.column(state, columnId).noteIds || [];
-  }
+  noteIds: (state /*: StoreState */, columnId /*: string */) => sColumn.column(state, columnId).noteIds || []
 };
-exports.sColumn = sColumn;
-var selectors = {
+const selectColumns = (state /*: StoreState */) => sColumn.columns(state);
+exports.selectColumns = selectColumns;
+const selectors = {
   app: sApp,
   drawer: sDrawer,
   board: sBoard,
   note: sNote,
   column: sColumn
 };
-var _default = selectors;
-exports["default"] = _default;
+var _default = exports.default = selectors;
 //# sourceMappingURL=selectors.js.map
