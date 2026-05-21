@@ -19,7 +19,7 @@ const TopicDrawerMenu = () => {
       dispatch((0, _reducer.toggleColumn)({
         columnId: cId
       }));
-    });
+    }, [dispatch]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _CL.CL_DRAWER_LIST,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicDrawerCaption.default, {

@@ -7,7 +7,7 @@ const P_DARK = {
   C_HEADER: '#8a8a8a'
 };
 const P_WHITE = {
-  BG_BODY: '#d2d2d2',  
+  BG_BODY: '#d2d2d2',
   BG: '#ebf1f5',
   BG_HEADER: 'rgb(0, 150, 200)',
   C_HEADER: '#4d4d4d'
@@ -25,7 +25,7 @@ const CSS_RULE = {
 };
 
 const _assign = Object.assign;
-const _setBodyBg = (conf, P) => {
+const _setBodyBg = (_conf, P) => {
   document.body.style.backgroundColor = P.BG_BODY
 };
 const _crBg = (conf, P) => {
@@ -45,8 +45,13 @@ const _FN_STYLES = [
   _crBg,
   _crItem
 ];
-const _setStyleTo = (conf, pallete) => {
-  _FN_STYLES.forEach(fn => fn(conf, pallete))
+const _setStyleTo = (
+  conf,
+  pallete
+) => {
+  _FN_STYLES.forEach(fn => {
+    fn(conf, pallete)
+  })
 };
 
 

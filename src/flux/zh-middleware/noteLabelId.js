@@ -50,7 +50,7 @@ const _crLabels = (
 
 const noteLabelIdMiddleware = ({
   getState,
-  dispatch
+  _dispatch
 }) => next => action => {
   if (action.type === editNoteLabels.type) {
     const hmLabels = sNoteLabel.labels(getState())

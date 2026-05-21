@@ -15,12 +15,11 @@ import {
 } from '../../flux/selectors';
 
 import {
-  moveNote,
-  addNote
+  moveNote
 } from '../../flux/note/actions';
 import {
-   addColumn
- } from '../../flux/column/actions';
+  addColumn
+} from '../../flux/column/actions';
 
 import isNotDnD from '../zhn-dnd/isNotDnD';
 

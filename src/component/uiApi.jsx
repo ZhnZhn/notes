@@ -34,7 +34,7 @@ export const cloneUiElement = (
   {...overrideProps}
 />)
 
-export const getRefValue = ref => (ref || {}).current
+export const getRefValue = ref => ref?.current
 
 export const setRefValue = (
   ref,

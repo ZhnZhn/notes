@@ -1,7 +1,6 @@
 import {
   useDispatch,
-  useSelector,
-  useMemo
+  useSelector
 } from '../uiApi';
 import { selectDrawerItems } from '../../flux/selectors';
 import { removeDrawerMsg } from '../../flux/drawerMsg/reducer';

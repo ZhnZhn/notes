@@ -20,7 +20,7 @@ const TopicDrawerMenu = () => {
   , dispatch = useDispatch()
   , _hToggleColumn = useCallback(cId => {
     dispatch(toggleColumn({ columnId: cId }))
-  });
+  }, [dispatch]);
 
   return (
     <div className={CL_DRAWER_LIST}>

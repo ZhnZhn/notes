@@ -34,8 +34,7 @@ const _renderOptions = (
   options,
   currentItem,
   clItem,
-  onSelect,
-  isShow
+  onSelect
 ) => options
  .map(item => {
     const _style = crStyle(

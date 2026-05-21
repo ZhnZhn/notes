@@ -1,61 +1,49 @@
 "use strict";
 
 exports.__esModule = true;
-exports.showSettings = exports.showNotif = exports.showDetails = exports.initialState = exports["default"] = void 0;
-
+exports.showSettings = exports.showNotif = exports.showDetails = exports.initialState = exports.default = void 0;
 var _toolkit = require("@reduxjs/toolkit");
-
 var _modalRouter = require("../../component/dialogs/modalRouter");
-
-var initialState = {
+const initialState = exports.initialState = {
   id: null,
   data: null
 };
-exports.initialState = initialState;
-var modalSlice = (0, _toolkit.createSlice)({
+const modalSlice = (0, _toolkit.createSlice)({
   name: 'modal',
-  initialState: initialState,
+  initialState,
   reducers: {
-    showModal: function showModal(state, action) {
-      var _action$payload = action.payload,
-          id = _action$payload.id,
-          data = _action$payload.data;
+    showModal(_state, action) {
+      const {
+        id,
+        data
+      } = action.payload;
       return {
-        id: id,
-        data: data
+        id,
+        data
       };
     }
   }
 });
-var actions = modalSlice.actions,
-    reducer = modalSlice.reducer;
-var showModal = actions.showModal;
-
-var showDetails = function showDetails(data) {
-  return showModal({
-    id: _modalRouter.MD.DETAILS,
-    data: data
-  });
-};
-
+const {
+  actions,
+  reducer
+} = modalSlice;
+const {
+  showModal
+} = actions;
+const showDetails = data => showModal({
+  id: _modalRouter.MD.DETAILS,
+  data
+});
 exports.showDetails = showDetails;
-
-var showSettings = function showSettings() {
-  return showModal({
-    id: _modalRouter.MD.SETTINGS
-  });
-};
-
+const showSettings = () => showModal({
+  id: _modalRouter.MD.SETTINGS
+});
 exports.showSettings = showSettings;
-
-var showNotif = function showNotif(data) {
-  return showModal({
-    id: _modalRouter.MD.NOTIF,
-    data: data
-  });
-};
-
+const showNotif = data => showModal({
+  id: _modalRouter.MD.NOTIF,
+  data
+});
 exports.showNotif = showNotif;
-var _default = reducer;
-exports["default"] = _default;
+var _default = exports.default = reducer;
 //# sourceMappingURL=reducer.js.map

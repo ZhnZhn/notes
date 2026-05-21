@@ -2,6 +2,7 @@ import { CL_SVG_ARROW } from './CL'
 
 const ArrowCell = () => (
   <svg
+    aria-hidden="true"
     className={CL_SVG_ARROW}
     viewBox="0 0 24 24"
   >

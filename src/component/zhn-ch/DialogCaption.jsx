@@ -6,7 +6,6 @@ const CL_HEADER = 'dialog__header'
 
 const DialogCaption = ({
   rootStyle,
-  svgStyle,
   caption,
   onClose,
   children,

@@ -11,7 +11,7 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    showModal(state, action){
+    showModal(_state, action){
       const { id, data } = action.payload;
       return { id, data };
     }

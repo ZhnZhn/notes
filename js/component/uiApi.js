@@ -32,7 +32,7 @@ const cloneUiElement = function (Element, overrideProps, key) {
   }, key);
 };
 exports.cloneUiElement = cloneUiElement;
-const getRefValue = ref => (ref || {}).current;
+const getRefValue = ref => ref?.current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
   if (ref) {

@@ -5,7 +5,7 @@ import {
 } from '../uiApi';
 
 const _initState = initialValue => !!initialValue
-, _reducer = (state, boolValue) => boolValue;
+, _reducer = (_state, boolValue) => boolValue;
 
 const useBool = (
   initialValue

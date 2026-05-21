@@ -1,1 +1,28 @@
-{"version":3,"file":"useBool.js","names":["_initState","initialValue","_reducer","state","boolValue","useBool","useReducer","is","setIs","_refSetTrue","useRef","_refSetFalse","getRefValue"],"sources":["../../../src/component/hooks/useBool.js"],"sourcesContent":["import {\r\n  useReducer,\r\n  useRef,\r\n  getRefValue\r\n} from '../uiApi';\r\n\r\nconst _initState = initialValue => !!initialValue\r\n, _reducer = (state, boolValue) => boolValue;\r\n\r\nconst useBool = (\r\n  initialValue\r\n) => {\r\n  const [is, setIs] = useReducer(\r\n    _reducer,\r\n    initialValue,\r\n    _initState\r\n  )\r\n  , _refSetTrue = useRef(() => setIs(true))\r\n  , _refSetFalse = useRef(() => setIs(false));\r\n  return [\r\n    is,\r\n    getRefValue(_refSetTrue),\r\n    getRefValue(_refSetFalse)\r\n  ];\r\n};\r\n\r\nexport default useBool\r\n"],"mappings":";;;;;AAAA;;AAMA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,YAAY;EAAA,OAAI,CAAC,CAACA,YAAN;AAAA,CAA/B;AAAA,IACEC,QAAQ,GAAG,SAAXA,QAAW,CAACC,KAAD,EAAQC,SAAR;EAAA,OAAsBA,SAAtB;AAAA,CADb;;AAGA,IAAMC,OAAO,GAAG,SAAVA,OAAU,CACdJ,YADc,EAEX;EACH,kBAAoB,IAAAK,iBAAA,EAClBJ,QADkB,EAElBD,YAFkB,EAGlBD,UAHkB,CAApB;EAAA,IAAOO,EAAP;EAAA,IAAWC,KAAX;EAAA,IAKEC,WALF,GAKgB,IAAAC,aAAA,EAAO;IAAA,OAAMF,KAAK,CAAC,IAAD,CAAX;EAAA,CAAP,CALhB;EAAA,IAMEG,YANF,GAMiB,IAAAD,aAAA,EAAO;IAAA,OAAMF,KAAK,CAAC,KAAD,CAAX;EAAA,CAAP,CANjB;;EAOA,OAAO,CACLD,EADK,EAEL,IAAAK,kBAAA,EAAYH,WAAZ,CAFK,EAGL,IAAAG,kBAAA,EAAYD,YAAZ,CAHK,CAAP;AAKD,CAfD;;eAiBeN,O"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/hooks/useBool.js"
+ ],
+ "file": "../../../src/component/hooks/useBool.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_initState",
+  "initialValue",
+  "_reducer",
+  "_state",
+  "boolValue",
+  "useBool",
+  "is",
+  "setIs",
+  "useReducer",
+  "_refSetTrue",
+  "useRef",
+  "_refSetFalse",
+  "getRefValue",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAMA,MAAMC,UAAU,GAAGC,YAAY,IAAI,CAAC,CAACA,YAAY;EAC/CC,QAAQ,GAAGA,CAACC,MAAM,EAAEC,SAAS,KAAKA,SAAS;AAE7C,MAAMC,OAAO,GACXJ,YAAY,IACT;EACH,MAAM,CAACK,EAAE,EAAEC,KAAK,CAAC,GAAG,IAAAC,iBAAU,EAC5BN,QAAQ,EACRD,YAAY,EACZD,UACF,CAAC;IACCS,WAAW,GAAG,IAAAC,aAAM,EAAC,MAAMH,KAAK,CAAC,IAAI,CAAC,CAAC;IACvCI,YAAY,GAAG,IAAAD,aAAM,EAAC,MAAMH,KAAK,CAAC,KAAK,CAAC,CAAC;EAC3C,OAAO,CACLD,EAAE,EACF,IAAAM,kBAAW,EAACH,WAAW,CAAC,EACxB,IAAAG,kBAAW,EAACD,YAAY,CAAC,CAC1B;AACH,CAAC;AAAC,IAAAE,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,OAAO"
+}

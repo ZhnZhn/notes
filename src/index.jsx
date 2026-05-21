@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './flux/store'
 import App from './component/App'
 
-const basename = ((window || {}).location || {}).pathname;
+const basename = window?.location?.pathname;
 
 createRoot(document.getElementById('app'))
  .render((
