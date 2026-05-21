@@ -36,6 +36,7 @@ const FlatButton = ({
   return (
     <button
       ref={refEl}
+      type="button"
       className={_className}
       style={_style}
       accessKey={accessKey}

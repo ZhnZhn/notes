@@ -15,6 +15,7 @@ const CellColor = ({
 
     return (
       <button
+         type="button"
          tabIndex={tabIndex}
          style={{ ...style, ..._styleColor}}
          onClick={_onClick}

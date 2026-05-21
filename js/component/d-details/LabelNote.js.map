@@ -1,1 +1,29 @@
-{"version":3,"file":"LabelNote.js","names":["LabelNote","className","clClose","item","onRemove","backgroundColor","color","title"],"sources":["../../../src/component/d-details/LabelNote.jsx"],"sourcesContent":["const LabelNote = ({\r\n  className,\r\n  clClose,\r\n  item,\r\n  onRemove\r\n}) => (\r\n  <button\r\n    className={className}\r\n    style={{ backgroundColor: item.color }}\r\n    onClick={onRemove}\r\n  >\r\n    {item.title}\r\n    {onRemove && <span className={clClose}>x</span>}\r\n  </button>\r\n);\r\n\r\nexport default LabelNote\r\n"],"mappings":";;;;;;;AAAA,IAAMA,SAAS,GAAG,SAAZA,SAAY;EAAA,IAChBC,SADgB,QAChBA,SADgB;EAAA,IAEhBC,OAFgB,QAEhBA,OAFgB;EAAA,IAGhBC,IAHgB,QAGhBA,IAHgB;EAAA,IAIhBC,QAJgB,QAIhBA,QAJgB;EAAA,oBAMhB;IACE,SAAS,EAAEH,SADb;IAEE,KAAK,EAAE;MAAEI,eAAe,EAAEF,IAAI,CAACG;IAAxB,CAFT;IAGE,OAAO,EAAEF,QAHX;IAAA,WAKGD,IAAI,CAACI,KALR,EAMGH,QAAQ,iBAAI;MAAM,SAAS,EAAEF,OAAjB;MAAA;IAAA,EANf;EAAA,EANgB;AAAA,CAAlB;;eAgBeF,S"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/d-details/LabelNote.js"
+ ],
+ "file": "../../../src/component/d-details/LabelNote.js",
+ "names": [
+  "LabelNote",
+  "_ref",
+  "className",
+  "clClose",
+  "item",
+  "onRemove",
+  "_jsxRuntime",
+  "jsxs",
+  "type",
+  "style",
+  "backgroundColor",
+  "color",
+  "onClick",
+  "children",
+  "title",
+  "jsx",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,SAAS,GAAGC,IAAA;EAAA,IAAC;IACjBC,SAAS;IACTC,OAAO;IACPC,IAAI;IACJC;EACF,CAAC,GAAAJ,IAAA;EAAA,oBACC,IAAAK,WAAA,CAAAC,IAAA;IACEC,IAAI,EAAC,QAAQ;IACbN,SAAS,EAAEA,SAAU;IACrBO,KAAK,EAAE;MAAEC,eAAe,EAAEN,IAAI,CAACO;IAAM,CAAE;IACvCC,OAAO,EAAEP,QAAS;IAAAQ,QAAA,GAEjBT,IAAI,CAACU,KAAK,EACVT,QAAQ,iBAAI,IAAAC,WAAA,CAAAS,GAAA;MAAMb,SAAS,EAAEC,OAAQ;MAAAU,QAAA,EAAC;IAAC,CAAM,CAAC;EAAA,CACzC,CAAC;AAAA,CACV;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEalB,SAAS"
+}

@@ -10,6 +10,7 @@ const BtCircle = ({
   onClick
 }) => (
   <button
+    type="button"
     className={CL_BT_CIRCLE}
     style={style}
     tabIndex={tabIndex}

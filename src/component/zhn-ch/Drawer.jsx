@@ -49,6 +49,7 @@ const Drawer = ({
     return [
       <button
         key="bt-drawer"
+        type="button"
         className={CL_DRAWER_BT}
         style={{...S_BT_DRAWER, ...btStyle}}
         aria-label="Open Drawer"

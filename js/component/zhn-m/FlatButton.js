@@ -14,7 +14,7 @@ const CL_BT_FLAT = 'bt-flat',
   S_PRIMARY = {
     color: '#607d8b'
   };
-const _crTitle = (title, accessKey) => accessKey ? title + " [" + accessKey + "]" : title;
+const _crTitle = (title, accessKey) => accessKey ? `${title} [${accessKey}]` : title;
 const FlatButton = _ref => {
   let {
     refEl,
@@ -38,6 +38,7 @@ const FlatButton = _ref => {
     _title = _crTitle(title, accessKey);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: refEl,
+    type: "button",
     className: _className,
     style: _style,
     accessKey: accessKey,

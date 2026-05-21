@@ -15,6 +15,7 @@ const SvgClose = _ref => {
     onClose
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    type: "button",
     tabIndex: tabIndex,
     className: (0, _crCn.default)(CL_BT_SVG_CLOSE, className),
     style: style,

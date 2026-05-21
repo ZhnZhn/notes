@@ -10,6 +10,7 @@ const SvgClose = ({
   onClose
 }) => (
    <button
+      type="button"
       tabIndex={tabIndex}
       className={crCn(CL_BT_SVG_CLOSE, className)}
       style={style}

@@ -5,6 +5,7 @@ const LabelNote = ({
   onRemove
 }) => (
   <button
+    type="button"
     className={className}
     style={{ backgroundColor: item.color }}
     onClick={onRemove}

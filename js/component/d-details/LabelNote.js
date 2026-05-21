@@ -1,16 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var LabelNote = function LabelNote(_ref) {
-  var className = _ref.className,
-      clClose = _ref.clClose,
-      item = _ref.item,
-      onRemove = _ref.onRemove;
+const LabelNote = _ref => {
+  let {
+    className,
+    clClose,
+    item,
+    onRemove
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+    type: "button",
     className: className,
     style: {
       backgroundColor: item.color
@@ -22,7 +23,5 @@ var LabelNote = function LabelNote(_ref) {
     })]
   });
 };
-
-var _default = LabelNote;
-exports["default"] = _default;
+var _default = exports.default = LabelNote;
 //# sourceMappingURL=LabelNote.js.map
