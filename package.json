@@ -11,7 +11,7 @@
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "lint:one": "eslint -c eslint.config.js",
-    "lint:biome": "npx @biomejs/biome lint ./src > _lint.txt 2>&1",
+    "lint:biome": "npx @biomejs/biome lint ./src --colors=off",
     "css:min": "node css-min.js",
     "css:sass": "node css-sass.js",
     "css:all": "npm run css:sass && npm run css:min",
@@ -21,7 +21,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@babel/runtime": "^7.29.2",
-    "@reduxjs/toolkit": "^2.11.2",
+    "@reduxjs/toolkit": "^2.12.0",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18.3.1",
