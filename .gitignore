@@ -6,6 +6,7 @@ dev
 css-sass.js
 css-min.js
 webpack.dev.js
+rspack.dev.js
 babel.dev.config.js
 
 
