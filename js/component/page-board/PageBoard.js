@@ -30,7 +30,7 @@ const ColumnStack = _ref => {
   });
 };
 const PageBoard = () => {
-  const board = (0, _uiApi.useSelector)(_selectors.selectBoard),
+  const board = (0, _uiApi.useSelector)(_selectors.selectCurrentBoard),
     notes = (0, _uiApi.useSelector)(_selectors.selectNotes),
     columns = (0, _uiApi.useSelector)(_selectors.selectColumns),
     dispatch = (0, _uiApi.useDispatch)();

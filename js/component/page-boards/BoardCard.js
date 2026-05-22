@@ -28,7 +28,7 @@ const BoardCard = _ref => {
       boardId
     })), () => dispatch((0, _actions.setCurrentBoard)({
       boardId
-    })), state => _selectors.sBoard.board(state, boardId)], [boardId, dispatch]),
+    })), state => (0, _selectors.selectBoardById)(state, boardId)], [boardId, dispatch]),
     board = (0, _uiApi.useSelector)(_selectBoard),
     columns = (0, _uiApi.useSelector)(_selectors.selectColumns),
     {

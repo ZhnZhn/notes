@@ -13,7 +13,7 @@ import {
   editBoardTitle
 } from '../../flux/board/reducer';
 import {
-  sBoard,
+  selectBoardById,
   selectColumns
 } from '../../flux/selectors';
 
@@ -46,8 +46,8 @@ const BoardCard = ({
         title: evt.target.value
     })),
     () => dispatch(removeBoard({ boardId })),
-    () => dispatch(setCurrentBoard({ boardId })),
-    state => sBoard.board(state, boardId)
+    () => dispatch(setCurrentBoard({ boardId })),    
+    state => selectBoardById(state, boardId)
   ], [boardId, dispatch])
   , board = useSelector(_selectBoard)
   , columns = useSelector(selectColumns)

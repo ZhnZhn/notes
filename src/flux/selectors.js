@@ -20,36 +20,23 @@ export const selectDrawerItems = (
   state /*: StoreState */
 ) => state.drawerMsg || []
 
-export const sBoard = {
-  boards: (state /*: StoreState */) => state.boards || {},
 
-  //state.boards[state.app.boardId]
-  currentBoard: (state /*: StoreState */) => sBoard
-    .boards(state)[selectAppCurrentBoard(state)] || {},
-
-  //state.boards[id]
-  board: (
-    state /*: StoreState */,
-    boardId /*: string */
-  ) => sBoard
-    .boards(state)[boardId] || {},
-
-  //state.boards[boardId].columnIds
-  columnIds: (
-    state /*: StoreState */,
-    boardId /*: string */
-  ) => sBoard
-    .board(state, boardId).columnIds || [],
-
-  //state.app.boardIds
-  boardIds: (state /*: StoreState */) => selectAppBoardIds(state)
-};
-export const selectBoardIds = (
+const selectBoards = (
   state /*: StoreState */
-) => sBoard.boardIds(state)
-export const selectBoard = (
+) => state.boards || {}
+
+export const selectCurrentBoard = (
   state /*: StoreState */
-) => sBoard.currentBoard(state)
+) => selectBoards(state)[selectAppCurrentBoard(state)] || {}
+
+export const selectBoardById = (
+  state /*: StoreState */,
+  boardId /*: string */
+) => selectBoards(state)[boardId] || {}
+export const selectBoardColumnIds = (
+  state /*: StoreState */,
+  boardId /*: string */
+) => selectBoardById(state, boardId).columnIds || []
 
 export const selectNotes = (
   state /*: StoreState */
@@ -69,10 +56,3 @@ export const selectNoteIds = (
   state /*: StoreState */,
   columnId /*: string */
 ) => selectColumn(state, columnId).noteIds || []
-
-
-const selectors = {
-  board: sBoard
-};
-
-export default selectors

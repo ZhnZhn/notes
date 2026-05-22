@@ -8,7 +8,7 @@ var _selectors = require("../../flux/selectors");
 var _BoardCard = _interopRequireDefault(require("./BoardCard"));
 var _jsxRuntime = require("react/jsx-runtime");
 const BoardList = () => {
-  const boardIds = (0, _uiApi.useSelector)(_selectors.selectBoardIds);
+  const boardIds = (0, _uiApi.useSelector)(_selectors.selectAppBoardIds);
   return (0, _uiApi.safeMap)(boardIds, id => /*#__PURE__*/(0, _jsxRuntime.jsx)(_BoardCard.default, {
     id: id
   }, id));

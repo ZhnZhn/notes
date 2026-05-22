@@ -1,1 +1,35 @@
-{"version":3,"file":"HeaderCaption.js","names":["_CL_TITLE","CL_HEADER_TITLE","CL_TITLE_BOARD","HeaderCaption","board","useSelector","sBoard","currentBoard","CL_LOGO_BOARD","crTitle"],"sources":["../../../src/component/board-header/HeaderCaption.jsx"],"sourcesContent":["import { useSelector } from '../uiApi';\r\nimport { sBoard } from '../../flux/selectors';\r\n\r\nimport Logo from '../zhn/Logo';\r\nimport crTitle from './crTitle';\r\nimport {\r\n  CL_LOGO_BOARD,\r\n  CL_HEADER_TITLE,\r\n  CL_TITLE_BOARD\r\n} from '../style/CL';\r\n\r\nconst _CL_TITLE = `${CL_HEADER_TITLE} ${CL_TITLE_BOARD}`;\r\n\r\nconst HeaderCaption = () => {\r\n  const board = useSelector(sBoard.currentBoard);\r\n  return (\r\n  <>\r\n    <Logo key=\"logo\" className={CL_LOGO_BOARD} />\r\n    <span className={_CL_TITLE}>\r\n      {crTitle(board)}\r\n    </span>\r\n  </>);\r\n};\r\n\r\nexport default HeaderCaption\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AAEA;;AACA;;AACA;;;;AAMA,IAAMA,SAAS,GAAMC,mBAAN,SAAyBC,kBAAxC;;AAEA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,GAAM;EAC1B,IAAMC,KAAK,GAAG,IAAAC,kBAAA,EAAYC,iBAAA,CAAOC,YAAnB,CAAd;EACA,oBACA;IAAA,wBACE,qBAAC,gBAAD;MAAiB,SAAS,EAAEC;IAA5B,GAAU,MAAV,CADF,eAEE;MAAM,SAAS,EAAER,SAAjB;MAAA,UACG,IAAAS,mBAAA,EAAQL,KAAR;IADH,EAFF;EAAA,EADA;AAOD,CATD;;eAWeD,a"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/board-header/HeaderCaption.js"
+ ],
+ "file": "../../../src/component/board-header/HeaderCaption.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_selectors",
+  "_Logo",
+  "_interopRequireDefault",
+  "_crTitle",
+  "_CL",
+  "_jsxRuntime",
+  "_CL_TITLE",
+  "CL_HEADER_TITLE",
+  "CL_TITLE_BOARD",
+  "HeaderCaption",
+  "board",
+  "useSelector",
+  "selectCurrentBoard",
+  "jsxs",
+  "Fragment",
+  "children",
+  "jsx",
+  "default",
+  "className",
+  "CL_LOGO_BOARD",
+  "crTitle",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,UAAA,GAAAD,OAAA;AAEA,IAAAE,KAAA,GAAAC,sBAAA,CAAAH,OAAA;AACA,IAAAI,QAAA,GAAAD,sBAAA,CAAAH,OAAA;AACA,IAAAK,GAAA,GAAAL,OAAA;AAIqB,IAAAM,WAAA,GAAAN,OAAA;AAErB,MAAMO,SAAS,GAAG,GAAGC,mBAAe,IAAIC,kBAAc,EAAE;AAExD,MAAMC,aAAa,GAAGA,CAAA,KAAM;EAC1B,MAAMC,KAAK,GAAG,IAAAC,kBAAW,EAACC,6BAAkB,CAAC;EAC7C,oBACA,IAAAP,WAAA,CAAAQ,IAAA,EAAAR,WAAA,CAAAS,QAAA;IAAAC,QAAA,gBACE,IAAAV,WAAA,CAAAW,GAAA,EAACf,KAAA,CAAAgB,OAAI;MAAYC,SAAS,EAAEC;IAAc,GAAhC,MAAkC,CAAC,eAC7C,IAAAd,WAAA,CAAAW,GAAA;MAAME,SAAS,EAAEZ,SAAU;MAAAS,QAAA,EACxB,IAAAK,gBAAO,EAACV,KAAK;IAAC,CACX,CAAC;EAAA,CACP,CAAC;AACL,CAAC;AAAC,IAAAW,QAAA,GAAAC,OAAA,CAAAL,OAAA,GAEaR,aAAa"
+}

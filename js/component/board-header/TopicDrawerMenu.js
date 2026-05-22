@@ -12,7 +12,7 @@ var _TopicList = _interopRequireDefault(require("./TopicList"));
 var _DrawerMsgList = _interopRequireDefault(require("../header/DrawerMsgList"));
 var _jsxRuntime = require("react/jsx-runtime");
 const TopicDrawerMenu = () => {
-  const board = (0, _uiApi.useSelector)(_selectors.selectBoard),
+  const board = (0, _uiApi.useSelector)(_selectors.selectCurrentBoard),
     columns = (0, _uiApi.useSelector)(_selectors.selectColumns),
     dispatch = (0, _uiApi.useDispatch)(),
     _hToggleColumn = (0, _uiApi.useCallback)(cId => {

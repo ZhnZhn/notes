@@ -1,5 +1,5 @@
 import { useSelector } from '../uiApi';
-import { sBoard } from '../../flux/selectors';
+import { selectCurrentBoard } from '../../flux/selectors';
 
 import Logo from '../zhn/Logo';
 import crTitle from './crTitle';
@@ -12,7 +12,7 @@ import {
 const _CL_TITLE = `${CL_HEADER_TITLE} ${CL_TITLE_BOARD}`;
 
 const HeaderCaption = () => {
-  const board = useSelector(sBoard.currentBoard);
+  const board = useSelector(selectCurrentBoard);
   return (
   <>
     <Logo key="logo" className={CL_LOGO_BOARD} />

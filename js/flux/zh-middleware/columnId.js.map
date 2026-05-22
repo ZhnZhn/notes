@@ -1,1 +1,41 @@
-{"version":3,"file":"columnId.js","names":["_isMax","state","boardId","sBoard","columnIds","length","CONF","MAX_COLUMNS","columnIdMiddleware","getState","dispatch","next","action","type","addColumn","payload","showNotif","N_MAX_COLUMNS","columnId","crId","COLUMNS_PREFIX"],"sources":["../../../src/flux/zh-middleware/columnId.js"],"sourcesContent":["import { addColumn } from '../column/actions'\r\nimport { showNotif } from '../modal/reducer'\r\nimport { sBoard } from '../selectors'\r\nimport crId from './crId'\r\nimport CONF from '../appConf'\r\n\r\nconst _isMax = (state, boardId) => sBoard\r\n  .columnIds(state, boardId).length >= CONF.MAX_COLUMNS;\r\n\r\nconst columnIdMiddleware = ({ getState, dispatch }) => next => action => {\r\n  if (action.type === addColumn.type) {\r\n    if (_isMax(getState(), action.payload.boardId)) {\r\n      dispatch(showNotif(CONF.N_MAX_COLUMNS))\r\n      return false;\r\n    }\r\n    const columnId = crId(CONF.COLUMNS_PREFIX);\r\n    action.payload.columnId = columnId\r\n    next(action);\r\n    return columnId;\r\n  }\r\n  return next(action);\r\n}\r\n\r\nexport default columnIdMiddleware\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,CAACC,KAAD,EAAQC,OAAR;EAAA,OAAoBC,iBAAA,CAChCC,SADgC,CACtBH,KADsB,EACfC,OADe,EACNG,MADM,IACIC,mBAAA,CAAKC,WAD7B;AAAA,CAAf;;AAGA,IAAMC,kBAAkB,GAAG,SAArBA,kBAAqB;EAAA,IAAGC,QAAH,QAAGA,QAAH;EAAA,IAAaC,QAAb,QAAaA,QAAb;EAAA,OAA4B,UAAAC,IAAI;IAAA,OAAI,UAAAC,MAAM,EAAI;MACvE,IAAIA,MAAM,CAACC,IAAP,KAAgBC,kBAAA,CAAUD,IAA9B,EAAoC;QAClC,IAAIb,MAAM,CAACS,QAAQ,EAAT,EAAaG,MAAM,CAACG,OAAP,CAAeb,OAA5B,CAAV,EAAgD;UAC9CQ,QAAQ,CAAC,IAAAM,kBAAA,EAAUV,mBAAA,CAAKW,aAAf,CAAD,CAAR;UACA,OAAO,KAAP;QACD;;QACD,IAAMC,QAAQ,GAAG,IAAAC,gBAAA,EAAKb,mBAAA,CAAKc,cAAV,CAAjB;QACAR,MAAM,CAACG,OAAP,CAAeG,QAAf,GAA0BA,QAA1B;QACAP,IAAI,CAACC,MAAD,CAAJ;QACA,OAAOM,QAAP;MACD;;MACD,OAAOP,IAAI,CAACC,MAAD,CAAX;IACD,CAZ0D;EAAA,CAAhC;AAAA,CAA3B;;eAceJ,kB"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/columnId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/columnId.js",
+ "names": [
+  "_actions",
+  "require",
+  "_reducer",
+  "_selectors",
+  "_crId",
+  "_interopRequireDefault",
+  "_appConf",
+  "_isMax",
+  "state",
+  "boardId",
+  "selectBoardColumnIds",
+  "length",
+  "CONF",
+  "MAX_COLUMNS",
+  "columnIdMiddleware",
+  "_ref",
+  "getState",
+  "dispatch",
+  "next",
+  "action",
+  "type",
+  "addColumn",
+  "payload",
+  "showNotif",
+  "N_MAX_COLUMNS",
+  "columnId",
+  "crId",
+  "COLUMNS_PREFIX",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AACA,IAAAC,QAAA,GAAAD,OAAA;AACA,IAAAE,UAAA,GAAAF,OAAA;AACA,IAAAG,KAAA,GAAAC,sBAAA,CAAAJ,OAAA;AACA,IAAAK,QAAA,GAAAD,sBAAA,CAAAJ,OAAA;AAEA,MAAMM,MAAM,GAAGA,CACbC,KAAK,EACLC,OAAO,KACJ,IAAAC,+BAAoB,EAACF,KAAK,EAAEC,OAAO,CAAC,CAACE,MAAM,IAAIC,gBAAI,CAACC,WAAW;AAEpE,MAAMC,kBAAkB,GAAGC,IAAA;EAAA,IAAC;IAAEC,QAAQ;IAAEC;EAAS,CAAC,GAAAF,IAAA;EAAA,OAAKG,IAAI,IAAIC,MAAM,IAAI;IACvE,IAAIA,MAAM,CAACC,IAAI,KAAKC,kBAAS,CAACD,IAAI,EAAE;MAClC,IAAIb,MAAM,CAACS,QAAQ,CAAC,CAAC,EAAEG,MAAM,CAACG,OAAO,CAACb,OAAO,CAAC,EAAE;QAC9CQ,QAAQ,CAAC,IAAAM,kBAAS,EAACX,gBAAI,CAACY,aAAa,CAAC,CAAC;QACvC,OAAO,KAAK;MACd;MACA,MAAMC,QAAQ,GAAG,IAAAC,aAAI,EAACd,gBAAI,CAACe,cAAc,CAAC;MAC1CR,MAAM,CAACG,OAAO,CAACG,QAAQ,GAAGA,QAAQ;MAClCP,IAAI,CAACC,MAAM,CAAC;MACZ,OAAOM,QAAQ;IACjB;IACA,OAAOP,IAAI,CAACC,MAAM,CAAC;EACrB,CAAC;AAAA;AAAA,IAAAS,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEchB,kBAAkB"
+}

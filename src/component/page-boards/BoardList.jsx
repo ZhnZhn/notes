@@ -3,12 +3,12 @@ import {
   safeMap
 } from '../uiApi';
 
-import { selectBoardIds } from '../../flux/selectors';
+import { selectAppBoardIds } from '../../flux/selectors';
 
 import BoardCard from './BoardCard';
 
 const BoardList = () => {
-  const boardIds = useSelector(selectBoardIds);
+  const boardIds = useSelector(selectAppBoardIds);
   return safeMap(boardIds, id => (
     <BoardCard
       key={id}

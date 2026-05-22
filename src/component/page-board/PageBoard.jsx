@@ -9,7 +9,7 @@ import {
 } from 'react-beautiful-dnd';
 
 import {
-  selectBoard,
+  selectCurrentBoard,
   selectNotes,
   selectColumns
 } from '../../flux/selectors';
@@ -47,7 +47,7 @@ const ColumnStack = ({
 });
 
 const PageBoard = () => {
-  const board = useSelector(selectBoard)
+  const board = useSelector(selectCurrentBoard)
   , notes = useSelector(selectNotes)
   , columns = useSelector(selectColumns)
   , dispatch = useDispatch();

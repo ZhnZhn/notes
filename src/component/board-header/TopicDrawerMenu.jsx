@@ -4,7 +4,7 @@ import {
   useCallback
 } from '../uiApi';
 import {
-  selectBoard,
+  selectCurrentBoard,
   selectColumns
 } from '../../flux/selectors';
 import { toggleColumn } from '../../flux/column/reducer';
@@ -15,7 +15,7 @@ import TopicList from './TopicList';
 import DrawerMsgList from '../header/DrawerMsgList';
 
 const TopicDrawerMenu = () => {
-  const board = useSelector(selectBoard)
+  const board = useSelector(selectCurrentBoard)
   , columns = useSelector(selectColumns)
   , dispatch = useDispatch()
   , _hToggleColumn = useCallback(cId => {
