@@ -22,7 +22,7 @@ const DialogStack = _ref => {
     dialogs,
     onClose
   } = _ref;
-  return dialogs.map(dialog => {
+  return (0, _uiApi.safeMap)(dialogs, dialog => {
     const {
       type,
       comp: DialogComp

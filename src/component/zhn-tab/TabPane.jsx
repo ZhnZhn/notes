@@ -1,6 +1,7 @@
 import {
   useState,
-  cloneUiElement
+  cloneUiElement,
+  safeMap
 } from "../uiApi";
 
 const S_UL = {
@@ -28,36 +29,34 @@ const _renderTabs = (
   children,
   selectedTabIndex,
   hClickTab
-) => children
- .map((ElementTab, index) => cloneUiElement(ElementTab, {
+) => safeMap(children, (ElementTab, index) => cloneUiElement(ElementTab, {
     id: index,
     onClick: () => hClickTab(index),
     isSelected: index === selectedTabIndex
- }, index));
+}, index));
 
  const _renderComponents = (
    children,
    selectedTabIndex
- ) => children
-  .map((ElementTab, index) => {
-     const _isSelected = (index === selectedTabIndex)
-     , _divStyle = _isSelected
-         ? S_TAB_SELECTED
-         : S_NONE;
-     return (
-        <div
-          key={"a"+index}
-          style={_divStyle}
-          role="tabpanel"
-          id={`tabpanel-${index}`}
-          aria-labelledby={`tab-${index}`}
-        >
-           {cloneUiElement(ElementTab.props.children, {
-             isSelected: _isSelected
-           }, "comp"+index)}
-        </div>
-     );
- });
+ ) => safeMap(children, (ElementTab, index) => {
+    const _isSelected = (index === selectedTabIndex)
+    , _divStyle = _isSelected
+       ? S_TAB_SELECTED
+       : S_NONE;
+    return (
+      <div
+        key={"a"+index}
+        style={_divStyle}
+        role="tabpanel"
+        id={`tabpanel-${index}`}
+        aria-labelledby={`tab-${index}`}
+      >
+         {cloneUiElement(ElementTab.props.children, {
+           isSelected: _isSelected
+         }, "comp"+index)}
+      </div>
+    );
+});
 
 
 const TabPane = ({

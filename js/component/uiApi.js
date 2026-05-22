@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useSelector = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useDispatch = exports.useContext = exports.useCallback = exports.setRefValue = exports.memo = exports.getRefValue = exports.focusRefElement = exports.createContext = exports.cloneUiElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
+exports.useState = exports.useSelector = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useDispatch = exports.useContext = exports.useCallback = exports.setRefValue = exports.safeMap = exports.memo = exports.getRefValue = exports.focusRefElement = exports.createContext = exports.cloneUiElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
 var _reactRouterDom = require("react-router-dom");
 exports.NavLink = _reactRouterDom.NavLink;
@@ -22,6 +22,7 @@ exports.useEffect = _react.useEffect;
 exports.useContext = _react.useContext;
 exports.useImperativeHandle = _react.useImperativeHandle;
 const _isFn = fn => typeof fn === "function";
+const _isArr = Array.isArray;
 const cloneUiElement = function (Element, overrideProps, key) {
   if (key === void 0) {
     key = Element.key;
@@ -47,4 +48,6 @@ const focusRefElement = ref1 => {
   }
 };
 exports.focusRefElement = focusRefElement;
+const safeMap = (itemsOr, crElement) => _isArr(itemsOr) && itemsOr.length > 0 ? itemsOr.map(crElement) : null;
+exports.safeMap = safeMap;
 //# sourceMappingURL=uiApi.js.map

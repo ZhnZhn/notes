@@ -3,6 +3,8 @@ import {
   Draggable
 } from 'react-beautiful-dnd';
 
+import { safeMap } from '../uiApi';
+
 import DroppableDiv from '../zhn-dnd/DroppableDiv';
 import DnDNote from './DnDNote';
 
@@ -25,7 +27,7 @@ const _crNoteList = ({
     style={S_DIV}
     draggingOverOffStyle={S_DRAGGING_OVER_OFF}
   >
-    {noteIds.map((nId, index) => (
+    {safeMap(noteIds, (nId, index) => (
       <Draggable key={nId} draggableId={nId} index={index}>
       {
         (provided, snap) => (

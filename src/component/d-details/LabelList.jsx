@@ -1,4 +1,5 @@
 import { bindToArg } from '../../utils/bindTo';
+import { safeMap } from '../uiApi';
 
 import Label from './LabelNote';
 import {
@@ -13,8 +14,7 @@ const LabelList = ({
   onRemove
 }) => (
   <div style={S_DIV}>
-    {
-      (labels||[]).map(item => (
+    {safeMap(labels, item => (
         <Label
           key={item.id || item.title}
           className={CL_NOTE_LABEL}
@@ -25,8 +25,7 @@ const LabelList = ({
             : void 0
           }
         />
-      ))
-    }
+    ))}
   </div>
 );
 

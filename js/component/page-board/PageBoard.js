@@ -20,7 +20,7 @@ const ColumnStack = _ref => {
     columns,
     notes
   } = _ref;
-  return (columnIds || []).map(cId => {
+  return (0, _uiApi.safeMap)(columnIds, cId => {
     const column = columns[cId];
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Topic.default, {
       boardId: boardId,

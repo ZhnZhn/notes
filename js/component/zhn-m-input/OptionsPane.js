@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
+var _uiApi = require("../uiApi");
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn-ch/ShowHide"));
 var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
@@ -32,7 +33,7 @@ const _fOnKeyPress = onKeyPress => evt => {
     onKeyPress(evt);
   }
 };
-const _renderOptions = (options, currentItem, clItem, onSelect) => options.map(item => {
+const _renderOptions = (options, currentItem, clItem, onSelect) => (0, _uiApi.safeMap)(options, item => {
   const _style = (0, _crStyle.default)(S_ITEM, [item.value === currentItem.value, S_ITEM_CURRENT]),
     _onSelect = (0, _bindTo.bindToArg)(onSelect, item),
     _onKeyPress = _fOnKeyPress(_onSelect);

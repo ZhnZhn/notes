@@ -19,7 +19,7 @@ const DrawerMsgList = () => {
     };
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
     className: CL_UL,
-    children: items.map(item => /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
+    children: (0, _uiApi.safeMap)(items, item => /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
       className: CL_LI,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
         type: "button",

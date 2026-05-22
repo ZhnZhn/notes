@@ -21,6 +21,8 @@ import {
   addColumn
 } from '../../flux/column/actions';
 
+import { safeMap } from '../uiApi';
+
 import isNotDnD from '../zhn-dnd/isNotDnD';
 
 import Header from '../board-header/Header';
@@ -32,7 +34,7 @@ const ColumnStack = ({
   columnIds,
   columns,
   notes
-}) => (columnIds||[]).map(cId => {
+}) => safeMap(columnIds, cId => {
    const column = columns[cId];
    return (
     <Topic

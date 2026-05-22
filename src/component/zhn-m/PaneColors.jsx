@@ -1,7 +1,8 @@
 import {
   useState,
   useCallback,
-  useImperativeHandle
+  useImperativeHandle,
+  safeMap
 } from '../uiApi';
 
 import CellColor from '../zhn-ch/CellColor'
@@ -36,7 +37,7 @@ const ColorStack = ({
   onClick
 }) => (
   <>
-     {colors.map(c => (
+     {safeMap(colors, c => (
        <CellColor
          key={c}
          color={c}

@@ -1,3 +1,4 @@
+import { safeMap } from '../uiApi';
 import TopicItem from './TopicItem';
 
 const S_UL = { listStyleType: 'none' }
@@ -12,11 +13,11 @@ const TopicList = ({
   const { columnIds } = board;
   return (
     <ul style={S_UL}>
-      {(columnIds || []).map(cId => (
+      {safeMap(columnIds, cId => (
         <li style={S_LI} key={cId}>
           <TopicItem
             topic={columns[cId]}
-            onClick={() => toggleColumn(cId)}            
+            onClick={() => toggleColumn(cId)}
           />
         </li>
       ))}

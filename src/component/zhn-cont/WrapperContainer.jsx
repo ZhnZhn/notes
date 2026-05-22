@@ -8,7 +8,8 @@ import {
   useCallback,
   useEffect,
   getRefValue,
-  setRefValue
+  setRefValue,
+  safeMap
 } from "../uiApi";
 
 import useTheme from "../hooks/useTheme";
@@ -26,7 +27,7 @@ const DialogStack = ({
   data,
   dialogs,
   onClose
-}) => dialogs.map(dialog => {
+}) => safeMap(dialogs, dialog => {
   const {
     type,
     comp:DialogComp

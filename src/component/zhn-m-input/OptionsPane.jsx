@@ -1,5 +1,7 @@
 import { bindToArg } from '../../utils/bindTo';
 
+import { safeMap } from '../uiApi';
+
 import ModalPane from '../zhn-ch/ModalPane'
 import ShowHide from '../zhn-ch/ShowHide'
 
@@ -37,29 +39,28 @@ const _renderOptions = (
   currentItem,
   clItem,
   onSelect
-) => options
- .map(item => {
-    const _style = crStyle(
-      S_ITEM,
-      [item.value === currentItem.value, S_ITEM_CURRENT]
-    )
-    , _onSelect = bindToArg(onSelect, item)
-    , _onKeyPress = _fOnKeyPress(_onSelect);
+) => safeMap(options, item => {
+  const _style = crStyle(
+    S_ITEM,
+    [item.value === currentItem.value, S_ITEM_CURRENT]
+  )
+  , _onSelect = bindToArg(onSelect, item)
+  , _onKeyPress = _fOnKeyPress(_onSelect);
 
-    return (
-      <div
-        role="button"
-        tabIndex="0"
-        key={item.value}
-        style={_style}
-        className={clItem}
-        onClick={_onSelect}
-        onKeyPress={_onKeyPress}
-      >
-        {item.caption}
-      </div>
-    );
-  })
+  return (
+    <div
+      role="button"
+      tabIndex="0"
+      key={item.value}
+      style={_style}
+      className={clItem}
+      onClick={_onSelect}
+      onKeyPress={_onKeyPress}
+    >
+      {item.caption}
+    </div>
+  );
+})
 
 
 const OptionsPane = ({

@@ -1,4 +1,9 @@
-import { Droppable, Draggable } from 'react-beautiful-dnd'
+import {
+  Droppable,
+  Draggable
+} from 'react-beautiful-dnd'
+
+import { safeMap } from '../uiApi';
 
 import DroppableDiv from '../zhn-dnd/DroppableDiv'
 import DnDTopic from './DnDTopic'
@@ -19,7 +24,7 @@ const _crTopicList = ({
      innerRef={provided.innerRef}
      isDraggingOver={snapshot.isDraggingOver}
   >
-    {columnIds.map((tId, index) => (
+    {safeMap(columnIds, (tId, index) => (
         <Draggable key={tId} draggableId={tId} index={index}>
         {
           (provided, snap) => (

@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _reactBeautifulDnd = require("react-beautiful-dnd");
+var _uiApi = require("../uiApi");
 var _DroppableDiv = _interopRequireDefault(require("../zhn-dnd/DroppableDiv"));
 var _DnDNote = _interopRequireDefault(require("./DnDNote"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -27,7 +28,7 @@ const _crNoteList = _ref => {
     isDraggingOver: snapshot.isDraggingOver,
     style: S_DIV,
     draggingOverOffStyle: S_DRAGGING_OVER_OFF,
-    children: [noteIds.map((nId, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.Draggable, {
+    children: [(0, _uiApi.safeMap)(noteIds, (nId, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactBeautifulDnd.Draggable, {
       draggableId: nId,
       index: index,
       children: (provided, snap) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDNote.default, {

@@ -1,6 +1,7 @@
 import {
   useDispatch,
-  useSelector
+  useSelector,
+  safeMap
 } from '../uiApi';
 import { selectDrawerItems } from '../../flux/selectors';
 import { removeDrawerMsg } from '../../flux/drawerMsg/reducer';
@@ -18,22 +19,20 @@ const DrawerMsgList = () => {
 
   return (
     <ul className={CL_UL}>
-      {
-         items.map(item => (
-            <li
-              key={item.id}
-              className={CL_LI}
-            >
-              <button
-                type="button"
-                className={CL_LI_BT}
-                onClick={() => _hRemoveMsg(item.id)}
-              >
-                {item.msg}
-              </button>
-            </li>
-         ))
-      }
+      {safeMap(items, item => (
+        <li
+          key={item.id}
+          className={CL_LI}
+        >
+          <button
+            type="button"
+            className={CL_LI_BT}
+            onClick={() => _hRemoveMsg(item.id)}
+          >
+            {item.msg}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 };

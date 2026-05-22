@@ -23,6 +23,7 @@ export {
 } from "react";
 
 const _isFn = fn => typeof fn === "function";
+const _isArr = Array.isArray;
 
 export const cloneUiElement = (
   Element,
@@ -53,3 +54,10 @@ export const focusRefElement = (
     _el.focus()
   }
 }
+
+export const safeMap = (
+  itemsOr,
+  crElement
+) => _isArr(itemsOr) && itemsOr.length > 0
+  ? itemsOr.map(crElement)
+  : null

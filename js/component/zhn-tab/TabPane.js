@@ -24,12 +24,12 @@ const S_UL = {
   S_NONE = {
     display: "none"
   };
-const _renderTabs = (children, selectedTabIndex, hClickTab) => children.map((ElementTab, index) => (0, _uiApi.cloneUiElement)(ElementTab, {
+const _renderTabs = (children, selectedTabIndex, hClickTab) => (0, _uiApi.safeMap)(children, (ElementTab, index) => (0, _uiApi.cloneUiElement)(ElementTab, {
   id: index,
   onClick: () => hClickTab(index),
   isSelected: index === selectedTabIndex
 }, index));
-const _renderComponents = (children, selectedTabIndex) => children.map((ElementTab, index) => {
+const _renderComponents = (children, selectedTabIndex) => (0, _uiApi.safeMap)(children, (ElementTab, index) => {
   const _isSelected = index === selectedTabIndex,
     _divStyle = _isSelected ? S_TAB_SELECTED : S_NONE;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

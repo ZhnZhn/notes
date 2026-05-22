@@ -38,7 +38,7 @@ const ColorStack = _ref => {
     onClick
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: colors.map(c => /*#__PURE__*/(0, _jsxRuntime.jsx)(_CellColor.default, {
+    children: (0, _uiApi.safeMap)(colors, c => /*#__PURE__*/(0, _jsxRuntime.jsx)(_CellColor.default, {
       color: c,
       style: S_CELL,
       onClick: onClick
