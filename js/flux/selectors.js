@@ -10,10 +10,7 @@ const selectAppBoardIds = (state /*: StoreState */) => selectApp(state).boardIds
 exports.selectAppBoardIds = selectAppBoardIds;
 const selectAppUiTheme = (state /*: StoreState */) => selectApp(state).uiTheme;
 exports.selectAppUiTheme = selectAppUiTheme;
-const sDrawer = {
-  msg: (state /*: StoreState */) => state.drawerMsg || []
-};
-const selectDrawerItems = (state /*: StoreState */) => sDrawer.msg(state);
+const selectDrawerItems = (state /*: StoreState */) => state.drawerMsg || [];
 exports.selectDrawerItems = selectDrawerItems;
 const sBoard = exports.sBoard = {
   boards: (state /*: StoreState */) => state.boards || {},
@@ -47,7 +44,6 @@ const sColumn = exports.sColumn = {
 const selectColumns = (state /*: StoreState */) => sColumn.columns(state);
 exports.selectColumns = selectColumns;
 const selectors = {
-  drawer: sDrawer,
   board: sBoard,
   note: sNote,
   column: sColumn

@@ -16,12 +16,9 @@ export const selectAppUiTheme = (
   state /*: StoreState */
 ) => selectApp(state).uiTheme
 
-const sDrawer = {
-  msg: (state /*: StoreState */) => state.drawerMsg || []
-};
 export const selectDrawerItems = (
   state /*: StoreState */
-) => sDrawer.msg(state)
+) => state.drawerMsg || []
 
 export const sBoard = {
   boards: (state /*: StoreState */) => state.boards || {},
@@ -89,7 +86,6 @@ export const selectColumns = (
 
 
 const selectors = {
-  drawer: sDrawer,
   board: sBoard,
   note: sNote,
   column: sColumn
