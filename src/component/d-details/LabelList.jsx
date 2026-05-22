@@ -1,3 +1,5 @@
+import { bindToArg } from '../../utils/bindTo';
+
 import Label from './LabelNote';
 import {
   CL_NOTE_LABEL,
@@ -19,7 +21,7 @@ const LabelList = ({
           clClose={CL_NOTE_LABEL_CLOSE}
           item={item}
           onRemove={onRemove
-            ? onRemove.bind(null, item)
+            ? bindToArg(onRemove, item)
             : void 0
           }
         />

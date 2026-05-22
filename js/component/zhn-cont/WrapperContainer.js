@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
@@ -32,7 +33,7 @@ const DialogStack = _ref => {
       data: data[type],
       store: store,
       dispatch: store.dispatch,
-      onClose: onClose.bind(null, type)
+      onClose: (0, _bindTo.bindToArg)(onClose, type)
     }, type);
   });
 };
@@ -114,7 +115,7 @@ const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
   } = state;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperModalDialog.default, {
     isShow: isShow,
-    onClose: _hClose.bind(null, currentDialog),
+    onClose: (0, _bindTo.bindToArg)(_hClose, currentDialog),
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogStack, {
       TS: TS,
       store: store,

@@ -1,4 +1,6 @@
 //import PropTypes from 'prop-types'
+import { bindToArg } from '../../utils/bindTo';
+
 import {
   memo,
   useRef,
@@ -36,7 +38,7 @@ const DialogStack = ({
     data={data[type]}
     store={store}
     dispatch={store.dispatch}
-    onClose={onClose.bind(null, type)}
+    onClose={bindToArg(onClose, type)}
   />);
 });
 
@@ -122,7 +124,7 @@ const WrapperContainer = memo(({
   return (
     <WrapperModalDialog
       isShow={isShow}
-      onClose={_hClose.bind(null, currentDialog)}
+      onClose={bindToArg(_hClose, currentDialog)}
     >
       <DialogStack
         TS={TS}

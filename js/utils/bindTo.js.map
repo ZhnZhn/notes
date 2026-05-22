@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/bindTo.js"
+ ],
+ "file": "../../src/utils/bindTo.js",
+ "names": [
+  "FN_NOOP",
+  "bindToArg",
+  "fn",
+  "arg",
+  "bind",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,MAAMA,OAAO,GAAGA,CAAA,KAAM,CAAC,CAAC;AAEjB,MAAMC,SAAS,GAAGA,CACvBC,EAAE,EACFC,GAAG,KACA,CAACD,EAAE,IAAIF,OAAO,EAAEI,IAAI,CAAC,IAAI,EAAED,GAAG,CAAC;AAAAE,OAAA,CAAAJ,SAAA,GAAAA,SAAA"
+}

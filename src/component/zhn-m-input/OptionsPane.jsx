@@ -1,3 +1,5 @@
+import { bindToArg } from '../../utils/bindTo';
+
 import ModalPane from '../zhn-ch/ModalPane'
 import ShowHide from '../zhn-ch/ShowHide'
 
@@ -41,7 +43,7 @@ const _renderOptions = (
       S_ITEM,
       [item.value === currentItem.value, S_ITEM_CURRENT]
     )
-    , _onSelect = onSelect.bind(null, item)
+    , _onSelect = bindToArg(onSelect, item)
     , _onKeyPress = _fOnKeyPress(_onSelect);
 
     return (
