@@ -15,7 +15,7 @@ import {
 import ThemeContext from './hoc/ThemeContext';
 import initialTheme from './style/theme';
 
-import { sApp } from '../flux/selectors';
+import { selectAppUiTheme } from '../flux/selectors';
 
 import PageBoard from './page-board/PageBoard';
 import PageBoards from './page-boards/PageBoards';
@@ -29,7 +29,7 @@ const App = ({
     theme,
     setTheme
   ] = useState(initialTheme)
-  , uiTheme = useSelector(sApp.uiTheme);
+  , uiTheme = useSelector(selectAppUiTheme);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {

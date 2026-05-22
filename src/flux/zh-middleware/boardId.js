@@ -1,11 +1,12 @@
 import { addBoard } from '../board/actions'
 import { showNotif } from '../modal/reducer'
 import crId from './crId'
-import { sApp } from '../selectors'
+import { selectAppBoardIds } from '../selectors'
 import CONF from '../appConf'
 
-const _isMax = state => sApp
-  .boardIds(state).length >= CONF.MAX_BOARDS;
+const _isMax = (
+  state
+) => selectAppBoardIds(state).length >= CONF.MAX_BOARDS;
 
 const boardIdMiddleware = ({ getState, dispatch }) => next => action => {
   if (action.type === addBoard.type) {

@@ -1,17 +1,15 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.sNote = exports.sColumn = exports.sBoard = exports.sApp = exports.default = void 0;
-const sApp = exports.sApp = {
-  app: (state /*: StoreState */) => state.app || {},
-  modal: (state /*: StoreState */) => state.modal || {},
-  //state.app.boardId
-  currentBoard: (state /*: StoreState */) => sApp.app(state).boardId,
-  //state.app.boardIds
-  boardIds: (state /*: StoreState */) => sApp.app(state).boardIds || [],
-  //state.app.uiTheme
-  uiTheme: (state /*: StoreState */) => sApp.app(state).uiTheme
-};
+exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = exports.sNote = exports.sColumn = exports.sBoard = exports.default = void 0;
+const selectApp = (state /*: StoreState */) => state.app || {};
+const selectAppModal = (state /*: StoreState */) => state.modal || {};
+exports.selectAppModal = selectAppModal;
+const selectAppCurrentBoard = (state /*: StoreState */) => selectApp(state).boardId;
+const selectAppBoardIds = (state /*: StoreState */) => selectApp(state).boardIds || [];
+exports.selectAppBoardIds = selectAppBoardIds;
+const selectAppUiTheme = (state /*: StoreState */) => selectApp(state).uiTheme;
+exports.selectAppUiTheme = selectAppUiTheme;
 const sDrawer = {
   msg: (state /*: StoreState */) => state.drawerMsg || []
 };
@@ -20,13 +18,13 @@ exports.selectDrawerItems = selectDrawerItems;
 const sBoard = exports.sBoard = {
   boards: (state /*: StoreState */) => state.boards || {},
   //state.boards[state.app.boardId]
-  currentBoard: (state /*: StoreState */) => sBoard.boards(state)[sApp.currentBoard(state)] || {},
+  currentBoard: (state /*: StoreState */) => sBoard.boards(state)[selectAppCurrentBoard(state)] || {},
   //state.boards[id]
   board: (state /*: StoreState */, boardId /*: string */) => sBoard.boards(state)[boardId] || {},
   //state.boards[boardId].columnIds
   columnIds: (state /*: StoreState */, boardId /*: string */) => sBoard.board(state, boardId).columnIds || [],
   //state.app.boardIds
-  boardIds: (state /*: StoreState */) => sApp.boardIds(state)
+  boardIds: (state /*: StoreState */) => selectAppBoardIds(state)
 };
 const selectBoardIds = (state /*: StoreState */) => sBoard.boardIds(state);
 exports.selectBoardIds = selectBoardIds;
@@ -49,7 +47,6 @@ const sColumn = exports.sColumn = {
 const selectColumns = (state /*: StoreState */) => sColumn.columns(state);
 exports.selectColumns = selectColumns;
 const selectors = {
-  app: sApp,
   drawer: sDrawer,
   board: sBoard,
   note: sNote,

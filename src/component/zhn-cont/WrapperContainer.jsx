@@ -15,7 +15,7 @@ import {
 import useTheme from "../hooks/useTheme";
 import styleConfig from "../style/Dialog.Style";
 
-import { sApp } from "../../flux/selectors";
+import { selectAppModal } from "../../flux/selectors";
 
 import Router from "../dialogs/modalRouter";
 import WrapperModalDialog from "../zhn-ch/WrapperModalDialog";
@@ -74,7 +74,7 @@ const WrapperContainer = memo(({
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const _onStore = () => {
-      const modal = sApp.modal(store.getState())
+      const modal = selectAppModal(store.getState())
       , {
         id:type,
         data:dialogProps={}

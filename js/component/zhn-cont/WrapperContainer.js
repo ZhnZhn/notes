@@ -66,7 +66,7 @@ const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
     const _onStore = () => {
-      const modal = _selectors.sApp.modal(store.getState()),
+      const modal = (0, _selectors.selectAppModal)(store.getState()),
         {
           id: type,
           data: dialogProps = {}

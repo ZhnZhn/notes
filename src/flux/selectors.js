@@ -1,18 +1,20 @@
 // @flow
+const selectApp = (
+  state /*: StoreState */
+) => state.app || {};
+export const selectAppModal = (
+  state /*: StoreState */
+) => state.modal || {}
 
-export const sApp = {
-  app: (state /*: StoreState */) => state.app || {},
-  modal: (state /*: StoreState */) => state.modal || {},
-  //state.app.boardId
-  currentBoard: (state /*: StoreState */) => sApp
-    .app(state).boardId,
-  //state.app.boardIds
-  boardIds: (state /*: StoreState */) => sApp
-    .app(state).boardIds || [],
-  //state.app.uiTheme
-  uiTheme: (state /*: StoreState */) => sApp
-    .app(state).uiTheme
-};
+const selectAppCurrentBoard = (
+  state /*: StoreState */
+) => selectApp(state).boardId
+export const selectAppBoardIds = (
+  state /*: StoreState */
+) => selectApp(state).boardIds || []
+export const selectAppUiTheme = (
+  state /*: StoreState */
+) => selectApp(state).uiTheme
 
 const sDrawer = {
   msg: (state /*: StoreState */) => state.drawerMsg || []
@@ -26,7 +28,7 @@ export const sBoard = {
 
   //state.boards[state.app.boardId]
   currentBoard: (state /*: StoreState */) => sBoard
-    .boards(state)[sApp.currentBoard(state)] || {},
+    .boards(state)[selectAppCurrentBoard(state)] || {},
 
   //state.boards[id]
   board: (
@@ -43,7 +45,7 @@ export const sBoard = {
     .board(state, boardId).columnIds || [],
 
   //state.app.boardIds
-  boardIds: (state /*: StoreState */) => sApp.boardIds(state)
+  boardIds: (state /*: StoreState */) => selectAppBoardIds(state)
 };
 export const selectBoardIds = (
   state /*: StoreState */
@@ -87,7 +89,6 @@ export const selectColumns = (
 
 
 const selectors = {
-  app: sApp,
   drawer: sDrawer,
   board: sBoard,
   note: sNote,
