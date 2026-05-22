@@ -1,1 +1,31 @@
-{"version":3,"file":"DroppableDiv.js","names":["S","ROOT","minHeight","DRAGGING_OVER","border","NOT_DRAGGING_OVER","_crRootStyle","is","notDraggingStyle","DroppableDiv","props","className","style","innerRef","isDraggingOver","children","rest","_style"],"sources":["../../../src/component/zhn-dnd/DroppableDiv.jsx"],"sourcesContent":["const S = {\r\n  ROOT: {\r\n    minHeight: 100\r\n  },\r\n  DRAGGING_OVER: {\r\n    border: '2px dashed lightgreen'\r\n  },\r\n  NOT_DRAGGING_OVER: {\r\n    border: '2px dashed transparent'\r\n  }\r\n};\r\n\r\nconst _crRootStyle = (is, notDraggingStyle) => is\r\n  ? S.DRAGGING_OVER\r\n  : notDraggingStyle || S.NOT_DRAGGING_OVER;\r\n\r\nconst DroppableDiv = (props) => {\r\n  const {\r\n    className,\r\n    style,\r\n    innerRef,\r\n    isDraggingOver,\r\n    notDraggingStyle,\r\n    children,\r\n    ...rest\r\n  } = props\r\n  , _style = _crRootStyle(isDraggingOver, notDraggingStyle);\r\n  return (\r\n    <div\r\n      {...rest}\r\n      ref={innerRef}\r\n      className={className}\r\n      style={{ ...S.ROOT, ...style, ..._style }}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default DroppableDiv\r\n"],"mappings":";;;;;;;;;;;;;;AAAA,IAAMA,CAAC,GAAG;EACRC,IAAI,EAAE;IACJC,SAAS,EAAE;EADP,CADE;EAIRC,aAAa,EAAE;IACbC,MAAM,EAAE;EADK,CAJP;EAORC,iBAAiB,EAAE;IACjBD,MAAM,EAAE;EADS;AAPX,CAAV;;AAYA,IAAME,YAAY,GAAG,SAAfA,YAAe,CAACC,EAAD,EAAKC,gBAAL;EAAA,OAA0BD,EAAE,GAC7CP,CAAC,CAACG,aAD2C,GAE7CK,gBAAgB,IAAIR,CAAC,CAACK,iBAFL;AAAA,CAArB;;AAIA,IAAMI,YAAY,GAAG,SAAfA,YAAe,CAACC,KAAD,EAAW;EAC9B,IACEC,SADF,GAQID,KARJ,CACEC,SADF;EAAA,IAEEC,KAFF,GAQIF,KARJ,CAEEE,KAFF;EAAA,IAGEC,QAHF,GAQIH,KARJ,CAGEG,QAHF;EAAA,IAIEC,cAJF,GAQIJ,KARJ,CAIEI,cAJF;EAAA,IAKEN,gBALF,GAQIE,KARJ,CAKEF,gBALF;EAAA,IAMEO,QANF,GAQIL,KARJ,CAMEK,QANF;EAAA,IAOKC,IAPL,kDAQIN,KARJ;EAAA,IASEO,MATF,GASWX,YAAY,CAACQ,cAAD,EAAiBN,gBAAjB,CATvB;;EAUA,oBACE,0DACMQ,IADN;IAEE,GAAG,EAAEH,QAFP;IAGE,SAAS,EAAEF,SAHb;IAIE,KAAK,gCAAOX,CAAC,CAACC,IAAT,EAAkBW,KAAlB,EAA4BK,MAA5B,CAJP;IAAA,UAMGF;EANH,GADF;AAUD,CArBD;;eAuBeN,Y"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-dnd/DroppableDiv.js"
+ ],
+ "file": "../../../src/component/zhn-dnd/DroppableDiv.js",
+ "names": [
+  "S_DIV",
+  "minHeight",
+  "S_DRAGGING_OVER_ON",
+  "border",
+  "S_DRAGGING_OVER_OFF",
+  "DroppableDiv",
+  "props",
+  "className",
+  "style",
+  "innerRef",
+  "isDraggingOver",
+  "draggingOverOffStyle",
+  "children",
+  "restProps",
+  "_style",
+  "_jsxRuntime",
+  "jsx",
+  "ref",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,KAAK,GAAG;IACZC,SAAS,EAAE;EACb,CAAC;EACCC,kBAAkB,GAAG;IACrBC,MAAM,EAAE;EACV,CAAC;EACCC,mBAAmB,GAAG;IACtBD,MAAM,EAAE;EACV,CAAC;AAED,MAAME,YAAY,GAAIC,KAAK,IAAK;EAC9B,MAAM;MACJC,SAAS;MACTC,KAAK;MACLC,QAAQ;MACRC,cAAc;MACdC,oBAAoB;MACpBC,QAAQ;MACR,GAAGC;IACL,CAAC,GAAGP,KAAK;IACPQ,MAAM,GAAGJ,cAAc,GACrBR,kBAAkB,GAClBS,oBAAoB,IAAIP,mBAAmB;EAC/C,oBACE,IAAAW,WAAA,CAAAC,GAAA;IAAA,GACMH,SAAS;IACbI,GAAG,EAAER,QAAS;IACdF,SAAS,EAAEA,SAAU;IACrBC,KAAK,EAAE;MAAE,GAAGR,KAAK;MAAE,GAAGQ,KAAK;MAAE,GAAGM;IAAO,CAAE;IAAAF,QAAA,EAExCA;EAAQ,CACN,CAAC;AAEV,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaf,YAAY"
+}
