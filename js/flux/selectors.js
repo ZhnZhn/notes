@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = exports.sNote = exports.sColumn = exports.sBoard = exports.default = void 0;
+exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = exports.sColumn = exports.sBoard = exports.default = void 0;
 const selectApp = (state /*: StoreState */) => state.app || {};
 const selectAppModal = (state /*: StoreState */) => state.modal || {};
 exports.selectAppModal = selectAppModal;
@@ -27,10 +27,7 @@ const selectBoardIds = (state /*: StoreState */) => sBoard.boardIds(state);
 exports.selectBoardIds = selectBoardIds;
 const selectBoard = (state /*: StoreState */) => sBoard.currentBoard(state);
 exports.selectBoard = selectBoard;
-const sNote = exports.sNote = {
-  notes: (state /*: StoreState */) => state.notes || {}
-};
-const selectNotes = (state /*: StoreState */) => sNote.notes(state);
+const selectNotes = (state /*: StoreState */) => state.notes || {};
 exports.selectNotes = selectNotes;
 const selectNoteLabels = (state /*: StoreState */) => state.noteLabels || {};
 exports.selectNoteLabels = selectNoteLabels;
@@ -45,7 +42,6 @@ const selectColumns = (state /*: StoreState */) => sColumn.columns(state);
 exports.selectColumns = selectColumns;
 const selectors = {
   board: sBoard,
-  note: sNote,
   column: sColumn
 };
 var _default = exports.default = selectors;
