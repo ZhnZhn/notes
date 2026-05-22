@@ -1,11 +1,13 @@
 import { addNote } from '../note/actions'
 import { showNotif } from '../modal/reducer'
 import crId from './crId'
-import { sColumn } from '../selectors'
+import { selectNoteIds } from '../selectors'
 import CONF from '../appConf'
 
-const _isMax = (state, columnId) => sColumn
-  .noteIds(state, columnId).length >= CONF.MAX_NOTES;
+const _isMax = (
+  state,
+  columnId
+) => selectNoteIds(state, columnId).length >= CONF.MAX_NOTES;
 
 const taskIdMiddleware = ({ getState, dispatch }) => next => action => {
   if (action.type === addNote.type) {

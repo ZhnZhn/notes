@@ -58,31 +58,21 @@ export const selectNoteLabels = (
   state /*: StoreState */
 ) => state.noteLabels || {}
 
-export const sColumn = {
-  columns: (state /*: StoreState */) => state.columns || {},
-
-  //state.columns[columnId]
-  column: (
-    state /*: StoreState */,
-    columnId /*: string */
-  ) => sColumn
-    .columns(state)[columnId] || {},
-
-  //state.columns[columnId].noteIds
-  noteIds: (
-    state /*: StoreState */,
-    columnId /*: string */
-  ) => sColumn
-    .column(state, columnId).noteIds || []
-};
 export const selectColumns = (
   state /*: StoreState */
-) => sColumn.columns(state)
+) => state.columns || {}
+const selectColumn = (
+  state /*: StoreState */,
+  columnId /*: string */
+) => selectColumns(state)[columnId] || {}
+export const selectNoteIds = (
+  state /*: StoreState */,
+  columnId /*: string */
+) => selectColumn(state, columnId).noteIds || []
 
 
 const selectors = {
-  board: sBoard,
-  column: sColumn
+  board: sBoard
 };
 
 export default selectors

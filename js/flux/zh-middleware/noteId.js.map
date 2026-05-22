@@ -1,1 +1,41 @@
-{"version":3,"file":"noteId.js","names":["_isMax","state","columnId","sColumn","noteIds","length","CONF","MAX_NOTES","taskIdMiddleware","getState","dispatch","next","action","type","addNote","payload","showNotif","N_MAX_NOTES","noteId","crId","NOTES_PREFIX"],"sources":["../../../src/flux/zh-middleware/noteId.js"],"sourcesContent":["import { addNote } from '../note/actions'\r\nimport { showNotif } from '../modal/reducer'\r\nimport crId from './crId'\r\nimport { sColumn } from '../selectors'\r\nimport CONF from '../appConf'\r\n\r\nconst _isMax = (state, columnId) => sColumn\r\n  .noteIds(state, columnId).length >= CONF.MAX_NOTES;\r\n\r\nconst taskIdMiddleware = ({ getState, dispatch }) => next => action => {\r\n  if (action.type === addNote.type) {\r\n    const { columnId } = action.payload\r\n    if ( _isMax(getState(), columnId) ) {\r\n      dispatch(showNotif(CONF.N_MAX_NOTES))\r\n      return false;\r\n    }\r\n    const noteId = crId(CONF.NOTES_PREFIX)\r\n    action.payload.noteId = noteId\r\n    next(action)\r\n    return noteId;\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default taskIdMiddleware\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,MAAM,GAAG,SAATA,MAAS,CAACC,KAAD,EAAQC,QAAR;EAAA,OAAqBC,kBAAA,CACjCC,OADiC,CACzBH,KADyB,EAClBC,QADkB,EACRG,MADQ,IACEC,mBAAA,CAAKC,SAD5B;AAAA,CAAf;;AAGA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;EAAA,IAAGC,QAAH,QAAGA,QAAH;EAAA,IAAaC,QAAb,QAAaA,QAAb;EAAA,OAA4B,UAAAC,IAAI;IAAA,OAAI,UAAAC,MAAM,EAAI;MACrE,IAAIA,MAAM,CAACC,IAAP,KAAgBC,gBAAA,CAAQD,IAA5B,EAAkC;QAChC,IAAQX,QAAR,GAAqBU,MAAM,CAACG,OAA5B,CAAQb,QAAR;;QACA,IAAKF,MAAM,CAACS,QAAQ,EAAT,EAAaP,QAAb,CAAX,EAAoC;UAClCQ,QAAQ,CAAC,IAAAM,kBAAA,EAAUV,mBAAA,CAAKW,WAAf,CAAD,CAAR;UACA,OAAO,KAAP;QACD;;QACD,IAAMC,MAAM,GAAG,IAAAC,gBAAA,EAAKb,mBAAA,CAAKc,YAAV,CAAf;QACAR,MAAM,CAACG,OAAP,CAAeG,MAAf,GAAwBA,MAAxB;QACAP,IAAI,CAACC,MAAD,CAAJ;QACA,OAAOM,MAAP;MACD;;MACD,OAAOP,IAAI,CAACC,MAAD,CAAX;IACD,CAbwD;EAAA,CAAhC;AAAA,CAAzB;;eAeeJ,gB"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/noteId.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/noteId.js",
+ "names": [
+  "_actions",
+  "require",
+  "_reducer",
+  "_crId",
+  "_interopRequireDefault",
+  "_selectors",
+  "_appConf",
+  "_isMax",
+  "state",
+  "columnId",
+  "selectNoteIds",
+  "length",
+  "CONF",
+  "MAX_NOTES",
+  "taskIdMiddleware",
+  "_ref",
+  "getState",
+  "dispatch",
+  "next",
+  "action",
+  "type",
+  "addNote",
+  "payload",
+  "showNotif",
+  "N_MAX_NOTES",
+  "noteId",
+  "crId",
+  "NOTES_PREFIX",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AACA,IAAAC,QAAA,GAAAD,OAAA;AACA,IAAAE,KAAA,GAAAC,sBAAA,CAAAH,OAAA;AACA,IAAAI,UAAA,GAAAJ,OAAA;AACA,IAAAK,QAAA,GAAAF,sBAAA,CAAAH,OAAA;AAEA,MAAMM,MAAM,GAAGA,CACbC,KAAK,EACLC,QAAQ,KACL,IAAAC,wBAAa,EAACF,KAAK,EAAEC,QAAQ,CAAC,CAACE,MAAM,IAAIC,gBAAI,CAACC,SAAS;AAE5D,MAAMC,gBAAgB,GAAGC,IAAA;EAAA,IAAC;IAAEC,QAAQ;IAAEC;EAAS,CAAC,GAAAF,IAAA;EAAA,OAAKG,IAAI,IAAIC,MAAM,IAAI;IACrE,IAAIA,MAAM,CAACC,IAAI,KAAKC,gBAAO,CAACD,IAAI,EAAE;MAChC,MAAM;QAAEX;MAAS,CAAC,GAAGU,MAAM,CAACG,OAAO;MACnC,IAAKf,MAAM,CAACS,QAAQ,CAAC,CAAC,EAAEP,QAAQ,CAAC,EAAG;QAClCQ,QAAQ,CAAC,IAAAM,kBAAS,EAACX,gBAAI,CAACY,WAAW,CAAC,CAAC;QACrC,OAAO,KAAK;MACd;MACA,MAAMC,MAAM,GAAG,IAAAC,aAAI,EAACd,gBAAI,CAACe,YAAY,CAAC;MACtCR,MAAM,CAACG,OAAO,CAACG,MAAM,GAAGA,MAAM;MAC9BP,IAAI,CAACC,MAAM,CAAC;MACZ,OAAOM,MAAM;IACf;IACA,OAAOP,IAAI,CAACC,MAAM,CAAC;EACrB,CAAC;AAAA;AAAC,IAAAS,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEahB,gBAAgB"
+}

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = exports.sColumn = exports.sBoard = exports.default = void 0;
+exports.selectNotes = exports.selectNoteLabels = exports.selectNoteIds = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = exports.sBoard = exports.default = void 0;
 const selectApp = (state /*: StoreState */) => state.app || {};
 const selectAppModal = (state /*: StoreState */) => state.modal || {};
 exports.selectAppModal = selectAppModal;
@@ -31,18 +31,13 @@ const selectNotes = (state /*: StoreState */) => state.notes || {};
 exports.selectNotes = selectNotes;
 const selectNoteLabels = (state /*: StoreState */) => state.noteLabels || {};
 exports.selectNoteLabels = selectNoteLabels;
-const sColumn = exports.sColumn = {
-  columns: (state /*: StoreState */) => state.columns || {},
-  //state.columns[columnId]
-  column: (state /*: StoreState */, columnId /*: string */) => sColumn.columns(state)[columnId] || {},
-  //state.columns[columnId].noteIds
-  noteIds: (state /*: StoreState */, columnId /*: string */) => sColumn.column(state, columnId).noteIds || []
-};
-const selectColumns = (state /*: StoreState */) => sColumn.columns(state);
+const selectColumns = (state /*: StoreState */) => state.columns || {};
 exports.selectColumns = selectColumns;
+const selectColumn = (state /*: StoreState */, columnId /*: string */) => selectColumns(state)[columnId] || {};
+const selectNoteIds = (state /*: StoreState */, columnId /*: string */) => selectColumn(state, columnId).noteIds || [];
+exports.selectNoteIds = selectNoteIds;
 const selectors = {
-  board: sBoard,
-  column: sColumn
+  board: sBoard
 };
 var _default = exports.default = selectors;
 //# sourceMappingURL=selectors.js.map

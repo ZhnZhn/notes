@@ -1,1 +1,31 @@
-{"version":3,"file":"canRemoveColumn.js","names":["_isArr","Array","isArray","canRemoveColumn","getState","next","action","type","removeColumn","_noteIds","sColumn","noteIds","payload","columnId","length"],"sources":["../../../src/flux/zh-middleware/canRemoveColumn.js"],"sourcesContent":["import { removeColumn } from '../column/actions'\r\nimport { sColumn } from '../selectors'\r\n\r\nconst _isArr = Array.isArray\r\n\r\nconst canRemoveColumn = ({ getState }) => next => action => {\r\n  if (action.type === removeColumn.type){\r\n    const _noteIds = sColumn.noteIds(getState(), action.payload.columnId)\r\n    if (!_isArr(_noteIds) || _noteIds.length !== 0) {\r\n      return false;\r\n    }\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default canRemoveColumn\r\n"],"mappings":";;;;;AAAA;;AACA;;AAEA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAArB;;AAEA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB;EAAA,IAAGC,QAAH,QAAGA,QAAH;EAAA,OAAkB,UAAAC,IAAI;IAAA,OAAI,UAAAC,MAAM,EAAI;MAC1D,IAAIA,MAAM,CAACC,IAAP,KAAgBC,qBAAA,CAAaD,IAAjC,EAAsC;QACpC,IAAME,QAAQ,GAAGC,kBAAA,CAAQC,OAAR,CAAgBP,QAAQ,EAAxB,EAA4BE,MAAM,CAACM,OAAP,CAAeC,QAA3C,CAAjB;;QACA,IAAI,CAACb,MAAM,CAACS,QAAD,CAAP,IAAqBA,QAAQ,CAACK,MAAT,KAAoB,CAA7C,EAAgD;UAC9C,OAAO,KAAP;QACD;MACF;;MACD,OAAOT,IAAI,CAACC,MAAD,CAAX;IACD,CAR6C;EAAA,CAAtB;AAAA,CAAxB;;eAUeH,e"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/canRemoveColumn.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/canRemoveColumn.js",
+ "names": [
+  "_actions",
+  "require",
+  "_selectors",
+  "_isArr",
+  "Array",
+  "isArray",
+  "canRemoveColumn",
+  "_ref",
+  "getState",
+  "next",
+  "action",
+  "type",
+  "removeColumn",
+  "_noteIds",
+  "selectNoteIds",
+  "payload",
+  "columnId",
+  "length",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AACA,IAAAC,UAAA,GAAAD,OAAA;AAEA,MAAME,MAAM,GAAGC,KAAK,CAACC,OAAO;AAE5B,MAAMC,eAAe,GAAGC,IAAA;EAAA,IAAC;IAAEC;EAAS,CAAC,GAAAD,IAAA;EAAA,OAAKE,IAAI,IAAIC,MAAM,IAAI;IAC1D,IAAIA,MAAM,CAACC,IAAI,KAAKC,qBAAY,CAACD,IAAI,EAAC;MACpC,MAAME,QAAQ,GAAG,IAAAC,wBAAa,EAACN,QAAQ,CAAC,CAAC,EAAEE,MAAM,CAACK,OAAO,CAACC,QAAQ,CAAC;MACnE,IAAI,CAACb,MAAM,CAACU,QAAQ,CAAC,IAAIA,QAAQ,CAACI,MAAM,KAAK,CAAC,EAAE;QAC9C,OAAO,KAAK;MACd;IACF;IACA,OAAOR,IAAI,CAACC,MAAM,CAAC;EACrB,CAAC;AAAA;AAAC,IAAAQ,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEad,eAAe"
+}

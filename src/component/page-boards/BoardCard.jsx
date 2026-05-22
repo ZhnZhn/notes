@@ -14,7 +14,7 @@ import {
 } from '../../flux/board/reducer';
 import {
   sBoard,
-  sColumn
+  selectColumns
 } from '../../flux/selectors';
 
 import isArrEmpty from '../../utils/isArrEmpty';
@@ -50,7 +50,7 @@ const BoardCard = ({
     state => sBoard.board(state, boardId)
   ], [boardId, dispatch])
   , board = useSelector(_selectBoard)
-  , columns = useSelector(sColumn.columns)
+  , columns = useSelector(selectColumns)
   , { columnIds} = board;
 
   return (
