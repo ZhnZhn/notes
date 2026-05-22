@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectNotes = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.sNoteLabel = exports.sNote = exports.sColumn = exports.sBoard = exports.sApp = exports.default = void 0;
+exports.selectNotes = exports.selectNoteLabels = exports.selectDrawerItems = exports.selectColumns = exports.selectBoardIds = exports.selectBoard = exports.sNote = exports.sColumn = exports.sBoard = exports.sApp = exports.default = void 0;
 const sApp = exports.sApp = {
   app: (state /*: StoreState */) => state.app || {},
   modal: (state /*: StoreState */) => state.modal || {},
@@ -37,9 +37,8 @@ const sNote = exports.sNote = {
 };
 const selectNotes = (state /*: StoreState */) => sNote.notes(state);
 exports.selectNotes = selectNotes;
-const sNoteLabel = exports.sNoteLabel = {
-  labels: (state /*: StoreState */) => state.noteLabels || {}
-};
+const selectNoteLabels = (state /*: StoreState */) => state.noteLabels || {};
+exports.selectNoteLabels = selectNoteLabels;
 const sColumn = exports.sColumn = {
   columns: (state /*: StoreState */) => state.columns || {},
   //state.columns[columnId]

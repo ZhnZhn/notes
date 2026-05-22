@@ -48,7 +48,7 @@ const noteLabelIdMiddleware = _ref => {
   } = _ref;
   return next => action => {
     if (action.type === _actions.editNoteLabels.type) {
-      const hmLabels = _selectors.sNoteLabel.labels(getState()),
+      const hmLabels = (0, _selectors.selectNoteLabels)(getState()),
         {
           payload
         } = action;

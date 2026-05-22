@@ -1,5 +1,5 @@
 import { editNoteLabels } from '../note/actions';
-import { sNoteLabel } from '../selectors';
+import { selectNoteLabels } from '../selectors';
 import crArrFormHm from '../../utils/crArrFromHm';
 import crId from './crId';
 import CONF from '../appConf';
@@ -53,7 +53,7 @@ const noteLabelIdMiddleware = ({
   _dispatch
 }) => next => action => {
   if (action.type === editNoteLabels.type) {
-    const hmLabels = sNoteLabel.labels(getState())
+    const hmLabels = selectNoteLabels(getState())
     , { payload } = action;
     action.payload = {
       ...payload,

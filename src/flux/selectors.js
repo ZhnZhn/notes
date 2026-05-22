@@ -53,15 +53,16 @@ export const selectBoard = (
 ) => sBoard.currentBoard(state)
 
 export const sNote = {
-  notes: (state /*: StoreState */) => state.notes || {}
+  notes: (state/*: StoreState */) => state.notes || {}
 };
+
 export const selectNotes = (
   state /*: StoreState */
 ) => sNote.notes(state)
 
-export const sNoteLabel = {
-  labels: (state /*: StoreState */ ) => state.noteLabels || {}
-}
+export const selectNoteLabels = (
+  state /*: StoreState */
+) => state.noteLabels || {}
 
 export const sColumn = {
   columns: (state /*: StoreState */) => state.columns || {},
