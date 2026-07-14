@@ -1,1 +1,23 @@
-{"version":3,"file":"fUseKey.js","names":["fUseKey","isKey","fn","deps","useCallback","event","preventDefault","stopPropagation"],"sources":["../../../src/component/hooks/fUseKey.js"],"sourcesContent":["import { useCallback } from '../uiApi';\r\n\r\n/*eslint-disable react-hooks/exhaustive-deps */\r\nconst fUseKey = isKey => (fn, deps) => useCallback(event => {\r\n  if (isKey(event)) {\r\n    event.preventDefault()\r\n    event.stopPropagation()\r\n    fn(event)\r\n  }\r\n}, deps || []);\r\n/*eslint-enable react-hooks/exhaustive-deps */\r\n\r\nexport default fUseKey\r\n"],"mappings":";;;;;AAAA;;AAEA;AACA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CAAAC,KAAK;EAAA,OAAI,UAACC,EAAD,EAAKC,IAAL;IAAA,OAAc,IAAAC,kBAAA,EAAY,UAAAC,KAAK,EAAI;MAC1D,IAAIJ,KAAK,CAACI,KAAD,CAAT,EAAkB;QAChBA,KAAK,CAACC,cAAN;QACAD,KAAK,CAACE,eAAN;QACAL,EAAE,CAACG,KAAD,CAAF;MACD;IACF,CANsC,EAMpCF,IAAI,IAAI,EAN4B,CAAd;EAAA,CAAJ;AAAA,CAArB;AAOA;;;eAEeH,O"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/hooks/fUseKey.js"
+ ],
+ "file": "../../../src/component/hooks/fUseKey.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "fUseKey",
+  "isKey",
+  "fn",
+  "deps",
+  "useCallback",
+  "evt",
+  "preventDefault",
+  "stopPropagation",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAEA;AACA,MAAMC,OAAO,GAAGC,KAAK,IAAI,CAACC,EAAE,EAAEC,IAAI,KAAK,IAAAC,kBAAW,EAACC,GAAG,IAAI;EACxD,IAAIJ,KAAK,CAACI,GAAG,CAAC,EAAE;IACdA,GAAG,CAACC,cAAc,CAAC,CAAC;IACpBD,GAAG,CAACE,eAAe,CAAC,CAAC;IACrBL,EAAE,CAACG,GAAG,CAAC;EACT;AACF,CAAC,EAAEF,IAAI,IAAI,EAAE,CAAC;AACd;AAAA,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEeV,OAAO"
+}

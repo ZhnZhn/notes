@@ -9,8 +9,10 @@ import {
   CL_INPUT
 } from '../style/CL';
 
-import isKeyEnter from './isKeyEnter';
-import isKeyDelete from './isKeyDelete';
+import {
+  isEventKeyEnter,
+  isEventKeyDelete
+} from './isEventKey';
 
 const InputText = ({
   refEl,
@@ -31,12 +33,12 @@ const InputText = ({
     }
   }, [maxLength])
   , _hKeyDown = useCallback((evt) => {
-    if (isKeyEnter(evt)) {
+    if (isEventKeyEnter(evt)) {
       const el = document.activeElement;
       if (el && typeof el.blur === 'function' ) {
         el.blur()
       }
-    } else if (isKeyDelete(evt)) {
+    } else if (isEventKeyDelete(evt)) {
       setValue('')
     }
   }, []);

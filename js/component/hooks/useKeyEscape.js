@@ -1,15 +1,10 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _fUseKey = _interopRequireDefault(require("./fUseKey"));
-
-var _isKeyEscape = _interopRequireDefault(require("../zhn/isKeyEscape"));
-
-var useKeyEscape = (0, _fUseKey["default"])(_isKeyEscape["default"]);
-var _default = useKeyEscape;
-exports["default"] = _default;
+var _isEventKey = require("../zhn/isEventKey");
+const useKeyEscape = (0, _fUseKey.default)(_isEventKey.isEventKeyEscape);
+var _default = exports.default = useKeyEscape;
 //# sourceMappingURL=useKeyEscape.js.map

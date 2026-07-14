@@ -1,6 +1,6 @@
 import fUseKey from './fUseKey';
-import isKeyEscape from '../zhn/isKeyEscape';
+import { isEventKeyEscape } from '../zhn/isEventKey';
 
-const useKeyEscape = fUseKey(isKeyEscape);
+const useKeyEscape = fUseKey(isEventKeyEscape);
 
 export default useKeyEscape

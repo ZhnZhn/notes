@@ -6,8 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _CL = require("../style/CL");
-var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
-var _isKeyDelete = _interopRequireDefault(require("./isKeyDelete"));
+var _isEventKey = require("./isEventKey");
 var _jsxRuntime = require("react/jsx-runtime");
 const InputText = _ref => {
   let {
@@ -28,12 +27,12 @@ const InputText = _ref => {
       }
     }, [maxLength]),
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if ((0, _isKeyEnter.default)(evt)) {
+      if ((0, _isEventKey.isEventKeyEnter)(evt)) {
         const el = document.activeElement;
         if (el && typeof el.blur === 'function') {
           el.blur();
         }
-      } else if ((0, _isKeyDelete.default)(evt)) {
+      } else if ((0, _isEventKey.isEventKeyDelete)(evt)) {
         setValue('');
       }
     }, []);

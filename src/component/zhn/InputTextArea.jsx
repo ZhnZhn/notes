@@ -6,7 +6,9 @@ import {
   getRefValue
 } from '../uiApi';
 
-import isKeyDelete from './isKeyDelete';
+import {
+  isEventKeyDelete
+} from './isEventKey';
 
 const InputTextArea = ({
   refEl,
@@ -21,7 +23,7 @@ const InputTextArea = ({
     setValue(evt.target.value)
   }, [])
   , _hKeyDown = useCallback((evt) => {
-    if (isKeyDelete(evt)) {
+    if (isEventKeyDelete(evt)) {
       setValue('')
     }
   }, []);
