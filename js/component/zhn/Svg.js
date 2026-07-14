@@ -7,15 +7,17 @@ const Svg = _ref => {
   let {
     w,
     h = w,
-    children,
-    ...restProps
+    width,
+    height,
+    children
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
     "aria-hidden": "true",
     focusable: "fasle",
     role: "img",
-    viewBox: "0 0 " + w + " " + h,
-    ...restProps,
+    viewBox: `0 0 ${w} ${h}`,
+    width: width || w,
+    height: height || h,
     preserveAspectRatio: "none",
     xmlns: "http://www.w3.org/2000/svg",
     children: children

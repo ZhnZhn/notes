@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _SvgClose = _interopRequireDefault(require("../zhn/SvgClose"));
+var _BtSvg = require("../zhn/BtSvg");
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_HEADER = 'dialog__header',
   CL_CAPTION = 'dialog__caption not-selected',
@@ -21,9 +20,9 @@ const DialogCaption = _ref => {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: CL_CAPTION,
       children: caption
-    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgClose.default, {
+    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvg.BtSvgClose, {
       className: CL_CLOSE,
-      onClose: onClose
+      onClick: onClose
     })]
   });
 };

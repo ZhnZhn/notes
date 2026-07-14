@@ -1,4 +1,4 @@
-import SvgClose from '../zhn/SvgClose';
+import { BtSvgClose } from '../zhn/BtSvg';
 
 const CL_HEADER = 'dialog__header'
 , CL_CAPTION = 'dialog__caption not-selected'
@@ -18,9 +18,9 @@ const DialogCaption = ({
        {caption}
     </span>
     {children}
-    <SvgClose
+    <BtSvgClose
       className={CL_CLOSE}
-      onClose={onClose}
+      onClick={onClose}
     />
   </div>
 );

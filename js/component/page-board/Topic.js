@@ -9,14 +9,14 @@ var _reducer = require("../../flux/column/reducer");
 var _actions = require("../../flux/column/actions");
 var _actions2 = require("../../flux/note/actions");
 var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
-var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
+var _BtSvg = require("../zhn/BtSvg");
 var _TopicMenuMore = _interopRequireDefault(require("./TopicMenuMore"));
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DnDNoteList = _interopRequireDefault(require("./DnDNoteList"));
 var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_SVG_MORE = {
+const S_BT_SVG_MORE = {
     marginRight: 8
   },
   S_MENU_MORE = {
@@ -74,8 +74,8 @@ const Topic = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Item, {
     isHide: isHide,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Header, {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
-        style: S_SVG_MORE,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvg.BtSvgMore, {
+        style: S_BT_SVG_MORE,
         title: "Click to open topic menu",
         onClick: _openMenuMore
       }), isMenuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicMenuMore.default, {

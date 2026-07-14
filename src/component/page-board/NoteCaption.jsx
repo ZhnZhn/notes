@@ -1,5 +1,5 @@
 import InputText from '../zhn/InputText';
-import SvgMore from '../zhn/SvgMore';
+import { BtSvgMore } from '../zhn/BtSvg';
 import NoteHandle from './NoteHandle';
 import MenuMore from './NoteMenuMore';
 
@@ -34,7 +34,7 @@ const NoteCaption = ({
       initialValue={noteTitle}
       onBlur={onBlurTitle}
     />
-    <SvgMore
+    <BtSvgMore
       className={CL_BT_MORE}
       title="Click to open note menu"
       onClick={onClickMenuMore}

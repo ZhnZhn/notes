@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _InputText = _interopRequireDefault(require("../zhn/InputText"));
-var _SvgMore = _interopRequireDefault(require("../zhn/SvgMore"));
+var _BtSvg = require("../zhn/BtSvg");
 var _NoteHandle = _interopRequireDefault(require("./NoteHandle"));
 var _NoteMenuMore = _interopRequireDefault(require("./NoteMenuMore"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -35,7 +35,7 @@ const NoteCaption = _ref => {
       className: CL_CAPTION,
       initialValue: noteTitle,
       onBlur: onBlurTitle
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore.default, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvg.BtSvgMore, {
       className: CL_BT_MORE,
       title: "Click to open note menu",
       onClick: onClickMenuMore

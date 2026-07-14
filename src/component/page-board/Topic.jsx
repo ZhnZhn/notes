@@ -18,7 +18,7 @@ import {
 
 import isArrEmpty from '../../utils/isArrEmpty';
 
-import SvgMore from '../zhn/SvgMore';
+import { BtSvgMore } from '../zhn/BtSvg';
 import TopicMenuMore from './TopicMenuMore';
 import Card from '../zhn-card/Card';
 import FlatButton from '../zhn-m/FlatButton';
@@ -28,10 +28,12 @@ import {
   CL_CARD_BT
 } from '../style/CL';
 
-const S_SVG_MORE = { marginRight: 8 }
+const S_BT_SVG_MORE = {
+  marginRight: 8
+}
 , S_MENU_MORE = {
-    position: 'absolute',
-    width: 150
+  position: 'absolute',
+  width: 150
 };
 
 const Topic = ({
@@ -88,8 +90,8 @@ const Topic = ({
   return (
     <Card.Item isHide={isHide}>
       <Card.Header>
-        <SvgMore
-          style={S_SVG_MORE}
+        <BtSvgMore
+          style={S_BT_SVG_MORE}
           title="Click to open topic menu"
           onClick={_openMenuMore}
         />

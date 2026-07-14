@@ -2,15 +2,17 @@
 const Svg = ({
   w,
   h=w,
-  children,
-  ...restProps
+  width,
+  height,
+  children
 }) => (
   <svg
     aria-hidden="true"
     focusable="fasle"
     role="img"
     viewBox={`0 0 ${w} ${h}`}
-    {...restProps}
+    width={width || w}
+    height={height || h}
     preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg"
   >
