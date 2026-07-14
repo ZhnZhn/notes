@@ -1,5 +1,5 @@
 import useClickOutside from '../hooks/useClickOutside';
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 
 const ModalPane = ({
   isShow,

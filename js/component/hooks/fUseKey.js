@@ -1,10 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports.default = void 0;
+exports.useKeyEscape = void 0;
 var _uiApi = require("../uiApi");
+var _isEventKey = require("../zhn/isEventKey");
 /*eslint-disable react-hooks/exhaustive-deps */
-const fUseKey = isKey => (fn, deps) => (0, _uiApi.useCallback)(evt => {
+const _fUseKey = isKey => (fn, deps) => (0, _uiApi.useCallback)(evt => {
   if (isKey(evt)) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -12,5 +13,6 @@ const fUseKey = isKey => (fn, deps) => (0, _uiApi.useCallback)(evt => {
   }
 }, deps || []);
 /*eslint-enable react-hooks/exhaustive-deps */
-var _default = exports.default = fUseKey;
+
+const useKeyEscape = exports.useKeyEscape = _fUseKey(_isEventKey.isEventKeyEscape);
 //# sourceMappingURL=fUseKey.js.map

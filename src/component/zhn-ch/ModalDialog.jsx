@@ -7,7 +7,7 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 import crCn from '../zhn-utils/crCn';
 
 import DialogCaption from './DialogCaption';

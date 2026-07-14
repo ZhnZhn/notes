@@ -1,7 +1,8 @@
 import { useCallback } from '../uiApi';
+import { isEventKeyEscape } from '../zhn/isEventKey';
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const fUseKey = isKey => (fn, deps) => useCallback(evt => {
+const _fUseKey = isKey => (fn, deps) => useCallback(evt => {
   if (isKey(evt)) {
     evt.preventDefault()
     evt.stopPropagation()
@@ -10,4 +11,4 @@ const fUseKey = isKey => (fn, deps) => useCallback(evt => {
 }, deps || []);
 /*eslint-enable react-hooks/exhaustive-deps */
 
-export default fUseKey
+export const useKeyEscape = _fUseKey(isEventKeyEscape)
