@@ -69,10 +69,13 @@ const Topic = ({
   //dispatch
 
   , _hBlurTitle = useCallback((evt) => {
-     dispatch(editColumnTitle({
-       columnId,
-       title: evt.target.value
-     }))
+     const title = evt.target.value;
+     if (title) {
+       dispatch(editColumnTitle({
+         columnId,
+         title
+       }))
+     }
   }, [columnId])
   // dispatch
 

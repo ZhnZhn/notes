@@ -41,12 +41,17 @@ const BoardCard = ({
     _hToNotes,
     _selectBoard
   ] = useMemo(() => [
-    (evt) => dispatch(editBoardTitle({
-        boardId,
-        title: evt.target.value
-    })),
+    (evt) => {
+      const title = evt.target.value;
+      if (title) {
+        dispatch(editBoardTitle({
+          boardId,
+          title: evt.target.value
+        }))
+      }
+    },
     () => dispatch(removeBoard({ boardId })),
-    () => dispatch(setCurrentBoard({ boardId })),    
+    () => dispatch(setCurrentBoard({ boardId })),
     state => selectBoardById(state, boardId)
   ], [boardId, dispatch])
   , board = useSelector(_selectBoard)

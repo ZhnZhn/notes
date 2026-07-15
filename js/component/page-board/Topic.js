@@ -55,10 +55,13 @@ const Topic = _ref => {
     //dispatch
     ,
     _hBlurTitle = (0, _uiApi.useCallback)(evt => {
-      dispatch((0, _reducer.editColumnTitle)({
-        columnId,
-        title: evt.target.value
-      }));
+      const title = evt.target.value;
+      if (title) {
+        dispatch((0, _reducer.editColumnTitle)({
+          columnId,
+          title
+        }));
+      }
     }, [columnId])
     // dispatch
     ,

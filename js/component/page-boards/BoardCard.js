@@ -21,10 +21,15 @@ const BoardCard = _ref => {
     id: boardId
   } = _ref;
   const dispatch = (0, _uiApi.useDispatch)(),
-    [_hBlurTitle, _hRemove, _hToNotes, _selectBoard] = (0, _uiApi.useMemo)(() => [evt => dispatch((0, _reducer.editBoardTitle)({
-      boardId,
-      title: evt.target.value
-    })), () => dispatch((0, _actions.removeBoard)({
+    [_hBlurTitle, _hRemove, _hToNotes, _selectBoard] = (0, _uiApi.useMemo)(() => [evt => {
+      const title = evt.target.value;
+      if (title) {
+        dispatch((0, _reducer.editBoardTitle)({
+          boardId,
+          title: evt.target.value
+        }));
+      }
+    }, () => dispatch((0, _actions.removeBoard)({
       boardId
     })), () => dispatch((0, _actions.setCurrentBoard)({
       boardId
