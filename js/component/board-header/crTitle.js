@@ -1,30 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var _isArr = Array.isArray;
-
-var _crTitle = function _crTitle(board
-/*: ?Board */
-) {
-  var title = board.title || '',
-      columnIds = board.columnIds,
-      count = _isArr(columnIds) ? columnIds.length : 0;
-  return title + " (" + count + ")";
+exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
+var _arrFn = require("../../utils/arrFn");
+const _crTitle = (board /*: Board */) => {
+  const columnIds = board.columnIds;
+  return (0, _arrFn.joinByBlank)(board.title || '', (0, _isTypeFn.isArr)(columnIds) ? '' + columnIds.length : '0');
 };
-
-var crTitle = function
-  /*: string */
-crTitle(board
-/*: ?Board */
-, prefix
-/*: string */
-) {
-  var _title = board == null ? 'Not Exist' : _crTitle(board);
-
-  return (prefix || 'Notes') + ": " + _title;
-};
-
-var _default = crTitle;
-exports["default"] = _default;
+const crTitle = (board /*: ?Board */, prefix /*: string */) /*: string */ => (0, _arrFn.joinByColon)(prefix || 'Notes', (0, _isTypeFn.isObj)() ? _crTitle(board) : 'Not Exist');
+var _default = exports.default = crTitle;
 //# sourceMappingURL=crTitle.js.map

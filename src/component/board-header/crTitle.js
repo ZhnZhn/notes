@@ -1,27 +1,34 @@
+import {
+  isArr,
+  isObj
+} from '../../utils/isTypeFn';
+import {
+  joinByBlank,
+  joinByColon
+} from '../../utils/arrFn';
+
 // @flow
 
-const _isArr = Array.isArray;
-
 const _crTitle = (
-  board /*: ?Board */
+  board /*: Board */
 ) => {
-  const title = board.title || ''
-  , { columnIds } = board
-  , count = _isArr(columnIds)
-     ? columnIds.length
-     : 0;
-  return `${title} (${count})`;
+  const columnIds = board.columnIds;
+  return joinByBlank(
+    board.title || '',
+    isArr(columnIds)
+       ? '' + columnIds.length
+       : '0'
+  );
 };
 
 const crTitle = (
   board /*: ?Board */,
   prefix /*: string */
-) /*: string */ => {  
-  const _title = board == null
-    ? 'Not Exist'
-    : _crTitle(board);
-
-  return `${prefix || 'Notes'}: ${_title}`;
-}
+) /*: string */ => joinByColon(
+  prefix || 'Notes',
+  isObj()
+    ? _crTitle(board)
+    : 'Not Exist'
+);
 
 export default crTitle
