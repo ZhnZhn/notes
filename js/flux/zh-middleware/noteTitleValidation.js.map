@@ -1,1 +1,27 @@
-{"version":3,"file":"noteTitleValidation.js","names":["_isEmpty","str","trim","noteTitleValidation","next","action","type","editNoteTitle","payload","title"],"sources":["../../../src/flux/zh-middleware/noteTitleValidation.js"],"sourcesContent":["import { editNoteTitle } from '../note/reducer';\r\n\r\nconst _isEmpty = str => typeof str !== 'string'\r\n   || !str.trim();\r\n\r\nconst noteTitleValidation = () => next => action => {\r\n  if (action.type === editNoteTitle.type\r\n      && _isEmpty(action.payload.title)) {\r\n    action.payload.title = 'New Note'\r\n    next(action)\r\n    return false;\r\n  }\r\n  return next(action);\r\n};\r\n\r\nexport default noteTitleValidation\r\n"],"mappings":";;;;;AAAA;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,CAAAC,GAAG;EAAA,OAAI,OAAOA,GAAP,KAAe,QAAf,IAClB,CAACA,GAAG,CAACC,IAAJ,EADa;AAAA,CAApB;;AAGA,IAAMC,mBAAmB,GAAG,SAAtBA,mBAAsB;EAAA,OAAM,UAAAC,IAAI;IAAA,OAAI,UAAAC,MAAM,EAAI;MAClD,IAAIA,MAAM,CAACC,IAAP,KAAgBC,sBAAA,CAAcD,IAA9B,IACGN,QAAQ,CAACK,MAAM,CAACG,OAAP,CAAeC,KAAhB,CADf,EACuC;QACrCJ,MAAM,CAACG,OAAP,CAAeC,KAAf,GAAuB,UAAvB;QACAL,IAAI,CAACC,MAAD,CAAJ;QACA,OAAO,KAAP;MACD;;MACD,OAAOD,IAAI,CAACC,MAAD,CAAX;IACD,CARqC;EAAA,CAAV;AAAA,CAA5B;;eAUeF,mB"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/zh-middleware/noteTitleValidation.js"
+ ],
+ "file": "../../../src/flux/zh-middleware/noteTitleValidation.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_reducer",
+  "_isEmpty",
+  "str",
+  "isStr",
+  "trim",
+  "noteTitleValidation",
+  "next",
+  "action",
+  "type",
+  "editNoteTitle",
+  "payload",
+  "title",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AACA,IAAAC,QAAA,GAAAD,OAAA;AAEA,MAAME,QAAQ,GAAGC,GAAG,IAAI,CAAC,IAAAC,eAAK,EAACD,GAAG,CAAC,IAC7B,CAACA,GAAG,CAACE,IAAI,CAAC,CAAC;AAEjB,MAAMC,mBAAmB,GAAGA,CAAA,KAAMC,IAAI,IAAIC,MAAM,IAAI;EAClD,IAAIA,MAAM,CAACC,IAAI,KAAKC,sBAAa,CAACD,IAAI,IAC/BP,QAAQ,CAACM,MAAM,CAACG,OAAO,CAACC,KAAK,CAAC,EAAE;IACrCJ,MAAM,CAACG,OAAO,CAACC,KAAK,GAAG,UAAU;IACjCL,IAAI,CAACC,MAAM,CAAC;IACZ,OAAO,KAAK;EACd;EACA,OAAOD,IAAI,CAACC,MAAM,CAAC;AACrB,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaT,mBAAmB"
+}

@@ -1,3 +1,5 @@
+import { isFn } from '../../utils/isTypeFn';
+
 const _crTopicStyle = (is,
   dragBg = '#1e90ff',
   notDragBg = 'transparent'
@@ -23,7 +25,7 @@ const _hocDnDImpl = (ItemComp, options) => (props) => {
   , { style, ...draggablePropsRest } = draggableProps
   , _style = _crTopicStyle(isDragging, dragBg, notDragBg)
   , _dragHandleProps = isDragHanlerProps
-       ? undefined
+       ? void 0
        : dragHandleProps;
 
   return (
@@ -44,9 +46,10 @@ const _hocDnDImpl = (ItemComp, options) => (props) => {
   );
 }
 
-const _isFn = fn => typeof fn === 'function';
-
-const hocDnD = (optionsOrComp, options) => _isFn(optionsOrComp)
+const hocDnD = (
+  optionsOrComp,
+  options
+) => isFn(optionsOrComp)
   ? _hocDnDImpl(optionsOrComp, options)
   : (ItemComp) => {
      /*

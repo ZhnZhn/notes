@@ -3,18 +3,17 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
+var _crArrFromHm = _interopRequireDefault(require("../../utils/crArrFromHm"));
 var _actions = require("../note/actions");
 var _selectors = require("../selectors");
-var _crArrFromHm = _interopRequireDefault(require("../../utils/crArrFromHm"));
 var _crId = _interopRequireDefault(require("./crId"));
 var _appConf = _interopRequireDefault(require("../appConf"));
-const _isArr = Array.isArray,
-  _isObj = v => v && typeof v === 'object';
 const _fIsLabel = item => _ => _.title === item.title && _.color === item.color;
 const _crLabels = (hmLabel, labels) => {
   const labelsTo = [],
     newLabels = [];
-  if (!_isObj(hmLabel) || !_isArr(labels)) {
+  if (!(0, _isTypeFn.isObj)(hmLabel) || !(0, _isTypeFn.isArr)(labels)) {
     return {
       labelsTo,
       newLabels

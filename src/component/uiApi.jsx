@@ -1,3 +1,8 @@
+import {
+  isArr,
+  isFn
+} from '../utils/isTypeFn';
+
 export {
   NavLink
 } from "react-router-dom";
@@ -21,9 +26,6 @@ export {
   useContext,
   useImperativeHandle
 } from "react";
-
-const _isFn = fn => typeof fn === "function";
-const _isArr = Array.isArray;
 
 export const cloneUiElement = (
   Element,
@@ -50,7 +52,7 @@ export const focusRefElement = (
   ref1
 ) => {
   const _el = getRefValue(ref1);
-  if (_el && _isFn(_el.focus)) {
+  if (_el && isFn(_el.focus)) {
     _el.focus()
   }
 }
@@ -58,6 +60,6 @@ export const focusRefElement = (
 export const safeMap = (
   itemsOr,
   crElement
-) => _isArr(itemsOr) && itemsOr.length > 0
+) => isArr(itemsOr) && itemsOr.length > 0
   ? itemsOr.map(crElement)
   : null

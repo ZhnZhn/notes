@@ -1,6 +1,7 @@
+import { isStr } from '../../utils/isTypeFn';
 
 export const toTitle = (str) => {
-  if (typeof str !== 'string') {
+  if (!isStr(str)) {
     return '';
   }
   const _str = str.trim();

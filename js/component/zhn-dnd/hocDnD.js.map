@@ -1,1 +1,42 @@
-{"version":3,"file":"hocDnD.js","names":["_crTopicStyle","is","dragBg","notDragBg","backgroundColor","_hocDnDImpl","ItemComp","options","props","draggableProps","innerRef","isDragging","dragHandleProps","rest","isDragHanlerProps","style","draggablePropsRest","_style","_dragHandleProps","undefined","_isFn","fn","hocDnD","optionsOrComp"],"sources":["../../../src/component/zhn-dnd/hocDnD.jsx"],"sourcesContent":["const _crTopicStyle = (is,\r\n  dragBg = '#1e90ff',\r\n  notDragBg = 'transparent'\r\n) => ({\r\n  backgroundColor: is\r\n     ? dragBg\r\n     : notDragBg\r\n});\r\n\r\nconst _hocDnDImpl = (ItemComp, options) => (props) => {\r\n  const {\r\n    draggableProps,\r\n    innerRef,\r\n    isDragging,\r\n    dragHandleProps,\r\n    ...rest\r\n  } = props\r\n  , {\r\n    dragBg,\r\n    notDragBg,\r\n    isDragHanlerProps\r\n  } = options || {}\r\n  , { style, ...draggablePropsRest } = draggableProps\r\n  , _style = _crTopicStyle(isDragging, dragBg, notDragBg)\r\n  , _dragHandleProps = isDragHanlerProps\r\n       ? undefined\r\n       : dragHandleProps;\r\n\r\n  return (\r\n    <div\r\n      ref={innerRef}\r\n      style={{...style, ..._style}}\r\n      {...draggablePropsRest}\r\n      {..._dragHandleProps}\r\n    >\r\n      <ItemComp\r\n         dragHandleProps={isDragHanlerProps\r\n           ? dragHandleProps\r\n           : undefined\r\n         }\r\n         {...rest}\r\n      />\r\n    </div>\r\n  );\r\n}\r\n\r\nconst _isFn = fn => typeof fn === 'function';\r\n\r\nconst hocDnD = (optionsOrComp, options) => _isFn(optionsOrComp)\r\n  ? _hocDnDImpl(optionsOrComp, options)\r\n  : (ItemComp) => {\r\n     /*\r\n     if (!_isComp(ItemComp)) {\r\n       throw new Error('HocDnd expected argument to be react element');\r\n     }\r\n     */\r\n     return _hocDnDImpl(ItemComp, optionsOrComp);\r\n  };\r\n\r\nexport default hocDnD\r\n"],"mappings":";;;;;;;;;;;;;;;;AAAA,IAAMA,aAAa,GAAG,SAAhBA,aAAgB,CAACC,EAAD,EACpBC,MADoB,EAEpBC,SAFoB;EAAA,IACpBD,MADoB;IACpBA,MADoB,GACX,SADW;EAAA;;EAAA,IAEpBC,SAFoB;IAEpBA,SAFoB,GAER,aAFQ;EAAA;;EAAA,OAGhB;IACJC,eAAe,EAAEH,EAAE,GACdC,MADc,GAEdC;EAHD,CAHgB;AAAA,CAAtB;;AASA,IAAME,WAAW,GAAG,SAAdA,WAAc,CAACC,QAAD,EAAWC,OAAX;EAAA,OAAuB,UAACC,KAAD,EAAW;IACpD,IACEC,cADF,GAMID,KANJ,CACEC,cADF;IAAA,IAEEC,QAFF,GAMIF,KANJ,CAEEE,QAFF;IAAA,IAGEC,UAHF,GAMIH,KANJ,CAGEG,UAHF;IAAA,IAIEC,eAJF,GAMIJ,KANJ,CAIEI,eAJF;IAAA,IAKKC,IALL,kDAMIL,KANJ;IAAA,WAWID,OAAO,IAAI,EAXf;IAAA,IAQEL,MARF,QAQEA,MARF;IAAA,IASEC,SATF,QASEA,SATF;IAAA,IAUEW,iBAVF,QAUEA,iBAVF;IAAA,IAYIC,KAZJ,GAYqCN,cAZrC,CAYIM,KAZJ;IAAA,IAYcC,kBAZd,kDAYqCP,cAZrC;IAAA,IAaEQ,MAbF,GAaWjB,aAAa,CAACW,UAAD,EAAaT,MAAb,EAAqBC,SAArB,CAbxB;IAAA,IAcEe,gBAdF,GAcqBJ,iBAAiB,GAC/BK,SAD+B,GAE/BP,eAhBP;;IAkBA,oBACE;MACE,GAAG,EAAEF,QADP;MAEE,KAAK,gCAAMK,KAAN,EAAgBE,MAAhB;IAFP,GAGMD,kBAHN,EAIME,gBAJN;MAAA,uBAME,qBAAC,QAAD;QACG,eAAe,EAAEJ,iBAAiB,GAC9BF,eAD8B,GAE9BO;MAHP,GAKON,IALP;IANF,GADF;EAgBD,CAnCmB;AAAA,CAApB;;AAqCA,IAAMO,KAAK,GAAG,SAARA,KAAQ,CAAAC,EAAE;EAAA,OAAI,OAAOA,EAAP,KAAc,UAAlB;AAAA,CAAhB;;AAEA,IAAMC,MAAM,GAAG,SAATA,MAAS,CAACC,aAAD,EAAgBhB,OAAhB;EAAA,OAA4Ba,KAAK,CAACG,aAAD,CAAL,GACvClB,WAAW,CAACkB,aAAD,EAAgBhB,OAAhB,CAD4B,GAEvC,UAACD,QAAD,EAAc;IACb;AACL;AACA;AACA;AACA;IACK,OAAOD,WAAW,CAACC,QAAD,EAAWiB,aAAX,CAAlB;EACF,CATY;AAAA,CAAf;;eAWeD,M"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-dnd/hocDnD.js"
+ ],
+ "file": "../../../src/component/zhn-dnd/hocDnD.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_jsxRuntime",
+  "_crTopicStyle",
+  "is",
+  "dragBg",
+  "notDragBg",
+  "backgroundColor",
+  "_hocDnDImpl",
+  "ItemComp",
+  "options",
+  "props",
+  "draggableProps",
+  "innerRef",
+  "isDragging",
+  "dragHandleProps",
+  "rest",
+  "isDragHanlerProps",
+  "style",
+  "draggablePropsRest",
+  "_style",
+  "_dragHandleProps",
+  "jsx",
+  "ref",
+  "children",
+  "undefined",
+  "hocDnD",
+  "optionsOrComp",
+  "isFn",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAA4C,IAAAC,WAAA,GAAAD,OAAA;AAE5C,MAAME,aAAa,GAAG,SAAAA,CAACC,EAAE,EACvBC,MAAM,EACNC,SAAS;EAAA,IADTD,MAAM;IAANA,MAAM,GAAG,SAAS;EAAA;EAAA,IAClBC,SAAS;IAATA,SAAS,GAAG,aAAa;EAAA;EAAA,OACrB;IACJC,eAAe,EAAEH,EAAE,GACdC,MAAM,GACNC;EACP,CAAC;AAAA,CAAC;AAEF,MAAME,WAAW,GAAGA,CAACC,QAAQ,EAAEC,OAAO,KAAMC,KAAK,IAAK;EACpD,MAAM;MACJC,cAAc;MACdC,QAAQ;MACRC,UAAU;MACVC,eAAe;MACf,GAAGC;IACL,CAAC,GAAGL,KAAK;IACP;MACAN,MAAM;MACNC,SAAS;MACTW;IACF,CAAC,GAAGP,OAAO,IAAI,CAAC,CAAC;IACf;MAAEQ,KAAK;MAAE,GAAGC;IAAmB,CAAC,GAAGP,cAAc;IACjDQ,MAAM,GAAGjB,aAAa,CAACW,UAAU,EAAET,MAAM,EAAEC,SAAS,CAAC;IACrDe,gBAAgB,GAAGJ,iBAAiB,GAC/B,KAAK,CAAC,GACNF,eAAe;EAEtB,oBACE,IAAAb,WAAA,CAAAoB,GAAA;IACEC,GAAG,EAAEV,QAAS;IACdK,KAAK,EAAE;MAAC,GAAGA,KAAK;MAAE,GAAGE;IAAM,CAAE;IAAA,GACzBD,kBAAkB;IAAA,GAClBE,gBAAgB;IAAAG,QAAA,eAEpB,IAAAtB,WAAA,CAAAoB,GAAA,EAACb,QAAQ;MACNM,eAAe,EAAEE,iBAAiB,GAC9BF,eAAe,GACfU,SACH;MAAA,GACGT;IAAI,CACV;EAAC,CACC,CAAC;AAEV,CAAC;AAED,MAAMU,MAAM,GAAGA,CACbC,aAAa,EACbjB,OAAO,KACJ,IAAAkB,cAAI,EAACD,aAAa,CAAC,GACpBnB,WAAW,CAACmB,aAAa,EAAEjB,OAAO,CAAC,GAClCD,QAAQ,IAAK;EACb;AACL;AACA;AACA;AACA;EACK,OAAOD,WAAW,CAACC,QAAQ,EAAEkB,aAAa,CAAC;AAC9C,CAAC;AAAC,IAAAE,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEWL,MAAM"
+}

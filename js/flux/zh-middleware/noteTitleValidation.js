@@ -1,28 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _reducer = require("../note/reducer");
-
-var _isEmpty = function _isEmpty(str) {
-  return typeof str !== 'string' || !str.trim();
+const _isEmpty = str => !(0, _isTypeFn.isStr)(str) || !str.trim();
+const noteTitleValidation = () => next => action => {
+  if (action.type === _reducer.editNoteTitle.type && _isEmpty(action.payload.title)) {
+    action.payload.title = 'New Note';
+    next(action);
+    return false;
+  }
+  return next(action);
 };
-
-var noteTitleValidation = function noteTitleValidation() {
-  return function (next) {
-    return function (action) {
-      if (action.type === _reducer.editNoteTitle.type && _isEmpty(action.payload.title)) {
-        action.payload.title = 'New Note';
-        next(action);
-        return false;
-      }
-
-      return next(action);
-    };
-  };
-};
-
-var _default = noteTitleValidation;
-exports["default"] = _default;
+var _default = exports.default = noteTitleValidation;
 //# sourceMappingURL=noteTitleValidation.js.map

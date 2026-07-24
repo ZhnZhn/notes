@@ -1,9 +1,9 @@
+import { isObj } from '../../utils/isTypeFn';
 
-const getNodeDescr = (note) => {
-  if ( typeof note !== 'object' || note == null ) {
-    return 'This note is not exist.';
-  }
-  return note.descr || 'Edit description...';
-};
+const getNodeDescr = (
+  note
+) => isObj(note)
+  ? note.descr || 'Edit description...'
+  : 'This note is not exist.';
 
 export default getNodeDescr

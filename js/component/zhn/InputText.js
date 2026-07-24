@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _CL = require("../style/CL");
@@ -29,7 +30,7 @@ const InputText = _ref => {
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
       if ((0, _isEventKey.isEventKeyEnter)(evt)) {
         const el = document.activeElement;
-        if (el && typeof el.blur === 'function') {
+        if (el && (0, _isTypeFn.isFn)(el.blur)) {
           el.blur();
         }
       } else if ((0, _isEventKey.isEventKeyDelete)(evt)) {

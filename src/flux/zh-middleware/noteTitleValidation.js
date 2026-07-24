@@ -1,6 +1,7 @@
+import { isStr } from '../../utils/isTypeFn';
 import { editNoteTitle } from '../note/reducer';
 
-const _isEmpty = str => typeof str !== 'string'
+const _isEmpty = str => !isStr(str)
    || !str.trim();
 
 const noteTitleValidation = () => next => action => {

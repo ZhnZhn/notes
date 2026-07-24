@@ -1,11 +1,14 @@
+import {
+  isArr,
+  isObj
+} from '../../utils/isTypeFn';
+import crArrFormHm from '../../utils/crArrFromHm';
+
 import { editNoteLabels } from '../note/actions';
 import { selectNoteLabels } from '../selectors';
-import crArrFormHm from '../../utils/crArrFromHm';
+
 import crId from './crId';
 import CONF from '../appConf';
-
-const _isArr = Array.isArray
-, _isObj = v => v && typeof v === 'object';
 
 const _fIsLabel = (item) => _ =>
   _.title === item.title
@@ -18,7 +21,7 @@ const _crLabels = (
    const labelsTo = []
    , newLabels = [];
 
-   if (!_isObj(hmLabel) || !_isArr(labels)) {
+   if (!isObj(hmLabel) || !isArr(labels)) {
      return {
        labelsTo,
        newLabels

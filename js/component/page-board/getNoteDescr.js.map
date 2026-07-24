@@ -1,1 +1,19 @@
-{"version":3,"file":"getNoteDescr.js","names":["getNodeDescr","note","descr"],"sources":["../../../src/component/page-board/getNoteDescr.js"],"sourcesContent":["\r\nconst getNodeDescr = (note) => {\r\n  if ( typeof note !== 'object' || note == null ) {\r\n    return 'This note is not exist.';\r\n  }\r\n  return note.descr || 'Edit description...';\r\n};\r\n\r\nexport default getNodeDescr\r\n"],"mappings":";;;;;AACA,IAAMA,YAAY,GAAG,SAAfA,YAAe,CAACC,IAAD,EAAU;EAC7B,IAAK,OAAOA,IAAP,KAAgB,QAAhB,IAA4BA,IAAI,IAAI,IAAzC,EAAgD;IAC9C,OAAO,yBAAP;EACD;;EACD,OAAOA,IAAI,CAACC,KAAL,IAAc,qBAArB;AACD,CALD;;eAOeF,Y"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/getNoteDescr.js"
+ ],
+ "file": "../../../src/component/page-board/getNoteDescr.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "getNodeDescr",
+  "note",
+  "isObj",
+  "descr",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,MAAMC,YAAY,GAChBC,IAAI,IACD,IAAAC,eAAK,EAACD,IAAI,CAAC,GACZA,IAAI,CAACE,KAAK,IAAI,qBAAqB,GACnC,yBAAyB;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEfN,YAAY"
+}

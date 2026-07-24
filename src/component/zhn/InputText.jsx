@@ -1,4 +1,8 @@
 import {
+  isFn
+} from '../../utils/isTypeFn';
+
+import {
   useState,
   useCallback,
   useImperativeHandle
@@ -35,7 +39,7 @@ const InputText = ({
   , _hKeyDown = useCallback((evt) => {
     if (isEventKeyEnter(evt)) {
       const el = document.activeElement;
-      if (el && typeof el.blur === 'function' ) {
+      if (el && isFn(el.blur)) {
         el.blur()
       }
     } else if (isEventKeyDelete(evt)) {

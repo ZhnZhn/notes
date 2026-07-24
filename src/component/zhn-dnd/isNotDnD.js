@@ -1,6 +1,7 @@
+import { isObj } from '../../utils/isTypeFn';
 
 const isNotDnD = (result) => {
-  if (!result || typeof result !== 'object') {
+  if (!isObj(result)) {
     return false;
   }
   const { destination, source } = result;

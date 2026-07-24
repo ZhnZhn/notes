@@ -1,1 +1,24 @@
-{"version":3,"file":"useToggle.js","names":["_isBool","v","_initState","initialValue","_reducer","state","value","useToggle","useReducer"],"sources":["../../../src/component/hooks/useToggle.js"],"sourcesContent":["import { useReducer } from '../uiApi';\r\n\r\nconst _isBool = v => typeof v === 'boolean'\r\n, _initState = (initialValue) => !!initialValue\r\n, _reducer = (\r\n  state,\r\n  value\r\n) => _isBool(value)\r\n  ? value\r\n  : !state;\r\n\r\nconst useToggle = (\r\n  initialValue\r\n) => useReducer(\r\n  _reducer,\r\n  initialValue,\r\n  _initState\r\n);\r\n\r\nexport default useToggle\r\n"],"mappings":";;;;;AAAA;;AAEA,IAAMA,OAAO,GAAG,SAAVA,OAAU,CAAAC,CAAC;EAAA,OAAI,OAAOA,CAAP,KAAa,SAAjB;AAAA,CAAjB;AAAA,IACEC,UAAU,GAAG,SAAbA,UAAa,CAACC,YAAD;EAAA,OAAkB,CAAC,CAACA,YAApB;AAAA,CADf;AAAA,IAEEC,QAAQ,GAAG,SAAXA,QAAW,CACXC,KADW,EAEXC,KAFW;EAAA,OAGRN,OAAO,CAACM,KAAD,CAAP,GACDA,KADC,GAED,CAACD,KALQ;AAAA,CAFb;;AASA,IAAME,SAAS,GAAG,SAAZA,SAAY,CAChBJ,YADgB;EAAA,OAEb,IAAAK,iBAAA,EACHJ,QADG,EAEHD,YAFG,EAGHD,UAHG,CAFa;AAAA,CAAlB;;eAQeK,S"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/hooks/useToggle.js"
+ ],
+ "file": "../../../src/component/hooks/useToggle.js",
+ "names": [
+  "_isTypeFn",
+  "require",
+  "_uiApi",
+  "_initState",
+  "initialValue",
+  "_reducer",
+  "state",
+  "value",
+  "isBool",
+  "useToggle",
+  "useReducer",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AACA,IAAAC,MAAA,GAAAD,OAAA;AAEA,MAAME,UAAU,GACdC,YAAY,IACT,CAAC,CAACA,YAAY;EACjBC,QAAQ,GAAGA,CACXC,KAAK,EACLC,KAAK,KACF,IAAAC,gBAAM,EAACD,KAAK,CAAC,GACdA,KAAK,GACL,CAACD,KAAK;AAEV,MAAMG,SAAS,GACbL,YAAY,IACT,IAAAM,iBAAU,EACbL,QAAQ,EACRD,YAAY,EACZD,UACF,CAAC;AAAC,IAAAQ,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaJ,SAAS"
+}

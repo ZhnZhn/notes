@@ -1,75 +1,60 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-
+exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _excluded = ["draggableProps", "innerRef", "isDragging", "dragHandleProps"],
-    _excluded2 = ["style"];
-
-var _crTopicStyle = function _crTopicStyle(is, dragBg, notDragBg) {
+const _crTopicStyle = function (is, dragBg, notDragBg) {
   if (dragBg === void 0) {
     dragBg = '#1e90ff';
   }
-
   if (notDragBg === void 0) {
     notDragBg = 'transparent';
   }
-
   return {
     backgroundColor: is ? dragBg : notDragBg
   };
 };
-
-var _hocDnDImpl = function _hocDnDImpl(ItemComp, options) {
-  return function (props) {
-    var draggableProps = props.draggableProps,
-        innerRef = props.innerRef,
-        isDragging = props.isDragging,
-        dragHandleProps = props.dragHandleProps,
-        rest = (0, _objectWithoutPropertiesLoose2["default"])(props, _excluded),
-        _ref = options || {},
-        dragBg = _ref.dragBg,
-        notDragBg = _ref.notDragBg,
-        isDragHanlerProps = _ref.isDragHanlerProps,
-        style = draggableProps.style,
-        draggablePropsRest = (0, _objectWithoutPropertiesLoose2["default"])(draggableProps, _excluded2),
-        _style = _crTopicStyle(isDragging, dragBg, notDragBg),
-        _dragHandleProps = isDragHanlerProps ? undefined : dragHandleProps;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
-      ref: innerRef,
-      style: (0, _extends2["default"])({}, style, _style)
-    }, draggablePropsRest, _dragHandleProps, {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemComp, (0, _extends2["default"])({
-        dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined
-      }, rest))
-    }));
-  };
+const _hocDnDImpl = (ItemComp, options) => props => {
+  const {
+      draggableProps,
+      innerRef,
+      isDragging,
+      dragHandleProps,
+      ...rest
+    } = props,
+    {
+      dragBg,
+      notDragBg,
+      isDragHanlerProps
+    } = options || {},
+    {
+      style,
+      ...draggablePropsRest
+    } = draggableProps,
+    _style = _crTopicStyle(isDragging, dragBg, notDragBg),
+    _dragHandleProps = isDragHanlerProps ? void 0 : dragHandleProps;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    ref: innerRef,
+    style: {
+      ...style,
+      ..._style
+    },
+    ...draggablePropsRest,
+    ..._dragHandleProps,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemComp, {
+      dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined,
+      ...rest
+    })
+  });
 };
-
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
+const hocDnD = (optionsOrComp, options) => (0, _isTypeFn.isFn)(optionsOrComp) ? _hocDnDImpl(optionsOrComp, options) : ItemComp => {
+  /*
+  if (!_isComp(ItemComp)) {
+    throw new Error('HocDnd expected argument to be react element');
+  }
+  */
+  return _hocDnDImpl(ItemComp, optionsOrComp);
 };
-
-var hocDnD = function hocDnD(optionsOrComp, options) {
-  return _isFn(optionsOrComp) ? _hocDnDImpl(optionsOrComp, options) : function (ItemComp) {
-    /*
-    if (!_isComp(ItemComp)) {
-      throw new Error('HocDnd expected argument to be react element');
-    }
-    */
-    return _hocDnDImpl(ItemComp, optionsOrComp);
-  };
-};
-
-var _default = hocDnD;
-exports["default"] = _default;
+var _default = exports.default = hocDnD;
 //# sourceMappingURL=hocDnD.js.map
