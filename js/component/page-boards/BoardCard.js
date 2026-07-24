@@ -3,11 +3,11 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _actions = require("../../flux/board/actions");
 var _reducer = require("../../flux/board/reducer");
 var _selectors = require("../../flux/selectors");
-var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
 var _CL = require("../style/CL");
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 var _DnDTopicList = _interopRequireDefault(require("./DnDTopicList"));
@@ -58,7 +58,7 @@ const BoardCard = _ref => {
       onClick: _hToNotes,
       children: "ToNotes"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: (0, _isArrEmpty.default)(columnIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      children: (0, _isTypeFn.isArrEmpty)(columnIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
         clCaption: _CL.CL_CARD_BT,
         caption: "Remove Board",
         onClick: _hRemove

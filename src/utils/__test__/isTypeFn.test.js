@@ -1,4 +1,4 @@
-import isArrEmpty from '../isArrEmpty'
+import { isArrEmpty } from '../isTypeFn';
 
 describe('isArrEmpty', () => {
 

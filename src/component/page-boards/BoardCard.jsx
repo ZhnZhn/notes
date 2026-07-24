@@ -1,4 +1,8 @@
 import {
+  isArrEmpty
+} from '../../utils/isTypeFn';
+
+import {
   NavLink,
   useDispatch,
   useSelector,
@@ -17,7 +21,6 @@ import {
   selectColumns
 } from '../../flux/selectors';
 
-import isArrEmpty from '../../utils/isArrEmpty';
 import {
   CL_NAV_LINK,
   CL_CARD_BT

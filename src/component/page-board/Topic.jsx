@@ -1,4 +1,8 @@
 import {
+  isArrEmpty
+} from '../../utils/isTypeFn';
+
+import {
   useDispatch,
   useCallback
 } from '../uiApi';
@@ -15,8 +19,6 @@ import {
  import {
    addNote
  } from '../../flux/note/actions';
-
-import isArrEmpty from '../../utils/isArrEmpty';
 
 import { BtSvgMore } from '../zhn/BtSvg';
 import TopicMenuMore from './TopicMenuMore';

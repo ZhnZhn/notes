@@ -3,12 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _reducer = require("../../flux/column/reducer");
 var _actions = require("../../flux/column/actions");
 var _actions2 = require("../../flux/note/actions");
-var _isArrEmpty = _interopRequireDefault(require("../../utils/isArrEmpty"));
 var _BtSvg = require("../zhn/BtSvg");
 var _TopicMenuMore = _interopRequireDefault(require("./TopicMenuMore"));
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
@@ -104,7 +104,7 @@ const Topic = _ref => {
       noteIds: noteIds,
       notes: notes
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: (0, _isArrEmpty.default)(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      children: (0, _isTypeFn.isArrEmpty)(noteIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
         clCaption: _CL.CL_CARD_BT,
         caption: "Remove Topic",
         onClick: _hRemoveColumn
