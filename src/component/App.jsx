@@ -10,7 +10,7 @@ import {
   Routes,
   Route,
   Navigate
-} from 'react-router-dom';
+} from 'react-router';
 
 import ThemeContext from './hoc/ThemeContext';
 import initialTheme from './style/theme';

@@ -5,7 +5,7 @@ import {
 
 export {
   NavLink
-} from "react-router-dom";
+} from "react-router";
 
 export {
   useDispatch,
