@@ -6,11 +6,13 @@ import {
 } from './uiApi';
 
 import {
-  BrowserRouter,
+  BrowserRouter
+} from './zhn-router/BrowserRouter';
+import {
   Routes,
   Route,
   Navigate
-} from 'react-router';
+} from './zhn-router/Router';
 
 import ThemeContext from './hoc/ThemeContext';
 import initialTheme from './style/theme';

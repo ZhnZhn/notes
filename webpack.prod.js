@@ -18,7 +18,7 @@ module.exports = {
     lib: [
             "react", "react-dom",
             "@reduxjs/toolkit", "react-redux",
-            "react-router", "react-beautiful-dnd"
+            "react-beautiful-dnd"
           ]
   },
   output: {

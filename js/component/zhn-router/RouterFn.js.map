@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-router/RouterFn.js"
+ ],
+ "file": "../../../src/component/zhn-router/RouterFn.js",
+ "names": [
+  "createPath",
+  "_ref",
+  "pathname",
+  "search",
+  "hash",
+  "charAt"
+ ],
+ "mappings": ";;;;AACO,SAASA,UAAUA,CAAAC,IAAA,EAIvB;EAAA,IAJwB;IACzBC,QAAQ,GAAG,GAAG;IACdC,MAAM,GAAG,EAAE;IACXC,IAAI,GAAG;EACT,CAAC,GAAAH,IAAA;EACC,IAAIE,MAAM,IAAIA,MAAM,KAAK,GAAG,EAC1BD,QAAQ,IAAIC,MAAM,CAACE,MAAM,CAAC,CAAC,CAAC,KAAK,GAAG,GAChCF,MAAM,GACN,GAAG,GAAGA,MAAM;EAClB,IAAIC,IAAI,IAAIA,IAAI,KAAK,GAAG,EACtBF,QAAQ,IAAIE,IAAI,CAACC,MAAM,CAAC,CAAC,CAAC,KAAK,GAAG,GAC9BD,IAAI,GACJ,GAAG,GAAGA,IAAI;EAChB,OAAOF,QAAQ;AACjB"
+}

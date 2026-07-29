@@ -4,7 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("./uiApi");
-var _reactRouter = require("react-router");
+var _BrowserRouter = require("./zhn-router/BrowserRouter");
+var _Router = require("./zhn-router/Router");
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
 var _theme = _interopRequireDefault(require("./style/theme"));
 var _selectors = require("../flux/selectors");
@@ -33,22 +34,22 @@ const App = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_uiApi.StrictMode, {
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouter.BrowserRouter, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserRouter.BrowserRouter, {
       basename: basename,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ThemeContext.default.Provider, {
         value: theme,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_WrapperContainer.default, {
           store: store
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_reactRouter.Routes, {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouter.Route, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Router.Routes, {
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Router.Route, {
             path: "/boards/:id",
             element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PageBoard.default, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouter.Route, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Router.Route, {
             path: "/boards",
             element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PageBoards.default, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouter.Route, {
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Router.Route, {
             path: "/",
-            element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_reactRouter.Navigate, {
+            element: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Router.Navigate, {
               to: "/boards",
               replace: true
             })
