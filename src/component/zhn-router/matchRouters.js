@@ -1,15 +1,17 @@
+import { isStr } from '../../utils/isTypeFn';
+
 const removeTrailingSlash = (path) => path.replace(/\/+$/, "");
 const normalizePathname = (pathname) => removeTrailingSlash(pathname).replace(/^\/*/, "/");
 
 export function parsePath(path) {
-  let parsedPath = {};
+  const parsedPath = {};
   if (path) {
-    let hashIndex = path.indexOf("#");
+    const hashIndex = path.indexOf("#");
     if (hashIndex >= 0) {
       parsedPath.hash = path.substring(hashIndex);
       path = path.substring(0, hashIndex);
     }
-    let searchIndex = path.indexOf("?");
+    const searchIndex = path.indexOf("?");
     if (searchIndex >= 0) {
       parsedPath.search = path.substring(searchIndex);
       path = path.substring(0, searchIndex);
@@ -25,8 +27,10 @@ export function stripBasename(pathname, basename) {
   if (!pathname.toLowerCase().startsWith(basename.toLowerCase())) {
     return null;
   }
-  let startIndex = basename.endsWith("/") ? basename.length - 1 : basename.length;
-  let nextChar = pathname.charAt(startIndex);
+  const startIndex = basename.endsWith("/")
+    ? basename.length - 1
+    : basename.length
+  , nextChar = pathname.charAt(startIndex);
   if (nextChar && nextChar !== "/") {
     return null;
   }
@@ -44,7 +48,7 @@ const staticSegmentValue = 10;
 const splatPenalty = -2;
 const isSplat = (s) => s === "*";
 function computeScore(path, index) {
-  let segments = path.split("/");
+  const segments = path.split("/");
   let initialScore = segments.length;
   if (segments.some(isSplat)) {
     initialScore += splatPenalty;
@@ -63,13 +67,13 @@ function compilePath(
   caseSensitive = false,
   end = true
 ) {
-  let params = [];
+  const params = [];
   let regexpSource = "^" + path.replace(/\/*\*?$/, "").replace(/^\/*/, "/").replace(/[\\.*+^${}|()[\]]/g, "\\$&").replace(
     /\/:([\w-]+)(\?)?/g,
     (match, paramName, isOptional, index, str) => {
       params.push({ paramName, isOptional: isOptional != null });
       if (isOptional) {
-        let nextChar = str.charAt(index + match.length);
+        const nextChar = str.charAt(index + match.length);
         if (nextChar && nextChar !== "/") {
           return "/([^\\/]*)";
         }
@@ -87,21 +91,21 @@ function compilePath(
     regexpSource += "(?:(?=\\/|$))";
   } else {
   }
-  let matcher = new RegExp(regexpSource, caseSensitive ? void 0 : "i");
+  const matcher = new RegExp(regexpSource, caseSensitive ? void 0 : "i");
   return [matcher, params];
 }
 
 function explodeOptionalSegments(path) {
-  let segments = path.split("/");
+  const segments = path.split("/");
   if (segments.length === 0) return [];
-  let [first, ...rest] = segments;
-  let isOptional = first.endsWith("?");
-  let required = first.replace(/\?$/, "");
+  const [first, ...rest] = segments
+  , isOptional = first.endsWith("?")
+  , required = first.replace(/\?$/, "");
   if (rest.length === 0) {
     return isOptional ? [required, ""] : [required];
   }
-  let restExploded = explodeOptionalSegments(rest.join("/"));
-  let result = [];
+  const restExploded = explodeOptionalSegments(rest.join("/"))
+  , result = [];
   result.push(
     ...restExploded.map(
       (subpath) => subpath === "" ? required : [required, subpath].join("/")
@@ -122,8 +126,8 @@ function flattenRoutes(
   parentPath = "",
   _hasParentOptionalSegments = false
 ) {
-  let flattenRoute = (route, index, hasParentOptionalSegments = _hasParentOptionalSegments, relativePath) => {
-    let meta = {
+  const flattenRoute = (route, index, hasParentOptionalSegments = _hasParentOptionalSegments, relativePath) => {
+    const meta = {
       relativePath: relativePath === void 0 ? route.path || "" : relativePath,
       caseSensitive: route.caseSensitive === true,
       childrenIndex: index,
@@ -135,8 +139,8 @@ function flattenRoutes(
       }
       meta.relativePath = meta.relativePath.slice(parentPath.length);
     }
-    let path = joinPaths([parentPath, meta.relativePath]);
-    let routesMeta = parentsMeta.concat(meta);
+    const path = joinPaths([parentPath, meta.relativePath])
+    , routesMeta = parentsMeta.concat(meta);
     if (route.children && route.children.length > 0) {
       flattenRoutes(
         route.children,
@@ -153,7 +157,7 @@ function flattenRoutes(
       path,
       score: computeScore(path, route.index),
       routesMeta: routesMeta.map((meta2, i) => {
-        let [matcher, params] = compilePath(
+        const [matcher, params] = compilePath(
           meta2.relativePath,
           meta2.caseSensitive,
           i === routesMeta.length - 1
@@ -170,7 +174,7 @@ function flattenRoutes(
     if (route.path === "" || !route.path?.includes("?")) {
       flattenRoute(route, index);
     } else {
-      for (let exploded of explodeOptionalSegments(route.path)) {
+      for (const exploded of explodeOptionalSegments(route.path)) {
         flattenRoute(route, index, true, exploded);
       }
     }
@@ -179,7 +183,8 @@ function flattenRoutes(
 }
 
 function compareIndexes(a, b) {
-  let siblings = a.length === b.length && a.slice(0, -1).every((n, i) => n === b[i]);
+  const siblings = a.length === b.length
+    && a.slice(0, -1).every((n, i) => n === b[i]);
   return siblings ? (
     // If two routes are siblings, we should try to match the earlier sibling
     // first. This allows people to have fine-grained control over the matching
@@ -203,7 +208,7 @@ function rankRouteBranches(branches) {
 }
 
 function flattenAndRankRoutes(routes) {
-  let branches = flattenRoutes(routes);
+  const branches = flattenRoutes(routes);
   rankRouteBranches(branches);
   return branches;
 }
@@ -214,7 +219,7 @@ function decodePath(value) {
       .split("/")
       .map((v) => decodeURIComponent(v).replace(/\//g, "%2F"))
       .join("/");
-  } catch (error) {
+  } catch (_err) {
     console.log("The URL path could not be decoded")
     return value;
   }
@@ -226,15 +231,15 @@ function matchPathImpl(
   matcher,
   compiledParams
 ) {
-  let match = pathname.match(matcher);
+  const match = pathname.match(matcher);
   if (!match) return null;
-  let matchedPathname = match[0];
+  const matchedPathname = match[0];
   let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
-  let captureGroups = match.slice(1);
-  let params = compiledParams.reduce(
+  const captureGroups = match.slice(1)
+  , params = compiledParams.reduce(
     (memo2, { paramName, isOptional }, index) => {
       if (paramName === "*") {
-        let splatValue = captureGroups[index] || "";
+        const splatValue = captureGroups[index] || "";
         pathnameBase = matchedPathname.slice(0, matchedPathname.length - splatValue.length).replace(/(.)\/+$/, "$1");
       }
       const value = captureGroups[index];
@@ -256,10 +261,14 @@ function matchPathImpl(
 }
 
 function matchPath(pattern, pathname) {
-  if (typeof pattern === "string") {
-    pattern = { path: pattern, caseSensitive: false, end: true };
+  if (isStr(pattern)) {
+    pattern = {
+      path: pattern,
+      caseSensitive: false,
+      end: true
+    };
   }
-  let [matcher, compiledParams] = compilePath(
+  const [matcher, compiledParams] = compilePath(
     pattern.path,
     pattern.caseSensitive,
     pattern.end
@@ -272,15 +281,17 @@ function matchRouteBranch(
   pathname,
   allowPartial = false
 ) {
-  let { routesMeta } = branch;
-  let matchedParams = {};
+  const { routesMeta } = branch
+  , matchedParams = {}
+  , matches = [];
   let matchedPathname = "/";
-  let matches = [];
   for (let i = 0; i < routesMeta.length; ++i) {
-    let meta = routesMeta[i];
-    let end = i === routesMeta.length - 1;
-    let remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/";
-    let pattern = {
+    const meta = routesMeta[i]
+    , end = i === routesMeta.length - 1
+    , remainingPathname = matchedPathname === "/"
+      ? pathname
+      : pathname.slice(matchedPathname.length) || "/"
+    , pattern = {
       path: meta.relativePath,
       caseSensitive: meta.caseSensitive,
       end
@@ -294,7 +305,7 @@ function matchRouteBranch(
         meta.compiledParams
       ) : matchPath(pattern, remainingPathname)
     );
-    let route = meta.route;
+    const route = meta.route;
     if (!match && end && allowPartial && !routesMeta[routesMeta.length - 1].route.index) {
       match = matchPath(
         {
@@ -332,16 +343,16 @@ function matchRoutesImpl(
   allowPartial,
   precomputedBranches
 ) {
-  let location = typeof locationArg === "string"
+  const location = isStr(locationArg)
     ? parsePath(locationArg)
-    : locationArg;
-  let pathname = stripBasename(location.pathname || "/", basename);
+    : locationArg
+  , pathname = stripBasename(location.pathname || "/", basename);
   if (pathname == null) {
     return null;
   }
-  let branches = precomputedBranches ?? flattenAndRankRoutes(routes);
+  const branches = precomputedBranches ?? flattenAndRankRoutes(routes)
+  , decoded = decodePath(pathname);
   let matches = null;
-  let decoded = decodePath(pathname);
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = matchRouteBranch(
       branches[i],
