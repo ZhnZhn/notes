@@ -13,6 +13,13 @@ import {
 } from 'react';
 
 import {
+  isStr,
+  isNumber,
+  isFn,
+  hasOwnPropertySafe
+} from '../../utils/isTypeFn';
+
+import {
   matchRoutes,
   joinPaths,
   parsePath,
@@ -22,18 +29,18 @@ import {
   createPath
 } from './RouterFn';
 
-export function Route(props) {}
+export function Route(_props) {}
 
 function createRoutesFromChildren(
   children,
   parentPath = []
 ) {
-  let routes = [];
+  const routes = [];
   Children.forEach(children, (element, index) => {
     if (!isValidElement(element)) {
       return;
     }
-    let treePath = [...parentPath, index];
+    const treePath = [...parentPath, index];
     if (element.type === Fragment) {
       routes.push.apply(
         routes,
@@ -42,7 +49,7 @@ function createRoutesFromChildren(
       return;
     }
 
-    let route = {
+    const route = {
       id: element.props.id || treePath.join("-"),
       element: element.props.element,
       path: element.props.path,
@@ -84,7 +91,7 @@ function getPathContributingMatches(matches) {
   );
 }
 function getResolveToMatches(matches) {
-  let pathMatches = getPathContributingMatches(matches);
+  const pathMatches = getPathContributingMatches(matches);
   return pathMatches.map(
     (match, idx) => idx === pathMatches.length - 1 ? match.pathname : match.pathnameBase
   );
@@ -92,8 +99,8 @@ function getResolveToMatches(matches) {
 
 const removeTrailingSlash = (path) => path.replace(/\/+$/, "");
 function resolvePathname(relativePath, fromPathname) {
-  let segments = removeTrailingSlash(fromPathname).split("/");
-  let relativeSegments = relativePath.split("/");
+  const segments = removeTrailingSlash(fromPathname).split("/")
+  , relativeSegments = relativePath.split("/");
   relativeSegments.forEach((segment) => {
     if (segment === "..") {
       if (segments.length > 1) segments.pop();
@@ -112,7 +119,7 @@ function resolvePath(to, fromPathname = "/") {
     pathname: toPathname,
     search = "",
     hash = ""
-  } = typeof to === "string" ? parsePath(to) : to;
+  } = isStr(to) ? parsePath(to) : to;
   let pathname;
   if (toPathname) {
     toPathname = removeDoubleSlashes(toPathname);
@@ -137,19 +144,19 @@ function resolveTo(
   locationPathname,
   isPathRelative = false
 ) {
-  const to = typeof toArg === "string"
+  const to = isStr(toArg)
     ? parsePath(toArg)
     : { ...toArg };
 
-  let isEmptyPath = toArg === "" || to.pathname === "";
-  let toPathname = isEmptyPath ? "/" : to.pathname;
+  const isEmptyPath = toArg === "" || to.pathname === ""
+  , toPathname = isEmptyPath ? "/" : to.pathname;
   let from;
   if (toPathname == null) {
     from = locationPathname;
   } else {
     let routePathnameIndex = routePathnames.length - 1;
     if (!isPathRelative && toPathname.startsWith("..")) {
-      let toSegments = toPathname.split("/");
+      const toSegments = toPathname.split("/");
       while (toSegments[0] === "..") {
         toSegments.shift();
         routePathnameIndex -= 1;
@@ -158,9 +165,9 @@ function resolveTo(
     }
     from = routePathnameIndex >= 0 ? routePathnames[routePathnameIndex] : "/";
   }
-  let path = resolvePath(to, from);
-  let hasExplicitTrailingSlash = toPathname && toPathname !== "/" && toPathname.endsWith("/");
-  let hasCurrentTrailingSlash = (isEmptyPath || toPathname === ".") && locationPathname.endsWith("/");
+  const path = resolvePath(to, from)
+  , hasExplicitTrailingSlash = toPathname && toPathname !== "/" && toPathname.endsWith("/")
+  , hasCurrentTrailingSlash = (isEmptyPath || toPathname === ".") && locationPathname.endsWith("/");
   if (!path.pathname.endsWith("/") && (hasExplicitTrailingSlash || hasCurrentTrailingSlash)) {
     path.pathname += "/";
   }
@@ -169,27 +176,27 @@ function resolveTo(
 
 function useNavigateUnstable() {
 
-  let dataRouterContext = useContext(DataRouterContext);
-  let { basename, navigator } = useContext(NavigationContext);
-  let { matches } = useContext(RouteContext);
-  let { pathname: locationPathname } = useLocation();
+  const dataRouterContext = useContext(DataRouterContext)
+  , { basename, navigator } = useContext(NavigationContext)
+  , { matches } = useContext(RouteContext)
+  , { pathname: locationPathname } = useLocation()
 
-  let routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
+  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches))
 
-  let activeRef = useRef(false);
+  , activeRef = useRef(false);
 
   useLayoutEffect(() => {
     activeRef.current = true;
   })
 
-  let navigate = useCallback(
+  const navigate = useCallback(
     (to, options = {}) => {
       if (!activeRef.current) return;
-      if (typeof to === "number") {
+      if (isNumber(to)) {
         navigator.go(to);
         return;
       }
-      let path = resolveTo(
+      const path = resolveTo(
         to,
         JSON.parse(routePathnamesJson),
         locationPathname,
@@ -198,7 +205,7 @@ function useNavigateUnstable() {
       if (dataRouterContext == null && basename !== "/") {
         path.pathname = path.pathname === "/" ? basename : joinPaths([basename, path.pathname]);
       }
-      (!!options.replace ? navigator.replace : navigator.push)(
+      (options.replace ? navigator.replace : navigator.push)(
         path,
         options.state,
         options
@@ -232,7 +239,7 @@ function _renderMatches(
   parentMatches = [],
   dataRouterOpts
 ) {
-  let dataRouterState = dataRouterOpts?.state;
+  const dataRouterState = dataRouterOpts?.state;
   if (matches == null) {
     if (!dataRouterState) {
       return null;
@@ -246,9 +253,9 @@ function _renderMatches(
     }
   }
   let renderedMatches = matches;
-  let errors = dataRouterState?.errors;
+  const errors = dataRouterState?.errors;
   if (errors != null) {
-    let errorIndex = renderedMatches.findIndex(
+    const errorIndex = renderedMatches.findIndex(
       (m) => m.route.id && errors?.[m.route.id] !== void 0
     );
     renderedMatches = renderedMatches.slice(
@@ -261,13 +268,18 @@ function _renderMatches(
   if (dataRouterOpts && dataRouterState) {
     renderFallback = dataRouterState.renderFallback;
     for (let i = 0; i < renderedMatches.length; i++) {
-      let match = renderedMatches[i];
+      const match = renderedMatches[i];
       if (match.route.HydrateFallback || match.route.hydrateFallbackElement) {
         fallbackIndex = i;
       }
       if (match.route.id) {
-        let { loaderData, errors: errors2 } = dataRouterState;
-        let needsToRunLoader = match.route.loader && !loaderData.hasOwnProperty(match.route.id) && (!errors2 || errors2[match.route.id] === void 0);
+        const {
+          loaderData,
+          errors: errors2
+        } = dataRouterState
+        , needsToRunLoader = match.route.loader
+          && !hasOwnPropertySafe(loaderData, match.route.id)
+          && (!errors2 || errors2[match.route.id] === void 0);
         if (match.route.lazy || needsToRunLoader) {
           if (dataRouterOpts.isStatic) {
             renderFallback = true;
@@ -282,8 +294,6 @@ function _renderMatches(
       }
     }
   }
-  let onErrorHandler = dataRouterOpts?.onError;
-  let onError;
 
   return renderedMatches.reduceRight(
     (outlet, match, index) => {
@@ -292,8 +302,11 @@ function _renderMatches(
       let errorElement = null;
       let hydrateFallbackElement = null;
       if (dataRouterState) {
-        error = errors && match.route.id ? errors[match.route.id] : void 0;
-        errorElement = match.route.errorElement || defaultErrorElement;
+        error = errors && match.route.id
+          ? errors[match.route.id]
+          : void 0;
+        errorElement = match.route.errorElement;
+
         if (renderFallback) {
           if (fallbackIndex < 0 && index === 0) {
             shouldRenderHydrateFallback = true;
@@ -304,8 +317,8 @@ function _renderMatches(
           }
         }
       }
-      let matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1));
-      let getChildren = () => {
+      const matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1))
+      , getChildren = () => {
         let children;
         if (error) {
           children = errorElement;
@@ -343,32 +356,30 @@ function useRoutesImpl(
   dataRouterOpts
 ) {
 
-  let { navigator } = useContext(NavigationContext);
-  let { matches: parentMatches } = useContext(RouteContext);
-  let routeMatch = parentMatches[parentMatches.length - 1];
-  let parentParams = routeMatch ? routeMatch.params : {};
-  let parentPathname = routeMatch ? routeMatch.pathname : "/";
-  let parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
-  let parentRoute = routeMatch && routeMatch.route;
+  const { navigator } = useContext(NavigationContext)
+  , { matches: parentMatches } = useContext(RouteContext)
+  , routeMatch = parentMatches[parentMatches.length - 1]
+  , parentParams = routeMatch ? routeMatch.params : {}
+  , parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/"
 
-  let locationFromContext = useLocation();
+  const locationFromContext = useLocation();
   let location;
   if (locationArg) {
-    let parsedLocationArg = typeof locationArg === "string"
+    const parsedLocationArg = isStr(locationArg)
       ? parsePath(locationArg)
       : locationArg;
     location = parsedLocationArg;
   } else {
     location = locationFromContext;
   }
-  let pathname = location.pathname || "/";
+  const pathname = location.pathname || "/";
   let remainingPathname = pathname;
   if (parentPathnameBase !== "/") {
-    let parentSegments = parentPathnameBase.replace(/^\//, "").split("/");
-    let segments = pathname.replace(/^\//, "").split("/");
+    const parentSegments = parentPathnameBase.replace(/^\//, "").split("/")
+    , segments = pathname.replace(/^\//, "").split("/");
     remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
   }
-  let matches = dataRouterOpts && dataRouterOpts.state.matches.length ? (
+  const matches = dataRouterOpts?.state.matches.length ? (
     // If we're in a data router, use the matches we've already identified but ensure
     // we have the latest route instances from the manifest in case elements have changed
     dataRouterOpts.state.matches.map(
@@ -378,8 +389,8 @@ function useRoutesImpl(
     )
   ) : matchRoutes(routes, { pathname: remainingPathname });
 
-  let renderedMatches = _renderMatches(
-    matches && matches.map(
+  const renderedMatches = _renderMatches(
+    matches?.map(
       (match) => Object.assign({}, match, {
         params: Object.assign({}, parentParams, match.params),
         pathname: joinPaths([
@@ -451,8 +462,8 @@ export function Router({
   static: staticProp = false,
   useTransitions
 }) {
-  let basename = basenameProp.replace(/^\/*/, "/");
-  let navigationContext = useMemo(
+  const basename = basenameProp.replace(/^\/*/, "/")
+  , navigationContext = useMemo(
     () => ({
       basename,
       navigator,
@@ -462,19 +473,19 @@ export function Router({
     }),
     [basename, navigator, staticProp, useTransitions]
   );
-  if (typeof locationProp === "string") {
+  if (isStr(locationProp)) {
     locationProp = parsePath(locationProp);
   }
-  let {
+  const {
     pathname = "/",
     search = "",
     hash = "",
     state = null,
     key = "default",
     mask
-  } = locationProp;
-  let locationContext = useMemo(() => {
-    let trailingPathname = stripBasename(pathname, basename);
+  } = locationProp
+  , locationContext = useMemo(() => {
+    const trailingPathname = stripBasename(pathname, basename);
     if (trailingPathname == null) {
       return null;
     }
@@ -499,6 +510,9 @@ export function Router({
   );
 }
 
+function normalizeProtocolRelativeUrl(url, protocol) {
+  return protocol + url.replace(/\\/g, "/");
+}
 
 export function Navigate({
   to,
@@ -506,18 +520,16 @@ export function Navigate({
   state,
   relative
 }) {
-  let { static: isStatic } = useContext(NavigationContext);
-
-  let { matches } = useContext(RouteContext);
-  let { pathname: locationPathname } = useLocation();
-  let navigate = useNavigate();
-  let path = resolveTo(
+  const { matches } = useContext(RouteContext)
+  , { pathname: locationPathname } = useLocation()
+  , navigate = useNavigate()
+  , path = resolveTo(
     to,
     getResolveToMatches(matches),
     locationPathname,
     relative === "path"
-  );
-  let jsonPath = JSON.stringify(path);
+  )
+  , jsonPath = JSON.stringify(path);
   useEffect(() => {
     navigate(JSON.parse(jsonPath), { replace: replace2, state, relative });
   }, [navigate, jsonPath, relative, replace2, state]);
@@ -529,28 +541,28 @@ const ABSOLUTE_URL_REGEX = /^(?:[a-z][a-z0-9+.-]*:|[\\/]{2})/i;
 const PROTOCOL_RELATIVE_URL_REGEX = /^[\\/]{2}/;
 function parseToInfo(_to, basename) {
   let to = _to;
-  if (typeof to !== "string" || !ABSOLUTE_URL_REGEX.test(to)) {
+  if (!isStr(to) || !ABSOLUTE_URL_REGEX.test(to)) {
     return {
       absoluteURL: void 0,
       isExternal: false,
       to
     };
   }
-  let absoluteURL = to;
+  const absoluteURL = to;
   let isExternal = false;
-  if (isBrowser) {
-    try {
-      let currentUrl = new URL(window.location.href);
-      let targetUrl = PROTOCOL_RELATIVE_URL_REGEX.test(to) ? new URL(normalizeProtocolRelativeUrl(to, currentUrl.protocol)) : new URL(to);
-      let path = stripBasename(targetUrl.pathname, basename);
-      if (targetUrl.origin === currentUrl.origin && path != null) {
-        to = path + targetUrl.search + targetUrl.hash;
-      } else {
-        isExternal = true;
-      }
-    } catch (e) {
-      console.log("Link contain an invalid URL");
+  try {
+    const currentUrl = new URL(window.location.href)
+    , targetUrl = PROTOCOL_RELATIVE_URL_REGEX.test(to)
+      ? new URL(normalizeProtocolRelativeUrl(to, currentUrl.protocol))
+      : new URL(to)
+    , path = stripBasename(targetUrl.pathname, basename);
+    if (targetUrl.origin === currentUrl.origin && path != null) {
+      to = path + targetUrl.search + targetUrl.hash;
+    } else {
+      isExternal = true;
     }
+  } catch (_err) {
+    console.log("Link contain an invalid URL");
   }
   return {
     absoluteURL,
@@ -587,43 +599,39 @@ function useHref(
    });
 }
 
-function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
-}
-function shouldProcessLinkClick(event, target) {
-  return event.button === 0
-    && (!target || target === "_self")  // Ignore everything but left clicks
-    && !isModifiedEvent(event); // Let browser handle "target=_blank" etc.
-}
+const isModifiedEvent = (
+  evt
+) => !!(evt.metaKey
+  || evt.altKey
+  || evt.ctrlKey
+  || evt.shiftKey
+);
+
+const shouldProcessLinkClick = (
+  evt,
+  target
+) => evt.button === 0
+  && (!target || target === "_self")  // Ignore everything but left clicks
+  && !isModifiedEvent(evt); // Let browser handle "target=_blank" etc.
+
 function useLinkClickHandler(to, {
   target,
   replace: replaceProp,
-  mask,
-  state,
-  preventScrollReset,
-  relative,
-  viewTransition,
-  defaultShouldRevalidate,
-  useTransitions
+  relative
 } = {}) {
-  let navigate = useNavigate();
-  let location = useLocation();
-  let path = useResolvedPath(to, { relative });
+  const navigate = useNavigate()
+  , location = useLocation()
+  , path = useResolvedPath(to, { relative });
   return useCallback(
-    (event) => {
-      if (shouldProcessLinkClick(event, target)) {
-        event.preventDefault();
-        let replace2 = replaceProp !== void 0 ? replaceProp : createPath(location) === createPath(path);
-        let doNavigate = () => navigate(to, {
-          replace: replace2,
-          mask,
-          state,
-          preventScrollReset,
-          relative,
-          viewTransition,
-          defaultShouldRevalidate
+    (evt) => {
+      if (shouldProcessLinkClick(evt, target)) {
+        evt.preventDefault();
+        navigate(to, {
+           replace: replaceProp === void 0
+             ? createPath(location) === createPath(path)
+             : replaceProp,
+           relative
         });
-        doNavigate();
       }
     },
     [
@@ -631,82 +639,48 @@ function useLinkClickHandler(to, {
       navigate,
       path,
       replaceProp,
-      mask,
-      state,
       target,
       to,
-      preventScrollReset,
-      relative,
-      viewTransition,
-      defaultShouldRevalidate,
-      useTransitions
+      relative
     ]
   );
 }
 
 const Link = ({
     onClick,
-    discover = "render",
-    prefetch = "none",
     relative,
-    reloadDocument,
     replace: replace2,
-    mask,
-    state,
     target,
     to,
-    preventScrollReset,
-    viewTransition,
-    defaultShouldRevalidate,
     children,
     ...restProps
   }) => {
-    let { basename, navigator, useTransitions } = useContext(NavigationContext);
-    let isAbsolute = typeof to === "string"
-      && ABSOLUTE_URL_REGEX.test(to);
-    let parsed = parseToInfo(to, basename);
-    to = parsed.to;
-    let href = useHref(to, { relative });
-    let location = useLocation();
-    let maskedHref = null;
-    if (mask) {
-      let resolved = resolveTo(
-        mask,
-        [],
-        location.mask ? location.mask.pathname : "/",
-        true
-      );
-      if (basename !== "/") {
-        resolved.pathname = resolved.pathname === "/" ? basename : joinPaths([basename, resolved.pathname]);
-      }
-      maskedHref = navigator.createHref(resolved);
-    }
+    const {
+      basename
+    } = useContext(NavigationContext)
 
-    let internalOnClick = useLinkClickHandler(to, {
-      replace: replace2,
-      mask,
-      state,
-      target,
-      preventScrollReset,
-      relative,
-      viewTransition,
-      defaultShouldRevalidate,
-      useTransitions
+    , parsed = parseToInfo(to, basename)
+    , parsedTo = parsed.to
+    , href = useHref(parsedTo, { relative })
+
+    , internalOnClick = useLinkClickHandler(parsedTo, {
+        replace: replace2,
+        target,
+        relative
     });
 
-    function handleClick(event) {
-      if (onClick) onClick(event);
-      if (!event.defaultPrevented) {
-        internalOnClick(event);
+    function handleClick(evt) {
+      if (onClick) onClick(evt);
+      if (!evt.defaultPrevented) {
+        internalOnClick(evt);
       }
-
     }
-    const isSpaLink = !(parsed.isExternal || reloadDocument);
+
     return (
       <a
          {...restProps}
-         href={(isSpaLink ? maskedHref : void 0) || parsed.absoluteURL || href}
-         onClick={isSpaLink ? handleClick : onClick}
+         href={href}
+         onClick={handleClick}
          target={target}
       >
         {children}
@@ -717,10 +691,10 @@ const Link = ({
 Link.displayName = "Link";
 
 function useResolvedPath(to, { relative } = {}) {
-  let { matches } = useContext(RouteContext);
-  let { pathname: locationPathname } = useLocation();
+  const { matches } = useContext(RouteContext)
+  , { pathname: locationPathname } = useLocation()
+  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
 
-  let routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
   return useMemo(
     () => resolveTo(
       to,
@@ -733,39 +707,36 @@ function useResolvedPath(to, { relative } = {}) {
 }
 
 export const NavLink = ({
-    "aria-current": ariaCurrentProp = "page",
-    caseSensitive = false,
-    className: classNameProp = "",
-    end = false,
-    style: styleProp,
-    to,
-    viewTransition,
-    children,
-    ...restProps
-  }) => {
-    let path = useResolvedPath(to, { relative: restProps.relative });
-    let location = useLocation();
+  "aria-current": ariaCurrentProp = "page",
+  end = false,
+  className,
+  style,
+  to,
+  children,
+  ...restProps
+}) => {
+    const path = useResolvedPath(
+      to,
+      { relative: restProps.relative }
+    )
+    , {
+      navigator
+    } = useContext(NavigationContext)
+    , location = useLocation()
 
-    let { navigator, basename } = useContext(NavigationContext);
+    , toPathname = (navigator.encodeLocation
+      ? navigator.encodeLocation(path).pathname
+      : path.pathname).toLowerCase()
+    , locationPathname = location.pathname.toLowerCase()
 
-
-    let toPathname = navigator.encodeLocation ? navigator.encodeLocation(path).pathname : path.pathname;
-    let locationPathname = location.pathname;
-    let nextLocationPathname = null;
-
-    if (!caseSensitive) {
-      locationPathname = locationPathname.toLowerCase();
-      nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null;
-      toPathname = toPathname.toLowerCase();
-    }
-    if (nextLocationPathname && basename) {
-      nextLocationPathname = stripBasename(nextLocationPathname, basename) || nextLocationPathname;
-    }
-    const endSlashPosition = toPathname !== "/" && toPathname.endsWith("/")
-      ? toPathname.length - 1
-      : toPathname.length
-    , isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(endSlashPosition) === "/"
-    , isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
+    , endSlashPosition = toPathname !== "/" && toPathname.endsWith("/")
+       ? toPathname.length - 1
+       : toPathname.length
+    , isActive = locationPathname === toPathname
+       || !end
+       && locationPathname.startsWith(toPathname)
+       && locationPathname.charAt(endSlashPosition) === "/"
+    , isPending = false;
 
     return (
       <Link
@@ -775,16 +746,15 @@ export const NavLink = ({
           : void 0
         }
         className={[
-          classNameProp,
+          className,
           isActive ? "active" : null,
           isPending ? "pending" : null,
         ].filter(Boolean).join(" ")}
-        style={styleProp}
+        style={style}
         to={to}
-        viewTransition={viewTransition}
       >
-         {typeof children === "function"
-           ? children({isActive, isPending})
+         {isFn(children)
+           ? children({ isActive, isPending })
            : children
          }
       </Link>
