@@ -20,3 +20,11 @@ export const isArrEmpty = (
   arr /*: mixed*/
 ) /*: boolean*/ => !isArr(arr)
   || arr.length === 0
+
+  const _hasOwnProperty = Object.prototype.hasOwnProperty
+  export const hasOwnPropertySafe = (
+    item,
+    propName
+  ) => isObj(item)
+   && isStr(propName)
+   && _hasOwnProperty.call(item, propName)
