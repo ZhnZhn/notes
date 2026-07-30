@@ -9,6 +9,12 @@ export const isBool = _fIsTypeof("boolean")
 export const isFn = _fIsTypeof("function")
 export const isStr = _fIsTypeof("string")
 
+const isTypeNumber = _fIsTypeof("number")
+export const isNumber = (
+  value
+) => isTypeNumber(value)
+  && value - value === 0
+
 export const isObj = (
   value /*: mixed*/
 ) /*: boolean*/ => typeof value === "object"
