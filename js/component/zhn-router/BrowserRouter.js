@@ -3,12 +3,13 @@
 exports.__esModule = true;
 exports.BrowserRouter = BrowserRouter;
 var _react = require("react");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _matchRouters = require("./matchRouters");
 var _Router = require("./Router");
 var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const PopStateEventType = "popstate";
-const isLocation = obj => typeof obj === "object" && obj != null && "pathname" in obj && "search" in obj && "hash" in obj && "state" in obj && "key" in obj;
+const isLocation = obj => (0, _isTypeFn.isObj)(obj) && "pathname" in obj && "search" in obj && "hash" in obj && "state" in obj && "key" in obj;
 const getHistoryState = (location, index) => ({
   usr: location.state,
   key: location.key,
@@ -28,7 +29,7 @@ function createBrowserURLImpl(windowImpl, to, isAbsolute) {
   if (windowImpl) {
     base = windowImpl.location.origin !== "null" ? windowImpl.location.origin : windowImpl.location.href;
   }
-  let href = typeof to === "string" ? to : (0, _RouterFn.createPath)(to);
+  let href = (0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to);
   href = href.replace(/ $/, "%20");
   if (!isAbsolute && PROTOCOL_RELATIVE_URL_REGEX.test(href)) {
     href = base + href;
@@ -38,30 +39,29 @@ function createBrowserURLImpl(windowImpl, to, isAbsolute) {
 function createKey() {
   return Math.random().toString(36).substring(2, 10);
 }
-function createLocation(current, to, state, key, mask) {
+const createLocation = function (current, to, state, key, mask) {
   if (state === void 0) {
     state = null;
   }
-  let location = {
-    pathname: typeof current === "string" ? current : current.pathname,
+  return {
+    pathname: (0, _isTypeFn.isStr)(current) ? current : current.pathname,
     search: "",
     hash: "",
-    ...(typeof to === "string" ? (0, _matchRouters.parsePath)(to) : to),
+    ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
     state,
-    key: to && to.key || key || createKey(),
+    key: to?.key || key || createKey(),
     mask
   };
-  return location;
-}
+};
 function getUrlBasedHistory(getLocation, createHref2, validateLocation, options) {
   if (options === void 0) {
     options = {};
   }
-  let {
-    window: window2 = document.defaultView,
-    v5Compat = false
-  } = options;
-  let globalHistory = window2.history;
+  const {
+      window: window2 = document.defaultView,
+      v5Compat = false
+    } = options,
+    globalHistory = window2.history;
   let action = "POP" /* Pop */;
   let listener = null;
   let index = getIndex();
@@ -73,15 +73,15 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options)
     }, "");
   }
   function getIndex() {
-    let state = globalHistory.state || {
+    const state = globalHistory.state || {
       idx: null
     };
     return state.idx;
   }
   function handlePop() {
     action = "POP" /* Pop */;
-    let nextIndex = getIndex();
-    let delta = nextIndex == null ? null : nextIndex - index;
+    const nextIndex = getIndex(),
+      delta = nextIndex == null ? null : nextIndex - index;
     index = nextIndex;
     if (listener) {
       listener({
@@ -93,11 +93,11 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options)
   }
   function push(to, state) {
     action = "PUSH" /* Push */;
-    let location = isLocation(to) ? to : createLocation(history.location, to, state);
+    const location = isLocation(to) ? to : createLocation(history.location, to, state);
     if (validateLocation) validateLocation(location, to);
     index = getIndex() + 1;
-    let historyState = getHistoryState(location, index);
-    let url = history.createHref(location.mask || location);
+    const historyState = getHistoryState(location, index),
+      url = history.createHref(location.mask || location);
     try {
       globalHistory.pushState(historyState, "", url);
     } catch (error) {
@@ -116,11 +116,11 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options)
   }
   function replace2(to, state) {
     action = "REPLACE" /* Replace */;
-    let location = isLocation(to) ? to : createLocation(history.location, to, state);
+    const location = isLocation(to) ? to : createLocation(history.location, to, state);
     if (validateLocation) validateLocation(location, to);
     index = getIndex();
-    let historyState = getHistoryState(location, index);
-    let url = history.createHref(location.mask || location);
+    const historyState = getHistoryState(location, index),
+      url = history.createHref(location.mask || location);
     globalHistory.replaceState(historyState, "", url);
     if (v5Compat && listener) {
       listener({
@@ -133,7 +133,7 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options)
   function createURL(to) {
     return createBrowserURLImpl(window2, to);
   }
-  let history = {
+  const history = {
     get action() {
       return action;
     },
@@ -156,7 +156,7 @@ function getUrlBasedHistory(getLocation, createHref2, validateLocation, options)
     },
     createURL,
     encodeLocation(to) {
-      let url = createURL(to);
+      const url = createURL(to);
       return {
         pathname: url.pathname,
         search: url.search,
@@ -176,24 +176,24 @@ function createBrowserHistory(options) {
     options = {};
   }
   function createBrowserLocation(window2, globalHistory) {
-    let maskedLocation = globalHistory.state?.masked;
-    let {
-      pathname,
-      search,
-      hash
-    } = maskedLocation || window2.location;
+    const maskedLocation = globalHistory.state?.masked,
+      {
+        pathname,
+        search,
+        hash
+      } = maskedLocation || window2.location;
     return createLocation("", {
       pathname,
       search,
       hash
-    }, globalHistory.state && globalHistory.state.usr || null, globalHistory.state && globalHistory.state.key || "default", maskedLocation ? {
+    }, globalHistory.state?.usr || null, globalHistory.state?.key || "default", maskedLocation ? {
       pathname: window2.location.pathname,
       search: window2.location.search,
       hash: window2.location.hash
     } : void 0);
   }
-  function createBrowserHref(window2, to) {
-    return typeof to === "string" ? to : (0, _RouterFn.createPath)(to);
+  function createBrowserHref(_window2, to) {
+    return (0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to);
   }
   return getUrlBasedHistory(createBrowserLocation, createBrowserHref, null, options);
 }
