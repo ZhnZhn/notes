@@ -17,6 +17,8 @@ module.exports = defineConfig([
     globals: {
       window: true,
       document: true,
+      URL: true,
+      DOMException: true                         
     },
     parser: babelParser,
     parserOptions: {
@@ -73,7 +75,7 @@ module.exports = defineConfig([
       globals: {       
         describe: true,
         test: true,                   
-        expect: true                         
+        expect: true
       },
       parser: babelParser,
       parserOptions: {
