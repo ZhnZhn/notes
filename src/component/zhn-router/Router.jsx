@@ -138,39 +138,25 @@ function resolvePath(to, fromPathname = "/") {
   };
 }
 
-function resolveTo(
+const resolveTo = (
   toArg,
   routePathnames,
-  locationPathname,
-  relative
-) {
-  const isPathRelative = relative === "path"
-  , to = isStr(toArg)
+  locationPathname
+) => {
+  const to = isStr(toArg)
     ? parsePath(toArg)
     : { ...toArg }
   , isEmptyPath = toArg === "" || to.pathname === ""
   , toPathname = isEmptyPath
     ? "/"
-    : to.pathname;
-  
-  let from;
-  if (toPathname == null) {
-    from = locationPathname;
-  } else {
-    let routePathnameIndex = routePathnames.length - 1;
-    if (!isPathRelative && toPathname.startsWith("..")) {
-      const toSegments = toPathname.split("/");
-      while (toSegments[0] === "..") {
-        toSegments.shift();
-        routePathnameIndex -= 1;
-      }
-      to.pathname = toSegments.join("/");
-    }
-    from = routePathnameIndex >= 0 ? routePathnames[routePathnameIndex] : "/";
-  }
-  const path = resolvePath(to, from)
+    : to.pathname
+  , from = toPathname == null
+    ? locationPathname
+    : "/"
+  , path = resolvePath(to, from)
   , hasExplicitTrailingSlash = toPathname && toPathname !== "/" && toPathname.endsWith("/")
   , hasCurrentTrailingSlash = (isEmptyPath || toPathname === ".") && locationPathname.endsWith("/");
+
   if (!path.pathname.endsWith("/") && (hasExplicitTrailingSlash || hasCurrentTrailingSlash)) {
     path.pathname += "/";
   }
@@ -202,8 +188,7 @@ function useNavigateUnstable() {
       const path = resolveTo(
         to,
         JSON.parse(routePathnamesJson),
-        locationPathname,
-        options.relative
+        locationPathname
       );
       if (dataRouterContext == null && basename !== "/") {
         path.pathname = path.pathname === "/" ? basename : joinPaths([basename, path.pathname]);
@@ -520,8 +505,7 @@ function normalizeProtocolRelativeUrl(url, protocol) {
 export function Navigate({
   to,
   replace: replace2,
-  state,
-  relative
+  state
 }) {
   const { matches } = useContext(RouteContext)
   , { pathname: locationPathname } = useLocation()
@@ -529,13 +513,12 @@ export function Navigate({
   , path = resolveTo(
     to,
     getResolveToMatches(matches),
-    locationPathname,
-    relative
+    locationPathname
   )
   , jsonPath = JSON.stringify(path);
   useEffect(() => {
-    navigate(JSON.parse(jsonPath), { replace: replace2, state, relative });
-  }, [navigate, jsonPath, relative, replace2, state]);
+    navigate(JSON.parse(jsonPath), { replace: replace2, state });
+  }, [navigate, jsonPath, replace2, state]);
   return null;
 }
 
@@ -575,8 +558,7 @@ function parseToInfo(_to, basename) {
 }
 
 const useResolvedPath = (
-  to,
-  { relative } = {}
+  to
 ) => {
   const { matches } = useContext(RouteContext)
   , { pathname: locationPathname } = useLocation()
@@ -586,16 +568,14 @@ const useResolvedPath = (
     () => resolveTo(
       to,
       JSON.parse(routePathnamesJson),
-      locationPathname,
-      relative
+      locationPathname
     ),
-    [to, routePathnamesJson, locationPathname, relative]
+    [to, routePathnamesJson, locationPathname]
   );
 }
 
 function useHref(
-  to,
-  { relative } = {}
+  to
 ) {
   const {
     basename,
@@ -605,7 +585,7 @@ function useHref(
     hash,
     pathname,
     search
-  } = useResolvedPath(to, { relative });
+  } = useResolvedPath(to);
 
   let joinedPathname = pathname;
   if (basename !== "/") {
@@ -638,12 +618,11 @@ const shouldProcessLinkClick = (
 
 function useLinkClickHandler(to, {
   target,
-  replace: replaceProp,
-  relative
+  replace: replaceProp
 } = {}) {
   const navigate = useNavigate()
   , location = useLocation()
-  , path = useResolvedPath(to, { relative });
+  , path = useResolvedPath(to);
   return useCallback(
     (evt) => {
       if (shouldProcessLinkClick(evt, target)) {
@@ -651,8 +630,7 @@ function useLinkClickHandler(to, {
         navigate(to, {
            replace: replaceProp === void 0
              ? createPath(location) === createPath(path)
-             : replaceProp,
-           relative
+             : replaceProp
         });
       }
     },
@@ -662,15 +640,13 @@ function useLinkClickHandler(to, {
       path,
       replaceProp,
       target,
-      to,
-      relative
+      to
     ]
   );
 }
 
 const Link = ({
     onClick,
-    relative,
     replace: replace2,
     target,
     to,
@@ -683,12 +659,11 @@ const Link = ({
 
     , parsed = parseToInfo(to, basename)
     , parsedTo = parsed.to
-    , href = useHref(parsedTo, { relative })
+    , href = useHref(parsedTo)
 
     , internalOnClick = useLinkClickHandler(parsedTo, {
         replace: replace2,
-        target,
-        relative
+        target
     });
 
     function handleClick(evt) {
@@ -721,10 +696,7 @@ export const NavLink = ({
   children,
   ...restProps
 }) => {
-    const path = useResolvedPath(
-      to,
-      { relative: restProps.relative }
-    )
+    const path = useResolvedPath(to)
     , {
       navigator
     } = useContext(NavigationContext)

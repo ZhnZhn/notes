@@ -102,36 +102,21 @@ function resolvePath(to, fromPathname) {
     hash: normalizeHash(hash)
   };
 }
-function resolveTo(toArg, routePathnames, locationPathname, relative) {
-  const isPathRelative = relative === "path",
-    to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
+const resolveTo = (toArg, routePathnames, locationPathname) => {
+  const to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
       ...toArg
     },
     isEmptyPath = toArg === "" || to.pathname === "",
-    toPathname = isEmptyPath ? "/" : to.pathname;
-  let from;
-  if (toPathname == null) {
-    from = locationPathname;
-  } else {
-    let routePathnameIndex = routePathnames.length - 1;
-    if (!isPathRelative && toPathname.startsWith("..")) {
-      const toSegments = toPathname.split("/");
-      while (toSegments[0] === "..") {
-        toSegments.shift();
-        routePathnameIndex -= 1;
-      }
-      to.pathname = toSegments.join("/");
-    }
-    from = routePathnameIndex >= 0 ? routePathnames[routePathnameIndex] : "/";
-  }
-  const path = resolvePath(to, from),
+    toPathname = isEmptyPath ? "/" : to.pathname,
+    from = toPathname == null ? locationPathname : "/",
+    path = resolvePath(to, from),
     hasExplicitTrailingSlash = toPathname && toPathname !== "/" && toPathname.endsWith("/"),
     hasCurrentTrailingSlash = (isEmptyPath || toPathname === ".") && locationPathname.endsWith("/");
   if (!path.pathname.endsWith("/") && (hasExplicitTrailingSlash || hasCurrentTrailingSlash)) {
     path.pathname += "/";
   }
   return path;
-}
+};
 function useNavigateUnstable() {
   const dataRouterContext = (0, _react.useContext)(DataRouterContext),
     {
@@ -158,7 +143,7 @@ function useNavigateUnstable() {
       navigator.go(to);
       return;
     }
-    const path = resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, options.relative);
+    const path = resolveTo(to, JSON.parse(routePathnamesJson), locationPathname);
     if (dataRouterContext == null && basename !== "/") {
       path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, path.pathname]);
     }
@@ -411,8 +396,7 @@ function Navigate(_ref3) {
   let {
     to,
     replace: replace2,
-    state,
-    relative
+    state
   } = _ref3;
   const {
       matches
@@ -421,15 +405,14 @@ function Navigate(_ref3) {
       pathname: locationPathname
     } = useLocation(),
     navigate = useNavigate(),
-    path = resolveTo(to, getResolveToMatches(matches), locationPathname, relative),
+    path = resolveTo(to, getResolveToMatches(matches), locationPathname),
     jsonPath = JSON.stringify(path);
   (0, _react.useEffect)(() => {
     navigate(JSON.parse(jsonPath), {
       replace: replace2,
-      state,
-      relative
+      state
     });
-  }, [navigate, jsonPath, relative, replace2, state]);
+  }, [navigate, jsonPath, replace2, state]);
   return null;
 }
 const ABSOLUTE_URL_REGEX = /^(?:[a-z][a-z0-9+.-]*:|[\\/]{2})/i;
@@ -463,10 +446,7 @@ function parseToInfo(_to, basename) {
     to
   };
 }
-const useResolvedPath = function (to, _temp) {
-  let {
-    relative
-  } = _temp === void 0 ? {} : _temp;
+const useResolvedPath = to => {
   const {
       matches
     } = (0, _react.useContext)(RouteContext),
@@ -474,12 +454,9 @@ const useResolvedPath = function (to, _temp) {
       pathname: locationPathname
     } = useLocation(),
     routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
-  return (0, _react.useMemo)(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative), [to, routePathnamesJson, locationPathname, relative]);
+  return (0, _react.useMemo)(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname), [to, routePathnamesJson, locationPathname]);
 };
-function useHref(to, _temp2) {
-  let {
-    relative
-  } = _temp2 === void 0 ? {} : _temp2;
+function useHref(to) {
   const {
       basename,
       navigator
@@ -488,9 +465,7 @@ function useHref(to, _temp2) {
       hash,
       pathname,
       search
-    } = useResolvedPath(to, {
-      relative
-    });
+    } = useResolvedPath(to);
   let joinedPathname = pathname;
   if (basename !== "/") {
     joinedPathname = pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, pathname]);
@@ -505,31 +480,26 @@ const isModifiedEvent = evt => !!(evt.metaKey || evt.altKey || evt.ctrlKey || ev
 const shouldProcessLinkClick = (evt, target) => evt.button === 0 && (!target || target === "_self") // Ignore everything but left clicks
 && !isModifiedEvent(evt); // Let browser handle "target=_blank" etc.
 
-function useLinkClickHandler(to, _temp3) {
+function useLinkClickHandler(to, _temp) {
   let {
     target,
-    replace: replaceProp,
-    relative
-  } = _temp3 === void 0 ? {} : _temp3;
+    replace: replaceProp
+  } = _temp === void 0 ? {} : _temp;
   const navigate = useNavigate(),
     location = useLocation(),
-    path = useResolvedPath(to, {
-      relative
-    });
+    path = useResolvedPath(to);
   return (0, _react.useCallback)(evt => {
     if (shouldProcessLinkClick(evt, target)) {
       evt.preventDefault();
       navigate(to, {
-        replace: replaceProp === void 0 ? (0, _RouterFn.createPath)(location) === (0, _RouterFn.createPath)(path) : replaceProp,
-        relative
+        replace: replaceProp === void 0 ? (0, _RouterFn.createPath)(location) === (0, _RouterFn.createPath)(path) : replaceProp
       });
     }
-  }, [location, navigate, path, replaceProp, target, to, relative]);
+  }, [location, navigate, path, replaceProp, target, to]);
 }
 const Link = _ref4 => {
   let {
     onClick,
-    relative,
     replace: replace2,
     target,
     to,
@@ -541,13 +511,10 @@ const Link = _ref4 => {
     } = (0, _react.useContext)(NavigationContext),
     parsed = parseToInfo(to, basename),
     parsedTo = parsed.to,
-    href = useHref(parsedTo, {
-      relative
-    }),
+    href = useHref(parsedTo),
     internalOnClick = useLinkClickHandler(parsedTo, {
       replace: replace2,
-      target,
-      relative
+      target
     });
   function handleClick(evt) {
     if (onClick) onClick(evt);
@@ -574,9 +541,7 @@ const NavLink = _ref5 => {
     children,
     ...restProps
   } = _ref5;
-  const path = useResolvedPath(to, {
-      relative: restProps.relative
-    }),
+  const path = useResolvedPath(to),
     {
       navigator
     } = (0, _react.useContext)(NavigationContext),
