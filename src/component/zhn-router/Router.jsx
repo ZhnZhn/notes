@@ -29,12 +29,12 @@ import {
   createPath
 } from './RouterFn';
 
-export function Route(_props) {}
+export const Route = (_props) => {}
 
-function createRoutesFromChildren(
+const createRoutesFromChildren = (
   children,
   parentPath = []
-) {
+) => {
   const routes = [];
   Children.forEach(children, (element, index) => {
     if (!isValidElement(element)) {
@@ -71,9 +71,8 @@ NavigationContext.displayName = "Navigation";
 const LocationContext = createContext(null);
 LocationContext.displayName = "Location";
 
-function useLocation() {
-  return useContext(LocationContext).location;
-}
+const useLocation = () => useContext(LocationContext)
+ .location;
 
 const DataRouterContext = createContext(null);
 DataRouterContext.displayName = "DataRouter";
@@ -85,20 +84,32 @@ const RouteContext = createContext({
 });
 RouteContext.displayName = "Route";
 
-function getPathContributingMatches(matches) {
-  return matches.filter(
-    (match, index) => index === 0 || match.route.path && match.route.path.length > 0
-  );
-}
-function getResolveToMatches(matches) {
+const getPathContributingMatches = (
+  matches
+) => matches.filter(
+  (match, index) => index === 0
+  || match.route.path && match.route.path.length > 0
+)
+
+, getResolveToMatches = (
+  matches
+) => {
   const pathMatches = getPathContributingMatches(matches);
   return pathMatches.map(
-    (match, idx) => idx === pathMatches.length - 1 ? match.pathname : match.pathnameBase
+    (match, idx) => idx === pathMatches.length - 1
+      ? match.pathname
+      : match.pathnameBase
   );
 }
 
-const removeTrailingSlash = (path) => path.replace(/\/+$/, "");
-function resolvePathname(relativePath, fromPathname) {
+, removeTrailingSlash = (
+  path
+) => path.replace(/\/+$/, "")
+
+, resolvePathname = (
+  relativePath,
+  fromPathname
+) => {
   const segments = removeTrailingSlash(fromPathname).split("/")
   , relativeSegments = relativePath.split("/");
   relativeSegments.forEach((segment) => {
@@ -108,13 +119,33 @@ function resolvePathname(relativePath, fromPathname) {
       segments.push(segment);
     }
   });
-  return segments.length > 1 ? segments.join("/") : "/";
+  return segments.length > 1
+    ? segments.join("/")
+    : "/";
 }
 
-const removeDoubleSlashes = (path) => path.replace(/[\\/]{2,}/g, "/");
-const normalizeSearch = (search) => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search;
-const normalizeHash = (hash) => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash;
-function resolvePath(to, fromPathname = "/") {
+, removeDoubleSlashes = (
+  path
+) => path.replace(/[\\/]{2,}/g, "/")
+, normalizeSearch = (
+  search
+) => !search || search === "?"
+  ? ""
+  : search.startsWith("?")
+  ? search
+  : "?" + search
+, normalizeHash = (
+  hash
+) => !hash || hash === "#"
+  ? ""
+  : hash.startsWith("#")
+  ? hash
+  : "#" + hash
+
+, resolvePath = (
+  to,
+  fromPathname = "/"
+) => {
   let {
     pathname: toPathname,
     search = "",
@@ -136,7 +167,7 @@ function resolvePath(to, fromPathname = "/") {
     search: normalizeSearch(search),
     hash: normalizeHash(hash)
   };
-}
+};
 
 const resolveTo = (
   toArg,
@@ -163,7 +194,7 @@ const resolveTo = (
   return path;
 }
 
-function useNavigateUnstable() {
+, useNavigateUnstable = () => {
 
   const dataRouterContext = useContext(DataRouterContext)
   , { basename, navigator } = useContext(NavigationContext)
@@ -210,23 +241,19 @@ function useNavigateUnstable() {
   return navigate;
 }
 
-function useNavigate() {
-  return useNavigateUnstable()
-}
+, useNavigate = () => useNavigateUnstable()
 
-function RenderedRoute(props) {
-  return (
-    <RouteContext.Provider value={props.routeContext}>
-        {props.children}
-    </RouteContext.Provider>
-  );
-}
+, RenderedRoute = (props) => (
+  <RouteContext.Provider value={props.routeContext}>
+    {props.children}
+  </RouteContext.Provider>
+)
 
-function _renderMatches(
+, _renderMatches = (
   matches,
   parentMatches = [],
   dataRouterOpts
-) {
+) => {
   const dataRouterState = dataRouterOpts?.state;
   if (matches == null) {
     if (!dataRouterState) {
@@ -336,13 +363,13 @@ function _renderMatches(
     },
     null
   );
-}
+};
 
-function useRoutesImpl(
+const useRoutesImpl = (
   routes,
   locationArg,
   dataRouterOpts
-) {
+) => {
 
   const { navigator } = useContext(NavigationContext)
   , { matches: parentMatches } = useContext(RouteContext)
@@ -429,19 +456,20 @@ function useRoutesImpl(
   return renderedMatches;
 }
 
-function useRoutes(routes, locationArg) {
-  return useRoutesImpl(routes, locationArg);
-}
+, useRoutes = (
+  routes,
+  locationArg
+) => useRoutesImpl(routes, locationArg);
 
-export function Routes({
+export const Routes = ({
   children,
   location
-}) {
-  return useRoutes(createRoutesFromChildren(children), location);
-}
+}) => useRoutes(
+  createRoutesFromChildren(children),
+  location
+)
 
-
-export function Router({
+export const Router = ({
   basename: basenameProp = "/",
   children = null,
   location: locationProp,
@@ -449,7 +477,7 @@ export function Router({
   navigator,
   static: staticProp = false,
   useTransitions
-}) {
+}) => {
   const basename = basenameProp.replace(/^\/*/, "/")
   , navigationContext = useMemo(
     () => ({
@@ -498,15 +526,16 @@ export function Router({
   );
 }
 
-function normalizeProtocolRelativeUrl(url, protocol) {
-  return protocol + url.replace(/\\/g, "/");
-}
+const normalizeProtocolRelativeUrl = (
+  url,
+  protocol
+) => protocol + url.replace(/\\/g, "/");
 
-export function Navigate({
+export const Navigate = ({
   to,
   replace: replace2,
   state
-}) {
+}) => {
   const { matches } = useContext(RouteContext)
   , { pathname: locationPathname } = useLocation()
   , navigate = useNavigate()
@@ -517,7 +546,11 @@ export function Navigate({
   )
   , jsonPath = JSON.stringify(path);
   useEffect(() => {
-    navigate(JSON.parse(jsonPath), { replace: replace2, state });
+    navigate(
+      JSON.parse(jsonPath), {
+        replace: replace2,
+        state
+      });
   }, [navigate, jsonPath, replace2, state]);
   return null;
 }
@@ -525,7 +558,10 @@ export function Navigate({
 
 const ABSOLUTE_URL_REGEX = /^(?:[a-z][a-z0-9+.-]*:|[\\/]{2})/i;
 const PROTOCOL_RELATIVE_URL_REGEX = /^[\\/]{2}/;
-function parseToInfo(_to, basename) {
+const parseToInfo = (
+  _to,
+  basename
+) => {
   let to = _to;
   if (!isStr(to) || !ABSOLUTE_URL_REGEX.test(to)) {
     return {
@@ -555,7 +591,7 @@ function parseToInfo(_to, basename) {
     isExternal,
     to
   };
-}
+};
 
 const useResolvedPath = (
   to
@@ -574,9 +610,9 @@ const useResolvedPath = (
   );
 }
 
-function useHref(
+, useHref = (
   to
-) {
+) => {
   const {
     basename,
     navigator
@@ -601,25 +637,25 @@ function useHref(
    });
 }
 
-const isModifiedEvent = (
+, isModifiedEvent = (
   evt
 ) => !!(evt.metaKey
   || evt.altKey
   || evt.ctrlKey
   || evt.shiftKey
-);
+)
 
-const shouldProcessLinkClick = (
+, shouldProcessLinkClick = (
   evt,
   target
 ) => evt.button === 0
   && (!target || target === "_self")  // Ignore everything but left clicks
-  && !isModifiedEvent(evt); // Let browser handle "target=_blank" etc.
+  && !isModifiedEvent(evt) // Let browser handle "target=_blank" etc.
 
-function useLinkClickHandler(to, {
+, useLinkClickHandler = (to, {
   target,
   replace: replaceProp
-} = {}) {
+} = {}) => {
   const navigate = useNavigate()
   , location = useLocation()
   , path = useResolvedPath(to);
@@ -645,46 +681,45 @@ function useLinkClickHandler(to, {
   );
 }
 
-const Link = ({
-    onClick,
-    replace: replace2,
-    target,
-    to,
-    children,
-    ...restProps
-  }) => {
-    const {
-      basename
-    } = useContext(NavigationContext)
+, Link = ({
+  onClick,
+  replace: replace2,
+  target,
+  to,
+  children,
+  ...restProps
+}) => {
+  const {
+    basename
+  } = useContext(NavigationContext)
 
-    , parsed = parseToInfo(to, basename)
-    , parsedTo = parsed.to
-    , href = useHref(parsedTo)
+  , parsed = parseToInfo(to, basename)
+  , parsedTo = parsed.to
+  , href = useHref(parsedTo)
 
-    , internalOnClick = useLinkClickHandler(parsedTo, {
-        replace: replace2,
-        target
-    });
+  , internalOnClick = useLinkClickHandler(parsedTo, {
+      replace: replace2,
+      target
+  })
 
-    function handleClick(evt) {
-      if (onClick) onClick(evt);
-      if (!evt.defaultPrevented) {
-        internalOnClick(evt);
-      }
+  , handleClick = (evt) => {
+    if (onClick) onClick(evt);
+    if (!evt.defaultPrevented) {
+      internalOnClick(evt);
     }
+  };
 
-    return (
-      <a
-         {...restProps}
-         href={href}
-         onClick={handleClick}
-         target={target}
-      >
-        {children}
-      </a>
-    );
-}
-
+  return (
+    <a
+       {...restProps}
+       href={href}
+       onClick={handleClick}
+       target={target}
+    >
+      {children}
+    </a>
+  );
+};
 Link.displayName = "Link";
 
 export const NavLink = ({
@@ -737,6 +772,5 @@ export const NavLink = ({
          }
       </Link>
     );
-}
-
+};
 NavLink.displayName = "NavLink";
