@@ -142,14 +142,17 @@ function resolveTo(
   toArg,
   routePathnames,
   locationPathname,
-  isPathRelative = false
+  relative
 ) {
-  const to = isStr(toArg)
+  const isPathRelative = relative === "path"
+  , to = isStr(toArg)
     ? parsePath(toArg)
-    : { ...toArg };
-
-  const isEmptyPath = toArg === "" || to.pathname === ""
-  , toPathname = isEmptyPath ? "/" : to.pathname;
+    : { ...toArg }
+  , isEmptyPath = toArg === "" || to.pathname === ""
+  , toPathname = isEmptyPath
+    ? "/"
+    : to.pathname;
+  
   let from;
   if (toPathname == null) {
     from = locationPathname;
@@ -200,7 +203,7 @@ function useNavigateUnstable() {
         to,
         JSON.parse(routePathnamesJson),
         locationPathname,
-        options.relative === "path"
+        options.relative
       );
       if (dataRouterContext == null && basename !== "/") {
         path.pathname = path.pathname === "/" ? basename : joinPaths([basename, path.pathname]);
@@ -527,7 +530,7 @@ export function Navigate({
     to,
     getResolveToMatches(matches),
     locationPathname,
-    relative === "path"
+    relative
   )
   , jsonPath = JSON.stringify(path);
   useEffect(() => {
@@ -561,7 +564,7 @@ function parseToInfo(_to, basename) {
     } else {
       isExternal = true;
     }
-  } catch (_err) {
+  } catch {
     console.log("Link contain an invalid URL");
   }
   return {
@@ -569,6 +572,25 @@ function parseToInfo(_to, basename) {
     isExternal,
     to
   };
+}
+
+const useResolvedPath = (
+  to,
+  { relative } = {}
+) => {
+  const { matches } = useContext(RouteContext)
+  , { pathname: locationPathname } = useLocation()
+  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
+
+  return useMemo(
+    () => resolveTo(
+      to,
+      JSON.parse(routePathnamesJson),
+      locationPathname,
+      relative
+    ),
+    [to, routePathnamesJson, locationPathname, relative]
+  );
 }
 
 function useHref(
@@ -689,22 +711,6 @@ const Link = ({
 }
 
 Link.displayName = "Link";
-
-function useResolvedPath(to, { relative } = {}) {
-  const { matches } = useContext(RouteContext)
-  , { pathname: locationPathname } = useLocation()
-  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
-
-  return useMemo(
-    () => resolveTo(
-      to,
-      JSON.parse(routePathnamesJson),
-      locationPathname,
-      relative === "path"
-    ),
-    [to, routePathnamesJson, locationPathname, relative]
-  );
-}
 
 export const NavLink = ({
   "aria-current": ariaCurrentProp = "page",

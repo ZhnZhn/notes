@@ -102,14 +102,12 @@ function resolvePath(to, fromPathname) {
     hash: normalizeHash(hash)
   };
 }
-function resolveTo(toArg, routePathnames, locationPathname, isPathRelative) {
-  if (isPathRelative === void 0) {
-    isPathRelative = false;
-  }
-  const to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
-    ...toArg
-  };
-  const isEmptyPath = toArg === "" || to.pathname === "",
+function resolveTo(toArg, routePathnames, locationPathname, relative) {
+  const isPathRelative = relative === "path",
+    to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
+      ...toArg
+    },
+    isEmptyPath = toArg === "" || to.pathname === "",
     toPathname = isEmptyPath ? "/" : to.pathname;
   let from;
   if (toPathname == null) {
@@ -160,7 +158,7 @@ function useNavigateUnstable() {
       navigator.go(to);
       return;
     }
-    const path = resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, options.relative === "path");
+    const path = resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, options.relative);
     if (dataRouterContext == null && basename !== "/") {
       path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, path.pathname]);
     }
@@ -423,7 +421,7 @@ function Navigate(_ref3) {
       pathname: locationPathname
     } = useLocation(),
     navigate = useNavigate(),
-    path = resolveTo(to, getResolveToMatches(matches), locationPathname, relative === "path"),
+    path = resolveTo(to, getResolveToMatches(matches), locationPathname, relative),
     jsonPath = JSON.stringify(path);
   (0, _react.useEffect)(() => {
     navigate(JSON.parse(jsonPath), {
@@ -456,7 +454,7 @@ function parseToInfo(_to, basename) {
     } else {
       isExternal = true;
     }
-  } catch (_err) {
+  } catch {
     console.log("Link contain an invalid URL");
   }
   return {
@@ -465,10 +463,23 @@ function parseToInfo(_to, basename) {
     to
   };
 }
-function useHref(to, _temp) {
+const useResolvedPath = function (to, _temp) {
   let {
     relative
   } = _temp === void 0 ? {} : _temp;
+  const {
+      matches
+    } = (0, _react.useContext)(RouteContext),
+    {
+      pathname: locationPathname
+    } = useLocation(),
+    routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
+  return (0, _react.useMemo)(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative), [to, routePathnamesJson, locationPathname, relative]);
+};
+function useHref(to, _temp2) {
+  let {
+    relative
+  } = _temp2 === void 0 ? {} : _temp2;
   const {
       basename,
       navigator
@@ -494,12 +505,12 @@ const isModifiedEvent = evt => !!(evt.metaKey || evt.altKey || evt.ctrlKey || ev
 const shouldProcessLinkClick = (evt, target) => evt.button === 0 && (!target || target === "_self") // Ignore everything but left clicks
 && !isModifiedEvent(evt); // Let browser handle "target=_blank" etc.
 
-function useLinkClickHandler(to, _temp2) {
+function useLinkClickHandler(to, _temp3) {
   let {
     target,
     replace: replaceProp,
     relative
-  } = _temp2 === void 0 ? {} : _temp2;
+  } = _temp3 === void 0 ? {} : _temp3;
   const navigate = useNavigate(),
     location = useLocation(),
     path = useResolvedPath(to, {
@@ -553,19 +564,6 @@ const Link = _ref4 => {
   });
 };
 Link.displayName = "Link";
-function useResolvedPath(to, _temp3) {
-  let {
-    relative
-  } = _temp3 === void 0 ? {} : _temp3;
-  const {
-      matches
-    } = (0, _react.useContext)(RouteContext),
-    {
-      pathname: locationPathname
-    } = useLocation(),
-    routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
-  return (0, _react.useMemo)(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative === "path"), [to, routePathnamesJson, locationPathname, relative]);
-}
 const NavLink = _ref5 => {
   let {
     "aria-current": ariaCurrentProp = "page",
