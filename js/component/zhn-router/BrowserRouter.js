@@ -20,17 +20,10 @@ const getHistoryState = (location, index) => ({
     hash: location.hash
   } : void 0
 });
-const PROTOCOL_RELATIVE_URL_REGEX = /^[\\/]{2}/;
-const createBrowserURLImpl = function (windowImpl, to, isAbsolute) {
-    if (isAbsolute === void 0) {
-      isAbsolute = false;
-    }
+const createBrowserURLImpl = (windowImpl, to) => {
     const windowImplLocation = windowImpl?.location,
-      base = !windowImplLocation ? "http://localhost" : windowImplLocation.origin !== "null" ? windowImplLocation.origin : windowImplLocation.href;
-    let href = ((0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to)).replace(/ $/, "%20");
-    if (!isAbsolute && PROTOCOL_RELATIVE_URL_REGEX.test(href)) {
-      href = base + href;
-    }
+      base = !windowImplLocation ? "http://localhost" : windowImplLocation.origin !== "null" ? windowImplLocation.origin : windowImplLocation.href,
+      href = ((0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to)).replace(/ $/, "%20");
     return new URL(href, base);
   },
   createKey = () => Math.random().toString(36).substring(2, 10),

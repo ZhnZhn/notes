@@ -37,24 +37,20 @@ const getHistoryState = (
   } : void 0
 });
 
-const PROTOCOL_RELATIVE_URL_REGEX = /^[\\/]{2}/;
 const createBrowserURLImpl = (
   windowImpl,
-  to,
-  isAbsolute = false
+  to
 ) => {
   const windowImplLocation = windowImpl?.location
   , base = !windowImplLocation
     ? "http://localhost"
     : windowImplLocation.origin !== "null"
     ? windowImplLocation.origin
-    : windowImplLocation.href;
+    : windowImplLocation.href
 
-  let href = (isStr(to) ? to : createPath(to))
+  , href = (isStr(to) ? to : createPath(to))
     .replace(/ $/, "%20");
-  if (!isAbsolute && PROTOCOL_RELATIVE_URL_REGEX.test(href)) {
-    href = base + href;
-  }
+
   return new URL(href, base);
 }
 
