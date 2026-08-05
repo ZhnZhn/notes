@@ -288,11 +288,12 @@ const matchRouteBranch = (
 ) => {
   const { routesMeta } = branch
   , matchedParams = {}
-  , matches = [];
+  , matches = []
+  , numberOfMetaRoutes = routesMeta.length - 1;
   let matchedPathname = "/";
   for (let i = 0; i < routesMeta.length; ++i) {
     const meta = routesMeta[i]
-    , end = i === routesMeta.length - 1
+    , end = i === numberOfMetaRoutes
     , remainingPathname = matchedPathname === "/"
       ? pathname
       : pathname.slice(matchedPathname.length) || "/"
@@ -300,32 +301,44 @@ const matchRouteBranch = (
       path: meta.relativePath,
       caseSensitive: meta.caseSensitive,
       end
-    };
-    let match = (
-      // Use precomputed matcher if it exists
-      meta.matcher && meta.compiledParams ? matchPathImpl(
-        pattern,
-        remainingPathname,
-        meta.matcher,
-        meta.compiledParams
-      ) : matchPath(pattern, remainingPathname)
-    );
-    const route = meta.route;    
+    }
+    // Use precomputed matcher if it exists
+    , match = meta.matcher && meta.compiledParams
+      ? matchPathImpl(
+          pattern,
+          remainingPathname,
+          meta.matcher,
+          meta.compiledParams
+        )
+      : matchPath(
+          pattern,
+          remainingPathname
+        );
+
     if (!match) {
       return null;
     }
+
+    //const route = meta.route;
     Object.assign(matchedParams, match.params);
+    const _matchedPathname = joinPaths([
+      matchedPathname,
+      match.pathnameBase
+    ]);
     matches.push({
       // TODO: Can this as be avoided?
       params: matchedParams,
-      pathname: joinPaths([matchedPathname, match.pathname]),
+      pathname: joinPaths([
+        matchedPathname,
+        match.pathname
+      ]),
       pathnameBase: normalizePathname(
-        joinPaths([matchedPathname, match.pathnameBase])
+        _matchedPathname
       ),
-      route
+      route: meta.route
     });
     if (match.pathnameBase !== "/") {
-      matchedPathname = joinPaths([matchedPathname, match.pathnameBase]);
+      matchedPathname = _matchedPathname
     }
   }
   return matches;
