@@ -282,11 +282,10 @@ function matchPath(pattern, pathname) {
   return matchPathImpl(pattern, pathname, matcher, compiledParams);
 }
 
-function matchRouteBranch(
+const matchRouteBranch = (
   branch,
-  pathname,
-  allowPartial = false
-) {
+  pathname
+) => {
   const { routesMeta } = branch
   , matchedParams = {}
   , matches = [];
@@ -311,17 +310,7 @@ function matchRouteBranch(
         meta.compiledParams
       ) : matchPath(pattern, remainingPathname)
     );
-    const route = meta.route;
-    if (!match && end && allowPartial && !routesMeta[routesMeta.length - 1].route.index) {
-      match = matchPath(
-        {
-          path: meta.relativePath,
-          caseSensitive: meta.caseSensitive,
-          end: false
-        },
-        remainingPathname
-      );
-    }
+    const route = meta.route;    
     if (!match) {
       return null;
     }
@@ -340,14 +329,13 @@ function matchRouteBranch(
     }
   }
   return matches;
-}
+};
 
-function matchRoutesImpl(
+const matchRoutesImpl = (
   routes,
   locationArg,
-  basename,
-  allowPartial
-) {
+  basename
+) => {
   const location = isStr(locationArg)
     ? parsePath(locationArg)
     : locationArg
@@ -361,22 +349,18 @@ function matchRoutesImpl(
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = matchRouteBranch(
       branches[i],
-      decoded,
-      allowPartial
+      decoded
     );
   }
   return matches;
-}
+};
 
-export function matchRoutes(
+export const matchRoutes = (
   routes,
   locationArg,
   basename = "/"
-) {
-  return matchRoutesImpl(
-    routes,
-    locationArg,
-    basename,
-    false
-  );
-}
+) => matchRoutesImpl(
+  routes,
+  locationArg,
+  basename
+)

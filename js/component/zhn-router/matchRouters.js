@@ -1,8 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.joinPaths = void 0;
-exports.matchRoutes = matchRoutes;
+exports.matchRoutes = exports.joinPaths = void 0;
 exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
 var _isTypeFn = require("../../utils/isTypeFn");
@@ -242,10 +241,7 @@ function matchPath(pattern, pathname) {
   const [matcher, compiledParams] = compilePath(pattern.path, pattern.caseSensitive, pattern.end);
   return matchPathImpl(pattern, pathname, matcher, compiledParams);
 }
-function matchRouteBranch(branch, pathname, allowPartial) {
-  if (allowPartial === void 0) {
-    allowPartial = false;
-  }
+const matchRouteBranch = (branch, pathname) => {
   const {
       routesMeta
     } = branch,
@@ -265,13 +261,6 @@ function matchRouteBranch(branch, pathname, allowPartial) {
     // Use precomputed matcher if it exists
     meta.matcher && meta.compiledParams ? matchPathImpl(pattern, remainingPathname, meta.matcher, meta.compiledParams) : matchPath(pattern, remainingPathname);
     const route = meta.route;
-    if (!match && end && allowPartial && !routesMeta[routesMeta.length - 1].route.index) {
-      match = matchPath({
-        path: meta.relativePath,
-        caseSensitive: meta.caseSensitive,
-        end: false
-      }, remainingPathname);
-    }
     if (!match) {
       return null;
     }
@@ -288,8 +277,8 @@ function matchRouteBranch(branch, pathname, allowPartial) {
     }
   }
   return matches;
-}
-function matchRoutesImpl(routes, locationArg, basename, allowPartial) {
+};
+const matchRoutesImpl = (routes, locationArg, basename) => {
   const location = (0, _isTypeFn.isStr)(locationArg) ? parsePath(locationArg) : locationArg,
     pathname = stripBasename(location.pathname || "/", basename);
   if (pathname == null) {
@@ -299,14 +288,15 @@ function matchRoutesImpl(routes, locationArg, basename, allowPartial) {
     decoded = decodePath(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = matchRouteBranch(branches[i], decoded, allowPartial);
+    matches = matchRouteBranch(branches[i], decoded);
   }
   return matches;
-}
-function matchRoutes(routes, locationArg, basename) {
+};
+const matchRoutes = function (routes, locationArg, basename) {
   if (basename === void 0) {
     basename = "/";
   }
-  return matchRoutesImpl(routes, locationArg, basename, false);
-}
+  return matchRoutesImpl(routes, locationArg, basename);
+};
+exports.matchRoutes = matchRoutes;
 //# sourceMappingURL=matchRouters.js.map
