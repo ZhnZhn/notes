@@ -68,7 +68,11 @@ function compilePath(
   end = true
 ) {
   const params = [];
-  let regexpSource = "^" + path.replace(/\/*\*?$/, "").replace(/^\/*/, "/").replace(/[\\.*+^${}|()[\]]/g, "\\$&").replace(
+  let regexpSource = "^" + path
+  .replace(/\/*\*?$/, "")
+  .replace(/^\/*/, "/")
+  .replace(/[\\.*+^${}|()[\]]/g, "\\$&")
+  .replace(
     /\/:([\w-]+)(\?)?/g,
     (match, paramName, isOptional, index, str) => {
       params.push({ paramName, isOptional: isOptional != null });
@@ -81,7 +85,9 @@ function compilePath(
       }
       return "/([^\\/]+)";
     }
-  ).replace(/\/([\w-]+)\?(\/|$)/g, "(/$1)?$2");
+  )
+  .replace(/\/([\w-]+)\?(\/|$)/g, "(/$1)?$2");
+
   if (path.endsWith("*")) {
     params.push({ paramName: "*" });
     regexpSource += path === "*" || path === "/*" ? "(.*)$" : "(?:\\/(.+)|\\/*)$";
@@ -89,8 +95,8 @@ function compilePath(
     regexpSource += "\\/*$";
   } else if (path !== "" && path !== "/") {
     regexpSource += "(?:(?=\\/|$))";
-  } else {
   }
+
   const matcher = new RegExp(regexpSource, caseSensitive ? void 0 : "i");
   return [matcher, params];
 }
@@ -219,7 +225,7 @@ function decodePath(value) {
       .split("/")
       .map((v) => decodeURIComponent(v).replace(/\//g, "%2F"))
       .join("/");
-  } catch (_err) {
+  } catch {
     console.log("The URL path could not be decoded")
     return value;
   }
@@ -340,8 +346,7 @@ function matchRoutesImpl(
   routes,
   locationArg,
   basename,
-  allowPartial,
-  precomputedBranches
+  allowPartial
 ) {
   const location = isStr(locationArg)
     ? parsePath(locationArg)
@@ -350,7 +355,7 @@ function matchRoutesImpl(
   if (pathname == null) {
     return null;
   }
-  const branches = precomputedBranches ?? flattenAndRankRoutes(routes)
+  const branches = flattenAndRankRoutes(routes)
   , decoded = decodePath(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {

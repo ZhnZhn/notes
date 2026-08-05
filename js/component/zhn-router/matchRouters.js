@@ -91,7 +91,7 @@ function compilePath(path, caseSensitive, end) {
     regexpSource += "\\/*$";
   } else if (path !== "" && path !== "/") {
     regexpSource += "(?:(?=\\/|$))";
-  } else {}
+  }
   const matcher = new RegExp(regexpSource, caseSensitive ? void 0 : "i");
   return [matcher, params];
 }
@@ -196,7 +196,7 @@ function flattenAndRankRoutes(routes) {
 function decodePath(value) {
   try {
     return value.split("/").map(v => decodeURIComponent(v).replace(/\//g, "%2F")).join("/");
-  } catch (_err) {
+  } catch {
     console.log("The URL path could not be decoded");
     return value;
   }
@@ -289,13 +289,13 @@ function matchRouteBranch(branch, pathname, allowPartial) {
   }
   return matches;
 }
-function matchRoutesImpl(routes, locationArg, basename, allowPartial, precomputedBranches) {
+function matchRoutesImpl(routes, locationArg, basename, allowPartial) {
   const location = (0, _isTypeFn.isStr)(locationArg) ? parsePath(locationArg) : locationArg,
     pathname = stripBasename(location.pathname || "/", basename);
   if (pathname == null) {
     return null;
   }
-  const branches = precomputedBranches ?? flattenAndRankRoutes(routes),
+  const branches = flattenAndRankRoutes(routes),
     decoded = decodePath(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
