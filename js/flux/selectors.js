@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectNotes = exports.selectNoteLabels = exports.selectNoteIds = exports.selectDrawerItems = exports.selectCurrentBoard = exports.selectColumns = exports.selectBoardColumnIds = exports.selectBoardById = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = void 0;
+exports.selectNumberOfBoards = exports.selectNotes = exports.selectNoteLabels = exports.selectNoteIds = exports.selectDrawerItems = exports.selectCurrentBoard = exports.selectColumns = exports.selectBoardColumnIds = exports.selectBoardById = exports.selectAppUiTheme = exports.selectAppModal = exports.selectAppBoardIds = void 0;
 const selectApp = (state /*: StoreState */) => state.app || {};
 const selectAppModal = (state /*: StoreState */) => state.modal || {};
 exports.selectAppModal = selectAppModal;
@@ -12,7 +12,10 @@ const selectAppUiTheme = (state /*: StoreState */) => selectApp(state).uiTheme;
 exports.selectAppUiTheme = selectAppUiTheme;
 const selectDrawerItems = (state /*: StoreState */) => state.drawerMsg || [];
 exports.selectDrawerItems = selectDrawerItems;
+const _getObjKeys = Object.keys;
 const selectBoards = (state /*: StoreState */) => state.boards || {};
+const selectNumberOfBoards = (state /*: StoreState */) => _getObjKeys(selectBoards(state)).length;
+exports.selectNumberOfBoards = selectNumberOfBoards;
 const selectCurrentBoard = (state /*: StoreState */) => selectBoards(state)[selectAppCurrentBoard(state)] || {};
 exports.selectCurrentBoard = selectCurrentBoard;
 const selectBoardById = (state /*: StoreState */, boardId /*: string */) => selectBoards(state)[boardId] || {};

@@ -20,10 +20,13 @@ export const selectDrawerItems = (
   state /*: StoreState */
 ) => state.drawerMsg || []
 
-
+const _getObjKeys = Object.keys;
 const selectBoards = (
   state /*: StoreState */
-) => state.boards || {}
+) => state.boards || {};
+export const selectNumberOfBoards = (
+  state /*: StoreState */
+) => _getObjKeys(selectBoards(state)).length
 
 export const selectCurrentBoard = (
   state /*: StoreState */

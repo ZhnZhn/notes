@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _selectors = require("../../flux/selectors");
 var _actions = require("../../flux/board/actions");
 var _Header = _interopRequireDefault(require("../zhn-ch/Header"));
 var _Logo = _interopRequireDefault(require("../zhn/Logo"));
@@ -16,7 +17,9 @@ const Header = _ref => {
   let {
     style
   } = _ref;
-  const dispatch = (0, _uiApi.useDispatch)(),
+  const numberOfBoards = (0, _uiApi.useSelector)(_selectors.selectNumberOfBoards),
+    boardsTitle = `Notes: Boards (${numberOfBoards})`,
+    dispatch = (0, _uiApi.useDispatch)(),
     _hAddBoard = (0, _uiApi.useCallback)(() => {
       dispatch((0, _actions.addBoard)());
     }, [dispatch]);
@@ -29,7 +32,7 @@ const Header = _ref => {
       className: _CL.CL_TITLE_GAP
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       className: _CL.CL_HEADER_TITLE,
-      children: "Notes: Boards"
+      children: boardsTitle
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
       caption: "Add Board",
       title: "Click to add new board",

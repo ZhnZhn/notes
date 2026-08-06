@@ -1,7 +1,11 @@
 import {
+  useSelector,
   useDispatch,
   useCallback
 } from '../uiApi';
+import {
+  selectNumberOfBoards
+} from '../../flux/selectors';
 import {
   addBoard
 } from '../../flux/board/actions';
@@ -24,7 +28,10 @@ import {
 const Header = ({
   style
 }) => {
-  const dispatch = useDispatch()
+  const numberOfBoards = useSelector(selectNumberOfBoards)
+  , boardsTitle = `Notes: Boards (${numberOfBoards})`
+
+  , dispatch = useDispatch()
   , _hAddBoard = useCallback(() => {
     dispatch(addBoard())
   }, [dispatch]);
@@ -33,7 +40,7 @@ const Header = ({
       <Logo title={APP_TITLE} />
       <span className={CL_TITLE_GAP} />
       <span className={CL_HEADER_TITLE}>
-        Notes: Boards
+        {boardsTitle}
       </span>
       <FlatButton
         caption="Add Board"
