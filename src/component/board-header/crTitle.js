@@ -16,8 +16,8 @@ const _crTitle = (
   return joinByBlank(
     board.title || '',
     isArr(columnIds)
-       ? '' + columnIds.length
-       : '0'
+       ? `(${columnIds.length})`
+       : '(0)'
   );
 };
 
@@ -26,7 +26,7 @@ const crTitle = (
   prefix /*: string */
 ) /*: string */ => joinByColon(
   prefix || 'Notes',
-  isObj()
+  isObj(board)
     ? _crTitle(board)
     : 'Not Exist'
 );
