@@ -18,7 +18,7 @@ const Header = _ref => {
     style
   } = _ref;
   const numberOfBoards = (0, _uiApi.useSelector)(_selectors.selectNumberOfBoards),
-    boardsTitle = `Notes: Boards (${numberOfBoards})`,
+    boardsTitle = `Boards (${numberOfBoards})`,
     dispatch = (0, _uiApi.useDispatch)(),
     _hAddBoard = (0, _uiApi.useCallback)(() => {
       dispatch((0, _actions.addBoard)());

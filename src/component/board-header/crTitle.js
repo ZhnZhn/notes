@@ -25,7 +25,7 @@ const crTitle = (
   board /*: ?Board */,
   prefix /*: string */
 ) /*: string */ => joinByColon(
-  prefix || 'Notes',
+  prefix || '',
   isObj(board)
     ? _crTitle(board)
     : 'Not Exist'

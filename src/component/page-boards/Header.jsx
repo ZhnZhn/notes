@@ -29,7 +29,7 @@ const Header = ({
   style
 }) => {
   const numberOfBoards = useSelector(selectNumberOfBoards)
-  , boardsTitle = `Notes: Boards (${numberOfBoards})`
+  , boardsTitle = `Boards (${numberOfBoards})`
 
   , dispatch = useDispatch()
   , _hAddBoard = useCallback(() => {
