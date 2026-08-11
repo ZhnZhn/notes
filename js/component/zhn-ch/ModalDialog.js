@@ -4,8 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _fUseKey = require("../hooks/fUseKey");
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _CL = require("../style/CL");
@@ -79,7 +79,7 @@ const ModalDialog = _ref2 => {
       evt.stopPropagation();
     }, []),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
-    _className = (0, _crCn.default)(`${_CL.CL_MODAL_DIALOG} ${className}`, [isShow, _CL.CL_SHOWING]),
+    _className = (0, _styleFn.crCn)(`${_CL.CL_MODAL_DIALOG} ${className}`, [isShow, _CL.CL_SHOWING]),
     _style = isShow ? S_SHOW : S_HIDE;
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     role: "dialog",

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.BtSvgMore = exports.BtSvgClose = void 0;
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _styleFn = require("../styleFn");
 var _Svg = _interopRequireDefault(require("./Svg"));
 var _jsxRuntime = require("react/jsx-runtime");
 const BtSvg = _ref => {
@@ -40,7 +40,7 @@ const BtSvgClose = _ref2 => {
     onClick
   } = _ref2;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(BtSvg, {
-    className: (0, _crCn.default)(CL_BT_SVG_CLOSE, className),
+    className: (0, _styleFn.crCn)(CL_BT_SVG_CLOSE, className),
     onClick: onClick,
     w: "12",
     width: "100%",
@@ -62,7 +62,7 @@ const BtSvgMore = _ref3 => {
     onClick
   } = _ref3;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(BtSvg, {
-    className: (0, _crCn.default)(CL_BT_SVG_MORE, className),
+    className: (0, _styleFn.crCn)(CL_BT_SVG_MORE, className),
     style: style,
     title: title,
     onClick: onClick,

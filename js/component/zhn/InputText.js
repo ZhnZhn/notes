@@ -1,11 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _styleFn = require("../styleFn");
 var _CL = require("../style/CL");
 var _isEventKey = require("./isEventKey");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -44,7 +43,7 @@ const InputText = _ref => {
       }
     }
   }), [maxLength]);
-  const _className = (0, _crCn.default)(_CL.CL_INPUT, className);
+  const _className = (0, _styleFn.crCn)(_CL.CL_INPUT, className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     type: "text",
     className: _className,

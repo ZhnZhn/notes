@@ -1,6 +1,6 @@
+import { crCn } from '../styleFn';
 import useTheme from '../hooks/useTheme';
 import styleConfig from '../style/Comp.Style';
-import crCn from '../zhn-utils/crCn';
 
 import ModalPane from '../zhn-ch/ModalPane';
 import FlatButton from '../zhn-m/FlatButton';

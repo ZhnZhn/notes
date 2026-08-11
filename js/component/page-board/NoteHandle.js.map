@@ -1,1 +1,26 @@
-{"version":3,"file":"NoteHandle.js","names":["CL_HANDLE","CL_OPEN","NoteHandle","isDetails","rest","_cl","crCn"],"sources":["../../../src/component/page-board/NoteHandle.jsx"],"sourcesContent":["import crCn from '../zhn-utils/crCn';\r\n\r\nconst CL_HANDLE = 'note__handle'\r\n, CL_OPEN = 'note__handle--open';\r\n\r\nconst NoteHandle = ({ isDetails, ...rest }) => {\r\n  const _cl = crCn(CL_HANDLE, [isDetails, CL_OPEN]);\r\n  return (\r\n   <span\r\n      className={_cl}\r\n      {...rest}\r\n   />\r\n  );\r\n};\r\n\r\nexport default NoteHandle\r\n"],"mappings":";;;;;;;;;;;AAAA;;;;;AAEA,IAAMA,SAAS,GAAG,cAAlB;AAAA,IACEC,OAAO,GAAG,oBADZ;;AAGA,IAAMC,UAAU,GAAG,SAAbA,UAAa,OAA4B;EAAA,IAAzBC,SAAyB,QAAzBA,SAAyB;EAAA,IAAXC,IAAW;;EAC7C,IAAMC,GAAG,GAAG,IAAAC,gBAAA,EAAKN,SAAL,EAAgB,CAACG,SAAD,EAAYF,OAAZ,CAAhB,CAAZ;;EACA,oBACC;IACG,SAAS,EAAEI;EADd,GAEOD,IAFP,EADD;AAMD,CARD;;eAUeF,U"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/NoteHandle.js"
+ ],
+ "file": "../../../src/component/page-board/NoteHandle.js",
+ "names": [
+  "_styleFn",
+  "require",
+  "_jsxRuntime",
+  "CL_HANDLE",
+  "CL_OPEN",
+  "NoteHandle",
+  "_ref",
+  "isDetails",
+  "restProps",
+  "_cl",
+  "crCn",
+  "jsx",
+  "className",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAAkC,IAAAC,WAAA,GAAAD,OAAA;AAElC,MAAME,SAAS,GAAG,cAAc;EAC9BC,OAAO,GAAG,oBAAoB;AAEhC,MAAMC,UAAU,GAAGC,IAAA,IAGb;EAAA,IAHc;IAClBC,SAAS;IACT,GAAGC;EACL,CAAC,GAAAF,IAAA;EACC,MAAMG,GAAG,GAAG,IAAAC,aAAI,EAACP,SAAS,EAAE,CAACI,SAAS,EAAEH,OAAO,CAAC,CAAC;EACjD,oBACC,IAAAF,WAAA,CAAAS,GAAA;IACGC,SAAS,EAAEH,GAAI;IAAA,GACXD;EAAS,CACf,CAAC;AAEL,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,UAAU"
+}

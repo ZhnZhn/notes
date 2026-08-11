@@ -48,12 +48,7 @@ const RouteContext = /*#__PURE__*/(0, _react.createContext)({
   isDataRoute: false
 });
 RouteContext.displayName = "Route";
-const getPathContributingMatches = matches => matches.filter((match, index) => index === 0 || match.route.path && match.route.path.length > 0),
-  getResolveToMatches = matches => {
-    const pathMatches = getPathContributingMatches(matches);
-    return pathMatches.map((match, idx) => idx === pathMatches.length - 1 ? match.pathname : match.pathnameBase);
-  },
-  removeTrailingSlash = path => path.replace(/\/+$/, ""),
+const removeTrailingSlash = path => path.replace(/\/+$/, ""),
   resolvePathname = (relativePath, fromPathname) => {
     const segments = removeTrailingSlash(fromPathname).split("/"),
       relativeSegments = relativePath.split("/");
@@ -95,7 +90,7 @@ const getPathContributingMatches = matches => matches.filter((match, index) => i
       hash: normalizeHash(hash)
     };
   };
-const resolveTo = (toArg, routePathnames, locationPathname) => {
+const resolveTo = (toArg, locationPathname) => {
     const to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
         ...toArg
       },
@@ -117,12 +112,8 @@ const resolveTo = (toArg, routePathnames, locationPathname) => {
         navigator
       } = (0, _react.useContext)(NavigationContext),
       {
-        matches
-      } = (0, _react.useContext)(RouteContext),
-      {
         pathname: locationPathname
       } = useLocation(),
-      routePathnamesJson = JSON.stringify(getResolveToMatches(matches)),
       activeRef = (0, _react.useRef)(false);
     (0, _react.useLayoutEffect)(() => {
       activeRef.current = true;
@@ -136,12 +127,12 @@ const resolveTo = (toArg, routePathnames, locationPathname) => {
         navigator.go(to);
         return;
       }
-      const path = resolveTo(to, JSON.parse(routePathnamesJson), locationPathname);
+      const path = resolveTo(to, locationPathname);
       if (dataRouterContext == null && basename !== "/") {
         path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, path.pathname]);
       }
       (options.replace ? navigator.replace : navigator.push)(path, options.state, options);
-    }, [basename, navigator, routePathnamesJson, locationPathname, dataRouterContext]);
+    }, [basename, navigator, locationPathname, dataRouterContext]);
     return navigate;
   },
   useNavigate = () => useNavigateUnstable(),
@@ -386,13 +377,10 @@ const Navigate = _ref3 => {
     state
   } = _ref3;
   const {
-      matches
-    } = (0, _react.useContext)(RouteContext),
-    {
       pathname: locationPathname
     } = useLocation(),
     navigate = useNavigate(),
-    path = resolveTo(to, getResolveToMatches(matches), locationPathname),
+    path = resolveTo(to, locationPathname),
     jsonPath = JSON.stringify(path);
   (0, _react.useEffect)(() => {
     navigate(JSON.parse(jsonPath), {
@@ -436,13 +424,9 @@ const parseToInfo = (_to, basename) => {
 };
 const useResolvedPath = to => {
     const {
-        matches
-      } = (0, _react.useContext)(RouteContext),
-      {
-        pathname: locationPathname
-      } = useLocation(),
-      routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
-    return (0, _react.useMemo)(() => resolveTo(to, JSON.parse(routePathnamesJson), locationPathname), [to, routePathnamesJson, locationPathname]);
+      pathname: locationPathname
+    } = useLocation();
+    return (0, _react.useMemo)(() => resolveTo(to, locationPathname), [to, locationPathname]);
   },
   useHref = to => {
     const {

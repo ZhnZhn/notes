@@ -5,9 +5,9 @@ exports.__esModule = true;
 exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn-ch/ShowHide"));
-var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 var _jsxRuntime = require("react/jsx-runtime");
 const S_PANE = {
     position: 'absolute',
@@ -31,7 +31,7 @@ const S_PANE = {
     color: 'greenyellow'
   };
 const _renderOptions = (options, currentItem, clItem, onSelect) => (0, _uiApi.safeMap)(options, item => {
-  const _style = (0, _crStyle.default)(S_ITEM, [item.value === currentItem.value, S_ITEM_CURRENT]),
+  const _style = (0, _styleFn.crStyle)(S_ITEM, [item.value === currentItem.value, S_ITEM_CURRENT]),
     _onSelect = (0, _bindTo.bindToArg)(onSelect, item);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     type: "button",

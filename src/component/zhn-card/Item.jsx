@@ -1,5 +1,5 @@
+import { crStyle } from '../styleFn';
 import useTheme from '../hooks/useTheme';
-import crStyle from '../zhn-utils/crStyle';
 
 import styleConfig from '../style/Item.Style';
 import {

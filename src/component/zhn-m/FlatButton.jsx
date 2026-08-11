@@ -1,7 +1,10 @@
+import {
+  crCn,
+  crStyle
+} from '../styleFn';
+
 import useThrottleClick from '../hooks/useThrottleClick';
 
-import crCn from '../zhn-utils/crCn';
-import crStyle from '../zhn-utils/crStyle';
 import CaptionInput from './CaptionInput';
 
 const CL_BT_FLAT = 'bt-flat'
@@ -9,7 +12,10 @@ const CL_BT_FLAT = 'bt-flat'
 , CL_BT_FLAT_SPAN = 'bt-flat__span'
 , S_PRIMARY = { color: '#607d8b' };
 
-const _crTitle = (title, accessKey) => accessKey
+const _crTitle = (
+  title,
+  accessKey
+) => accessKey
   ? `${title} [${accessKey}]`
   : title;
 

@@ -1,5 +1,7 @@
-import crCn from '../zhn-utils/crCn';
-import crStyle from '../zhn-utils/crStyle';
+import {
+  crCn,
+  crStyle
+} from '../styleFn';
 
 const CL_SHOW_POPUP = 'show-popup'
 , S_SHOW = { display: 'block' }

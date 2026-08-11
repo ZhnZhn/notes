@@ -1,11 +1,10 @@
 import { bindToArg } from '../../utils/bindTo';
 
 import { safeMap } from '../uiApi';
+import { crStyle } from '../styleFn';
 
-import ModalPane from '../zhn-ch/ModalPane'
-import ShowHide from '../zhn-ch/ShowHide'
-
-import crStyle from '../zhn-utils/crStyle'
+import ModalPane from '../zhn-ch/ModalPane';
+import ShowHide from '../zhn-ch/ShowHide';
 
 const S_PANE ={
   position: 'absolute',

@@ -1,4 +1,4 @@
-import crCn from '../crCn'
+import { crCn } from '../styleFn';
 
 describe('crCn', ()=>{
   test('should create className for two arguments', ()=>{

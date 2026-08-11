@@ -1,23 +1,20 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-var _crStyle = _interopRequireDefault(require("../crStyle"));
-
-describe('crStyle', function () {
-  test('should create className for two arguments', function () {
-    expect((0, _crStyle["default"])(void 0, void 0)).toBe(undefined);
-    expect((0, _crStyle["default"])({
+var _styleFn = require("../styleFn");
+describe('crStyle', () => {
+  test('should create className for two arguments', () => {
+    expect((0, _styleFn.crStyle)(void 0, void 0)).toBe(undefined);
+    expect((0, _styleFn.crStyle)({
       top: 0
     }, void 0)).toEqual({
       top: 0
     });
-    expect((0, _crStyle["default"])(void 0, {
+    expect((0, _styleFn.crStyle)(void 0, {
       left: 10
     })).toEqual({
       left: 10
     });
-    expect((0, _crStyle["default"])({
+    expect((0, _styleFn.crStyle)({
       top: 0
     }, {
       left: 10
@@ -25,7 +22,7 @@ describe('crStyle', function () {
       top: 0,
       left: 10
     });
-    expect((0, _crStyle["default"])([true, {
+    expect((0, _styleFn.crStyle)([true, {
       top: 0
     }], {
       left: 10
@@ -33,22 +30,22 @@ describe('crStyle', function () {
       top: 0,
       left: 10
     });
-    expect((0, _crStyle["default"])([false, {
+    expect((0, _styleFn.crStyle)([false, {
       top: 0
     }], {
       left: 10
     })).toEqual({
       left: 10
     });
-    expect((0, _crStyle["default"])([true, {
+    expect((0, _styleFn.crStyle)([true, {
       top: 0
     }], void 0)).toEqual({
       top: 0
     });
-    expect((0, _crStyle["default"])([false, {
+    expect((0, _styleFn.crStyle)([false, {
       top: 0
     }], void 0)).toBe(undefined);
-    expect((0, _crStyle["default"])({
+    expect((0, _styleFn.crStyle)({
       top: 0
     }, [true, {
       left: 10
@@ -56,22 +53,22 @@ describe('crStyle', function () {
       top: 0,
       left: 10
     });
-    expect((0, _crStyle["default"])({
+    expect((0, _styleFn.crStyle)({
       top: 0
     }, [false, {
       left: 10
     }])).toEqual({
       top: 0
     });
-    expect((0, _crStyle["default"])(void 0, [true, {
+    expect((0, _styleFn.crStyle)(void 0, [true, {
       left: 10
     }])).toEqual({
       left: 10
     });
-    expect((0, _crStyle["default"])(void 0, [false, {
+    expect((0, _styleFn.crStyle)(void 0, [false, {
       left: 10
     }])).toBe(undefined);
-    expect((0, _crStyle["default"])([true, {
+    expect((0, _styleFn.crStyle)([true, {
       top: 0
     }], [true, {
       left: 10
@@ -79,40 +76,40 @@ describe('crStyle', function () {
       top: 0,
       left: 10
     });
-    expect((0, _crStyle["default"])([false, {
+    expect((0, _styleFn.crStyle)([false, {
       top: 0
     }], [true, {
       left: 10
     }])).toEqual({
       left: 10
     });
-    expect((0, _crStyle["default"])([false, {
+    expect((0, _styleFn.crStyle)([false, {
       top: 0
     }], [false, {
       left: 10
     }])).toBe(undefined);
-    expect((0, _crStyle["default"])([true, {
+    expect((0, _styleFn.crStyle)([true, {
       top: 0
     }], [false, {
       left: 10
     }])).toEqual({
       top: 0
     });
-    expect((0, _crStyle["default"])([true, void 0], [true, void 0])).toBe(undefined);
-    expect((0, _crStyle["default"])([true, {
+    expect((0, _styleFn.crStyle)([true, void 0], [true, void 0])).toBe(undefined);
+    expect((0, _styleFn.crStyle)([true, {
       top: 0
     }], [true, void 0])).toEqual({
       top: 0
     });
-    expect((0, _crStyle["default"])([false, {
+    expect((0, _styleFn.crStyle)([false, {
       top: 0
     }], [true, void 0])).toBe(undefined);
-    expect((0, _crStyle["default"])([true, void 0], [true, {
+    expect((0, _styleFn.crStyle)([true, void 0], [true, {
       left: 10
     }])).toEqual({
       left: 10
     });
-    expect((0, _crStyle["default"])([true, void 0], [false, {
+    expect((0, _styleFn.crStyle)([true, void 0], [false, {
       left: 10
     }])).toBe(undefined);
   });

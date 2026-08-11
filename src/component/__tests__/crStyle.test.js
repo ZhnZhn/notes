@@ -1,4 +1,4 @@
-import crStyle from '../crStyle'
+import { crStyle } from '../styleFn'
 
 describe('crStyle', ()=>{
   test('should create className for two arguments', ()=>{

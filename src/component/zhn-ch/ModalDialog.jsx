@@ -7,8 +7,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import { crCn } from '../styleFn';
 import { useKeyEscape } from '../hooks/fUseKey';
-import crCn from '../zhn-utils/crCn';
 
 import DialogCaption from './DialogCaption';
 import FlatButton from '../zhn-m/FlatButton';

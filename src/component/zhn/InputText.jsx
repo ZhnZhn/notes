@@ -8,7 +8,9 @@ import {
   useImperativeHandle
 } from '../uiApi';
 
-import crCn from '../zhn-utils/crCn';
+import {
+  crCn
+} from '../styleFn';
 import {
   CL_INPUT
 } from '../style/CL';
