@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useSelector = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useDispatch = exports.useContext = exports.useCallback = exports.setRefValue = exports.safeMap = exports.memo = exports.getRefValue = exports.focusRefElement = exports.createContext = exports.cloneUiElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
+exports.useState = exports.useSelector = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useDispatch = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.safeMap = exports.memo = exports.getRefValue = exports.focusRefElement = exports.focusElementById = exports.createContext = exports.cloneUiElement = exports.StrictMode = exports.NavLink = exports.Component = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 var _jsxRuntime = require("react/jsx-runtime");
 var _Router = require("./zhn-router/Router");
@@ -40,13 +40,24 @@ const setRefValue = (ref, value) => {
   }
 };
 exports.setRefValue = setRefValue;
-const focusRefElement = ref1 => {
-  const _el = getRefValue(ref1);
-  if (_el && (0, _isTypeFn.isFn)(_el.focus)) {
-    _el.focus();
+const _focusHtmlElement = element => {
+  if (element && (0, _isTypeFn.isFn)(element.focus)) {
+    element.focus();
   }
 };
+const focusElementById = id => {
+  _focusHtmlElement(document.getElementById(id));
+};
+exports.focusElementById = focusElementById;
+const focusRefElement = ref1 => {
+  _focusHtmlElement(getRefValue(ref1));
+};
 exports.focusRefElement = focusRefElement;
+const stopDefaultFor = evt => {
+  evt.stopPropagation();
+  evt.preventDefault();
+};
+exports.stopDefaultFor = stopDefaultFor;
 const safeMap = (itemsOr, crElement) => (0, _isTypeFn.isArr)(itemsOr) && itemsOr.length > 0 ? itemsOr.map(crElement) : null;
 exports.safeMap = safeMap;
 //# sourceMappingURL=uiApi.js.map

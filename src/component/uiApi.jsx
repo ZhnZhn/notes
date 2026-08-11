@@ -15,7 +15,7 @@ export {
 export {
   StrictMode,
   Component,
-  createContext,  
+  createContext,
   memo,
   useRef,
   useState,
@@ -48,13 +48,35 @@ export const setRefValue = (
   }
 }
 
+const _focusHtmlElement = (
+  element
+) => {
+  if (element && isFn(element.focus)) {
+    element.focus()
+  }
+}
+
+export const focusElementById = (
+  id
+) => {
+  _focusHtmlElement(
+    document.getElementById(id)
+  )
+}
+
 export const focusRefElement = (
   ref1
 ) => {
-  const _el = getRefValue(ref1);
-  if (_el && isFn(_el.focus)) {
-    _el.focus()
-  }
+  _focusHtmlElement(
+    getRefValue(ref1)
+  )
+}
+
+export const stopDefaultFor = (
+  evt
+) => {
+  evt.stopPropagation()
+  evt.preventDefault()
 }
 
 export const safeMap = (
