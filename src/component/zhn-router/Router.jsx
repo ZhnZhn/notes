@@ -84,25 +84,7 @@ const RouteContext = createContext({
 });
 RouteContext.displayName = "Route";
 
-const getPathContributingMatches = (
-  matches
-) => matches.filter(
-  (match, index) => index === 0
-  || match.route.path && match.route.path.length > 0
-)
-
-, getResolveToMatches = (
-  matches
-) => {
-  const pathMatches = getPathContributingMatches(matches);
-  return pathMatches.map(
-    (match, idx) => idx === pathMatches.length - 1
-      ? match.pathname
-      : match.pathnameBase
-  );
-}
-
-, removeTrailingSlash = (
+const removeTrailingSlash = (
   path
 ) => path.replace(/\/+$/, "")
 
@@ -170,8 +152,7 @@ const getPathContributingMatches = (
 };
 
 const resolveTo = (
-  toArg,
-  routePathnames,
+  toArg,  
   locationPathname
 ) => {
   const to = isStr(toArg)
@@ -195,13 +176,9 @@ const resolveTo = (
 }
 
 , useNavigateUnstable = () => {
-
   const dataRouterContext = useContext(DataRouterContext)
   , { basename, navigator } = useContext(NavigationContext)
-  , { matches } = useContext(RouteContext)
   , { pathname: locationPathname } = useLocation()
-
-  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches))
 
   , activeRef = useRef(false);
 
@@ -218,7 +195,6 @@ const resolveTo = (
       }
       const path = resolveTo(
         to,
-        JSON.parse(routePathnamesJson),
         locationPathname
       );
       if (dataRouterContext == null && basename !== "/") {
@@ -233,7 +209,6 @@ const resolveTo = (
     [
       basename,
       navigator,
-      routePathnamesJson,
       locationPathname,
       dataRouterContext
     ]
@@ -536,12 +511,12 @@ export const Navigate = ({
   replace: replace2,
   state
 }) => {
-  const { matches } = useContext(RouteContext)
-  , { pathname: locationPathname } = useLocation()
+  const {
+    pathname: locationPathname
+  } = useLocation()
   , navigate = useNavigate()
   , path = resolveTo(
     to,
-    getResolveToMatches(matches),
     locationPathname
   )
   , jsonPath = JSON.stringify(path);
@@ -596,17 +571,16 @@ const parseToInfo = (
 const useResolvedPath = (
   to
 ) => {
-  const { matches } = useContext(RouteContext)
-  , { pathname: locationPathname } = useLocation()
-  , routePathnamesJson = JSON.stringify(getResolveToMatches(matches));
+  const {
+    pathname: locationPathname
+  } = useLocation()
 
   return useMemo(
     () => resolveTo(
       to,
-      JSON.parse(routePathnamesJson),
       locationPathname
     ),
-    [to, routePathnamesJson, locationPathname]
+    [to, locationPathname]
   );
 }
 
