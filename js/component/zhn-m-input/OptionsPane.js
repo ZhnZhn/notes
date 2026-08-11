@@ -14,36 +14,31 @@ const S_PANE = {
     top: 12,
     zIndex: 20,
     width: '100%',
-    paddingTop: 12,
-    paddingBottom: 12,
+    padding: '12px 0',
     lineHeight: 1.8,
     backgroundColor: 'rgb(77, 77, 77)',
     borderRadius: 2,
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
   S_ITEM = {
+    display: 'block',
     lineHeight: 2.2,
-    paddingLeft: 12
+    paddingLeft: 16,
+    width: '100%',
+    textAlign: 'left'
   },
   S_ITEM_CURRENT = {
     color: 'greenyellow'
   };
-const _fOnKeyPress = onKeyPress => evt => {
-  if (evt.which === 13) {
-    onKeyPress(evt);
-  }
-};
 const _renderOptions = (options, currentItem, clItem, onSelect) => (0, _uiApi.safeMap)(options, item => {
   const _style = (0, _crStyle.default)(S_ITEM, [item.value === currentItem.value, S_ITEM_CURRENT]),
-    _onSelect = (0, _bindTo.bindToArg)(onSelect, item),
-    _onKeyPress = _fOnKeyPress(_onSelect);
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    role: "button",
-    tabIndex: "0",
-    style: _style,
+    _onSelect = (0, _bindTo.bindToArg)(onSelect, item);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    type: "button",
     className: clItem,
+    style: _style,
+    tabIndex: "0",
     onClick: _onSelect,
-    onKeyPress: _onKeyPress,
     children: item.caption
   }, item.value);
 });
