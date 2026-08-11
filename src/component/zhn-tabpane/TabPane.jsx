@@ -1,0 +1,115 @@
+import {
+  memo,
+  cloneUiElement,
+  useState,
+  focusElementById,
+  stopDefaultFor
+} from '../uiApi';
+
+import {
+  crTabCn,
+  crTabId,
+  crTabPanelId
+} from './tabPaneFn';
+
+const S_TABS = {
+  margin: '5px 5px 10px 12px'
+}
+, S_COMPONENTS = {
+  width: "100%",
+  height: "100%"
+}
+, S_BLOCK = {
+  display: 'block',
+  width: "100%",
+  height: "100%"
+}
+, S_NONE = {
+  display: 'none'
+};
+
+const _crNextId = (
+  id,
+  childrenLength
+) => id === -1
+  ? childrenLength - 1
+  : id === childrenLength
+      ? 0
+      : id;
+
+const TabPane = memo(({
+  id,
+  width,
+  height,
+  children,
+  ...restTabPanelProps
+}) => {
+  const [
+    selectedTabIndex,
+    setSelectedTabIndex
+  ] = useState(0)
+  , _isSelectedTabIndex = (index) =>
+      index === selectedTabIndex
+
+  , _hKeyDown = (index, evt) => {
+      const _focusTabByIndex = (tabIndex) => {
+        const _nextIndex = _crNextId(
+          tabIndex,
+          children.length
+        );
+        focusElementById(crTabId(id, _nextIndex))
+        setSelectedTabIndex(_nextIndex)
+      }
+
+      const { keyCode } = evt;
+      if (keyCode === 39) {
+        stopDefaultFor(evt)
+        _focusTabByIndex(index + 1)
+      }
+      if (keyCode === 37) {
+        stopDefaultFor(evt)
+        _focusTabByIndex(index - 1)
+      }
+  };
+
+  return (
+    <div style={{ width, height }}>
+      <div style={S_TABS}>
+         {children.map((tab, index) => {
+            const isSelected = _isSelectedTabIndex(index)
+            , tabId = crTabId(id, index);
+            return cloneUiElement(tab, {              
+              isSelected,
+              tabId,
+              tabPanelId: crTabPanelId(id, index),
+              className: crTabCn(isSelected),
+              onClick: () => setSelectedTabIndex(index),
+              onKeyDown: (evt) => _hKeyDown(index, evt)
+           }, tabId);
+        })}
+      </div>
+      <div style={S_COMPONENTS}>
+         {children.map((tab, index) => {
+             const isSelected = _isSelectedTabIndex(index)
+             , tabPanelId = crTabPanelId(id, index);
+             return (
+                <div
+                  key={tabPanelId}
+                  style={isSelected ? S_BLOCK : S_NONE}
+                  role="tabpanel"
+                  id={tabPanelId}
+                  aria-labelledby={crTabId(id, index)}
+                >
+                   {cloneUiElement(tab.props.children, {
+                     ...restTabPanelProps,
+                     isSelected
+                   })}
+                </div>
+             );
+         })}
+      </div>
+    </div>
+  );
+});
+
+export default TabPane

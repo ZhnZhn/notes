@@ -4,8 +4,8 @@ import useTheme from '../hooks/useTheme'
 import styleConfig from '../style/Dialog.Style'
 
 import ModalDialog from '../zhn-ch/ModalDialog'
-import TabPane from '../zhn-tab/TabPane'
-import Tab from '../zhn-tab/Tab'
+import TabPane from '../zhn-tabpane/TabPane'
+import Tab from '../zhn-tabpane/Tab'
 
 import TabDescr from './TabDescr'
 import TabLabels from './TabLabels'
@@ -41,7 +41,7 @@ const DetailsDialog = memoIsShow(({
         withoutClose={true}
         onClose={onClose}
       >
-        <TabPane width="100%" key={data.id}>
+        <TabPane width="100%" id={data.id}>
           <Tab title="Descr">
             <TabDescr
               note={data}
