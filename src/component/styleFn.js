@@ -1,3 +1,10 @@
+const _fCrStyle = propName => value => ({
+  [propName]: value
+})
+, _crDisplayStyle = _fCrStyle("display");
+export const S_BLOCK = _crDisplayStyle("block")
+export const S_NONE = _crDisplayStyle("none")
+
 const _isArr = Array.isArray;
 
 const _getCn = (arrOrStr) => _isArr(arrOrStr)

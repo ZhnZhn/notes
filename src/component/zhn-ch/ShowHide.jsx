@@ -1,11 +1,11 @@
 import {
+  S_BLOCK,
+  S_NONE,
   crCn,
   crStyle
 } from '../styleFn';
 
-const CL_SHOW_POPUP = 'show-popup'
-, S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' };
+const CL_SHOW_POPUP = 'show-popup';
 
 const ShowHide = ({
   isShow,
@@ -14,7 +14,7 @@ const ShowHide = ({
   children
 }) => {
   const _cl = crCn(className, [isShow, CL_SHOW_POPUP])
-  , _style = crStyle(style, isShow ? S_SHOW : S_HIDE);
+  , _style = crStyle(style, isShow ? S_BLOCK : S_NONE);
 
   return (
     <div

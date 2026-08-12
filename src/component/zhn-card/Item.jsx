@@ -1,4 +1,7 @@
-import { crStyle } from '../styleFn';
+import {
+  S_NONE,
+  crStyle
+} from '../styleFn';
 import useTheme from '../hooks/useTheme';
 
 import styleConfig from '../style/Item.Style';
@@ -6,14 +9,12 @@ import {
   CL_ITEM_CARD
 } from '../style/CL';
 
-const S_HIDE = { display: 'none' };
-
 const Item = ({
   isHide,
   children
 }) => {
   const TS = useTheme(styleConfig)
-  , _style = crStyle(TS.ITEM, [isHide, S_HIDE]);
+  , _style = crStyle(TS.ITEM, [isHide, S_NONE]);
 
   return (
     <section

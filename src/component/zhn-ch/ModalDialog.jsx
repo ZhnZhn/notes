@@ -7,7 +7,11 @@ import {
   focusRefElement
 } from '../uiApi';
 
-import { crCn } from '../styleFn';
+import {
+  S_BLOCK,
+  S_NONE,
+  crCn
+} from '../styleFn';
 import { useKeyEscape } from '../hooks/fUseKey';
 
 import DialogCaption from './DialogCaption';
@@ -18,9 +22,6 @@ import {
   CL_MD_ACTIONS,
   CL_SHOWING
 } from '../style/CL';
-
-const S_SHOW = { display: 'block' }
-, S_HIDE = { display: 'none' };
 
 const DialogButtons = ({
   buttons,
@@ -94,7 +95,7 @@ const ModalDialog = ({
   }, [])
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn(`${CL_MODAL_DIALOG} ${className}`, [isShow, CL_SHOWING])
-  , _style = isShow ? S_SHOW : S_HIDE;
+  , _style = isShow ? S_BLOCK : S_NONE;
 
 
   return (

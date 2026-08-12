@@ -12,12 +12,6 @@ var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 //import { PropTypes } from 'prop-types'
 
-const S_SHOW = {
-    display: 'block'
-  },
-  S_HIDE = {
-    display: 'none'
-  };
 const DialogButtons = _ref => {
   let {
     buttons,
@@ -80,7 +74,7 @@ const ModalDialog = _ref2 => {
     }, []),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _className = (0, _styleFn.crCn)(`${_CL.CL_MODAL_DIALOG} ${className}`, [isShow, _CL.CL_SHOWING]),
-    _style = isShow ? S_SHOW : S_HIDE;
+    _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE;
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     role: "dialog",
     "aria-label": caption,
