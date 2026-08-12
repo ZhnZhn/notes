@@ -19,13 +19,14 @@ const createRoutesFromChildren = function (children, parentPath) {
       return;
     }
     const treePath = [...parentPath, index],
+      elementProps = element.props,
       route = {
-        id: element.props.id || treePath.join("-"),
-        element: element.props.element,
-        path: element.props.path
+        id: elementProps.id || treePath.join("-"),
+        element: elementProps.element,
+        path: elementProps.path
       };
-    if (element.props.children) {
-      route.children = createRoutesFromChildren(element.props.children, treePath);
+    if (elementProps.children) {
+      route.children = createRoutesFromChildren(elementProps.children, treePath);
     }
     routes.push(route);
   });
