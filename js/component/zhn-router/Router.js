@@ -45,20 +45,22 @@ const RouteContext = /*#__PURE__*/(0, _react.createContext)({
   isDataRoute: false
 });
 RouteContext.displayName = "Route";
-const removeTrailingSlash = path => path.replace(/\/+$/, ""),
+const RE_TRAILING_SLASH = /\/+$/,
+  removeTrailingSlash = path => path.replace(RE_TRAILING_SLASH, ""),
   resolvePathname = (relativePath, fromPathname) => {
     const segments = removeTrailingSlash(fromPathname).split("/"),
       relativeSegments = relativePath.split("/");
     relativeSegments.forEach(segment => {
-      if (segment === "..") {
-        if (segments.length > 1) segments.pop();
+      if (segment === ".." && segments.length > 1) {
+        segments.pop();
       } else if (segment !== ".") {
         segments.push(segment);
       }
     });
     return segments.length > 1 ? segments.join("/") : "/";
   },
-  removeDoubleSlashes = path => path.replace(/[\\/]{2,}/g, "/"),
+  RE_DOUBLE_SLASHES = /[\\/]{2,}/g,
+  removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/"),
   normalizeSearch = search => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search,
   normalizeHash = hash => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash,
   resolvePath = function (to, fromPathname) {
@@ -73,11 +75,7 @@ const removeTrailingSlash = path => path.replace(/\/+$/, ""),
     let pathname;
     if (toPathname) {
       toPathname = removeDoubleSlashes(toPathname);
-      if (toPathname.startsWith("/")) {
-        pathname = resolvePathname(toPathname.substring(1), "/");
-      } else {
-        pathname = resolvePathname(toPathname, fromPathname);
-      }
+      pathname = toPathname.startsWith("/") ? resolvePathname(toPathname.substring(1), "/") : resolvePathname(toPathname, fromPathname);
     } else {
       pathname = fromPathname;
     }
