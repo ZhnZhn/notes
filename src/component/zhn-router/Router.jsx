@@ -2,7 +2,6 @@ import {
   isValidElement,
   createElement,
   Children,
-  Fragment,
   createContext,
   useContext,
   useRef,
@@ -40,16 +39,8 @@ const createRoutesFromChildren = (
     if (!isValidElement(element)) {
       return;
     }
-    const treePath = [...parentPath, index];
-    if (element.type === Fragment) {
-      routes.push.apply(
-        routes,
-        createRoutesFromChildren(element.props.children, treePath)
-      );
-      return;
-    }
-
-    const route = {
+    const treePath = [...parentPath, index]
+    , route = {
       id: element.props.id || treePath.join("-"),
       element: element.props.element,
       path: element.props.path,
@@ -152,7 +143,7 @@ const removeTrailingSlash = (
 };
 
 const resolveTo = (
-  toArg,  
+  toArg,
   locationPathname
 ) => {
   const to = isStr(toArg)

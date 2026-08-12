@@ -18,16 +18,12 @@ const createRoutesFromChildren = function (children, parentPath) {
     if (! /*#__PURE__*/(0, _react.isValidElement)(element)) {
       return;
     }
-    const treePath = [...parentPath, index];
-    if (element.type === _react.Fragment) {
-      routes.push.apply(routes, createRoutesFromChildren(element.props.children, treePath));
-      return;
-    }
-    const route = {
-      id: element.props.id || treePath.join("-"),
-      element: element.props.element,
-      path: element.props.path
-    };
+    const treePath = [...parentPath, index],
+      route = {
+        id: element.props.id || treePath.join("-"),
+        element: element.props.element,
+        path: element.props.path
+      };
     if (element.props.children) {
       route.children = createRoutesFromChildren(element.props.children, treePath);
     }
