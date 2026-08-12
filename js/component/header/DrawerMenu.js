@@ -3,9 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _actions = require("../../flux/app/actions");
 var _reducer = require("../../flux/modal/reducer");
+var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DrawerMsgList = _interopRequireDefault(require("./DrawerMsgList"));
 var _titles = require("../titles");
@@ -16,9 +17,6 @@ const CL_HEADER = 'header__title',
   S_HEADER = {
     padding: '16px 0 8px 0',
     marginLeft: 16
-  },
-  S_UL = {
-    listStyleType: 'none'
   };
 const DrawerMenu = () => {
   const dispatch = (0, _uiApi.useDispatch)(),
@@ -30,7 +28,7 @@ const DrawerMenu = () => {
       style: S_HEADER,
       children: _titles.APP_TITLE
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("ul", {
-      style: S_UL,
+      style: _styleFn.S_UL,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
           className: CL_DRAWER_BT,

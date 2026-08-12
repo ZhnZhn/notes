@@ -5,6 +5,10 @@ const _fCrStyle = propName => value => ({
 export const S_BLOCK = _crDisplayStyle("block")
 export const S_NONE = _crDisplayStyle("none")
 
+export const S_UL = {
+  listStyleType: 'none'
+}
+
 const _isArr = Array.isArray;
 
 const _getCn = (arrOrStr) => _isArr(arrOrStr)

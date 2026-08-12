@@ -1,8 +1,8 @@
 import { safeMap } from '../uiApi';
+import { S_UL } from '../styleFn';
 import TopicItem from './TopicItem';
 
-const S_UL = { listStyleType: 'none' }
-, S_LI = { position: 'relative' }
+const S_LI = { position: 'relative' }
 , FN_NOOP = () => {};
 
 const TopicList = ({

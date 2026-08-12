@@ -1,14 +1,18 @@
 import {
-  useDispatch,
-  useMemo
-} from '../uiApi';
-import {
   saveBoard,
   cleanStorage
 } from '../../flux/app/actions';
 import {
   showSettings
 } from '../../flux/modal/reducer';
+
+import {
+  useDispatch,
+  useMemo
+} from '../uiApi';
+import {
+  S_UL
+} from '../styleFn';
 
 import FlatButton  from '../zhn-m/FlatButton';
 import DrawerMsgList from './DrawerMsgList';
@@ -21,9 +25,6 @@ const CL_HEADER = 'header__title'
 , S_HEADER = {
   padding: '16px 0 8px 0',
   marginLeft: 16,
-}
-, S_UL = {
-  listStyleType: 'none'
 };
 
 const DrawerMenu = () => {

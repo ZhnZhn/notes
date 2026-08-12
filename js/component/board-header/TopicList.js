@@ -4,12 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _TopicItem = _interopRequireDefault(require("./TopicItem"));
 var _jsxRuntime = require("react/jsx-runtime");
-const S_UL = {
-    listStyleType: 'none'
-  },
-  S_LI = {
+const S_LI = {
     position: 'relative'
   },
   FN_NOOP = () => {};
@@ -23,7 +21,7 @@ const TopicList = _ref => {
     columnIds
   } = board;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("ul", {
-    style: S_UL,
+    style: _styleFn.S_UL,
     children: (0, _uiApi.safeMap)(columnIds, cId => /*#__PURE__*/(0, _jsxRuntime.jsx)("li", {
       style: S_LI,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_TopicItem.default, {

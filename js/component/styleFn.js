@@ -1,13 +1,16 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle = exports.crCn = exports.S_NONE = exports.S_BLOCK = void 0;
+exports.crStyle = exports.crCn = exports.S_UL = exports.S_NONE = exports.S_BLOCK = void 0;
 const _fCrStyle = propName => value => ({
     [propName]: value
   }),
   _crDisplayStyle = _fCrStyle("display");
 const S_BLOCK = exports.S_BLOCK = _crDisplayStyle("block");
 const S_NONE = exports.S_NONE = _crDisplayStyle("none");
+const S_UL = exports.S_UL = {
+  listStyleType: 'none'
+};
 const _isArr = Array.isArray;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
