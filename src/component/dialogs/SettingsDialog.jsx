@@ -14,7 +14,10 @@ import { setUiTheme as setFluxUiTheme } from '../../flux/app/reducer';
 import ModalDialog from '../zhn-ch/ModalDialog';
 import InputSelect from '../zhn-m-input/InputSelect';
 
-const CL_MD_SETTINGS = 'md-settings';
+const CL_MD_SETTINGS = 'md-settings'
+, S_UI_THEME = {
+  width: 250
+};
 
 const SettingsDialog = memoIsShow(({
   isShow,
@@ -37,8 +40,9 @@ const SettingsDialog = memoIsShow(({
       onClose={onClose}
     >
       <InputSelect
+        style={S_UI_THEME}
         caption="UI Theme (Default: Dark)"
-        initialItem={DF_UI_THEME_ITEM}
+        initItem={DF_UI_THEME_ITEM}
         options={UI_THEME_OPTIONS}
         onSelect={_selectTheme}
       />

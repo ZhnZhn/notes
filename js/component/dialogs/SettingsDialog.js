@@ -10,7 +10,10 @@ var _reducer = require("../../flux/app/reducer");
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _jsxRuntime = require("react/jsx-runtime");
-const CL_MD_SETTINGS = 'md-settings';
+const CL_MD_SETTINGS = 'md-settings',
+  S_UI_THEME = {
+    width: 250
+  };
 const SettingsDialog = (0, _memoIsShow.default)(_ref => {
   let {
     isShow,
@@ -36,8 +39,9 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
     caption: "User Settings",
     onClose: onClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect.default, {
+      style: S_UI_THEME,
       caption: "UI Theme (Default: Dark)",
-      initialItem: _uiTheme.DF_UI_THEME_ITEM,
+      initItem: _uiTheme.DF_UI_THEME_ITEM,
       options: _uiTheme.UI_THEME_OPTIONS,
       onSelect: _selectTheme
     })

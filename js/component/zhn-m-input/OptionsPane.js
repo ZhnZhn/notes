@@ -3,66 +3,128 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
-var _styleFn = require("../styleFn");
+var _fUseKey = require("../hooks/fUseKey");
+var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
-var _ShowHide = _interopRequireDefault(require("../zhn-ch/ShowHide"));
+var _OptionFn = require("./OptionFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const S_PANE = {
-    position: 'absolute',
-    top: 12,
-    zIndex: 20,
-    width: '100%',
-    padding: '12px 0',
-    lineHeight: 1.8,
-    backgroundColor: 'rgb(77, 77, 77)',
-    borderRadius: 2,
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
-  },
-  S_ITEM = {
-    display: 'block',
-    lineHeight: 2.2,
-    paddingLeft: 16,
-    width: '100%',
-    textAlign: 'left'
-  },
-  S_ITEM_CURRENT = {
-    color: 'greenyellow'
-  };
-const _renderOptions = (options, currentItem, clItem, onSelect) => (0, _uiApi.safeMap)(options, item => {
-  const _style = (0, _styleFn.crStyle)(S_ITEM, [item.value === currentItem.value, S_ITEM_CURRENT]),
-    _onSelect = (0, _bindTo.bindToArg)(onSelect, item);
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    type: "button",
-    className: clItem,
-    style: _style,
-    tabIndex: "0",
-    onClick: _onSelect,
-    children: item.caption
-  }, item.value);
-});
-const OptionsPane = _ref => {
+const SCROLL_OPTIONS = {
+  block: 'center',
+  behavior: 'smooth'
+};
+const _setItemFocus = (elItem, ref) => elItem ? (elItem.scrollIntoView(SCROLL_OPTIONS), elItem.focus(), (0, _uiApi.setRefValue)(ref, elItem), !0) : !1;
+const _fFocusItem = propName => ref => {
+  const _elItem = (0, _uiApi.getRefValue)(ref)?.[propName];
+  return _setItemFocus(_elItem, ref);
+};
+const _focusNextItem = _fFocusItem('nextSibling');
+const _focusPrevItem = _fFocusItem('previousSibling');
+const _fFocusParentItem = propName => ref => {
+  const _elItem = (0, _uiApi.getRefValue)(ref)?.parentNode?.[propName];
+  _setItemFocus(_elItem, ref);
+};
+const _focusFirstItem = _fFocusParentItem('firstChild');
+const _focusLastItem = _fFocusParentItem('lastChild');
+const _crItem = (item, index, _ref2) => {
   let {
+    refItem,
+    currentItem,
+    clItem,
+    onSelect,
+    onTabSelect
+  } = _ref2;
+  const caption = (0, _OptionFn.getItemCaption)(item),
+    value = (0, _OptionFn.getItemValue)(item),
+    currentItemCaption = (0, _OptionFn.getItemCaption)(currentItem),
+    [_tabIndex, _ref, _ariaSelected] = currentItemCaption !== void 0 && caption === currentItemCaption ? ["0", refItem, "true"] : currentItemCaption === void 0 && index === 0 ? ["0", refItem] : ["-1"],
+    _hKeyDown = evt => {
+      if ((0, _fUseKey.isKeyEnterOrSpace)(evt.key)) {
+        onSelect(item, evt);
+      }
+      if (evt.key === _uiApi.KEY_TAB) {
+        onTabSelect(item);
+      }
+    };
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    role: "option",
+    ref: _ref,
+    "aria-selected": _ariaSelected,
+    tabIndex: _tabIndex,
+    className: clItem,
+    onClick: evt => onSelect(item, evt),
+    onKeyDown: _hKeyDown,
+    children: caption
+  }, value);
+};
+const OptionsPane = _ref3 => {
+  let {
+    id,
     isShow,
-    style,
+    focusOption,
+    className,
     options,
     item,
     clItem,
     onSelect,
+    onTabSelect,
     onClose
-  } = _ref;
+  } = _ref3;
+  const _refItem = (0, _uiApi.useRef)(null),
+    _refItemFocused = (0, _uiApi.useRef)(null)
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hKeyDown = (0, _uiApi.useCallback)(evt => {
+      if (evt.key === _uiApi.KEY_ARROW_DOWN) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _focusNextItem(_refItemFocused);
+      } else if (evt.key === _uiApi.KEY_ARROW_UP) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _focusPrevItem(_refItemFocused);
+      } else if (evt.key === _uiApi.KEY_HOME) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _focusFirstItem(_refItemFocused);
+      } else if (evt.key === _uiApi.KEY_END) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _focusLastItem(_refItemFocused);
+      } else if (evt.key === _uiApi.KEY_TAB) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _focusNextItem(_refItemFocused);
+      } else if (evt.key === _uiApi.KEY_ESCAPE) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        onClose();
+      }
+    }, []);
+  //onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  (0, _uiApi.useEffect)(() => {
+    if (isShow) {
+      const _elItem = (0, _uiApi.getRefValue)(_refItem);
+      if (!(0, _uiApi.getRefValue)(_refItemFocused) && focusOption) {
+        (0, _uiApi.setRefValue)(_refItemFocused, _elItem);
+      }
+      const _hasBeenItemFocused = focusOption === _OptionFn.FOCUS_NEXT_OPTION ? _focusNextItem(_refItemFocused) : focusOption === _OptionFn.FOCUS_PREV_OPTION ? _focusPrevItem(_refItemFocused) : !1;
+      if (!_hasBeenItemFocused) {
+        _setItemFocus(_elItem, _refItemFocused);
+      }
+    }
+  }, [isShow, focusOption]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane.default, {
+    id: id,
+    role: "listbox",
+    "data-scrollable": "true",
     isShow: isShow,
-    style: style,
+    className: className,
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide.default, {
-      isShow: isShow,
-      style: {
-        ...S_PANE,
-        ...style
-      },
-      children: _renderOptions(options, item, clItem, onSelect, isShow)
+    onKeyDown: _hKeyDown,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack.default, {
+      items: options,
+      crItem: _crItem,
+      refItem: _refItem,
+      currentItem: item,
+      clItem: clItem,
+      onSelect: onSelect,
+      onTabSelect: onTabSelect
     })
   });
 };

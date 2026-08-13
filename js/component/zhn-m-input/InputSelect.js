@@ -4,55 +4,108 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
-var _CL = require("./CL");
+var _OptionFn = require("./OptionFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const DF_INITIAL_ITEM = {
-  caption: '',
-  value: ''
-};
+const CL_SELECT = 'm-select',
+  CL_CAPTION = `${CL_SELECT}__caption`,
+  CL_VALUE = `${CL_SELECT}__value`,
+  CL_DIV = `${CL_SELECT}__div`,
+  CL_INPUT_SVG = `${CL_SELECT}__svg`,
+  CL_INPUT_LINE = `${CL_SELECT}__line`,
+  CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`,
+  CL_ITEM = `${CL_SELECT}__item`,
+  DF_CAPTION = 'Item',
+  DF_INIT_ITEM = {
+    caption: void 0,
+    value: void 0
+  };
 const InputSelect = _ref => {
   let {
-    initialItem,
+    id,
+    initItem,
     caption,
     options,
+    style,
     onSelect
   } = _ref;
-  const [isShow, _hOpen, _hClose] = (0, _useBool.default)(),
-    [item, setItem] = (0, _uiApi.useState)(initialItem || DF_INITIAL_ITEM),
-    _hSelect = (0, _uiApi.useCallback)((item, event) => {
-      event.stopPropagation();
-      onSelect(item);
-      _hClose();
+  const _listboxId = (0, _uiApi.useId)(),
+    _captionId = (0, _uiApi.useId)(),
+    _refBtCombobox = (0, _uiApi.useRef)(),
+    [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
+    [isShowTuple, setIsShowTuple] = (0, _uiApi.useState)([!1]),
+    [showOptions, hideOptions] = (0, _uiApi.useMemo)(() => [focusOption => setIsShowTuple([!0, focusOption]), () => setIsShowTuple([!1])], []),
+    [isShowOptions, focusOption] = isShowTuple
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hCloseOptions = (0, _uiApi.useMemo)(() => () => {
+      hideOptions();
+      (0, _uiApi.focusRefElement)(_refBtCombobox);
+    }, [])
+    // hideOptions
+    ,
+    [_hSelect, _hTabSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [(item, evt) => {
+      (0, _uiApi.stopDefaultFor)(evt);
+      onSelect(item, id);
+      _hCloseOptions();
       setItem(item);
-    }, [onSelect, _hClose]);
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    role: "presentation",
-    className: _CL.CL_SELECT,
-    onClick: _hOpen,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_OptionsPane.default, {
-      isShow: isShow,
+    },
+    // id, onSelect, _closeOptions
+    item => {
+      onSelect(item, id);
+      setItem(item);
+    },
+    // id, onSelect
+    evt => {
+      if (evt.key === _uiApi.KEY_ARROW_DOWN) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        showOptions(_OptionFn.FOCUS_NEXT_OPTION);
+      } else if (evt.key === _uiApi.KEY_ARROW_UP) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        showOptions(_OptionFn.FOCUS_PREV_OPTION);
+      }
+    }
+    // showOptions
+    ], []);
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+    ref: _refBtCombobox,
+    type: "button",
+    role: "combobox",
+    "aria-expanded": isShowOptions,
+    "aria-controls": _listboxId,
+    "aria-labelledby": _captionId,
+    className: CL_SELECT,
+    style: style,
+    onClick: showOptions,
+    onKeyDown: _hKeyDown,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      id: _captionId,
+      className: CL_CAPTION,
+      children: caption || DF_CAPTION
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL_VALUE,
+      children: (0, _OptionFn.getItemCaption)(item)
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_OptionsPane.default, {
+      id: _listboxId,
+      isShow: isShowOptions,
+      focusOption: focusOption,
+      className: CL_SELECT_OPTIONS,
       item: item,
       options: options,
+      clItem: CL_ITEM,
       onSelect: _hSelect,
-      onClose: _hClose
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-      className: _CL.CL_LABEL,
-      children: caption
+      onTabSelect: _hTabSelect,
+      onClose: _hCloseOptions
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: _CL.CL_DIV,
+      "aria-hidden": "true",
+      className: CL_DIV,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: _CL.CL_DIV_VALUE,
-        children: item.caption
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-        type: "button",
-        className: _CL.CL_DIV_BT,
-        tabIndex: "0",
+        className: CL_INPUT_SVG,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell.default, {})
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: _CL.CL_INPUT_LINE
+        className: CL_INPUT_LINE
       })]
     })]
   });

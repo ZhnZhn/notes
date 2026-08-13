@@ -2,20 +2,32 @@
 
 exports.__esModule = true;
 exports.setUiTheme = exports.UI_THEME_OPTIONS = exports.DF_UI_THEME_ITEM = void 0;
-//const DF_BGC = "#808080";
+const _crRgba = (v, a) => `rgba(${v}, ${v}, ${v}, ${a})`;
 const DF_BGC = "#5f5f5f";
 const DF_C_BGC = "#4d4d4d";
+const DF_SO_BGC = "#404040";
+const DF_SI_C = "#f8f8ff";
+const DF_SI_HF = _crRgba(255, 0.1);
 const PALLETE_DARK = {
     'bgc': DF_BGC,
-    'c-bgc': DF_C_BGC
+    'c-bgc': DF_C_BGC,
+    'so-bgc': DF_SO_BGC,
+    'si-c': DF_SI_C,
+    'si-hf': DF_SI_HF
   },
   PALLETE_LIGHT = {
     'bgc': 'darkgrey',
-    'c-bgc': '#ebf1f5'
+    'c-bgc': '#ebf1f5',
+    'so-bgc': '#dfe4e7',
+    'si-c': '#303030',
+    'si-hf': _crRgba(255, 0.4)
   },
   PALLETE_SAND = {
     'bgc': 'darkgrey',
-    'c-bgc': '#e8e0cb'
+    'c-bgc': '#e8e0cb',
+    'so-bgc': '#c6bda5',
+    'si-c': '#303030',
+    'si-hf': _crRgba(255, 0.4)
   };
 const UI_THEME_DARK_ID = 'DARK',
   UI_THEME_LIGHT_ID = 'LIGHT',
@@ -36,7 +48,7 @@ const HP_UI_THEME = {
   [UI_THEME_LIGHT_ID]: PALLETE_LIGHT,
   [UI_THEME_SAND_ID]: PALLETE_SAND
 };
-const CUSTOM_CSS_PROPERTY_CONFIGS = [["bgc", DF_BGC], ["c-bgc", DF_C_BGC]];
+const CUSTOM_CSS_PROPERTY_CONFIGS = [["bgc", DF_BGC], ["c-bgc", DF_C_BGC], ["so-bgc", DF_SO_BGC], ["si-c", DF_SI_C], ["si-hf", DF_SI_HF]];
 const _setStyleProperties = uiThemePallete => {
   const _style = document.body.style;
   CUSTOM_CSS_PROPERTY_CONFIGS.forEach(_ref => {

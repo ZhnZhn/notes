@@ -1,81 +1,186 @@
-import { bindToArg } from '../../utils/bindTo';
+import {
+  useRef,
+  useCallback,
+  useEffect,
 
-import { safeMap } from '../uiApi';
-import { crStyle } from '../styleFn';
+  KEY_ARROW_DOWN,
+  KEY_ARROW_UP,
+  KEY_HOME,
+  KEY_END,
+  KEY_ESCAPE,
+  KEY_TAB,
 
+  getRefValue,
+  setRefValue,
+  stopDefaultFor
+} from '../uiApi';
+
+import { isKeyEnterOrSpace } from '../hooks/fUseKey';
+
+import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-ch/ModalPane';
-import ShowHide from '../zhn-ch/ShowHide';
+import {
+  FOCUS_NEXT_OPTION,
+  FOCUS_PREV_OPTION,
+  getItemCaption,
+  getItemValue
+} from './OptionFn';
 
-const S_PANE ={
-  position: 'absolute',
-  top: 12,
-  zIndex: 20,
-  width: '100%',
-  padding: '12px 0',
-  lineHeight: 1.8,
-  backgroundColor: 'rgb(77, 77, 77)',
-  borderRadius: 2,
-  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
-}
-, S_ITEM = {
-  display: 'block',
-  lineHeight: 2.2,
-  paddingLeft: 16,
-  width: '100%',
-  textAlign: 'left'
-}
-, S_ITEM_CURRENT = {
-  color: 'greenyellow'
+const SCROLL_OPTIONS = {
+  block: 'center',
+  behavior: 'smooth'
 };
 
-const _renderOptions = (
-  options,
+const _setItemFocus = (
+  elItem,
+  ref
+) => elItem
+  ? (
+  elItem.scrollIntoView(SCROLL_OPTIONS),
+  elItem.focus(),
+  setRefValue(ref, elItem),
+  !0
+) : !1;
+
+const _fFocusItem = propName => ref => {
+  const _elItem = getRefValue(ref)?.[propName];
+  return _setItemFocus(_elItem, ref);
+};
+
+const _focusNextItem = _fFocusItem('nextSibling');
+const _focusPrevItem = _fFocusItem('previousSibling');
+
+const _fFocusParentItem = propName => ref => {
+  const _elItem = getRefValue(ref)?.parentNode?.[propName];
+  _setItemFocus(_elItem, ref)
+}
+
+const _focusFirstItem = _fFocusParentItem('firstChild');
+const _focusLastItem = _fFocusParentItem('lastChild');
+
+const _crItem = (
+  item,
+  index, {
+  refItem,
   currentItem,
   clItem,
-  onSelect
-) => safeMap(options, item => {
-  const _style = crStyle(
-    S_ITEM,
-    [item.value === currentItem.value, S_ITEM_CURRENT]
-  )
-  , _onSelect = bindToArg(onSelect, item);
+  onSelect,
+  onTabSelect
+}) => {
+  const caption = getItemCaption(item)
+  , value = getItemValue(item)
+  , currentItemCaption = getItemCaption(currentItem)
+  , [
+    _tabIndex,
+    _ref,
+    _ariaSelected,
+  ] = currentItemCaption !== void 0 && caption === currentItemCaption
+      ? ["0", refItem, "true"]
+      : currentItemCaption === void 0 && index === 0
+         ? ["0", refItem]
+         : ["-1"]
+  , _hKeyDown = evt => {
+    if (isKeyEnterOrSpace(evt.key)) {
+      onSelect(item, evt)
+    } if (evt.key === KEY_TAB) {
+      onTabSelect(item)
+    }
+  };
 
   return (
-    <button
-      key={item.value}
-      type="button"
+    <div
+      key={value}
+      role="option"
+      ref={_ref}
+      aria-selected={_ariaSelected}
+      tabIndex={_tabIndex}
       className={clItem}
-      style={_style}
-      tabIndex="0"
-      onClick={_onSelect}
+      onClick={evt => onSelect(item, evt)}
+      onKeyDown={_hKeyDown}
     >
-      {item.caption}
-    </button>
+      {caption}
+    </div>
   );
-})
-
+};
 
 const OptionsPane = ({
+  id,
   isShow,
-  style,
+  focusOption,
+  className,
   options,
   item,
   clItem,
   onSelect,
+  onTabSelect,
   onClose
-}) => (
-  <ModalPane
-    isShow={isShow}
-    style={style}
-    onClose={onClose}
-  >
-    <ShowHide
-      isShow={isShow}
-      style={{...S_PANE, ...style}}
-    >
-      {_renderOptions(options, item, clItem, onSelect, isShow)}
-    </ShowHide>
-  </ModalPane>
-);
+}) => {
+  const _refItem = useRef(null)
+  , _refItemFocused = useRef(null)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hKeyDown = useCallback(evt => {
+    if (evt.key === KEY_ARROW_DOWN) {
+      stopDefaultFor(evt)
+      _focusNextItem(_refItemFocused)
+    } else if (evt.key === KEY_ARROW_UP) {
+      stopDefaultFor(evt)
+      _focusPrevItem(_refItemFocused)
+    } else if (evt.key === KEY_HOME) {
+      stopDefaultFor(evt)
+      _focusFirstItem(_refItemFocused)
+    } else if (evt.key === KEY_END) {
+      stopDefaultFor(evt)
+      _focusLastItem(_refItemFocused)
+    } else if (evt.key === KEY_TAB) {
+      stopDefaultFor(evt)
+      _focusNextItem(_refItemFocused)
+    } else if (evt.key === KEY_ESCAPE) {
+      stopDefaultFor(evt)
+      onClose()
+    }
+  }, []);
+  //onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  useEffect(()=>{
+    if (isShow) {
+      const _elItem = getRefValue(_refItem);
+      if (!getRefValue(_refItemFocused) && focusOption) {
+        setRefValue(_refItemFocused, _elItem)
+      }
+
+      const _hasBeenItemFocused = focusOption === FOCUS_NEXT_OPTION
+        ? _focusNextItem(_refItemFocused)
+        : focusOption === FOCUS_PREV_OPTION
+        ? _focusPrevItem(_refItemFocused)
+        : !1;
+
+      if (!_hasBeenItemFocused) {
+        _setItemFocus(_elItem, _refItemFocused)
+      }
+    }
+  }, [isShow, focusOption])
+  return (
+   <ModalPane
+     id={id}
+     role="listbox"
+     data-scrollable="true"
+     isShow={isShow}
+     className={className}
+     onClose={onClose}
+     onKeyDown={_hKeyDown}
+   >
+     <ItemStack
+       items={options}
+       crItem={_crItem}
+       refItem={_refItem}
+       currentItem={item}
+       clItem={clItem}
+       onSelect={onSelect}
+       onTabSelect={onTabSelect}
+     />
+   </ModalPane>
+ );
+};
 
 export default OptionsPane
