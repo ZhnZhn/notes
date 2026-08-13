@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/hooks/useFocus.js"
+ ],
+ "file": "../../../src/component/hooks/useFocus.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useFocusPrevElement",
+  "isShow",
+  "_refPrevElement",
+  "useRef",
+  "useEffect",
+  "_idFocus",
+  "setRefValue",
+  "document",
+  "activeElement",
+  "setTimeout",
+  "focusRefElement",
+  "clearTimeout",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAOO,MAAMC,mBAAmB,GAC9BC,MAAM,IACH;EACH,MAAMC,eAAe,GAAG,IAAAC,aAAM,EAAC,CAAC;EAChC,IAAAC,gBAAS,EAAC,MAAM;IACd,IAAIC,QAAQ;IACZ,IAAIJ,MAAM,EAAE;MACV,IAAAK,kBAAW,EAACJ,eAAe,EAAEK,QAAQ,CAACC,aAAa,CAAC;IACtD,CAAC,MAAM;MACLH,QAAQ,GAAGI,UAAU,CAAC,MAAM,IAAAC,sBAAe,EAACR,eAAe,CAAC,EAAE,GAAG,CAAC;IACpE;IACA,OAAO,MAAMS,YAAY,CAACN,QAAQ,CAAC;EACrC,CAAC,EAAE,CAACJ,MAAM,CAAC,CAAC;AACd,CAAC;AAAAW,OAAA,CAAAZ,mBAAA,GAAAA,mBAAA"
+}
