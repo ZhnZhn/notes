@@ -17,6 +17,8 @@ module.exports = defineConfig([
     globals: {
       window: true,
       document: true,
+      setTimeout: true,
+      clearTimeout: true, 
       URL: true,
       DOMException: true                         
     },
