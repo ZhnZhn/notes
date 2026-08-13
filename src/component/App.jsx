@@ -1,8 +1,5 @@
 import {
-  StrictMode,
-  useSelector,
-  useState,
-  useEffect
+  StrictMode  
 } from './uiApi';
 
 import {
