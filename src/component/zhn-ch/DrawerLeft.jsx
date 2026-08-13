@@ -1,7 +1,4 @@
 import useToggle from '../hooks/useToggle';
-import useTheme from '../hooks/useTheme';
-
-import styleConfig from '../style/Comp.Style';
 
 const CL_DRAWER_BT = 'drawer-bt'
 , CL_DRAWER = 'drawer-left'
@@ -36,8 +33,7 @@ const DrawerLeft = ({
   const [
     isOpen,
     toggleIsOpen
-  ] = useToggle(false)
-  , TS = useTheme(styleConfig)
+  ] = useToggle(false)  
   , [
     _drawerStyle,
     _drawerModalStyle,
@@ -74,7 +70,7 @@ const DrawerLeft = ({
       <aside
         key="aside"
         className={CL_DRAWER}
-        style={{..._drawerStyle, ...TS.COMP}}
+        style={_drawerStyle}
        >
         {children}
       </aside>

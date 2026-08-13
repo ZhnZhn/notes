@@ -1,8 +1,5 @@
 import memoIsShow from '../hoc/memoIsShow'
 
-import useTheme from '../hooks/useTheme'
-import styleConfig from '../style/Dialog.Style'
-
 import ModalDialog from '../zhn-ch/ModalDialog'
 import TabPane from '../zhn-tabpane/TabPane'
 import Tab from '../zhn-tabpane/Tab'
@@ -11,7 +8,7 @@ import TabDescr from './TabDescr'
 import TabLabels from './TabLabels'
 
 const CL_DIALOG = 'md-details'
-, S_CAPTION = { marginBottom: 0 }
+, S_CAPTION = { marginBottom: 0 };
 
 const _crCaption = (note) => {
   const { title='' } = note
@@ -27,38 +24,32 @@ const DetailsDialog = memoIsShow(({
   data,
   dispatch,
   onClose
-}) => {
-  const TS = useTheme(styleConfig)
-  , _caption = _crCaption(data);
-
-  return (
-      <ModalDialog
-        className={CL_DIALOG}
-        style={TS.DIALOG}
-        captionStyle={S_CAPTION}
-        caption={_caption}
-        isShow={isShow}
-        withoutClose={true}
-        onClose={onClose}
-      >
-        <TabPane width="100%" id={data.id}>
-          <Tab title="Descr">
-            <TabDescr
-              note={data}
-              dispatch={dispatch}
-              onClose={onClose}
-            />
-          </Tab>
-          <Tab title="Labels">
-            <TabLabels
-              note={data}
-              dispatch={dispatch}
-              onClose={onClose}
-            />
-          </Tab>
-       </TabPane>
-      </ModalDialog>
-    );
-})
+}) => (
+  <ModalDialog
+    className={CL_DIALOG}
+    captionStyle={S_CAPTION}
+    caption={_crCaption(data)}
+    isShow={isShow}
+    withoutClose={true}
+    onClose={onClose}
+  >
+    <TabPane width="100%" id={data.id}>
+      <Tab title="Descr">
+        <TabDescr
+          note={data}
+          dispatch={dispatch}
+          onClose={onClose}
+        />
+      </Tab>
+      <Tab title="Labels">
+        <TabLabels
+          note={data}
+          dispatch={dispatch}
+          onClose={onClose}
+        />
+      </Tab>
+   </TabPane>
+  </ModalDialog>
+))
 
 export default DetailsDialog

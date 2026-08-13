@@ -4,10 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
-var _uiApi = require("../uiApi");
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
 var _selectors = require("../../flux/selectors");
+var _uiApi = require("../uiApi");
 var _modalRouter = _interopRequireDefault(require("../dialogs/modalRouter"));
 var _WrapperModalDialog = _interopRequireDefault(require("../zhn-ch/WrapperModalDialog"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -15,7 +13,6 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 const DialogStack = _ref => {
   let {
-    TS,
     store,
     shows,
     data,
@@ -28,7 +25,6 @@ const DialogStack = _ref => {
       comp: DialogComp
     } = dialog;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogComp, {
-      TS: TS,
       isShow: shows[type],
       data: data[type],
       store: store,
@@ -41,8 +37,7 @@ const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
   let {
     store
   } = _ref2;
-  const TS = (0, _useTheme.default)(_Dialog.default),
-    _refModal = (0, _uiApi.useRef)(),
+  const _refModal = (0, _uiApi.useRef)(),
     [state, setState] = (0, _uiApi.useState)({
       isShow: false,
       currentDialog: null,
@@ -117,7 +112,6 @@ const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
     isShow: isShow,
     onClose: (0, _bindTo.bindToArg)(_hClose, currentDialog),
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogStack, {
-      TS: TS,
       store: store,
       shows: shows,
       data: data,

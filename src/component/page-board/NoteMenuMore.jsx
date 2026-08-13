@@ -1,12 +1,8 @@
 import { crCn } from '../styleFn';
-import useTheme from '../hooks/useTheme';
-import styleConfig from '../style/Comp.Style';
 
 import ModalPane from '../zhn-ch/ModalPane';
 import FlatButton from '../zhn-m/FlatButton';
-import {
-  CL_MODAL_PANE
-} from '../style/CL';
+import { CL_MODAL_PANE } from '../style/CL';
 
 const S_BT = {
   paddingLeft: 8,
@@ -21,28 +17,24 @@ const NoteMenuMore = ({
   onClose,
   onEdit,
   onRemove
-}) => {
-  const TS = useTheme(styleConfig)
-  , _className = crCn(CL_MODAL_PANE, className);
-  return (
-    <ModalPane
-      className={_className}
-      style={{...style, ...TS.COMP}}
-      isShow={isShow}
-      onClose={onClose}
-    >
-        <FlatButton
-          style={S_BT}
-          caption="Edit Details"
-          onClick={onEdit}
-        />
-        <FlatButton
-          style={S_BT}
-          caption="Remove Note"
-          onClick={onRemove}
-        />
-    </ModalPane>
-  );
-};
+}) => (
+  <ModalPane
+    isShow={isShow}
+    className={crCn(CL_MODAL_PANE, className)}
+    style={style}
+    onClose={onClose}
+  >
+    <FlatButton
+      style={S_BT}
+      caption="Edit Details"
+      onClick={onEdit}
+    />
+    <FlatButton
+      style={S_BT}
+      caption="Remove Note"
+      onClick={onRemove}
+    />
+  </ModalPane>
+);
 
 export default NoteMenuMore

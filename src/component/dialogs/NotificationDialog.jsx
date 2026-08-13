@@ -9,7 +9,6 @@ const CL_ROW = 'd-notif__row'
 const NotificationDialog = memoIsShow(({
   isShow,
   data,
-  TS,
   onClose
 }) => {
    const {
@@ -19,7 +18,6 @@ const NotificationDialog = memoIsShow(({
 
     return (
       <ModalDialog
-        style={TS.DIALOG}
         caption="Notification"
         isShow={isShow}
         onClose={onClose}

@@ -1,30 +1,19 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-
-var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var Header = function Header(_ref) {
-  var className = _ref.className,
-      style = _ref.style,
-      children = _ref.children;
-  var TS = (0, _useTheme["default"])(_Comp["default"]);
+const Header = _ref => {
+  let {
+    className,
+    style,
+    children
+  } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("header", {
     className: className,
-    style: (0, _extends2["default"])({}, style, TS.COMP),
+    style: style,
     children: children
   });
 };
-
-var _default = Header;
-exports["default"] = _default;
+var _default = exports.default = Header;
 //# sourceMappingURL=Header.js.map

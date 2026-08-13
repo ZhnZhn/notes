@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _Comp = _interopRequireDefault(require("../style/Comp.Style"));
 var _jsxRuntime = require("react/jsx-runtime");
 const CL_DRAWER_BT = 'drawer-bt',
   CL_DRAWER_SPAN = 'drawer-span',
@@ -41,7 +39,6 @@ const Drawer = _ref => {
     children
   } = _ref;
   const [isOpen, toggleIsOpen] = (0, _useToggle.default)(false),
-    TS = (0, _useTheme.default)(_Comp.default),
     _drawerStyle = isOpen ? S_DRAWER_ON : S_DRAWER_OFF,
     _drawerModalStyle = isOpen ? S_MODAL_ON : S_MODAL_OFF,
     _onClickWrapper = isOpen ? toggleIsOpen : void 0;
@@ -77,10 +74,7 @@ const Drawer = _ref => {
     onClick: _onClickWrapper
   }, "wrapper"), /*#__PURE__*/(0, _jsxRuntime.jsx)("aside", {
     className: CL_DRAWER,
-    style: {
-      ..._drawerStyle,
-      ...TS.COMP
-    },
+    style: _drawerStyle,
     children: children
   }, "aside")];
 };

@@ -1,33 +1,25 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_ROW = 'd-notif__row',
-    CL_CAPTION = 'd-notif__caption',
-    CL_DESCR = 'd-notif__descr';
-var NotificationDialog = (0, _memoIsShow["default"])(function (_ref) {
-  var isShow = _ref.isShow,
-      data = _ref.data,
-      TS = _ref.TS,
-      onClose = _ref.onClose;
-
-  var _ref2 = data || {},
-      _ref2$caption = _ref2.caption,
-      caption = _ref2$caption === void 0 ? '' : _ref2$caption,
-      _ref2$descr = _ref2.descr,
-      descr = _ref2$descr === void 0 ? '' : _ref2$descr;
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog["default"], {
-    style: TS.DIALOG,
+const CL_ROW = 'd-notif__row',
+  CL_CAPTION = 'd-notif__caption',
+  CL_DESCR = 'd-notif__descr';
+const NotificationDialog = (0, _memoIsShow.default)(_ref => {
+  let {
+    isShow,
+    data,
+    onClose
+  } = _ref;
+  const {
+    caption = '',
+    descr = ''
+  } = data || {};
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalDialog.default, {
     caption: "Notification",
     isShow: isShow,
     onClose: onClose,
@@ -46,6 +38,5 @@ var NotificationDialog = (0, _memoIsShow["default"])(function (_ref) {
     })]
   });
 });
-var _default = NotificationDialog;
-exports["default"] = _default;
+var _default = exports.default = NotificationDialog;
 //# sourceMappingURL=NotificationDialog.js.map

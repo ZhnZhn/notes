@@ -1,1 +1,33 @@
-{"version":3,"file":"NotificationDialog.js","names":["CL_ROW","CL_CAPTION","CL_DESCR","NotificationDialog","memoIsShow","isShow","data","TS","onClose","caption","descr","DIALOG"],"sources":["../../../src/component/dialogs/NotificationDialog.jsx"],"sourcesContent":["import memoIsShow from '../hoc/memoIsShow';\r\n\r\nimport ModalDialog from '../zhn-ch/ModalDialog';\r\n\r\nconst CL_ROW = 'd-notif__row'\r\n, CL_CAPTION = 'd-notif__caption'\r\n, CL_DESCR = 'd-notif__descr';\r\n\r\nconst NotificationDialog = memoIsShow(({\r\n  isShow,\r\n  data,\r\n  TS,\r\n  onClose\r\n}) => {\r\n   const {\r\n      caption='',\r\n      descr=''\r\n   } = data || {};\r\n\r\n    return (\r\n      <ModalDialog\r\n        style={TS.DIALOG}\r\n        caption=\"Notification\"\r\n        isShow={isShow}\r\n        onClose={onClose}\r\n      >\r\n         { caption &&\r\n           <div className={CL_ROW}>\r\n              <p className={CL_CAPTION}>\r\n                {caption}\r\n              </p>\r\n           </div>\r\n         }\r\n         <div className={CL_ROW}>\r\n            <p className={CL_DESCR}>\r\n              {descr}\r\n            </p>\r\n         </div>\r\n      </ModalDialog>\r\n    );\r\n})\r\n\r\nexport default NotificationDialog\r\n"],"mappings":";;;;;;;AAAA;;AAEA;;;;AAEA,IAAMA,MAAM,GAAG,cAAf;AAAA,IACEC,UAAU,GAAG,kBADf;AAAA,IAEEC,QAAQ,GAAG,gBAFb;AAIA,IAAMC,kBAAkB,GAAG,IAAAC,sBAAA,EAAW,gBAKhC;EAAA,IAJJC,MAII,QAJJA,MAII;EAAA,IAHJC,IAGI,QAHJA,IAGI;EAAA,IAFJC,EAEI,QAFJA,EAEI;EAAA,IADJC,OACI,QADJA,OACI;;EACH,YAGIF,IAAI,IAAI,EAHZ;EAAA,0BACGG,OADH;EAAA,IACGA,OADH,8BACW,EADX;EAAA,wBAEGC,KAFH;EAAA,IAEGA,KAFH,4BAES,EAFT;;EAKC,oBACE,sBAAC,uBAAD;IACE,KAAK,EAAEH,EAAE,CAACI,MADZ;IAEE,OAAO,EAAC,cAFV;IAGE,MAAM,EAAEN,MAHV;IAIE,OAAO,EAAEG,OAJX;IAAA,WAMKC,OAAO,iBACP;MAAK,SAAS,EAAET,MAAhB;MAAA,uBACG;QAAG,SAAS,EAAEC,UAAd;QAAA,UACGQ;MADH;IADH,EAPL,eAaG;MAAK,SAAS,EAAET,MAAhB;MAAA,uBACG;QAAG,SAAS,EAAEE,QAAd;QAAA,UACGQ;MADH;IADH,EAbH;EAAA,EADF;AAqBH,CAhC0B,CAA3B;eAkCeP,kB"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/NotificationDialog.js"
+ ],
+ "file": "../../../src/component/dialogs/NotificationDialog.js",
+ "names": [
+  "_memoIsShow",
+  "_interopRequireDefault",
+  "require",
+  "_ModalDialog",
+  "_jsxRuntime",
+  "CL_ROW",
+  "CL_CAPTION",
+  "CL_DESCR",
+  "NotificationDialog",
+  "memoIsShow",
+  "_ref",
+  "isShow",
+  "data",
+  "onClose",
+  "caption",
+  "descr",
+  "jsxs",
+  "default",
+  "children",
+  "jsx",
+  "className",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,YAAA,GAAAF,sBAAA,CAAAC,OAAA;AAAgD,IAAAE,WAAA,GAAAF,OAAA;AAEhD,MAAMG,MAAM,GAAG,cAAc;EAC3BC,UAAU,GAAG,kBAAkB;EAC/BC,QAAQ,GAAG,gBAAgB;AAE7B,MAAMC,kBAAkB,GAAG,IAAAC,mBAAU,EAACC,IAAA,IAIhC;EAAA,IAJiC;IACrCC,MAAM;IACNC,IAAI;IACJC;EACF,CAAC,GAAAH,IAAA;EACE,MAAM;IACHI,OAAO,GAAC,EAAE;IACVC,KAAK,GAAC;EACT,CAAC,GAAGH,IAAI,IAAI,CAAC,CAAC;EAEb,oBACE,IAAAR,WAAA,CAAAY,IAAA,EAACb,YAAA,CAAAc,OAAW;IACVH,OAAO,EAAC,cAAc;IACtBH,MAAM,EAAEA,MAAO;IACfE,OAAO,EAAEA,OAAQ;IAAAK,QAAA,GAEdJ,OAAO,iBACP,IAAAV,WAAA,CAAAe,GAAA;MAAKC,SAAS,EAAEf,MAAO;MAAAa,QAAA,eACpB,IAAAd,WAAA,CAAAe,GAAA;QAAGC,SAAS,EAAEd,UAAW;QAAAY,QAAA,EACtBJ;MAAO,CACP;IAAC,CACF,CAAC,eAER,IAAAV,WAAA,CAAAe,GAAA;MAAKC,SAAS,EAAEf,MAAO;MAAAa,QAAA,eACpB,IAAAd,WAAA,CAAAe,GAAA;QAAGC,SAAS,EAAEb,QAAS;QAAAW,QAAA,EACpBH;MAAK,CACL;IAAC,CACF,CAAC;EAAA,CACI,CAAC;AAEpB,CAAC,CAAC;AAAA,IAAAM,QAAA,GAAAC,OAAA,CAAAL,OAAA,GAEaT,kBAAkB"
+}

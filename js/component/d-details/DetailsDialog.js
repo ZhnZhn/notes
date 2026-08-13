@@ -4,8 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tabpane/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tabpane/Tab"));
@@ -31,13 +29,10 @@ const DetailsDialog = (0, _memoIsShow.default)(_ref => {
     dispatch,
     onClose
   } = _ref;
-  const TS = (0, _useTheme.default)(_Dialog.default),
-    _caption = _crCaption(data);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog.default, {
     className: CL_DIALOG,
-    style: TS.DIALOG,
     captionStyle: S_CAPTION,
-    caption: _caption,
+    caption: _crCaption(data),
     isShow: isShow,
     withoutClose: true,
     onClose: onClose,

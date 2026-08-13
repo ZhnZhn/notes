@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addBoard, removeBoard, setCurrentBoard } from '../board/actions';
+import {
+  addBoard,
+  removeBoard,
+  setCurrentBoard
+} from '../board/actions';
 import initialState from '../initialState';
 
 /*
 const initState = {
   boardId: 'b-1',
   boardIds: ['b-1']
-  uiTheme: 'GREY'
+  uiTheme: 'DARK'
 };
 */
 
@@ -31,7 +35,7 @@ const appSlice = createSlice({
         .filter(id => id !== boardId)
     })
     .addCase(setCurrentBoard, (state, action) => {
-      const { boardId } = action.payload;      
+      const { boardId } = action.payload;
       state.boardId = boardId
     })
 })

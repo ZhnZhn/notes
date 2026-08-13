@@ -1,1 +1,45 @@
-{"version":3,"file":"SettingsDialog.js","names":["CL","_themeOptions","caption","value","DF_THEME","SettingsDialog","memoIsShow","isShow","dispatch","onClose","_selectTheme","useCallback","setUiTheme","uiTheme","TS","useTheme","styleConfig","DIALOG","SELECT"],"sources":["../../../src/component/dialogs/SettingsDialog.jsx"],"sourcesContent":["import {\r\n  useCallback\r\n} from '../uiApi';\r\n\r\nimport memoIsShow from '../hoc/memoIsShow';\r\n\r\nimport useTheme from '../hooks/useTheme';\r\nimport styleConfig from '../style/Dialog.Style';\r\nimport { setUiTheme } from '../../flux/app/reducer';\r\n\r\nimport ModalDialog from '../zhn-ch/ModalDialog';\r\nimport InputSelect from '../zhn-m-input/InputSelect';\r\n\r\nconst CL = 'md-settings';\r\n\r\nconst _themeOptions = [\r\n  { caption: \"Dark\", value: \"DARK\" },\r\n  { caption: \"Light\", value: \"WHITE\" },\r\n  { caption: \"Sand\", value: \"SAND\" }\r\n]\r\n, DF_THEME = _themeOptions[0];\r\n\r\nconst SettingsDialog = memoIsShow(({\r\n  isShow,\r\n  dispatch,\r\n  onClose\r\n}) => {\r\n  /*eslint-disable react-hooks/exhaustive-deps */\r\n  const _selectTheme = useCallback(({ value }) => {\r\n      dispatch(setUiTheme({ uiTheme: value }))\r\n  }, [])\r\n  // dispatch\r\n  /*eslint-enable react-hooks/exhaustive-deps */\r\n  , TS = useTheme(styleConfig);\r\n\r\n  return (\r\n    <ModalDialog\r\n      isShow={isShow}\r\n      className={CL}\r\n      style={TS.DIALOG}\r\n      caption=\"User Settings\"\r\n      onClose={onClose}\r\n    >\r\n      <InputSelect\r\n        styleConfig={TS.SELECT}\r\n        caption=\"UI Theme (Default: Dark)\"\r\n        initialItem={DF_THEME}\r\n        options={_themeOptions}\r\n        onSelect={_selectTheme}\r\n      />\r\n    </ModalDialog>\r\n  );\r\n})\r\n\r\nexport default SettingsDialog\r\n"],"mappings":";;;;;;;AAAA;;AAIA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;;;AAEA,IAAMA,EAAE,GAAG,aAAX;AAEA,IAAMC,aAAa,GAAG,CACpB;EAAEC,OAAO,EAAE,MAAX;EAAmBC,KAAK,EAAE;AAA1B,CADoB,EAEpB;EAAED,OAAO,EAAE,OAAX;EAAoBC,KAAK,EAAE;AAA3B,CAFoB,EAGpB;EAAED,OAAO,EAAE,MAAX;EAAmBC,KAAK,EAAE;AAA1B,CAHoB,CAAtB;AAAA,IAKEC,QAAQ,GAAGH,aAAa,CAAC,CAAD,CAL1B;AAOA,IAAMI,cAAc,GAAG,IAAAC,sBAAA,EAAW,gBAI5B;EAAA,IAHJC,MAGI,QAHJA,MAGI;EAAA,IAFJC,QAEI,QAFJA,QAEI;EAAA,IADJC,OACI,QADJA,OACI;;EACJ;EACA,IAAMC,YAAY,GAAG,IAAAC,kBAAA,EAAY,iBAAe;IAAA,IAAZR,KAAY,SAAZA,KAAY;IAC5CK,QAAQ,CAAC,IAAAI,mBAAA,EAAW;MAAEC,OAAO,EAAEV;IAAX,CAAX,CAAD,CAAR;EACH,CAFoB,EAElB,EAFkB,CAArB,CAGA;;EACA;EAJA;EAAA,IAKEW,EAAE,GAAG,IAAAC,oBAAA,EAASC,kBAAT,CALP;;EAOA,oBACE,qBAAC,uBAAD;IACE,MAAM,EAAET,MADV;IAEE,SAAS,EAAEP,EAFb;IAGE,KAAK,EAAEc,EAAE,CAACG,MAHZ;IAIE,OAAO,EAAC,eAJV;IAKE,OAAO,EAAER,OALX;IAAA,uBAOE,qBAAC,uBAAD;MACE,WAAW,EAAEK,EAAE,CAACI,MADlB;MAEE,OAAO,EAAC,0BAFV;MAGE,WAAW,EAAEd,QAHf;MAIE,OAAO,EAAEH,aAJX;MAKE,QAAQ,EAAES;IALZ;EAPF,EADF;AAiBD,CA9BsB,CAAvB;eAgCeL,c"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/SettingsDialog.js"
+ ],
+ "file": "../../../src/component/dialogs/SettingsDialog.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_uiTheme",
+  "_memoIsShow",
+  "_interopRequireDefault",
+  "_reducer",
+  "_ModalDialog",
+  "_InputSelect",
+  "_jsxRuntime",
+  "CL_MD_SETTINGS",
+  "SettingsDialog",
+  "memoIsShow",
+  "_ref",
+  "isShow",
+  "dispatch",
+  "onClose",
+  "_selectTheme",
+  "useCallback",
+  "_ref2",
+  "value",
+  "setUiTheme",
+  "setFluxUiTheme",
+  "uiTheme",
+  "jsx",
+  "default",
+  "className",
+  "caption",
+  "children",
+  "initialItem",
+  "DF_UI_THEME_ITEM",
+  "options",
+  "UI_THEME_OPTIONS",
+  "onSelect",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAIA,IAAAC,QAAA,GAAAD,OAAA;AAMA,IAAAE,WAAA,GAAAC,sBAAA,CAAAH,OAAA;AACA,IAAAI,QAAA,GAAAJ,OAAA;AAEA,IAAAK,YAAA,GAAAF,sBAAA,CAAAH,OAAA;AACA,IAAAM,YAAA,GAAAH,sBAAA,CAAAH,OAAA;AAAqD,IAAAO,WAAA,GAAAP,OAAA;AAErD,MAAMQ,cAAc,GAAG,aAAa;AAEpC,MAAMC,cAAc,GAAG,IAAAC,mBAAU,EAACC,IAAA,IAI5B;EAAA,IAJ6B;IACjCC,MAAM;IACNC,QAAQ;IACRC;EACF,CAAC,GAAAH,IAAA;EACC;EACA,MAAMI,YAAY,GAAG,IAAAC,kBAAW,EAACC,KAAA,IAAe;IAAA,IAAd;MAAEC;IAAM,CAAC,GAAAD,KAAA;IACvC,IAAAE,mBAAU,EAACD,KAAK,CAAC;IACjBL,QAAQ,CAAC,IAAAO,mBAAc,EAAC;MAAEC,OAAO,EAAEH;IAAM,CAAC,CAAC,CAAC;EAChD,CAAC,EAAE,EAAE,CAAC;EACN;EACA;;EAEA,oBACE,IAAAX,WAAA,CAAAe,GAAA,EAACjB,YAAA,CAAAkB,OAAW;IACVX,MAAM,EAAEA,MAAO;IACfY,SAAS,EAAEhB,cAAe;IAC1BiB,OAAO,EAAC,eAAe;IACvBX,OAAO,EAAEA,OAAQ;IAAAY,QAAA,eAEjB,IAAAnB,WAAA,CAAAe,GAAA,EAAChB,YAAA,CAAAiB,OAAW;MACVE,OAAO,EAAC,0BAA0B;MAClCE,WAAW,EAAEC,yBAAiB;MAC9BC,OAAO,EAAEC,yBAAiB;MAC1BC,QAAQ,EAAEhB;IAAa,CACxB;EAAC,CACS,CAAC;AAElB,CAAC,CAAC;AAAA,IAAAiB,QAAA,GAAAC,OAAA,CAAAV,OAAA,GAEad,cAAc"
+}

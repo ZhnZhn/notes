@@ -1,6 +1,4 @@
 import useToggle from '../hooks/useToggle';
-import useTheme from '../hooks/useTheme';
-import styleConfig from '../style/Comp.Style';
 
 const CL_DRAWER_BT = 'drawer-bt'
 , CL_DRAWER_SPAN = 'drawer-span'
@@ -18,7 +16,9 @@ const CL_DRAWER_BT = 'drawer-bt'
   transform: 'translateX(264px)',
   pointerEvents: 'none'
 }
-, S_DRAWER_ON = { transform: 'translate(0px, 0px)' }
+, S_DRAWER_ON = {
+  transform: 'translate(0px, 0px)'
+}
 , S_MODAL_OFF = {
   opacity: 0,
   zIndex: -1,
@@ -34,8 +34,10 @@ const Drawer = ({
   btStyle,
   children
 }) => {
-  const [isOpen, toggleIsOpen] = useToggle(false)
-  , TS = useTheme(styleConfig)
+  const [
+    isOpen,
+    toggleIsOpen
+  ] = useToggle(false)
   , _drawerStyle = isOpen
       ? S_DRAWER_ON
       : S_DRAWER_OFF
@@ -78,7 +80,7 @@ const Drawer = ({
       <aside
         key="aside"
         className={CL_DRAWER}
-        style={{..._drawerStyle, ...TS.COMP}}
+        style={_drawerStyle}
        >
         {children}
       </aside>

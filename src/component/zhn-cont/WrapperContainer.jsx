@@ -1,5 +1,6 @@
 //import PropTypes from 'prop-types'
-import { bindToArg } from '../../utils/bindTo';
+import { bindToArg } from "../../utils/bindTo";
+import { selectAppModal } from "../../flux/selectors";
 
 import {
   memo,
@@ -12,16 +13,10 @@ import {
   safeMap
 } from "../uiApi";
 
-import useTheme from "../hooks/useTheme";
-import styleConfig from "../style/Dialog.Style";
-
-import { selectAppModal } from "../../flux/selectors";
-
 import Router from "../dialogs/modalRouter";
 import WrapperModalDialog from "../zhn-ch/WrapperModalDialog";
 
 const DialogStack = ({
-  TS,
   store,
   shows,
   data,
@@ -34,7 +29,6 @@ const DialogStack = ({
   } = dialog;
   return (<DialogComp
     key={type}
-    TS={TS}
     isShow={shows[type]}
     data={data[type]}
     store={store}
@@ -46,8 +40,7 @@ const DialogStack = ({
 const WrapperContainer = memo(({
   store
 }) => {
-  const TS = useTheme(styleConfig)
-  , _refModal = useRef()
+  const _refModal = useRef()
   , [
     state,
     setState
@@ -128,7 +121,6 @@ const WrapperContainer = memo(({
       onClose={bindToArg(_hClose, currentDialog)}
     >
       <DialogStack
-        TS={TS}
         store={store}
         shows={shows}
         data={data}

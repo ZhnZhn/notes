@@ -1,70 +1,47 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
+var _uiTheme = require("../uiTheme");
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-
-var _Dialog = _interopRequireDefault(require("../style/Dialog.Style"));
-
 var _reducer = require("../../flux/app/reducer");
-
 var _ModalDialog = _interopRequireDefault(require("../zhn-ch/ModalDialog"));
-
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL = 'md-settings';
-var _themeOptions = [{
-  caption: "Dark",
-  value: "DARK"
-}, {
-  caption: "Light",
-  value: "WHITE"
-}, {
-  caption: "Sand",
-  value: "SAND"
-}],
-    DF_THEME = _themeOptions[0];
-var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
-  var isShow = _ref.isShow,
-      dispatch = _ref.dispatch,
-      onClose = _ref.onClose;
-
+const CL_MD_SETTINGS = 'md-settings';
+const SettingsDialog = (0, _memoIsShow.default)(_ref => {
+  let {
+    isShow,
+    dispatch,
+    onClose
+  } = _ref;
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _selectTheme = (0, _uiApi.useCallback)(function (_ref2) {
-    var value = _ref2.value;
+  const _selectTheme = (0, _uiApi.useCallback)(_ref2 => {
+    let {
+      value
+    } = _ref2;
+    (0, _uiTheme.setUiTheme)(value);
     dispatch((0, _reducer.setUiTheme)({
       uiTheme: value
     }));
-  }, []) // dispatch
-
+  }, []);
+  // dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
-  ,
-      TS = (0, _useTheme["default"])(_Dialog["default"]);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog.default, {
     isShow: isShow,
-    className: CL,
-    style: TS.DIALOG,
+    className: CL_MD_SETTINGS,
     caption: "User Settings",
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
-      styleConfig: TS.SELECT,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect.default, {
       caption: "UI Theme (Default: Dark)",
-      initialItem: DF_THEME,
-      options: _themeOptions,
+      initialItem: _uiTheme.DF_UI_THEME_ITEM,
+      options: _uiTheme.UI_THEME_OPTIONS,
       onSelect: _selectTheme
     })
   });
 });
-var _default = SettingsDialog;
-exports["default"] = _default;
+var _default = exports.default = SettingsDialog;
 //# sourceMappingURL=SettingsDialog.js.map

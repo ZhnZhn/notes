@@ -20,14 +20,12 @@ import {
 const DF_INITIAL_ITEM = {
   caption: '',
   value: ''
-}
-, DF_TS = {};
+};
 
 const InputSelect = ({
   initialItem,
   caption,
   options,
-  styleConfig:TS=DF_TS,
   onSelect
 }) => {
   const [
@@ -50,15 +48,12 @@ const InputSelect = ({
     <div
       role="presentation"
       className={CL_SELECT}
-      style={TS.ROOT}
       onClick={_hOpen}
     >
       <OptionsPane
-         style={TS.MODAL_PANE}
          isShow={isShow}
          item={item}
          options={options}
-         clItem={TS.CL_ITEM}
          onSelect={_hSelect}
          onClose={_hClose}
        />

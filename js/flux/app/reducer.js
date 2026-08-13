@@ -1,51 +1,54 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports.setUiTheme = exports["default"] = void 0;
-
+exports.setUiTheme = exports.default = void 0;
 var _toolkit = require("@reduxjs/toolkit");
-
 var _actions = require("../board/actions");
-
 var _initialState = _interopRequireDefault(require("../initialState"));
-
 /*
 const initState = {
   boardId: 'b-1',
   boardIds: ['b-1']
-  uiTheme: 'GREY'
+  uiTheme: 'DARK'
 };
 */
-var appSlice = (0, _toolkit.createSlice)({
+
+const appSlice = (0, _toolkit.createSlice)({
   name: "app",
-  initialState: _initialState["default"].app,
+  initialState: _initialState.default.app,
   reducers: {
-    setUiTheme: function setUiTheme(state, action) {
-      var uiTheme = action.payload.uiTheme;
+    setUiTheme(state, action) {
+      const {
+        uiTheme
+      } = action.payload;
       state.uiTheme = uiTheme;
     }
   },
-  extraReducers: function extraReducers(builder) {
-    return builder.addCase(_actions.addBoard, function (state, action) {
-      var boardId = action.payload.boardId;
-      state.boardIds.push(boardId);
-    }).addCase(_actions.removeBoard, function (state, action) {
-      var boardId = action.payload.boardId;
-      state.boardIds = state.boardIds.filter(function (id) {
-        return id !== boardId;
-      });
-    }).addCase(_actions.setCurrentBoard, function (state, action) {
-      var boardId = action.payload.boardId;
-      state.boardId = boardId;
-    });
-  }
+  extraReducers: builder => builder.addCase(_actions.addBoard, (state, action) => {
+    const {
+      boardId
+    } = action.payload;
+    state.boardIds.push(boardId);
+  }).addCase(_actions.removeBoard, (state, action) => {
+    const {
+      boardId
+    } = action.payload;
+    state.boardIds = state.boardIds.filter(id => id !== boardId);
+  }).addCase(_actions.setCurrentBoard, (state, action) => {
+    const {
+      boardId
+    } = action.payload;
+    state.boardId = boardId;
+  })
 });
-var actions = appSlice.actions,
-    reducer = appSlice.reducer;
-var setUiTheme = actions.setUiTheme;
+const {
+  actions,
+  reducer
+} = appSlice;
+const {
+  setUiTheme
+} = actions;
 exports.setUiTheme = setUiTheme;
-var _default = reducer;
-exports["default"] = _default;
+var _default = exports.default = reducer;
 //# sourceMappingURL=reducer.js.map

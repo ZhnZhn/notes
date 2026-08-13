@@ -10,16 +10,14 @@ var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _CL = require("./CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const DF_INITIAL_ITEM = {
-    caption: '',
-    value: ''
-  },
-  DF_TS = {};
+  caption: '',
+  value: ''
+};
 const InputSelect = _ref => {
   let {
     initialItem,
     caption,
     options,
-    styleConfig: TS = DF_TS,
     onSelect
   } = _ref;
   const [isShow, _hOpen, _hClose] = (0, _useBool.default)(),
@@ -33,14 +31,11 @@ const InputSelect = _ref => {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
     className: _CL.CL_SELECT,
-    style: TS.ROOT,
     onClick: _hOpen,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_OptionsPane.default, {
-      style: TS.MODAL_PANE,
       isShow: isShow,
       item: item,
       options: options,
-      clItem: TS.CL_ITEM,
       onSelect: _hSelect,
       onClose: _hClose
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
