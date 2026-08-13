@@ -6,7 +6,7 @@ var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _CL = require("../style/CL");
-var _isEventKey = require("./isEventKey");
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("react/jsx-runtime");
 const InputText = _ref => {
   let {
@@ -27,12 +27,12 @@ const InputText = _ref => {
       }
     }, [maxLength]),
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if ((0, _isEventKey.isEventKeyEnter)(evt)) {
+      if ((0, _fUseKey.isEventKeyEnter)(evt)) {
         const el = document.activeElement;
         if (el && (0, _isTypeFn.isFn)(el.blur)) {
           el.blur();
         }
-      } else if ((0, _isEventKey.isEventKeyDelete)(evt)) {
+      } else if ((0, _fUseKey.isEventKeyDelete)(evt)) {
         setValue('');
       }
     }, []);

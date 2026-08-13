@@ -8,7 +8,7 @@ import {
 
 import {
   isEventKeyDelete
-} from './isEventKey';
+} from '../hooks/fUseKey';
 
 const InputTextArea = ({
   refEl,

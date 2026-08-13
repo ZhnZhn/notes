@@ -8,17 +8,13 @@ import {
   useImperativeHandle
 } from '../uiApi';
 
-import {
-  crCn
-} from '../styleFn';
-import {
-  CL_INPUT
-} from '../style/CL';
+import { crCn } from '../styleFn';
+import { CL_INPUT } from '../style/CL';
 
 import {
   isEventKeyEnter,
   isEventKeyDelete
-} from './isEventKey';
+} from '../hooks/fUseKey';
 
 const InputText = ({
   refEl,

@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _isEventKey = require("./isEventKey");
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("react/jsx-runtime");
 const InputTextArea = _ref => {
   let {
@@ -19,7 +19,7 @@ const InputTextArea = _ref => {
       setValue(evt.target.value);
     }, []),
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if ((0, _isEventKey.isEventKeyDelete)(evt)) {
+      if ((0, _fUseKey.isEventKeyDelete)(evt)) {
         setValue('');
       }
     }, []);
