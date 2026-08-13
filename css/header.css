@@ -9,13 +9,16 @@ nav {
 }
 
 .header {
-  background-color: #4d4d4d;
+  //background-color: #4d4d4d;
   width: 100%;
   min-height: 36px;
   padding-top: 8px;
   padding-bottom: 4px;
   padding-left: 12px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.6);
+
+  background-color: #4d4d4d;
+  background-color: var(--c-bgc, #4d4d4d);
 }
 .header__logo-notes {
   display: inline-block;

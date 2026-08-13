@@ -20,6 +20,9 @@ $shDialog
   padding-bottom: 6px;
   border-radius: 5px;
   overflow: hidden;
+
+  background-color: #4d4d4d;
+  background-color: var(--c-bgc, #4d4d4d);
 }
 .modal-pane:focus {
   outline: 0;

@@ -9,7 +9,7 @@ $shDialog
 .modal-dialog {
   z-index: 10;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 6px;
-  background-color: #4d4d4d;
+  //background-color: #4d4d4d;
   border: solid 2px #607d8b;
   position: relative;
   display: block;
@@ -17,6 +17,9 @@ $shDialog
   height: 150px;
   margin: 40px auto 0 auto;
   border-radius: 5px;
+
+  background-color: #4d4d4d;
+  background-color: var(--c-bgc, #4d4d4d);
 }
 
 .md__actions {
