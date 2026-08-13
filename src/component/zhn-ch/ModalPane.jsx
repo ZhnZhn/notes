@@ -1,29 +1,34 @@
 import useClickOutside from '../hooks/useClickOutside';
 import { useKeyEscape } from '../hooks/fUseKey';
+import { useFocusPrevElement } from '../hooks/useFocus';
 
 const ModalPane = ({
   isShow,
   className,
   style,
   children,
-  onClose
+  onClose,
+  onKeyDown,
+  ...restProps
 }) => {
-  const _refNode = useClickOutside(isShow, onClose)
-  , _hKeyEscape = useKeyEscape(onClose)
-  , _hKeyDown = isShow
-       ? _hKeyEscape
-       : void 0;
+  const _refEl = useClickOutside(isShow, onClose)
+  , _hKeyEscape = useKeyEscape(onClose);
+
+  useFocusPrevElement(isShow)
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
-       role="presentation"
-       ref={_refNode}
-       className={className}
-       style={style}
-       onKeyDown={_hKeyDown}
+      {...restProps}
+      ref={_refEl}
+      className={className}
+      style={style}
+      hidden={!isShow}
+      onKeyDown={isShow ? onKeyDown || _hKeyEscape : void 0}
     >
       {children}
     </div>
   );
-}
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
+};
 
 export default ModalPane

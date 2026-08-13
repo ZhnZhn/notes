@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
 var _fUseKey = require("../hooks/fUseKey");
+var _useFocus = require("../hooks/useFocus");
 var _jsxRuntime = require("react/jsx-runtime");
 const ModalPane = _ref => {
   let {
@@ -12,19 +13,24 @@ const ModalPane = _ref => {
     className,
     style,
     children,
-    onClose
+    onClose,
+    onKeyDown,
+    ...restProps
   } = _ref;
-  const _refNode = (0, _useClickOutside.default)(isShow, onClose),
-    _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose),
-    _hKeyDown = isShow ? _hKeyEscape : void 0;
+  const _refEl = (0, _useClickOutside.default)(isShow, onClose),
+    _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
+  (0, _useFocus.useFocusPrevElement)(isShow);
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    role: "presentation",
-    ref: _refNode,
+    ...restProps,
+    ref: _refEl,
     className: className,
     style: style,
-    onKeyDown: _hKeyDown,
+    hidden: !isShow,
+    onKeyDown: isShow ? onKeyDown || _hKeyEscape : void 0,
     children: children
   });
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 var _default = exports.default = ModalPane;
 //# sourceMappingURL=ModalPane.js.map
