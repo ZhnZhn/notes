@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const _crTopicStyle = function (is, dragBg, notDragBg) {
+const _crTopicStyle = function (is, dragBg, notDragBg, marginRight, marginBottom) {
   if (dragBg === void 0) {
     dragBg = '#1e90ff';
   }
@@ -12,7 +12,9 @@ const _crTopicStyle = function (is, dragBg, notDragBg) {
     notDragBg = 'transparent';
   }
   return {
-    backgroundColor: is ? dragBg : notDragBg
+    backgroundColor: is ? dragBg : notDragBg,
+    marginRight: is ? void 0 : marginRight,
+    marginBottom: is ? void 0 : marginBottom
   };
 };
 const _hocDnDImpl = (ItemComp, options) => props => {
@@ -21,19 +23,22 @@ const _hocDnDImpl = (ItemComp, options) => props => {
       innerRef,
       isDragging,
       dragHandleProps,
-      ...rest
+      ...restProps
     } = props,
     {
       dragBg,
       notDragBg,
-      isDragHanlerProps
+      isDragHanlerProps,
+      marginRight,
+      marginBottom
     } = options || {},
     {
       style,
       ...draggablePropsRest
     } = draggableProps,
-    _style = _crTopicStyle(isDragging, dragBg, notDragBg),
+    _style = _crTopicStyle(isDragging, dragBg, notDragBg, marginRight, marginBottom),
     _dragHandleProps = isDragHanlerProps ? void 0 : dragHandleProps;
+  console.log(marginBottom);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ref: innerRef,
     style: {
@@ -44,7 +49,7 @@ const _hocDnDImpl = (ItemComp, options) => props => {
     ..._dragHandleProps,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemComp, {
       dragHandleProps: isDragHanlerProps ? dragHandleProps : undefined,
-      ...rest
+      ...restProps
     })
   });
 };

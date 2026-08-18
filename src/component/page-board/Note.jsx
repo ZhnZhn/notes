@@ -17,7 +17,7 @@ import { showDetails } from '../../flux/modal/reducer';
 import NoteCaption from './NoteCaption';
 import NoteDetails from './NoteDetails';
 
-const CL = 'note';
+const CL_NOTE = 'note';
 
 const DnDNote = (
   props
@@ -79,7 +79,7 @@ const DnDNote = (
 
   return (
     <div
-      className={CL}
+      className={CL_NOTE}
       id={noteId}
     >
       <NoteCaption

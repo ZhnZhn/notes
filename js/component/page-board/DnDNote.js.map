@@ -1,1 +1,25 @@
-{"version":3,"file":"DnDNote.js","names":["DnDNote","hocDnD","notDragBg","isDragHanlerProps","Note","displayName"],"sources":["../../../src/component/page-board/DnDNote.js"],"sourcesContent":["import hocDnD from '../zhn-dnd/hocDnD'\r\nimport Note from './Note'\r\n\r\nconst DnDNote = hocDnD({\r\n  notDragBg: '#9e9e9e',\r\n  isDragHanlerProps: true\r\n})(Note);\r\n\r\nDnDNote.displayName = 'DnDNote'\r\n\r\nexport default DnDNote\r\n"],"mappings":";;;;;;;AAAA;;AACA;;AAEA,IAAMA,OAAO,GAAG,IAAAC,kBAAA,EAAO;EACrBC,SAAS,EAAE,SADU;EAErBC,iBAAiB,EAAE;AAFE,CAAP,EAGbC,gBAHa,CAAhB;AAKAJ,OAAO,CAACK,WAAR,GAAsB,SAAtB;eAEeL,O"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/page-board/DnDNote.js"
+ ],
+ "file": "../../../src/component/page-board/DnDNote.js",
+ "names": [
+  "_hocDnD",
+  "_interopRequireDefault",
+  "require",
+  "_Note",
+  "DnDNote",
+  "hocDnD",
+  "notDragBg",
+  "isDragHanlerProps",
+  "marginRight",
+  "marginBottom",
+  "Note",
+  "displayName",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,OAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,KAAA,GAAAF,sBAAA,CAAAC,OAAA;AAEA,MAAME,OAAO,GAAG,IAAAC,eAAM,EAAC;EACrBC,SAAS,EAAE,SAAS;EACpBC,iBAAiB,EAAE,IAAI;EACvBC,WAAW,EAAE,MAAM;EACnBC,YAAY,EAAE;AAChB,CAAC,CAAC,CAACC,aAAI,CAAC;AAERN,OAAO,CAACO,WAAW,GAAG,SAAS;AAAA,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEhBV,OAAO"
+}

@@ -1,33 +1,56 @@
 import { isFn } from '../../utils/isTypeFn';
 
-const _crTopicStyle = (is,
+const _crTopicStyle = (
+  is,
   dragBg = '#1e90ff',
-  notDragBg = 'transparent'
+  notDragBg = 'transparent',
+  marginRight,
+  marginBottom
 ) => ({
   backgroundColor: is
-     ? dragBg
-     : notDragBg
+    ? dragBg
+    : notDragBg,
+  marginRight: is
+    ? void 0
+    : marginRight,
+  marginBottom: is
+    ? void 0
+    : marginBottom
 });
 
-const _hocDnDImpl = (ItemComp, options) => (props) => {
+const _hocDnDImpl = (
+  ItemComp,
+  options
+) => (props) => {
   const {
     draggableProps,
     innerRef,
     isDragging,
     dragHandleProps,
-    ...rest
+    ...restProps
   } = props
   , {
     dragBg,
     notDragBg,
-    isDragHanlerProps
+    isDragHanlerProps,
+    marginRight,
+    marginBottom
   } = options || {}
-  , { style, ...draggablePropsRest } = draggableProps
-  , _style = _crTopicStyle(isDragging, dragBg, notDragBg)
+  , {
+    style,
+    ...draggablePropsRest
+  } = draggableProps
+  , _style = _crTopicStyle(
+      isDragging,
+      dragBg,
+      notDragBg,
+      marginRight,
+      marginBottom
+    )
   , _dragHandleProps = isDragHanlerProps
        ? void 0
        : dragHandleProps;
-
+  console.log(marginBottom)     
   return (
     <div
       ref={innerRef}
@@ -40,7 +63,7 @@ const _hocDnDImpl = (ItemComp, options) => (props) => {
            ? dragHandleProps
            : undefined
          }
-         {...rest}
+         {...restProps}
       />
     </div>
   );
