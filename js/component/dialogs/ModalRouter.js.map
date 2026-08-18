@@ -1,1 +1,28 @@
-{"version":3,"file":"modalRouter.js","names":["MD","NOTIF","SETTINGS","DETAILS","_r","DF","Notification","Settings","Details","modalRouter","getDialog","type"],"sources":["../../../src/component/dialogs/modalRouter.js"],"sourcesContent":["\r\nimport Notification from './NotificationDialog'\r\nimport Settings from './SettingsDialog'\r\nimport Details from '../d-details/DetailsDialog'\r\n\r\nexport const MD = {\r\n  NOTIF: 'NOTIF',\r\n  SETTINGS: 'SETTINGS',\r\n  DETAILS: 'DETAILS'\r\n};\r\n\r\nconst _r = {\r\n  DF: Notification,\r\n  [MD.NOTIF]: Notification,\r\n  [MD.SETTINGS]: Settings,\r\n  [MD.DETAILS]: Details\r\n}\r\n\r\nconst modalRouter = {\r\n  getDialog(type) {\r\n    return _r[type] || _r.DF;\r\n  }\r\n};\r\n\r\nexport default modalRouter\r\n"],"mappings":";;;;;;;AACA;;AACA;;AACA;;;;AAEO,IAAMA,EAAE,GAAG;EAChBC,KAAK,EAAE,OADS;EAEhBC,QAAQ,EAAE,UAFM;EAGhBC,OAAO,EAAE;AAHO,CAAX;;;AAMP,IAAMC,EAAE;EACNC,EAAE,EAAEC;AADE,OAELN,EAAE,CAACC,KAFE,IAEMK,8BAFN,MAGLN,EAAE,CAACE,QAHE,IAGSK,0BAHT,MAILP,EAAE,CAACG,OAJE,IAIQK,yBAJR,MAAR;;AAOA,IAAMC,WAAW,GAAG;EAClBC,SADkB,qBACRC,IADQ,EACF;IACd,OAAOP,EAAE,CAACO,IAAD,CAAF,IAAYP,EAAE,CAACC,EAAtB;EACD;AAHiB,CAApB;eAMeI,W"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/dialogs/modalRouter.js"
+ ],
+ "file": "../../../src/component/dialogs/modalRouter.js",
+ "names": [
+  "_objFn",
+  "require",
+  "_NotificationDialog",
+  "_interopRequireDefault",
+  "_SettingsDialog",
+  "_DetailsDialog",
+  "MD_NOTIF",
+  "exports",
+  "MD_SETTINGS",
+  "MD_DETAILS",
+  "_r",
+  "crObjHm",
+  "DF",
+  "Notification",
+  "Settings",
+  "Details",
+  "getModalDialog",
+  "type"
+ ],
+ "mappings": ";;;;;AACA,IAAAA,MAAA,GAAAC,OAAA;AAEA,IAAAC,mBAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,eAAA,GAAAD,sBAAA,CAAAF,OAAA;AACA,IAAAI,cAAA,GAAAF,sBAAA,CAAAF,OAAA;AAEO,MAAMK,QAAQ,GAAAC,OAAA,CAAAD,QAAA,GAAG,OAAO;AACxB,MAAME,WAAW,GAAAD,OAAA,CAAAC,WAAA,GAAG,UAAU;AAC9B,MAAMC,UAAU,GAAAF,OAAA,CAAAE,UAAA,GAAG,SAAS;AAEnC,MAAMC,EAAE,GAAG,IAAAC,cAAO,EAAC;EACjBC,EAAE,EAAEC,2BAAY;EAChB,CAACP,QAAQ,GAAGO,2BAAY;EACxB,CAACL,WAAW,GAAGM,uBAAQ;EACvB,CAACL,UAAU,GAAGM;AAChB,CAAC,CAAC;AAEK,MAAMC,cAAc,GACzBC,IAAI,IACDP,EAAE,CAACO,IAAI,CAAC,IAAIP,EAAE,CAACE,EAAE;AAAAL,OAAA,CAAAS,cAAA,GAAAA,cAAA"
+}

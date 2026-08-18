@@ -32,16 +32,16 @@ const {
   showModal
 } = actions;
 const showDetails = data => showModal({
-  id: _modalRouter.MD.DETAILS,
+  id: _modalRouter.MD_DETAILS,
   data
 });
 exports.showDetails = showDetails;
 const showSettings = () => showModal({
-  id: _modalRouter.MD.SETTINGS
+  id: _modalRouter.MD_SETTINGS
 });
 exports.showSettings = showSettings;
 const showNotif = data => showModal({
-  id: _modalRouter.MD.NOTIF,
+  id: _modalRouter.MD_NOTIF,
   data
 });
 exports.showNotif = showNotif;

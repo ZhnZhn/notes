@@ -13,7 +13,7 @@ import {
   safeMap
 } from "../uiApi";
 
-import Router from "../dialogs/modalRouter";
+import { getModalDialog } from "../dialogs/modalRouter";
 import WrapperModalDialog from "../zhn-ch/WrapperModalDialog";
 
 const DialogStack = ({
@@ -85,7 +85,7 @@ const WrapperContainer = memo(({
           if (!inits[type]){
             dialogs.push({
               type,
-              comp: Router.getDialog(type)
+              comp: getModalDialog(type)
             })
             inits[type] = true
           }

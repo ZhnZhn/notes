@@ -1,5 +1,9 @@
 import store from '../../store';
-import { MD } from '../../../component/dialogs/modalRouter';
+import {
+  MD_DETAILS,
+  MD_SETTINGS,
+  MD_NOTIF 
+} from '../../../component/dialogs/modalRouter';
 import reducer, {
   initialState,
   showDetails,
@@ -27,7 +31,7 @@ describe('modal slice', ()=>{
     dispatch(showDetails(data))
 
     _testActionResult(prevState, {
-      id: MD.DETAILS, data
+      id: MD_DETAILS, data
     })
   })
   test('should use action showSettings', ()=>{
@@ -35,7 +39,7 @@ describe('modal slice', ()=>{
     dispatch(showSettings())
 
     _testActionResult(prevState, {
-      id: MD.SETTINGS,
+      id: MD_SETTINGS,
       data: void 0
     })
   })
@@ -45,7 +49,7 @@ describe('modal slice', ()=>{
     dispatch(showNotif(data))
 
     _testActionResult(prevState, {
-      id: MD.NOTIF,
+      id: MD_NOTIF,
       data
     })
   })

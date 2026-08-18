@@ -1,6 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'; 
 
-import { MD } from '../../component/dialogs/modalRouter';
+import {
+  MD_DETAILS,
+  MD_SETTINGS,
+  MD_NOTIF
+} from '../../component/dialogs/modalRouter';
 
 export const initialState = {
   id: null,
@@ -21,8 +25,8 @@ const modalSlice = createSlice({
 const { actions, reducer } = modalSlice;
 const { showModal } = actions;
 
-export const showDetails = data => showModal({ id: MD.DETAILS, data })
-export const showSettings = () => showModal({ id: MD.SETTINGS })
-export const showNotif = data => showModal({ id: MD.NOTIF, data})
+export const showDetails = data => showModal({ id: MD_DETAILS, data })
+export const showSettings = () => showModal({ id: MD_SETTINGS })
+export const showNotif = data => showModal({ id: MD_NOTIF, data})
 
 export default reducer

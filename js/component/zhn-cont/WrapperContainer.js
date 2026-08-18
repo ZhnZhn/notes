@@ -6,7 +6,7 @@ exports.default = void 0;
 var _bindTo = require("../../utils/bindTo");
 var _selectors = require("../../flux/selectors");
 var _uiApi = require("../uiApi");
-var _modalRouter = _interopRequireDefault(require("../dialogs/modalRouter"));
+var _modalRouter = require("../dialogs/modalRouter");
 var _WrapperModalDialog = _interopRequireDefault(require("../zhn-ch/WrapperModalDialog"));
 var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -79,7 +79,7 @@ const WrapperContainer = (0, _uiApi.memo)(_ref2 => {
           if (!inits[type]) {
             dialogs.push({
               type,
-              comp: _modalRouter.default.getDialog(type)
+              comp: (0, _modalRouter.getModalDialog)(type)
             });
             inits[type] = true;
           }

@@ -1,34 +1,21 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = exports.MD = void 0;
-
+exports.getModalDialog = exports.MD_SETTINGS = exports.MD_NOTIF = exports.MD_DETAILS = void 0;
+var _objFn = require("../../utils/objFn");
 var _NotificationDialog = _interopRequireDefault(require("./NotificationDialog"));
-
 var _SettingsDialog = _interopRequireDefault(require("./SettingsDialog"));
-
 var _DetailsDialog = _interopRequireDefault(require("../d-details/DetailsDialog"));
-
-var _r2;
-
-var MD = {
-  NOTIF: 'NOTIF',
-  SETTINGS: 'SETTINGS',
-  DETAILS: 'DETAILS'
-};
-exports.MD = MD;
-
-var _r = (_r2 = {
-  DF: _NotificationDialog["default"]
-}, _r2[MD.NOTIF] = _NotificationDialog["default"], _r2[MD.SETTINGS] = _SettingsDialog["default"], _r2[MD.DETAILS] = _DetailsDialog["default"], _r2);
-
-var modalRouter = {
-  getDialog: function getDialog(type) {
-    return _r[type] || _r.DF;
-  }
-};
-var _default = modalRouter;
-exports["default"] = _default;
+const MD_NOTIF = exports.MD_NOTIF = 'NOTIF';
+const MD_SETTINGS = exports.MD_SETTINGS = 'SETTINGS';
+const MD_DETAILS = exports.MD_DETAILS = 'DETAILS';
+const _r = (0, _objFn.crObjHm)({
+  DF: _NotificationDialog.default,
+  [MD_NOTIF]: _NotificationDialog.default,
+  [MD_SETTINGS]: _SettingsDialog.default,
+  [MD_DETAILS]: _DetailsDialog.default
+});
+const getModalDialog = type => _r[type] || _r.DF;
+exports.getModalDialog = getModalDialog;
 //# sourceMappingURL=modalRouter.js.map
