@@ -1,13 +1,14 @@
-import { useSelector } from '../uiApi';
 import { selectCurrentBoard } from '../../flux/selectors';
 
-import Logo from '../zhn/Logo';
-import crTitle from './crTitle';
+import { useSelector } from '../uiApi';
 import {
   CL_LOGO_BOARD,
   CL_HEADER_TITLE,
   CL_TITLE_BOARD
-} from '../style/CL';
+} from '../styleFn';
+
+import Logo from '../zhn/Logo';
+import crTitle from './crTitle';
 
 const _CL_TITLE = `${CL_HEADER_TITLE} ${CL_TITLE_BOARD}`;
 

@@ -3,13 +3,6 @@ import {
 } from '../../utils/isTypeFn';
 
 import {
-  useDispatch,
-  useCallback
-} from '../uiApi';
-
-import useBool from '../hooks/useBool';
-
-import {
   editColumnTitle,
   toggleColumn
 } from '../../flux/column/reducer';
@@ -20,15 +13,21 @@ import {
    addNote
  } from '../../flux/note/actions';
 
+import {
+  useDispatch,
+  useCallback
+} from '../uiApi';
+import {
+  CL_CARD_BT
+} from '../styleFn';
+
+import useBool from '../hooks/useBool';
+
 import { BtSvgMore } from '../zhn/BtSvg';
 import TopicMenuMore from './TopicMenuMore';
 import Card from '../zhn-card/Card';
 import FlatButton from '../zhn-m/FlatButton';
 import DnDNoteList from './DnDNoteList';
-
-import {
-  CL_CARD_BT
-} from '../style/CL';
 
 const S_BT_SVG_MORE = {
   marginRight: 8

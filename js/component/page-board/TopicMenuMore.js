@@ -3,9 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _styleFn = require("../styleFn");
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT = {
   paddingLeft: 8,
@@ -22,7 +22,7 @@ const TopicMenuMore = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalPane.default, {
     isShow: isShow,
-    className: _CL.CL_MODAL_PANE,
+    className: _styleFn.CL_MODAL_PANE,
     style: style,
     onClose: onClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {

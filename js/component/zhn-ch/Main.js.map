@@ -1,1 +1,22 @@
-{"version":3,"file":"Main.js","names":["Main","children","CL_CONT"],"sources":["../../../src/component/zhn-ch/Main.jsx"],"sourcesContent":["import { CL_CONT } from '../style/CL';\r\n\r\nconst Main = ({ children }) => (\r\n  <main className={CL_CONT}>\r\n    {children}\r\n  </main>\r\n);\r\n\r\nexport default Main\r\n"],"mappings":";;;;;AAAA;;;;AAEA,IAAMA,IAAI,GAAG,SAAPA,IAAO;EAAA,IAAGC,QAAH,QAAGA,QAAH;EAAA,oBACX;IAAM,SAAS,EAAEC,WAAjB;IAAA,UACGD;EADH,EADW;AAAA,CAAb;;eAMeD,I"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-ch/Main.js"
+ ],
+ "file": "../../../src/component/zhn-ch/Main.js",
+ "names": [
+  "_styleFn",
+  "require",
+  "_jsxRuntime",
+  "Main",
+  "_ref",
+  "children",
+  "jsx",
+  "className",
+  "CL_CONT",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,QAAA,GAAAC,OAAA;AAAqC,IAAAC,WAAA,GAAAD,OAAA;AAErC,MAAME,IAAI,GAAGC,IAAA;EAAA,IAAC;IAAEC;EAAS,CAAC,GAAAD,IAAA;EAAA,oBACxB,IAAAF,WAAA,CAAAI,GAAA;IAAMC,SAAS,EAAEC,gBAAQ;IAAAH,QAAA,EACtBA;EAAQ,CACL,CAAC;AAAA,CACR;AAAC,IAAAI,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaR,IAAI"
+}

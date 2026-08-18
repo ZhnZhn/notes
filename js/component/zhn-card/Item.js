@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _styleFn = require("../styleFn");
-var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const Item = _ref => {
   let {
@@ -11,7 +10,7 @@ const Item = _ref => {
     children
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("section", {
-    className: _CL.CL_ITEM_CARD,
+    className: _styleFn.CL_ITEM_CARD,
     style: (0, _styleFn.crStyle)([isHide, _styleFn.S_NONE]),
     children: children
   });

@@ -8,7 +8,6 @@ var _styleFn = require("../styleFn");
 var _fUseKey = require("../hooks/fUseKey");
 var _DialogCaption = _interopRequireDefault(require("./DialogCaption"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 //import { PropTypes } from 'prop-types'
 
@@ -20,7 +19,7 @@ const DialogButtons = _ref => {
     onClose
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: _CL.CL_MD_ACTIONS,
+    className: _styleFn.CL_MD_ACTIONS,
     children: [buttons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
       refEl: refBtClose,
       caption: "Close",
@@ -73,7 +72,7 @@ const ModalDialog = _ref2 => {
       evt.stopPropagation();
     }, []),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
-    _className = (0, _styleFn.crCn)(`${_CL.CL_MODAL_DIALOG} ${className}`, [isShow, _CL.CL_SHOWING]),
+    _className = (0, _styleFn.crCn)(`${_styleFn.CL_MODAL_DIALOG} ${className}`, [isShow, _styleFn.CL_SHOWING]),
     _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE;
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     role: "dialog",

@@ -5,7 +5,6 @@ exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
-var _CL = require("../style/CL");
 var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("react/jsx-runtime");
 const InputText = _ref => {
@@ -43,7 +42,7 @@ const InputText = _ref => {
       }
     }
   }), [maxLength]);
-  const _className = (0, _styleFn.crCn)(_CL.CL_INPUT, className);
+  const _className = (0, _styleFn.crCn)(_styleFn.CL_INPUT, className);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
     type: "text",
     className: _className,

@@ -8,20 +8,18 @@ import {
 } from '../uiApi';
 
 import {
+  CL_MODAL_DIALOG,
+  CL_MD_ACTIONS,
+  CL_SHOWING,
   S_BLOCK,
   S_NONE,
   crCn
 } from '../styleFn';
+
 import { useKeyEscape } from '../hooks/fUseKey';
 
 import DialogCaption from './DialogCaption';
 import FlatButton from '../zhn-m/FlatButton';
-
-import {
-  CL_MODAL_DIALOG,
-  CL_MD_ACTIONS,
-  CL_SHOWING
-} from '../style/CL';
 
 const DialogButtons = ({
   buttons,

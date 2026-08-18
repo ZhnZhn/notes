@@ -1,15 +1,15 @@
 import { NavLink } from '../uiApi';
 
-import AppHeader from '../zhn-ch/Header';
-import TopicDrawer from './TopicDrawer';
-import FlatButton from '../zhn-m/FlatButton';
-import HeaderDrawer from '../header/HeaderDrawer';
-
 import {
   CL_HEADER,
   CL_NAV_LINK,
   CL_ML_8
-} from '../style/CL';
+} from '../styleFn';
+
+import AppHeader from '../zhn-ch/Header';
+import TopicDrawer from './TopicDrawer';
+import FlatButton from '../zhn-m/FlatButton';
+import HeaderDrawer from '../header/HeaderDrawer';
 
 // @flow
 const _CL_NAV_LINK = `${CL_NAV_LINK} ${CL_ML_8}`;

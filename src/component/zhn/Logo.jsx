@@ -1,4 +1,4 @@
-import { CL_LOGO } from '../style/CL';
+import { CL_LOGO } from '../styleFn';
 import Svg from './Svg';
 
 const Logo = ({
@@ -12,7 +12,7 @@ const Logo = ({
      title={title}
   >
     <Svg
-      w="32"      
+      w="32"
       fillRule="evenodd"
       clipRule="evenodd"
       strokeLinejoin="round"

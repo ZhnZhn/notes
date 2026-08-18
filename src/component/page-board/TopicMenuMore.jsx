@@ -1,6 +1,7 @@
+import { CL_MODAL_PANE } from '../styleFn';
+
 import ModalPane from '../zhn-ch/ModalPane';
 import FlatButton from '../zhn-m/FlatButton';
-import { CL_MODAL_PANE } from '../style/CL';
 
 const S_BT = {
   paddingLeft: 8,

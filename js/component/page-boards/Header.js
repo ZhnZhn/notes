@@ -3,14 +3,14 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _selectors = require("../../flux/selectors");
 var _actions = require("../../flux/board/actions");
+var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _Header = _interopRequireDefault(require("../zhn-ch/Header"));
 var _Logo = _interopRequireDefault(require("../zhn/Logo"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _HeaderDrawer = _interopRequireDefault(require("../header/HeaderDrawer"));
-var _CL = require("../style/CL");
 var _titles = require("../titles");
 var _jsxRuntime = require("react/jsx-runtime");
 const Header = _ref => {
@@ -24,14 +24,14 @@ const Header = _ref => {
       dispatch((0, _actions.addBoard)());
     }, [dispatch]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Header.default, {
-    className: _CL.CL_HEADER,
+    className: _styleFn.CL_HEADER,
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Logo.default, {
       title: _titles.APP_TITLE
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_TITLE_GAP
+      className: _styleFn.CL_TITLE_GAP
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_HEADER_TITLE,
+      className: _styleFn.CL_HEADER_TITLE,
       children: boardsTitle
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
       caption: "Add Board",

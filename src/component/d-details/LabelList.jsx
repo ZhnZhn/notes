@@ -1,11 +1,12 @@
 import { bindToArg } from '../../utils/bindTo';
-import { safeMap } from '../uiApi';
 
-import Label from './LabelNote';
+import { safeMap } from '../uiApi';
 import {
   CL_NOTE_LABEL,
   CL_NOTE_LABEL_CLOSE
-} from '../style/CL';
+} from '../styleFn';
+
+import Label from './LabelNote';
 
 const S_DIV = { paddingBottom: 4 };
 

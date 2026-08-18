@@ -1,6 +1,4 @@
-import {
-  CL_BT_CIRCLE
-} from '../style/CL';
+import { CL_BT_CIRCLE } from '../styleFn';
 
 const BtCircle = ({
   style,

@@ -1,4 +1,4 @@
-import { CL_CONT } from '../style/CL';
+import { CL_CONT } from '../styleFn';
 
 const Main = ({ children }) => (
   <main className={CL_CONT}>

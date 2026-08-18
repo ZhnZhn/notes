@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../style/CL");
+var _styleFn = require("../styleFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const BtCircle = _ref => {
   let {
@@ -14,7 +14,7 @@ const BtCircle = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     type: "button",
-    className: _CL.CL_BT_CIRCLE,
+    className: _styleFn.CL_BT_CIRCLE,
     style: style,
     tabIndex: tabIndex,
     title: title,

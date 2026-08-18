@@ -3,12 +3,12 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _CL = require("../style/CL");
+var _styleFn = require("../styleFn");
 var _Svg = _interopRequireDefault(require("./Svg"));
 var _jsxRuntime = require("react/jsx-runtime");
 const Logo = _ref => {
   let {
-    className = _CL.CL_LOGO,
+    className = _styleFn.CL_LOGO,
     style,
     title
   } = _ref;

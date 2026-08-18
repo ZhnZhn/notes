@@ -3,16 +3,16 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
-var _useBtFocus = _interopRequireDefault(require("./useBtFocus"));
 var _actions = require("../../flux/note/actions");
+var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
+var _useBtFocus = _interopRequireDefault(require("./useBtFocus"));
 var _LabelList = _interopRequireDefault(require("./LabelList"));
 var _InputText = _interopRequireDefault(require("../zhn/InputText"));
 var _PaneColors = _interopRequireDefault(require("../zhn-m/PaneColors"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DialogButtons = _interopRequireDefault(require("./DialogButtons"));
 var _TabLabelsFn = require("./TabLabelsFn");
-var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_LABELS = {
     padding: '4px 0 8px 12px'
@@ -65,7 +65,7 @@ const TabLabels = props => {
         refEl: _refInputLabel,
         onBlur: _onBlurLabel
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
-        clCaption: _CL.CL_CARD_BT,
+        clCaption: _styleFn.CL_CARD_BT,
         style: S_BT_ADD,
         caption: "AddLabel",
         title: "Click to add a new label",
@@ -76,7 +76,7 @@ const TabLabels = props => {
       refEl: _refInputColor
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogButtons.default, {
       refBtClose: _refBtClose,
-      className: _CL.CL_MD_ACTIONS,
+      className: _styleFn.CL_MD_ACTIONS,
       onSave: _saveLabels,
       onClose: onClose
     })]

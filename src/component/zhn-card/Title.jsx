@@ -1,5 +1,5 @@
+import { CL_CARD_TITLE } from '../styleFn';
 import InputText from '../zhn/InputText';
-import { CL_CARD_TITLE } from '../style/CL';
 
 const Title = (props) => (
   <InputText

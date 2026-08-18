@@ -3,13 +3,6 @@ import {
 } from '../../utils/isTypeFn';
 
 import {
-  NavLink,
-  useDispatch,
-  useSelector,
-  useMemo
-} from '../uiApi';
-
-import {
   setCurrentBoard,
   removeBoard
 } from '../../flux/board/actions';
@@ -22,9 +15,16 @@ import {
 } from '../../flux/selectors';
 
 import {
+  NavLink,
+  useDispatch,
+  useSelector,
+  useMemo
+} from '../uiApi';
+
+import {
   CL_NAV_LINK,
   CL_CARD_BT
-} from '../style/CL';
+} from '../styleFn';
 
 import Card from '../zhn-card/Card';
 import DnDTopicList from './DnDTopicList';

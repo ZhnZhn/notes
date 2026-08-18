@@ -1,29 +1,27 @@
 import {
-  useSelector,
-  useDispatch,
-  useCallback
-} from '../uiApi';
-import {
   selectNumberOfBoards
 } from '../../flux/selectors';
 import {
   addBoard
 } from '../../flux/board/actions';
 
+import {
+  useSelector,
+  useDispatch,
+  useCallback
+} from '../uiApi';
+import {
+  CL_HEADER,
+  CL_TITLE_GAP,
+  CL_HEADER_TITLE
+} from '../styleFn';
+
 import AppHeader from '../zhn-ch/Header';
 import Logo from '../zhn/Logo';
 import FlatButton from '../zhn-m/FlatButton';
 import HeaderDrawer from '../header/HeaderDrawer';
 
-import {
-  CL_HEADER,
-  CL_TITLE_GAP,
-  CL_HEADER_TITLE
-} from '../style/CL';
-
-import {
-  APP_TITLE
-} from '../titles';
+import { APP_TITLE } from '../titles';
 
 const Header = ({
   style

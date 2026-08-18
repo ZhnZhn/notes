@@ -4,11 +4,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _isTypeFn = require("../../utils/isTypeFn");
-var _uiApi = require("../uiApi");
 var _actions = require("../../flux/board/actions");
 var _reducer = require("../../flux/board/reducer");
 var _selectors = require("../../flux/selectors");
-var _CL = require("../style/CL");
+var _uiApi = require("../uiApi");
+var _styleFn = require("../styleFn");
 var _Card = _interopRequireDefault(require("../zhn-card/Card"));
 var _DnDTopicList = _interopRequireDefault(require("./DnDTopicList"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
@@ -53,13 +53,13 @@ const BoardCard = _ref => {
       columns: columns
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_uiApi.NavLink, {
       to: `/boards/${boardId}`,
-      className: _CL.CL_NAV_LINK,
+      className: _styleFn.CL_NAV_LINK,
       style: S_LINK,
       onClick: _hToNotes,
       children: "ToNotes"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: (0, _isTypeFn.isArrEmpty)(columnIds) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
-        clCaption: _CL.CL_CARD_BT,
+        clCaption: _styleFn.CL_CARD_BT,
         caption: "Remove Board",
         onClick: _hRemove
       })

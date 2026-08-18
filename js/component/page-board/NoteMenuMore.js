@@ -6,7 +6,6 @@ exports.default = void 0;
 var _styleFn = require("../styleFn");
 var _ModalPane = _interopRequireDefault(require("../zhn-ch/ModalPane"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
-var _CL = require("../style/CL");
 var _jsxRuntime = require("react/jsx-runtime");
 const S_BT = {
   paddingLeft: 8,
@@ -24,7 +23,7 @@ const NoteMenuMore = _ref => {
   } = _ref;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ModalPane.default, {
     isShow: isShow,
-    className: (0, _styleFn.crCn)(_CL.CL_MODAL_PANE, className),
+    className: (0, _styleFn.crCn)(_styleFn.CL_MODAL_PANE, className),
     style: style,
     onClose: onClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {

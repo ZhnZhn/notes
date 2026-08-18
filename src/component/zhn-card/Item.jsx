@@ -1,11 +1,8 @@
 import {
+  CL_ITEM_CARD,
   S_NONE,
   crStyle
 } from '../styleFn';
-
-import {
-  CL_ITEM_CARD
-} from '../style/CL';
 
 const Item = ({
   isHide,

@@ -1,12 +1,17 @@
+import { editNoteLabels } from '../../flux/note/actions'
+
 import {
   useRef,
   useState,
   useCallback,
   getRefValue
 } from '../uiApi'
-import useBtFocus from './useBtFocus'
+import {
+  CL_CARD_BT,
+  CL_MD_ACTIONS
+} from '../styleFn';
 
-import { editNoteLabels } from '../../flux/note/actions'
+import useBtFocus from './useBtFocus'
 
 import LabelList from './LabelList'
 import InputText from '../zhn/InputText'
@@ -19,11 +24,6 @@ import {
   addLabel,
   removeLabel
 } from './TabLabelsFn';
-
-import {
-  CL_CARD_BT,
-  CL_MD_ACTIONS
-} from '../style/CL';
 
 const S_LABELS = { padding: '4px 0 8px 12px' }
 , S_BT_ADD = { marginLeft: 16 };

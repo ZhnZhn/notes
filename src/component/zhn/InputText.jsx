@@ -8,8 +8,10 @@ import {
   useImperativeHandle
 } from '../uiApi';
 
-import { crCn } from '../styleFn';
-import { CL_INPUT } from '../style/CL';
+import {
+  CL_INPUT,
+  crCn
+} from '../styleFn';
 
 import {
   isEventKeyEnter,
