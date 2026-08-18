@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/objFn.js"
+ ],
+ "file": "../../src/utils/objFn.js",
+ "names": [
+  "_assign",
+  "Object",
+  "assign",
+  "crObjHm",
+  "option",
+  "create",
+  "exports"
+ ],
+ "mappings": ";;;;AACA,MAAMA,OAAO,GAAGC,MAAM,CAACC,MAAM;AAEtB,MAAMC,OAAO,GAClBC,MAAM,IACHJ,OAAO,CAACC,MAAM,CAACI,MAAM,CAAC,IAAI,CAAC,EAAED,MAAM,CAAC;AAAAE,OAAA,CAAAH,OAAA,GAAAA,OAAA"
+}
