@@ -1,1 +1,35 @@
-{"version":3,"file":"CaptionInput.js","names":["S_KEY","textDecoration","_crAccessKeyIndex","accessKey","caption","toLowerCase","indexOf","_crCaption","index","_before","substring","_key","_after","CaptionInput","className","children"],"sources":["../../../src/component/zhn-m/CaptionInput.jsx"],"sourcesContent":["const S_KEY = {\r\n  textDecoration: 'underline'\r\n};\r\n\r\nconst _crAccessKeyIndex = (accessKey, caption) => accessKey\r\n  ? caption.toLowerCase().indexOf(accessKey)\r\n  : -1;\r\n\r\nconst _crCaption = (accessKey, caption) => {\r\n  const index = _crAccessKeyIndex(accessKey, caption);\r\n  if (index === -1) { return caption; }\r\n\r\n  const _before = caption.substring(0, index)\r\n  , _key = caption.substring(index, index+1)\r\n  , _after = caption.substring(index+1);\r\n  return (\r\n    <>\r\n     <span>{_before}</span>\r\n     <span style={S_KEY}>{_key}</span>\r\n     <span>{_after}</span>\r\n    </>\r\n  );\r\n};\r\n\r\nconst CaptionInput = ({\r\n  className,\r\n  caption,\r\n  accessKey,\r\n  children\r\n}) => {\r\n  if (!caption) { return null; }\r\n\r\n  return (\r\n    <span className={className}>\r\n      {_crCaption(accessKey, caption)}\r\n      {children}\r\n    </span>\r\n  );\r\n};\r\n\r\nexport default CaptionInput\r\n"],"mappings":";;;;;;;AAAA,IAAMA,KAAK,GAAG;EACZC,cAAc,EAAE;AADJ,CAAd;;AAIA,IAAMC,iBAAiB,GAAG,SAApBA,iBAAoB,CAACC,SAAD,EAAYC,OAAZ;EAAA,OAAwBD,SAAS,GACvDC,OAAO,CAACC,WAAR,GAAsBC,OAAtB,CAA8BH,SAA9B,CADuD,GAEvD,CAAC,CAFqB;AAAA,CAA1B;;AAIA,IAAMI,UAAU,GAAG,SAAbA,UAAa,CAACJ,SAAD,EAAYC,OAAZ,EAAwB;EACzC,IAAMI,KAAK,GAAGN,iBAAiB,CAACC,SAAD,EAAYC,OAAZ,CAA/B;;EACA,IAAII,KAAK,KAAK,CAAC,CAAf,EAAkB;IAAE,OAAOJ,OAAP;EAAiB;;EAErC,IAAMK,OAAO,GAAGL,OAAO,CAACM,SAAR,CAAkB,CAAlB,EAAqBF,KAArB,CAAhB;EAAA,IACEG,IAAI,GAAGP,OAAO,CAACM,SAAR,CAAkBF,KAAlB,EAAyBA,KAAK,GAAC,CAA/B,CADT;EAAA,IAEEI,MAAM,GAAGR,OAAO,CAACM,SAAR,CAAkBF,KAAK,GAAC,CAAxB,CAFX;;EAGA,oBACE;IAAA,wBACC;MAAA,UAAOC;IAAP,EADD,eAEC;MAAM,KAAK,EAAET,KAAb;MAAA,UAAqBW;IAArB,EAFD,eAGC;MAAA,UAAOC;IAAP,EAHD;EAAA,EADF;AAOD,CAdD;;AAgBA,IAAMC,YAAY,GAAG,SAAfA,YAAe,OAKf;EAAA,IAJJC,SAII,QAJJA,SAII;EAAA,IAHJV,OAGI,QAHJA,OAGI;EAAA,IAFJD,SAEI,QAFJA,SAEI;EAAA,IADJY,QACI,QADJA,QACI;;EACJ,IAAI,CAACX,OAAL,EAAc;IAAE,OAAO,IAAP;EAAc;;EAE9B,oBACE;IAAM,SAAS,EAAEU,SAAjB;IAAA,WACGP,UAAU,CAACJ,SAAD,EAAYC,OAAZ,CADb,EAEGW,QAFH;EAAA,EADF;AAMD,CAdD;;eAgBeF,Y"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/component/zhn-m/CaptionInput.js"
+ ],
+ "file": "../../../src/component/zhn-m/CaptionInput.js",
+ "names": [
+  "S_KEY",
+  "textDecoration",
+  "_crAccessKeyIndex",
+  "accessKey",
+  "caption",
+  "toLowerCase",
+  "indexOf",
+  "_crCaption",
+  "index",
+  "_before",
+  "slice",
+  "_key",
+  "_after",
+  "_jsxRuntime",
+  "jsxs",
+  "Fragment",
+  "children",
+  "jsx",
+  "style",
+  "CaptionInput",
+  "props",
+  "className",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,KAAK,GAAG;EACZC,cAAc,EAAE;AAClB,CAAC;AAED,MAAMC,iBAAiB,GAAGA,CACxBC,SAAS,EACTC,OAAO,KACJD,SAAS,GACVC,OAAO,CAACC,WAAW,CAAC,CAAC,CAACC,OAAO,CAACH,SAAS,CAAC,GACxC,CAAC,CAAC;AAEN,MAAMI,UAAU,GAAGA,CACjBJ,SAAS,EACTC,OAAO,KACJ;EACH,MAAMI,KAAK,GAAGN,iBAAiB,CAACC,SAAS,EAAEC,OAAO,CAAC;EACnD,IAAII,KAAK,KAAK,CAAC,CAAC,EAAE;IAAE,OAAOJ,OAAO;EAAE;EAEpC,MAAMK,OAAO,GAAGL,OAAO,CAACM,KAAK,CAAC,CAAC,EAAEF,KAAK,CAAC;IACrCG,IAAI,GAAGP,OAAO,CAACM,KAAK,CAACF,KAAK,EAAEA,KAAK,GAAG,CAAC,CAAC;IACtCI,MAAM,GAAGR,OAAO,CAACM,KAAK,CAACF,KAAK,GAAG,CAAC,CAAC;EACnC,oBACE,IAAAK,WAAA,CAAAC,IAAA,EAAAD,WAAA,CAAAE,QAAA;IAAAC,QAAA,gBACC,IAAAH,WAAA,CAAAI,GAAA;MAAAD,QAAA,EAAOP;IAAO,CAAO,CAAC,eACtB,IAAAI,WAAA,CAAAI,GAAA;MAAMC,KAAK,EAAElB,KAAM;MAAAgB,QAAA,EAAEL;IAAI,CAAO,CAAC,eACjC,IAAAE,WAAA,CAAAI,GAAA;MAAAD,QAAA,EAAOJ;IAAM,CAAO,CAAC;EAAA,CACpB,CAAC;AAEP,CAAC;AAED,MAAMO,YAAY,GAChBC,KAAK,IACFA,KAAK,CAAChB,OAAO,gBAChB,IAAAS,WAAA,CAAAC,IAAA;EAAMO,SAAS,EAAED,KAAK,CAACC,SAAU;EAAAL,QAAA,GAC9BT,UAAU,CAACa,KAAK,CAACjB,SAAS,EAAEiB,KAAK,CAAChB,OAAO,CAAC,EAC1CgB,KAAK,CAACJ,QAAQ;AAAA,CACX,CAAC,GACL,IAAI;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEML,YAAY"
+}

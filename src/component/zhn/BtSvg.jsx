@@ -1,43 +1,34 @@
 import { crCn } from '../styleFn';
 import Svg from './Svg';
 
-const BtSvg = ({
-  className,
-  style,
-  title,
-  onClick,
-  w,
-  h,
-  width,
-  height,
-  children
-}) => (
+const BtSvg = (
+  props
+) => (
   <button
     type="button"
-    className={className}
-    style={style}
-    title={title}
-    onClick={onClick}
+    className={props.className}
+    style={props.style}
+    title={props.title}
+    onClick={props.onClick}
   >
     <Svg
-      w={w}
-      h={h}
-      width={width}
-      height={height}
+      w={props.w}
+      h={props.h}
+      width={props.width}
+      height={props.height}
     >
-      {children}
+      {props.children}
     </Svg>
   </button>
 );
 
 const CL_BT_SVG_CLOSE = "bt-svg-close";
-export const BtSvgClose = ({
-  className,
-  onClick
-}) => (
+export const BtSvgClose = (
+  props
+) => (
   <BtSvg
-    className={crCn(CL_BT_SVG_CLOSE, className)}
-    onClick={onClick}
+    className={crCn(CL_BT_SVG_CLOSE, props.className)}
+    onClick={props.onClick}
     w="12"
     width="100%"
     height="100%"
@@ -48,17 +39,14 @@ export const BtSvgClose = ({
 )
 
 const CL_BT_SVG_MORE = "bt-svg-more";
-export const BtSvgMore = ({
-  className,
-  style,
-  title,
-  onClick
-}) => (
-  <BtSvg
-    className={crCn(CL_BT_SVG_MORE, className)}
-    style={style}
-    title={title}
-    onClick={onClick}
+export const BtSvgMore = (
+  props
+) => (
+  <BtSvg    
+    className={crCn(CL_BT_SVG_MORE, props.className)}
+    style={props.style}
+    title={props.title}
+    onClick={props.onClick}
     w="6"
     h="22"
   >

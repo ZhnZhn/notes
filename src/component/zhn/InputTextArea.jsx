@@ -10,15 +10,11 @@ import {
   isEventKeyDelete
 } from '../hooks/fUseKey';
 
-const InputTextArea = ({
-  refEl,
-  className,
-  style,
-  initialValue,
-  maxLength
-}) => {
+const InputTextArea = (
+  props
+) => {
   const _refInput = useRef()
-  , [value, setValue] = useState(initialValue)
+  , [value, setValue] = useState(props.initialValue)
   , _hChange = useCallback((evt) => {
     setValue(evt.target.value)
   }, [])
@@ -28,7 +24,7 @@ const InputTextArea = ({
     }
   }, []);
 
-  useImperativeHandle(refEl, () => ({
+  useImperativeHandle(props.refEl, () => ({
     getValue: () => value,
     focus: () => {
       const _input = getRefValue(_refInput);
@@ -41,10 +37,10 @@ const InputTextArea = ({
   return (
     <textarea
       ref={_refInput}
-      className={className}
-      style={style}
+      className={props.className}
+      style={props.style}
       value={value}
-      maxLength={maxLength}
+      maxLength={props.maxLength}
       onChange={_hChange}
       onKeyDown={_hKeyDown}
     />

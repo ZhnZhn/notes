@@ -1,15 +1,13 @@
 import { CL_LOGO } from '../styleFn';
 import Svg from './Svg';
 
-const Logo = ({
-  className=CL_LOGO,
-  style,
-  title
-}) => (
+const Logo = (
+  props
+) => (
   <span
-     className={className}
-     style={style}
-     title={title}
+     className={props.className ?? CL_LOGO}
+     style={props.style}
+     title={props.title}
   >
     <Svg
       w="32"

@@ -5,16 +5,9 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("react/jsx-runtime");
-const InputTextArea = _ref => {
-  let {
-    refEl,
-    className,
-    style,
-    initialValue,
-    maxLength
-  } = _ref;
+const InputTextArea = props => {
   const _refInput = (0, _uiApi.useRef)(),
-    [value, setValue] = (0, _uiApi.useState)(initialValue),
+    [value, setValue] = (0, _uiApi.useState)(props.initialValue),
     _hChange = (0, _uiApi.useCallback)(evt => {
       setValue(evt.target.value);
     }, []),
@@ -23,7 +16,7 @@ const InputTextArea = _ref => {
         setValue('');
       }
     }, []);
-  (0, _uiApi.useImperativeHandle)(refEl, () => ({
+  (0, _uiApi.useImperativeHandle)(props.refEl, () => ({
     getValue: () => value,
     focus: () => {
       const _input = (0, _uiApi.getRefValue)(_refInput);
@@ -34,10 +27,10 @@ const InputTextArea = _ref => {
   }), [value]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("textarea", {
     ref: _refInput,
-    className: className,
-    style: style,
+    className: props.className,
+    style: props.style,
     value: value,
-    maxLength: maxLength,
+    maxLength: props.maxLength,
     onChange: _hChange,
     onKeyDown: _hKeyDown
   });

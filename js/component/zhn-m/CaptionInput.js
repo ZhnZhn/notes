@@ -1,29 +1,20 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
-
-var S_KEY = {
+const S_KEY = {
   textDecoration: 'underline'
 };
-
-var _crAccessKeyIndex = function _crAccessKeyIndex(accessKey, caption) {
-  return accessKey ? caption.toLowerCase().indexOf(accessKey) : -1;
-};
-
-var _crCaption = function _crCaption(accessKey, caption) {
-  var index = _crAccessKeyIndex(accessKey, caption);
-
+const _crAccessKeyIndex = (accessKey, caption) => accessKey ? caption.toLowerCase().indexOf(accessKey) : -1;
+const _crCaption = (accessKey, caption) => {
+  const index = _crAccessKeyIndex(accessKey, caption);
   if (index === -1) {
     return caption;
   }
-
-  var _before = caption.substring(0, index),
-      _key = caption.substring(index, index + 1),
-      _after = caption.substring(index + 1);
-
+  const _before = caption.slice(0, index),
+    _key = caption.slice(index, index + 1),
+    _after = caption.slice(index + 1);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       children: _before
@@ -35,23 +26,9 @@ var _crCaption = function _crCaption(accessKey, caption) {
     })]
   });
 };
-
-var CaptionInput = function CaptionInput(_ref) {
-  var className = _ref.className,
-      caption = _ref.caption,
-      accessKey = _ref.accessKey,
-      children = _ref.children;
-
-  if (!caption) {
-    return null;
-  }
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-    className: className,
-    children: [_crCaption(accessKey, caption), children]
-  });
-};
-
-var _default = CaptionInput;
-exports["default"] = _default;
+const CaptionInput = props => props.caption ? /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+  className: props.className,
+  children: [_crCaption(props.accessKey, props.caption), props.children]
+}) : null;
+var _default = exports.default = CaptionInput;
 //# sourceMappingURL=CaptionInput.js.map
