@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle = exports.crCn = exports.S_UL = exports.S_NONE = exports.S_BLOCK = exports.CL_TITLE_GAP = exports.CL_TITLE_BOARD = exports.CL_SHOWING = exports.CL_NOTE_LABEL_CLOSE = exports.CL_NOTE_LABEL = exports.CL_NAV_LINK = exports.CL_MODAL_PANE = exports.CL_MODAL_DIALOG = exports.CL_ML_8 = exports.CL_MD_ACTIONS = exports.CL_LOGO_BOARD = exports.CL_LOGO = exports.CL_ITEM_CARD = exports.CL_INPUT = exports.CL_HEADER_TITLE = exports.CL_HEADER = exports.CL_CONT = exports.CL_CARD_TITLE = exports.CL_CARD_BT = exports.CL_BT_CIRCLE = void 0;
+exports.crStyle = exports.crCn = exports.crBlockNoneStyle = exports.S_UL = exports.S_NONE = exports.S_BLOCK = exports.CL_TITLE_GAP = exports.CL_TITLE_BOARD = exports.CL_SHOWING = exports.CL_NOTE_LABEL_CLOSE = exports.CL_NOTE_LABEL = exports.CL_NAV_LINK = exports.CL_MODAL_PANE = exports.CL_MODAL_DIALOG = exports.CL_ML_8 = exports.CL_MD_ACTIONS = exports.CL_LOGO_BOARD = exports.CL_LOGO = exports.CL_ITEM_CARD = exports.CL_INPUT = exports.CL_HEADER_TITLE = exports.CL_HEADER = exports.CL_CONT = exports.CL_CARD_TITLE = exports.CL_CARD_BT = exports.CL_BT_CIRCLE = void 0;
 const _fCrStyle = propName => value => ({
     [propName]: value
   }),
@@ -29,6 +29,8 @@ const crStyle = (conf1, conf2) => {
   } : _s1 : _s2 || void 0;
 };
 exports.crStyle = crStyle;
+const crBlockNoneStyle = props => crStyle(props.style, props.isShow ? S_BLOCK : S_NONE);
+exports.crBlockNoneStyle = crBlockNoneStyle;
 const CL_HEADER = exports.CL_HEADER = 'header';
 const CL_LOGO = exports.CL_LOGO = `${CL_HEADER}__logo-notes`;
 const CL_TITLE_GAP = exports.CL_TITLE_GAP = `${CL_HEADER}__title-gap`;

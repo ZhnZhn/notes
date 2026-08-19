@@ -72,17 +72,20 @@ const ModalDialog = _ref2 => {
       evt.stopPropagation();
     }, []),
     _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
-    _className = (0, _styleFn.crCn)(`${_styleFn.CL_MODAL_DIALOG} ${className}`, [isShow, _styleFn.CL_SHOWING]),
-    _style = isShow ? _styleFn.S_BLOCK : _styleFn.S_NONE;
+    _className = (0, _styleFn.crCn)(`${_styleFn.CL_MODAL_DIALOG} ${className}`, [isShow, _styleFn.CL_SHOWING]);
+  //, _style = isShow ? S_BLOCK : S_NONE;
+
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     role: "dialog",
     "aria-label": caption,
     "aria-hidden": !isShow,
     className: _className,
-    style: {
-      ...style,
-      ..._style
-    },
+    style: (0, _styleFn.crBlockNoneStyle)({
+      style,
+      isShow
+    })
+    //style={{...style, ..._style}}
+    ,
     onClick: _hClickDialog,
     onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption.default, {

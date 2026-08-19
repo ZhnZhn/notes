@@ -41,6 +41,13 @@ export const crStyle = (
     : _s2 || void 0 ;
 }
 
+export const crBlockNoneStyle = (
+  props
+) => crStyle(
+  props.style,
+  props.isShow ? S_BLOCK : S_NONE
+)
+
 export const CL_HEADER = 'header'
 export const CL_LOGO = `${CL_HEADER}__logo-notes`
 export const CL_TITLE_GAP = `${CL_HEADER}__title-gap`

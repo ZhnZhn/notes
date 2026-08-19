@@ -13,7 +13,8 @@ import {
   CL_SHOWING,
   S_BLOCK,
   S_NONE,
-  crCn
+  crCn,
+  crBlockNoneStyle
 } from '../styleFn';
 
 import { useKeyEscape } from '../hooks/fUseKey';
@@ -93,7 +94,7 @@ const ModalDialog = ({
   }, [])
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn(`${CL_MODAL_DIALOG} ${className}`, [isShow, CL_SHOWING])
-  , _style = isShow ? S_BLOCK : S_NONE;
+  //, _style = isShow ? S_BLOCK : S_NONE;
 
 
   return (
@@ -103,7 +104,8 @@ const ModalDialog = ({
        aria-label={caption}
        aria-hidden={!isShow}
        className={_className}
-       style={{...style, ..._style}}
+       style={crBlockNoneStyle({ style, isShow })}
+       //style={{...style, ..._style}}
        onClick={_hClickDialog}
        onKeyDown={_hKeyDown}
     >
