@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _arrFn = require("../../utils/arrFn");
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
 var _fUseKey = require("../hooks/fUseKey");
@@ -55,7 +56,7 @@ const useFocusBtClose = (isShow, isFocusClose) => {
 };
 const ModalDialog = _ref2 => {
   let {
-    className = '',
+    className,
     style,
     isShow,
     isWithButton = true,
@@ -71,21 +72,19 @@ const ModalDialog = _ref2 => {
     _hClickDialog = (0, _uiApi.useCallback)(evt => {
       evt.stopPropagation();
     }, []),
-    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
-    _className = (0, _styleFn.crCn)(`${_styleFn.CL_MODAL_DIALOG} ${className}`, [isShow, _styleFn.CL_SHOWING]);
-  //, _style = isShow ? S_BLOCK : S_NONE;
-
+    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose);
   return /*#__PURE__*/ /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(0, _jsxRuntime.jsxs)("div", {
     role: "dialog",
     "aria-label": caption,
     "aria-hidden": !isShow,
-    className: _className,
+    className: (0, _styleFn.crShowingCn)({
+      className: (0, _arrFn.joinByBlank)(_styleFn.CL_MODAL_DIALOG, className),
+      isShow
+    }),
     style: (0, _styleFn.crBlockNoneStyle)({
       style,
       isShow
-    })
-    //style={{...style, ..._style}}
-    ,
+    }),
     onClick: _hClickDialog,
     onKeyDown: _hKeyDown,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogCaption.default, {

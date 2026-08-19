@@ -1,6 +1,5 @@
 import {
-  CL_SHOWING,  
-  crCn,
+  crShowingCn,
   crBlockNoneStyle
 } from '../styleFn';
 
@@ -8,7 +7,7 @@ const ShowHide = (
   props
 ) => (
   <div
-    className={crCn(props.className, [props.isShow, CL_SHOWING])}
+    className={crShowingCn(props)}
     style={crBlockNoneStyle(props)}
   >
     {props.children}

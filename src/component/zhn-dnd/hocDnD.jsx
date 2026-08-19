@@ -49,8 +49,7 @@ const _hocDnDImpl = (
     )
   , _dragHandleProps = isDragHanlerProps
        ? void 0
-       : dragHandleProps;
-  console.log(marginBottom)     
+       : dragHandleProps;    
   return (
     <div
       ref={innerRef}

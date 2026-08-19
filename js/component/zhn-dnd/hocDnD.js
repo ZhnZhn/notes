@@ -38,7 +38,6 @@ const _hocDnDImpl = (ItemComp, options) => props => {
     } = draggableProps,
     _style = _crTopicStyle(isDragging, dragBg, notDragBg, marginRight, marginBottom),
     _dragHandleProps = isDragHanlerProps ? void 0 : dragHandleProps;
-  console.log(marginBottom);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     ref: innerRef,
     style: {

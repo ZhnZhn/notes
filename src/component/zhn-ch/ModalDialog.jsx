@@ -1,5 +1,9 @@
 //import { PropTypes } from 'prop-types'
 import {
+  joinByBlank
+} from '../../utils/arrFn';
+
+import {
   useRef,
   useCallback,
   useEffect,
@@ -10,10 +14,7 @@ import {
 import {
   CL_MODAL_DIALOG,
   CL_MD_ACTIONS,
-  CL_SHOWING,
-  S_BLOCK,
-  S_NONE,
-  crCn,
+  crShowingCn,
   crBlockNoneStyle
 } from '../styleFn';
 
@@ -73,7 +74,7 @@ const useFocusBtClose = (
 };
 
 const ModalDialog = ({
-  className='',
+  className,
   style,
   isShow,
   isWithButton=true,
@@ -92,10 +93,7 @@ const ModalDialog = ({
   , _hClickDialog = useCallback(evt => {
     evt.stopPropagation()
   }, [])
-  , _hKeyDown = useKeyEscape(onClose)
-  , _className = crCn(`${CL_MODAL_DIALOG} ${className}`, [isShow, CL_SHOWING])
-  //, _style = isShow ? S_BLOCK : S_NONE;
-
+  , _hKeyDown = useKeyEscape(onClose);
 
   return (
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
@@ -103,9 +101,11 @@ const ModalDialog = ({
        role="dialog"
        aria-label={caption}
        aria-hidden={!isShow}
-       className={_className}
+       className={crShowingCn({
+         className: joinByBlank(CL_MODAL_DIALOG, className),
+         isShow
+       })}
        style={crBlockNoneStyle({ style, isShow })}
-       //style={{...style, ..._style}}
        onClick={_hClickDialog}
        onKeyDown={_hKeyDown}
     >
