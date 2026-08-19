@@ -1,34 +1,23 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _Card = _interopRequireDefault(require("../zhn-card/Card"));
-
+exports.default = void 0;
+var _CardCounter = _interopRequireDefault(require("../zhn-card/CardCounter"));
 var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_TOPIC = 'topic',
-    S_COUNTER = {
-  "float": 'right',
-  paddingRight: 12
-};
-
-var Topic = function Topic(_ref) {
-  var title = _ref.title,
-      count = _ref.count;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL_TOPIC,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      children: title
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card["default"].Counter, {
-      style: S_COUNTER,
-      value: count
-    })]
-  });
-};
-
-var _default = Topic;
-exports["default"] = _default;
+const CL_TOPIC = 'topic',
+  S_COUNTER = {
+    float: 'right',
+    paddingRight: 12
+  };
+const Topic = props => /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  className: CL_TOPIC,
+  children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    children: props.title
+  }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardCounter.default, {
+    style: S_COUNTER,
+    value: props.count
+  })]
+});
+var _default = exports.default = Topic;
 //# sourceMappingURL=Topic.js.map

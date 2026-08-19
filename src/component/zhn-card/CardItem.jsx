@@ -4,16 +4,15 @@ import {
   crStyle
 } from '../styleFn';
 
-const Item = ({
-  isHide,
-  children
-}) => (
+const CardItem = (
+  props
+) => (
   <section
     className={CL_ITEM_CARD}
-    style={crStyle([isHide, S_NONE])}
+    style={crStyle([props.isHide, S_NONE])}
   >
-    {children}
+    {props.children}
   </section>
 );
 
-export default Item
+export default CardItem

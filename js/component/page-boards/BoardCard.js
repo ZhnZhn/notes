@@ -9,7 +9,10 @@ var _reducer = require("../../flux/board/reducer");
 var _selectors = require("../../flux/selectors");
 var _uiApi = require("../uiApi");
 var _styleFn = require("../styleFn");
-var _Card = _interopRequireDefault(require("../zhn-card/Card"));
+var _CardItem = _interopRequireDefault(require("../zhn-card/CardItem"));
+var _CardHeader = _interopRequireDefault(require("../zhn-card/CardHeader"));
+var _CardTitle = _interopRequireDefault(require("../zhn-card/CardTitle"));
+var _CardCounter = _interopRequireDefault(require("../zhn-card/CardCounter"));
 var _DnDTopicList = _interopRequireDefault(require("./DnDTopicList"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -21,7 +24,7 @@ const BoardCard = _ref => {
     id: boardId
   } = _ref;
   const dispatch = (0, _uiApi.useDispatch)(),
-    [_hBlurTitle, _hRemove, _hToNotes, _selectBoard] = (0, _uiApi.useMemo)(() => [evt => {
+    [_hEditTitle, _hRemove, _hToNotes, _selectBoard] = (0, _uiApi.useMemo)(() => [evt => {
       const title = evt.target.value;
       if (title) {
         dispatch((0, _reducer.editBoardTitle)({
@@ -39,12 +42,12 @@ const BoardCard = _ref => {
     {
       columnIds
     } = board;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Item, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Header, {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Card.default.Title, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_CardItem.default, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_CardHeader.default, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_CardTitle.default, {
         initialValue: board.title,
-        onBlur: _hBlurTitle
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card.default.Counter, {
+        onBlur: _hEditTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardCounter.default, {
         value: columnIds.length
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DnDTopicList.default, {

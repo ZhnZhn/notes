@@ -4,12 +4,12 @@ const S_DIV = {
   lineHeight: '36px'
 };
 
-const Header = ({
-  children
-}) => (
+const CardHeader = (
+  props
+) => (
   <div style={S_DIV}>
-    {children}
+    {props.children}
   </div>
 );
 
-export default Header
+export default CardHeader

@@ -25,7 +25,12 @@ import useBool from '../hooks/useBool';
 
 import { BtSvgMore } from '../zhn/BtSvg';
 import TopicMenuMore from './TopicMenuMore';
-import Card from '../zhn-card/Card';
+
+import CardItem from '../zhn-card/CardItem';
+import CardHeader from '../zhn-card/CardHeader';
+import CardTitle from '../zhn-card/CardTitle';
+import CardCounter from '../zhn-card/CardCounter';
+
 import FlatButton from '../zhn-m/FlatButton';
 import DnDNoteList from './DnDNoteList';
 
@@ -92,8 +97,8 @@ const Topic = ({
   , _numberOfNotes = noteIds.length;
 
   return (
-    <Card.Item isHide={isHide}>
-      <Card.Header>
+    <CardItem isHide={isHide}>
+      <CardHeader>
         <BtSvgMore
           style={S_BT_SVG_MORE}
           title="Click to open topic menu"
@@ -106,11 +111,11 @@ const Topic = ({
           onHideTopic={_hHideTopic}
           onClose={_closeMenuMore}
         />}
-        <Card.Title
+        <CardTitle
           initialValue={title}
           onBlur={_hBlurTitle}
         />
-        <Card.Counter value={_numberOfNotes} />
+        <CardCounter value={_numberOfNotes} />
         {
           withAdd &&
           <FlatButton
@@ -121,7 +126,7 @@ const Topic = ({
             onClick={_hAddNewTask}
           />
         }
-      </Card.Header>
+      </CardHeader>
       <DnDNoteList
         cId={columnId}
         noteIds={noteIds}
@@ -137,7 +142,7 @@ const Topic = ({
             />
         }
       </div>
-    </Card.Item>
+    </CardItem>
   );
 }
 

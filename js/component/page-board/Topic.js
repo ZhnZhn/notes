@@ -12,7 +12,10 @@ var _styleFn = require("../styleFn");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _BtSvg = require("../zhn/BtSvg");
 var _TopicMenuMore = _interopRequireDefault(require("./TopicMenuMore"));
-var _Card = _interopRequireDefault(require("../zhn-card/Card"));
+var _CardItem = _interopRequireDefault(require("../zhn-card/CardItem"));
+var _CardHeader = _interopRequireDefault(require("../zhn-card/CardHeader"));
+var _CardTitle = _interopRequireDefault(require("../zhn-card/CardTitle"));
+var _CardCounter = _interopRequireDefault(require("../zhn-card/CardCounter"));
 var _FlatButton = _interopRequireDefault(require("../zhn-m/FlatButton"));
 var _DnDNoteList = _interopRequireDefault(require("./DnDNoteList"));
 var _jsxRuntime = require("react/jsx-runtime");
@@ -74,9 +77,9 @@ const Topic = _ref => {
     // dispatch
     /*eslint-enable react-hooks/exhaustive-deps */,
     _numberOfNotes = noteIds.length;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Item, {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_CardItem.default, {
     isHide: isHide,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_Card.default.Header, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)(_CardHeader.default, {
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BtSvg.BtSvgMore, {
         style: S_BT_SVG_MORE,
         title: "Click to open topic menu",
@@ -87,10 +90,10 @@ const Topic = _ref => {
         onAddNote: _hAddNewTask,
         onHideTopic: _hHideTopic,
         onClose: _closeMenuMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card.default.Title, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardTitle.default, {
         initialValue: title,
         onBlur: _hBlurTitle
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Card.default.Counter, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardCounter.default, {
         value: _numberOfNotes
       }), withAdd && /*#__PURE__*/(0, _jsxRuntime.jsx)(_FlatButton.default, {
         clCaption: _styleFn.CL_CARD_BT,

@@ -26,7 +26,11 @@ import {
   CL_CARD_BT
 } from '../styleFn';
 
-import Card from '../zhn-card/Card';
+import CardItem from '../zhn-card/CardItem';
+import CardHeader from '../zhn-card/CardHeader';
+import CardTitle from '../zhn-card/CardTitle';
+import CardCounter from '../zhn-card/CardCounter';
+
 import DnDTopicList from './DnDTopicList';
 import FlatButton from '../zhn-m/FlatButton';
 
@@ -39,7 +43,7 @@ const BoardCard = ({
 }) => {
   const dispatch = useDispatch()
   , [
-    _hBlurTitle,
+    _hEditTitle,
     _hRemove,
     _hToNotes,
     _selectBoard
@@ -59,19 +63,19 @@ const BoardCard = ({
   ], [boardId, dispatch])
   , board = useSelector(_selectBoard)
   , columns = useSelector(selectColumns)
-  , { columnIds} = board;
+  , { columnIds } = board;
 
   return (
-    <Card.Item>
-      <Card.Header>
-         <Card.Title
+    <CardItem>
+      <CardHeader>
+         <CardTitle
            initialValue={board.title}
-           onBlur={_hBlurTitle}
+           onBlur={_hEditTitle}
          />
-         <Card.Counter
+         <CardCounter
            value={columnIds.length}
          />
-      </Card.Header>
+      </CardHeader>
       <DnDTopicList
         id={boardId}
         columnIds={columnIds}
@@ -95,7 +99,7 @@ const BoardCard = ({
           />
       }
       </div>
-   </Card.Item>
+   </CardItem>
   );
 }
 

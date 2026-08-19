@@ -1,4 +1,4 @@
-import Card from '../zhn-card/Card'
+import CardCounter from '../zhn-card/CardCounter';
 
 const CL_TOPIC = 'topic'
 , S_COUNTER = {
@@ -6,17 +6,16 @@ const CL_TOPIC = 'topic'
   paddingRight: 12
 };
 
-const Topic = ({
-  title,
-  count
-}) => (
+const Topic = (
+  props
+) => (
   <div className={CL_TOPIC} >
     <span>
-      {title}
+      {props.title}
     </span>
-    <Card.Counter
+    <CardCounter
        style={S_COUNTER}
-       value={count}
+       value={props.count}
     />
   </div>
 );
