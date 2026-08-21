@@ -27,7 +27,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
     return new URL(href, base);
   },
   createKey = () => Math.random().toString(36).substring(2, 10),
-  createLocation = function (current, to, state, key, mask) {
+  createLocation = function (current, to, state, key) {
     if (state === void 0) {
       state = null;
     }
@@ -37,8 +37,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
       hash: "",
       ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
       state,
-      key: to?.key || key || createKey(),
-      mask
+      key: to?.key || key || createKey()
     };
   },
   getUrlBasedHistory = function (getLocation, windowImpl) {
@@ -154,21 +153,17 @@ const createBrowserURLImpl = (windowImpl, to) => {
     return history;
   },
   createBrowserLocation = (windowImpl, globalHistory) => {
-    const maskedLocation = globalHistory.state?.masked,
-      {
+    const {
         pathname,
         search,
         hash
-      } = maskedLocation || windowImpl.location;
+      } = windowImpl.location,
+      state = globalHistory.state;
     return createLocation("", {
       pathname,
       search,
       hash
-    }, globalHistory.state?.usr || null, globalHistory.state?.key || "default", maskedLocation ? {
-      pathname: windowImpl.location.pathname,
-      search: windowImpl.location.search,
-      hash: windowImpl.location.hash
-    } : void 0);
+    }, state?.usr || null, state?.key || "default");
   };
 const BrowserRouter = props => {
   const _refHistory = (0, _react.useRef)();

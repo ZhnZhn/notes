@@ -63,8 +63,7 @@ const createBrowserURLImpl = (
   current,
   to,
   state = null,
-  key,
-  mask
+  key
 ) => ({
   pathname: isStr(current)
     ? current
@@ -73,8 +72,7 @@ const createBrowserURLImpl = (
   hash: "",
   ...isStr(to) ? parsePath(to) : to,
   state,
-  key: to?.key || key || createKey(),
-  mask
+  key: to?.key || key || createKey()
 })
 
 , getUrlBasedHistory = (
@@ -202,22 +200,17 @@ const createBrowserURLImpl = (
   windowImpl,
   globalHistory
 ) => {
-  const maskedLocation = globalHistory.state?.masked
-  , {
+  const {
     pathname,
     search,
     hash
-  } = maskedLocation || windowImpl.location;
+  } = windowImpl.location
+  , state = globalHistory.state;
   return createLocation(
     "",
     { pathname, search, hash },
-    globalHistory.state?.usr || null,
-    globalHistory.state?.key || "default",
-    maskedLocation ? {
-      pathname: windowImpl.location.pathname,
-      search: windowImpl.location.search,
-      hash: windowImpl.location.hash
-    } : void 0
+    state?.usr || null,
+    state?.key || "default",
   );
 };
 
@@ -227,7 +220,7 @@ export const BrowserRouter = (
   const _refHistory = useRef();
   if (_refHistory.current == null) {
     _refHistory.current = getUrlBasedHistory(
-       createBrowserLocation,       
+       createBrowserLocation,
        props.window
     );
   }
