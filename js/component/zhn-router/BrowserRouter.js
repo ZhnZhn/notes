@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.BrowserRouter = BrowserRouter;
+exports.BrowserRouter = void 0;
 var _react = require("react");
 var _isTypeFn = require("../../utils/isTypeFn");
 var _matchRouters = require("./matchRouters");
@@ -41,7 +41,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
       mask
     };
   },
-  getUrlBasedHistory = function (getLocation, createHref2, validateLocation, options) {
+  getUrlBasedHistory = function (getLocation, createHref2, options) {
     if (options === void 0) {
       options = {};
     }
@@ -82,7 +82,6 @@ const createBrowserURLImpl = (windowImpl, to) => {
     function push(to, state) {
       action = "PUSH" /* Push */;
       const location = isLocation(to) ? to : createLocation(history.location, to, state);
-      if (validateLocation) validateLocation(location, to);
       index = getIndex() + 1;
       const historyState = getHistoryState(location, index),
         url = history.createHref(location.mask || location);
@@ -105,7 +104,6 @@ const createBrowserURLImpl = (windowImpl, to) => {
     function replace2(to, state) {
       action = "REPLACE" /* Replace */;
       const location = isLocation(to) ? to : createLocation(history.location, to, state);
-      if (validateLocation) validateLocation(location, to);
       index = getIndex();
       const historyState = getHistoryState(location, index),
         url = history.createHref(location.mask || location);
@@ -181,33 +179,29 @@ const createBrowserURLImpl = (windowImpl, to) => {
         } : void 0);
       },
       createBrowserHref = (_window2, to) => (0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to);
-    return getUrlBasedHistory(createBrowserLocation, createBrowserHref, null, options);
+    return getUrlBasedHistory(createBrowserLocation, createBrowserHref, options);
   };
-function BrowserRouter(_ref) {
-  let {
-    basename,
-    children,
-    window: window2
-  } = _ref;
-  const historyRef = (0, _react.useRef)();
-  if (historyRef.current == null) {
-    historyRef.current = createBrowserHistory({
-      window: window2,
+const BrowserRouter = props => {
+  const _refHistory = (0, _react.useRef)();
+  if (_refHistory.current == null) {
+    _refHistory.current = createBrowserHistory({
+      window: props.window,
       v5Compat: true
     });
   }
-  const history = historyRef.current,
+  const historyImpl = _refHistory.current,
     [state, setStateImpl] = (0, _react.useState)({
-      action: history.action,
-      location: history.location
+      location: historyImpl.location,
+      action: historyImpl.action
     });
-  (0, _react.useLayoutEffect)(() => history.listen(setStateImpl), [history]);
+  (0, _react.useLayoutEffect)(() => historyImpl.listen(setStateImpl), [historyImpl]);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Router.Router, {
-    basename: basename,
+    basename: props.basename,
     location: state.location,
     navigationType: state.action,
-    navigator: history,
-    children: children
+    navigator: historyImpl,
+    children: props.children
   });
-}
+};
+exports.BrowserRouter = BrowserRouter;
 //# sourceMappingURL=BrowserRouter.js.map

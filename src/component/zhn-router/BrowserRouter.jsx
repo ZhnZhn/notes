@@ -80,7 +80,6 @@ const createBrowserURLImpl = (
 , getUrlBasedHistory = (
   getLocation,
   createHref2,
-  validateLocation,
   options = {}
 ) => {
   const {
@@ -121,7 +120,6 @@ const createBrowserURLImpl = (
     const location = isLocation(to)
       ? to
       : createLocation(history.location, to, state);
-    if (validateLocation) validateLocation(location, to);
     index = getIndex() + 1;
     const historyState = getHistoryState(location, index)
     , url = history.createHref(location.mask || location);
@@ -146,7 +144,6 @@ const createBrowserURLImpl = (
     const location = isLocation(to)
       ? to
       : createLocation(history.location, to, state);
-    if (validateLocation) validateLocation(location, to);
     index = getIndex();
     const historyState = getHistoryState(location, index)
     , url = history.createHref(location.mask || location);
@@ -232,45 +229,42 @@ const createBrowserURLImpl = (
   return getUrlBasedHistory(
     createBrowserLocation,
     createBrowserHref,
-    null,
     options
   );
 }
 
-export function BrowserRouter({
-  basename,
-  children,
-  window: window2
-}) {
-  const historyRef = useRef();
-  if (historyRef.current == null) {
-    historyRef.current = createBrowserHistory({
-      window: window2,
+export const BrowserRouter = (
+  props
+) => {
+  const _refHistory = useRef();
+  if (_refHistory.current == null) {
+    _refHistory.current = createBrowserHistory({
+      window: props.window,
       v5Compat: true
     });
   }
-  const history = historyRef.current
+  const historyImpl = _refHistory.current
   , [
     state,
     setStateImpl
   ] = useState({
-    action: history.action,
-    location: history.location
+    location: historyImpl.location,
+    action: historyImpl.action
   });
 
   useLayoutEffect(
-    () => history.listen(setStateImpl),
-    [history]
+    () => historyImpl.listen(setStateImpl),
+    [historyImpl]
   );
 
   return (
     <Router
-      basename={basename}
+      basename={props.basename}
       location={state.location}
       navigationType={state.action}
-      navigator={history}
+      navigator={historyImpl}
     >
-      {children}
+      {props.children}
     </Router>
   );
 }
