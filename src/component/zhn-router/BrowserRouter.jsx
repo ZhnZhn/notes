@@ -13,17 +13,8 @@ import { parsePath } from './matchRouters';
 import { Router } from './Router';
 import { createPath } from './RouterFn';
 
-const PopStateEventType = "popstate";
-const isLocation = (
-  obj
-) => isObj(obj)
-  && "pathname" in obj
-  && "search" in obj
-  && "hash" in obj
-  && "state" in obj
-  && "key" in obj;
-
-const getHistoryState = (
+const POP_STATE_EVENT_TYPE = "popstate";
+const _getHistoryState = (
   location,
   index
 ) => ({
@@ -35,9 +26,9 @@ const getHistoryState = (
     search: location.search,
     hash: location.hash
   } : void 0
-});
+})
 
-const createBrowserURLImpl = (
+, _createBrowserURLImpl = (
   windowImpl,
   to
 ) => {
@@ -54,12 +45,20 @@ const createBrowserURLImpl = (
   return new URL(href, base);
 }
 
-, createKey = () => Math
+, _createKey = () => Math
   .random()
   .toString(36)
   .substring(2, 10)
 
-, createLocation = (
+, _isLocation = (
+  obj
+) => isObj(obj)
+  && "pathname" in obj
+  && "search" in obj
+  && "hash" in obj
+  && "state" in obj
+  && "key" in obj
+, _createLocation = (
   current,
   to,
   state = null,
@@ -72,10 +71,17 @@ const createBrowserURLImpl = (
   hash: "",
   ...isStr(to) ? parsePath(to) : to,
   state,
-  key: to?.key || key || createKey()
+  key: to?.key || key || _createKey()
 })
+, _getLocation = (
+  to,
+  history,
+  state
+) => _isLocation(to)
+  ? to
+  : _createLocation(history.location, to, state)
 
-, getUrlBasedHistory = (
+, _getUrlBasedHistory = (
   windowImpl = document.defaultView
 ) => {
   const globalHistory = windowImpl.history;
@@ -112,11 +118,9 @@ const createBrowserURLImpl = (
   }
   function push(to, state) {
     action = "PUSH" /* Push */;
-    const location = isLocation(to)
-      ? to
-      : createLocation(history.location, to, state);
+    const location = _getLocation(to, history, state);
     index = getIndex() + 1;
-    const historyState = getHistoryState(location, index)
+    const historyState = _getHistoryState(location, index)
     , url = history.createHref(location.mask || location);
     try {
       globalHistory.pushState(historyState, "", url);
@@ -136,11 +140,9 @@ const createBrowserURLImpl = (
   }
   function replace2(to, state) {
     action = "REPLACE" /* Replace */;
-    const location = isLocation(to)
-      ? to
-      : createLocation(history.location, to, state);
+    const location = _getLocation(to, history, state)
     index = getIndex();
-    const historyState = getHistoryState(location, index)
+    const historyState = _getHistoryState(location, index)
     , url = history.createHref(location.mask || location);
     globalHistory.replaceState(historyState, "", url);
     if (listener) {
@@ -152,7 +154,7 @@ const createBrowserURLImpl = (
     }
   }
   function createURL(to) {
-    return createBrowserURLImpl(windowImpl, to);
+    return _createBrowserURLImpl(windowImpl, to);
   }
   const history = {
     get action() {
@@ -165,7 +167,7 @@ const createBrowserURLImpl = (
         hash
       } = windowImpl.location
       , state = globalHistory.state;
-      return createLocation(
+      return _createLocation(
         "",
         { pathname, search, hash },
         state?.usr,
@@ -176,10 +178,10 @@ const createBrowserURLImpl = (
       if (listener) {
         throw new Error("A history only accepts one active listener");
       }
-      windowImpl.addEventListener(PopStateEventType, handlePop);
+      windowImpl.addEventListener(POP_STATE_EVENT_TYPE, handlePop);
       listener = fn;
       return () => {
-        windowImpl.removeEventListener(PopStateEventType, handlePop);
+        windowImpl.removeEventListener(POP_STATE_EVENT_TYPE, handlePop);
         listener = null;
       };
     },
@@ -211,7 +213,7 @@ export const BrowserRouter = (
 ) => {
   const _refHistory = useRef();
   if (_refHistory.current == null) {
-    _refHistory.current = getUrlBasedHistory(
+    _refHistory.current = _getUrlBasedHistory(
        props.window
     );
   }

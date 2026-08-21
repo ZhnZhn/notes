@@ -8,26 +8,26 @@ var _matchRouters = require("./matchRouters");
 var _Router = require("./Router");
 var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const PopStateEventType = "popstate";
-const isLocation = obj => (0, _isTypeFn.isObj)(obj) && "pathname" in obj && "search" in obj && "hash" in obj && "state" in obj && "key" in obj;
-const getHistoryState = (location, index) => ({
-  usr: location.state,
-  key: location.key,
-  idx: index,
-  masked: location.mask ? {
-    pathname: location.pathname,
-    search: location.search,
-    hash: location.hash
-  } : void 0
-});
-const createBrowserURLImpl = (windowImpl, to) => {
+const POP_STATE_EVENT_TYPE = "popstate";
+const _getHistoryState = (location, index) => ({
+    usr: location.state,
+    key: location.key,
+    idx: index,
+    masked: location.mask ? {
+      pathname: location.pathname,
+      search: location.search,
+      hash: location.hash
+    } : void 0
+  }),
+  _createBrowserURLImpl = (windowImpl, to) => {
     const windowImplLocation = windowImpl?.location,
       base = !windowImplLocation ? "http://localhost" : windowImplLocation.origin !== "null" ? windowImplLocation.origin : windowImplLocation.href,
       href = ((0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to)).replace(/ $/, "%20");
     return new URL(href, base);
   },
-  createKey = () => Math.random().toString(36).substring(2, 10),
-  createLocation = function (current, to, state, key) {
+  _createKey = () => Math.random().toString(36).substring(2, 10),
+  _isLocation = obj => (0, _isTypeFn.isObj)(obj) && "pathname" in obj && "search" in obj && "hash" in obj && "state" in obj && "key" in obj,
+  _createLocation = function (current, to, state, key) {
     if (state === void 0) {
       state = null;
     }
@@ -40,10 +40,11 @@ const createBrowserURLImpl = (windowImpl, to) => {
       hash: "",
       ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
       state,
-      key: to?.key || key || createKey()
+      key: to?.key || key || _createKey()
     };
   },
-  getUrlBasedHistory = function (windowImpl) {
+  _getLocation = (to, history, state) => _isLocation(to) ? to : _createLocation(history.location, to, state),
+  _getUrlBasedHistory = function (windowImpl) {
     if (windowImpl === void 0) {
       windowImpl = document.defaultView;
     }
@@ -79,9 +80,9 @@ const createBrowserURLImpl = (windowImpl, to) => {
     }
     function push(to, state) {
       action = "PUSH" /* Push */;
-      const location = isLocation(to) ? to : createLocation(history.location, to, state);
+      const location = _getLocation(to, history, state);
       index = getIndex() + 1;
-      const historyState = getHistoryState(location, index),
+      const historyState = _getHistoryState(location, index),
         url = history.createHref(location.mask || location);
       try {
         globalHistory.pushState(historyState, "", url);
@@ -101,9 +102,9 @@ const createBrowserURLImpl = (windowImpl, to) => {
     }
     function replace2(to, state) {
       action = "REPLACE" /* Replace */;
-      const location = isLocation(to) ? to : createLocation(history.location, to, state);
+      const location = _getLocation(to, history, state);
       index = getIndex();
-      const historyState = getHistoryState(location, index),
+      const historyState = _getHistoryState(location, index),
         url = history.createHref(location.mask || location);
       globalHistory.replaceState(historyState, "", url);
       if (listener) {
@@ -115,7 +116,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
       }
     }
     function createURL(to) {
-      return createBrowserURLImpl(windowImpl, to);
+      return _createBrowserURLImpl(windowImpl, to);
     }
     const history = {
       get action() {
@@ -128,7 +129,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
             hash
           } = windowImpl.location,
           state = globalHistory.state;
-        return createLocation("", {
+        return _createLocation("", {
           pathname,
           search,
           hash
@@ -138,10 +139,10 @@ const createBrowserURLImpl = (windowImpl, to) => {
         if (listener) {
           throw new Error("A history only accepts one active listener");
         }
-        windowImpl.addEventListener(PopStateEventType, handlePop);
+        windowImpl.addEventListener(POP_STATE_EVENT_TYPE, handlePop);
         listener = fn;
         return () => {
-          windowImpl.removeEventListener(PopStateEventType, handlePop);
+          windowImpl.removeEventListener(POP_STATE_EVENT_TYPE, handlePop);
           listener = null;
         };
       },
@@ -168,7 +169,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
 const BrowserRouter = props => {
   const _refHistory = (0, _react.useRef)();
   if (_refHistory.current == null) {
-    _refHistory.current = getUrlBasedHistory(props.window);
+    _refHistory.current = _getUrlBasedHistory(props.window);
   }
   const historyImpl = _refHistory.current,
     [state, setStateImpl] = (0, _react.useState)({
