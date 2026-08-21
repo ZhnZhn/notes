@@ -63,7 +63,7 @@ const createBrowserURLImpl = (
   current,
   to,
   state = null,
-  key
+  key = "default"
 ) => ({
   pathname: isStr(current)
     ? current
@@ -168,8 +168,8 @@ const createBrowserURLImpl = (
       return createLocation(
         "",
         { pathname, search, hash },
-        state?.usr || null,
-        state?.key || "default",
+        state?.usr,
+        state?.key
       );
     },
     listen(fn) {

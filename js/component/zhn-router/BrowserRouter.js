@@ -31,6 +31,9 @@ const createBrowserURLImpl = (windowImpl, to) => {
     if (state === void 0) {
       state = null;
     }
+    if (key === void 0) {
+      key = "default";
+    }
     return {
       pathname: (0, _isTypeFn.isStr)(current) ? current : current.pathname,
       search: "",
@@ -129,7 +132,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
           pathname,
           search,
           hash
-        }, state?.usr || null, state?.key || "default");
+        }, state?.usr, state?.key);
       },
       listen(fn) {
         if (listener) {
