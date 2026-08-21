@@ -80,13 +80,9 @@ const createBrowserURLImpl = (
 , getUrlBasedHistory = (
   getLocation,
   createHref2,
-  options = {}
+  windowImpl = document.defaultView
 ) => {
-  const {
-    window: window2 = document.defaultView,
-    v5Compat = false
-  } = options
-  , globalHistory = window2.history;
+  const globalHistory = windowImpl.history;
 
   let action = "POP" /* Pop */
   , listener = null
@@ -94,7 +90,10 @@ const createBrowserURLImpl = (
 
   if (index == null) {
     index = 0;
-    globalHistory.replaceState({ ...globalHistory.state, idx: index }, "");
+    globalHistory.replaceState({
+      ...globalHistory.state,
+      idx: index
+    }, "");
   }
   function getIndex() {
     const state = globalHistory.state || { idx: null };
@@ -129,9 +128,9 @@ const createBrowserURLImpl = (
       if (error instanceof DOMException && error.name === "DataCloneError") {
         throw error;
       }
-      window2.location.assign(url);
+      windowImpl.location.assign(url);
     }
-    if (v5Compat && listener) {
+    if (listener) {
       listener({
         action,
         location: history.location,
@@ -148,33 +147,37 @@ const createBrowserURLImpl = (
     const historyState = getHistoryState(location, index)
     , url = history.createHref(location.mask || location);
     globalHistory.replaceState(historyState, "", url);
-    if (v5Compat && listener) {
-      listener({ action, location: history.location, delta: 0 });
+    if (listener) {
+      listener({
+        action,
+        location: history.location,
+        delta: 0
+      });
     }
   }
   function createURL(to) {
-    return createBrowserURLImpl(window2, to);
+    return createBrowserURLImpl(windowImpl, to);
   }
   const history = {
     get action() {
       return action;
     },
     get location() {
-      return getLocation(window2, globalHistory);
+      return getLocation(windowImpl, globalHistory);
     },
     listen(fn) {
       if (listener) {
         throw new Error("A history only accepts one active listener");
       }
-      window2.addEventListener(PopStateEventType, handlePop);
+      windowImpl.addEventListener(PopStateEventType, handlePop);
       listener = fn;
       return () => {
-        window2.removeEventListener(PopStateEventType, handlePop);
+        windowImpl.removeEventListener(PopStateEventType, handlePop);
         listener = null;
       };
     },
     createHref(to) {
-      return createHref2(window2, to);
+      return createHref2(windowImpl, to);
     },
     createURL,
     encodeLocation(to) {
@@ -194,54 +197,45 @@ const createBrowserURLImpl = (
   return history;
 }
 
-, createBrowserHistory = (
-  options = {}
+, createBrowserLocation = (
+  windowImpl,
+  globalHistory
 ) => {
-  const createBrowserLocation = (
-    window2,
-    globalHistory
-  ) => {
-    const maskedLocation = globalHistory.state?.masked
-    , {
-      pathname,
-      search,
-      hash
-    } = maskedLocation || window2.location;
-    return createLocation(
-      "",
-      { pathname, search, hash },
-      globalHistory.state?.usr || null,
-      globalHistory.state?.key || "default",
-      maskedLocation ? {
-        pathname: window2.location.pathname,
-        search: window2.location.search,
-        hash: window2.location.hash
-      } : void 0
-    );
-  }
-  , createBrowserHref = (
-    _window2,
-    to
-  ) => isStr(to)
-    ? to
-    : createPath(to);
-
-  return getUrlBasedHistory(
-    createBrowserLocation,
-    createBrowserHref,
-    options
+  const maskedLocation = globalHistory.state?.masked
+  , {
+    pathname,
+    search,
+    hash
+  } = maskedLocation || windowImpl.location;
+  return createLocation(
+    "",
+    { pathname, search, hash },
+    globalHistory.state?.usr || null,
+    globalHistory.state?.key || "default",
+    maskedLocation ? {
+      pathname: windowImpl.location.pathname,
+      search: windowImpl.location.search,
+      hash: windowImpl.location.hash
+    } : void 0
   );
 }
+, createBrowserHref = (
+  _windowImpl,
+  to
+) => isStr(to)
+  ? to
+  : createPath(to);
 
 export const BrowserRouter = (
   props
 ) => {
   const _refHistory = useRef();
   if (_refHistory.current == null) {
-    _refHistory.current = createBrowserHistory({
-      window: props.window,
-      v5Compat: true
-    });
+    _refHistory.current = getUrlBasedHistory(
+       createBrowserLocation,
+       createBrowserHref,
+       props.window
+    );    
   }
   const historyImpl = _refHistory.current
   , [
