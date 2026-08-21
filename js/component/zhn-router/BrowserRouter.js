@@ -41,7 +41,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
       mask
     };
   },
-  getUrlBasedHistory = function (getLocation, createHref2, windowImpl) {
+  getUrlBasedHistory = function (getLocation, windowImpl) {
     if (windowImpl === void 0) {
       windowImpl = document.defaultView;
     }
@@ -134,7 +134,7 @@ const createBrowserURLImpl = (windowImpl, to) => {
         };
       },
       createHref(to) {
-        return createHref2(windowImpl, to);
+        return (0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to);
       },
       createURL,
       encodeLocation(to) {
@@ -169,12 +169,11 @@ const createBrowserURLImpl = (windowImpl, to) => {
       search: windowImpl.location.search,
       hash: windowImpl.location.hash
     } : void 0);
-  },
-  createBrowserHref = (_windowImpl, to) => (0, _isTypeFn.isStr)(to) ? to : (0, _RouterFn.createPath)(to);
+  };
 const BrowserRouter = props => {
   const _refHistory = (0, _react.useRef)();
   if (_refHistory.current == null) {
-    _refHistory.current = getUrlBasedHistory(createBrowserLocation, createBrowserHref, props.window);
+    _refHistory.current = getUrlBasedHistory(createBrowserLocation, props.window);
   }
   const historyImpl = _refHistory.current,
     [state, setStateImpl] = (0, _react.useState)({

@@ -79,7 +79,6 @@ const createBrowserURLImpl = (
 
 , getUrlBasedHistory = (
   getLocation,
-  createHref2,
   windowImpl = document.defaultView
 ) => {
   const globalHistory = windowImpl.history;
@@ -177,7 +176,9 @@ const createBrowserURLImpl = (
       };
     },
     createHref(to) {
-      return createHref2(windowImpl, to);
+      return isStr(to)
+        ? to
+        : createPath(to);
     },
     createURL,
     encodeLocation(to) {
@@ -218,13 +219,7 @@ const createBrowserURLImpl = (
       hash: windowImpl.location.hash
     } : void 0
   );
-}
-, createBrowserHref = (
-  _windowImpl,
-  to
-) => isStr(to)
-  ? to
-  : createPath(to);
+};
 
 export const BrowserRouter = (
   props
@@ -232,10 +227,9 @@ export const BrowserRouter = (
   const _refHistory = useRef();
   if (_refHistory.current == null) {
     _refHistory.current = getUrlBasedHistory(
-       createBrowserLocation,
-       createBrowserHref,
+       createBrowserLocation,       
        props.window
-    );    
+    );
   }
   const historyImpl = _refHistory.current
   , [
