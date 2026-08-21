@@ -76,7 +76,6 @@ const createBrowserURLImpl = (
 })
 
 , getUrlBasedHistory = (
-  getLocation,
   windowImpl = document.defaultView
 ) => {
   const globalHistory = windowImpl.history;
@@ -160,7 +159,18 @@ const createBrowserURLImpl = (
       return action;
     },
     get location() {
-      return getLocation(windowImpl, globalHistory);
+      const {
+        pathname,
+        search,
+        hash
+      } = windowImpl.location
+      , state = globalHistory.state;
+      return createLocation(
+        "",
+        { pathname, search, hash },
+        state?.usr || null,
+        state?.key || "default",
+      );
     },
     listen(fn) {
       if (listener) {
@@ -194,24 +204,6 @@ const createBrowserURLImpl = (
     }
   };
   return history;
-}
-
-, createBrowserLocation = (
-  windowImpl,
-  globalHistory
-) => {
-  const {
-    pathname,
-    search,
-    hash
-  } = windowImpl.location
-  , state = globalHistory.state;
-  return createLocation(
-    "",
-    { pathname, search, hash },
-    state?.usr || null,
-    state?.key || "default",
-  );
 };
 
 export const BrowserRouter = (
@@ -220,7 +212,6 @@ export const BrowserRouter = (
   const _refHistory = useRef();
   if (_refHistory.current == null) {
     _refHistory.current = getUrlBasedHistory(
-       createBrowserLocation,
        props.window
     );
   }
