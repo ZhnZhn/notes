@@ -1,7 +1,14 @@
 import { isStr } from '../../utils/isTypeFn';
 
-const removeTrailingSlash = (path) => path.replace(/\/+$/, "");
-const normalizePathname = (pathname) => removeTrailingSlash(pathname).replace(/^\/*/, "/");
+
+const RE_TRAILING_SLASH = /\/+$/
+, _removeTrailingSlash = (
+  path
+) => path.replace(RE_TRAILING_SLASH, "")
+, normalizePathname = (
+  pathname
+) => _removeTrailingSlash(pathname)
+  .replace(/^\/*/, "/");
 
 export function parsePath(path) {
   const parsedPath = {};
@@ -37,8 +44,12 @@ export function stripBasename(pathname, basename) {
   return pathname.slice(startIndex) || "/";
 }
 
-const removeDoubleSlashes = (path) => path.replace(/[\\/]{2,}/g, "/");
-export const joinPaths = (paths) => removeDoubleSlashes(paths.join("/"));
+const removeDoubleSlashes = (
+  path
+) => path.replace(/[\\/]{2,}/g, "/");
+export const joinPaths = (
+  paths
+) => removeDoubleSlashes(paths.join("/"));
 
 const paramRe = /^:[\w-]+$/;
 const dynamicSegmentValue = 3;
@@ -62,11 +73,10 @@ function computeScore(path, index) {
   );
 }
 
-function compilePath(
+const _compilePath = (
   path,
-  caseSensitive = false,
   end = true
-) {
+) => {
   const params = [];
   let regexpSource = "^" + path
   .replace(/\/*\*?$/, "")
@@ -97,7 +107,7 @@ function compilePath(
     regexpSource += "(?:(?=\\/|$))";
   }
 
-  const matcher = new RegExp(regexpSource, caseSensitive ? void 0 : "i");
+  const matcher = new RegExp(regexpSource, "i");
   return [matcher, params];
 }
 
@@ -134,8 +144,9 @@ function flattenRoutes(
 ) {
   const flattenRoute = (route, index, hasParentOptionalSegments = _hasParentOptionalSegments, relativePath) => {
     const meta = {
-      relativePath: relativePath === void 0 ? route.path || "" : relativePath,
-      caseSensitive: route.caseSensitive === true,
+      relativePath: relativePath === void 0
+        ? route.path || ""
+        : relativePath,
       childrenIndex: index,
       route
     };
@@ -163,9 +174,11 @@ function flattenRoutes(
       path,
       score: computeScore(path, route.index),
       routesMeta: routesMeta.map((meta2, i) => {
-        const [matcher, params] = compilePath(
+        const [
+          matcher,
+          params
+        ] = _compilePath(
           meta2.relativePath,
-          meta2.caseSensitive,
           i === routesMeta.length - 1
         );
         return {
@@ -291,7 +304,6 @@ const matchRouteBranch = (
        : pathname.slice(matchedPathname.length) || "/"
     , pattern = {
        path: meta.relativePath,
-       caseSensitive: meta.caseSensitive,
        end
     }
     // Use precomputed matcher
