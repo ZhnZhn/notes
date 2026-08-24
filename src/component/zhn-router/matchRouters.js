@@ -274,22 +274,6 @@ function matchPathImpl(
   };
 }
 
-function matchPath(pattern, pathname) {
-  if (isStr(pattern)) {
-    pattern = {
-      path: pattern,
-      caseSensitive: false,
-      end: true
-    };
-  }
-  const [matcher, compiledParams] = compilePath(
-    pattern.path,
-    pattern.caseSensitive,
-    pattern.end
-  );
-  return matchPathImpl(pattern, pathname, matcher, compiledParams);
-}
-
 const matchRouteBranch = (
   branch,
   pathname
@@ -303,31 +287,25 @@ const matchRouteBranch = (
     const meta = routesMeta[i]
     , end = i === numberOfMetaRoutes
     , remainingPathname = matchedPathname === "/"
-      ? pathname
-      : pathname.slice(matchedPathname.length) || "/"
+       ? pathname
+       : pathname.slice(matchedPathname.length) || "/"
     , pattern = {
-      path: meta.relativePath,
-      caseSensitive: meta.caseSensitive,
-      end
+       path: meta.relativePath,
+       caseSensitive: meta.caseSensitive,
+       end
     }
-    // Use precomputed matcher if it exists
-    , match = meta.matcher && meta.compiledParams
-      ? matchPathImpl(
-          pattern,
-          remainingPathname,
-          meta.matcher,
-          meta.compiledParams
-        )
-      : matchPath(
-          pattern,
-          remainingPathname
-        );
+    // Use precomputed matcher
+    , match = matchPathImpl(
+       pattern,
+       remainingPathname,
+       meta.matcher,
+       meta.compiledParams
+    )
 
     if (!match) {
       return null;
     }
 
-    //const route = meta.route;
     Object.assign(matchedParams, match.params);
     const _matchedPathname = joinPaths([
       matchedPathname,
