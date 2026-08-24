@@ -188,10 +188,20 @@ function flattenRoutes(
   return branches;
 }
 
-function compareIndexes(a, b) {
-  const siblings = a.length === b.length
-    && a.slice(0, -1).every((n, i) => n === b[i]);
-  return siblings ? (
+const _getBranchRoutesMetaChildrenIndex = (
+  branch
+) => branch.routesMeta
+  .map(meta => meta.childrenIndex)
+
+, _compareIndexes = (
+  branchA,
+  branchB
+) => {
+  const a = _getBranchRoutesMetaChildrenIndex(branchA)
+  , b = _getBranchRoutesMetaChildrenIndex(branchB)
+  , isSiblings = a.length === b.length
+     && a.slice(0, -1).every((n, i) => n === b[i]);
+  return isSiblings ? (
     // If two routes are siblings, we should try to match the earlier sibling
     // first. This allows people to have fine-grained control over the matching
     // behavior by simply putting routes with identical paths in the order they
@@ -204,18 +214,16 @@ function compareIndexes(a, b) {
   );
 }
 
-function rankRouteBranches(branches) {
-  branches.sort(
-    (a, b) => a.score !== b.score ? b.score - a.score : compareIndexes(
-      a.routesMeta.map((meta) => meta.childrenIndex),
-      b.routesMeta.map((meta) => meta.childrenIndex)
-    )
-  );
-}
-
-function flattenAndRankRoutes(routes) {
+, _flattenAndRankRoutes = (
+  routes
+) => {
   const branches = flattenRoutes(routes);
-  rankRouteBranches(branches);
+  // Rank route branches
+  branches.sort(
+    (a, b) => a.score !== b.score
+      ? b.score - a.score
+      : _compareIndexes(a, b)
+  );
   return branches;
 }
 
@@ -356,7 +364,7 @@ const matchRoutesImpl = (
   if (pathname == null) {
     return null;
   }
-  const branches = flattenAndRankRoutes(routes)
+  const branches = _flattenAndRankRoutes(routes)
   , decoded = decodePath(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
