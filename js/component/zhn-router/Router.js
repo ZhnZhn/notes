@@ -7,6 +7,7 @@ var _isTypeFn = require("../../utils/isTypeFn");
 var _matchRouters = require("./matchRouters");
 var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
+const _assign = Object.assign;
 const Route = _props => {};
 exports.Route = Route;
 const createRoutesFromChildren = function (children, parentPath) {
@@ -148,6 +149,12 @@ const resolveTo = (toArg, locationPathname) => {
       return getChildren();
     }, null);
   };
+
+// Re-encode pathnames that were decoded inside matchRoutes.
+// Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
+// `new URL()` internally and we need to prevent it from treating
+// them as separators
+const _encodeLocation = (navigator, location) => navigator.encodeLocation ? navigator.encodeLocation(location.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : location;
 const useRoutesImpl = (routes, locationArg) => {
   const {
       navigator
@@ -159,13 +166,7 @@ const useRoutesImpl = (routes, locationArg) => {
     parentParams = routeMatch ? routeMatch.params : {},
     parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
   const locationFromContext = useLocation();
-  let location;
-  if (locationArg) {
-    const parsedLocationArg = (0, _isTypeFn.isStr)(locationArg) ? (0, _matchRouters.parsePath)(locationArg) : locationArg;
-    location = parsedLocationArg;
-  } else {
-    location = locationFromContext;
-  }
+  const location = (0, _isTypeFn.isStr)(locationArg) ? (0, _matchRouters.parsePath)(locationArg) : locationArg || locationFromContext;
   const pathname = location.pathname || "/";
   let remainingPathname = pathname;
   if (parentPathnameBase !== "/") {
@@ -176,20 +177,10 @@ const useRoutesImpl = (routes, locationArg) => {
   const matches = (0, _matchRouters.matchRoutes)(routes, {
     pathname: remainingPathname
   });
-  const renderedMatches = _renderMatches(matches?.map(match => Object.assign({}, match, {
-    params: Object.assign({}, parentParams, match.params),
-    pathname: (0, _matchRouters.joinPaths)([parentPathnameBase,
-    // Re-encode pathnames that were decoded inside matchRoutes.
-    // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-    // `new URL()` internally and we need to prevent it from treating
-    // them as separators
-    navigator.encodeLocation ? navigator.encodeLocation(match.pathname.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathname]),
-    pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase,
-    // Re-encode pathnames that were decoded inside matchRoutes
-    // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-    // `new URL()` internally and we need to prevent it from treating
-    // them as separators
-    navigator.encodeLocation ? navigator.encodeLocation(match.pathnameBase.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathnameBase])
+  const renderedMatches = _renderMatches(matches?.map(match => _assign({}, match, {
+    params: _assign({}, parentParams, match.params),
+    pathname: (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathname)]),
+    pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathnameBase)])
   })), parentMatches);
   if (locationArg && renderedMatches) {
     return /* @__PURE__ */(0, _react.createElement)(LocationContext.Provider, {

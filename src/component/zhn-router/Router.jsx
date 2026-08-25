@@ -14,8 +14,7 @@ import {
 import {
   isStr,
   isNumber,
-  isFn,
-  hasOwnPropertySafe
+  isFn
 } from '../../utils/isTypeFn';
 
 import {
@@ -29,6 +28,8 @@ import {
   removeTrailingSlash,
   removeDoubleSlashes
 } from './RouterFn';
+
+const _assign = Object.assign;
 
 export const Route = (_props) => {}
 
@@ -240,6 +241,17 @@ const resolveTo = (
   );
 
 
+// Re-encode pathnames that were decoded inside matchRoutes.
+// Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
+// `new URL()` internally and we need to prevent it from treating
+// them as separators
+const _encodeLocation = (
+  navigator,
+  location
+) => navigator.encodeLocation ? navigator.encodeLocation(
+  location.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")
+).pathname : location;
+
 const useRoutesImpl = (
   routes,
   locationArg
@@ -255,15 +267,11 @@ const useRoutesImpl = (
     : "/"
 
   const locationFromContext = useLocation();
-  let location;
-  if (locationArg) {
-    const parsedLocationArg = isStr(locationArg)
-      ? parsePath(locationArg)
-      : locationArg;
-    location = parsedLocationArg;
-  } else {
-    location = locationFromContext;
-  }
+
+  const location = isStr(locationArg)
+    ? parsePath(locationArg)
+    : locationArg || locationFromContext;
+
   const pathname = location.pathname || "/";
   let remainingPathname = pathname;
   if (parentPathnameBase !== "/") {
@@ -276,32 +284,23 @@ const useRoutesImpl = (
 
   const renderedMatches = _renderMatches(
     matches?.map(
-      (match) => Object.assign({}, match, {
-        params: Object.assign({}, parentParams, match.params),
+      (match) => _assign({}, match, {
+        params: _assign({}, parentParams, match.params),
         pathname: joinPaths([
           parentPathnameBase,
-          // Re-encode pathnames that were decoded inside matchRoutes.
-          // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-          // `new URL()` internally and we need to prevent it from treating
-          // them as separators
-          navigator.encodeLocation ? navigator.encodeLocation(
-            match.pathname.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")
-          ).pathname : match.pathname
+          _encodeLocation(navigator, match.pathname)
         ]),
-        pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : joinPaths([
-          parentPathnameBase,
-          // Re-encode pathnames that were decoded inside matchRoutes
-          // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-          // `new URL()` internally and we need to prevent it from treating
-          // them as separators
-          navigator.encodeLocation ? navigator.encodeLocation(
-            match.pathnameBase.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")
-          ).pathname : match.pathnameBase
-        ])
+        pathnameBase: match.pathnameBase === "/"
+          ? parentPathnameBase
+          : joinPaths([
+              parentPathnameBase,
+             _encodeLocation(navigator, match.pathnameBase)
+            ])
       })
     ),
     parentMatches
   );
+
   if (locationArg && renderedMatches) {
     return /* @__PURE__ */ createElement(
       LocationContext.Provider,
