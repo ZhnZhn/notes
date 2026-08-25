@@ -1,7 +1,8 @@
 import { isStr } from '../../utils/isTypeFn';
 
 
-const RE_TRAILING_SLASH = /\/+$/
+const _assign = Object.assign
+, RE_TRAILING_SLASH = /\/+$/
 , _removeTrailingSlash = (
   path
 ) => path.replace(RE_TRAILING_SLASH, "")
@@ -126,30 +127,6 @@ const _compilePath = (
   };
 }
 
-function explodeOptionalSegments(path) {
-  const segments = path.split("/");
-  if (segments.length === 0) return [];
-  const [first, ...rest] = segments
-  , isOptional = first.endsWith("?")
-  , required = first.replace(/\?$/, "");
-  if (rest.length === 0) {
-    return isOptional ? [required, ""] : [required];
-  }
-  const restExploded = explodeOptionalSegments(rest.join("/"))
-  , result = [];
-  result.push(
-    ...restExploded.map(
-      (subpath) => subpath === "" ? required : [required, subpath].join("/")
-    )
-  );
-  if (isOptional) {
-    result.push(...restExploded);
-  }
-  return result.map(
-    (exploded) => path.startsWith("/") && exploded === "" ? "/" : exploded
-  );
-}
-
 function flattenRoutes(
   routes,
   branches = [],
@@ -157,7 +134,12 @@ function flattenRoutes(
   parentPath = "",
   _hasParentOptionalSegments = false
 ) {
-  const flattenRoute = (route, index, hasParentOptionalSegments = _hasParentOptionalSegments, relativePath) => {
+  const flattenRoute = (
+    route,
+    index,
+    hasParentOptionalSegments = _hasParentOptionalSegments,
+    relativePath
+  ) => {
     const meta = {
       relativePath: relativePath === void 0
         ? route.path || ""
@@ -199,13 +181,7 @@ function flattenRoutes(
     });
   };
   routes.forEach((route, index) => {
-    if (route.path === "" || !route.path?.includes("?")) {
-      flattenRoute(route, index);
-    } else {
-      for (const exploded of explodeOptionalSegments(route.path)) {
-        flattenRoute(route, index, true, exploded);
-      }
-    }
+    flattenRoute(route, index);
   });
   return branches;
 }
@@ -249,26 +225,27 @@ const _getBranchRoutesMetaChildrenIndex = (
   return branches;
 }
 
-, _decodePath = (value) => {
+, _decodePathname = (pathname) => {
   try {
-    return value
+    return pathname
       .split("/")
       .map((v) => decodeURIComponent(v).replace(/\//g, "%2F"))
       .join("/");
   } catch {
     console.log("The URL path could not be decoded")
-    return value;
+    return pathname;
   }
-};
+}
 
-function matchPathImpl(
+, _matchPathImpl = (
   pattern,
   pathname,
   matcher,
   compiledParams
-) {
+) => {
   const match = pathname.match(matcher);
   if (!match) return null;
+
   const matchedPathname = match[0];
   let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
   const captureGroups = match.slice(1)
@@ -297,14 +274,14 @@ function matchPathImpl(
 }
 
 const _matchRouteBranch = (
-  branch,
+  routesMeta,
   pathname
 ) => {
-  const { routesMeta } = branch
-  , matchedParams = {}
+  const matchedParams = {}
   , matches = []
   , numberOfMetaRoutes = routesMeta.length - 1;
   let matchedPathname = "/";
+
   for (let i = 0; i < routesMeta.length; ++i) {
     const meta = routesMeta[i]
     , end = i === numberOfMetaRoutes
@@ -316,7 +293,7 @@ const _matchRouteBranch = (
        end
     }
     // Use precomputed matcher
-    , match = matchPathImpl(
+    , match = _matchPathImpl(
        pattern,
        remainingPathname,
        meta.matcher,
@@ -327,7 +304,7 @@ const _matchRouteBranch = (
       return null;
     }
 
-    Object.assign(matchedParams, match.params);
+    _assign(matchedParams, match.params);
     const _matchedPathname = joinPaths([
       matchedPathname,
       match.pathnameBase
@@ -369,12 +346,12 @@ export const matchRoutes = (
   }
 
   const branches = _flattenAndRankRoutes(routes)
-  , decoded = _decodePath(pathname);
+  , decodedPathname = _decodePathname(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = _matchRouteBranch(
-      branches[i],
-      decoded
+      branches[i].routesMeta,
+      decodedPathname
     );
   }
   return matches;
