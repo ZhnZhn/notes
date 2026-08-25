@@ -39,27 +39,28 @@ function stripBasename(pathname, basename) {
   }
   return pathname.slice(startIndex) || "/";
 }
-const removeDoubleSlashes = path => path.replace(/[\\/]{2,}/g, "/");
+const RE_DOUBLE_SLASHES = /[\\/]{2,}/g,
+  removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/");
 const joinPaths = paths => removeDoubleSlashes(paths.join("/"));
 exports.joinPaths = joinPaths;
-const paramRe = /^:[\w-]+$/;
-const dynamicSegmentValue = 3;
-const indexRouteValue = 2;
-const emptySegmentValue = 1;
-const staticSegmentValue = 10;
-const splatPenalty = -2;
-const isSplat = s => s === "*";
-function computeScore(path, index) {
-  const segments = path.split("/");
-  let initialScore = segments.length;
-  if (segments.some(isSplat)) {
-    initialScore += splatPenalty;
-  }
-  if (index) {
-    initialScore += indexRouteValue;
-  }
-  return segments.filter(s => !isSplat(s)).reduce((score, segment) => score + (paramRe.test(segment) ? dynamicSegmentValue : segment === "" ? emptySegmentValue : staticSegmentValue), initialScore);
-}
+const RE_PARAM = /^:[\w-]+$/,
+  DYNAMIC_SEGMENT_VALUE = 3,
+  INDEX_ROUTE_VALUE = 2,
+  EMPTY_SEGMENT_VALUE = 1,
+  STATIC_SEGMENT_VALUE = 10,
+  SPLAT_PENALTY = -2,
+  _isSplat = s => s === "*",
+  _computeScore = (path, index) => {
+    const segments = path.split("/");
+    let initialScore = segments.length;
+    if (segments.some(_isSplat)) {
+      initialScore += SPLAT_PENALTY;
+    }
+    if (index) {
+      initialScore += INDEX_ROUTE_VALUE;
+    }
+    return segments.filter(s => !_isSplat(s)).reduce((score, segment) => score + (RE_PARAM.test(segment) ? DYNAMIC_SEGMENT_VALUE : segment === "" ? EMPTY_SEGMENT_VALUE : STATIC_SEGMENT_VALUE), initialScore);
+  };
 const _compilePath = function (path, end) {
   if (end === void 0) {
     end = true;
@@ -89,8 +90,10 @@ const _compilePath = function (path, end) {
   } else if (path !== "" && path !== "/") {
     regexpSource += "(?:(?=\\/|$))";
   }
-  const matcher = new RegExp(regexpSource, "i");
-  return [matcher, params];
+  return {
+    matcher: new RegExp(regexpSource, "i"),
+    compiledParams: params
+  };
 };
 function explodeOptionalSegments(path) {
   const segments = path.split("/");
@@ -145,17 +148,14 @@ function flattenRoutes(routes, branches, parentsMeta, parentPath, _hasParentOpti
     if (route.path == null && !route.index) {
       return;
     }
+    const _isRecentRouteMeta = i => i === routesMeta.length - 1;
     branches.push({
       path,
-      score: computeScore(path, route.index),
-      routesMeta: routesMeta.map((meta2, i) => {
-        const [matcher, params] = _compilePath(meta2.relativePath, i === routesMeta.length - 1);
-        return {
-          ...meta2,
-          matcher,
-          compiledParams: params
-        };
-      })
+      score: _computeScore(path, route.index),
+      routesMeta: routesMeta.map((routeMeta, i) => ({
+        ...routeMeta,
+        ..._compilePath(routeMeta.relativePath, _isRecentRouteMeta(i))
+      }))
     });
   };
   routes.forEach((route, index) => {
@@ -189,15 +189,15 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
     // Rank route branches
     branches.sort((a, b) => a.score !== b.score ? b.score - a.score : _compareIndexes(a, b));
     return branches;
+  },
+  _decodePath = value => {
+    try {
+      return value.split("/").map(v => decodeURIComponent(v).replace(/\//g, "%2F")).join("/");
+    } catch {
+      console.log("The URL path could not be decoded");
+      return value;
+    }
   };
-function decodePath(value) {
-  try {
-    return value.split("/").map(v => decodeURIComponent(v).replace(/\//g, "%2F")).join("/");
-  } catch {
-    console.log("The URL path could not be decoded");
-    return value;
-  }
-}
 function matchPathImpl(pattern, pathname, matcher, compiledParams) {
   const match = pathname.match(matcher);
   if (!match) return null;
@@ -228,7 +228,7 @@ function matchPathImpl(pattern, pathname, matcher, compiledParams) {
     pattern
   };
 }
-const matchRouteBranch = (branch, pathname) => {
+const _matchRouteBranch = (branch, pathname) => {
   const {
       routesMeta
     } = branch,
@@ -265,25 +265,22 @@ const matchRouteBranch = (branch, pathname) => {
   }
   return matches;
 };
-const matchRoutesImpl = (routes, locationArg, basename) => {
+const matchRoutes = function (routes, locationArg, basename) {
+  if (basename === void 0) {
+    basename = "/";
+  }
   const location = (0, _isTypeFn.isStr)(locationArg) ? parsePath(locationArg) : locationArg,
     pathname = stripBasename(location.pathname || "/", basename);
   if (pathname == null) {
     return null;
   }
   const branches = _flattenAndRankRoutes(routes),
-    decoded = decodePath(pathname);
+    decoded = _decodePath(pathname);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = matchRouteBranch(branches[i], decoded);
+    matches = _matchRouteBranch(branches[i], decoded);
   }
   return matches;
-};
-const matchRoutes = function (routes, locationArg, basename) {
-  if (basename === void 0) {
-    basename = "/";
-  }
-  return matchRoutesImpl(routes, locationArg, basename);
 };
 exports.matchRoutes = matchRoutes;
 //# sourceMappingURL=matchRouters.js.map
