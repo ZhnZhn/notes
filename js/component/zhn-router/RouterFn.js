@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.createPath = createPath;
+exports.removeTrailingSlash = exports.removeDoubleSlashes = void 0;
 function createPath(_ref) {
   let {
     pathname = "/",
@@ -12,4 +13,10 @@ function createPath(_ref) {
   if (hash && hash !== "#") pathname += hash.charAt(0) === "#" ? hash : "#" + hash;
   return pathname;
 }
+const RE_TRAILING_SLASH = /\/+$/;
+const removeTrailingSlash = path => path.replace(RE_TRAILING_SLASH, "");
+exports.removeTrailingSlash = removeTrailingSlash;
+const RE_DOUBLE_SLASHES = /[\\/]{2,}/g;
+const removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/");
+exports.removeDoubleSlashes = removeDoubleSlashes;
 //# sourceMappingURL=RouterFn.js.map

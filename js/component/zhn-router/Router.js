@@ -57,8 +57,6 @@ const resolvePathname = (relativePath, fromPathname) => {
     });
     return segments.length > 1 ? segments.join("/") : "/";
   },
-  RE_DOUBLE_SLASHES = /[\\/]{2,}/g,
-  removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/"),
   normalizeSearch = search => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search,
   normalizeHash = hash => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash,
   resolvePath = function (to, fromPathname) {
@@ -72,7 +70,7 @@ const resolvePathname = (relativePath, fromPathname) => {
     } = (0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to;
     let pathname;
     if (toPathname) {
-      toPathname = removeDoubleSlashes(toPathname);
+      toPathname = (0, _RouterFn.removeDoubleSlashes)(toPathname);
       pathname = toPathname.startsWith("/") ? resolvePathname(toPathname.substring(1), "/") : resolvePathname(toPathname, fromPathname);
     } else {
       pathname = fromPathname;

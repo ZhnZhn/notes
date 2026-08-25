@@ -1,7 +1,8 @@
 import { isStr } from '../../utils/isTypeFn';
 
 import {
-  removeTrailingSlash
+  removeTrailingSlash,
+  removeDoubleSlashes
 } from './RouterFn';
 
 
@@ -45,10 +46,6 @@ export function stripBasename(pathname, basename) {
   return pathname.slice(startIndex) || "/";
 }
 
-const RE_DOUBLE_SLASHES = /[\\/]{2,}/g
-, removeDoubleSlashes = (
-  path
-) => path.replace(RE_DOUBLE_SLASHES, "/");
 export const joinPaths = (
   paths
 ) => removeDoubleSlashes(paths.join("/"));

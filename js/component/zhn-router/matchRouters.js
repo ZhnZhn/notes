@@ -39,9 +39,7 @@ function stripBasename(pathname, basename) {
   }
   return pathname.slice(startIndex) || "/";
 }
-const RE_DOUBLE_SLASHES = /[\\/]{2,}/g,
-  removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/");
-const joinPaths = paths => removeDoubleSlashes(paths.join("/"));
+const joinPaths = paths => (0, _RouterFn.removeDoubleSlashes)(paths.join("/"));
 exports.joinPaths = joinPaths;
 const RE_PARAM = /^:[\w-]+$/,
   DYNAMIC_SEGMENT_VALUE = 3,

@@ -26,7 +26,8 @@ import {
 } from './matchRouters';
 import {
   createPath,
-  removeTrailingSlash
+  removeTrailingSlash,
+  removeDoubleSlashes
 } from './RouterFn';
 
 export const Route = (_props) => {}
@@ -96,10 +97,6 @@ const resolvePathname = (
     : "/";
 }
 
-, RE_DOUBLE_SLASHES = /[\\/]{2,}/g
-, removeDoubleSlashes = (
-  path
-) => path.replace(RE_DOUBLE_SLASHES, "/")
 , normalizeSearch = (
   search
 ) => !search || search === "?"

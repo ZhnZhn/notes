@@ -19,3 +19,8 @@ const RE_TRAILING_SLASH = /\/+$/;
 export const removeTrailingSlash = (
   path
 ) => path.replace(RE_TRAILING_SLASH, "")
+
+const RE_DOUBLE_SLASHES = /[\\/]{2,}/g;
+export const removeDoubleSlashes = (
+  path
+) => path.replace(RE_DOUBLE_SLASHES, "/")
