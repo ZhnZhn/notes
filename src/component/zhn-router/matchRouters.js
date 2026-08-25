@@ -1,14 +1,14 @@
 import { isStr } from '../../utils/isTypeFn';
 
+import {
+  removeTrailingSlash
+} from './RouterFn';
+
 
 const _assign = Object.assign
-, RE_TRAILING_SLASH = /\/+$/
-, _removeTrailingSlash = (
-  path
-) => path.replace(RE_TRAILING_SLASH, "")
 , normalizePathname = (
   pathname
-) => _removeTrailingSlash(pathname)
+) => removeTrailingSlash(pathname)
   .replace(/^\/*/, "/");
 
 export function parsePath(path) {

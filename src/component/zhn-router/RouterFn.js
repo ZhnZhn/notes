@@ -14,3 +14,8 @@ export function createPath({
       : "#" + hash;
   return pathname;
 }
+
+const RE_TRAILING_SLASH = /\/+$/;
+export const removeTrailingSlash = (
+  path
+) => path.replace(RE_TRAILING_SLASH, "")

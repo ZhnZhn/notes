@@ -45,10 +45,8 @@ const RouteContext = /*#__PURE__*/(0, _react.createContext)({
   isDataRoute: false
 });
 RouteContext.displayName = "Route";
-const RE_TRAILING_SLASH = /\/+$/,
-  removeTrailingSlash = path => path.replace(RE_TRAILING_SLASH, ""),
-  resolvePathname = (relativePath, fromPathname) => {
-    const segments = removeTrailingSlash(fromPathname).split("/"),
+const resolvePathname = (relativePath, fromPathname) => {
+    const segments = (0, _RouterFn.removeTrailingSlash)(fromPathname).split("/"),
       relativeSegments = relativePath.split("/");
     relativeSegments.forEach(segment => {
       if (segment === ".." && segments.length > 1) {

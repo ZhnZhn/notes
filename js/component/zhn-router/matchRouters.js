@@ -5,10 +5,9 @@ exports.matchRoutes = exports.joinPaths = void 0;
 exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
 var _isTypeFn = require("../../utils/isTypeFn");
+var _RouterFn = require("./RouterFn");
 const _assign = Object.assign,
-  RE_TRAILING_SLASH = /\/+$/,
-  _removeTrailingSlash = path => path.replace(RE_TRAILING_SLASH, ""),
-  normalizePathname = pathname => _removeTrailingSlash(pathname).replace(/^\/*/, "/");
+  normalizePathname = pathname => (0, _RouterFn.removeTrailingSlash)(pathname).replace(/^\/*/, "/");
 function parsePath(path) {
   const parsedPath = {};
   if (path) {

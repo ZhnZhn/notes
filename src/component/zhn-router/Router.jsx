@@ -25,7 +25,8 @@ import {
   stripBasename
 } from './matchRouters';
 import {
-  createPath
+  createPath,
+  removeTrailingSlash
 } from './RouterFn';
 
 export const Route = (_props) => {}
@@ -76,12 +77,7 @@ const RouteContext = createContext({
 });
 RouteContext.displayName = "Route";
 
-const RE_TRAILING_SLASH = /\/+$/
-, removeTrailingSlash = (
-  path
-) => path.replace(RE_TRAILING_SLASH, "")
-
-, resolvePathname = (
+const resolvePathname = (
   relativePath,
   fromPathname
 ) => {
