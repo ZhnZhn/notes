@@ -131,176 +131,90 @@ const resolveTo = (toArg, locationPathname) => {
     value: props.routeContext,
     children: props.children
   }),
-  _renderMatches = function (matches, parentMatches, dataRouterOpts) {
+  _renderMatches = function (matches, parentMatches) {
     if (parentMatches === void 0) {
       parentMatches = [];
     }
-    const dataRouterState = dataRouterOpts?.state;
-    if (matches == null) {
-      if (!dataRouterState) {
-        return null;
-      }
-      if (dataRouterState.errors) {
-        matches = dataRouterState.matches;
-      } else if (parentMatches.length === 0 && !dataRouterState.initialized && dataRouterState.matches.length > 0) {
-        matches = dataRouterState.matches;
-      } else {
-        return null;
-      }
-    }
-    let renderedMatches = matches;
-    const errors = dataRouterState?.errors;
-    if (errors != null) {
-      const errorIndex = renderedMatches.findIndex(m => m.route.id && errors?.[m.route.id] !== void 0);
-      renderedMatches = renderedMatches.slice(0, Math.min(renderedMatches.length, errorIndex + 1));
-    }
-    let renderFallback = false;
-    let fallbackIndex = -1;
-    if (dataRouterOpts && dataRouterState) {
-      renderFallback = dataRouterState.renderFallback;
-      for (let i = 0; i < renderedMatches.length; i++) {
-        const match = renderedMatches[i];
-        if (match.route.HydrateFallback || match.route.hydrateFallbackElement) {
-          fallbackIndex = i;
-        }
-        if (match.route.id) {
-          const {
-              loaderData,
-              errors: errors2
-            } = dataRouterState,
-            needsToRunLoader = match.route.loader && !(0, _isTypeFn.hasOwnPropertySafe)(loaderData, match.route.id) && (!errors2 || errors2[match.route.id] === void 0);
-          if (match.route.lazy || needsToRunLoader) {
-            if (dataRouterOpts.isStatic) {
-              renderFallback = true;
-            }
-            if (fallbackIndex >= 0) {
-              renderedMatches = renderedMatches.slice(0, fallbackIndex + 1);
-            } else {
-              renderedMatches = [renderedMatches[0]];
-            }
-            break;
-          }
-        }
-      }
-    }
-    return renderedMatches.reduceRight((outlet, match, index) => {
-      let error;
-      let shouldRenderHydrateFallback = false;
-      let errorElement = null;
-      let hydrateFallbackElement = null;
-      if (dataRouterState) {
-        error = errors && match.route.id ? errors[match.route.id] : void 0;
-        errorElement = match.route.errorElement;
-        if (renderFallback) {
-          if (fallbackIndex < 0 && index === 0) {
-            shouldRenderHydrateFallback = true;
-            hydrateFallbackElement = null;
-          } else if (fallbackIndex === index) {
-            shouldRenderHydrateFallback = true;
-            hydrateFallbackElement = match.route.hydrateFallbackElement || null;
-          }
-        }
-      }
-      const matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1)),
-        getChildren = () => {
-          let children;
-          if (error) {
-            children = errorElement;
-          } else if (shouldRenderHydrateFallback) {
-            children = hydrateFallbackElement;
-          } else if (match.route.Component) {
-            children = /* @__PURE__ */(0, _react.createElement)(match.route.Component, null);
-          } else if (match.route.element) {
-            children = match.route.element;
-          } else {
-            children = outlet;
-          }
-          return /* @__PURE__ */(0, _react.createElement)(RenderedRoute, {
-            match,
-            routeContext: {
-              outlet,
-              matches: matches2,
-              isDataRoute: dataRouterState != null
-            },
-            children
-          });
-        };
+    return matches == null ? null : matches.reduceRight((outlet, match, index) => {
+      const getChildren = () => /* @__PURE__ */(0, _react.createElement)(RenderedRoute, {
+        match,
+        routeContext: {
+          outlet,
+          matches: parentMatches.concat(matches.slice(0, index + 1)),
+          isDataRoute: false
+        },
+        children: match.route.Component ? /* @__PURE__ */(0, _react.createElement)(match.route.Component, null) : match.route.element || outlet
+      });
       return getChildren();
     }, null);
   };
-const useRoutesImpl = (routes, locationArg, dataRouterOpts) => {
-    const {
-        navigator
-      } = (0, _react.useContext)(NavigationContext),
-      {
-        matches: parentMatches
-      } = (0, _react.useContext)(RouteContext),
-      routeMatch = parentMatches[parentMatches.length - 1],
-      parentParams = routeMatch ? routeMatch.params : {},
-      parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
-    const locationFromContext = useLocation();
-    let location;
-    if (locationArg) {
-      const parsedLocationArg = (0, _isTypeFn.isStr)(locationArg) ? (0, _matchRouters.parsePath)(locationArg) : locationArg;
-      location = parsedLocationArg;
-    } else {
-      location = locationFromContext;
-    }
-    const pathname = location.pathname || "/";
-    let remainingPathname = pathname;
-    if (parentPathnameBase !== "/") {
-      const parentSegments = parentPathnameBase.replace(/^\//, "").split("/"),
-        segments = pathname.replace(/^\//, "").split("/");
-      remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
-    }
-    const matches = dataRouterOpts?.state.matches.length ?
-    // If we're in a data router, use the matches we've already identified but ensure
-    // we have the latest route instances from the manifest in case elements have changed
-    dataRouterOpts.state.matches.map(m => Object.assign(m, {
-      route: dataRouterOpts.manifest[m.route.id] || m.route
-    })) : (0, _matchRouters.matchRoutes)(routes, {
-      pathname: remainingPathname
-    });
-    const renderedMatches = _renderMatches(matches?.map(match => Object.assign({}, match, {
-      params: Object.assign({}, parentParams, match.params),
-      pathname: (0, _matchRouters.joinPaths)([parentPathnameBase,
-      // Re-encode pathnames that were decoded inside matchRoutes.
-      // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-      // `new URL()` internally and we need to prevent it from treating
-      // them as separators
-      navigator.encodeLocation ? navigator.encodeLocation(match.pathname.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathname]),
-      pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase,
-      // Re-encode pathnames that were decoded inside matchRoutes
-      // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-      // `new URL()` internally and we need to prevent it from treating
-      // them as separators
-      navigator.encodeLocation ? navigator.encodeLocation(match.pathnameBase.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathnameBase])
-    })), parentMatches, dataRouterOpts);
-    if (locationArg && renderedMatches) {
-      return /* @__PURE__ */(0, _react.createElement)(LocationContext.Provider, {
-        value: {
-          location: {
-            pathname: "/",
-            search: "",
-            hash: "",
-            state: null,
-            key: "default",
-            mask: void 0,
-            ...location
-          },
-          navigationType: "POP" /* Pop */
-        }
-      }, renderedMatches);
-    }
-    return renderedMatches;
-  },
-  useRoutes = (routes, locationArg) => useRoutesImpl(routes, locationArg);
+const useRoutesImpl = (routes, locationArg) => {
+  const {
+      navigator
+    } = (0, _react.useContext)(NavigationContext),
+    {
+      matches: parentMatches
+    } = (0, _react.useContext)(RouteContext),
+    routeMatch = parentMatches[parentMatches.length - 1],
+    parentParams = routeMatch ? routeMatch.params : {},
+    parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
+  const locationFromContext = useLocation();
+  let location;
+  if (locationArg) {
+    const parsedLocationArg = (0, _isTypeFn.isStr)(locationArg) ? (0, _matchRouters.parsePath)(locationArg) : locationArg;
+    location = parsedLocationArg;
+  } else {
+    location = locationFromContext;
+  }
+  const pathname = location.pathname || "/";
+  let remainingPathname = pathname;
+  if (parentPathnameBase !== "/") {
+    const parentSegments = parentPathnameBase.replace(/^\//, "").split("/"),
+      segments = pathname.replace(/^\//, "").split("/");
+    remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
+  }
+  const matches = (0, _matchRouters.matchRoutes)(routes, {
+    pathname: remainingPathname
+  });
+  const renderedMatches = _renderMatches(matches?.map(match => Object.assign({}, match, {
+    params: Object.assign({}, parentParams, match.params),
+    pathname: (0, _matchRouters.joinPaths)([parentPathnameBase,
+    // Re-encode pathnames that were decoded inside matchRoutes.
+    // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
+    // `new URL()` internally and we need to prevent it from treating
+    // them as separators
+    navigator.encodeLocation ? navigator.encodeLocation(match.pathname.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathname]),
+    pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase,
+    // Re-encode pathnames that were decoded inside matchRoutes
+    // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
+    // `new URL()` internally and we need to prevent it from treating
+    // them as separators
+    navigator.encodeLocation ? navigator.encodeLocation(match.pathnameBase.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : match.pathnameBase])
+  })), parentMatches);
+  if (locationArg && renderedMatches) {
+    return /* @__PURE__ */(0, _react.createElement)(LocationContext.Provider, {
+      value: {
+        location: {
+          pathname: "/",
+          search: "",
+          hash: "",
+          state: null,
+          key: "default",
+          mask: void 0,
+          ...location
+        },
+        navigationType: "POP" /* Pop */
+      }
+    }, renderedMatches);
+  }
+  return renderedMatches;
+};
 const Routes = _ref => {
   let {
     children,
     location
   } = _ref;
-  return useRoutes(createRoutesFromChildren(children), location);
+  return useRoutesImpl(createRoutesFromChildren(children), location);
 };
 exports.Routes = Routes;
 const Router = _ref2 => {

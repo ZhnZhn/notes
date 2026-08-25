@@ -212,131 +212,47 @@ const resolveTo = (
 
 , _renderMatches = (
   matches,
-  parentMatches = [],
-  dataRouterOpts
-) => {
-  const dataRouterState = dataRouterOpts?.state;
-  if (matches == null) {
-    if (!dataRouterState) {
-      return null;
-    }
-    if (dataRouterState.errors) {
-      matches = dataRouterState.matches;
-    } else if (parentMatches.length === 0 && !dataRouterState.initialized && dataRouterState.matches.length > 0) {
-      matches = dataRouterState.matches;
-    } else {
-      return null;
-    }
-  }
-  let renderedMatches = matches;
-  const errors = dataRouterState?.errors;
-  if (errors != null) {
-    const errorIndex = renderedMatches.findIndex(
-      (m) => m.route.id && errors?.[m.route.id] !== void 0
-    );
-    renderedMatches = renderedMatches.slice(
-      0,
-      Math.min(renderedMatches.length, errorIndex + 1)
-    );
-  }
-  let renderFallback = false;
-  let fallbackIndex = -1;
-  if (dataRouterOpts && dataRouterState) {
-    renderFallback = dataRouterState.renderFallback;
-    for (let i = 0; i < renderedMatches.length; i++) {
-      const match = renderedMatches[i];
-      if (match.route.HydrateFallback || match.route.hydrateFallbackElement) {
-        fallbackIndex = i;
-      }
-      if (match.route.id) {
-        const {
-          loaderData,
-          errors: errors2
-        } = dataRouterState
-        , needsToRunLoader = match.route.loader
-          && !hasOwnPropertySafe(loaderData, match.route.id)
-          && (!errors2 || errors2[match.route.id] === void 0);
-        if (match.route.lazy || needsToRunLoader) {
-          if (dataRouterOpts.isStatic) {
-            renderFallback = true;
-          }
-          if (fallbackIndex >= 0) {
-            renderedMatches = renderedMatches.slice(0, fallbackIndex + 1);
-          } else {
-            renderedMatches = [renderedMatches[0]];
-          }
-          break;
-        }
-      }
-    }
-  }
+  parentMatches = []
+) => matches == null
+  ? null
+  : matches.reduceRight((outlet, match, index) => {
 
-  return renderedMatches.reduceRight(
-    (outlet, match, index) => {
-      let error;
-      let shouldRenderHydrateFallback = false;
-      let errorElement = null;
-      let hydrateFallbackElement = null;
-      if (dataRouterState) {
-        error = errors && match.route.id
-          ? errors[match.route.id]
-          : void 0;
-        errorElement = match.route.errorElement;
+      const getChildren = () => /* @__PURE__ */ createElement(
+        RenderedRoute,
+        {
+          match,
+          routeContext: {
+            outlet,
+            matches: parentMatches.concat(
+              matches.slice(0, index + 1)
+            ),
+            isDataRoute: false
+          },
+          children: match.route.Component
+            ? /* @__PURE__ */ createElement(match.route.Component, null)
+            : match.route.element || outlet
+        }
+      );
 
-        if (renderFallback) {
-          if (fallbackIndex < 0 && index === 0) {
-            shouldRenderHydrateFallback = true;
-            hydrateFallbackElement = null;
-          } else if (fallbackIndex === index) {
-            shouldRenderHydrateFallback = true;
-            hydrateFallbackElement = match.route.hydrateFallbackElement || null;
-          }
-        }
-      }
-      const matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1))
-      , getChildren = () => {
-        let children;
-        if (error) {
-          children = errorElement;
-        } else if (shouldRenderHydrateFallback) {
-          children = hydrateFallbackElement;
-        } else if (match.route.Component) {
-          children = /* @__PURE__ */ createElement(match.route.Component, null);
-        } else if (match.route.element) {
-          children = match.route.element;
-        } else {
-          children = outlet;
-        }
-        return /* @__PURE__ */ createElement(
-          RenderedRoute,
-          {
-            match,
-            routeContext: {
-              outlet,
-              matches: matches2,
-              isDataRoute: dataRouterState != null
-            },
-            children
-          }
-        );
-      };
       return getChildren();
     },
     null
   );
-};
+
 
 const useRoutesImpl = (
   routes,
-  locationArg,
-  dataRouterOpts
+  locationArg
 ) => {
-
   const { navigator } = useContext(NavigationContext)
   , { matches: parentMatches } = useContext(RouteContext)
   , routeMatch = parentMatches[parentMatches.length - 1]
-  , parentParams = routeMatch ? routeMatch.params : {}
-  , parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/"
+  , parentParams = routeMatch
+    ? routeMatch.params
+    : {}
+  , parentPathnameBase = routeMatch
+    ? routeMatch.pathnameBase
+    : "/"
 
   const locationFromContext = useLocation();
   let location;
@@ -355,15 +271,8 @@ const useRoutesImpl = (
     , segments = pathname.replace(/^\//, "").split("/");
     remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
   }
-  const matches = dataRouterOpts?.state.matches.length ? (
-    // If we're in a data router, use the matches we've already identified but ensure
-    // we have the latest route instances from the manifest in case elements have changed
-    dataRouterOpts.state.matches.map(
-      (m) => Object.assign(m, {
-        route: dataRouterOpts.manifest[m.route.id] || m.route
-      })
-    )
-  ) : matchRoutes(routes, { pathname: remainingPathname });
+
+  const matches = matchRoutes(routes, { pathname: remainingPathname })
 
   const renderedMatches = _renderMatches(
     matches?.map(
@@ -391,8 +300,7 @@ const useRoutesImpl = (
         ])
       })
     ),
-    parentMatches,
-    dataRouterOpts
+    parentMatches
   );
   if (locationArg && renderedMatches) {
     return /* @__PURE__ */ createElement(
@@ -417,15 +325,10 @@ const useRoutesImpl = (
   return renderedMatches;
 }
 
-, useRoutes = (
-  routes,
-  locationArg
-) => useRoutesImpl(routes, locationArg);
-
 export const Routes = ({
   children,
   location
-}) => useRoutes(
+}) => useRoutesImpl(
   createRoutesFromChildren(children),
   location
 )
