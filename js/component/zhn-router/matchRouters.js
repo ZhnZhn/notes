@@ -6,8 +6,7 @@ exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
 var _isTypeFn = require("../../utils/isTypeFn");
 var _RouterFn = require("./RouterFn");
-const _assign = Object.assign,
-  normalizePathname = pathname => (0, _RouterFn.removeTrailingSlash)(pathname).replace(/^\/*/, "/");
+const normalizePathname = pathname => (0, _RouterFn.removeTrailingSlash)(pathname).replace(/^\/*/, "/");
 function parsePath(path) {
   const parsedPath = {};
   if (path) {
@@ -222,11 +221,13 @@ const _matchRouteBranch = (routesMeta, pathname) => {
     if (!match) {
       return null;
     }
-    _assign(matchedParams, match.params);
     const _matchedPathname = joinPaths([matchedPathname, match.pathnameBase]);
     matches.push({
       // TODO: Can this as be avoided?
-      params: matchedParams,
+      params: {
+        ...matchedParams,
+        ...match.params
+      },
       pathname: joinPaths([matchedPathname, match.pathname]),
       pathnameBase: normalizePathname(_matchedPathname),
       route: meta.route

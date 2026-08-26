@@ -5,9 +5,7 @@ import {
   removeDoubleSlashes
 } from './RouterFn';
 
-
-const _assign = Object.assign
-, normalizePathname = (
+const normalizePathname = (
   pathname
 ) => removeTrailingSlash(pathname)
   .replace(/^\/*/, "/");
@@ -301,14 +299,16 @@ const _matchRouteBranch = (
       return null;
     }
 
-    _assign(matchedParams, match.params);
     const _matchedPathname = joinPaths([
       matchedPathname,
       match.pathnameBase
     ]);
     matches.push({
       // TODO: Can this as be avoided?
-      params: matchedParams,
+      params: {
+        ...matchedParams,
+        ...match.params
+      },
       pathname: joinPaths([
         matchedPathname,
         match.pathname
