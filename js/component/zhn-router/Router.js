@@ -137,16 +137,15 @@ const resolveTo = (toArg, locationPathname) => {
       parentMatches = [];
     }
     return matches == null ? null : matches.reduceRight((outlet, match, index) => {
-      const getChildren = () => /* @__PURE__ */(0, _react.createElement)(RenderedRoute, {
-        match,
+      const MatchRouteComponent = match.route.Component;
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)(RenderedRoute, {
         routeContext: {
           outlet,
           matches: parentMatches.concat(matches.slice(0, index + 1)),
           isDataRoute: false
         },
-        children: match.route.Component ? /* @__PURE__ */(0, _react.createElement)(match.route.Component, null) : match.route.element || outlet
+        children: MatchRouteComponent ? /*#__PURE__*/(0, _jsxRuntime.jsx)(MatchRouteComponent, {}) : match.route.element || outlet
       });
-      return getChildren();
     }, null);
   };
 
@@ -155,7 +154,7 @@ const resolveTo = (toArg, locationPathname) => {
 // `new URL()` internally and we need to prevent it from treating
 // them as separators
 const _encodeLocation = (navigator, location) => navigator.encodeLocation ? navigator.encodeLocation(location.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : location;
-const useRoutesImpl = (routes, locationArg) => {
+const useRoutesImpl = routes => {
   const {
       navigator
     } = (0, _react.useContext)(NavigationContext),
@@ -164,10 +163,9 @@ const useRoutesImpl = (routes, locationArg) => {
     } = (0, _react.useContext)(RouteContext),
     routeMatch = parentMatches[parentMatches.length - 1],
     parentParams = routeMatch ? routeMatch.params : {},
-    parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/";
-  const locationFromContext = useLocation();
-  const location = (0, _isTypeFn.isStr)(locationArg) ? (0, _matchRouters.parsePath)(locationArg) : locationArg || locationFromContext;
-  const pathname = location.pathname || "/";
+    parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/",
+    location = useLocation(),
+    pathname = location.pathname || "/";
   let remainingPathname = pathname;
   if (parentPathnameBase !== "/") {
     const parentSegments = parentPathnameBase.replace(/^\//, "").split("/"),
@@ -182,33 +180,11 @@ const useRoutesImpl = (routes, locationArg) => {
     pathname: (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathname)]),
     pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathnameBase)])
   })), parentMatches);
-  if (locationArg && renderedMatches) {
-    return /* @__PURE__ */(0, _react.createElement)(LocationContext.Provider, {
-      value: {
-        location: {
-          pathname: "/",
-          search: "",
-          hash: "",
-          state: null,
-          key: "default",
-          mask: void 0,
-          ...location
-        },
-        navigationType: "POP" /* Pop */
-      }
-    }, renderedMatches);
-  }
   return renderedMatches;
 };
-const Routes = _ref => {
-  let {
-    children,
-    location
-  } = _ref;
-  return useRoutesImpl(createRoutesFromChildren(children), location);
-};
+const Routes = props => useRoutesImpl(createRoutesFromChildren(props.children));
 exports.Routes = Routes;
-const Router = _ref2 => {
+const Router = _ref => {
   let {
     basename: basenameProp = "/",
     children = null,
@@ -217,7 +193,7 @@ const Router = _ref2 => {
     navigator,
     static: staticProp = false,
     useTransitions
-  } = _ref2;
+  } = _ref;
   const basename = basenameProp.replace(/^\/*/, "/"),
     navigationContext = (0, _react.useMemo)(() => ({
       basename,
@@ -266,12 +242,12 @@ const Router = _ref2 => {
 };
 exports.Router = Router;
 const normalizeProtocolRelativeUrl = (url, protocol) => protocol + url.replace(/\\/g, "/");
-const Navigate = _ref3 => {
+const Navigate = _ref2 => {
   let {
     to,
     replace: replace2,
     state
-  } = _ref3;
+  } = _ref2;
   const {
       pathname: locationPathname
     } = useLocation(),
@@ -365,7 +341,7 @@ const useResolvedPath = to => {
       }
     }, [location, navigate, path, replaceProp, target, to]);
   },
-  Link = _ref4 => {
+  Link = _ref3 => {
     let {
       onClick,
       replace: replace2,
@@ -373,7 +349,7 @@ const useResolvedPath = to => {
       to,
       children,
       ...restProps
-    } = _ref4;
+    } = _ref3;
     const {
         basename
       } = (0, _react.useContext)(NavigationContext),
@@ -399,7 +375,7 @@ const useResolvedPath = to => {
     });
   };
 Link.displayName = "Link";
-const NavLink = _ref5 => {
+const NavLink = _ref4 => {
   let {
     "aria-current": ariaCurrentProp = "page",
     end = false,
@@ -408,7 +384,7 @@ const NavLink = _ref5 => {
     to,
     children,
     ...restProps
-  } = _ref5;
+  } = _ref4;
   const path = useResolvedPath(to),
     {
       navigator

@@ -217,25 +217,23 @@ const resolveTo = (
 ) => matches == null
   ? null
   : matches.reduceRight((outlet, match, index) => {
-
-      const getChildren = () => /* @__PURE__ */ createElement(
-        RenderedRoute,
-        {
-          match,
-          routeContext: {
+      const MatchRouteComponent = match.route.Component;
+      return (
+        <RenderedRoute
+          routeContext={{
             outlet,
             matches: parentMatches.concat(
               matches.slice(0, index + 1)
             ),
             isDataRoute: false
-          },
-          children: match.route.Component
-            ? /* @__PURE__ */ createElement(match.route.Component, null)
+          }}
+        >
+          {MatchRouteComponent
+            ? <MatchRouteComponent />
             : match.route.element || outlet
-        }
+          }
+        </RenderedRoute>
       );
-
-      return getChildren();
     },
     null
   );
@@ -253,8 +251,7 @@ const _encodeLocation = (
 ).pathname : location;
 
 const useRoutesImpl = (
-  routes,
-  locationArg
+  routes
 ) => {
   const { navigator } = useContext(NavigationContext)
   , { matches: parentMatches } = useContext(RouteContext)
@@ -266,13 +263,9 @@ const useRoutesImpl = (
     ? routeMatch.pathnameBase
     : "/"
 
-  const locationFromContext = useLocation();
+  , location = useLocation()
+  , pathname = location.pathname || "/";
 
-  const location = isStr(locationArg)
-    ? parsePath(locationArg)
-    : locationArg || locationFromContext;
-
-  const pathname = location.pathname || "/";
   let remainingPathname = pathname;
   if (parentPathnameBase !== "/") {
     const parentSegments = parentPathnameBase.replace(/^\//, "").split("/")
@@ -280,7 +273,9 @@ const useRoutesImpl = (
     remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
   }
 
-  const matches = matchRoutes(routes, { pathname: remainingPathname })
+  const matches = matchRoutes(routes, {
+    pathname: remainingPathname
+  });
 
   const renderedMatches = _renderMatches(
     matches?.map(
@@ -301,35 +296,13 @@ const useRoutesImpl = (
     parentMatches
   );
 
-  if (locationArg && renderedMatches) {
-    return /* @__PURE__ */ createElement(
-      LocationContext.Provider,
-      {
-        value: {
-          location: {
-            pathname: "/",
-            search: "",
-            hash: "",
-            state: null,
-            key: "default",
-            mask: void 0,
-            ...location
-          },
-          navigationType: "POP" /* Pop */
-        }
-      },
-      renderedMatches
-    );
-  }
   return renderedMatches;
 }
 
-export const Routes = ({
-  children,
-  location
-}) => useRoutesImpl(
-  createRoutesFromChildren(children),
-  location
+export const Routes = (
+  props
+) => useRoutesImpl(
+  createRoutesFromChildren(props.children)
 )
 
 export const Router = ({
