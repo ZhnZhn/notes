@@ -215,10 +215,7 @@ const Router = _ref => {
     } = locationProp,
     locationContext = (0, _react.useMemo)(() => {
       const trailingPathname = (0, _matchRouters.stripBasename)(pathname, basename);
-      if (trailingPathname == null) {
-        return null;
-      }
-      return {
+      return trailingPathname == null ? null : {
         location: {
           pathname: trailingPathname,
           search,
@@ -230,15 +227,13 @@ const Router = _ref => {
         navigationType
       };
     }, [basename, pathname, search, hash, state, key, navigationType, mask]);
-  if (locationContext == null) {
-    return null;
-  }
-  return /* @__PURE__ */(0, _react.createElement)(NavigationContext.Provider, {
-    value: navigationContext
-  }, /* @__PURE__ */(0, _react.createElement)(LocationContext.Provider, {
-    children,
-    value: locationContext
-  }));
+  return locationContext == null ? null : /*#__PURE__*/(0, _jsxRuntime.jsx)(NavigationContext.Provider, {
+    value: navigationContext,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(LocationContext.Provider, {
+      value: locationContext,
+      children: children
+    })
+  });
 };
 exports.Router = Router;
 const normalizeProtocolRelativeUrl = (url, protocol) => protocol + url.replace(/\\/g, "/");

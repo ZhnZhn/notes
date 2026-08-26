@@ -1,6 +1,5 @@
 import {
   isValidElement,
-  createElement,
   Children,
   createContext,
   useContext,
@@ -323,7 +322,12 @@ export const Router = ({
       useTransitions,
       future: {}
     }),
-    [basename, navigator, staticProp, useTransitions]
+    [
+      basename,
+      navigator,
+      staticProp,
+      useTransitions
+    ]
   );
   if (isStr(locationProp)) {
     locationProp = parsePath(locationProp);
@@ -337,11 +341,11 @@ export const Router = ({
     mask
   } = locationProp
   , locationContext = useMemo(() => {
-    const trailingPathname = stripBasename(pathname, basename);
-    if (trailingPathname == null) {
-      return null;
-    }
-    return {
+    const trailingPathname = stripBasename(
+      pathname,
+      basename
+    );
+    return trailingPathname == null ? null : {
       location: {
         pathname: trailingPathname,
         search,
@@ -352,13 +356,23 @@ export const Router = ({
       },
       navigationType
     };
-  }, [basename, pathname, search, hash, state, key, navigationType, mask]);
+  }, [
+    basename,
+    pathname,
+    search,
+    hash,
+    state,
+    key,
+    navigationType,
+    mask
+  ]);
 
-  if (locationContext == null) {
-    return null;
-  }
-  return /* @__PURE__ */ createElement(
-    NavigationContext.Provider, { value: navigationContext }, /* @__PURE__ */ createElement(LocationContext.Provider, { children, value: locationContext })
+  return locationContext == null ? null : (
+    <NavigationContext.Provider value={navigationContext}>
+       <LocationContext.Provider value={locationContext}>
+          {children}
+       </LocationContext.Provider>
+    </NavigationContext.Provider>
   );
 }
 
