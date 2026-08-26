@@ -28,8 +28,6 @@ import {
   removeDoubleSlashes
 } from './RouterFn';
 
-const _assign = Object.assign;
-
 export const Route = (_props) => {}
 
 const createRoutesFromChildren = (
@@ -237,7 +235,6 @@ const resolveTo = (
     null
   );
 
-
 // Re-encode pathnames that were decoded inside matchRoutes.
 // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
 // `new URL()` internally and we need to prevent it from treating
@@ -276,26 +273,27 @@ const useRoutesImpl = (
     pathname: remainingPathname
   });
 
-  const renderedMatches = _renderMatches(
-    matches?.map(
-      (match) => _assign({}, match, {
-        params: _assign({}, parentParams, match.params),
-        pathname: joinPaths([
-          parentPathnameBase,
-          _encodeLocation(navigator, match.pathname)
-        ]),
-        pathnameBase: match.pathnameBase === "/"
-          ? parentPathnameBase
-          : joinPaths([
-              parentPathnameBase,
-             _encodeLocation(navigator, match.pathnameBase)
-            ])
-      })
-    ),
+  //renderedMatches
+  return _renderMatches(
+    matches?.map(match => ({
+      ...match,
+      params: {
+        ...parentParams,
+        ...match.params
+      },
+      pathname: joinPaths([
+        parentPathnameBase,
+        _encodeLocation(navigator, match.pathname)
+      ]),
+      pathnameBase: match.pathnameBase === "/"
+        ? parentPathnameBase
+        : joinPaths([
+            parentPathnameBase,
+           _encodeLocation(navigator, match.pathnameBase)
+          ])
+    })),
     parentMatches
   );
-
-  return renderedMatches;
 }
 
 export const Routes = (

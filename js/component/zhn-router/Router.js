@@ -7,7 +7,6 @@ var _isTypeFn = require("../../utils/isTypeFn");
 var _matchRouters = require("./matchRouters");
 var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
-const _assign = Object.assign;
 const Route = _props => {};
 exports.Route = Route;
 const createRoutesFromChildren = function (children, parentPath) {
@@ -175,12 +174,17 @@ const useRoutesImpl = routes => {
   const matches = (0, _matchRouters.matchRoutes)(routes, {
     pathname: remainingPathname
   });
-  const renderedMatches = _renderMatches(matches?.map(match => _assign({}, match, {
-    params: _assign({}, parentParams, match.params),
+
+  //renderedMatches
+  return _renderMatches(matches?.map(match => ({
+    ...match,
+    params: {
+      ...parentParams,
+      ...match.params
+    },
     pathname: (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathname)]),
     pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathnameBase)])
   })), parentMatches);
-  return renderedMatches;
 };
 const Routes = props => useRoutesImpl(createRoutesFromChildren(props.children));
 exports.Routes = Routes;
