@@ -66,9 +66,6 @@ LocationContext.displayName = "Location";
 const useLocation = () => useContext(LocationContext)
  .location;
 
-const DataRouterContext = createContext(null);
-DataRouterContext.displayName = "DataRouter";
-
 const RouteContext = createContext({
   outlet: null,
   matches: [],
@@ -160,9 +157,13 @@ const resolveTo = (
 }
 
 , useNavigateUnstable = () => {
-  const dataRouterContext = useContext(DataRouterContext)
-  , { basename, navigator } = useContext(NavigationContext)
-  , { pathname: locationPathname } = useLocation()
+  const {
+    basename,
+    navigator
+  } = useContext(NavigationContext)
+  , {
+    pathname: locationPathname
+  } = useLocation()
 
   , activeRef = useRef(false);
 
@@ -181,8 +182,10 @@ const resolveTo = (
         to,
         locationPathname
       );
-      if (dataRouterContext == null && basename !== "/") {
-        path.pathname = path.pathname === "/" ? basename : joinPaths([basename, path.pathname]);
+      if (basename !== "/") {
+        path.pathname = path.pathname === "/"
+          ? basename
+          : joinPaths([basename, path.pathname]);
       }
       (options.replace ? navigator.replace : navigator.push)(
         path,
@@ -193,8 +196,7 @@ const resolveTo = (
     [
       basename,
       navigator,
-      locationPathname,
-      dataRouterContext
+      locationPathname
     ]
   );
   return navigate;

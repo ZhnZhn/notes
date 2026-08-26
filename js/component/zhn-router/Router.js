@@ -37,8 +37,6 @@ NavigationContext.displayName = "Navigation";
 const LocationContext = /*#__PURE__*/(0, _react.createContext)(null);
 LocationContext.displayName = "Location";
 const useLocation = () => (0, _react.useContext)(LocationContext).location;
-const DataRouterContext = /*#__PURE__*/(0, _react.createContext)(null);
-DataRouterContext.displayName = "DataRouter";
 const RouteContext = /*#__PURE__*/(0, _react.createContext)({
   outlet: null,
   matches: [],
@@ -97,8 +95,7 @@ const resolveTo = (toArg, locationPathname) => {
     return path;
   },
   useNavigateUnstable = () => {
-    const dataRouterContext = (0, _react.useContext)(DataRouterContext),
-      {
+    const {
         basename,
         navigator
       } = (0, _react.useContext)(NavigationContext),
@@ -119,11 +116,11 @@ const resolveTo = (toArg, locationPathname) => {
         return;
       }
       const path = resolveTo(to, locationPathname);
-      if (dataRouterContext == null && basename !== "/") {
+      if (basename !== "/") {
         path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, path.pathname]);
       }
       (options.replace ? navigator.replace : navigator.push)(path, options.state, options);
-    }, [basename, navigator, locationPathname, dataRouterContext]);
+    }, [basename, navigator, locationPathname]);
     return navigate;
   },
   useNavigate = () => useNavigateUnstable(),
