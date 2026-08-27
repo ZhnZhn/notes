@@ -118,8 +118,12 @@ const resolveTo = (toArg, locationPathname) => {
     return navigate;
   },
   useNavigate = () => useNavigateUnstable();
-const useRoutesImpl = routes => {
+const Routes = _ref => {
+  let {
+    children
+  } = _ref;
   const location = useLocation(),
+    routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
     pathname = location.pathname || "/",
     matches = (0, _matchRouters.matchRoutes)(routes, {
       pathname
@@ -128,9 +132,8 @@ const useRoutesImpl = routes => {
     children: match.route.element || outlet
   }), null);
 };
-const Routes = props => useRoutesImpl(createRoutesFromChildren(props.children));
 exports.Routes = Routes;
-const Router = _ref => {
+const Router = _ref2 => {
   let {
     basename: basenameProp = "/",
     children = null,
@@ -139,7 +142,7 @@ const Router = _ref => {
     navigator,
     static: staticProp = false,
     useTransitions
-  } = _ref;
+  } = _ref2;
   const basename = basenameProp.replace(/^\/*/, "/"),
     navigationContext = (0, _react.useMemo)(() => ({
       basename,
@@ -183,12 +186,12 @@ const Router = _ref => {
 };
 exports.Router = Router;
 const normalizeProtocolRelativeUrl = (url, protocol) => protocol + url.replace(/\\/g, "/");
-const Navigate = _ref2 => {
+const Navigate = _ref3 => {
   let {
     to,
     replace: replace2,
     state
-  } = _ref2;
+  } = _ref3;
   const {
       pathname: locationPathname
     } = useLocation(),
@@ -282,7 +285,7 @@ const useResolvedPath = to => {
       }
     }, [location, navigate, path, replaceProp, target, to]);
   },
-  Link = _ref3 => {
+  Link = _ref4 => {
     let {
       onClick,
       replace: replace2,
@@ -290,7 +293,7 @@ const useResolvedPath = to => {
       to,
       children,
       ...restProps
-    } = _ref3;
+    } = _ref4;
     const {
         basename
       } = (0, _react.useContext)(NavigationContext),
@@ -316,7 +319,7 @@ const useResolvedPath = to => {
     });
   };
 Link.displayName = "Link";
-const NavLink = _ref4 => {
+const NavLink = _ref5 => {
   let {
     "aria-current": ariaCurrentProp = "page",
     end = false,
@@ -325,7 +328,7 @@ const NavLink = _ref4 => {
     to,
     children,
     ...restProps
-  } = _ref4;
+  } = _ref5;
   const path = useResolvedPath(to),
     {
       navigator

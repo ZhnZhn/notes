@@ -197,24 +197,25 @@ const resolveTo = (
 
 , useNavigate = () => useNavigateUnstable()
 
-const useRoutesImpl = (
-  routes
-) => {
+export const Routes = ({
+  children
+}) => {
   const location = useLocation()
+  , routes = useMemo(
+    () => createRoutesFromChildren(children),
+    [children]
+  )
   , pathname = location.pathname || "/"
-  , matches = matchRoutes(routes, { pathname });
+  , matches = matchRoutes(
+      routes,
+      { pathname }
+  );
   return matches == null
     ? null
     : matches.reduceRight((outlet, match) => (
         <>{match.route.element || outlet}</>
       ), null);
-};
-
-export const Routes = (
-  props
-) => useRoutesImpl(
-  createRoutesFromChildren(props.children)
-)
+}
 
 export const Router = ({
   basename: basenameProp = "/",
