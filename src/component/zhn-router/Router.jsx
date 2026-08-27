@@ -204,37 +204,22 @@ const resolveTo = (
 
 , useNavigate = () => useNavigateUnstable()
 
-, RenderedRoute = (props) => (
-  <RouteContext.Provider value={props.routeContext}>
-    {props.children}
-  </RouteContext.Provider>
-)
-
 , _renderMatches = (
   matches,
   parentMatches = []
 ) => matches == null
   ? null
-  : matches.reduceRight((outlet, match, index) => {
-      const MatchRouteComponent = match.route.Component;
-      return (
-        <RenderedRoute
-          routeContext={{
-            outlet,
-            matches: parentMatches.concat(
-              matches.slice(0, index + 1)
-            ),
-            isDataRoute: false
-          }}
-        >
-          {MatchRouteComponent
-            ? <MatchRouteComponent />
-            : match.route.element || outlet
-          }
-        </RenderedRoute>
-      );
-    },
-    null
+  : matches.reduceRight((outlet, match, index) => (
+        <RouteContext.Provider value={{
+          outlet,
+          matches: parentMatches.concat(
+            matches.slice(0, index + 1)
+          ),
+          isDataRoute: false
+        }}>
+          {match.route.element || outlet}
+        </RouteContext.Provider>
+    ), null
   );
 
 // Re-encode pathnames that were decoded inside matchRoutes.

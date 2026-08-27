@@ -124,25 +124,18 @@ const resolveTo = (toArg, locationPathname) => {
     return navigate;
   },
   useNavigate = () => useNavigateUnstable(),
-  RenderedRoute = props => /*#__PURE__*/(0, _jsxRuntime.jsx)(RouteContext.Provider, {
-    value: props.routeContext,
-    children: props.children
-  }),
   _renderMatches = function (matches, parentMatches) {
     if (parentMatches === void 0) {
       parentMatches = [];
     }
-    return matches == null ? null : matches.reduceRight((outlet, match, index) => {
-      const MatchRouteComponent = match.route.Component;
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(RenderedRoute, {
-        routeContext: {
-          outlet,
-          matches: parentMatches.concat(matches.slice(0, index + 1)),
-          isDataRoute: false
-        },
-        children: MatchRouteComponent ? /*#__PURE__*/(0, _jsxRuntime.jsx)(MatchRouteComponent, {}) : match.route.element || outlet
-      });
-    }, null);
+    return matches == null ? null : matches.reduceRight((outlet, match, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(RouteContext.Provider, {
+      value: {
+        outlet,
+        matches: parentMatches.concat(matches.slice(0, index + 1)),
+        isDataRoute: false
+      },
+      children: match.route.element || outlet
+    }), null);
   };
 
 // Re-encode pathnames that were decoded inside matchRoutes.
