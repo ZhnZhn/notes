@@ -37,12 +37,6 @@ NavigationContext.displayName = "Navigation";
 const LocationContext = /*#__PURE__*/(0, _react.createContext)(null);
 LocationContext.displayName = "Location";
 const useLocation = () => (0, _react.useContext)(LocationContext).location;
-const RouteContext = /*#__PURE__*/(0, _react.createContext)({
-  outlet: null,
-  matches: [],
-  isDataRoute: false
-});
-RouteContext.displayName = "Route";
 const resolvePathname = (relativePath, fromPathname) => {
     const segments = (0, _RouterFn.removeTrailingSlash)(fromPathname).split("/"),
       relativeSegments = relativePath.split("/");
@@ -124,19 +118,9 @@ const resolveTo = (toArg, locationPathname) => {
     return navigate;
   },
   useNavigate = () => useNavigateUnstable(),
-  _renderMatches = function (matches, parentMatches) {
-    if (parentMatches === void 0) {
-      parentMatches = [];
-    }
-    return matches == null ? null : matches.reduceRight((outlet, match, index) => /*#__PURE__*/(0, _jsxRuntime.jsx)(RouteContext.Provider, {
-      value: {
-        outlet,
-        matches: parentMatches.concat(matches.slice(0, index + 1)),
-        isDataRoute: false
-      },
-      children: match.route.element || outlet
-    }), null);
-  };
+  _renderMatches = matches => matches == null ? null : matches.reduceRight((outlet, match) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
+    children: match.route.element || outlet
+  }), null);
 
 // Re-encode pathnames that were decoded inside matchRoutes.
 // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
@@ -147,34 +131,22 @@ const useRoutesImpl = routes => {
   const {
       navigator
     } = (0, _react.useContext)(NavigationContext),
-    {
-      matches: parentMatches
-    } = (0, _react.useContext)(RouteContext),
-    routeMatch = parentMatches[parentMatches.length - 1],
-    parentParams = routeMatch ? routeMatch.params : {},
-    parentPathnameBase = routeMatch ? routeMatch.pathnameBase : "/",
+    parentPathnameBase = "/",
     location = useLocation(),
-    pathname = location.pathname || "/";
-  let remainingPathname = pathname;
-  if (parentPathnameBase !== "/") {
-    const parentSegments = parentPathnameBase.replace(/^\//, "").split("/"),
-      segments = pathname.replace(/^\//, "").split("/");
-    remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
-  }
-  const matches = (0, _matchRouters.matchRoutes)(routes, {
-    pathname: remainingPathname
-  });
+    pathname = location.pathname || "/",
+    matches = (0, _matchRouters.matchRoutes)(routes, {
+      pathname
+    });
 
   //renderedMatches
   return _renderMatches(matches?.map(match => ({
     ...match,
     params: {
-      ...parentParams,
       ...match.params
     },
     pathname: (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathname)]),
     pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathnameBase)])
-  })), parentMatches);
+  })));
 };
 const Routes = props => useRoutesImpl(createRoutesFromChildren(props.children));
 exports.Routes = Routes;

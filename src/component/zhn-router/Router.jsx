@@ -66,13 +66,6 @@ LocationContext.displayName = "Location";
 const useLocation = () => useContext(LocationContext)
  .location;
 
-const RouteContext = createContext({
-  outlet: null,
-  matches: [],
-  isDataRoute: false
-});
-RouteContext.displayName = "Route";
-
 const resolvePathname = (
   relativePath,
   fromPathname
@@ -205,22 +198,12 @@ const resolveTo = (
 , useNavigate = () => useNavigateUnstable()
 
 , _renderMatches = (
-  matches,
-  parentMatches = []
+  matches
 ) => matches == null
   ? null
-  : matches.reduceRight((outlet, match, index) => (
-        <RouteContext.Provider value={{
-          outlet,
-          matches: parentMatches.concat(
-            matches.slice(0, index + 1)
-          ),
-          isDataRoute: false
-        }}>
-          {match.route.element || outlet}
-        </RouteContext.Provider>
-    ), null
-  );
+  : matches.reduceRight((outlet, match) => (
+      <>{match.route.element || outlet}</>
+    ), null);
 
 // Re-encode pathnames that were decoded inside matchRoutes.
 // Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
@@ -237,35 +220,18 @@ const useRoutesImpl = (
   routes
 ) => {
   const { navigator } = useContext(NavigationContext)
-  , { matches: parentMatches } = useContext(RouteContext)
-  , routeMatch = parentMatches[parentMatches.length - 1]
-  , parentParams = routeMatch
-    ? routeMatch.params
-    : {}
-  , parentPathnameBase = routeMatch
-    ? routeMatch.pathnameBase
-    : "/"
+  , parentPathnameBase = "/"
 
   , location = useLocation()
-  , pathname = location.pathname || "/";
+  , pathname = location.pathname || "/"
 
-  let remainingPathname = pathname;
-  if (parentPathnameBase !== "/") {
-    const parentSegments = parentPathnameBase.replace(/^\//, "").split("/")
-    , segments = pathname.replace(/^\//, "").split("/");
-    remainingPathname = "/" + segments.slice(parentSegments.length).join("/");
-  }
-
-  const matches = matchRoutes(routes, {
-    pathname: remainingPathname
-  });
+  , matches = matchRoutes(routes, { pathname });
 
   //renderedMatches
   return _renderMatches(
     matches?.map(match => ({
       ...match,
       params: {
-        ...parentParams,
         ...match.params
       },
       pathname: joinPaths([
@@ -278,8 +244,7 @@ const useRoutesImpl = (
             parentPathnameBase,
            _encodeLocation(navigator, match.pathnameBase)
           ])
-    })),
-    parentMatches
+    }))
   );
 }
 
