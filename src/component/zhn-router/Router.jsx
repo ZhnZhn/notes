@@ -200,15 +200,14 @@ const resolveTo = (
 export const Routes = ({
   children
 }) => {
-  const location = useLocation()
-  , routes = useMemo(
+  const routes = useMemo(
     () => createRoutesFromChildren(children),
     [children]
   )
-  , pathname = location.pathname || "/"
+  , location = useLocation()
   , matches = matchRoutes(
-      routes,
-      { pathname }
+     routes,
+     location.pathname
   );
   return matches == null
     ? null

@@ -1,5 +1,3 @@
-import { isStr } from '../../utils/isTypeFn';
-
 import {
   removeTrailingSlash,
   removeDoubleSlashes
@@ -327,15 +325,11 @@ const _matchRouteBranch = (
 
 export const matchRoutes = (
   routes,
-  locationArg,
-  basename = "/"
+  locationPathname,
 ) => {
-  const location = isStr(locationArg)
-    ? parsePath(locationArg)
-    : locationArg
-  , pathname = stripBasename(
-     location.pathname || "/",
-     basename
+  const pathname = stripBasename(
+    locationPathname || "/",
+    "/"
   );
 
   if (pathname == null) {

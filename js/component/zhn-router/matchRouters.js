@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports.matchRoutes = exports.joinPaths = void 0;
 exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
-var _isTypeFn = require("../../utils/isTypeFn");
 var _RouterFn = require("./RouterFn");
 const normalizePathname = pathname => (0, _RouterFn.removeTrailingSlash)(pathname).replace(/^\/*/, "/");
 function parsePath(path) {
@@ -238,12 +237,8 @@ const _matchRouteBranch = (routesMeta, pathname) => {
   }
   return matches;
 };
-const matchRoutes = function (routes, locationArg, basename) {
-  if (basename === void 0) {
-    basename = "/";
-  }
-  const location = (0, _isTypeFn.isStr)(locationArg) ? parsePath(locationArg) : locationArg,
-    pathname = stripBasename(location.pathname || "/", basename);
+const matchRoutes = (routes, locationPathname) => {
+  const pathname = stripBasename(locationPathname || "/", "/");
   if (pathname == null) {
     return null;
   }

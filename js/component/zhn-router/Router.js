@@ -122,12 +122,9 @@ const Routes = _ref => {
   let {
     children
   } = _ref;
-  const location = useLocation(),
-    routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
-    pathname = location.pathname || "/",
-    matches = (0, _matchRouters.matchRoutes)(routes, {
-      pathname
-    });
+  const routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
+    location = useLocation(),
+    matches = (0, _matchRouters.matchRoutes)(routes, location.pathname);
   return matches == null ? null : matches.reduceRight((outlet, match) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: match.route.element || outlet
   }), null);
