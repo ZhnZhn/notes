@@ -117,36 +117,16 @@ const resolveTo = (toArg, locationPathname) => {
     }, [basename, navigator, locationPathname]);
     return navigate;
   },
-  useNavigate = () => useNavigateUnstable(),
-  _renderMatches = matches => matches == null ? null : matches.reduceRight((outlet, match) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: match.route.element || outlet
-  }), null);
-
-// Re-encode pathnames that were decoded inside matchRoutes.
-// Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-// `new URL()` internally and we need to prevent it from treating
-// them as separators
-const _encodeLocation = (navigator, location) => navigator.encodeLocation ? navigator.encodeLocation(location.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")).pathname : location;
+  useNavigate = () => useNavigateUnstable();
 const useRoutesImpl = routes => {
-  const {
-      navigator
-    } = (0, _react.useContext)(NavigationContext),
-    parentPathnameBase = "/",
-    location = useLocation(),
+  const location = useLocation(),
     pathname = location.pathname || "/",
     matches = (0, _matchRouters.matchRoutes)(routes, {
       pathname
     });
-
-  //renderedMatches
-  return _renderMatches(matches?.map(match => ({
-    ...match,
-    params: {
-      ...match.params
-    },
-    pathname: (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathname)]),
-    pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : (0, _matchRouters.joinPaths)([parentPathnameBase, _encodeLocation(navigator, match.pathnameBase)])
-  })));
+  return matches == null ? null : matches.reduceRight((outlet, match) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
+    children: match.route.element || outlet
+  }), null);
 };
 const Routes = props => useRoutesImpl(createRoutesFromChildren(props.children));
 exports.Routes = Routes;

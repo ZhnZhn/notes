@@ -197,56 +197,18 @@ const resolveTo = (
 
 , useNavigate = () => useNavigateUnstable()
 
-, _renderMatches = (
-  matches
-) => matches == null
-  ? null
-  : matches.reduceRight((outlet, match) => (
-      <>{match.route.element || outlet}</>
-    ), null);
-
-// Re-encode pathnames that were decoded inside matchRoutes.
-// Pre-encode `%`, `?` and `#` ahead of `encodeLocation` because it uses
-// `new URL()` internally and we need to prevent it from treating
-// them as separators
-const _encodeLocation = (
-  navigator,
-  location
-) => navigator.encodeLocation ? navigator.encodeLocation(
-  location.replace(/%/g, "%25").replace(/\?/g, "%3F").replace(/#/g, "%23")
-).pathname : location;
-
 const useRoutesImpl = (
   routes
 ) => {
-  const { navigator } = useContext(NavigationContext)
-  , parentPathnameBase = "/"
-
-  , location = useLocation()
+  const location = useLocation()
   , pathname = location.pathname || "/"
-
   , matches = matchRoutes(routes, { pathname });
-
-  //renderedMatches
-  return _renderMatches(
-    matches?.map(match => ({
-      ...match,
-      params: {
-        ...match.params
-      },
-      pathname: joinPaths([
-        parentPathnameBase,
-        _encodeLocation(navigator, match.pathname)
-      ]),
-      pathnameBase: match.pathnameBase === "/"
-        ? parentPathnameBase
-        : joinPaths([
-            parentPathnameBase,
-           _encodeLocation(navigator, match.pathnameBase)
-          ])
-    }))
-  );
-}
+  return matches == null
+    ? null
+    : matches.reduceRight((outlet, match) => (
+        <>{match.route.element || outlet}</>
+      ), null);
+};
 
 export const Routes = (
   props
