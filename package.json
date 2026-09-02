@@ -52,7 +52,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "flow-parser": "^0.323.0",
     "html-webpack-plugin": "^5.6.8",
-    "jest": "^30.4.2",
+    "jest": "^30.5.0",
     "react-refresh": "^0.18.0",
     "sass": "^1.103.1",
     "terser-webpack-plugin": "^5.6.1",
