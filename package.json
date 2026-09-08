@@ -16,7 +16,8 @@
     "css:min": "node css-min.js",
     "css:sass": "node css-sass.js",
     "css:all": "npm run css:sass && npm run css:min",
-    "build:prod": "webpack --color --progress --config webpack.prod.js"
+    "build:prod": "webpack --color --progress --config webpack.prod.js",
+    "build:rspack:prod": "rspack build --config rspack.prod.js"   
   },
   "author": "Yevhenii Molodyi",
   "license": "BSD-3-Clause",
