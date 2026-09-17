@@ -57,12 +57,13 @@ const RE_PARAM = /^:[\w-]+$/,
     }
     return segments.filter(s => !_isSplat(s)).reduce((score, segment) => score + (RE_PARAM.test(segment) ? DYNAMIC_SEGMENT_VALUE : segment === "" ? EMPTY_SEGMENT_VALUE : STATIC_SEGMENT_VALUE), initialScore);
   };
-const _compilePath = function (path, end) {
-  if (end === void 0) {
-    end = true;
-  }
+const RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD = /\/*\*?$/;
+const RE_LEADING_SLASHES = /^\/*/;
+const RE_METACHARACTERS = /[\\.*+^${}|()[\]]/g;
+//const RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS = /\/([\w-]+)\?(\/|$)/g;
+const _compilePath = (path, end = true) => {
   const params = [];
-  let regexpSource = "^" + path.replace(/\/*\*?$/, "").replace(/^\/*/, "/").replace(/[\\.*+^${}|()[\]]/g, "\\$&").replace(/\/:([\w-]+)(\?)?/g, (match, paramName, isOptional, index, str) => {
+  let regexpSource = "^" + path.replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "").replace(RE_LEADING_SLASHES, "/").replace(RE_METACHARACTERS, "\\$&").replace(/\/:([\w-]+)(\?)?/g, (match, paramName, isOptional, index, str) => {
     params.push({
       paramName,
       isOptional: isOptional != null
@@ -75,7 +76,9 @@ const _compilePath = function (path, end) {
       return "(?:/([^\\/]*))?";
     }
     return "/([^\\/]+)";
-  }).replace(/\/([\w-]+)\?(\/|$)/g, "(/$1)?$2");
+  });
+  //.replace(RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS, "(/$1)?$2");
+
   if (path.endsWith("*")) {
     params.push({
       paramName: "*"
@@ -91,23 +94,8 @@ const _compilePath = function (path, end) {
     compiledParams: params
   };
 };
-function flattenRoutes(routes, branches, parentsMeta, parentPath, _hasParentOptionalSegments) {
-  if (branches === void 0) {
-    branches = [];
-  }
-  if (parentsMeta === void 0) {
-    parentsMeta = [];
-  }
-  if (parentPath === void 0) {
-    parentPath = "";
-  }
-  if (_hasParentOptionalSegments === void 0) {
-    _hasParentOptionalSegments = false;
-  }
-  const flattenRoute = function (route, index, hasParentOptionalSegments, relativePath) {
-    if (hasParentOptionalSegments === void 0) {
-      hasParentOptionalSegments = _hasParentOptionalSegments;
-    }
+function flattenRoutes(routes, branches = [], parentsMeta = [], parentPath = "", _hasParentOptionalSegments = false) {
+  const flattenRoute = (route, index, hasParentOptionalSegments = _hasParentOptionalSegments, relativePath) => {
     const meta = {
       relativePath: relativePath === void 0 ? route.path || "" : relativePath,
       childrenIndex: index,
@@ -177,11 +165,10 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
     const matchedPathname = match[0];
     let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
     const captureGroups = match.slice(1),
-      params = compiledParams.reduce((memo2, _ref, index) => {
-        let {
-          paramName,
-          isOptional
-        } = _ref;
+      params = compiledParams.reduce((memo2, {
+        paramName,
+        isOptional
+      }, index) => {
         if (paramName === "*") {
           const splatValue = captureGroups[index] || "";
           pathnameBase = matchedPathname.slice(0, matchedPathname.length - splatValue.length).replace(/(.)\/+$/, "$1");

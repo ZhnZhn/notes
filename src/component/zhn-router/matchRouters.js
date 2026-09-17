@@ -80,19 +80,26 @@ const RE_PARAM = /^:[\w-]+$/
     );
 };
 
+const RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD = /\/*\*?$/;
+const RE_LEADING_SLASHES = /^\/*/;
+const RE_METACHARACTERS = /[\\.*+^${}|()[\]]/g;
+//const RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS = /\/([\w-]+)\?(\/|$)/g;
 const _compilePath = (
   path,
   end = true
 ) => {
   const params = [];
   let regexpSource = "^" + path
-  .replace(/\/*\*?$/, "")
-  .replace(/^\/*/, "/")
-  .replace(/[\\.*+^${}|()[\]]/g, "\\$&")
+  .replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "")
+  .replace(RE_LEADING_SLASHES, "/")
+  .replace(RE_METACHARACTERS, "\\$&")
   .replace(
     /\/:([\w-]+)(\?)?/g,
     (match, paramName, isOptional, index, str) => {
-      params.push({ paramName, isOptional: isOptional != null });
+      params.push({
+        paramName, 
+        isOptional: isOptional != null
+      });
       if (isOptional) {
         const nextChar = str.charAt(index + match.length);
         if (nextChar && nextChar !== "/") {
@@ -103,7 +110,7 @@ const _compilePath = (
       return "/([^\\/]+)";
     }
   )
-  .replace(/\/([\w-]+)\?(\/|$)/g, "(/$1)?$2");
+  //.replace(RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS, "(/$1)?$2");
 
   if (path.endsWith("*")) {
     params.push({ paramName: "*" });
