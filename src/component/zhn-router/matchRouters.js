@@ -334,6 +334,16 @@ export const matchRoutes = (
   // Rank route branches
   branches.sort(_compareByScore);
 
+  for (const branch of branches) {
+    const matches = _matchRouteBranch(
+      branch.routesMeta,
+      decodedPathname
+    );
+    if (matches) return matches;
+  }
+  return null;
+
+  /*
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = _matchRouteBranch(
@@ -342,4 +352,5 @@ export const matchRoutes = (
     );
   }
   return matches;
+  */
 }

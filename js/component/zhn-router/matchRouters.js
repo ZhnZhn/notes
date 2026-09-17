@@ -216,11 +216,22 @@ const matchRoutes = (routes, locationPathname) => {
     branches = flattenRoutes(routes);
   // Rank route branches
   branches.sort(_compareByScore);
+  for (const branch of branches) {
+    const matches = _matchRouteBranch(branch.routesMeta, decodedPathname);
+    if (matches) return matches;
+  }
+  return null;
+
+  /*
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = _matchRouteBranch(branches[i].routesMeta, decodedPathname);
+    matches = _matchRouteBranch(
+      branches[i].routesMeta,
+      decodedPathname
+    );
   }
   return matches;
+  */
 };
 exports.matchRoutes = matchRoutes;
 //# sourceMappingURL=matchRouters.js.map
