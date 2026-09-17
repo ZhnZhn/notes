@@ -54,7 +54,7 @@ const resolvePathname = (relativePath, fromPathname) => {
       pathname: toPathname,
       search = "",
       hash = ""
-    } = (0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to;
+    } = (0, _isTypeFn.isStr)(to) ? (0, _RouterFn.parsePath)(to) : to;
     let pathname;
     if (toPathname) {
       toPathname = (0, _RouterFn.removeDoubleSlashes)(toPathname);
@@ -69,7 +69,7 @@ const resolvePathname = (relativePath, fromPathname) => {
     };
   };
 const resolveTo = (toArg, locationPathname) => {
-    const to = (0, _isTypeFn.isStr)(toArg) ? (0, _matchRouters.parsePath)(toArg) : {
+    const to = (0, _isTypeFn.isStr)(toArg) ? (0, _RouterFn.parsePath)(toArg) : {
         ...toArg
       },
       isEmptyPath = toArg === "" || to.pathname === "",
@@ -139,7 +139,7 @@ const Router = ({
       future: {}
     }), [basename, navigator, staticProp, useTransitions]);
   if ((0, _isTypeFn.isStr)(locationProp)) {
-    locationProp = (0, _matchRouters.parsePath)(locationProp);
+    locationProp = (0, _RouterFn.parsePath)(locationProp);
   }
   const {
       pathname = "/",

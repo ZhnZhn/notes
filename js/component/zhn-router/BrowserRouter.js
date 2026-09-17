@@ -4,7 +4,6 @@ exports.__esModule = true;
 exports.BrowserRouter = void 0;
 var _react = require("react");
 var _isTypeFn = require("../../utils/isTypeFn");
-var _matchRouters = require("./matchRouters");
 var _Router = require("./Router");
 var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -31,7 +30,7 @@ const _getHistoryState = (location, index) => ({
     pathname: (0, _isTypeFn.isStr)(current) ? current : current.pathname,
     search: "",
     hash: "",
-    ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
+    ...((0, _isTypeFn.isStr)(to) ? (0, _RouterFn.parsePath)(to) : to),
     state,
     key: to?.key || key || _createKey()
   }),

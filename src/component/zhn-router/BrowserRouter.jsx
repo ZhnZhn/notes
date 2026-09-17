@@ -9,13 +9,13 @@ import {
   isStr
 } from '../../utils/isTypeFn';
 
-import { parsePath } from './matchRouters';
 import { Router } from './Router';
 import {
   HISTORY_ACTION_POP,
   HISTORY_ACTION_PUSH,
   HISTORY_ACTION_REPLACE,
-  createPath
+  createPath,
+  parsePath
 } from './RouterFn';
 
 const POP_STATE_EVENT_TYPE = "popstate";

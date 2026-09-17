@@ -19,7 +19,6 @@ import {
 import {
   matchRoutes,
   crPathname,
-  parsePath,
   stripBasename
 } from './matchRouters';
 import {
@@ -27,7 +26,8 @@ import {
   createPath,
   removeTrailingSlash,
   removeDoubleSlashes,
-  normalizeLeadingSlash
+  normalizeLeadingSlash,
+  parsePath
 } from './RouterFn';
 
 export const Route = (_props) => {}

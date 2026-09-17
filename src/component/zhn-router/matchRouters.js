@@ -9,25 +9,6 @@ const normalizePathname = (
 ) => removeTrailingSlash(pathname)
   .replace(/^\/*/, "/");
 
-export function parsePath(path) {
-  const parsedPath = {};
-  if (path) {
-    const hashIndex = path.indexOf("#");
-    if (hashIndex >= 0) {
-      parsedPath.hash = path.substring(hashIndex);
-      path = path.substring(0, hashIndex);
-    }
-    const searchIndex = path.indexOf("?");
-    if (searchIndex >= 0) {
-      parsedPath.search = path.substring(searchIndex);
-      path = path.substring(0, searchIndex);
-    }
-    if (path) {
-      parsedPath.pathname = path;
-    }
-  }
-  return parsedPath;
-}
 export function stripBasename(pathname, basename) {
   if (basename === "/") return pathname;
   if (!pathname.toLowerCase().startsWith(basename.toLowerCase())) {
@@ -342,15 +323,4 @@ export const matchRoutes = (
     if (matches) return matches;
   }
   return null;
-
-  /*
-  let matches = null;
-  for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = _matchRouteBranch(
-      branches[i].routesMeta,
-      decodedPathname
-    );
-  }
-  return matches;
-  */
 }

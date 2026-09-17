@@ -35,3 +35,28 @@ export const normalizeLeadingSlash = (
 ) => !path || path === "/"
   ? "/"
   : path.replace(RE_LEADING_SLASHES, "/")
+
+const _addParsedPathPropIf = (
+  parsedPath,
+  path,
+  propName,
+  character
+) => {
+  const tokenIndex = path.indexOf(character);
+  if (tokenIndex >= 0) {
+    parsedPath[propName] = path.slice(tokenIndex);
+    path = path.slice(0, tokenIndex);
+  }
+  return path;
+};
+export const parsePath = (path) => {
+  const parsedPath = {};
+  if (path) {
+    path = _addParsedPathPropIf(parsedPath, path, "hash", "#")
+    path = _addParsedPathPropIf(parsedPath, path, "search", "?")    
+    if (path) {
+      parsedPath.pathname = path;
+    }
+  }
+  return parsedPath;
+}

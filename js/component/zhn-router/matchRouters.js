@@ -2,29 +2,9 @@
 
 exports.__esModule = true;
 exports.matchRoutes = exports.crPathname = void 0;
-exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
 var _RouterFn = require("./RouterFn");
 const normalizePathname = pathname => (0, _RouterFn.removeTrailingSlash)(pathname).replace(/^\/*/, "/");
-function parsePath(path) {
-  const parsedPath = {};
-  if (path) {
-    const hashIndex = path.indexOf("#");
-    if (hashIndex >= 0) {
-      parsedPath.hash = path.substring(hashIndex);
-      path = path.substring(0, hashIndex);
-    }
-    const searchIndex = path.indexOf("?");
-    if (searchIndex >= 0) {
-      parsedPath.search = path.substring(searchIndex);
-      path = path.substring(0, searchIndex);
-    }
-    if (path) {
-      parsedPath.pathname = path;
-    }
-  }
-  return parsedPath;
-}
 function stripBasename(pathname, basename) {
   if (basename === "/") return pathname;
   if (!pathname.toLowerCase().startsWith(basename.toLowerCase())) {
@@ -221,17 +201,6 @@ const matchRoutes = (routes, locationPathname) => {
     if (matches) return matches;
   }
   return null;
-
-  /*
-  let matches = null;
-  for (let i = 0; matches == null && i < branches.length; ++i) {
-    matches = _matchRouteBranch(
-      branches[i].routesMeta,
-      decodedPathname
-    );
-  }
-  return matches;
-  */
 };
 exports.matchRoutes = matchRoutes;
 //# sourceMappingURL=matchRouters.js.map
