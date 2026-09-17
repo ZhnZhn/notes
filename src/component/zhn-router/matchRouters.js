@@ -1,6 +1,7 @@
 import {
   removeTrailingSlash,
-  removeDoubleSlashes
+  removeDoubleSlashes,
+  normalizeLeadingSlash
 } from './RouterFn';
 
 const normalizePathname = (
@@ -82,7 +83,6 @@ const RE_PARAM = /^:[\w-]+$/
 };
 
 const RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD = /\/*\*?$/;
-const RE_LEADING_SLASHES = /^\/*/;
 const RE_METACHARACTERS = /[\\.*+^${}|()[\]]/g;
 //const RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS = /\/([\w-]+)\?(\/|$)/g;
 const _compilePath = (
@@ -90,9 +90,9 @@ const _compilePath = (
   end = true
 ) => {
   const params = [];
-  let regexpSource = "^" + path
-  .replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "")
-  .replace(RE_LEADING_SLASHES, "/")
+  let regexpSource = "^" + normalizeLeadingSlash(
+    path.replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "")
+  )
   .replace(RE_METACHARACTERS, "\\$&")
   .replace(
     /\/:([\w-]+)(\?)?/g,

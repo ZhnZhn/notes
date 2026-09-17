@@ -215,7 +215,7 @@ export const Routes = ({
 }
 
 export const Router = ({
-  basename: basenameProp = "/",
+  basename: basenameProp,
   location: locationProp,
   static: staticProp = false,
   navigationType = HISTORY_ACTION_POP,
@@ -223,7 +223,7 @@ export const Router = ({
   useTransitions,
   children
 }) => {
-  const basename = basenameProp.replace(/^\/*/, "/")
+  const basename = normalizeLeadingSlash(basenameProp)
   , navigationContext = useMemo(
     () => ({
       basename,

@@ -58,12 +58,11 @@ const RE_PARAM = /^:[\w-]+$/,
     return segments.filter(s => !_isSplat(s)).reduce((score, segment) => score + (RE_PARAM.test(segment) ? DYNAMIC_SEGMENT_VALUE : segment === "" ? EMPTY_SEGMENT_VALUE : STATIC_SEGMENT_VALUE), initialScore);
   };
 const RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD = /\/*\*?$/;
-const RE_LEADING_SLASHES = /^\/*/;
 const RE_METACHARACTERS = /[\\.*+^${}|()[\]]/g;
 //const RE_OPTIONAL_PATH_SEGMENTS_THAT_ARE_NOT_PARAMETERS = /\/([\w-]+)\?(\/|$)/g;
 const _compilePath = (path, end = true) => {
   const params = [];
-  let regexpSource = "^" + path.replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "").replace(RE_LEADING_SLASHES, "/").replace(RE_METACHARACTERS, "\\$&").replace(/\/:([\w-]+)(\?)?/g, (match, paramName, isOptional, index, str) => {
+  let regexpSource = "^" + (0, _RouterFn.normalizeLeadingSlash)(path.replace(RE_TRALING_SLASHES_AND_OPTIONAL_TRALING_WILDCARD, "")).replace(RE_METACHARACTERS, "\\$&").replace(/\/:([\w-]+)(\?)?/g, (match, paramName, isOptional, index, str) => {
     params.push({
       paramName,
       isOptional: isOptional != null

@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports.HISTORY_ACTION_REPLACE = exports.HISTORY_ACTION_PUSH = exports.HISTORY_ACTION_POP = void 0;
 exports.createPath = createPath;
-exports.removeTrailingSlash = exports.removeDoubleSlashes = void 0;
+exports.removeTrailingSlash = exports.removeDoubleSlashes = exports.normalizeLeadingSlash = void 0;
 const HISTORY_ACTION_POP = exports.HISTORY_ACTION_POP = "POP";
 const HISTORY_ACTION_PUSH = exports.HISTORY_ACTION_PUSH = "PUSH";
 const HISTORY_ACTION_REPLACE = exports.HISTORY_ACTION_REPLACE = "REPLACE";
@@ -22,4 +22,7 @@ exports.removeTrailingSlash = removeTrailingSlash;
 const RE_DOUBLE_SLASHES = /[\\/]{2,}/g;
 const removeDoubleSlashes = path => path.replace(RE_DOUBLE_SLASHES, "/");
 exports.removeDoubleSlashes = removeDoubleSlashes;
+const RE_LEADING_SLASHES = /^\/*/;
+const normalizeLeadingSlash = path => !path || path === "/" ? "/" : path.replace(RE_LEADING_SLASHES, "/");
+exports.normalizeLeadingSlash = normalizeLeadingSlash;
 //# sourceMappingURL=RouterFn.js.map

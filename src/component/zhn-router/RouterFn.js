@@ -28,3 +28,10 @@ const RE_DOUBLE_SLASHES = /[\\/]{2,}/g;
 export const removeDoubleSlashes = (
   path
 ) => path.replace(RE_DOUBLE_SLASHES, "/")
+
+const RE_LEADING_SLASHES = /^\/*/;
+export const normalizeLeadingSlash = (
+  path
+) => !path || path === "/"
+  ? "/"
+  : path.replace(RE_LEADING_SLASHES, "/")
