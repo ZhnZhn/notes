@@ -145,12 +145,6 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
     0;
   },
   _compareByScore = (a, b) => a.score !== b.score ? b.score - a.score : _compareByIndexes(a, b),
-  _flattenAndRankRoutes = routes => {
-    const branches = flattenRoutes(routes);
-    // Rank route branches
-    branches.sort(_compareByScore);
-    return branches;
-  },
   _decodePathname = pathname => {
     try {
       return pathname.split("/").map(v => decodeURIComponent(v).replace(/\//g, "%2F")).join("/");
@@ -218,8 +212,10 @@ const matchRoutes = (routes, locationPathname) => {
   if (pathname == null) {
     return null;
   }
-  const branches = _flattenAndRankRoutes(routes),
-    decodedPathname = _decodePathname(pathname);
+  const decodedPathname = _decodePathname(pathname),
+    branches = flattenRoutes(routes);
+  // Rank route branches
+  branches.sort(_compareByScore);
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = _matchRouteBranch(branches[i].routesMeta, decodedPathname);

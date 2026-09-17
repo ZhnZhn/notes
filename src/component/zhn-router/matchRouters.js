@@ -220,15 +220,6 @@ const _getBranchRoutesMetaChildrenIndex = (
   ? b.score - a.score
   : _compareByIndexes(a, b)
 
-, _flattenAndRankRoutes = (
-  routes
-) => {
-  const branches = flattenRoutes(routes);
-  // Rank route branches
-  branches.sort(_compareByScore);
-  return branches;
-}
-
 , _decodePathname = (pathname) => {
   try {
     return pathname
@@ -338,8 +329,11 @@ export const matchRoutes = (
     return null;
   }
 
-  const branches = _flattenAndRankRoutes(routes)
-  , decodedPathname = _decodePathname(pathname);
+  const decodedPathname = _decodePathname(pathname)
+  , branches = flattenRoutes(routes);
+  // Rank route branches
+  branches.sort(_compareByScore);
+
   let matches = null;
   for (let i = 0; matches == null && i < branches.length; ++i) {
     matches = _matchRouteBranch(
