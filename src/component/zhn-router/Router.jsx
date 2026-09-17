@@ -23,6 +23,7 @@ import {
   stripBasename
 } from './matchRouters';
 import {
+  HISTORY_ACTION_POP,
   createPath,
   removeTrailingSlash,
   removeDoubleSlashes
@@ -214,12 +215,12 @@ export const Routes = ({
 
 export const Router = ({
   basename: basenameProp = "/",
-  children = null,
   location: locationProp,
-  navigationType = "POP" /* Pop */,
-  navigator,
   static: staticProp = false,
-  useTransitions
+  navigationType = HISTORY_ACTION_POP,
+  navigator,
+  useTransitions,
+  children
 }) => {
   const basename = basenameProp.replace(/^\/*/, "/")
   , navigationContext = useMemo(

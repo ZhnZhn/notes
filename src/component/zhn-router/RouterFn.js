@@ -1,4 +1,8 @@
 
+export const HISTORY_ACTION_POP = "POP"
+export const HISTORY_ACTION_PUSH = "PUSH"
+export const HISTORY_ACTION_REPLACE = "REPLACE"
+
 export function createPath({
   pathname = "/",
   search = "",

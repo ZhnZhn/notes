@@ -11,7 +11,12 @@ import {
 
 import { parsePath } from './matchRouters';
 import { Router } from './Router';
-import { createPath } from './RouterFn';
+import {
+  HISTORY_ACTION_POP,
+  HISTORY_ACTION_PUSH,
+  HISTORY_ACTION_REPLACE,
+  createPath
+} from './RouterFn';
 
 const POP_STATE_EVENT_TYPE = "popstate";
 const _getHistoryState = (
@@ -86,7 +91,7 @@ const _getHistoryState = (
 ) => {
   const globalHistory = windowImpl.history;
 
-  let action = "POP" /* Pop */
+  let action = HISTORY_ACTION_POP
   , listener = null
   , index = getIndex();
 
@@ -102,7 +107,7 @@ const _getHistoryState = (
     return state.idx;
   }
   function handlePop() {
-    action = "POP" /* Pop */;
+    action = HISTORY_ACTION_POP;
     const nextIndex = getIndex()
     , delta = nextIndex == null
       ? null
@@ -117,7 +122,7 @@ const _getHistoryState = (
     }
   }
   function push(to, state) {
-    action = "PUSH" /* Push */;
+    action = HISTORY_ACTION_PUSH;
     const location = _getLocation(to, history, state);
     index = getIndex() + 1;
     const historyState = _getHistoryState(location, index)
@@ -139,7 +144,7 @@ const _getHistoryState = (
     }
   }
   function replace2(to, state) {
-    action = "REPLACE" /* Replace */;
+    action = HISTORY_ACTION_REPLACE;
     const location = _getLocation(to, history, state)
     index = getIndex();
     const historyState = _getHistoryState(location, index)

@@ -27,29 +27,18 @@ const _getHistoryState = (location, index) => ({
   },
   _createKey = () => Math.random().toString(36).substring(2, 10),
   _isLocation = obj => (0, _isTypeFn.isObj)(obj) && "pathname" in obj && "search" in obj && "hash" in obj && "state" in obj && "key" in obj,
-  _createLocation = function (current, to, state, key) {
-    if (state === void 0) {
-      state = null;
-    }
-    if (key === void 0) {
-      key = "default";
-    }
-    return {
-      pathname: (0, _isTypeFn.isStr)(current) ? current : current.pathname,
-      search: "",
-      hash: "",
-      ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
-      state,
-      key: to?.key || key || _createKey()
-    };
-  },
+  _createLocation = (current, to, state = null, key = "default") => ({
+    pathname: (0, _isTypeFn.isStr)(current) ? current : current.pathname,
+    search: "",
+    hash: "",
+    ...((0, _isTypeFn.isStr)(to) ? (0, _matchRouters.parsePath)(to) : to),
+    state,
+    key: to?.key || key || _createKey()
+  }),
   _getLocation = (to, history, state) => _isLocation(to) ? to : _createLocation(history.location, to, state),
-  _getUrlBasedHistory = function (windowImpl) {
-    if (windowImpl === void 0) {
-      windowImpl = document.defaultView;
-    }
+  _getUrlBasedHistory = (windowImpl = document.defaultView) => {
     const globalHistory = windowImpl.history;
-    let action = "POP" /* Pop */,
+    let action = _RouterFn.HISTORY_ACTION_POP,
       listener = null,
       index = getIndex();
     if (index == null) {
@@ -66,7 +55,7 @@ const _getHistoryState = (location, index) => ({
       return state.idx;
     }
     function handlePop() {
-      action = "POP" /* Pop */;
+      action = _RouterFn.HISTORY_ACTION_POP;
       const nextIndex = getIndex(),
         delta = nextIndex == null ? null : nextIndex - index;
       index = nextIndex;
@@ -79,7 +68,7 @@ const _getHistoryState = (location, index) => ({
       }
     }
     function push(to, state) {
-      action = "PUSH" /* Push */;
+      action = _RouterFn.HISTORY_ACTION_PUSH;
       const location = _getLocation(to, history, state);
       index = getIndex() + 1;
       const historyState = _getHistoryState(location, index),
@@ -101,7 +90,7 @@ const _getHistoryState = (location, index) => ({
       }
     }
     function replace2(to, state) {
-      action = "REPLACE" /* Replace */;
+      action = _RouterFn.HISTORY_ACTION_REPLACE;
       const location = _getLocation(to, history, state);
       index = getIndex();
       const historyState = _getHistoryState(location, index),
