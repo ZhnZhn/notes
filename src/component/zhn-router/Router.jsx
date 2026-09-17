@@ -85,20 +85,16 @@ const resolvePathname = (
     : "/";
 }
 
-, normalizeSearch = (
-  search
-) => !search || search === "?"
+, _fNormalizeBy = (character) => (
+  str
+) => !str || str === character
   ? ""
-  : search.startsWith("?")
-  ? search
-  : "?" + search
-, normalizeHash = (
-  hash
-) => !hash || hash === "#"
-  ? ""
-  : hash.startsWith("#")
-  ? hash
-  : "#" + hash
+  : str.startsWith(character)
+  ? str
+  : character + str
+
+, normalizeSearch = _fNormalizeBy("?")
+, normalizeHash = _fNormalizeBy("#")
 
 , resolvePath = (
   to,

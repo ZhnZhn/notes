@@ -9,10 +9,7 @@ var _RouterFn = require("./RouterFn");
 var _jsxRuntime = require("react/jsx-runtime");
 const Route = _props => {};
 exports.Route = Route;
-const createRoutesFromChildren = function (children, parentPath) {
-  if (parentPath === void 0) {
-    parentPath = [];
-  }
+const createRoutesFromChildren = (children, parentPath = []) => {
   const routes = [];
   _react.Children.forEach(children, (element, index) => {
     if (! /*#__PURE__*/(0, _react.isValidElement)(element)) {
@@ -49,12 +46,10 @@ const resolvePathname = (relativePath, fromPathname) => {
     });
     return segments.length > 1 ? segments.join("/") : "/";
   },
-  normalizeSearch = search => !search || search === "?" ? "" : search.startsWith("?") ? search : "?" + search,
-  normalizeHash = hash => !hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash,
-  resolvePath = function (to, fromPathname) {
-    if (fromPathname === void 0) {
-      fromPathname = "/";
-    }
+  _fNormalizeBy = character => str => !str || str === character ? "" : str.startsWith(character) ? str : character + str,
+  normalizeSearch = _fNormalizeBy("?"),
+  normalizeHash = _fNormalizeBy("#"),
+  resolvePath = (to, fromPathname = "/") => {
     let {
       pathname: toPathname,
       search = "",
@@ -100,10 +95,7 @@ const resolveTo = (toArg, locationPathname) => {
     (0, _react.useLayoutEffect)(() => {
       activeRef.current = true;
     });
-    const navigate = (0, _react.useCallback)(function (to, options) {
-      if (options === void 0) {
-        options = {};
-      }
+    const navigate = (0, _react.useCallback)((to, options = {}) => {
       if (!activeRef.current) return;
       if ((0, _isTypeFn.isNumber)(to)) {
         navigator.go(to);
@@ -118,10 +110,9 @@ const resolveTo = (toArg, locationPathname) => {
     return navigate;
   },
   useNavigate = () => useNavigateUnstable();
-const Routes = _ref => {
-  let {
-    children
-  } = _ref;
+const Routes = ({
+  children
+}) => {
   const routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
     location = useLocation(),
     matches = (0, _matchRouters.matchRoutes)(routes, location.pathname);
@@ -130,16 +121,15 @@ const Routes = _ref => {
   }), null);
 };
 exports.Routes = Routes;
-const Router = _ref2 => {
-  let {
-    basename: basenameProp = "/",
-    children = null,
-    location: locationProp,
-    navigationType = "POP" /* Pop */,
-    navigator,
-    static: staticProp = false,
-    useTransitions
-  } = _ref2;
+const Router = ({
+  basename: basenameProp = "/",
+  children = null,
+  location: locationProp,
+  navigationType = "POP" /* Pop */,
+  navigator,
+  static: staticProp = false,
+  useTransitions
+}) => {
   const basename = basenameProp.replace(/^\/*/, "/"),
     navigationContext = (0, _react.useMemo)(() => ({
       basename,
@@ -183,12 +173,11 @@ const Router = _ref2 => {
 };
 exports.Router = Router;
 const normalizeProtocolRelativeUrl = (url, protocol) => protocol + url.replace(/\\/g, "/");
-const Navigate = _ref3 => {
-  let {
-    to,
-    replace: replace2,
-    state
-  } = _ref3;
+const Navigate = ({
+  to,
+  replace: replace2,
+  state
+}) => {
   const {
       pathname: locationPathname
     } = useLocation(),
@@ -265,11 +254,10 @@ const useResolvedPath = to => {
   shouldProcessLinkClick = (evt, target) => evt.button === 0 && (!target || target === "_self") // Ignore everything but left clicks
   && !isModifiedEvent(evt) // Let browser handle "target=_blank" etc.
   ,
-  useLinkClickHandler = function (to, _temp) {
-    let {
-      target,
-      replace: replaceProp
-    } = _temp === void 0 ? {} : _temp;
+  useLinkClickHandler = (to, {
+    target,
+    replace: replaceProp
+  } = {}) => {
     const navigate = useNavigate(),
       location = useLocation(),
       path = useResolvedPath(to);
@@ -282,15 +270,14 @@ const useResolvedPath = to => {
       }
     }, [location, navigate, path, replaceProp, target, to]);
   },
-  Link = _ref4 => {
-    let {
-      onClick,
-      replace: replace2,
-      target,
-      to,
-      children,
-      ...restProps
-    } = _ref4;
+  Link = ({
+    onClick,
+    replace: replace2,
+    target,
+    to,
+    children,
+    ...restProps
+  }) => {
     const {
         basename
       } = (0, _react.useContext)(NavigationContext),
@@ -316,16 +303,15 @@ const useResolvedPath = to => {
     });
   };
 Link.displayName = "Link";
-const NavLink = _ref5 => {
-  let {
-    "aria-current": ariaCurrentProp = "page",
-    end = false,
-    className,
-    style,
-    to,
-    children,
-    ...restProps
-  } = _ref5;
+const NavLink = ({
+  "aria-current": ariaCurrentProp = "page",
+  end = false,
+  className,
+  style,
+  to,
+  children,
+  ...restProps
+}) => {
   const path = useResolvedPath(to),
     {
       navigator
