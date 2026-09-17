@@ -191,7 +191,7 @@ const _getBranchRoutesMetaChildrenIndex = (
 ) => branch.routesMeta
   .map(meta => meta.childrenIndex)
 
-, _compareIndexes = (
+, _compareByIndexes = (
   branchA,
   branchB
 ) => {
@@ -212,16 +212,19 @@ const _getBranchRoutesMetaChildrenIndex = (
   );
 }
 
+, _compareByScore = (
+  a,
+  b
+) => a.score !== b.score
+  ? b.score - a.score
+  : _compareByIndexes(a, b)
+
 , _flattenAndRankRoutes = (
   routes
 ) => {
   const branches = flattenRoutes(routes);
   // Rank route branches
-  branches.sort(
-    (a, b) => a.score !== b.score
-      ? b.score - a.score
-      : _compareIndexes(a, b)
-  );
+  branches.sort(_compareByScore);
   return branches;
 }
 
@@ -237,7 +240,7 @@ const _getBranchRoutesMetaChildrenIndex = (
   }
 }
 
-, _crPathnameBase = ( 
+, _crPathnameBase = (
   pathname
 ) => pathname.replace(/(.)\/+$/, "$1")
 , _matchPathImpl = (

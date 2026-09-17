@@ -131,7 +131,7 @@ function flattenRoutes(routes, branches = [], parentsMeta = [], parentPath = "",
   return branches;
 }
 const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta => meta.childrenIndex),
-  _compareIndexes = (branchA, branchB) => {
+  _compareByIndexes = (branchA, branchB) => {
     const a = _getBranchRoutesMetaChildrenIndex(branchA),
       b = _getBranchRoutesMetaChildrenIndex(branchB),
       isSiblings = a.length === b.length && a.slice(0, -1).every((n, i) => n === b[i]);
@@ -145,10 +145,11 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
     // so they sort equally.
     0;
   },
+  _compareByScore = (a, b) => a.score !== b.score ? b.score - a.score : _compareByIndexes(a, b),
   _flattenAndRankRoutes = routes => {
     const branches = flattenRoutes(routes);
     // Rank route branches
-    branches.sort((a, b) => a.score !== b.score ? b.score - a.score : _compareIndexes(a, b));
+    branches.sort(_compareByScore);
     return branches;
   },
   _decodePathname = pathname => {
