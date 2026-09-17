@@ -103,7 +103,7 @@ const resolveTo = (toArg, locationPathname) => {
       }
       const path = resolveTo(to, locationPathname);
       if (basename !== "/") {
-        path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, path.pathname]);
+        path.pathname = path.pathname === "/" ? basename : (0, _matchRouters.crPathname)(basename, path.pathname);
       }
       (options.replace ? navigator.replace : navigator.push)(path, options.state, options);
     }, [basename, navigator, locationPathname]);
@@ -242,7 +242,7 @@ const useResolvedPath = to => {
       } = useResolvedPath(to);
     let joinedPathname = pathname;
     if (basename !== "/") {
-      joinedPathname = pathname === "/" ? basename : (0, _matchRouters.joinPaths)([basename, pathname]);
+      joinedPathname = pathname === "/" ? basename : (0, _matchRouters.crPathname)(basename, pathname);
     }
     return navigator.createHref({
       pathname: joinedPathname,

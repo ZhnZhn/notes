@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.matchRoutes = exports.joinPaths = void 0;
+exports.matchRoutes = exports.crPathname = void 0;
 exports.parsePath = parsePath;
 exports.stripBasename = stripBasename;
 var _RouterFn = require("./RouterFn");
@@ -37,8 +37,8 @@ function stripBasename(pathname, basename) {
   }
   return pathname.slice(startIndex) || "/";
 }
-const joinPaths = paths => (0, _RouterFn.removeDoubleSlashes)(paths.join("/"));
-exports.joinPaths = joinPaths;
+const crPathname = (str1, str2) => (0, _RouterFn.removeDoubleSlashes)(`${str1}/${str2}`);
+exports.crPathname = crPathname;
 const RE_PARAM = /^:[\w-]+$/,
   DYNAMIC_SEGMENT_VALUE = 3,
   INDEX_ROUTE_VALUE = 2,
@@ -107,7 +107,7 @@ function flattenRoutes(routes, branches = [], parentsMeta = [], parentPath = "",
       }
       meta.relativePath = meta.relativePath.slice(parentPath.length);
     }
-    const path = joinPaths([parentPath, meta.relativePath]),
+    const path = crPathname(parentPath, meta.relativePath),
       routesMeta = parentsMeta.concat(meta);
     if (route.children && route.children.length > 0) {
       flattenRoutes(route.children, branches, routesMeta, path, hasParentOptionalSegments);
@@ -197,14 +197,14 @@ const _matchRouteBranch = (routesMeta, pathname) => {
     if (!match) {
       return null;
     }
-    const _matchedPathname = joinPaths([matchedPathname, match.pathnameBase]);
+    const _matchedPathname = crPathname(matchedPathname, match.pathnameBase);
     matches.push({
       // TODO: Can this as be avoided?
       params: {
         ...matchedParams,
         ...match.params
       },
-      pathname: joinPaths([matchedPathname, match.pathname]),
+      pathname: crPathname(matchedPathname, match.pathname),
       pathnameBase: normalizePathname(_matchedPathname),
       route: meta.route
     });

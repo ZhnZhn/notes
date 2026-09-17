@@ -18,7 +18,7 @@ import {
 
 import {
   matchRoutes,
-  joinPaths,
+  crPathname,
   parsePath,
   stripBasename
 } from './matchRouters';
@@ -26,7 +26,8 @@ import {
   HISTORY_ACTION_POP,
   createPath,
   removeTrailingSlash,
-  removeDoubleSlashes
+  removeDoubleSlashes,
+  normalizeLeadingSlash
 } from './RouterFn';
 
 export const Route = (_props) => {}
@@ -175,7 +176,7 @@ const resolveTo = (
       if (basename !== "/") {
         path.pathname = path.pathname === "/"
           ? basename
-          : joinPaths([basename, path.pathname]);
+          : crPathname(basename, path.pathname);
       }
       (options.replace ? navigator.replace : navigator.push)(
         path,
@@ -385,7 +386,7 @@ const useResolvedPath = (
   if (basename !== "/") {
     joinedPathname = pathname === "/"
       ? basename
-      : joinPaths([basename, pathname]);
+      : crPathname(basename, pathname);
   }
   return navigator
    .createHref({

@@ -42,9 +42,10 @@ export function stripBasename(pathname, basename) {
   return pathname.slice(startIndex) || "/";
 }
 
-export const joinPaths = (
-  paths
-) => removeDoubleSlashes(paths.join("/"));
+export const crPathname = (
+  str1,
+  str2
+) => removeDoubleSlashes(`${str1}/${str2}`)
 
 const RE_PARAM = /^:[\w-]+$/
 
@@ -153,7 +154,7 @@ function flattenRoutes(
       }
       meta.relativePath = meta.relativePath.slice(parentPath.length);
     }
-    const path = joinPaths([parentPath, meta.relativePath])
+    const path = crPathname(parentPath, meta.relativePath)
     , routesMeta = parentsMeta.concat(meta);
     if (route.children && route.children.length > 0) {
       flattenRoutes(
@@ -298,20 +299,20 @@ const _matchRouteBranch = (
       return null;
     }
 
-    const _matchedPathname = joinPaths([
+    const _matchedPathname = crPathname(
       matchedPathname,
       match.pathnameBase
-    ]);
+    );
     matches.push({
       // TODO: Can this as be avoided?
       params: {
         ...matchedParams,
         ...match.params
       },
-      pathname: joinPaths([
+      pathname: crPathname(
         matchedPathname,
         match.pathname
-      ]),
+      ),
       pathnameBase: normalizePathname(
         _matchedPathname
       ),
