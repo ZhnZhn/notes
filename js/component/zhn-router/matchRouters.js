@@ -159,7 +159,7 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
       return pathname;
     }
   },
-  _matchPathImpl = (pattern, pathname, matcher, compiledParams) => {
+  _matchPathImpl = (pathname, matcher, compiledParams) => {
     const match = pathname.match(matcher);
     if (!match) return null;
     const matchedPathname = match[0];
@@ -174,36 +174,25 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
           pathnameBase = matchedPathname.slice(0, matchedPathname.length - splatValue.length).replace(/(.)\/+$/, "$1");
         }
         const value = captureGroups[index];
-        if (isOptional && !value) {
-          memo2[paramName] = void 0;
-        } else {
-          memo2[paramName] = (value || "").replace(/%2F/g, "/");
-        }
+        memo2[paramName] = isOptional && !value ? void 0 : (value || "").replace(/%2F/g, "/");
         return memo2;
       }, {});
     return {
       params,
       pathname: matchedPathname,
-      pathnameBase,
-      pattern
+      pathnameBase
     };
   };
 const _matchRouteBranch = (routesMeta, pathname) => {
   const matchedParams = {},
-    matches = [],
-    numberOfMetaRoutes = routesMeta.length - 1;
+    matches = [];
   let matchedPathname = "/";
-  for (let i = 0; i < routesMeta.length; ++i) {
-    const meta = routesMeta[i],
-      end = i === numberOfMetaRoutes,
-      remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/",
-      pattern = {
-        path: meta.relativePath,
-        end
-      }
+  for (const meta of routesMeta) {
+    const remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/"
+
       // Use precomputed matcher
       ,
-      match = _matchPathImpl(pattern, remainingPathname, meta.matcher, meta.compiledParams);
+      match = _matchPathImpl(remainingPathname, meta.matcher, meta.compiledParams);
     if (!match) {
       return null;
     }

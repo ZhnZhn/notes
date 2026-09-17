@@ -97,7 +97,7 @@ const _compilePath = (
     /\/:([\w-]+)(\?)?/g,
     (match, paramName, isOptional, index, str) => {
       params.push({
-        paramName, 
+        paramName,
         isOptional: isOptional != null
       });
       if (isOptional) {
@@ -238,7 +238,6 @@ const _getBranchRoutesMetaChildrenIndex = (
 }
 
 , _matchPathImpl = (
-  pattern,
   pathname,
   matcher,
   compiledParams
@@ -253,14 +252,14 @@ const _getBranchRoutesMetaChildrenIndex = (
     (memo2, { paramName, isOptional }, index) => {
       if (paramName === "*") {
         const splatValue = captureGroups[index] || "";
-        pathnameBase = matchedPathname.slice(0, matchedPathname.length - splatValue.length).replace(/(.)\/+$/, "$1");
+        pathnameBase = matchedPathname
+          .slice(0, matchedPathname.length - splatValue.length)
+          .replace(/(.)\/+$/, "$1");
       }
       const value = captureGroups[index];
-      if (isOptional && !value) {
-        memo2[paramName] = void 0;
-      } else {
-        memo2[paramName] = (value || "").replace(/%2F/g, "/");
-      }
+      memo2[paramName] = isOptional && !value
+        ? void 0
+        : (value || "").replace(/%2F/g, "/");
       return memo2;
     },
     {}
@@ -268,8 +267,7 @@ const _getBranchRoutesMetaChildrenIndex = (
   return {
     params,
     pathname: matchedPathname,
-    pathnameBase,
-    pattern
+    pathnameBase
   };
 }
 
@@ -278,23 +276,16 @@ const _matchRouteBranch = (
   pathname
 ) => {
   const matchedParams = {}
-  , matches = []
-  , numberOfMetaRoutes = routesMeta.length - 1;
+  , matches = [];
   let matchedPathname = "/";
 
-  for (let i = 0; i < routesMeta.length; ++i) {
-    const meta = routesMeta[i]
-    , end = i === numberOfMetaRoutes
-    , remainingPathname = matchedPathname === "/"
-       ? pathname
-       : pathname.slice(matchedPathname.length) || "/"
-    , pattern = {
-       path: meta.relativePath,
-       end
-    }
+  for (const meta of routesMeta) {
+    const remainingPathname = matchedPathname === "/"
+      ? pathname
+      : pathname.slice(matchedPathname.length) || "/"
+
     // Use precomputed matcher
     , match = _matchPathImpl(
-       pattern,
        remainingPathname,
        meta.matcher,
        meta.compiledParams
