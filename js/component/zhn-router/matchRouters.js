@@ -159,10 +159,11 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
       return pathname;
     }
   },
+  _crPathnameBase = pathname => pathname.replace(/(.)\/+$/, "$1"),
   _matchPathImpl = (match, compiledParams) => {
     if (!match) return null;
     const matchedPathname = match[0];
-    let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
+    let pathnameBase = _crPathnameBase(matchedPathname);
     const captureGroups = match.slice(1),
       params = compiledParams.reduce((memo2, {
         paramName,
@@ -170,7 +171,7 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
       }, index) => {
         if (paramName === "*") {
           const splatValue = captureGroups[index] || "";
-          pathnameBase = matchedPathname.slice(0, matchedPathname.length - splatValue.length).replace(/(.)\/+$/, "$1");
+          pathnameBase = _crPathnameBase(matchedPathname.slice(0, matchedPathname.length - splatValue.length));
         }
         const value = captureGroups[index];
         memo2[paramName] = isOptional && !value ? void 0 : (value || "").replace(/%2F/g, "/");

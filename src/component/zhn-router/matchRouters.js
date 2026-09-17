@@ -237,6 +237,9 @@ const _getBranchRoutesMetaChildrenIndex = (
   }
 }
 
+, _crPathnameBase = ( 
+  pathname
+) => pathname.replace(/(.)\/+$/, "$1")
 , _matchPathImpl = (
   match,
   compiledParams
@@ -244,15 +247,15 @@ const _getBranchRoutesMetaChildrenIndex = (
   if (!match) return null;
 
   const matchedPathname = match[0];
-  let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
+  let pathnameBase = _crPathnameBase(matchedPathname);
   const captureGroups = match.slice(1)
   , params = compiledParams.reduce(
     (memo2, { paramName, isOptional }, index) => {
       if (paramName === "*") {
         const splatValue = captureGroups[index] || "";
-        pathnameBase = matchedPathname
-          .slice(0, matchedPathname.length - splatValue.length)
-          .replace(/(.)\/+$/, "$1");
+        pathnameBase = _crPathnameBase(
+          matchedPathname.slice(0, matchedPathname.length - splatValue.length)
+        )
       }
       const value = captureGroups[index];
       memo2[paramName] = isOptional && !value
