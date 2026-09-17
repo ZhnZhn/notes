@@ -198,20 +198,24 @@ const resolveTo = (
 export const Routes = ({
   children
 }) => {
-  const routes = useMemo(
+  const { pathname } = useLocation()
+  , routes = useMemo(
     () => createRoutesFromChildren(children),
     [children]
   )
-  , location = useLocation()
-  , matches = matchRoutes(
-     routes,
-     location.pathname
+  , matches = useMemo(
+    () => matchRoutes(routes, pathname),
+    [routes, pathname]
   );
+
   return matches == null
     ? null
-    : matches.reduceRight((outlet, match) => (
-        <>{match.route.element || outlet}</>
-      ), null);
+    : matches.reduceRight((
+        outlet,
+        match
+      ) => match.route.element || outlet,
+       null
+      );
 }
 
 export const Router = ({

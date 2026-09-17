@@ -113,12 +113,12 @@ const resolveTo = (toArg, locationPathname) => {
 const Routes = ({
   children
 }) => {
-  const routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
-    location = useLocation(),
-    matches = (0, _matchRouters.matchRoutes)(routes, location.pathname);
-  return matches == null ? null : matches.reduceRight((outlet, match) => /*#__PURE__*/(0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: match.route.element || outlet
-  }), null);
+  const {
+      pathname
+    } = useLocation(),
+    routes = (0, _react.useMemo)(() => createRoutesFromChildren(children), [children]),
+    matches = (0, _react.useMemo)(() => (0, _matchRouters.matchRoutes)(routes, pathname), [routes, pathname]);
+  return matches == null ? null : matches.reduceRight((outlet, match) => match.route.element || outlet, null);
 };
 exports.Routes = Routes;
 const Router = ({
