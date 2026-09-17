@@ -238,11 +238,9 @@ const _getBranchRoutesMetaChildrenIndex = (
 }
 
 , _matchPathImpl = (
-  pathname,
-  matcher,
+  match,
   compiledParams
 ) => {
-  const match = pathname.match(matcher);
   if (!match) return null;
 
   const matchedPathname = match[0];
@@ -286,8 +284,7 @@ const _matchRouteBranch = (
 
     // Use precomputed matcher
     , match = _matchPathImpl(
-       remainingPathname,
-       meta.matcher,
+       remainingPathname.match(meta.matcher),
        meta.compiledParams
     )
 

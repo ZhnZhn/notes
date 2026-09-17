@@ -159,8 +159,7 @@ const _getBranchRoutesMetaChildrenIndex = branch => branch.routesMeta.map(meta =
       return pathname;
     }
   },
-  _matchPathImpl = (pathname, matcher, compiledParams) => {
-    const match = pathname.match(matcher);
+  _matchPathImpl = (match, compiledParams) => {
     if (!match) return null;
     const matchedPathname = match[0];
     let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
@@ -192,7 +191,7 @@ const _matchRouteBranch = (routesMeta, pathname) => {
 
       // Use precomputed matcher
       ,
-      match = _matchPathImpl(remainingPathname, meta.matcher, meta.compiledParams);
+      match = _matchPathImpl(remainingPathname.match(meta.matcher), meta.compiledParams);
     if (!match) {
       return null;
     }
