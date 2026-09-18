@@ -73,12 +73,14 @@
     "roots": [
       "<rootDir>/js/utils/",
       "<rootDir>/js/flux/",
-      "<rootDir>/js/component/"
+      "<rootDir>/js/component/",
+      "<rootDir>/js/component/zhn-router"
     ],
     "transformIgnorePatterns": [
       "<rootDir>/js/utils/",
       "<rootDir>/js/flux/",
-      "<rootDir>/js/component/"
+      "<rootDir>/js/component/",
+      "<rootDir>/js/component/zhn-router" 
     ]
   }
 }

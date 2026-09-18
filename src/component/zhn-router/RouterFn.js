@@ -3,20 +3,23 @@ export const HISTORY_ACTION_POP = "POP"
 export const HISTORY_ACTION_PUSH = "PUSH"
 export const HISTORY_ACTION_REPLACE = "REPLACE"
 
-export function createPath({
+const _addTokenToIf = (
+  pathname,
+  token,
+  character
+) => token && token !== character
+  ? (pathname += token.charAt(0) === character
+      ? token
+      : character + token)
+  : pathname;
+
+export const createPath = ({
   pathname = "/",
   search = "",
   hash = ""
-}) {
-  if (search && search !== "?")
-    pathname += search.charAt(0) === "?"
-      ? search
-      : "?" + search;
-  if (hash && hash !== "#")
-    pathname += hash.charAt(0) === "#"
-      ? hash
-      : "#" + hash;
-  return pathname;
+}) => {
+  pathname = _addTokenToIf(pathname, search, "?")          
+  return _addTokenToIf(pathname, hash, "#");
 }
 
 const RE_TRAILING_SLASH = /\/+$/;
@@ -53,7 +56,7 @@ export const parsePath = (path) => {
   const parsedPath = {};
   if (path) {
     path = _addParsedPathPropIf(parsedPath, path, "hash", "#")
-    path = _addParsedPathPropIf(parsedPath, path, "search", "?")    
+    path = _addParsedPathPropIf(parsedPath, path, "search", "?")
     if (path) {
       parsedPath.pathname = path;
     }
