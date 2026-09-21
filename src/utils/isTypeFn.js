@@ -11,7 +11,7 @@ export const isStr = _fIsTypeof("string")
 
 const isTypeNumber = _fIsTypeof("number")
 export const isNumber = (
-  value
+  value /*: unknown */
 ) => isTypeNumber(value)
   && value - value === 0
 
@@ -23,14 +23,14 @@ export const isObj = (
 export const isArr = Array.isArray
 
 export const isArrEmpty = (
-  arr /*: mixed*/
+  arr /*: unknown */
 ) /*: boolean*/ => !isArr(arr)
   || arr.length === 0
 
-  const _hasOwnProperty = Object.prototype.hasOwnProperty
-  export const hasOwnPropertySafe = (
-    item,
-    propName
-  ) => isObj(item)
-   && isStr(propName)
-   && _hasOwnProperty.call(item, propName)
+const _hasOwnProperty = Object.prototype.hasOwnProperty
+export const hasOwnPropertySafe = (
+ item /*: unknown */,
+ propName /*: string */
+) => isObj(item)
+  && isStr(propName)
+  && _hasOwnProperty.call(item, propName)

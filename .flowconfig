@@ -19,10 +19,7 @@
 ./src/flux/app/actions.js
 ./src/flux/board/actions.js
 ./src/flux/column/actions.js
-./src/flux/drawerMsg/actions.js
-./src/flux/modal/actions.js
 ./src/flux/note/actions.js
-
 
 [lints]
 
