@@ -30,7 +30,6 @@
     "react-redux": "^9.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.29.7",
     "@babel/core": "^7.29.7",
     "@babel/eslint-parser": "^7.29.9",
     "@babel/plugin-transform-react-jsx": "^7.29.7",
@@ -38,10 +37,10 @@
     "@babel/preset-env": "^7.29.7",
     "@babel/preset-flow": "^7.29.7",
     "@babel/preset-react": "^7.29.7",
-    "@biomejs/biome": "^2.5.14",
+    "@biomejs/biome": "^2.5.15",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.6.3",
-    "@rspack/cli": "^2.2.6",
-    "@rspack/core": "^2.2.6",
+    "@rspack/cli": "^2.2.8",
+    "@rspack/core": "^2.2.8",
     "@rspack/dev-server": "^2.2.1",
     "@rspack/plugin-react-refresh": "^2.0.2",
     "@swc/helpers": "^0.5.23",
@@ -55,11 +54,10 @@
     "html-webpack-plugin": "^5.6.8",
     "jest": "^30.5.2",
     "react-refresh": "^0.18.0",
-    "sass": "^1.104.1",
+    "sass": "^1.105.1",
     "terser-webpack-plugin": "^5.6.1",
     "webpack": "^5.111.1",
-    "webpack-cli": "^7.2.3",
-    "webpack-dev-server": "^5.2.6"
+    "webpack-cli": "^7.2.3"
   },
   "overrides": {
     "glob": "~13.0.6",
